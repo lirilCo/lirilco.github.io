@@ -1,0 +1,23 @@
+#gallery {
+	text-align: center;
+	padding: 20px 0;
+}
+#gallery img{
+	display: inline-block;
+	height: 220px;
+}
+.wrapper{
+    display: none;
+}
+.wrapper.visible{
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2
+}
+header.open .buscar::placeholder{
+    color: #fff;
+}
