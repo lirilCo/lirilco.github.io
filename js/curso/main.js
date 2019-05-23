@@ -7,6 +7,12 @@ var snapping = true;
 pasted = true;
 type = "none";
 copiedTop = 0;
+copiedHeight = 0;
+copiedWidth = 0;
+pasteCopiedTop = 0;
+pasteCopiedLeft = 0;
+pasteCountTopRef = 0;
+pasteCountLeftRef = 0;
 select = false;
 copiedLeft = 0;
 
@@ -492,20 +498,41 @@ function controls(a){
 
 	}
 	if ($(a.target).parents().andSelf().is(".copy")){
+		pasteCount = 0
+		pasteCopiedTop= parseInt($(".selectedWidget").css("top"), 10)
+    	pasteCopiedLeft= parseInt($(".selectedWidget").css("left"), 10)
     	copiedWidget = $(".selectedWidget").html()
-    	copiedTop = $(".vidVidCustomizationMode").height()/2-$(".selectedWidget").height()/2 + 47
-    	copiedLeft = $(".vidVidCustomizationMode").width()/2-$(".selectedWidget").width()/2
+    	copiedTop= parseInt($(".selectedWidget").css("top"), 10)
+    	pasteCountTopRef = 0;
+    	pasteCountLeftRef=0;
+    	copiedLeft = parseInt($(".selectedWidget").css("left"), 10)    
+    	copiedWidth =  parseInt($(".selectedWidget").css("width"), 10)
+    	copiedHeight =  parseInt($(".selectedWidget").css("height"), 10)
+
+    	
 	}
 	if ($(a.target).parents().andSelf().is(".paste")){
 		if(copiedWidget != undefined){
-            	if(select){
-
+				pasteCopiedTop = parseInt($('.widgetero .widget').last().css("top"), 10)
+				pasteCopiedLeft = parseInt($('.widgetero .widget').last().css("left"), 10)
+				if(pasteCopiedTop<10){
+					pasteCountTopRef  -=1;
+				} else{
+					pasteCountTopRef+=1;
+				}
+				if(pasteCopiedLeft <10){
+					pasteCountLeftRef -=1;
+				} else{
+					pasteCountLeftRef+=1;
+				}
+				
             		$(".selectedWidget").removeClass("selectedWidget")
-    				$(".widgetero").append('<div style="top: '+ copiedTop +'px;left: '+ copiedLeft +'px; z-index:1000" class="widget select selectedWidget dropped">'+copiedWidget+'</div>')
-            	}else{
-					$(".selectedWidget").removeClass("selectedWidget")
-    				$(".widgetero").append('<div style="top: '+ copiedTop +'px;left: '+ copiedLeft +'px; z-index:1000" class="widget  selectedWidget dropped">'+copiedWidget+'</div>')
-            	}
+            		if((copiedTop - pasteCountTopRef*10)<0){
+            			    $(".widgetero").append('<div style="width:'+ copiedWidth +'px; height:'+ copiedHeight +'px; top: '+ 0 +'px;left: '+ (copiedLeft - pasteCountLeftRef*10) +'px; z-index:1000" class="widget selectedWidget dropped">'+copiedWidget+'</div>')
+
+				}else{
+    				$(".widgetero").append('<div style="width:'+ copiedWidth +'px; height:'+ copiedHeight +'px; top: '+ (copiedTop - pasteCountTopRef*10) +'px;left: '+ (copiedLeft - pasteCountLeftRef*10) +'px; z-index:1000" class="widget selectedWidget dropped">'+copiedWidget+'</div>')
+				}
             }
 }
 	if ($(a.target).parents().andSelf().is(".magnet")){
@@ -524,11 +551,18 @@ function controls(a){
     var ctrlKey = 17
     $(document).keydown(function(e)
     {
-        if (e.keyCode == ctrlKey) ctrlDown = true;
+        if (e.keyCode == ctrlKey) {ctrlDown = true;}
             if (ctrlDown &&  e.keyCode == 67){
-            	copiedWidget = $(".selectedWidget").html()
-    			copiedTop = $(".vidVidCustomizationMode").height()/2-$(".selectedWidget").height()/2 + 48
-    			copiedLeft = $(".vidVidCustomizationMode").width()/2-$(".selectedWidget").width()/2
+            	pasteCount = 0;
+		pasteCopiedTop= parseInt($(".selectedWidget").css("top"), 10);
+    	pasteCopiedLeft= parseInt($(".selectedWidget").css("left"), 10);
+    	copiedWidget = $(".selectedWidget").html();
+    	copiedTop= parseInt($(".selectedWidget").css("top"), 10);
+    	pasteCountTopRef = 0;
+    	pasteCountLeftRef=0;
+    	copiedLeft = parseInt($(".selectedWidget").css("left"), 10);    
+    	copiedWidth =  parseInt($(".selectedWidget").css("width"), 10);
+    	copiedHeight =  parseInt($(".selectedWidget").css("height"), 10);
             }
             if (ctrlDown &&  e.keyCode == 88){
             		copiedWidget = $(".selectedWidget").html()
@@ -541,23 +575,27 @@ function controls(a){
     {
             if (ctrlDown &&  e.keyCode == 86){
             	if(copiedWidget != undefined){
-            	if(select){
-
+				pasteCopiedTop = parseInt($('.widgetero .widget').last().css("top"), 10)
+				pasteCopiedLeft = parseInt($('.widgetero .widget').last().css("left"), 10)
+				if(pasteCopiedTop<10){
+					pasteCountTopRef  -=1;
+				} else{
+					pasteCountTopRef+=1;
+				}
+				if(pasteCopiedLeft <10){
+					pasteCountLeftRef -=1;
+				} else{
+					pasteCountLeftRef+=1;
+				}
+				
             		$(".selectedWidget").removeClass("selectedWidget")
-    				$(".widgetero").append('<div style="top: '+ copiedTop +'px;left: '+ copiedLeft +'px; z-index:1000" class="widget select selectedWidget dropped">'+copiedWidget+'</div>')
-            	}else{
-					$(".selectedWidget").removeClass("selectedWidget")
-    				$(".widgetero").append('<div style="top: '+ copiedTop +'px;left: '+ copiedLeft +'px; z-index:1000" class="widget  selectedWidget dropped">'+copiedWidget+'</div>')
-            	}
+            		if((copiedTop - pasteCountTopRef*10)<0){
+            			    $(".widgetero").append('<div style="width:'+ copiedWidth +'px; height:'+ copiedHeight +'px; top: '+ 0 +'px;left: '+ (copiedLeft - pasteCountLeftRef*10) +'px; z-index:1000" class="widget selectedWidget dropped">'+copiedWidget+'</div>')
+
+				}else{
+    				$(".widgetero").append('<div style="width:'+ copiedWidth +'px; height:'+ copiedHeight +'px; top: '+ (copiedTop - pasteCountTopRef*10) +'px;left: '+ (copiedLeft - pasteCountLeftRef*10) +'px; z-index:1000" class="widget selectedWidget dropped">'+copiedWidget+'</div>')
+				}
             }
     }
 }
     );
-
-    
-	
-	
-
-
-
-	
