@@ -360,7 +360,6 @@ input:focus {
     width: 20%;
 }
 #Store #actualStore #storeList ul li , #customizationBars #actualStore #storeList ul li {
-    color: #afafaf;
     cursor: pointer;
     display: block;
     font-size: 25px;
@@ -726,4 +725,46 @@ iframe
     width: 100%;
     height: 100%;
     z-index: 2
+}
+
+#storeList ul
+{
+    list-style: none;
+    margin: 20px 0;
+    padding: 0;
+    display:table;
+    table-layout: fixed;
+    width: 100%;
+
+}
+#storeList ul
+{
+    list-style: none;
+    background-color: #2ecc71;
+    margin:0;
+    height: 41px;
+    padding: 0;
+    display:table;
+    table-layout: fixed;
+    width: inherit;
+    position: fixed;
+
+}
+#storeList ul li
+{
+    color: white;
+    font-size: 24px;
+    height: 100%;
+    vertical-align: middle;
+    cursor: pointer;
+     display:table-cell;
+    text-align:center;
+    border-bottom: solid 2px #27ae60;
+    margin: 0;
+}
+#storeList ul li.actual
+{
+    background-color: #27ae60;
+        cursor: default;
+
 }

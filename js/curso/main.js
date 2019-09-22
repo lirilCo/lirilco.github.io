@@ -366,7 +366,12 @@ snapTolerance: 10
         	$(this).addClass("actual")
         }
 	});
-
+	$("#storeList ul li").on("click",function(){
+        if(!$(this).hasClass("actual")){
+        	$("#storeList ul li.actual").removeClass("actual");
+        	$(this).addClass("actual")
+        }
+	});
 	$(".vjs-play-control.vjs-control").css({
 		"display": "none"
 	});

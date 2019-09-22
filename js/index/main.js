@@ -34,9 +34,8 @@ function openModal(a) {
     $('.theater .comments .options ul a').attr('href', ref);
 
     if($("#bigPic").width()<=$("#bigPic").height()){
-        $("#bigPic").css({"height":"100%"})
+        $("#bigPic").css({ "width":"100%"})
     }else{
-                $("#bigPic").css({"height":"auto"})
 
     }
       $(".more").mCustomScrollbar({theme: 
@@ -49,7 +48,8 @@ function openModal(a) {
     $("#picContainer").width($("#bigPic").width());
     $("#theater .comments").height($("#theater").height() - 40);
     $("#theater .comments .more").height($("#theater .comments").height() - $("#theater .info").outerHeight(true) - $("#theater .comments .title").outerHeight(true) - $("#theater .comments .options").outerHeight(true));
-    $("#theater").width($("#theater .comments").width() + 40 + $("#theater #picContainer").width());
+    $("#theater").width("90%");
+    responsive()
 }
 
 function closeModal() {
@@ -378,7 +378,7 @@ $(window).on("resize", function(){
     responsive();
 })
 function responsive() {
-    
+    $("#picContainer").width($("#theater").width()- $(".comments").outerWidth())
     $("#sidebar").height($(window).height() - 46);
     $("#sidebar #container").height(($(window).height() - $("#sidebar #search").outerHeight() - 46));
     $("#sidebar #chat").height(($(window).height() - $("#sidebar #search").outerHeight() - 46));

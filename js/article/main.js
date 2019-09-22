@@ -106,8 +106,8 @@ $('#profileSettings').click(function(i){
     $("#picContainer").width($("#bigPic").width());
     $("#theater .comments").height($("#theater").height() - 40);
     $("#theater .comments .more").height($("#theater .comments").height() - $("#theater .info").outerHeight(true) - $("#theater .comments .title").outerHeight(true) - $("#theater .comments .options").outerHeight(true));
-   
-    $("#theater").width($("#theater .comments").width() + 40 + $("#theater #picContainer").width());
+    $("#theater").width("90%");
+    responsive()
 }
 
 function closeModal() {
@@ -280,10 +280,10 @@ function responsive(){
      $(".code-filler").width(function () {
     return $(this).parent().siblings("pre").find("code").width() + parseInt($(this).parent().siblings("pre").css("padding-left"))+ parseInt($(this).parent().siblings("pre").css("padding-right")) - 1
 });
+         $("#picContainer").width($("#theater").width()- $(".comments").outerWidth())
         $("#article").width($(window).width()- $("#sidebar").outerWidth(true) );
         $("#theater .comments").height($("#theater").height()- 40 );
         $("#theater .comments .more").height($("#theater .comments").height()- $("#theater .info").outerHeight(true)  - $("#theater .comments .title").outerHeight(true) -  $("#theater .comments .options").outerHeight(true));
-        $("#theater").width($("#theater .comments").width()+ 40 + $("#theater img").width() );
         $("#theater").height($(window).height()-40);
         $("#Store #actualStore").height($(window).height() - $("header").height() - 21);
         $("#sidebar").height($(window).height() - 46);
