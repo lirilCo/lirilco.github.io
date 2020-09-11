@@ -624,6 +624,9 @@ aNGEL= function(r){
   return Cinnamon; 
 }; 
 
+$(".buscar")[0].addEventListener("keydown", function(i){i.keyCode == 13? aNGEL($(".buscar")[0].value): 1; }); 
+$("input")[2].addEventListener("keydown", function(i){i.keyCode == 13? por_siLaBas($("input")[0].value): 1; }); 
+$(".buscar")[0].addEventListener("keydown", function(i){i.keyCode == 53? parse(".buscar", 0): 1; }); 
 
 
 function openModal(a) {
