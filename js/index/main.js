@@ -624,9 +624,10 @@ aNGEL= function(r){
   return Cinnamon; 
 }; 
 
-document.getElementsByClassName("buscar")[0].addEventListener("keydown", function(i){i.keyCode == 13? aNGEL(document.getElementsByClassName("buscar")[0].value): 1; }); 
-document.getElementsByTagName("input")[2].addEventListener("keydown", function(i){i.keyCode == 13? por_siLaBas(document.getElementsByTagName("input")[2].value): 1; }); 
-
+document.on("ready", function(){ 
+	document.getElementsByClassName("buscar")[0].addEventListener("keydown", function(i){i.keyCode == 13? aNGEL(document.getElementsByClassName("buscar")[0].value): 1; }); 
+	document.getElementsByTagName("input")[2].addEventListener("keydown", function(i){i.keyCode == 13? por_siLaBas(document.getElementsByTagName("input")[2].value): 1; }); 
+}); 
 
 
 function openModal(a) {
