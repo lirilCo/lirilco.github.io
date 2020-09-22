@@ -297,6 +297,10 @@ Accents= /*Were I able to access it*/{
     "ꬻ", 
     "ꬼ" 
   ], 
+  "ñ": [ 
+    "ñ", 
+    "ñ"
+  ], 
   "o": [ 
     "o", 
     "ó", 
