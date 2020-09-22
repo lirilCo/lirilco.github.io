@@ -278,7 +278,6 @@ Accents= /*Were I able to access it*/{
     "ń", 
     "ǹ", 
     "ň", 
-    "ñ", 
     "ṅ", 
     "ņ", 
     "ṇ", 
@@ -298,8 +297,7 @@ Accents= /*Were I able to access it*/{
     "ꬼ" 
   ], 
   "ñ": [ 
-    "ñ", 
-    "ñ"
+    "ñ" 
   ], 
   "o": [ 
     "o", 
