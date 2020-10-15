@@ -155,7 +155,7 @@ $(document).mouseup(function(e) {
 				
 		}})
 		
-		$(".selectedWidget").resizable({
+		$(".widgetero .widget").resizable({
 
  handles: {
         'nw': '#nwgrip',
