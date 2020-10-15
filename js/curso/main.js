@@ -173,9 +173,9 @@ snapTolerance: 10
 })
 
 		if(snapping){
-    		$('.selectedWidget').resizable("option", "snap", ".vidVidCustomizationMode, .widget" );
+    		$('.widgetero .widget').resizable("option", "snap", ".vidVidCustomizationMode, .widget" );
 		}else{
-    		$('.selectedWidget').resizable("option", "snap", false );
+    		$('.widgetero .widget').resizable("option", "snap", false );
 		}
 
 		if(out){
