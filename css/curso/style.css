@@ -646,11 +646,11 @@ iframe
 {
     opacity: 1;
 }
-.selectedWidget
-{
-    border: 1px solid #aaa;
+.selectedWidget 
+{ 
+    /*border: 1px solid #aaa; */ 
 
-}
+} 
 .selectedWidget.select
 {
     border: 1px solid #6D8FE0;
