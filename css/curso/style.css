@@ -508,17 +508,15 @@ normal #fff*/
             border-left: none;
 
 }
-#list
-{
-    width: 50%;
-    float: right;
-    box-sizing: border-box;
-    height: 100%;
-    padding-bottom: 48px;
-    position: relative;
+#list 
+{ 
+    width: 50%; 
+    float: right; 
+    box-sizing: border-box; 
+    height: 100%; 
+    padding-bottom: 48px; 
     overflow-y: scroll; 
-
-}
+} 
 
 
 #list .tabs
