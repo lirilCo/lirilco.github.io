@@ -14,15 +14,8 @@ pasteCopiedLeft = 0;
 pasteCountTopRef = 0;
 pasteCountLeftRef = 0;
 select = false;
-copiedLeft= 0; 
-
-setInterval(function(){ 
-    $("#egrip")[0].style.left= (parseInt($(".selectedWidget")[0].style.left) - $(Window).width() / 2) + "px"; 
-    $("#egrip")[0].style.top= (parseInt($(".selectedWidget")[0].style.top) + parseInt($(".selectedWidget")[0].style.height) / 2) + "px"; 
-
-}, 0.00); 
+copiedLeft = 0;
 $(document).on("ready",function(){
-
 	$("html").click(function() {
 		$(".wrapper").removeClass("visible")
 		$(".back-arrow").removeClass("open");
@@ -49,13 +42,7 @@ $('#profileSettings').click(function(i){
 	});
     			player.play();
 			player.pause();
-
-
-
 			$("#actions section").height($("#actions").height()- $("#actions tabs").height() )
-
-
-
 	$("#index-trigger").on("click",function(e){
 		$(".wrapper").toggleClass("visible")
 		$("#index-menu").toggleClass("open");
@@ -78,12 +65,10 @@ $('#profileSettings').click(function(i){
 				getActual().addClass("selectedWidget");
 		}		
 	})
-
 	$('.widgets li').mousedown(function(e) {
 if($("#customizationBars").hasClass("open")){
 	$(this).find($( ".widgets .widget" )).clone().addClass('widget draggable').appendTo( ".widgetero" );
 	
-
 var dropped = false;
 $('.widgetero .widget').last().draggable({
 	stack:".widgetero .widget",
@@ -110,16 +95,12 @@ containment: "window",
 			$(this).remove()}
 		}      
     }
-
 })
-
-
 $('.widgetero .widget').last().css({
 	left: e.pageX - $('.widgetero .widget').last().width()/2,
 	top: e.pageY -($('.widgetero .widget').last().height()/2)-46}).trigger(e)
 }
 });
-
 $(document).mouseup(function(e) {
 	if($("#customizationBars").hasClass("open")){
 		$('.widgetero .widget').draggable({ 
@@ -132,13 +113,11 @@ $(document).mouseup(function(e) {
 		revert: 'invalid', 
 		revertDuration: 100,
 		snapTolerance: 10});
-
 		if(snapping){
     		$('.widgetero .widget').draggable("option", "snap", ".vidVidCustomizationMode, .widget" );
 		}else{
     		$('.widgetero .widget').draggable("option", "snap", false );
 		}
-
 		$('.vidVidCustomizationMode').droppable({
     		accept: '.widget',
     		  
@@ -152,14 +131,13 @@ $(document).mouseup(function(e) {
 		$('.trash').droppable({
     		accept: '.widget',
     		   tolerance: "fit",
-
     		drop: function(event, ui)
     		{        
     			ui.draggable.remove();
 
-				
 		}})
-		
+
+		$(".selectedWidget").resizable({
 		$(".widgetero .widget").resizable({
 
  handles: {
@@ -174,15 +152,12 @@ $(document).mouseup(function(e) {
     },
   snapMode: "both", 
 snapTolerance: 10
-
 })
-
 		if(snapping){
     		$('.widgetero .widget').resizable("option", "snap", ".vidVidCustomizationMode, .widget" );
 		}else{
     		$('.widgetero .widget').resizable("option", "snap", false );
 		}
-
 		if(out){
 			getActual().removeClass("selectedWidget");
 			out = false;
@@ -190,7 +165,6 @@ snapTolerance: 10
 		{
 			
 		getActual().addClass("selectedWidget");
-
 		}
 				
 }
@@ -206,18 +180,15 @@ snapTolerance: 10
 		$("#right-menu").children().removeClass("store");
 		$(".back-arrow").removeClass("openedStore");
 		$("#cover").addClass("open");
-
 		}
 		if(!$("#Store").hasClass("open") && $("#customizationBars").hasClass("open")){
 			$("#right-menu").children().addClass("openedStore");
 		$("#right-menu").children().removeClass("store");
-
 		}
 		if(!$("#customizationBars").hasClass("open")){
 			if(!player.paused() && $("#Store").hasClass("open")){
 			player.pause();
 			wasPlaying = true;
-
 		}
 		if(player.paused() && !$("#Store").hasClass("open") && !$("#customizationBars").hasClass("open") && wasPlaying === true){
 			player.play();
@@ -232,9 +203,7 @@ snapTolerance: 10
 			$("#right-menu").children().addClass("store");
 			$(".back-arrow").addClass("openedStore");
 			$("#cover").removeClass("open");
-
 		}		
-
 	});
 	$("#customize").on("click",function(){
 		if($("#Store").hasClass("open") && $("#customizationBars").hasClass("open")){
@@ -242,7 +211,6 @@ snapTolerance: 10
 		}
 		$("#right-menu #customize").toggleClass("open");
 		$("#customizationBars").toggleClass("open");
-
 		if(!player.paused()){
 			player.pause();
 			wasPlaying = true;
@@ -266,7 +234,6 @@ snapTolerance: 10
 			
 				
 			$("#customizationBars").addClass("open")
-
 		}		
 		
 		if(!$("#Store").hasClass("open") && !$("#customizationBars").hasClass("open") ){
@@ -297,7 +264,6 @@ snapTolerance: 10
 	});
 	setInterval(function(){
         $("#index-menu.open").height(32* $("#index-menu.open > ul > a").length);
-
         if(player.paused()){
             $("#play").removeClass("playing")
         }else{
@@ -311,7 +277,6 @@ snapTolerance: 10
 		$("#customizationBars #actualStore #storeSection").width($(window).width() - $("#customizationBars #actualStore #storeList").width() - 87);
 		$("#customizationBars #actualStore #storeSection").height($("#customizationBars #actualStore").height() - 80);
 	
-
 		if($("#profileSettings").hasClass("open")){
 			$('.knob').trigger(
         		'configure',
@@ -337,7 +302,6 @@ snapTolerance: 10
 		}
         
 	}, 10);
-
 	$("#profileTrigger").on("click",function(r){
 		
 		$(".back-arrow").toggleClass("open");
@@ -352,7 +316,6 @@ snapTolerance: 10
 		$(".indexMenuItem").addClass("fadeOutUp");
 		$(".indexMenuItem").removeClass("open");
 		$(".wrapper").addClass("visible")
-
 		}
 		r.stopPropagation()
 	});
@@ -364,7 +327,6 @@ snapTolerance: 10
 		}
 	});
 	$('.widgets img').on('dragstart', function(event) { event.preventDefault(); });
-
 	$("#customizationBars #list .tabs li").on("click",function(){
         if(!$(this).hasClass("actual")){
         	$("#customizationBars #list .tabs .actual").removeClass("actual");
@@ -398,10 +360,7 @@ $(".vjs-volume-control.vjs-control").css({
 $(".vjs-captions-button.vjs-menu-button.vjs-control ").css({
 		"display": "none"
 	});
-
-
 });
-
 function jump(s,t){
 		$(s).on("click",function(){
 		player.currentTime(t);
@@ -424,27 +383,19 @@ function customizationMode(){
 	$("#example_video_1").children().first().addClass("vidVidCustomizationMode");
 	a = $("#example_video_1").height()/$("#example_video_1").width()
 	vidHeight = $(".vidVidCustomizationMode").height() +4;
-
 	$("#example_video_1").addClass("vidCustomizationMode");
-
 	$(".vidVidCustomizationMode").height( (a*$("#example_video_1").width()-3))
 		$(".widgetero").height( (a*$("#example_video_1").width()+1))
-
 	w = $(".vidVidCustomizationMode").width();
 	h = $(".vidVidCustomizationMode").height();
-
 $(".back-arrow").addClass("openedStore");
 $("#cover").removeClass("open");
-
 $("#index-trigger").children().addClass("openedStore");
 		$("#right-menu #dots").children().addClass("openedStore");
 		$("#right-menu").children().addClass("openedStore");
 		$(".vjs-progress-holder").addClass("opened");
-
-
 	}
 	function getActual (){
-
 		  $(".selectedWidget").removeClass("selectedWidget");
 $('.widgetero .widget').each(function(){
     var z = parseInt($(this).css('z-index'), 10);
@@ -452,18 +403,14 @@ $('.widgetero .widget').each(function(){
     	maxz = z;
     	best= $(this)
     }
-
 });
 if(maxz == 0){
  return $('.widgetero .widget').last()
 }else{
 	maxz = 0;
 		return best
-
 	}
-
 }
-
 $(document).mouseup(function(e){
     var clickedOn = $(e.target);
     if (!clickedOn.parents().andSelf().is('.widget') && !clickedOn.parents().andSelf().is('input') &&!clickedOn.parents().andSelf().is('.resize')&&!clickedOn.parents().andSelf().is('.select')&&!clickedOn.parents().andSelf().is('.magnet')){
@@ -472,16 +419,13 @@ $(document).mouseup(function(e){
 		out = true;	
     }else{
     	 controls(e)
-
     }
 });
-
 $('html').keyup(function(e){
     if(e.keyCode == 46){
     	$(".selectedWidget").remove()
     }
 }) 
-
 function controls(a){
 	if ($(a.target).parents().andSelf().is(".delete")){
     	$(".selectedWidget").remove()
@@ -497,15 +441,12 @@ function controls(a){
     	$(".resize").addClass("on");
     	$(".select").removeClass("on");
     	    	select = false
-
-
 	}
 	if ($(a.target).parents().andSelf().is(".cut")){
     	copiedWidget = $(".selectedWidget").html()
     	copiedTop = parseInt($(".selectedWidget").css("top"), 10)
     	copiedLeft = parseInt($(".selectedWidget").css("left"), 10)
     	$(".selectedWidget").remove()
-
 	}
 	if ($(a.target).parents().andSelf().is(".copy")){
 		pasteCount = 0
@@ -518,7 +459,6 @@ function controls(a){
     	copiedLeft = parseInt($(".selectedWidget").css("left"), 10)    
     	copiedWidth =  parseInt($(".selectedWidget").css("width"), 10)
     	copiedHeight =  parseInt($(".selectedWidget").css("height"), 10)
-
     	
 	}
 	if ($(a.target).parents().andSelf().is(".paste")){
@@ -539,7 +479,6 @@ function controls(a){
             		$(".selectedWidget").removeClass("selectedWidget")
             		if((copiedTop - pasteCountTopRef*10)<0){
             			    $(".widgetero").append('<div style="width:'+ copiedWidth +'px; height:'+ copiedHeight +'px; top: '+ 0 +'px;left: '+ (copiedLeft - pasteCountLeftRef*10) +'px; z-index:1000" class="widget selectedWidget dropped">'+copiedWidget+'</div>')
-
 				}else{
     				$(".widgetero").append('<div style="width:'+ copiedWidth +'px; height:'+ copiedHeight +'px; top: '+ (copiedTop - pasteCountTopRef*10) +'px;left: '+ (copiedLeft - pasteCountLeftRef*10) +'px; z-index:1000" class="widget selectedWidget dropped">'+copiedWidget+'</div>')
 				}
@@ -552,11 +491,9 @@ function controls(a){
     	}else{
     		snapping = true;
     	}
-
 	}
 }
  
-
   var ctrlDown = false;
     var ctrlKey = 17
     $(document).keydown(function(e)
@@ -580,7 +517,6 @@ function controls(a){
     				copiedLeft = parseInt($(".selectedWidget").css("left"), 10)
     				$(".selectedWidget").remove()
             }
-
     }).keyup(function(e)
     {
             if (ctrlDown &&  e.keyCode == 86){
@@ -601,7 +537,6 @@ function controls(a){
             		$(".selectedWidget").removeClass("selectedWidget")
             		if((copiedTop - pasteCountTopRef*10)<0){
             			    $(".widgetero").append('<div style="width:'+ copiedWidth +'px; height:'+ copiedHeight +'px; top: '+ 0 +'px;left: '+ (copiedLeft - pasteCountLeftRef*10) +'px; z-index:1000" class="widget selectedWidget dropped">'+copiedWidget+'</div>')
-
 				}else{
     				$(".widgetero").append('<div style="width:'+ copiedWidth +'px; height:'+ copiedHeight +'px; top: '+ (copiedTop - pasteCountTopRef*10) +'px;left: '+ (copiedLeft - pasteCountLeftRef*10) +'px; z-index:1000" class="widget selectedWidget dropped">'+copiedWidget+'</div>')
 				}
