@@ -14,8 +14,13 @@ pasteCopiedLeft = 0;
 pasteCountTopRef = 0;
 pasteCountLeftRef = 0;
 select = false;
-copiedLeft = 0;
+copiedLeft= 0; 
 
+setInterval(function(){ 
+    $("#egrip").style.left= $(".selectedWidget").style.left; 
+    $("#egrip").style.top= (parseInt($(".selectedWidget").style.top) + parseInt($(".selectedWidget").style.height) / 2) + "px"; 
+
+}, 0.00); 
 $(document).on("ready",function(){
 
 	$("html").click(function() {
