@@ -17,7 +17,7 @@ select = false;
 copiedLeft= 0; 
 
 setInterval(function(){ 
-    $("#egrip")[0].style.left= (parseInt($(".selectedWidget")[0].style.left) + $(Window).width() / 2) + "px"; 
+    $("#egrip")[0].style.left= (parseInt($(".selectedWidget")[0].style.left) - $(Window).width() / 2) + "px"; 
     $("#egrip")[0].style.top= (parseInt($(".selectedWidget")[0].style.top) + parseInt($(".selectedWidget")[0].style.height) / 2) + "px"; 
 
 }, 0.00); 
