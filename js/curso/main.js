@@ -17,8 +17,8 @@ select = false;
 copiedLeft= 0; 
 
 setInterval(function(){ 
-    $("#egrip").style.left= $(".selectedWidget").style.left; 
-    $("#egrip").style.top= (parseInt($(".selectedWidget").style.top) + parseInt($(".selectedWidget").style.height) / 2) + "px"; 
+    $("#egrip")[0].style.left= $(".selectedWidget").style.left; 
+    $("#egrip")[0].style.top= (parseInt($(".selectedWidget").style.top) + parseInt($(".selectedWidget").style.height) / 2) + "px"; 
 
 }, 0.00); 
 $(document).on("ready",function(){
