@@ -639,9 +639,10 @@ iframe
     z-index: 2;
     display:block;
 }
-.widgetero.invisible{
-    display:none;
-}
+.widgetero.invisible{ 
+    display: none; 
+    height: 0 !important; 
+} 
 .widget.dropped
 {
     opacity: 1;
