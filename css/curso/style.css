@@ -767,3 +767,6 @@ iframe
         cursor: default;
 
 }
+.cp_embed_wrapper{ 
+    height: 100%; 
+} 
