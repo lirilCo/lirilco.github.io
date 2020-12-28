@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>
+        Preset Creator | liril
+    </title>
+    <link rel="shortcut icon" type="image/ico" href="resources/icons/favicon.ico" />
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300,600,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/Preset Creator/style.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/video-js.css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css">
+
+
+    <script src="js/jquery.js">
+    </script>
+    <script src="js/video.js">
+    </script>
+    <script src="js/Preset Creator/main.js">
+    </script>
+    <script src="js/jquery.knob.js">
+    </script>
+    <script src="js/jquery.fittext.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.ui.resizable.snap.ext.js"></script>
+    <script>
+         $(function ($) {
+
+            $(".knob").knob({
+                change: function (value) {
+                    //console.log("change : " + value);
+                },
+                release: function (value) {
+                    //console.log(this.$.attr('value'));
+                    console.log("release : " + value);
+                },
+                cancel: function () {
+                    console.log("cancel : ", this);
+                },
+                /*format : function (value) {
+                  return value + '%';
+                  }
+                  ,*/
+                draw: function () {
+
+                    // "tron" case
+                    if (this.$.data('skin') == 'tron') {
+
+                        this.cursorExt = 0.3;
+
+                        var a = this.arc(this.cv) // Arc
+                            ,
+                            pa // Previous arc
+                            , r = 1;
+
+                        this.g.lineWidth = this.lineWidth;
+
+                        if (this.o.displayPrevious) {
+                            pa = this.arc(this.v);
+                            this.g.beginPath();
+                            this.g.strokeStyle = this.pColor;
+                            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, pa.s, pa.e, pa.d);
+                            this.g.stroke();
+                        }
+
+                        this.g.beginPath();
+                        this.g.strokeStyle = r ? this.o.fgColor : this.fgColor;
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, a.s, a.e, a.d);
+                        this.g.stroke();
+
+                        this.g.lineWidth = 2;
+                        this.g.beginPath();
+                        this.g.strokeStyle = this.o.fgColor;
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
+                        this.g.stroke();
+
+                        return false;
+                    }
+                }
+            });
+
+            // Example of infinite knob, iPod click wheel
+            var v, up = 0,
+                down = 0,
+                i = 0,
+                $idir = $("div.idir"),
+                $ival = $("div.ival"),
+                incr = function () {
+                    i++;
+                    $idir.show().html("+").fadeOut();
+                    $ival.html(i);
+                },
+                decr = function () {
+                    i--;
+                    $idir.show().html("-").fadeOut();
+                    $ival.html(i);
+                };
+            $("input.infinite").knob({
+                min: 0,
+                max: 20,
+                stopper: false,
+                change: function () {
+                    if (v > this.cv) {
+                        if (up) {
+                            decr();
+                            up = 0;
+                        } else {
+                            up = 1;
+                            down = 0;
+                        }
+                    } else {
+                        if (v < this.cv) {
+                            if (down) {
+                                incr();
+                                down = 0;
+                            } else {
+                                down = 1;
+                                up = 0;
+                            }
+                        }
+                    }
+                    v = this.cv;
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+     <div class="widgetero">
+
+    </div>
+<div class="wrapper">
+  </div>
+    <header>
+        <nav>
+            <ul>
+                 <li id="back">
+                    <a href="cursos.html">
+                        <span class="back-arrow button">  
+
+                </span>
+
+                    </a>
+                     </li>
+                <li id="index">
+                    <section id="index-trigger">
+                        <span class="index-arrow button">
+              </span>
+                        <span id="index-text" class="text button">
+                Índice
+              </span>
+                    </section>
+
+                    <section id="index-menu" class="button">
+                        <ul>
+                           <a>
+                                <li id="introduccion" class="indexMenuItem animated fadeOutUp button" title="Introducción">
+                                    Introducción
+                                </li>
+                            </a>
+                            <a>
+                                <li id="suma" class="indexMenuItem animated fadeOutUp button" title="Suma">
+                                    Suma
+                                </li>
+                            </a>
+                            <a>
+                                <li id="resta" class="indexMenuItem animated fadeOutUp button" title="Resta">
+                                    Resta
+                                </li>
+                            </a>
+                            <a>
+                                <li id="division" class="indexMenuItem animated fadeOutUp button" title="División">
+                                    División
+                                </li>
+                            </a>
+                        </ul>
+                    </section>
+                </li>
+                <li id="controls">
+                    <span id="play">
+                        
+                    </span>
+                    <span id="volume">
+                        
+                    </span>
+                    <span id="closedCaptions">
+                        
+                    </span>
+                </li>
+                <li id="snippets">
+                   <ul>
+                    <li id= "imgTrigger" onclick= "drawing? drawing= false: drawing= true; !drawing? $('#snippets li')[0].children[0].src= 'resources/images/Preset Creator/pen.png': $('#snippets li')[0].children[0].src= 'resources/images/Preset Creator/pen_drawing.png'; ">                        
+                        <img class= "icon" src="resources/images/Preset Creator/pen.png" alt="">
+                    </li>
+                       <li class= "snippet">
+                    <div class="widget" style="height:94px; width: 178.7159985714px">
+                        <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div>
+                        <div class="content">
+                            <div class="coverDiv" style="position: absolute; top: 0;left: 0;width: 100%;height:100%; display: block;z-index: 5;"></div>
+                            <p>Hello, world!</p>
+                            </div>
+                     </div>
+                    <img class= "icon" src="bandera.png" alt="">
+                </li>
+                <li class= "snippet">
+                    <div class="widget" style="height:94px; width: 178.7159985714px">
+                        <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div>
+                        <div class="content">
+                            <div class="coverDiv" style="position: absolute; top: 0;left: 0;width: 100%;height:100%; display: block;z-index: 5;"></div>
+                            <input style= "height: 100%; width: 100%; padding: 0; " placeholder="Input" > 
+                            </div>
+                     </div>
+                    <img class= "icon" src="bandera.png" alt="">
+                </li> 
+                <li id= "imgTrigger" onclick= "openModal(); ">                        
+                    <img class= "icon" src="resources/images/Preset Creator/img.png" alt="">
+                </li>
+                
+                   </ul>
+                </span>
+
+                    </a>
+                     </li>
+                <li> 
+                    <ul>
+                        <li id= "frame" onclick= "$('.widgetero .widget .ui-resizable-handle').remove(); 
+$('.widgetero .widget .coverDiv').remove(); 
+$('.widgetero .widget').draggable('disable'); 
+$('.widgetero .widget').removeClass('widget draggable ui-draggable ui-draggable-handle ui-resizable'); 
+preset1[preset1.length]= [$('#example_video_1_html5_api')[0].currentTime, $('.widgetero')[0].innerHTML]; ">                        
+                            <img class= "icon" src="resources/images/Preset Creator/frame.JPG" alt="">
+                        </li>
+                        <li id= "empty_frame" onclick= "$('.widgetero')[0].innerHTML= ''; ">                        
+                            <img class= "icon" src="resources/images/Preset Creator/empty_frame.JPG" alt="">
+                        </li>
+                        <li id= "Run" onclick= "setInterval(function(){caSe(); }, 1); ">                        
+                            <img class= "icon" src="resources/images/Preset Creator/Run.png" alt="">
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                </li>
+                <li id="right-menu" class="button">
+                <span id="customize" class="button"></span>
+
+                    <section id="dots" class="button">
+                        <span id="store" class="button">
+              </span>
+                        <span id="dots-icon" class="button">
+              </span>
+                        <span id="dots-text" class="button">
+                6'000.600
+              </span>
+
+                    </section>
+                    <section id="profileTrigger">
+                    </section>
+                    <div id="profile" class="button">
+                        <img id="profile-pic" src="resources/images/white.jpg" alt="Walter White">
+                        <input class="knob button" data-width="35" data-height="35" data-fgColor="#fff" data-bgColor="rgba(0,0,0,0)" data-displayInput=false data-thickness=".15" readonly value="75">
+                    </div>
+                    <span class="index-arrow button">
+              </span>
+
+                    <section id="profileSettings">
+                    </section>
+                </li>
+
+                <li>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div id="actions"> 
+        <table class="tabs">
+            <td class="button actual"></td>
+            <td class="button resize on"></td>
+            <td class="button select"></td>
+            <td class="button cut"></td>
+            <td class="button copy"></td>
+            <td class="button paste"></td>
+            <td class="button delete"></td>
+            <td class="button magnet on"></td>
+        </table>
+    </div>
+   
+    <section id= "theater" class= "theater"> 
+        <ul> 
+            <li> 
+                <div class="widget" style="height:94px; width: 94px">
+                    <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div>
+                    <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div>
+                    <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div>
+                    <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div>
+                    <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div>
+                    <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div>
+                    <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div>
+                    <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div>
+                    <div class="content">
+                        <div class="coverDiv" style="position: absolute; top: 0;left: 0;width: 100%;height:100%; display: block;z-index: 5;"></div>
+                        <img src="resources/images/grid/1.jpg">
+                    </div>
+                </div> 
+                <img src="resources/images/grid/1.jpg" alt="">
+            </li> 
+            <li> 
+                <div class="widget" style="height:94px; width: 94px">
+                    <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div>
+                    <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div>
+                    <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div>
+                    <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div>
+                    <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div>
+                    <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div>
+                    <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div>
+                    <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div>
+                    <div class="content">
+                        <div class="coverDiv" style="position: absolute; top: 0;left: 0;width: 100%;height:100%; display: block;z-index: 5;"></div>
+                        <img src="resources/images/grid/2.jpg">
+                    </div>
+                </div> 
+                <img src="resources/images/grid/2.jpg" alt="">
+            </li> 
+            <li> 
+                <div class="widget" style="height:94px; width: 94px">
+                    <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div>
+                    <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div>
+                    <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div>
+                    <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div>
+                    <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div>
+                    <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div>
+                    <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div>
+                    <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div>
+                    <div class="content">
+                        <div class="coverDiv" style="position: absolute; top: 0;left: 0;width: 100%;height:100%; display: block;z-index: 5;"></div>
+                        <img src="resources/images/grid/3.jpg">
+                    </div>
+                </div> 
+                <img src="resources/images/grid/3.jpg" alt="">
+            </li> 
+            <li> 
+                <div class="widget" style="height:94px; width: 94px">
+                    <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div>
+                    <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div>
+                    <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div>
+                    <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div>
+                    <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div>
+                    <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div>
+                    <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div>
+                    <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div>
+                    <div class="content">
+                        <div class="coverDiv" style="position: absolute; top: 0;left: 0;width: 100%;height:100%; display: block;z-index: 5;"></div>
+                        <img src="resources/images/grid/1.jpg">
+                    </div>
+                </div> 
+                <img src="resources/images/grid/1.jpg" alt="">
+            </li> 
+        </ul>
+    </section> 
+    <section id="customizationBars" class="button">
+        <aside id="storeHeader" class="button">
+
+        </aside>
+        <aside id="actions">
+            <table class="tabs">
+                <td class="button actual"></td>
+                <td class="button resize on"></td>
+                <td class="button select"></td>
+                <td class="button cut"></td>
+                <td class="button copy"></td>
+                <td class="button paste"></td>
+                <td class="button delete"></td>
+            </table>
+            <table class="tabs">
+                <td colspan="2" class="button actual width inputed ">
+                    <input type="number" min="1" max="100" onchange="handleChange(this);">
+                </td>
+                <td colspan="2" class="button height inputed inputw">
+                    <input type="number" min="1" max="100" onkeydown="apply()" onchange="handleChange(this);">
+                </td>
+                <td colspan="2" class="button grid"><span>Snap</span></td>
+                <td class="button magnet on"></td>
+
+            </table>
+            <section>
+                <div class="presets">
+
+                </div>
+                <div class="snapping">
+
+                </div>
+
+            </section>
+        </aside>
+        <aside id="list">
+            <ul class="tabs">
+                <li class="button">Presets</li>
+                <li class="button actual">Add-ons</li>
+                <li class="button">Widgets</li>
+            </ul>
+            <ul class="widgets">
+
+                <li>
+                    <div class="widget" style="height:200px; width: 100px">
+                        <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div>
+                        <div class="content">
+                            <div class="coverDiv" style="position: absolute; top: 0;left: 0;width: 100%;height:100%; display: block;z-index: 5;"></div>
+                            <table style="height: 100%;width: 100%;margin: 0;text-align:center; color:black">
+                                <tr>
+
+                                    <td colspan="4"><input style="width: 100%;height: 100%;text-align:right;padding:0;margin:0;" placeholder="0"></button></td>
+                                </tr>
+                                <tr>
+                                    <td><button style="width: 100%;height: 100%;padding:0;margin:0;">7</button></td>
+                                    <td><button style="width: 100%;height: 100%;padding:0;margin:0;">8</button></td>
+                                    <td><button style="width: 100%;height: 100%;padding:0;margin:0;">9</button></td>
+                                    <td><button style="width: 100%;height: 100%;padding:0;margin:0;">+</button></td>
+                                </tr>
+                                <tr>
+                                    <td><button style="width: 100%;height: 100%;padding:0;margin:0;">4</button></td>
+                                    <td><button style="width: 100%;height: 100%;padding:0;margin:0;">5</button></td>
+                                    <td><button style="width: 100%;height: 100%;padding:0;margin:0;">6</button></td>
+                                    <td><button style="width: 100%;height: 100%;padding:0;margin:0;">-</button></td>
+                                </tr>
+                                <tr>
+                                    <td><button style="width: 100%;height: 100%;padding:0;margin:0;">1</button></td>
+                                    <td><button style="width: 100%;height: 100%;padding:0;margin:0;">2</button></td>
+                                    <td><button style="width: 100%;height: 100%;padding:0;margin:0;">3</button></td>
+                                    <td><button style="width: 100%;height: 100%;padding:0;margin:0;">/</button></td>
+                                </tr>
+                                <tr>
+                                    <td><button style="width: 100%;height: 100%;padding:0;margin:0;">0</button></td>
+                                    <td><button style="width: 100%;height: 100%;padding:0;margin:0;">,</button></td>
+                                    <td><button style="width: 100%;height: 100%;padding:0;margin:0;">=</button></td>
+                                    <td><button style="width: 100%;height: 100%;padding:0;margin:0;">*</button></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <img src="resources/images/widgets/calculadora.png" alt="">
+                </li>
+
+                <li>
+                    <div class="widget" style="height:94px; width: 178.7159985714px">
+                        <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div>
+                        <div class="content">
+                            <div class="coverDiv" style="position: absolute; top: 0;left: 0;width: 100%;height:100%; display: block;z-index: 5;"></div>
+			   <video src= "Vids/Himno.mp4" style= "width: 100%; height: 100%; background-color: #835; " controls= "true">     </video>
+                 		   	</div>
+		    </div>
+                    <img src="bandera.png" alt="">
+                </li>
+                <li>
+                    <div class="widget" style="height:94px; width: 164.714285714px">
+                        <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div>
+                        <div class="content">
+                            <div class="coverDiv" style="position: absolute; top: 0;left: 0;width: 100%;height:100%; display: block;z-index: 5;"></div>
+			    <video src= "Vids/Lo Malo.mp4" style= "width: 100%; height: 100%; background-color: #835; " controls= "true">     </video>                        </div>
+                    </div>
+                    <img src="rrr4.png" alt="">
+                </li>
+                <li>
+                    <div class="widget" style="height:94px; width: 164.714285714px">
+                        <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div>
+                        <div class="content">
+                            <div class="coverDiv" style="position: absolute; top: 0;left: 0;width: 100%;height:100%; display: block;z-index: 5;"></div>
+                            <video src= "Vids/Billie.mp4" style= "width: 100%; height: 100%; background-color: #835; " controls= "true">     </video>
+                        </div>
+                    </div>
+                    <img src="resources/images/widgets/Billie.jpg" alt="">
+                </li>
+                <li>
+                    <div class="widget" style="height:94px; width: 164.714285714px">
+                        <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div>
+                        <div class="content">
+                            <div class="coverDiv" style="position: absolute; top: 0;left: 0;width: 100%;height:100%; display: block;z-index: 5;"></div>
+                            <video src= "Vids/Ariana.mp4" style= "width: 100%; height: 100%; background-color: #835; " controls= "true">     </video>
+                        </div>
+                    </div>
+                    <img src="resources/images/widgets/Ariana.jpg" alt="">
+                </li>
+                <li>
+                    <div class="widget" style="height:94px; width: 164.714285714px">
+                        <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div>
+                        <div class="content">
+                            <div class="coverDiv" style="position: absolute; top: 0;left: 0;width: 100%;height:100%; display: block;z-index: 5;"></div>
+                            <video src= "Vids/Lana.mp4" style= "width: 100%; height: 100%; background-color: #835; " controls= "true">     </video>
+                        </div>
+                    </div>
+                    <img src="resources/images/widgets/Lana.jpg" alt="">
+                </li>
+                <li>
+                    <div class="widget" style="height:94px; width: 164.714285714px">
+                        <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div>
+                        <div class="content">
+                            <div class="coverDiv" style="position: absolute; top: 0;left: 0;width: 100%;height:100%; display: block;z-index: 5;"></div>
+                            <video src= "Vids/Shakira and Rihanna.mp4" style= "width: 100%; height: 100%; background-color: #835; " controls= "true">     </video>
+                        </div>
+                    </div>
+                    <img src="resources/images/widgets/Shakira and Rihanna.jpg" alt="">
+                </li>
+                <li>
+                    <div class="widget" style="height:94px; width: 164.714285714px">
+                        <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div>
+                        <div class="content">
+                            <div class="coverDiv" style="position: absolute; top: 0;left: 0;width: 100%;height:100%; display: block;z-index: 5;"></div>
+                            <video src= "Vids/Azalea.mp4" style= "width: 100%; height: 100%; background-color: #835; " controls= "true">     </video>
+                        </div>
+                    </div>
+                    <img src="resources/images/widgets/Azalea.jpg" alt="">
+                </li>
+                <li>
+                    <div class="widget" style="height:94px; width: 164.714285714px">
+                        <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div>
+                        <div class="content">
+                            <div class="coverDiv" style="position: absolute; top: 0;left: 0;width: 100%;height:100%; display: block;z-index: 5;"></div>
+                            <video src= "Vids/Ekhymosis.mp4" style= "width: 100%; height: 100%; background-color: #835; " controls= "true">     </video>
+                        </div>
+                    </div>
+                    <img src="resources/images/widgets/Ekhymosis.jpg" alt="">
+                </li>
+                <li>
+                    <div class="widget" style="height:94px; width: 164.714285714px">
+                        <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div>
+                        <div class="content">
+                            <div class="coverDiv" style="position: absolute; top: 0;left: 0;width: 100%;height:100%; display: block;z-index: 5;"></div>
+                            <video src= "Vids/Em.mp4" style= "width: 100%; height: 100%; background-color: #835; " controls= "true">     </video>
+                        </div>
+                    </div>
+                    <img src="resources/images/widgets/Em.jpg" alt="">
+                </li>
+                <li>
+                    <div class="widget" style="height:94px; width: 164.714285714px">
+                        <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div>
+                        <div class="content">
+                            <div class="coverDiv" style="position: absolute; top: 0;left: 0;width: 100%;height:100%; display: block;z-index: 5;"></div>
+                            <video src= "Vids/Santa.mp4" style= "width: 100%; height: 100%; background-color: #835; " controls= "true">     </video>
+                        </div>
+                    </div>
+                    <img src="resources/images/widgets/Santa.jpg" alt="">
+                </li>
+                <li>
+                    <div class="widget" style="height:94px; width: 164.714285714px">
+                        <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div>
+                        <div class="content">
+                            <div class="coverDiv" style="position: absolute; top: 0;left: 0;width: 100%;height:100%; display: block;z-index: 5;"></div>
+                            <video src= "Vids/Iron Man 1.mp4" style= "width: 100%; height: 100%; background-color: #835; " controls= "true">     </video>
+                        </div>
+                    </div>
+                    <img src="resources/images/widgets/Iron Man 1.jpg" alt="">
+                </li>
+                <li>
+                    <div class="widget" style="height:94px; width: 164.714285714px">
+                        <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div>
+                        <div class="content">
+                            <div class="coverDiv" style="position: absolute; top: 0;left: 0;width: 100%;height:100%; display: block;z-index: 5;"></div>
+                            <video src= "Vids/It's Kind Of A Funny Story.mp4" style= "width: 100%; height: 100%; background-color: #835; " controls= "true">     </video>
+                        </div>
+                    </div>
+                    <img src="resources/images/widgets/Adele.jpg" alt="">
+                </li>
+                <li>
+                    <div class="widget" style="height:94px; width: 164.714285714px">
+                        <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div>
+                        <div class="content">
+                            <div class="coverDiv" style="position: absolute; top: 0;left: 0;width: 100%;height:100%; display: block;z-index: 5;"></div>
+                            <video src= "Vids/Transformers 1.mp4" style= "width: 100%; height: 100%; background-color: #835; " controls= "true">     </video>
+                        </div>
+                    </div>
+                    <img src="resources/images/widgets/Adele.jpg" alt="">
+                </li>
+                <li>
+                    <div class="widget" style="height:168px; width: 89px">
+                        <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div>
+                        <div class="content">
+			     <img src= "92634853_234823197898312_1095566356717240320_n.jpg" style= "width: 100%; height: 100%; "></img>
+                        </div>
+                    </div>
+                    <img src="double_filter.png" alt="">
+                </li>
+                <li>
+                    <div class="widget" style="height:248px; width: 350px">
+                        <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div>
+                        <div class="content">
+			<iframe height="100%" width="100%" src="https://repl.it/@Dizzey/Tryage?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+                        </div>
+                    </div>
+                    <img src="code.png" alt="">
+                </li>
+		<li> 
+                    <div class="widget" style="height:248px; width: 350px"> 
+                        <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div> 
+                        <div class="content"> 
+				<p class="codepen" data-height="100%" data-theme-id="dark" data-default-tab="js,result" data-user="lirilco" data-slug-hash="RwawRwr" style="height: 100%; width: 100%; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="dinosaurios();  ">
+ 					<span>See the Pen <a href="https://codepen.io/lirilco/pen/RwawRwr"> 
+						 dinosaurios(); </a> by Liril (<a href="https://codepen.io/lirilco">@lirilco</a>)
+ 		 				on <a href="https://codepen.io">CodePen</a>.</span> 
+				</p> 
+				<script async src="https://static.codepen.io/assets/embed/ei.js"></script> 
+			</div> 
+                    </div> 
+                    <img src="dinosaurios.png" alt=""> 
+                </li> 
+                <li> 
+                    <div class="widget" style="width:137.5px; height: 100px">  
+                        <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div> 
+                        <div class="content"> 
+                        <object width= "100%" height= "100%" data="Eldelprincipio0.0.3.1.3.swf" type="application/x-shockwave-flash"> 
+         			<param name="foo" value="bar"> 
+        		</object> 
+                        </div> 
+                    </div> 
+                    <img style= "width: 52px; height: 100%; background-color: #f3fd3e" alt=""> 
+                </li> 
+		<li>
+                    <div class="widget" style="width:137.5px; height: 100px">
+                        <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div>
+                        <div class="content">
+                        <object width= "100%" height= "100%" data="Divinity.swf" type="application/x-shockwave-flash">
+         			<param name="foo" value="bar">
+        		</object> 
+                        </div>
+                    </div>
+                    <img style= "width: 52px; height: 100%; background-color: #d30" alt="">
+                </li>
+		<li>
+                    <div class="widget" style="width:137.5px; height: 100px">
+                        <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div>
+                        <div class="content">
+                        <object width= "100%" height= "100%" data="Divinity0.0.0.2.swf" type="application/x-shockwave-flash">
+         			<param name="foo" value="bar">
+        		</object> 
+                        </div>
+                    </div>
+                    <img style= "width: 52px; height: 100%; background-color: #29e22f" alt="">
+                </li>
+		<li>
+                    <div class="widget" style="width:137.5px; height: 100px">
+                        <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div>
+                        <div class="content">
+                        <object width= "100%" height= "100%" data="Cheeta.swf" type="application/x-shockwave-flash">
+         			<param name="foo" value="bar">
+        		</object> 
+                        </div>
+                    </div>
+                    <img style= "width: 52px; height: 100%; background-color: #cf230e" alt="">
+                </li>
+		<li>
+                    <div class="widget" style="width:137.5px; height: 100px">
+                        <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div>
+                        <div class="content">
+                        <object width= "100%" height= "100%" data="SA2.swf" type="application/x-shockwave-flash">
+         			<param name="foo" value="bar">
+        		</object> 
+                        </div>
+                    </div>
+                    <img style= "width: 52px; height: 100%; background-color: #3382ed" alt="">
+                </li>
+		<li>
+                    <div class="widget" style="width:137.5px; height: 100px">
+                        <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div>
+                        <div class="content">
+                        <object width= "100%" height= "100%" data="Azul.swf" type="application/x-shockwave-flash">
+         			<param name="foo" value="bar">
+        		</object> 
+                        </div>
+                    </div>
+                    <img style= "width: 52px; height: 100%; background-color: #3261ff" alt="">
+                </li>
+		<li>
+                    <div class="widget" style="width:137.5px; height: 100px">
+                        <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div>
+                        <div class="content">
+                        <object width= "100%" height= "100%" data="ElElephant.swf" type="application/x-shockwave-flash">
+         			<param name="foo" value="bar">
+        		</object> 
+                        </div>
+                    </div>
+                    <img style= "width: 52px; height: 100%; background-color: #18e" alt="">
+                </li>
+ 		<li> 
+                    <div class="widget" style="width:137.5px; height: 100px"> 
+                        <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div> 
+                        <div class="content">
+                            <iframe scrolling="no" marginwidth="0" marginheight="0" frameborder="0" width="650" height="400" allowfullscreen src="//vercanalestv1.com/tv/colombia/rcn.html"></iframe> 
+			</div>
+                    </div> 
+                    <img style= "width: auto; height: 100%;" src= "RCN.JPG" alt=""> 
+                </li> 
+		<li> 
+                    <div class="widget" style="width:137.5px; height: 100px"> 
+                        <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div> 
+                        <div class="content">
+                            <iframe src= "https://shares.enetres.net/live.php?source=CoreV1&v=85F57E947FBC4A648B8BE9DA1A772FA2024" width= "100%" height= "100%"></iframe> 
+			</div>
+                    </div> 
+                    <img style= "width: auto; height: 100%; " src= "Señal Colombia.jpg" alt=""> 
+                </li> 
+		<li> 
+                    <div class="widget" style="width:137.5px; height: 100px"> 
+                        <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div> 
+                        <div class="content">
+                            <iframe scrolling="no" marginwidth="0" marginheight="0" frameborder="0" width="650" height="400" allowfullscreen src="//vercanalestv1.com/tv/colombia/caracol-television.html"></iframe> 
+			</div>
+                    </div> 
+                    <img style= "width: auto; height: 100%; " src= "Caracol.png" alt=""> 
+                </li> 
+		<li> 
+                    <div class="widget" style="width:137.5px; height: 100px"> 
+                        <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div> 
+                        <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div> 
+                        <div class="content">
+                            <iframe id="ls_embed_1602969095" src="https://livestream.com/accounts/4608897/events/7111788/player?width=640&height=360&enableInfoAndActivity=true&autoPlay=true&mute=false" width="640" height="360" frameborder="0" scrolling="no" allowfullscreen> </iframe> 
+                        </div>
+                    </div> 
+                    <img style= "width: auto; height: 100%; " src= "Telemedellín.jpg" alt=""> 
+                </li> 
+            </ul>
+        </aside>
+    </section>
+    <section id="Store" class="button">
+        <aside id="storeHeader" class="button">
+
+        </aside>
+        <aside id="actualStore" class="button">
+            <aside id="storeList" class="button">
+                <ul>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                </ul>
+            </aside>
+            <aside id="storeSection">
+
+            </aside>
+        </aside>
+
+    </section>
+    <section id="video">
+        <div id="cover_div"></div>
+        <video id="example_video_1" controls class="video-js vjs-default-skin" preload="none" width="100%" height="264" poster="resources/images/thumb-mat.png" data-setup="{}">
+            <source src="resources/videos/mat/curso.webm" type='video/webm' />
+            <source src="resources/videos/mat/curso.mp4" type='video/mp4' />
+            <source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg' />
+            
+            <!-- Tracks need an ending tag         thanks to IE9 -->
+            <p class="vjs-no-js">
+                Para ver este vídeo, por favor activa el Javascript y considera actualizar tu navegador a uno que
+                <a href="http://videojs.com/       html5-video-support/" target="_blank">
+          soporte vídeo en Html5
+        </a>
+            </p>
+        </video>
+
+    </section>
+    <section id="timeline">
+    </section>
+    <script>
+        function apply() {
+            a = $(".inputw").value
+            $(".selectedWidget").width(a)
+        }
+
+        function handleChange(input) {
+            if (input.value < 1) input.value = 1;
+            if (input.value > 100) input.value = 100;
+        }
+    </script>
+    <script>
+        var player = videojs('example_video_1');
+    </script>
+    <script>
+    	jump("#introduccion",0);
+	jump("#suma",47);
+	jump("#resta",84);
+	jump("#division",151);</script>
+</body>
+
+</html>
