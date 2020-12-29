@@ -137,6 +137,9 @@
      <div class="widgetero">
 
     </div>
+    <div id="fantasma"> 
+
+    </div> 
 <div class="wrapper">
   </div>
     <header>
@@ -234,6 +237,23 @@
                      </div>
                     <img class= "icon" src="bandera.png" alt="">
                 </li> 
+                <li class= "snippet">
+                    <div class="widget" style="height:94px; width: 178.7159985714px">
+                        <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-se" id="segrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-e" id="egrip"></div>
+                        <div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div>
+                        <div class="content">
+                            <div class="coverDiv" style="position: absolute; top: 0;left: 0;width: 100%;height:100%; display: block;z-index: 5;"></div>
+                                <button onload= "alert('Moist'); " onclick= "$('#example_video_1_html5_api')[0].play(); "></button>
+                                </div>
+                     </div>
+                    <img class= "icon" src="resources/images/Preset Creator/Pause.png" alt="">
+                </li> 
                 <li id= "imgTrigger" onclick= "openModal(); ">                        
                     <img class= "icon" src="resources/images/Preset Creator/img.png" alt="">
                 </li>
@@ -245,11 +265,10 @@
                      </li>
                 <li> 
                     <ul>
-                        <li id= "frame" onclick= "$('.widgetero .widget .ui-resizable-handle').remove(); 
-$('.widgetero .widget .coverDiv').remove(); 
-$('.widgetero .widget').draggable('disable'); 
-$('.widgetero .widget').removeClass('widget draggable ui-draggable ui-draggable-handle ui-resizable'); 
-preset1[preset1.length]= [$('#example_video_1_html5_api')[0].currentTime, $('.widgetero')[0].innerHTML]; ">                        
+                        <li id= "frame" onclick= "$('#fantasma')[0].innerHTML= $('.widgetero')[0].innerHTML; $('#fantasma .widget .ui-resizable-handle').remove(); 
+$('#fantasma .widget .coverDiv').remove(); 
+$('#fantasma .widget').removeClass('widget draggable ui-draggable ui-draggable-handle ui-resizable'); 
+preset1[preset1.length]= [$('#example_video_1_html5_api')[0].currentTime, $('#fantasma')[0].innerHTML]; ">                        
                             <img class= "icon" src="resources/images/Preset Creator/frame.JPG" alt="">
                         </li>
                         <li id= "empty_frame" onclick= "$('.widgetero')[0].innerHTML= ''; ">                        
