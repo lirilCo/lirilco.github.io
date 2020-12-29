@@ -828,3 +828,9 @@ ul>li
 { 
     position: absolute; 
 } 
+#fantasma 
+{ 
+    position: absolute; 
+    display: none; 
+    top: 47px; 
+} 
