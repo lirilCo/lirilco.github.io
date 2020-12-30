@@ -4,7 +4,7 @@ var best = 0;
 var out = false;
 var copiedWidget;
 var snapping = true;
-var preset1= []; 
+var preset1= [[0, ""]]; 
 pasted = true;
 type = "none";
 copiedTop = 0;
