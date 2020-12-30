@@ -44,6 +44,19 @@ header nav {
     height: 100%;
     width: 100%;
 }
+header.open {
+    background-color: #2ecc71;
+    border-bottom: solid 6px #27ae60;
+    height: 40px;
+    width: 100%;
+    z-index: 3;
+}
+header.open nav ul li input{
+    background-color: #2ecc71;
+    border-bottom: solid 1px #fff;
+    color:#fff;
+    z-index: 3;
+}
 header.open .buscar::placeholder{
     color: #fff;
 }
@@ -257,12 +270,12 @@ header nav ul li#index .text.open,
 header nav ul li#index span:first-child.open {
     color: #2ecc71;
 }
-input {
+input, textarea {
     background-color: #fff;
     border: none;
     border-radius: 4px;
 }
-input:focus {
+input:focus,textarea:focus {
     outline: 0;
 
 }
@@ -910,6 +923,300 @@ right: 0;
 #sidebar ul li img{
    height: 35px;
     
+}
+#chats
+{
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    overflow-y: hidden;
+    z-index: 2; 
+}
+#chats .chats
+{
+    white-space: nowrap ;
+    padding: 0 5px;
+    float: right;
+    overflow-x: auto;
+    overflow-y: hidden;
+    text-align: right;
+      direction:rtl;
+
+}
+#chats .chats .chat 
+{
+
+    background-color: #fff;
+    margin-right: 1px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    height: 19px;
+    border: solid 1px #ccc;
+    width: 160px;
+    display: inline-block;
+    direction:ltr;
+    padding-bottom: 9px;
+    vertical-align: bottom;
+}
+#chats .chats .chat.open 
+{
+    height: 285px;
+    width: 260px;
+    border-top: none;
+}
+#chats .chats .chat.open .chatTitle
+{
+    width: 100%;
+    background-color: #2ecc71;
+    color: #fff;
+    text-align: left;
+    height: 30px;
+    line-height: 30px;
+    border-right: 1px solid #2ecc71;
+    border-left: 1px solid #2ecc71;
+    margin-left: -1px;
+}
+#chats .chats .chat.open .chatTitle p{
+    width: 170px;
+    background-color: #2ecc71;
+    color: #fff;
+    text-align: left;
+    height: 30px;
+    line-height: 30px;
+    font-size: 17px;
+    padding-left: 10px;
+    border: none;
+}
+#chats .chats .chat.open .chatTitle .close
+{
+    float: right;
+        color: #cfc;
+    padding-right: 10px;
+    line-height: 27px;
+width: 19px}
+#chats .chats .chat.open .chatTitle .close:after
+{
+display: block;
+    float: right;
+}
+#chats .chats .chat.open .chatTitle .close:hover
+{
+    color: #fff;
+}
+#chats .chats .chat.open .chatBox
+{
+    width: 100%;
+   height: 265px;
+    position: relative;
+    display: block;
+    background-color: #ecf0f1
+}
+#chats .chats .chat.open .chatBox .messages 
+{
+   box-sizing: border-box;
+    padding: 04px;
+    display: inline-block;
+    width: 100%;
+    position: absolute;
+    bottom: 28px;
+    height: 237px;
+    overflow-y: auto;
+    left: 0;
+}
+#chats .chats .chat.open .chatBox .messages .sent
+{
+     border-radius: 1em;
+     background-color: #0083ff;
+    font-size: 13px;
+    color: #fff;
+    resize: none;
+    width: auto !important;
+    max-width: 80%;
+    display: inline-block;
+    clear:both;
+    float: right;
+    text-align: left;
+    padding: 0;
+    margin: 5px 0 0 0;
+    white-space: normal;
+    padding: 5px;
+    word-wrap: break-word;
+    
+}
+
+#chats .chats .chat.open .chatBox .newMessage
+{
+  width: 100%;
+   position: absolute;
+    bottom: 0;
+    text-align: left;
+    background-color: #fff;
+    padding: 0;
+    max-height: 80px
+}
+#chats .chats .chat.open .chatBox .newMessage textarea
+{
+     box-sizing: border-box;
+  max-height: 80px;
+  min-height: 28px;
+  width: 100%;
+    padding: 8px 60px 0 5px;
+    border-radius: 0;
+    color: #000;
+    resize: none;
+    font-size: 13px;
+    margin: 0;
+    font-weight: 400;
+    vertical-align: middle;
+    overflow: auto;
+    height: 100%;
+    line-height: 14px
+}
+#chats .chats .chat .chatBox
+{
+
+    display: none;
+}
+#chats .chats .chat .chatTitle 
+{
+    cursor: pointer;
+    height: 24px;
+    width: 100%;
+padding: 0;
+    text-align: center;
+    color: #555;
+    font-size: 15px;
+line-height: 27px;
+overflow: hidden;
+text-overflow: ellipsis;
+        color: #555;
+    line-height: 27px;
+
+
+}
+#chats .chats .chat .chatTitle p
+{
+  color: inherit;
+    line-height: inherit;
+    width: 120px;
+    font-size: 15px;
+overflow: hidden;
+text-overflow: ellipsis;
+margin: 0 0 0 5px;
+display: inline-block;
+    vertical-align: top;
+
+}
+#chats .chats .chat .chatTitle .close
+{
+    font-family: "icomoon";
+    width: 25px;
+    height: 28px;
+    vertical-align: top;
+    font-size: 10px;
+    padding-top: 2px;
+    display: inline-block;
+    color: #aaa;
+}
+#chats .chats .chat .chatTitle .close:hover
+{
+    color: #555;
+}
+
+#chats .chats .chat .chatTitle .close:after
+{
+    content: "\e60e";
+    display: none
+}
+#chats .chats .chat .chatTitle .close.visible:after
+{
+    display: block;
+}
+.tool
+{
+    width: 280px; 
+    height:150px; 
+    background: #fff; 
+    position:relative;
+}
+.tool .datos .rol
+{
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    bottom: 5px;
+    margin: auto;
+    width: 100%;
+    font-size: 20px; 
+    background: #2ecc71;
+}
+.tool .datos .username
+{
+    position: absolute;
+    top: 55px;
+    margin: auto;
+    width: 100%;
+    font-size: 16px; 
+    padding-left: 5px; 
+    box-sizing: border-box;
+}
+.tool .datos
+{
+    position: absolute; 
+    z-index: 3; 
+    bottom: 0; 
+    left: 114px; 
+    width: 161px; 
+    height:109px;
+}
+.tool .datos .actions
+{
+    margin: 0;
+    padding: 0;
+}
+.tool .datos .actions li
+{
+    display: inline-block;
+    width: 
+    list-style: none;
+    width: 30%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 30px;
+    cursor: pointer;
+}
+.tool img
+{
+    z-index: 2; 
+    border-radius: 50%; 
+    margin:5px;
+    position:absolute; 
+    border: 3px solid #2ecc71; 
+    padding: 4px; 
+    bottom: 0;
+    height: 90px;
+    width: 90px;
+}
+.insignia
+{
+    position: absolute; 
+    width: 100%; 
+    border-bottom: 3px solid #f1c40f; 
+}
+.buscar
+{
+        border-bottom: 1px solid #2ecc71;
+   font-size: 16px;
+   width: 350px;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+}
+
+.agregar.sent
+{
+    color: blue;
 }
 .hidden
 {
