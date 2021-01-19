@@ -29,7 +29,8 @@ $(document).on("ready",function(){
 		$(".indexMenuItem").removeClass("fadeInDown");
 		$(".indexMenuItem").addClass("fadeOutUp");
 		$(".indexMenuItem").removeClass("open");
-});
+}); 
+	$("button").on("load", function(){ alert("button!"); }); 
 $('#index').click(function(i){
 	i.stopPropagation()
    
@@ -660,6 +661,10 @@ caSe= function(){
         (parseInt(eForensics) != preset1.length - 1 && ($('video')[$('video').length - 1].currentTime > preset1[eForensics][0] && $('video')[$('video').length - 1].currentTime < preset1[parseInt(eForensics) + 1][0]) || (parseInt(eForensics) == preset1.length - 1 && $('video')[$('video').length - 1].currentTime > preset1[eForensics][0]))? $('.widgetero')[0].innerHTML != preset1[eForensics][1]? $('.widgetero')[0].innerHTML= preset1[eForensics][1]: 1: 1; 
     } 
 } 
+
+var observer= new MutationObserver(function(mutationRecords){ ill= mutationRecords; for(eForensics in ill[0].addedNodes){(ill[0].addedNodes[eForensics].outerHTML && ill[0].addedNodes[eForensics].outerHTML.indexOf("Pausar") != -1)? $("video")[$("video").length - 1].pause(): 1; }; }); 
+console.log('$("video")[$("video").length - 1].style.opacity= 0.045534; '); 
+
 /* 
 caSe= function(){ 
     for(eForensics in preset1){ 
