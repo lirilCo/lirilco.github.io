@@ -682,7 +682,7 @@ function openProfilePicModal(a) {
     $("#picContainer").width($("#bigPic").width());
     $("#theater .comments").height($("#theater").height() - 40);
     $("#theater .comments .more").height($("#theater .comments").height() - $("#theater .info").outerHeight(true) - $("#theater .comments .title").outerHeight(true) - $("#theater .comments .options").outerHeight(true));
-    $("#theater").width($("#theater .comments").width() + 40 + $("#theater #picContainer").width());
+    $("#theater").width("90%");
     responsive(); 
 } 
 function openModal(a) {
