@@ -669,9 +669,9 @@ function openProfilePicModal(a) {
     $('.theater .comments .options ul a').attr('href', ref);
 
     if($("#bigPic").width()<=$("#bigPic").height()){
-        $("#bigPic").css({"height":"100%"})
+        $("#bigPic").css({ "width":"100%"})
     }else{
-        $("#bigPic").css({"height":"auto"})
+
     }
     $(".more").mCustomScrollbar({theme: 
         "minimal-dark", 
