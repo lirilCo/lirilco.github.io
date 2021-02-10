@@ -633,9 +633,7 @@ $(document).on("ready", function(){
     console.log('parse("header", 0);   '); 
 }); 
 
-$("#profilePic").on("click", function () {
-    openProfilePicModal($(this))
-}); 
+
     
 function openProfilePicModal(a) {
     $("#theater").addClass("animated fadeIn ")
@@ -952,7 +950,11 @@ $(window).on("load", function () {
                
             
         });
-
+    
+    $("#profilePic").on("click", function () {
+        openProfilePicModal($(this))
+    }); 
+    
     $(".story .pic").on("click", function () {
         openModal($(this));
                 $('#target').tooltip()
