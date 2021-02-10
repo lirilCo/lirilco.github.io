@@ -633,7 +633,60 @@ $(document).on("ready", function(){
     console.log('parse("header", 0);   '); 
 }); 
 
+$("#profilePic").on("click", function () {
+    openProfilePicModal($(this))
+}); 
+    
+function openProfilePicModal(a) {
+    $("#theater").addClass("animated fadeIn ")
+    $(".theater").css({
+        "display": "block"
+    })
+    $this = a
+    var source = a.find("img").attr('src');
+    $('.theater #bigPic').attr('src', source);
 
+    var user = a.find(".hidden").find(".username").html();
+    $('.theater .comments .info .username').html(user);
+
+    var time = a.find(".hidden").find(".time").html();
+    $('.theater .comments .info .time').html(time);
+
+    var title = a.find(".hidden").find(".title").html();
+    $('.theater .comments .title').html(title);
+    if (a.find(".hidden").find(".options .bookmark").hasClass("true")) {
+        $('.theater .comments .options .bookmark').addClass("true");
+    } else {
+        $('.theater .comments .options .bookmark').removeClass("true");
+    }
+    if (a.find(".hidden").find(".options .star").hasClass("true")) {
+        $('.theater .comments .options .star').addClass("true");
+    } else {
+        $('.theater .comments .options .star').removeClass("true");
+    }
+    var pic = a.find(".hidden").find(".info img").attr('src');
+    $('.theater .comments .info #pic').attr('src', pic);
+
+    var ref = a.find(".hidden").find(".options ul a").attr('href');
+    $('.theater .comments .options ul a').attr('href', ref);
+
+    if($("#bigPic").width()<=$("#bigPic").height()){
+        $("#bigPic").css({"height":"100%"})
+    }else{
+        $("#bigPic").css({"height":"auto"})
+    }
+    $(".more").mCustomScrollbar({theme: 
+        "minimal-dark", 
+        autoExpandScrollbar: true,
+        scrollInertia: 100});
+
+    $("#theater").height($(window).height() - 40);
+    $("#picContainer").width($("#bigPic").width());
+    $("#theater .comments").height($("#theater").height() - 40);
+    $("#theater .comments .more").height($("#theater .comments").height() - $("#theater .info").outerHeight(true) - $("#theater .comments .title").outerHeight(true) - $("#theater .comments .options").outerHeight(true));
+    $("#theater").width($("#theater .comments").width() + 40 + $("#theater #picContainer").width());
+    responsive(); 
+} 
 function openModal(a) {
     $("#theater").addClass("animated fadeIn ")
     $(".theater").css({
