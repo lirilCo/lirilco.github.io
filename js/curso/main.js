@@ -15,6 +15,7 @@ pasteCountTopRef = 0;
 pasteCountLeftRef = 0;
 select = false;
 copiedLeft = 0;
+widg= ""; 
 $(document).on("ready",function(){
 	$("html").click(function() {
 		$(".wrapper").removeClass("visible")
@@ -65,10 +66,11 @@ $('#profileSettings').click(function(i){
 				getActual().addClass("selectedWidget");
 		}		
 	})
+
 	$('.widgets li').mousedown(function(e) {
 if($("#customizationBars").hasClass("open")){
-	$(this).find($( ".widgets .widget" )).clone().addClass('widget draggable').appendTo( ".widgetero" );
-	
+	widg= '<div class="widget draggable"  style="height:' + $(this).find($( ".widgets .widget" ))[0].style.height + '; width:' + $(this).find($( ".widgets .widget" ))[0].style.width + '"><div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div><div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div><div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div><div class="ui-resizable-handle ui-resizable-se" id="segrip"></div><div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div><div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div><div class="ui-resizable-handle ui-resizable-e" id="egrip"></div><div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div><div class="content" ><div class="coverDiv" style="position: absolute; top: 0;left: 0;width: 100%;height:100%; display: block;z-index: 5;"></div>' + $(this).find($( ".widgets .widget" ))[0].getAttribute("cont") + '</div></div>'; 
+	$( ".widgetero" )[0].insertAdjacentHTML("beforeend", widg); 
 var dropped = false;
 $('.widgetero .widget').last().draggable({
 	stack:".widgetero .widget",
