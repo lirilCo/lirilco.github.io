@@ -134,7 +134,7 @@ header nav ul li#right-menu #profileSettings {
     z-index: 3;
 }
 header nav ul li#right-menu #profileTrigger {
-    height: 47px;
+    height: 41px;
     position: absolute;
     right: 0;
     top: 0;
@@ -150,6 +150,7 @@ header nav ul li#right-menu #profile {
     position: absolute;
     right: 30px;
     top: 3px;
+    height: 35px;
 }
 header nav ul li#right-menu #profile #profile-pic {
     border-radius: 50%;
@@ -171,10 +172,10 @@ header nav ul li#right-menu #store:before {
     margin-right: 2px;
 }
 header nav ul li#right-menu #dots {
-    height: 38px;
+    height: 35px;
     margin-right: 55px;
     padding-left: 35px;
-    padding-top: 3px;
+    padding-top: 6px;
 }
 header nav ul li#index {
     padding: 0;
@@ -194,7 +195,7 @@ header nav ul li#index #index-menu.open {
 }
 header nav ul li#index #index-trigger {
     cursor: pointer;
-    height: 47px;
+    height: 41px;
     position: absolute;
     top: 0;
     width: 100%;
@@ -208,7 +209,7 @@ header nav ul li#index #index-trigger .back-arrow {
 header nav ul li#index #index-trigger #index-text {
     left: 1em;
     position: absolute;
-    top: 3px;
+    top: 6px;
 }
 header nav ul li#index #index-menu {
     -moz-transition: height 100ms ease-in-out, box-shadow 100ms ease-in-out, opacity 100ms ease-in-out;
@@ -1178,3 +1179,6 @@ body .achievements-tooltip{
     padding: 3px 7px !important;
     border-bottom-width: 3px !important 
 }
+#profile div{ 
+    display: inline-block !important; 
+} 
