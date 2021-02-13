@@ -171,6 +171,7 @@ header nav ul li#right-menu #profile {
     position: absolute;
     right: 30px;
     top: 3px;
+    height: 38px; 
 }
 header nav ul li#right-menu #profile #profile-pic {
     border-radius: 50%;
