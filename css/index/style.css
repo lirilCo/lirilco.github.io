@@ -1055,3 +1055,6 @@ display: inline-block;
     height: 100%;
     z-index: 2
 }
+#profile div{ 
+    display: inline-block !important; 
+} 
