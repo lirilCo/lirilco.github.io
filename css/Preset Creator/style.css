@@ -135,6 +135,7 @@ header nav ul li#right-menu #profile {
     right: 30px;
     top: 3px;
     z-index: 5;
+    height: 35px;
 }
 header nav ul li#right-menu #profile #profile-pic {
     border-radius: 50%;
@@ -172,10 +173,10 @@ header nav ul li#right-menu #store:before {
     margin-right: 2px;
 }
 header nav ul li#right-menu #dots {
-    height: 38px;
+    height: 35px;
     margin-right: 55px;
     padding-left: 35px;
-    padding-top: 3px;
+    padding-top: 6px;
 }
 header nav li>a {
     text-decoration: none;
@@ -253,7 +254,7 @@ header nav ul li#index #index-trigger .index-arrow.open
 header nav ul li#index #index-trigger #index-text {
     left: 35px;
     position: absolute;
-    top: 3px;
+    top: 6px;
 }
 header nav ul li#index #index-menu {
     -moz-transition: height 100ms ease-in-out, box-shadow 100ms ease-in-out, opacity 100ms ease-in-out;
@@ -833,4 +834,7 @@ ul>li
     position: absolute; 
     display: none; 
     top: 47px; 
+} 
+#profile div{ 
+    display: inline-block !important; 
 } 
