@@ -265,22 +265,13 @@
                      </li>
                 <li> 
                     <ul>
-                        <li id= "frame" onclick= "$('#fantasma')[0].innerHTML= $('.widgetero')[0].innerHTML; $('#fantasma .widget .ui-resizable-handle').remove(); 
-$('#fantasma .widget .coverDiv').remove(); 
-$('#fantasma .widget').removeClass('widget draggable ui-draggable ui-draggable-handle ui-resizable'); 
-vr= [$('#example_video_1_html5_api')[0].currentTime, $('#fantasma')[0].innerHTML]; 
-for(eForensics= preset1.length - 1; eForensics >= 0; eForensics--){ 
-    if((eForensics != preset1.length - 1 && preset1[eForensics][0] < vr[0] && preset1[eForensics + 1][0] > vr[0]) || (eForensics == preset1.length - 1 && preset1[eForensics][0] <= vr[0])){ 
-    preset1.splice(eForensics + 1, 0, vr); 
-} 
-} 
-">                        
+                        <li id= "frame" onclick= "/*preset1[preset1.length - 1][0] * 100 / $('video')[$('video').length - 1].duration; */ ">                        
                             <img class= "icon" src="resources/images/Preset Creator/frame.JPG" alt="">
                         </li>
                         <li id= "empty_frame" onclick= "$('.widgetero')[0].innerHTML= ''; ">                        
                             <img class= "icon" src="resources/images/Preset Creator/empty_frame.JPG" alt="">
                         </li>
-                        <li id= "Run" onclick= "observer.observe(document.getElementsByClassName('widgetero')[0], {childList: true}); setInterval(function(){caSe(); }, 1); ">                        
+                        <li id= "Run" onclick= "observer.observe(document.getElementsByClassName('widgetero')[0], {childList: true}); setInterval(function(){caSe(preset1); }, 1); ">                        
                             <img class= "icon" src="resources/images/Preset Creator/Run.png" alt="">
                         </li>
                     </ul>
@@ -1017,6 +1008,7 @@ for(eForensics= preset1.length - 1; eForensics >= 0; eForensics--){
     </section>
     <section id="timeline">
     </section>
+    <div id= "framesHolder"></div>
     <script>
         function apply() {
             a = $(".inputw").value
@@ -1039,5 +1031,3 @@ for(eForensics= preset1.length - 1; eForensics >= 0; eForensics--){
 </body>
 
 </html>
-<!--For GitHub Pages to update!  -->
-<!--Drink lots and lots of water every day -->
