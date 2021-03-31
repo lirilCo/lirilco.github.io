@@ -5,6 +5,7 @@ var out = false;
 var copiedWidget;
 var snapping = true;
 var preset1= [[0, ""]]; 
+var editable= [[0, ""]]; 
 pasted = true;
 type = "none";
 copiedTop = 0;
@@ -17,7 +18,22 @@ pasteCountLeftRef = 0;
 select = false;
 copiedLeft = 0;
 drawing= false; 
-$(document).on("ready",function(){
+$(document).on("ready",function(){ 
+	$("#frame").on("click", function(){ 
+		$('#fantasma')[0].innerHTML= $('.widgetero')[0].innerHTML; $('#fantasma .widget .ui-resizable-handle').remove(); 
+		$('#fantasma .widget .coverDiv').remove(); 
+		$('#fantasma .widget').removeClass('widget draggable ui-draggable ui-draggable-handle ui-resizable'); 
+		vr= [$('#example_video_1_html5_api')[0].currentTime, $('#fantasma')[0].innerHTML]; 
+		lasr= [$('#example_video_1_html5_api')[0].currentTime, $('.widgetero')[0].innerHTML]; 
+		for(eForensics= preset1.length - 1; eForensics >= 0; eForensics--){ 
+		    if((eForensics != preset1.length - 1 && preset1[eForensics][0] <= vr[0] && preset1[eForensics + 1][0] > vr[0]) || (eForensics == preset1.length - 1 && preset1[eForensics][0] <= vr[0])){ 
+		        preset1.splice(eForensics + 1, 0, vr); 
+		        editable.splice(eForensics + 1, 0, lasr); 
+		    } 
+		} 
+		$("#framesHolder")[0].innerHTML= $("#framesHolder")[0].innerHTML + "<div cTime= '" + vr[0] + "' style= 'width: 4px; height: 7px; left: " + (lasr[0] * 100 / $('video')[$('video').length - 1].duration) + "%; ' class= 'frames'></div>"; 
+		$(".frames").on("click", function(){$("video")[$("video").length - 1].currentTime= (parseFloat(this.getAttribute("cTime"))); caSe(editable); }); 
+	}) 
 	$("html").click(function() {
 		$(".wrapper").removeClass("visible")
 		$(".back-arrow").removeClass("open");
@@ -29,6 +45,8 @@ $(document).on("ready",function(){
 		$(".indexMenuItem").removeClass("fadeInDown");
 		$(".indexMenuItem").addClass("fadeOutUp");
 		$(".indexMenuItem").removeClass("open");
+		$(".vjs-progress-holder").on("mousedown", function(){caSe(editable)}); 
+		
 }); 
 	$("button").on("load", function(){ alert("button!"); }); 
 $('#index').click(function(i){
@@ -656,9 +674,11 @@ document.addEventListener("keyup", function(i){
 
 //} 
     
-caSe= function(){ 
-    for(eForensics in preset1){ 
-        (parseInt(eForensics) != preset1.length - 1 && ($('video')[$('video').length - 1].currentTime > preset1[eForensics][0] && $('video')[$('video').length - 1].currentTime < preset1[parseInt(eForensics) + 1][0]) || (parseInt(eForensics) == preset1.length - 1 && $('video')[$('video').length - 1].currentTime > preset1[eForensics][0]))? $('.widgetero')[0].innerHTML != preset1[eForensics][1]? $('.widgetero')[0].innerHTML= preset1[eForensics][1]: 1: 1; 
+caSe= function(i){ 
+    for(eForensics in i){ 
+        if(parseInt(eForensics) != i.length - 1 && ($('video')[$('video').length - 1].currentTime >= i[eForensics][0] && $('video')[$('video').length - 1].currentTime < i[parseInt(eForensics) + 1][0]) || (parseInt(eForensics) == i.length - 1 && $('video')[$('video').length - 1].currentTime >= i[eForensics][0])){
+        	$('.widgetero')[0].innerHTML != i[eForensics][1]? $('.widgetero')[0].innerHTML= i[eForensics][1]: 1
+        }
     } 
 } 
 
@@ -674,3 +694,4 @@ caSe= function(){
 
 setInterval(function(){caSe(); }, 1); 
 */ 
+
