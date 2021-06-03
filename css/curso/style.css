@@ -176,7 +176,7 @@ header nav ul li#right-menu #dots {
     height: 35px;
     margin-right: 55px;
     padding-left: 35px;
-    padding-top: 6px;
+    padding-top: 3px;
 }
 header nav li>a {
     text-decoration: none;
@@ -254,7 +254,7 @@ header nav ul li#index #index-trigger .index-arrow.open
 header nav ul li#index #index-trigger #index-text {
     left: 35px;
     position: absolute;
-    top: 6px;
+    top: 3px;
 }
 header nav ul li#index #index-menu {
     -moz-transition: height 100ms ease-in-out, box-shadow 100ms ease-in-out, opacity 100ms ease-in-out;
