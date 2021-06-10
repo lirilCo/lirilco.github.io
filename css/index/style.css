@@ -1017,11 +1017,16 @@ display: inline-block;
     border-radius: 50%; 
     margin:5px;
     position:absolute; 
-    border: 3px solid #2ecc71; 
     padding: 4px; 
     bottom: 0;
     height: 90px;
     width: 90px;
+}
+.tool canvas
+{
+    position: absolute; 
+    bottom: 3px; 
+    left: 3px; 
 }
 .insignia
 {

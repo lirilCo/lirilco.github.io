@@ -49,7 +49,7 @@ $('#target').tooltip({
         {
             return false;
         }
-        
+        $(".knob").knob();
         var $id = $(ui.tooltip).attr('id');
         
         // close any lingering tooltips
@@ -225,7 +225,7 @@ return value + '%';
                   </section>
                   <div id="profile" class="button">
                     <img id="profile-pic" src="resources/images/white.jpg" alt="Walter White">
-                    <input class="knob button" data-width="35" data-height="35" data-fgColor="#2ecc71" data-bgColor="rgba(0,0,0,0)" data-displayInput=false data-thickness=".15" readonly value="75">
+                    <input class="knob button" data-width="35" data-height="35" data-fgColor="#2ecc71" data-bgColor="rgba(0,0,0,0)" data-displayInput=false data-thickness=".15" readonly value="60">
                   </div>
                   <span class="index-arrow button">
                   </span>
@@ -286,6 +286,7 @@ return value + '%';
         <p id="target" class="username">
           <a class="target" href="user.html" title="         
               <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='60'>
                 <img src='resources/images/white.jpg'>
                 <div class='datos'>
                   <ul class='actions'>
