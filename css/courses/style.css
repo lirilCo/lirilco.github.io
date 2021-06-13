@@ -254,14 +254,14 @@ header nav ul li#index span:first-child.open {
 header.open .buscar::placeholder{
     color: #fff;
 }
-input {
+input, textarea {
     background-color: #fff;
     border: none;
     border-radius: 4px;
 }
-input:focus {
-    border-bottom: 2px #ccc solid;
+input:focus,textarea:focus {
     outline: 0;
+
 }
 .button {
     -khtml-user-select: none;
@@ -334,6 +334,26 @@ input:focus {
 }
 /*sombra #ccc
 normal #fff*/
+#Store #actualStore #storeList ul li {
+    color: #afafaf;
+    cursor: pointer;
+    display: block;
+    font-size: 25px;
+    list-style: none;
+    overflow: hidden;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+header.open nav ul li input{
+    background-color: #2ecc71;
+    border-bottom: solid 1px #fff;
+    color:#fff;
+    z-index: 3;
+    position: relative; 
+}
 .wrapper{
     display: none;
 }
@@ -349,3 +369,13 @@ normal #fff*/
 #profile div{ 
     display: inline-block !important; 
 } 
+  
+.buscar
+{ 
+    border-bottom: 1px solid #2ecc71; 
+    font-size: 16px; 
+    width: 350px; 
+    padding: 0; 
+    margin: 0; 
+    border-radius: 0; 
+}  

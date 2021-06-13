@@ -41,6 +41,7 @@ header #Options .options li{
     line-height: 32px;
     top: 0;
     font-size: 35px;
+    display: inline; 
 }
 header.open #Options .options li{
    
@@ -273,14 +274,14 @@ header>nav>ul>li#index .text.open,
 header>nav>ul>li#index span:first-child.open {
     color: #2ecc71;
 }
-input {
+input, textarea {
     background-color: #fff;
     border: none;
     border-radius: 4px;
 }
-input:focus {
-    border-bottom: 2px #ccc solid;
+input:focus,textarea:focus {
     outline: 0;
+
 }
 .button {
     -khtml-user-select: none;
@@ -349,6 +350,15 @@ header.open {
     height: 40px;
     width: 100%;
     z-index: 3;
+}
+header.open nav ul li input{
+    background-color: #2ecc71;
+    border-bottom: solid 1px #fff;
+    color:#fff;
+    z-index: 3;
+}
+header.open .buscar::placeholder{
+    color: #fff;
 }
 #Store.open {
     display: block
@@ -832,6 +842,16 @@ margin: 0 auto;
   -webkit-transition: -webkit-transform 0.3s 0.7s, opacity 0s 0.7s;
   -moz-transition: -moz-transform 0.3s 0.7s, opacity 0s 0.7s;
   transition: transform 0.3s 0.7s, opacity 0s 0.7s;
+}
+.buscar
+{
+    border-bottom: 1px solid #2ecc71;
+    font-size: 16px;
+    width: 350px;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    margin-bottom: 6px; 
 }
 .wrapper{
     display: none;
