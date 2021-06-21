@@ -119,7 +119,7 @@ function closeModal() {
 }
 $(document).on("ready",function(e){
     $('.chats').click(function(e){ 
-	    aa= $(".sent")[3].children[0]; 
+	    aa= e.target; 
 	    ii= false; 
 	    while(!!aa.parentElement && !ii){ 
 	        (!!aa.parentElement.getAttribute("class") && aa.parentElement.getAttribute("class").indexOf("chat ") != -1)? ii = true: 1; 
