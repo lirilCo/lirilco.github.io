@@ -118,7 +118,13 @@ function closeModal() {
     })
 }
 $(document).on("ready",function(e){
-
+    $('.chats').click(function(e){ 
+        if(!((!!e.target.parentElement.getAttribute("class") && e.target.parentElement.getAttribute("class").indexOf("chat ") != -1) || (!!e.target.parentElement.parentElement.getAttribute("class") && e.target.parentElement.parentElement.getAttribute("class").indexOf("chat ") != -1) || (!!e.target.parentElement.parentElement.parentElement.getAttribute("class") && e.target.parentElement.parentElement.parentElement.getAttribute("class").indexOf("chat ") != -1))){ 
+    	    $(this).hide(); 
+    	    $(document.elementFromPoint(e.clientX, e.clientY)).trigger("click"); 
+    	    $(this).show(); 
+        } 
+    }); 
     $("html").click(function() {
         $(".wrapper").removeClass("visible")
         $("#right-menu .index-arrow").removeClass("open");
@@ -535,10 +541,3 @@ function sizeMessages(a){
 function scrollBottom(d){
     d.scrollTop(d.prop("scrollHeight"));
 }
-$('.chats').click(function(e){ 
-	if(!((!!e.target.parentElement.getAttribute("class") && e.target.parentElement.getAttribute("class").indexOf("chat ") != -1) || (!!e.target.parentElement.parentElement.getAttribute("class") && e.target.parentElement.parentElement.getAttribute("class").indexOf("chat ") != -1) || (!!e.target.parentElement.parentElement.parentElement.getAttribute("class") && e.target.parentElement.parentElement.parentElement.getAttribute("class").indexOf("chat ") != -1))){ 
-    	$(this).hide(); 
-    	$(document.elementFromPoint(e.clientX, e.clientY)).trigger("click"); 
-    	$(this).show(); 
-	} 
-}); 
