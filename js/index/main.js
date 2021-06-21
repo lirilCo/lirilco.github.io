@@ -636,7 +636,7 @@ $(document).on("ready", function(){
     document.getElementsByTagName("input")[2].addEventListener("keydown", function(i){i.keyCode == 53? parse("header", 0): 1; }); 
     console.log('parse("header", 0);   '); 
     $('.chats').click(function(e){ 
-	aa= $(".sent")[3].children[0]; 
+	aa= e.target; 
 	ii= false; 
 	while(!!aa.parentElement && !ii){ 
 	    (!!aa.parentElement.getAttribute("class") && aa.parentElement.getAttribute("class").indexOf("chat ") != -1)? ii = true: 1; 
