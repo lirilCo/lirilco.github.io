@@ -119,8 +119,14 @@ function closeModal() {
 }
 $(document).on("ready",function(e){
     $('.chats').click(function(e){ 
-        if(!((!!e.target.parentElement.getAttribute("class") && e.target.parentElement.getAttribute("class").indexOf("chat ") != -1) || (!!e.target.parentElement.parentElement.getAttribute("class") && e.target.parentElement.parentElement.getAttribute("class").indexOf("chat ") != -1) || (!!e.target.parentElement.parentElement.parentElement.getAttribute("class") && e.target.parentElement.parentElement.parentElement.getAttribute("class").indexOf("chat ") != -1))){ 
-    	    $(this).hide(); 
+	    aa= $(".sent")[3].children[0]; 
+	    ii= false; 
+	    while(!!aa.parentElement && !ii){ 
+	        (!!aa.parentElement.getAttribute("class") && aa.parentElement.getAttribute("class").indexOf("chat ") != -1)? ii = true: 1; 
+	        aa= aa.parentElement; 
+	    }
+        if(!ii){ 
+            $(this).hide(); 
     	    $(document.elementFromPoint(e.clientX, e.clientY)).trigger("click"); 
     	    $(this).show(); 
         } 
