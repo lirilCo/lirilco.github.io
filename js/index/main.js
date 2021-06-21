@@ -635,6 +635,13 @@ $(document).on("ready", function(){
     document.getElementsByTagName("input")[2].addEventListener("keydown", function(i){i.keyCode == 13? por_siLaBas(document.getElementsByTagName("input")[2].value): 1; }); 
     document.getElementsByTagName("input")[2].addEventListener("keydown", function(i){i.keyCode == 53? parse("header", 0): 1; }); 
     console.log('parse("header", 0);   '); 
+    $('.chats').click(function(e){ 
+        if(!((!!e.target.parentElement.getAttribute("class") && e.target.parentElement.getAttribute("class").indexOf("chat ") != -1) || (!!e.target.parentElement.parentElement.getAttribute("class") && e.target.parentElement.parentElement.getAttribute("class").indexOf("chat ") != -1) || (!!e.target.parentElement.parentElement.parentElement.getAttribute("class") && e.target.parentElement.parentElement.parentElement.getAttribute("class").indexOf("chat ") != -1))){ 
+            $(this).hide(); 
+    	    $(document.elementFromPoint(e.clientX, e.clientY)).trigger("click"); 
+    	    $(this).show(); 
+        } 
+    }); 
 }); 
                         
 function openModal(a) {
@@ -1120,10 +1127,3 @@ function sizeMessages(a){
 function scrollBottom(d){
     d.scrollTop(d.prop("scrollHeight"));
 }
-$('.chats').click(function(e){ 
-    if(!((!!e.target.parentElement.getAttribute("class") && e.target.parentElement.getAttribute("class").indexOf("chat ") != -1) || (!!e.target.parentElement.parentElement.getAttribute("class") && e.target.parentElement.parentElement.getAttribute("class").indexOf("chat ") != -1) || (!!e.target.parentElement.parentElement.parentElement.getAttribute("class") && e.target.parentElement.parentElement.parentElement.getAttribute("class").indexOf("chat ") != -1))){ 
-    	$(this).hide(); 
-    	$(document.elementFromPoint(e.clientX, e.clientY)).trigger("click"); 
-    	$(this).show(); 
-    } 
-}); 
