@@ -1039,13 +1039,16 @@ display: block;
     float: right;
     text-align: left;
     padding: 0;
-    margin: 5px 0 0 0;
+    margin: 2.5px 0 2.5px 0;
     white-space: normal;
     padding: 5px;
     word-wrap: break-word;
     
 }
-
+#chats .chats .chat.open .chatBox .messages .sent i, #chats .chats .chat.open .chatBox .messages .sent u
+{
+    color: inherit; 
+}
 #chats .chats .chat.open .chatBox .newMessage
 {
   width: 100%;
