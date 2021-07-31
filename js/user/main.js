@@ -332,7 +332,6 @@ $(window).on("load", function () {
     
     $(".story .pic").on("click", function () {
         openModal($(this));
-                $('#target').tooltip()
 
     });
 

@@ -445,7 +445,8 @@ color: #ccc;
 }
 #root div a
 {
-color: #2ecc71
+color: #2ecc71; 
+text-decoration: none; 
 }
 #root span span
 {

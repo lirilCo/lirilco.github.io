@@ -320,12 +320,13 @@ input:focus,textarea:focus {
     white-space: nowrap;
     width: 100%;
 }
-#Store #storeHeader {
-    background-color: #2ecc71;
-    border-bottom: solid 7px #27ae60;
-    height: 47px;
-    width: 100%;
-}
+#Store #storeHeader { 
+    background-color: #2ecc71; 
+    border-bottom: solid 7px #27ae60; 
+    height: 47px; 
+    width: 100%; 
+    box-sizing: border-box; 
+} 
 #Store.open {
     display: block
 }
