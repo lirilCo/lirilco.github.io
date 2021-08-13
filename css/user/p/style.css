@@ -372,4 +372,7 @@ right: 0;
   
 #file_tree .file { 
     color: #666; 
+    width: 100%; 
+    transition: top 100ms ease-in-out; 
+    box-sizing: border-box; 
 } 

@@ -129,9 +129,19 @@ e.stopPropagation()
 
 });
 
-$('#profileSettings').click(function(i){
+$('#profileSettings').click(function(){
     i.stopPropagation()
    
+}); 
+$(".file").click(function(i){ 
+    index= Array.from(i.target.parentElement.children).indexOf(i.target); 
+    $("#file_tree li").css({"opacity": 0}); 
+    $(this).css({"opacity": 1, "position": "absolute", "top": index * 26.4}); 
+    setTimeout(function(){i.target.style.top= 0; 
+}, 1); 
+    $("#file_tree li").css({"display": "none"}); 
+    $(this).css({"display": "block"}); 
+
 }); 
 });
 $(document).keypress(function (e) {
