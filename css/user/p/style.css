@@ -354,14 +354,22 @@ right: 0;
     margin:0; 
 } 
   
-#file_tree li
-{ 
-    padding: 
-} 
-  
 #file_tree li { 
     border-bottom: 0.1px solid #ccc; 
     padding: 1.7px 10px; 
     overflow: hidden; 
     text-overflow: ellipsis; 
+} 
+  
+#file_tree li:hover { 
+   text-decoration: underline; 
+   cursor: pointer; 
+} 
+
+#file_tree .folder { 
+    background-color: #def; 
+} 
+  
+#file_tree .file { 
+    color: #666; 
 } 
