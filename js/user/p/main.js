@@ -135,8 +135,7 @@ $('#profileSettings').click(function(){
 }); 
 $(".file").click(function(i){ 
     index= Array.from(i.target.parentElement.children).indexOf(i.target); 
-    $("#root")[0].children[2].innerHTML= '<div><a href=\"../../../user/p/ZJhfn8drprZfy\">dinosaurios</a></div>'; 
-    $("#root")[0].innerHTML= $("#root")[0].innerHTML + '<span><span>index.html</span></span>'; 
+    $("#root")[0].children[2].innerHTML= '<div><a href=\"/user/p/ZJhfn8drprZfy/\">dinosaurios</a></div>'; 
     !$(this).parent().hasClass("folder_cont")? $(this).css({"position": "absolute", "top": index * 26.4}): $(this).css({"position": "absolute", "top": index * 26.4 - 26.4});
     $("li.inScope").css({"display": "none"}); 
     $(".folder_cont.inScope").css({"display": "none"}); 
@@ -161,6 +160,8 @@ $(".file").click(function(i){
     } 
     
     history.pushState({page: 1}, "", "ZJhfn8drprZfy/" + uRL); 
+
+    updateRoot(separateUrl(uRL)); 
 }); 
     
 $(".folder").click(function(){ 
@@ -533,3 +534,35 @@ function sizeMessages(a){
 function scrollBottom(d){
     d.scrollTop(d.prop("scrollHeight"));
 }
+  
+separateUrl= function (r3){ 
+    sprtdUrl= []; 
+    fragment= ""; 
+    for(eForensics in r3){ 
+        if(parseInt(eForensics) == r3.length - 1 || r3[eForensics] == "/"){ 
+            parseInt(eForensics) == r3.length - 1? fragment+= r3[eForensics]: 1; 
+            sprtdUrl[sprtdUrl.length]= fragment; 
+            fragment= ""; 
+        }else{ 
+            fragment+= r3[eForensics]; 
+        } 
+    } 
+      
+    return sprtdUrl; 
+} 
+  
+updateRoot= function(a7){ 
+    for(eForensics in a7){ 
+        if(parseInt(eForensics) != a7.length - 1){ 
+            genurl= "/user/p/ZJhfn8drprZfy/"; 
+                              
+            for(idr= 0; idr <= parseInt(eForensics); idr++){ 
+                genurl+= a7[idr]; 
+            } 
+      
+            $("#root")[0].innerHTML= $("#root")[0].innerHTML + "<div><a href=" + "'" + genurl +"'"+ ">" + a7[eForensics] + "</a></div>"
+        }else{ 
+            $("#root")[0].innerHTML= $("#root")[0].innerHTML + "<span><span>" + a7[eForensics] + "</span></span>"; 
+        } 
+    }
+} 
