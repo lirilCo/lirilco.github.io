@@ -376,3 +376,20 @@ right: 0;
     transition: top 100ms ease-in-out; 
     box-sizing: border-box; 
 } 
+
+#file_expl #information 
+{ 
+    position: absolute; 
+    width: 100%; 
+    top: 26.4px; 
+    visibility: hidden; 
+    opacity: 0;
+    transition: visibility 0ms ease-in-out, opacity 500ms ease-in-out; 
+    background-color: #d70ea1;
+} 
+
+#file_expl #information.visible
+{ 
+    visibility: visible; 
+    opacity: 1;
+} 

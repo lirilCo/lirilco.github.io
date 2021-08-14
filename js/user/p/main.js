@@ -135,12 +135,13 @@ $('#profileSettings').click(function(){
 }); 
 $(".file").click(function(i){ 
     index= Array.from(i.target.parentElement.children).indexOf(i.target); 
-    $("#file_tree li").css({"opacity": 0}); 
-    $(this).css({"opacity": 1, "position": "absolute", "top": index * 26.4}); 
-    setTimeout(function(){i.target.style.top= 0; 
-}, 1); 
+    $(this).css({"position": "absolute", "top": index * 26.4}); 
     $("#file_tree li").css({"display": "none"}); 
     $(this).css({"display": "block"}); 
+    setTimeout(function(){i.target.style.top= 0; 
+    }, 1); 
+    setTimeout(function(){!$("#file_expl #information").hasClass("visible")? $("#file_expl #information").toggleClass("visible"): 666 
+    }, 101); 
 
 }); 
 });
@@ -444,7 +445,8 @@ $("#theater .comments").height($("#theater").height() - 40);
         }
         $("#chats .chats").width($(window).width() - $("#sidebar").outerWidth() -10);
         $("#biography").width($(window).width() - $("#sidebar").outerWidth());
-        $("#file_expl #preview").width($(window).width() - $("#file_expl #files").width());
+        $("#file_expl #preview").width($(window).width() - $("#file_expl #files").width()); 
+        $("#file_expl #information").height($("#file_expl").height() - 26.4);
 
  }
 
