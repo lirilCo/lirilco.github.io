@@ -137,8 +137,9 @@ $(".file").click(function(i){
     index= Array.from(i.target.parentElement.children).indexOf(i.target); 
     $("#root")[0].children[2].innerHTML= '<div><a href=\"../../../user/p/ZJhfn8drprZfy\">dinosaurios</a></div>'; 
     $("#root")[0].innerHTML= $("#root")[0].innerHTML + '<span><span>index.html</span></span>'; 
-    $(this).css({"position": "absolute", "top": index * 26.4}); 
-    $("#file_tree li.inScope").css({"display": "none"}); 
+    !$(this).parent().hasClass("folder_cont")? $(this).css({"position": "absolute", "top": index * 26.4}): $(this).css({"position": "absolute", "top": index * 26.4 - 26.4});
+    $("li.inScope").css({"display": "none"}); 
+    $(".folder_cont.inScope").css({"display": "none"}); 
     $(this).css({"display": "block"}); 
     setTimeout(function(){i.target.style.top= 0; 
     }, 1); 
