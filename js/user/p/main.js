@@ -136,7 +136,7 @@ $('#profileSettings').click(function(){
 $(".file").click(function(i){ 
     index= Array.from(i.target.parentElement.children).indexOf(i.target); 
     history.pushState({page: 1}, "", "ZJhfn8drprZfy/index.html"); 
-    $("#root")[0].children[2].innerHTML= '<div><a href=\"../../user/p/ZJhfn8drprZfy.html\">dinosaurios</a></div>'; 
+    $("#root")[0].children[2].innerHTML= '<div><a href=\"../../../user/p/ZJhfn8drprZfy.html\">dinosaurios</a></div>'; 
     $("#root")[0].innerHTML= $("#root")[0].innerHTML + '<span><span>index.html</span></span>'; 
     $(this).css({"position": "absolute", "top": index * 26.4}); 
     $("#file_tree li").css({"display": "none"}); 
