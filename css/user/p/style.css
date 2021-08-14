@@ -385,7 +385,9 @@ right: 0;
     visibility: hidden; 
     opacity: 0;
     transition: visibility 0ms ease-in-out, opacity 500ms ease-in-out; 
-    background-color: #d70ea1;
+    color: #666 !important; 
+    padding: 21px; 
+    box-sizing: border-box; 
 } 
 
 #file_expl #information.visible
