@@ -377,7 +377,7 @@ right: 0;
     box-sizing: border-box; 
 } 
 
-#file_expl #information 
+#file_expl #information_cont 
 { 
     position: absolute; 
     width: 100%; 
@@ -386,12 +386,19 @@ right: 0;
     opacity: 0;
     transition: visibility 0ms ease-in-out, opacity 500ms ease-in-out; 
     color: #666 !important; 
-    padding: 21px; 
     box-sizing: border-box; 
 } 
 
-#file_expl #information.visible
+#file_expl #information_cont.visible
 { 
     visibility: visible; 
     opacity: 1;
+} 
+  
+#file_expl #information
+{ 
+    width: 100%; 
+    height: 100%; 
+    box-sizing: border-box; 
+    padding: 21px; 
 } 

@@ -136,14 +136,14 @@ $('#profileSettings').click(function(){
 $(".file").click(function(i){ 
     index= Array.from(i.target.parentElement.children).indexOf(i.target); 
     history.pushState({page: 1}, "", "ZJhfn8drprZfy/index.html"); 
-    $("#root")[0].children[2].innerHTML= '<div><a href=\"../../../user/p/ZJhfn8drprZfy.html\">dinosaurios</a></div>'; 
+    $("#root")[0].children[2].innerHTML= '<div><a href=\"../../../user/p/ZJhfn8drprZfy\">dinosaurios</a></div>'; 
     $("#root")[0].innerHTML= $("#root")[0].innerHTML + '<span><span>index.html</span></span>'; 
     $(this).css({"position": "absolute", "top": index * 26.4}); 
     $("#file_tree li").css({"display": "none"}); 
     $(this).css({"display": "block"}); 
     setTimeout(function(){i.target.style.top= 0; 
     }, 1); 
-    setTimeout(function(){!$("#file_expl #information").hasClass("visible")? $("#file_expl #information").toggleClass("visible"): 666 
+    setTimeout(function(){!$("#file_expl #information_cont").hasClass("visible")? $("#file_expl #information_cont").toggleClass("visible"): 666 
     }, 101); 
 
 }); 
@@ -449,7 +449,7 @@ $("#theater .comments").height($("#theater").height() - 40);
         $("#chats .chats").width($(window).width() - $("#sidebar").outerWidth() -10);
         $("#biography").width($(window).width() - $("#sidebar").outerWidth());
         $("#file_expl #preview").width($(window).width() - $("#file_expl #files").width()); 
-        $("#file_expl #information").height($("#file_expl").height() - 26.4);
+        $("#file_expl #information_cont").height($("#file_expl").height() - 26.4);
 
  }
 
