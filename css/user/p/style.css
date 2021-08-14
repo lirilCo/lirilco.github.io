@@ -355,11 +355,14 @@ right: 0;
 } 
   
 #file_tree li { 
-    border-bottom: 0.1px solid #ccc; 
-    padding: 1.7px 10px; 
+    padding: 0; 
+    border-bottom: none; 
     overflow: hidden; 
     text-overflow: ellipsis; 
-    display: none; 
+    visibility: hidden; 
+    opacity: 0; 
+    height: 0; 
+    transition: top 100ms ease-in-out, visibility 0ms ease-in-out, opacity 100ms ease-in-out; 
 } 
   
 #file_tree li:hover { 
@@ -374,7 +377,6 @@ right: 0;
 #file_tree .file { 
     color: #666; 
     width: 100%; 
-    transition: top 100ms ease-in-out; 
     box-sizing: border-box; 
 } 
 
@@ -406,5 +408,18 @@ right: 0;
   
 #file_tree li.inScope 
 { 
-    display: block; 
+    height: auto; 
+    visibility: visible; 
+    opacity: 1; 
+    padding: 1.7px 10px; 
+    border-bottom: 0.1px solid #ccc; 
+} 
+
+#file_tree .folder_cont.inScope>.folder:first-child
+{ 
+    height: auto; 
+    visibility: visible; 
+    opacity: 1; 
+    padding: 1.7px 10px; 
+    border-bottom: 0.1px solid #ccc; 
 } 
