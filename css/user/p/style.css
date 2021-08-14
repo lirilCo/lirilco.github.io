@@ -359,6 +359,7 @@ right: 0;
     padding: 1.7px 10px; 
     overflow: hidden; 
     text-overflow: ellipsis; 
+    display: none; 
 } 
   
 #file_tree li:hover { 
@@ -384,7 +385,7 @@ right: 0;
     top: 26.4px; 
     visibility: hidden; 
     opacity: 0;
-    transition: visibility 0ms ease-in-out, opacity 500ms ease-in-out; 
+    transition: visibility 0ms ease-in-out, opacity 382ms ease-in-out; 
     color: #666 !important; 
     box-sizing: border-box; 
 } 
@@ -401,4 +402,9 @@ right: 0;
     height: 100%; 
     box-sizing: border-box; 
     padding: 21px; 
+} 
+  
+#file_tree li.inScope 
+{ 
+    display: block; 
 } 
