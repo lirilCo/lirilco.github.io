@@ -135,7 +135,6 @@ $('#profileSettings').click(function(){
 }); 
 $(".file").click(function(i){ 
     index= Array.from(i.target.parentElement.children).indexOf(i.target); 
-    //history.pushState({page: 1}, "", "ZJhfn8drprZfy/index.html"); 
     $("#root")[0].children[2].innerHTML= '<div><a href=\"../../../user/p/ZJhfn8drprZfy\">dinosaurios</a></div>'; 
     $("#root")[0].innerHTML= $("#root")[0].innerHTML + '<span><span>index.html</span></span>'; 
     $(this).css({"position": "absolute", "top": index * 26.4}); 
@@ -146,6 +145,21 @@ $(".file").click(function(i){
     setTimeout(function(){!$("#file_expl #information_cont").hasClass("visible")? $("#file_expl #information_cont").toggleClass("visible"): 666 
     }, 101); 
 
+    uRL= ""; 
+                     
+    t= $(this); 
+              
+    while(!t.is("#file_tree")){ 
+        if(!t.hasClass("folder_cont")){ 
+            uRL= t[0].innerText + uRL; 
+        }else{ 
+            uRL= t[0].children[0].textContent + "/" + uRL; 
+        } 
+      
+        t= t.parent(); 
+    } 
+    
+    history.pushState({page: 1}, "", "ZJhfn8drprZfy/" + uRL); 
 }); 
     
 $(".folder").click(function(){ 
