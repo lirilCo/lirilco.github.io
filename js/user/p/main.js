@@ -1,3 +1,5 @@
+el= document.getElementById("file_tree"); 
+
 function openModal(a) {
     $("#theater").addClass("animated fadeIn ")
     $(".theater").css({
@@ -611,21 +613,33 @@ updateRoot= function(a7){
 
 
         aar= getToBusiness(window.location.pathname); 
-    
+                 
+        spr= ""; 
+                 
         if(aar == ""){ 
             $(".inScope").removeClass("inScope"); 
             $("#file_tree").children().addClass("inScope"); 
-        }else if(aar.indexOf("/") == -1){ 
+        }else{ 
             $(".inScope").removeClass("inScope"); 
-            for(eForensics in $("#file_tree").children()){
-                if($("#file_tree").children()[eForensics].getAttribute("class").indexOf("folder_cont") != -1){ 
-                    if($("#file_tree").children()[eForensics].children[0].textContent == aar){ 
-                        for(Colombia in getSiblings($("#file_tree").children()[eForensics].children[0])){ 
-                            getSiblings($("#file_tree").children()[eForensics].children[0])[Colombia].getAttribute("class").indexOf("folder_cont") == -1? getSiblings($("#file_tree").children()[eForensics].children[0])[Colombia].classList.add("inScope"): getSiblings($("#file_tree").children()[eForensics].children[0])[Colombia].children[0].classList.add("inScope"); 
-                        }
-                    }
-                }
-            }
+                                   
+            spr= separateUrl(aar); 
+
+            el= document.getElementById("file_tree"); 
+
+                              
+            for(Ty99 in spr){ 
+                for(eForensics in el.children){ 
+                    if(($(el.children[eForensics]).hasClass("folder_cont")) && ((el != document.getElementById("file_tree") && parseInt(eForensics) != 0) || el == document.getElementById("file_tree"))){ 
+                        if(el.children[eForensics].children[0].textContent == spr[Ty99]){ 
+                            el= el.children[eForensics]; 
+                        } 
+                    } 
+                } 
+             } 
+            
+            for(Colombia in getSiblings(el.children[0])){ 
+                getSiblings(el.children[0])[Colombia].getAttribute("class").indexOf("folder_cont") == -1? getSiblings(el.children[0])[Colombia].classList.add("inScope"): getSiblings(el.children[0])[Colombia].children[0].classList.add("inScope"); 
+            } 
         }
     });
     /*$("#root div").click(function(){ 
