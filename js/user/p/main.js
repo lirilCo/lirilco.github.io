@@ -138,7 +138,7 @@ $('#profileSettings').click(function(){
 $(".file").click(function(i){ 
     index= Array.from(i.target.parentElement.children).indexOf(i.target); 
     !$(this).parent().hasClass("folder_cont")? $(this).css({"position": "absolute", "top": index * 26.4}): $(this).css({"position": "absolute", "top": index * 26.4 - 26.4});
-    $(".folder_cont.inScope .folder").css({"opacity": "0"}); 
+    $(".folder_cont .folder.inScope").css({"opacity": "0"}); 
     $(this).css({"opacity": "1"}); 
     $(this).css({"display": "block"}); 
     setTimeout(function(){i.target.style.top= 0; 
@@ -199,6 +199,59 @@ $(".folder").click(function(i){
 
     $(".folder_cont .folder.inScope").css({"opacity": "1"}); 
     $(".folder_cont.inScope .folder:first-child").css({"opacity": "1"}); 
+
+    aar= getToBusiness(window.location.pathname); 
+                 
+        spr= ""; 
+                 
+        if(aar == ""){ 
+            el= document.getElementById("file_tree"); 
+
+            for(Colombia in el.children){ 
+                el.children[Colombia].getAttribute("class").indexOf("folder_cont") == -1? el.children[Colombia].classList.add("inScope"): el.children[Colombia].children[0].classList.add("inScope"); 
+            } 
+            $(".inScope").removeClass("inScope"); 
+        }else{ 
+            $(".inScope").removeClass("inScope"); 
+                                   
+            setTimeout(function(){ 
+                spr= separateUrl(aar); 
+
+                el= document.getElementById("file_tree"); 
+                                  
+                for(Ty99 in spr){ 
+                    for(eForensics in el.children){ 
+                        if(($(el.children[eForensics]).hasClass("folder_cont")) && ((el != document.getElementById("file_tree") && parseInt(eForensics) != 0) || el == document.getElementById("file_tree"))){ 
+                            if(el.children[eForensics].children[0].textContent == spr[Ty99]){ 
+                                el= el.children[eForensics]; 
+                            } 
+                        } 
+                    } 
+                 } 
+                
+                for(Colombia in getSiblings(el.children[0])){ 
+                    getSiblings(el.children[0])[Colombia].getAttribute("class").indexOf("folder_cont") == -1? getSiblings(el.children[0])[Colombia].classList.add("inScope"): getSiblings(el.children[0])[Colombia].children[0].classList.add("inScope"); 
+                } 
+            }, 10); 
+
+            spr= separateUrl(aar); 
+
+            el= document.getElementById("file_tree"); 
+                              
+            for(Ty99 in spr){ 
+                for(eForensics in el.children){ 
+                    if(($(el.children[eForensics]).hasClass("folder_cont")) && ((el != document.getElementById("file_tree") && parseInt(eForensics) != 0) || el == document.getElementById("file_tree"))){ 
+                        if(el.children[eForensics].children[0].textContent == spr[Ty99]){ 
+                            el= el.children[eForensics]; 
+                        } 
+                    } 
+                } 
+             } 
+            
+            for(Colombia in getSiblings(el.children[0])){ 
+                getSiblings(el.children[0])[Colombia].getAttribute("class").indexOf("folder_cont") == -1? getSiblings(el.children[0])[Colombia].classList.add("inScope"): getSiblings(el.children[0])[Colombia].children[0].classList.add("inScope"); 
+            } 
+        }
 }); 
     
 $('#root div').click( function(e){ 
@@ -622,7 +675,7 @@ updateRoot= function(a7){
     $("#file_expl #information_cont").hasClass("visible")? $("#file_expl #information_cont").toggleClass("visible"): 666 
     $(".folder_cont .folder.inScope").css({"opacity": "1"}); 
     $(".folder_cont .folder.inScope").parent().css({"opacity": "1"}); 
-    $(".folder_cont.inScope .folder:first-child").css({"opacity": "1"}); 
+    $(".folder_cont.inScope > .folder:first-child").css({"opacity": "1"}); 
     $('.folder_cont').filter(function () { 
         return this.style.display == 'none';  
     }).css({"display": "block"}); 
@@ -632,8 +685,12 @@ updateRoot= function(a7){
         spr= ""; 
                  
         if(aar == ""){ 
+             el= document.getElementById("file_tree"); 
             $(".inScope").removeClass("inScope"); 
-            $("#file_tree").children().addClass("inScope"); 
+
+            for(Colombia in el.children){ 
+                $(el.children[Colombia]).hasClass("folder_cont")? $($(el.children[Colombia]).children()[0]).addClass("inScope"): $(el.children[Colombia]).addClass("inScope"); 
+            } 
         }else{ 
             $(".inScope").removeClass("inScope"); 
                                    
