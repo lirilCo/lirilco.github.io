@@ -440,6 +440,7 @@ th {
 { 
   color: #2ecc71; 
   padding-right: 4.15px; 
+
 } 
 #root div:after
 {
@@ -450,6 +451,7 @@ color: #ccc;
 {
 color: #2ecc71; 
 text-decoration: none; 
+cursor: pointer; 
 }
 #root span span
 {

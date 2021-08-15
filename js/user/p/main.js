@@ -160,7 +160,7 @@ $(".file").click(function(i){
       
     history.pushState({page: 1}, "", "/user/p/ZJhfn8drprZfy/" + uRL); 
                                                               
-    (!!uRL.length && uRL.length > 0)? $("#root")[0].children[$("#root")[0].children.length - 1].outerHTML= '<div><a href=\"/user/p/ZJhfn8drprZfy\">' + $("#root")[0].children[$("#root")[0].children.length - 1].innerText + '</a></div>': 1; 
+    (!!uRL.length && uRL.length > 0)? $("#root")[0].children[$("#root")[0].children.length - 1].outerHTML= '<div><a url=\"/user/p/ZJhfn8drprZfy\">' + $("#root")[0].children[$("#root")[0].children.length - 1].innerText + '</a></div>': 1; 
                                   
     updateRoot(separateUrl(uRL)); 
 }); 
@@ -195,6 +195,10 @@ $(".folder").click(function(i){
                                   
     updateRoot(separateUrl(uRL)); 
 }); 
+    
+$('#root div').click( function(e){ 
+    history.pushState({page: 1}, "", e.target.url); 
+});
 });
 $(document).keypress(function (e) {
 if(!$("textarea").is(":focus") && !$("input").is(":focus")){
@@ -579,9 +583,9 @@ separateUrl= function (r3){
 } 
   
 updateRoot= function(a7){ 
-    $("#root")[0].innerHTML= '<div><a href="../../user.html">Walter White</a></div><div><a href="../../user/proyectos.html">Proyectos</a></div><span><span>dinosaurios</span></span>'; 
+    $("#root")[0].innerHTML= '<div><a url="/user.html">Walter White</a></div><div><a url="/user/p.html">Proyectos</a></div><span><span>dinosaurios</span></span>'; 
     
-    (!!uRL.length && uRL.length > 0)? $("#root")[0].children[$("#root")[0].children.length - 1].outerHTML= '<div><a href=\"/user/p/ZJhfn8drprZfy\">' + $("#root")[0].children[$("#root")[0].children.length - 1].innerText + '</a></div>': 1; 
+    (!!uRL.length && uRL.length > 0)? $("#root")[0].children[$("#root")[0].children.length - 1].outerHTML= '<div><a url=\"/user/p/ZJhfn8drprZfy\">' + $("#root")[0].children[$("#root")[0].children.length - 1].innerText + '</a></div>': 1; 
 
     for(eForensics in a7){ 
         if(parseInt(eForensics) != a7.length - 1){ 
@@ -591,9 +595,14 @@ updateRoot= function(a7){
                 genurl+= "/" + a7[idr]; 
             } 
       
-            $("#root")[0].innerHTML= $("#root")[0].innerHTML + "<div><a href=" + "'" + genurl +"'"+ ">" + a7[eForensics] + "</a></div>"
+            $("#root")[0].innerHTML= $("#root")[0].innerHTML + "<div><a url=" + "'" + genurl +"'"+ ">" + a7[eForensics] + "</a></div>"
         }else{ 
             $("#root")[0].innerHTML= $("#root")[0].innerHTML + "<span><span>" + a7[eForensics] + "</span></span>"; 
         } 
-    }
+    } 
+
+    $('#root div').click( function(e){ 
+        
+        history.pushState({page: 1}, "", e.target.getAttribute("url")); 
+    });
 } 
