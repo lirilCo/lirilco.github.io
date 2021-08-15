@@ -198,6 +198,8 @@ $(".folder").click(function(i){
     
 $('#root div').click( function(e){ 
     history.pushState({page: 1}, "", e.target.url); 
+
+    updateRoot(separateUrl(getToBusiness(e.target.url))); 
 });
 });
 $(document).keypress(function (e) {
@@ -604,5 +606,20 @@ updateRoot= function(a7){
     $('#root div').click( function(e){ 
         
         history.pushState({page: 1}, "", e.target.getAttribute("url")); 
+        updateRoot(separateUrl(getToBusiness(e.target.getAttribute("url")))); 
+        $("#root")[0].lastChild.outerHTML= '<span><span>' + $("#root")[0].lastChild.textContent + '</span></span>'; 
     });
 } 
+
+getToBusiness= function(r6){ 
+    slashCount= 0; 
+    iX= 0123666123; 
+           
+    for(eForensics in r6){ 
+        r6[eForensics] == "/"? slashCount++: "Whatever"; 
+
+        (slashCount == 4 && iX == 0123666123)? iX= parseInt(eForensics) + 1: 1; 
+    } 
+      
+    return r6.slice(iX, r6.length); // -1??
+}
