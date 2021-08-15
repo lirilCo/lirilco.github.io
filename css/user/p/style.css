@@ -425,5 +425,14 @@ right: 0;
     padding: 1.7px 10px; 
     border-bottom: 0.1px solid #ccc; 
 } 
+
+#file_tree .folder_cont > .folder.inScope
+{ 
+    height: auto; 
+    visibility: visible; 
+    opacity: 1; 
+    padding: 1.7px 10px; 
+    border-bottom: 0.1px solid #ccc; 
+} 
   
   

@@ -138,8 +138,8 @@ $('#profileSettings').click(function(){
 $(".file").click(function(i){ 
     index= Array.from(i.target.parentElement.children).indexOf(i.target); 
     !$(this).parent().hasClass("folder_cont")? $(this).css({"position": "absolute", "top": index * 26.4}): $(this).css({"position": "absolute", "top": index * 26.4 - 26.4});
-    $("li.inScope").css({"display": "none"}); 
-    $(".folder_cont.inScope").css({"display": "none"}); 
+    $(".folder_cont.inScope .folder").css({"opacity": "0"}); 
+    $(this).css({"opacity": "1"}); 
     $(this).css({"display": "block"}); 
     setTimeout(function(){i.target.style.top= 0; 
     }, 1); 
@@ -196,6 +196,9 @@ $(".folder").click(function(i){
     (!!uRL.length && uRL.length > 0)? $("#root")[0].children[$("#root")[0].children.length - 1].outerHTML= '<div><a href=\"/user/p/ZJhfn8drprZfy\">' + $("#root")[0].children[$("#root")[0].children.length - 1].innerText + '</a></div>': 1; 
                                   
     updateRoot(separateUrl(uRL)); 
+
+    $(".folder_cont .folder.inScope").css({"opacity": "1"}); 
+    $(".folder_cont.inScope .folder:first-child").css({"opacity": "1"}); 
 }); 
     
 $('#root div').click( function(e){ 
@@ -611,6 +614,18 @@ updateRoot= function(a7){
         updateRoot(separateUrl(getToBusiness(e.target.getAttribute("url")))); 
         $("#root")[0].lastChild.outerHTML= '<span><span>' + $("#root")[0].lastChild.textContent + '</span></span>'; 
 
+        $(".file").css({"position": "initial"})
+    $("li.inScope").css({"display": "block"}); 
+    $(".folder_cont.inScope").css({"display": "block"}); 
+    $(this).css({"display": "block"}); 
+   
+    $("#file_expl #information_cont").hasClass("visible")? $("#file_expl #information_cont").toggleClass("visible"): 666 
+    $(".folder_cont .folder.inScope").css({"opacity": "1"}); 
+    $(".folder_cont .folder.inScope").parent().css({"opacity": "1"}); 
+    $(".folder_cont.inScope .folder:first-child").css({"opacity": "1"}); 
+    $('.folder_cont').filter(function () { 
+        return this.style.display == 'none';  
+    }).css({"display": "block"}); 
 
         aar= getToBusiness(window.location.pathname); 
                  
@@ -660,7 +675,10 @@ updateRoot= function(a7){
                 getSiblings(el.children[0])[Colombia].getAttribute("class").indexOf("folder_cont") == -1? getSiblings(el.children[0])[Colombia].classList.add("inScope"): getSiblings(el.children[0])[Colombia].children[0].classList.add("inScope"); 
             } 
         }
-    });
+        
+    }); 
+
+    
     /*$("#root div").click(function(){ 
     
 })*/
