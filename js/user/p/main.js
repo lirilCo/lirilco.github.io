@@ -608,7 +608,29 @@ updateRoot= function(a7){
         history.pushState({page: 1}, "", e.target.getAttribute("url")); 
         updateRoot(separateUrl(getToBusiness(e.target.getAttribute("url")))); 
         $("#root")[0].lastChild.outerHTML= '<span><span>' + $("#root")[0].lastChild.textContent + '</span></span>'; 
+
+
+        aar= getToBusiness(window.location.pathname); 
+    
+        if(aar == ""){ 
+            $(".inScope").removeClass("inScope"); 
+            $("#file_tree").children().addClass("inScope"); 
+        }else if(aar.indexOf("/") == -1){ 
+            $(".inScope").removeClass("inScope"); 
+            for(eForensics in $("#file_tree").children()){
+                if($("#file_tree").children()[eForensics].getAttribute("class").indexOf("folder_cont") != -1){ 
+                    if($("#file_tree").children()[eForensics].children[0].textContent == aar){ 
+                        for(Colombia in getSiblings($("#file_tree").children()[eForensics].children[0])){ 
+                            getSiblings($("#file_tree").children()[eForensics].children[0])[Colombia].getAttribute("class").indexOf("folder_cont") == -1? getSiblings($("#file_tree").children()[eForensics].children[0])[Colombia].classList.add("inScope"): getSiblings($("#file_tree").children()[eForensics].children[0])[Colombia].children[0].classList.add("inScope"); 
+                        }
+                    }
+                }
+            }
+        }
     });
+    /*$("#root div").click(function(){ 
+    
+})*/
 } 
 
 getToBusiness= function(r6){ 
@@ -623,3 +645,21 @@ getToBusiness= function(r6){
       
     return r6.slice(iX, r6.length); // -1??
 }
+
+var getSiblings = function (elem) {
+
+    // Setup siblings array and get the first sibling
+    var siblings = [];
+    var sibling = elem.parentNode.firstChild;
+
+    // Loop through each sibling and push to the array
+    while (sibling) {
+        if (sibling.nodeType === 1 && sibling !== elem) {
+            siblings.push(sibling);
+        }
+        sibling = sibling.nextSibling
+    }
+
+    return siblings;
+
+};
