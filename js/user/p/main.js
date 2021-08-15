@@ -626,7 +626,10 @@ updateRoot= function(a7){
 
             el= document.getElementById("file_tree"); 
 
-                              
+            setTimeout(function(){for(Colombia in getSiblings(el.children[0])){ 
+                getSiblings(el.children[0])[Colombia].getAttribute("class").indexOf("folder_cont") == -1? getSiblings(el.children[0])[Colombia].classList.add("inScope"): getSiblings(el.children[0])[Colombia].children[0].classList.add("inScope"); 
+            } }, 10); 
+                      
             for(Ty99 in spr){ 
                 for(eForensics in el.children){ 
                     if(($(el.children[eForensics]).hasClass("folder_cont")) && ((el != document.getElementById("file_tree") && parseInt(eForensics) != 0) || el == document.getElementById("file_tree"))){ 
@@ -637,9 +640,7 @@ updateRoot= function(a7){
                 } 
              } 
             
-            for(Colombia in getSiblings(el.children[0])){ 
-                getSiblings(el.children[0])[Colombia].getAttribute("class").indexOf("folder_cont") == -1? getSiblings(el.children[0])[Colombia].classList.add("inScope"): getSiblings(el.children[0])[Colombia].children[0].classList.add("inScope"); 
-            } 
+            
         }
     });
     /*$("#root div").click(function(){ 
