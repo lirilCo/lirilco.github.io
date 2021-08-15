@@ -662,7 +662,7 @@ updateRoot= function(a7){
     } 
 
     $('#root div').click( function(e){ 
-        
+        $(".file").css({"top": "initial"}); 
         history.pushState({page: 1}, "", e.target.getAttribute("url")); 
         updateRoot(separateUrl(getToBusiness(e.target.getAttribute("url")))); 
         $("#root")[0].lastChild.outerHTML= '<span><span>' + $("#root")[0].lastChild.textContent + '</span></span>'; 
