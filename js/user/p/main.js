@@ -139,6 +139,7 @@ $(".file").click(function(i){
     index= Array.from(i.target.parentElement.children).indexOf(i.target); 
     !$(this).parent().hasClass("folder_cont")? $(this).css({"position": "absolute", "top": index * 26.4}): $(this).css({"position": "absolute", "top": index * 26.4 - 26.4});
     $(".folder_cont .folder.inScope").css({"opacity": "0"}); 
+    $(".folder_cont .folder.inScope").css({"visibility": "hidden"}); 
     $(".folder_cont .folder.inScope").css({"display": "none"}); 
 
     $(this).css({"opacity": "1"}); 
@@ -199,7 +200,7 @@ $(".folder").click(function(i){
                                   
     updateRoot(separateUrl(uRL)); 
 
-    $(".folder_cont .folder.inScope").css({"opacity": "1", "display": "block"}); 
+    $(".folder_cont .folder.inScope").css({"opacity": "1", "visibility": "visible", "display": "block"}); 
     $(".folder_cont.inScope .folder:first-child").css({"opacity": "1"}); 
 
     aar= getToBusiness(window.location.pathname); 
@@ -664,7 +665,7 @@ updateRoot= function(a7){
     } 
 
     $('#root div').click( function(e){ 
-        $(".folder_cont .folder.inScope").css({"opacity": "1", "display": "block"}); 
+        $(".folder_cont .folder.inScope").css({"opacity": "1", "visibility": "visible", "display": "block"}); 
 
         $(".file").css({"top": "initial"}); 
         history.pushState({page: 1}, "", e.target.getAttribute("url")); 
