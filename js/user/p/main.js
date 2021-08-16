@@ -180,8 +180,8 @@ for(let folder of document.getElementsByClassName("folder")) {
     $(".file").css({"opacity": "0", "height": "0"}); 
 
 
-    $(lr).css({"opacity": "1"}); 
-    $(lr).css({"height": "auto"}); 
+    $($(lr).children()[0]).css({"opacity": "1"}); 
+    $($(lr).children()[0]).css({"height": "auto"}); 
     setTimeout(function(){lr.style.top= 0; 
     }, 1); 
     setTimeout(function(){!$("#file_expl #information_cont").hasClass("visible")? $("#file_expl #information_cont").toggleClass("visible"): 666 
@@ -210,9 +210,6 @@ for(let folder of document.getElementsByClassName("folder")) {
     }) 
 } 
 
-$(".folder").on('contextmenu', function (e) { 
-    
-}, false);
     
 $(".folder").click(function(i){ 
     index= Array.from(i.target.parentElement.parentElement.children).indexOf(i.target.parentElement); 
@@ -720,11 +717,15 @@ updateRoot= function(a7){
        
         $("#file_expl #information_cont").hasClass("visible")? $("#file_expl #information_cont").toggleClass("visible"): 666 
         $(".file").css({"top": "initial"}); 
+        $(".folder_cont").css({"top": "initial"}); 
         history.pushState({page: 1}, "", e.target.getAttribute("url")); 
         updateRoot(separateUrl(getToBusiness(e.target.getAttribute("url")))); 
         $("#root")[0].lastChild.outerHTML= '<span><span>' + $("#root")[0].lastChild.textContent + '</span></span>'; 
 
-        $(".file").css({"position": "initial"})
+        $(".file").css({"position": "initial"}); 
+        $(".folder_cont").css({"position": "initial"})
+
+
     $(this).css({"display": "block"}); 
    
  

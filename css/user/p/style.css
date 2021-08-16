@@ -373,6 +373,8 @@ right: 0;
     background-color: #def; 
     width: 100%; 
     box-sizing: border-box; 
+    width: 100%; 
+    box-sizing: border-box; 
 } 
   
 #file_tree .file { 
@@ -431,4 +433,8 @@ right: 0;
     border-bottom: 0.1px solid #ccc; 
 } 
   
-  
+.folder_cont 
+{ 
+    width: 100%; 
+    box-sizing: border-box; 
+} 
