@@ -199,7 +199,7 @@ $(".folder").click(function(i){
                                   
     updateRoot(separateUrl(uRL)); 
 
-    $(".folder_cont .folder.inScope").css({"opacity": "1"}); 
+    $(".folder_cont .folder.inScope").css({"opacity": "1", "visibility": "visible"}); 
     $(".folder_cont.inScope .folder:first-child").css({"opacity": "1"}); 
 
     aar= getToBusiness(window.location.pathname); 
@@ -675,7 +675,7 @@ updateRoot= function(a7){
     $(this).css({"display": "block"}); 
    
     $("#file_expl #information_cont").hasClass("visible")? $("#file_expl #information_cont").toggleClass("visible"): 666 
-    $(".folder_cont .folder.inScope").css({"opacity": "1"}); 
+    $(".folder_cont .folder.inScope").css({"opacity": "1", "visibility": "visible"}); 
     $(".folder_cont .folder.inScope").parent().css({"opacity": "1"}); 
     $(".folder_cont.inScope > .folder:first-child").css({"opacity": "1"}); 
     $('.folder_cont').filter(function () { 
