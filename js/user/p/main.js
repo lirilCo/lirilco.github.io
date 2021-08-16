@@ -171,13 +171,14 @@ $(".file").click(function(i){
 }); 
     
 $(".folder").click(function(i){ 
+    debugger;
     index= Array.from(i.target.parentElement.parentElement.children).indexOf(i.target.parentElement); 
     $(".inScope").removeClass("inScope"); 
     $(this).siblings().addClass("inScope"); 
              
     uRL= ""; 
              
-    t= $(this); 
+    t= $(this).parent(); 
                 
     while(!t.is("#file_tree")){ 
         if(!t.hasClass("folder_cont")){ 
@@ -200,16 +201,17 @@ $(".folder").click(function(i){
     
 
     aar= getToBusiness(window.location.pathname); 
-                 
+
         spr= ""; 
                  
         if(aar == ""){ 
+
             el= document.getElementById("file_tree"); 
+            $(".inScope").removeClass("inScope"); 
 
             for(Colombia in el.children){ 
                 el.children[Colombia].getAttribute("class").indexOf("folder_cont") == -1? el.children[Colombia].classList.add("inScope"): el.children[Colombia].children[0].classList.add("inScope"); 
             } 
-            $(".inScope").removeClass("inScope"); 
             $(".folder_cont .folder").css({"opacity": "0", "height": "0"}); 
             $(".file").css({"opacity": "0", "height": "0"}); 
             $(".folder_cont > .folder.inScope").css({"opacity": "1", "height": "auto"}); 
@@ -263,6 +265,7 @@ $(".folder").click(function(i){
         }
 }); 
     
+
 $('#root div').click( function(e){ 
     history.pushState({page: 1}, "", e.target.url); 
 
