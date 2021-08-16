@@ -139,6 +139,8 @@ $(".file").click(function(i){
     index= Array.from(i.target.parentElement.children).indexOf(i.target); 
     !$(this).parent().hasClass("folder_cont")? $(this).css({"position": "absolute", "top": index * 26.4}): $(this).css({"position": "absolute", "top": index * 26.4 - 26.4});
     $(".folder_cont .folder.inScope").css({"opacity": "0"}); 
+    $(".folder_cont .folder.inScope").css({"visibility": "hidden"}); 
+
     $(this).css({"opacity": "1"}); 
     $(this).css({"display": "block"}); 
     setTimeout(function(){i.target.style.top= 0; 
