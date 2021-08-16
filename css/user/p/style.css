@@ -359,7 +359,6 @@ right: 0;
     border-bottom: none; 
     overflow: hidden; 
     text-overflow: ellipsis; 
-    visibility: hidden; 
     opacity: 0; 
     height: 0; 
     transition: top 100ms ease-in-out, visibility 0ms ease-in-out, opacity 100ms ease-in-out; 
@@ -411,7 +410,6 @@ right: 0;
 #file_tree li.inScope 
 { 
     height: auto; 
-    visibility: visible; 
     opacity: 1; 
     padding: 1.7px 10px; 
     border-bottom: 0.1px solid #ccc; 
@@ -420,7 +418,6 @@ right: 0;
 #file_tree .folder_cont.inScope>.folder:first-child
 { 
     height: auto; 
-    visibility: visible; 
     opacity: 1; 
     padding: 1.7px 10px; 
     border-bottom: 0.1px solid #ccc; 
@@ -429,7 +426,6 @@ right: 0;
 #file_tree .folder_cont > .folder.inScope
 { 
     height: auto; 
-    visibility: visible; 
     opacity: 1; 
     padding: 1.7px 10px; 
     border-bottom: 0.1px solid #ccc; 
