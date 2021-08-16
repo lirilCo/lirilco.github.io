@@ -169,7 +169,7 @@ $(".file").click(function(i){
                                   
     updateRoot(separateUrl(uRL)); 
 }); 
-    
+
 for(let folder of document.getElementsByClassName("folder")) { 
   folder.addEventListener("contextmenu", function(e){ 
     lr= $(this).parent()[0]; 
@@ -215,7 +215,6 @@ $(".folder").on('contextmenu', function (e) {
 }, false);
     
 $(".folder").click(function(i){ 
-    debugger;
     index= Array.from(i.target.parentElement.parentElement.children).indexOf(i.target.parentElement); 
     $(".inScope").removeClass("inScope"); 
     $(this).siblings().addClass("inScope"); 
