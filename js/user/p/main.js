@@ -170,6 +170,50 @@ $(".file").click(function(i){
     updateRoot(separateUrl(uRL)); 
 }); 
     
+for(let folder of document.getElementsByClassName("folder")) { 
+  folder.addEventListener("contextmenu", function(e){ 
+    lr= $(this).parent()[0]; 
+
+    index= Array.from(lr.parentElement.children).indexOf(lr); 
+    !$(lr).parent().hasClass("folder_cont")? $(lr).css({"position": "absolute", "top": index * 26.4}): $(lr).css({"position": "absolute", "top": index * 26.4 - 26.4});
+    $(".folder_cont .folder").css({"opacity": "0", "height": "0"}); 
+    $(".file").css({"opacity": "0", "height": "0"}); 
+
+
+    $(lr).css({"opacity": "1"}); 
+    $(lr).css({"height": "auto"}); 
+    setTimeout(function(){lr.style.top= 0; 
+    }, 1); 
+    setTimeout(function(){!$("#file_expl #information_cont").hasClass("visible")? $("#file_expl #information_cont").toggleClass("visible"): 666 
+    }, 101); 
+
+    uRL= ""; 
+                     
+    t= $(this).parent(); 
+              
+    while(!t.is("#file_tree")){ 
+        if(!t.hasClass("folder_cont")){ 
+            uRL= t[0].innerText + uRL; 
+        }else{ 
+            uRL= t[0].children[0].textContent + "/" + uRL; 
+        } 
+      
+        t= t.parent(); 
+    } 
+      
+    history.pushState({page: 1}, "", "/user/p/ZJhfn8drprZfy/" + uRL); 
+                                                              
+    (!!uRL.length && uRL.length > 0)? $("#root")[0].children[$("#root")[0].children.length - 1].outerHTML= '<div><a url=\"/user/p/ZJhfn8drprZfy\">' + $("#root")[0].children[$("#root")[0].children.length - 1].innerText + '</a></div>': 1; 
+                                  
+    updateRoot(separateUrl(uRL)); 
+    e.preventDefault(); 
+    }) 
+} 
+
+$(".folder").on('contextmenu', function (e) { 
+    
+}, false);
+    
 $(".folder").click(function(i){ 
     debugger;
     index= Array.from(i.target.parentElement.parentElement.children).indexOf(i.target.parentElement); 
