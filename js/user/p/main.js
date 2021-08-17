@@ -201,7 +201,11 @@ for(let folder of document.getElementsByClassName("folder")) {
         t= t.parent(); 
     } 
       
+    uRL= uRL.slice(0, uRL.length - 1); 
+                                       
     history.pushState({page: 1}, "", "/user/p/ZJhfn8drprZfy/" + uRL); 
+
+    window.location.hash= "infor"; 
                                                               
     (!!uRL.length && uRL.length > 0)? $("#root")[0].children[$("#root")[0].children.length - 1].outerHTML= '<div><a url=\"/user/p/ZJhfn8drprZfy\">' + $("#root")[0].children[$("#root")[0].children.length - 1].innerText + '</a></div>': 1; 
                                   
@@ -212,6 +216,9 @@ for(let folder of document.getElementsByClassName("folder")) {
 
     
 $(".folder").click(function(i){ 
+    $("#file_expl #information_cont").hasClass("visible")? $("#file_expl #information_cont").toggleClass("visible"): 666 
+    $(".file").css({"top": "initial"}); 
+    $(".folder_cont").css({"top": "initial"}); 
     index= Array.from(i.target.parentElement.parentElement.children).indexOf(i.target.parentElement); 
     $(".inScope").removeClass("inScope"); 
     $(this).siblings().addClass("inScope"); 
@@ -700,7 +707,15 @@ updateRoot= function(a7){
     (!!uRL.length && uRL.length > 0)? $("#root")[0].children[$("#root")[0].children.length - 1].outerHTML= '<div><a url=\"/user/p/ZJhfn8drprZfy\">' + $("#root")[0].children[$("#root")[0].children.length - 1].innerText + '</a></div>': 1; 
 
     for(eForensics in a7){ 
-        if(parseInt(eForensics) != a7.length - 1){ 
+        if(window.location.hash== "#infor" && parseInt(eForensics) == a7.length - 1){ 
+            genurl= "/user/p/ZJhfn8drprZfy"; 
+                              
+            for(idr= 0; idr <= parseInt(eForensics); idr++){ 
+                genurl+= "/" + a7[idr]; 
+            } 
+      
+            $("#root")[0].innerHTML= $("#root")[0].innerHTML + "<div class= 'noArrow'><a url=" + "'" + genurl +"'"+ ">" + a7[eForensics] + "</a></div>" + "<span><span>" + "#infor" + "</span></span>"
+        }else if(parseInt(eForensics) != a7.length - 1){ 
             genurl= "/user/p/ZJhfn8drprZfy"; 
                               
             for(idr= 0; idr <= parseInt(eForensics); idr++){ 

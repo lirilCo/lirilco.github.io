@@ -442,11 +442,22 @@ th {
   padding-right: 4.15px; 
 
 } 
-#root div:after
-{
-content: " > ";
-color: #ccc;
-}
+#root div:after 
+{ 
+  content: " > "; 
+  color: #ccc; 
+} 
+  
+#root div.noArrow:after 
+{ 
+  content: ""; 
+} 
+  
+#root div.noArrow 
+{ 
+  padding-right: 0; 
+} 
+  
 #root div a
 {
 color: #2ecc71; 
