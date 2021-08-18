@@ -172,7 +172,9 @@ $(".file").click(function(i){
 
 for(let folder of document.getElementsByClassName("folder")) { 
   folder.addEventListener("contextmenu", function(e){ 
-    $("#preview .file_tree").toggleClass("visible"); 
+    e.preventDefault(); 
+                        
+    $("#preview .file_tree").addClass("visible"); 
 
     lr= $(this).parent()[0]; 
 
@@ -207,14 +209,23 @@ for(let folder of document.getElementsByClassName("folder")) {
                                        
     history.pushState({page: 1}, "", "/user/p/ZJhfn8drprZfy/" + uRL); 
 
-    window.location.hash= "infor"; 
                                                               
     (!!uRL.length && uRL.length > 0)? $("#root")[0].children[$("#root")[0].children.length - 1].outerHTML= '<div><a url=\"/user/p/ZJhfn8drprZfy\">' + $("#root")[0].children[$("#root")[0].children.length - 1].innerText + '</a></div>': 1; 
-                                  
+       window.location.hash= "infor"; 
+                              
     updateRoot(separateUrl(uRL)); 
-    
 
-    LEB= $("#preview .file_tree"); 
+     aar= getToBusiness(window.location.pathname); 
+                 
+        spr= ""; 
+                 
+        if(aar == ""){ 
+             el= document.getElementsByClassName("file_tree")[0]; 
+
+            for(Colombia in el.children){ 
+                $(el.children[Colombia]).hasClass("folder_cont")? $($(el.children[Colombia]).children()[0]).addClass("inScope"): $(el.children[Colombia]).addClass("inScope"); 
+            } 
+            LEB= $("#preview .file_tree"); 
 
     for(eForensics in sprtdUrl){ 
         for(fi in $(LEB).children()){ 
@@ -224,11 +235,75 @@ for(let folder of document.getElementsByClassName("folder")) {
         } 
     } 
 
-      LEB.children[0].click(); 
+    LEB.children[0].click(); 
+
+        }else{ 
+                                   
+            setTimeout(function(){ 
+                spr= separateUrl(aar); 
+
+                el= document.getElementsByClassName("file_tree")[0]; 
+                                  
+                for(Ty99 in spr){ 
+                    for(eForensics in el.children){ 
+                        if(($(el.children[eForensics]).hasClass("folder_cont")) && ((el != document.getElementsByClassName("file_tree")[0] && parseInt(eForensics) != 0) || el == document.getElementsByClassName("file_tree")[0])){ 
+                            if(el.children[eForensics].children[0].textContent == spr[Ty99]){ 
+                                el= el.children[eForensics]; 
+                            } 
+                        } 
+                    } 
+                 } 
+                
+                for(Colombia in getSiblings(el.children[0])){ 
+                    getSiblings(el.children[0])[Colombia].getAttribute("class").indexOf("folder_cont") == -1? getSiblings(el.children[0])[Colombia].classList.add("inScope"): getSiblings(el.children[0])[Colombia].children[0].classList.add("inScope"); 
+                } 
+LEB= $("#preview .file_tree"); 
+
+    for(eForensics in sprtdUrl){ 
+        for(fi in $(LEB).children()){ 
+            if($($(LEB).children()[fi]).hasClass("folder_cont") && !$($(LEB).children()[fi]).hasClass("folder")){ 
+                $($(LEB).children()[fi]).children()[0].innerText == sprtdUrl[eForensics]? LEB= $($(LEB).children()[fi])[0]: 1; 
+            }
+        } 
+    } 
+
+    LEB.children[0].click(); 
+            }, 10); 
+
+            spr= separateUrl(aar); 
+
+            el= document.getElementsByClassName("file_tree")[0]; 
+                              
+            for(Ty99 in spr){ 
+                for(eForensics in el.children){ 
+                    if(($(el.children[eForensics]).hasClass("folder_cont")) && ((el != document.getElementsByClassName("file_tree")[0] && parseInt(eForensics) != 0) || el == document.getElementsByClassName("file_tree")[0])){ 
+                        if(el.children[eForensics].children[0].textContent == spr[Ty99]){ 
+                            el= el.children[eForensics]; 
+                        } 
+                    } 
+                } 
+             } 
+            
+            for(Colombia in getSiblings(el.children[0])){ 
+                getSiblings(el.children[0])[Colombia].getAttribute("class").indexOf("folder_cont") == -1? getSiblings(el.children[0])[Colombia].classList.add("inScope"): getSiblings(el.children[0])[Colombia].children[0].classList.add("inScope"); 
+            } LEB= $("#preview .file_tree"); 
+
+    for(eForensics in sprtdUrl){ 
+        for(fi in $(LEB).children()){ 
+            if($($(LEB).children()[fi]).hasClass("folder_cont") && !$($(LEB).children()[fi]).hasClass("folder")){ 
+                $($(LEB).children()[fi]).children()[0].innerText == sprtdUrl[eForensics]? LEB= $($(LEB).children()[fi])[0]: 1; 
+            }
+        } 
+    } 
+
+    LEB.children[0].click(); 
+
+        }
+    
+    //alert(sprtdUrl); 
 
     
 
-      e.preventDefault(); 
     }) 
 
 
@@ -435,27 +510,7 @@ $("#preview .folder").click(function(i){
     $("#preview .inScope").removeClass("inScope"); 
     $(this).siblings().addClass("inScope"); 
              
-    uRL= ""; 
-             
-    t= $(this).parent(); 
-                
-    while(!t.is(".file_tree")){ 
-        if(!t.hasClass("folder_cont")){ 
-            uRL= t[0].innerText + uRL; 
-        }else{ 
-            uRL= t[0].children[0].textContent + "/" + uRL; 
-        } 
-          
-        t= t.parent();  
-    } 
-      
-    uRL= uRL.slice(0, uRL.length - 1); 
-                                  
-    history.pushState({page: 1}, "", "/user/p/ZJhfn8drprZfy/" + uRL); 
-                                                                      
-    (!!uRL.length && uRL.length > 0)? $("#root")[0].children[$("#root")[0].children.length - 1].outerHTML= '<div><a href=\"/user/p/ZJhfn8drprZfy\">' + $("#root")[0].children[$("#root")[0].children.length - 1].innerText + '</a></div>': 1; 
-                                  
-    updateRoot(separateUrl(uRL)); 
+    
 
     
 
