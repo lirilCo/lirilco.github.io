@@ -135,8 +135,8 @@ $('#profileSettings').click(function(){
     i.stopPropagation()
    
 }); 
-$(".file").click(function(i){ 
-    index= Array.from(i.target.parentElement.children).indexOf(i.target); 
+$("#files .file").click(function(i, tr){ 
+    !tr? index= Array.from(i.target.parentElement.children).indexOf(i.target): index= 0; 
     !$(this).parent().hasClass("folder_cont")? $(this).css({"position": "absolute", "top": index * 26.4}): $(this).css({"position": "absolute", "top": index * 26.4 - 26.4});
     $(".folder_cont .folder").css({"opacity": "0", "height": "0"}); 
     $(".file").css({"opacity": "0", "height": "0"}); 
@@ -168,6 +168,130 @@ $(".file").click(function(i){
     (!!uRL.length && uRL.length > 0)? $("#root")[0].children[$("#root")[0].children.length - 1].outerHTML= '<div><a url=\"/user/p/ZJhfn8drprZfy\">' + $("#root")[0].children[$("#root")[0].children.length - 1].innerText + '</a></div>': 1; 
                                   
     updateRoot(separateUrl(uRL)); 
+}); 
+
+$("#preview .file").click(function(i){ 
+     $("#file_expl #information_cont").hasClass("visible")? $("#file_expl #information_cont").toggleClass("visible"): 666 
+    $(".file").css({"top": "initial"}); 
+    $(".folder_cont").css({"top": "initial"}); 
+
+    uRL= ""; 
+                     
+    t= $(this); 
+              
+    while(!t.is(".file_tree")){ 
+        if(!t.hasClass("folder_cont")){ 
+            uRL= t[0].innerText + uRL; 
+        }else{ 
+            uRL= t[0].children[0].textContent + "/" + uRL; 
+        } 
+      
+        t= t.parent(); 
+    } 
+      
+    //uRL= uRL.slice(0, uRL.length - 1); 
+                                       
+    history.pushState({page: 1}, "", "/user/p/ZJhfn8drprZfy/" + uRL); 
+
+                                                              
+    (!!uRL.length && uRL.length > 0)? $("#root")[0].children[$("#root")[0].children.length - 1].outerHTML= '<div><a url=\"/user/p/ZJhfn8drprZfy\">' + $("#root")[0].children[$("#root")[0].children.length - 1].innerText + '</a></div>': 1; 
+    /*window.location.hash= "infor"; */
+                              
+    updateRoot(separateUrl(uRL)); 
+
+     aar= getToBusiness(window.location.pathname); 
+                 
+        spr= ""; 
+                 
+        if(aar == ""){ 
+             el= document.getElementsByClassName("file_tree")[0]; 
+
+            for(Colombia in el.children){ 
+                $(el.children[Colombia]).hasClass("folder_cont")? $($(el.children[Colombia]).children()[0]).addClass("inScope"): $(el.children[Colombia]).addClass("inScope"); 
+            } 
+            LEB= $("#files .file_tree"); 
+
+                                    
+    for(eForensics in sprtdUrl){ 
+        for(fi in $(LEB).children()){ 
+            if($($(LEB).children()[fi]).hasClass("folder_cont") && !$($(LEB).children()[fi]).hasClass("folder")){ 
+                $($(LEB).children()[fi]).children()[0].innerText == sprtdUrl[eForensics]? LEB= $($(LEB).children()[fi])[0]: 1; 
+            }else if(/*!*/$($(LEB).children()[fi]).hasClass("file")){ 
+                $($(LEB).children()[fi]).text() == sprtdUrl[eForensics]? LEB= $($(LEB).children()[fi])[0]: 1; 
+            }
+        } 
+    } 
+
+    $(LEB).trigger("click", true); ; 
+
+        }else{ 
+                                   
+            setTimeout(function(){ 
+                spr= separateUrl(aar); 
+
+                el= document.getElementsByClassName("file_tree")[0]; 
+                                  
+                for(Ty99 in spr){ 
+                    for(eForensics in el.children){ 
+                        if(($(el.children[eForensics]).hasClass("folder_cont")) && ((el != document.getElementsByClassName("file_tree")[0] && parseInt(eForensics) != 0) || el == document.getElementsByClassName("file_tree")[0])){ 
+                            if(el.children[eForensics].children[0].textContent == spr[Ty99]){ 
+                                el= el.children[eForensics]; 
+                            } 
+                        } 
+                    } 
+                 } 
+                
+                for(Colombia in getSiblings(el.children[0])){ 
+                    getSiblings(el.children[0])[Colombia].getAttribute("class").indexOf("folder_cont") == -1? getSiblings(el.children[0])[Colombia].classList.add("inScope"): getSiblings(el.children[0])[Colombia].children[0].classList.add("inScope"); 
+                } 
+LEB= $("#files .file_tree"); 
+
+                                    
+for(eForensics in sprtdUrl){ 
+    for(fi in $(LEB).children()){ 
+        if($($(LEB).children()[fi]).hasClass("folder_cont") && !$($(LEB).children()[fi]).hasClass("folder")){ 
+            $($(LEB).children()[fi]).children()[0].innerText == sprtdUrl[eForensics]? LEB= $($(LEB).children()[fi])[0]: 1; 
+        }else if(/*!*/$($(LEB).children()[fi]).hasClass("file")){ 
+            $($(LEB).children()[fi]).text() == sprtdUrl[eForensics]? LEB= $($(LEB).children()[fi])[0]: 1; 
+        }
+    } 
+} 
+
+    $(LEB).trigger("click", true); ; 
+            }, 10); 
+
+            spr= separateUrl(aar); 
+
+            el= document.getElementsByClassName("file_tree")[0]; 
+                              
+            for(Ty99 in spr){ 
+                for(eForensics in el.children){ 
+                    if(($(el.children[eForensics]).hasClass("folder_cont")) && ((el != document.getElementsByClassName("file_tree")[0] && parseInt(eForensics) != 0) || el == document.getElementsByClassName("file_tree")[0])){ 
+                        if(el.children[eForensics].children[0].textContent == spr[Ty99]){ 
+                            el= el.children[eForensics]; 
+                        } 
+                    } 
+                } 
+             } 
+            
+            for(Colombia in getSiblings(el.children[0])){ 
+                getSiblings(el.children[0])[Colombia].getAttribute("class").indexOf("folder_cont") == -1? getSiblings(el.children[0])[Colombia].classList.add("inScope"): getSiblings(el.children[0])[Colombia].children[0].classList.add("inScope"); 
+            } LEB= $("#files .file_tree"); 
+
+                                    
+for(eForensics in sprtdUrl){ 
+    for(fi in $(LEB).children()){ 
+        if($($(LEB).children()[fi]).hasClass("folder_cont") && !$($(LEB).children()[fi]).hasClass("folder")){ 
+            $($(LEB).children()[fi]).children()[0].innerText == sprtdUrl[eForensics]? LEB= $($(LEB).children()[fi])[0]: 1; 
+        }else if(/*!*/$($(LEB).children()[fi]).hasClass("file")){ 
+            $($(LEB).children()[fi]).text() == sprtdUrl[eForensics]? LEB= $($(LEB).children()[fi])[0]: 1; 
+        }
+    } 
+} 
+
+    $(LEB).trigger("click", true); ; 
+
+        }
 }); 
 
 for(let folder of document.getElementsByClassName("folder")) { 
@@ -235,7 +359,7 @@ for(let folder of document.getElementsByClassName("folder")) {
         } 
     } 
 
-    LEB.children[0].click(); 
+    $(LEB.children[0]).trigger("click", true); 
 
         }else{ 
                                    
@@ -267,7 +391,7 @@ LEB= $("#preview .file_tree");
         } 
     } 
 
-    LEB.children[0].click(); 
+    $(LEB.children[0]).trigger("click", true); 
             }, 10); 
 
             spr= separateUrl(aar); 
@@ -296,7 +420,7 @@ LEB= $("#preview .file_tree");
         } 
     } 
 
-    LEB.children[0].click(); 
+    $(LEB.children[0]).trigger("click", true); 
 
         }
     
@@ -502,19 +626,20 @@ $("#files .folder").click(function(i){
         }
 }); 
     
-$("#preview .folder").click(function(i){ 
-    $("#preview #file_expl #information_cont").hasClass("visible")? $("#file_expl #information_cont").toggleClass("visible"): 666 
-    $("#preview .file").css({"top": "initial"}); 
-    $("#preview .folder_cont").css({"top": "initial"}); 
-    index= Array.from(i.target.parentElement.parentElement.children).indexOf(i.target.parentElement); 
-    $("#preview .inScope").removeClass("inScope"); 
-    $(this).siblings().addClass("inScope"); 
+$("#preview .folder").click(function(i, triggered){ 
+    if(triggered){ 
+        $("#preview #file_expl #information_cont").hasClass("visible")? $("#file_expl #information_cont").toggleClass("visible"): 666 
+        $("#preview .file").css({"top": "initial"}); 
+        $("#preview .folder_cont").css({"top": "initial"}); 
+        index= Array.from(i.target.parentElement.parentElement.children).indexOf(i.target.parentElement); 
+        $("#preview .inScope").removeClass("inScope"); 
+        $(this).siblings().addClass("inScope"); 
              
     
 
     
 
-    aar= getToBusiness(window.location.pathname); 
+        aar= getToBusiness(window.location.pathname); 
 
         spr= ""; 
                  
@@ -576,7 +701,22 @@ $("#preview .folder").click(function(i){
             $("#preview .file").css({"opacity": "0", "height": "0"}); 
             $("#preview .folder_cont > .folder.inScope").css({"opacity": "1", "height": "auto"}); 
             $("#preview .file.inScope").css({"opacity": "1", "height": "auto"}); 
-        }
+        } 
+
+    }else{ 
+        LEB= $("#files .file_tree"); 
+
+        sprtdUrl[sprtdUrl.length]= $(this).text(); 
+        for(eForensics in sprtdUrl){ 
+            for(fi in $(LEB).children()){ 
+                if($($(LEB).children()[fi]).hasClass("folder_cont") && !$($(LEB).children()[fi]).hasClass("folder")){ 
+                    $($(LEB).children()[fi]).children()[0].innerText == sprtdUrl[eForensics]? LEB= $($(LEB).children()[fi])[0]: 1; 
+                } 
+            } 
+        } 
+          
+        LEB.children[0].click(); 
+    } 
 }); 
     
 $('#root div').click( function(e){ 
