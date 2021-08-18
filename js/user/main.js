@@ -483,7 +483,7 @@ $("#theater .comments").height($("#theater").height() - 40);
         $("#chats .chats").width($(window).width() - $("#sidebar").outerWidth() -10);
         $("#biography").width($(window).width() - $("#sidebar").outerWidth());
         $("#sidebar #container #resizeTop").height($("#sidebar").height() - $("#sidebar #container #resizeBottom").height() - 36);
-
+	$("#options ul").width($("#content").width() - 243.5); 
  }
 
  function newChat(a, b){
