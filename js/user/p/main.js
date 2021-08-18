@@ -136,7 +136,7 @@ $('#profileSettings').click(function(){
    
 }); 
 $("#files .file").click(function(i, tr){ 
-    !tr? index= Array.from(i.target.parentElement.children).indexOf(i.target): index= 0; 
+    !tr? index= Array.from(i.target.parentElement.children).indexOf(i.target): index= 1; 
     !$(this).parent().hasClass("folder_cont")? $(this).css({"position": "absolute", "top": index * 26.4}): $(this).css({"position": "absolute", "top": index * 26.4 - 26.4});
     $(".folder_cont .folder").css({"opacity": "0", "height": "0"}); 
     $(".file").css({"opacity": "0", "height": "0"}); 
@@ -171,9 +171,7 @@ $("#files .file").click(function(i, tr){
 }); 
 
 $("#preview .file").click(function(i){ 
-     $("#file_expl #information_cont").hasClass("visible")? $("#file_expl #information_cont").toggleClass("visible"): 666 
-    $(".file").css({"top": "initial"}); 
-    $(".folder_cont").css({"top": "initial"}); 
+
 
     uRL= ""; 
                      
