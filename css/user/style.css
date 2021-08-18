@@ -528,15 +528,17 @@ padding: 10px;
     z-index: 0;
     width: 100%;
 }
-#biography #content #options ul
-{
-    background-color: #fff;
-    width: 100%;
-    text-align: right;
-    padding: 12px 0;
-     background-color: #fff;
 
-}
+#biography #content #options ul 
+{ 
+    background-color: #fff; 
+    width: 100%; 
+    text-align: right; 
+    padding: 12px 0; 
+    background-color: #fff; 
+    float: right; 
+} 
+  
 #biography #content #options ul li:first-child
 {
     box-shadow: none;
