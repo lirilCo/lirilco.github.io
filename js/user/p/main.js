@@ -1153,7 +1153,7 @@ updateRoot= function(a7){
     } 
 
     $('#root div').click( function(e){ 
-       
+       if(!!e.target.getAttribute("url")){ 
         $("#file_expl #information_cont").hasClass("visible")? $("#file_expl #information_cont").toggleClass("visible"): 666 
         $(".file").css({"top": "initial"}); 
         $(".folder_cont").css({"top": "initial"}); 
@@ -1237,7 +1237,7 @@ updateRoot= function(a7){
             $(".file.inScope").css({"opacity": "1", "height": "auto"}); 
 
         }
-        
+       }
     }); 
 
     
