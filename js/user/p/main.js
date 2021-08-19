@@ -178,6 +178,28 @@ $("#files .file").click(function(i, tr){
     (!!uRL.length && uRL.length > 0)? $("#root")[0].children[$("#root")[0].children.length - 1].outerHTML= '<div><a url=\"/user/p/ZJhfn8drprZfy\">' + $("#root")[0].children[$("#root")[0].children.length - 1].innerText + '</a></div>': 1; 
                                   
     updateRoot(separateUrl(uRL)); 
+
+    FileToRequest= window.location.pathname
+    slashCt= 0; 
+    strtgIx= 0; 
+    
+    for(eForensics in FileToRequest){ 
+        FileToRequest[eForensics] == "/"? slashCt++: 1; 
+    
+        if(slashCt < 2){ 
+            strtgIx= parseInt(eForensics); 
+        }   
+    } 
+    FileToRequest= FileToRequest.slice(0, strtgIx + 1) + "/raw/" + FileToRequest.slice(strtgIx + 2, FileToRequest.length); 
+
+    function reqListener () {
+      console.log(this.responseText);
+    }
+    
+    var oReq = new XMLHttpRequest();
+    oReq.addEventListener("load", reqListener);
+    oReq.open("GET", FileToRequest);
+    oReq.send();
 }); 
 
 $("#preview .file").click(function(i){ 
@@ -767,6 +789,13 @@ $("#Archivo, #Live").click(function(){
         $("#Archivo").toggleClass("selected"); 
         $("#Live").toggleClass("selected"); 
     } 
+    if($("#Archivo").hasClass("selected")){ 
+        $("#preview #file_preview #filePr").css({"visibility": "hidden", "opacity": "0"}); 
+        $("#preview #file_preview #file").css({"visibility": "visible", "opacity": "1"}); 
+    }else{ 
+        $("#preview #file_preview #file").css({"visibility": "hidden", "opacity": "0"}); 
+        $("#preview #file_preview #filePr").css({"visibility": "visible", "opacity": "1"}); 
+    }
 }); 
 });
 $(document).keypress(function (e) {
