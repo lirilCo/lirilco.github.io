@@ -292,7 +292,7 @@ for(eForensics in sprtdUrl){
         }
 }); 
 
-for(let folder of document.getElementsByClassName("folder")) { 
+for(let folder of document.querySelectorAll("#files .folder")) { 
   folder.addEventListener("contextmenu", function(e){ 
     e.preventDefault(); 
                         
@@ -431,7 +431,27 @@ LEB= $("#preview .file_tree");
 
 } 
 
+for(let folder of document.querySelectorAll("#preview .folder")) { 
+  folder.addEventListener("contextmenu", function(e){ 
+        e.preventDefault(); 
     
+        LEB= $("#files .file_tree"); 
+    
+        sprtdUrl[sprtdUrl.length]= $(this).text(); 
+        for(eForensics in sprtdUrl){ 
+            for(fi in $(LEB).children()){ 
+                if($($(LEB).children()[fi]).hasClass("folder_cont") && !$($(LEB).children()[fi]).hasClass("folder")){ 
+                    $($(LEB).children()[fi]).children()[0].innerText == sprtdUrl[eForensics]? LEB= $($(LEB).children()[fi])[0]: 1; 
+                } 
+            } 
+        } 
+          
+        rightClick(LEB.children[0]); 
+    }) 
+
+
+} 
+
 $("#files .folder").click(function(i){ 
     $("#file_expl #information_cont").hasClass("visible")? $("#file_expl #information_cont").toggleClass("visible"): 666 
     $(".file").css({"top": "initial"}); 
@@ -1255,4 +1275,16 @@ var getSiblings = function (elem) {
 
     return siblings;
 
-};
+}; 
+
+rightClick= function(axx){ 
+    if (window.CustomEvent) {
+        axx.dispatchEvent(new CustomEvent('contextmenu'));
+    } else if (document.createEvent) {
+        var ev = document.createEvent('HTMLEvents');
+        ev.initEvent('contextmenu', true, false);
+        axx.dispatchEvent(ev);
+    } else { // Internet Explorer
+        axx.fireEvent('oncontextmenu');
+    }
+}
