@@ -193,7 +193,7 @@ $("#files .file").click(function(i, tr){
     FileToRequest= FileToRequest.slice(0, strtgIx + 1) + "/raw/" + FileToRequest.slice(strtgIx + 2, FileToRequest.length); 
 
     function reqListener () {
-      console.log(this.responseText);
+      $("#preview #file_preview #file")[0].innerText= this.responseText; 
     }
     
     var oReq = new XMLHttpRequest();
