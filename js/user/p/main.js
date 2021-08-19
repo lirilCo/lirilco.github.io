@@ -760,7 +760,14 @@ $('#root div').click( function(e){
     history.pushState({page: 1}, "", e.target.url); 
 
     updateRoot(separateUrl(getToBusiness(e.target.url))); 
-});
+}); 
+    
+$("#Archivo, #Live").click(function(){ 
+    if(!$(this).hasClass("selected")){ 
+        $("#Archivo").toggleClass("selected"); 
+        $("#Live").toggleClass("selected"); 
+    } 
+}); 
 });
 $(document).keypress(function (e) {
 if(!$("textarea").is(":focus") && !$("input").is(":focus")){
@@ -1064,7 +1071,8 @@ $("#theater .comments").height($("#theater").height() - 40);
         $("#biography").width($(window).width() - $("#sidebar").outerWidth());
         $("#file_expl #preview").width($(window).width() - $("#file_expl #files").width()); 
         $("#file_expl #information_cont").height($("#file_expl").height() - 26.4);
-
+        $("#preview #file").height($("#preview").height() - $("#preview #options").height()); 
+        $("#preview #filePr").height($("#preview").height() - $("#preview #options").height()); 
  }
 
  function newChat(a, b){

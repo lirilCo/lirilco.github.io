@@ -451,3 +451,43 @@ right: 0;
     box-sizing: border-box; 
     transition: top 100ms ease-in-out, visibility 0ms ease-in-out, opacity 100ms ease-in-out; 
 } 
+#file_expl #preview #file_preview #options
+{ 
+    width: 100%; 
+    height: 14.7px; 
+    background-color: white; 
+} 
+
+#file_expl #preview #file_preview #file, #file_expl #preview #file_preview #filePr
+{ 
+    width: 100%; 
+    position: absolute; 
+    top: 14.7px; 
+    visibility: hidden; 
+    opacity: 0; 
+    transition: visibility 0ms ease-in-out, opacity 100ms ease-in-out; 
+} 
+#file_expl #preview #file_preview #options ul
+{ 
+    list-style: none; 
+    margin: 0; 
+    line-height: 1; 
+    font-size: 11.9px; 
+    text-align: center; 
+    padding: 0; 
+    color: #666 !important; 
+    cursor: default; 
+} 
+#file_expl #preview #file_preview #options ul li
+{ 
+    display: inline-block; 
+} 
+#file_expl #preview #file_preview #options ul li a
+{ 
+    cursor: pointer; 
+} 
+#file_expl #preview #file_preview #options ul li.selected a
+{ 
+    color: #ccc !important; 
+    cursor: default; 
+} 
