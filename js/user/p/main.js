@@ -193,9 +193,19 @@ $("#files .file").click(function(i, tr){
     } 
     FileToRequest= FileToRequest.slice(0, strtgIx + 1) + "/raw/" + FileToRequest.slice(strtgIx + 2, FileToRequest.length); 
 
-    function reqListener () {
-        $("#preview #file_preview #file")[0].innerHTML= "<pre data-src='" +  FileToRequest + "'></pre>"; 
-        Prism.highlightAll(); 
+    switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].indexOf(".") + 1)){ 
+        case "png": 
+        case "jpg": 
+            $("#preview #file_preview #file")[0].innerHTML= "<img src='" +  FileToRequest + "'></img>"; 
+            break; 
+        default: 
+            $("#preview #file_preview #file")[0].innerHTML= "<pre data-src='" +  FileToRequest + "'></pre>"; 
+                                  
+            Prism.highlightAll(); 
+            break; 
+    } 
+    /*function reqListener () {
+        
     }
 
     
@@ -203,7 +213,7 @@ $("#files .file").click(function(i, tr){
     var oReq = new XMLHttpRequest();
     oReq.addEventListener("load", reqListener);
     oReq.open("GET", FileToRequest);
-    oReq.send();
+    oReq.send(); */ 
 }); 
 
 $("#preview .file").click(function(i){ 
@@ -811,17 +821,19 @@ $("#Archivo, #Live").click(function(){
         } 
         FileToRequest= FileToRequest.slice(0, strtgIx + 1) + "/raw/" + FileToRequest.slice(strtgIx + 2, FileToRequest.length); 
     
-        function reqListener () {
-            $("#preview #file_preview #file")[0].innerHTML= "<pre data-src='" +  FileToRequest + "'></pre>"; 
-            Prism.highlightAll(); 
-        }
 
-    
-    
-        var oReq = new XMLHttpRequest();
-        oReq.addEventListener("load", reqListener);
-        oReq.open("GET", FileToRequest);
-        oReq.send();
+
+            switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].indexOf(".") + 1)){ 
+                case "png": 
+                case "jpg": 
+                    $("#preview #file_preview #file")[0].innerHTML= "<img src='" +  FileToRequest + "'></img>"; 
+                    break; 
+                default: 
+                    $("#preview #file_preview #file")[0].innerHTML= "<pre data-src='" +  FileToRequest + "'></pre>"; 
+                                          
+                    Prism.highlightAll(); 
+                    break; 
+            } 
     }else{ 
         $("#preview #file_preview #file").css({"visibility": "hidden", "opacity": "0"}); 
         $("#preview #file_preview #filePr").css({"visibility": "visible", "opacity": "1"}); 
