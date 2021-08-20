@@ -70,6 +70,7 @@ function closeModal() {
     })
 }
 $(document).on("ready",function(e){
+    sprtdUrl= []; 
     $('.chats').click(function(e){ 
         aa= e.target; 
         ii= false; 
@@ -545,103 +546,6 @@ $("#files .folder").click(function(i){
         spr= ""; 
                  
         if(aar == ""){ 
-
-            $(".folder").click(function(i){ 
-    $("#file_expl #information_cont").hasClass("visible")? $("#file_expl #information_cont").toggleClass("visible"): 666 
-    $(".file").css({"top": "initial"}); 
-    $(".folder_cont").css({"top": "initial"}); 
-    index= Array.from(i.target.parentElement.parentElement.children).indexOf(i.target.parentElement); 
-    $(".inScope").removeClass("inScope"); 
-    $(this).siblings().addClass("inScope"); 
-             
-    uRL= ""; 
-             
-    t= $(this).parent(); 
-                
-    while(!t.is(".file_tree")){ 
-        if(!t.hasClass("folder_cont")){ 
-            uRL= t[0].innerText + uRL; 
-        }else{ 
-            uRL= t[0].children[0].textContent + "/" + uRL; 
-        } 
-          
-        t= t.parent();  
-    } 
-      
-    uRL= uRL.slice(0, uRL.length - 1); 
-                                  
-    history.pushState({page: 1}, "", "/user/p/ZJhfn8drprZfy/" + uRL); 
-                                                                      
-    (!!uRL.length && uRL.length > 0)? $("#root")[0].children[$("#root")[0].children.length - 1].outerHTML= '<div><a href=\"/user/p/ZJhfn8drprZfy\">' + $("#root")[0].children[$("#root")[0].children.length - 1].innerText + '</a></div>': 1; 
-                                  
-    updateRoot(separateUrl(uRL)); 
-
-    
-
-    aar= getToBusiness(window.location.pathname); 
-
-        spr= ""; 
-                 
-        if(aar == ""){ 
-
-            el= document.getElementsByClassName("file_tree")[0]; 
-            $(".inScope").removeClass("inScope"); 
-
-            for(Colombia in el.children){ 
-                el.children[Colombia].getAttribute("class").indexOf("folder_cont") == -1? el.children[Colombia].classList.add("inScope"): el.children[Colombia].children[0].classList.add("inScope"); 
-            } 
-            $(".folder_cont .folder").css({"opacity": "0", "height": "0"}); 
-            $(".file").css({"opacity": "0", "height": "0"}); 
-            $(".folder_cont > .folder.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
-            $(".file.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
-        }else{ 
-            $(".inScope").removeClass("inScope"); 
-                                   
-            setTimeout(function(){ 
-                spr= separateUrl(aar); 
-
-                el= document.getElementsByClassName("file_tree")[0]; 
-                                  
-                for(Ty99 in spr){ 
-                    for(eForensics in el.children){ 
-                        if(($(el.children[eForensics]).hasClass("folder_cont")) && ((el != document.getElementsByClassName("file_tree")[0] && parseInt(eForensics) != 0) || el == document.getElementsByClassName("file_tree")[0])){ 
-                            if(el.children[eForensics].children[0].textContent == spr[Ty99]){ 
-                                el= el.children[eForensics]; 
-                            } 
-                        } 
-                    } 
-                 } 
-                
-                for(Colombia in getSiblings(el.children[0])){ 
-                    getSiblings(el.children[0])[Colombia].getAttribute("class").indexOf("folder_cont") == -1? getSiblings(el.children[0])[Colombia].classList.add("inScope"): getSiblings(el.children[0])[Colombia].children[0].classList.add("inScope"); 
-                } $(".folder_cont .folder").css({"opacity": "0", "height": "0"}); 
-            $(".file").css({"opacity": "0", "height": "0"}); 
-            $(".folder_cont > .folder.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
-            $(".file.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
-            }, 10); 
-
-            spr= separateUrl(aar); 
-
-            el= document.getElementsByClassName("file_tree")[0]; 
-                              
-            for(Ty99 in spr){ 
-                for(eForensics in el.children){ 
-                    if(($(el.children[eForensics]).hasClass("folder_cont")) && ((el != document.getElementsByClassName("file_tree")[0] && parseInt(eForensics) != 0) || el == document.getElementsByClassName("file_tree")[0])){ 
-                        if(el.children[eForensics].children[0].textContent == spr[Ty99]){ 
-                            el= el.children[eForensics]; 
-                        } 
-                    } 
-                } 
-             } 
-            
-            for(Colombia in getSiblings(el.children[0])){ 
-                getSiblings(el.children[0])[Colombia].getAttribute("class").indexOf("folder_cont") == -1? getSiblings(el.children[0])[Colombia].classList.add("inScope"): getSiblings(el.children[0])[Colombia].children[0].classList.add("inScope"); 
-            } $(".folder_cont .folder").css({"opacity": "0", "height": "0"}); 
-            $(".file").css({"opacity": "0", "height": "0"}); 
-            $(".folder_cont > .folder.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
-            $(".file.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
-        }
-}); 
             $(".inScope").removeClass("inScope"); 
 
             for(Colombia in el.children){ 
@@ -804,24 +708,25 @@ $("#Archivo, #Live").click(function(){
         $("#Archivo").toggleClass("selected"); 
         $("#Live").toggleClass("selected"); 
     } 
+
+    FileToRequest= window.location.pathname 
+    slashCt= 0; 
+    strtgIx= 0; 
+                
+    for(eForensics in FileToRequest){ 
+        FileToRequest[eForensics] == "/"? slashCt++: 1; 
+
+        if(slashCt < 2){ 
+            strtgIx= parseInt(eForensics); 
+        } 
+    } 
+      
+    FileToRequest= FileToRequest.slice(0, strtgIx + 1) + "/raw/" + FileToRequest.slice(strtgIx + 2, FileToRequest.length); 
+                                            
     if($("#Archivo").hasClass("selected")){ 
         $("#preview #file_preview #filePr").css({"visibility": "hidden", "opacity": "0"}); 
         $("#preview #file_preview #file").css({"visibility": "visible", "opacity": "1"}); 
         $("#preview #file_preview #filePr")[0].innerHTML= ""; 
-        FileToRequest= window.location.pathname
-        slashCt= 0; 
-        strtgIx= 0; 
-        
-        for(eForensics in FileToRequest){ 
-            FileToRequest[eForensics] == "/"? slashCt++: 1; 
-        
-            if(slashCt < 2){ 
-                strtgIx= parseInt(eForensics); 
-            }   
-        } 
-        FileToRequest= FileToRequest.slice(0, strtgIx + 1) + "/raw/" + FileToRequest.slice(strtgIx + 2, FileToRequest.length); 
-    
-
 
             switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].indexOf(".") + 1)){ 
                 case "png": 
@@ -1258,6 +1163,7 @@ updateRoot= function(a7){
 
     $('#root div').click( function(e){ 
        if(!!e.target.getAttribute("url")){ 
+        $("#preview #file_preview #filePr")[0].innerHTML= ""; 
         $("#preview #file_preview #file")[0].innerHTML=""; 
         $("#file_expl #information_cont").hasClass("visible")? $("#file_expl #information_cont").toggleClass("visible"): 666 
         $(".file").css({"top": "initial"}); 
