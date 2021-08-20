@@ -797,10 +797,36 @@ $("#Archivo, #Live").click(function(){
     if($("#Archivo").hasClass("selected")){ 
         $("#preview #file_preview #filePr").css({"visibility": "hidden", "opacity": "0"}); 
         $("#preview #file_preview #file").css({"visibility": "visible", "opacity": "1"}); 
+        $("#preview #file_preview #filePr")[0].innerHTML= ""; 
+        FileToRequest= window.location.pathname
+        slashCt= 0; 
+        strtgIx= 0; 
+        
+        for(eForensics in FileToRequest){ 
+            FileToRequest[eForensics] == "/"? slashCt++: 1; 
+        
+            if(slashCt < 2){ 
+                strtgIx= parseInt(eForensics); 
+            }   
+        } 
+        FileToRequest= FileToRequest.slice(0, strtgIx + 1) + "/raw/" + FileToRequest.slice(strtgIx + 2, FileToRequest.length); 
+    
+        function reqListener () {
+            $("#preview #file_preview #file")[0].innerHTML= "<pre data-src='" +  FileToRequest + "'></pre>"; 
+            Prism.highlightAll(); 
+        }
+
+    
+    
+        var oReq = new XMLHttpRequest();
+        oReq.addEventListener("load", reqListener);
+        oReq.open("GET", FileToRequest);
+        oReq.send();
     }else{ 
         $("#preview #file_preview #file").css({"visibility": "hidden", "opacity": "0"}); 
         $("#preview #file_preview #filePr").css({"visibility": "visible", "opacity": "1"}); 
-        $("#preview #file_preview #filePr")[0].innerHTML= "<iframe src='" +  FileToRequest + "'></iframe>"; 
+        $("#preview #file_preview #file")[0].innerHTML= ""; 
+        $("#preview #file_preview #filePr")[0].innerHTML= "<div><iframe src='" +  FileToRequest + "'></iframe></div>"; 
     }
 }); 
     

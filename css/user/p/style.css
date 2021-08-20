@@ -500,12 +500,19 @@ right: 0;
     overflow-y: auto; 
 } 
   
-#file_expl #preview #file_preview #filePr iframe 
+#file_expl #preview #file_preview #filePr div 
 { 
     width: 100%; 
     height: 100%; 
 } 
+#file_expl #preview #file_preview #filePr div iframe 
+{ 
+    width: 100%; 
+    height: 100%; 
+} 
+
 #file_expl #preview #file_preview #file pre 
 { 
     margin: 0; 
+    border-radius: 0; 
 } 

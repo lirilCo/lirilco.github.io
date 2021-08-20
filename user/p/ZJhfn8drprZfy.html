@@ -333,8 +333,7 @@
     </section>
         <script>
             $( "#files" ).resizable({
-                handles: "e",maxWidth: ($(window).width()) }).bind("resize", function (e, ui) {}
-            )
+                handles: "e",maxWidth: ($(window).width()), resize: function(){$("#file").css({"z-index": "6", "visibility": "visible"})}, stop: function(){$("#file").css({"z-index": "", "visibility": ""})} })
         </script>
                 <script src="../../js/prism.js"></script>
 
