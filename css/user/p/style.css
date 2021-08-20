@@ -346,6 +346,8 @@ right: 0;
 #file_expl #preview .file_tree
 { 
     visibility: hidden; 
+    z-index: 3; 
+    position: relative; 
 } 
   
 #file_expl #preview .file_tree.visible
@@ -493,12 +495,17 @@ right: 0;
 } 
 #file_expl #preview #file_preview #file 
 { 
-    background-color: #727d2f; 
     opacity: 1; 
     visibility: visible; 
+    overflow-y: hidden; 
 } 
 
 #file_expl #preview #file_preview #filePr 
 { 
     background-color: #38df22; 
+} 
+
+#file_expl #preview #file_preview #file pre 
+{ 
+    margin: 0; 
 } 

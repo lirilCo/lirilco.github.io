@@ -136,6 +136,7 @@ $('#profileSettings').click(function(){
    
 }); 
 $("#files .file").click(function(i, tr){ 
+    $("#preview #file_preview #file")[0].innerHTML=""; 
     !tr? index= Array.from(i.target.parentElement.children).indexOf(i.target): index= 1; 
     !$(this).parent().hasClass("folder_cont")? $(this).css({"position": "absolute", "top": index * 26.4}): $(this).css({"position": "absolute", "top": index * 26.4 - 26.4});
     $(".folder_cont .folder").css({"opacity": "0", "height": "0"}); 
@@ -193,8 +194,11 @@ $("#files .file").click(function(i, tr){
     FileToRequest= FileToRequest.slice(0, strtgIx + 1) + "/raw/" + FileToRequest.slice(strtgIx + 2, FileToRequest.length); 
 
     function reqListener () {
-      $("#preview #file_preview #file")[0].innerText= this.responseText; 
+        $("#preview #file_preview #file")[0].innerHTML= "<pre data-src='" +  FileToRequest + "'></pre>"; 
+        Prism.highlightAll(); 
     }
+
+    
     
     var oReq = new XMLHttpRequest();
     oReq.addEventListener("load", reqListener);
@@ -494,6 +498,7 @@ for(let folder of document.querySelectorAll("#preview .folder")) {
 } 
 
 $("#files .folder").click(function(i){ 
+    $("#preview #file_preview #file")[0].innerHTML=""; 
     $("#file_expl #information_cont").hasClass("visible")? $("#file_expl #information_cont").toggleClass("visible"): 666 
     $(".file").css({"top": "initial"}); 
     $(".folder_cont").css({"top": "initial"}); 
@@ -1209,6 +1214,7 @@ updateRoot= function(a7){
     } 
 
     $('#root div').click( function(e){ 
+        $("#preview #file_preview #file")[0].innerHTML=""; 
        if(!!e.target.getAttribute("url")){ 
         $("#file_expl #information_cont").hasClass("visible")? $("#file_expl #information_cont").toggleClass("visible"): 666 
         $(".file").css({"top": "initial"}); 
