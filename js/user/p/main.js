@@ -803,6 +803,10 @@ $("#Archivo, #Live").click(function(){
         $("#preview #file_preview #filePr")[0].innerHTML= "<iframe src='" +  FileToRequest + "'></iframe>"; 
     }
 }); 
+    
+$("#Raw").click(function(){ 
+    window.open(FileToRequest, '_blank').focus(); 
+}); 
 });
 $(document).keypress(function (e) {
 if(!$("textarea").is(":focus") && !$("input").is(":focus")){
