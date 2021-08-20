@@ -800,6 +800,7 @@ $("#Archivo, #Live").click(function(){
     }else{ 
         $("#preview #file_preview #file").css({"visibility": "hidden", "opacity": "0"}); 
         $("#preview #file_preview #filePr").css({"visibility": "visible", "opacity": "1"}); 
+        $("#preview #file_preview #filePr")[0].innerHTML= "<iframe src='" +  FileToRequest + "'></iframe>"; 
     }
 }); 
 });
@@ -1214,8 +1215,8 @@ updateRoot= function(a7){
     } 
 
     $('#root div').click( function(e){ 
-        $("#preview #file_preview #file")[0].innerHTML=""; 
        if(!!e.target.getAttribute("url")){ 
+        $("#preview #file_preview #file")[0].innerHTML=""; 
         $("#file_expl #information_cont").hasClass("visible")? $("#file_expl #information_cont").toggleClass("visible"): 666 
         $(".file").css({"top": "initial"}); 
         $(".folder_cont").css({"top": "initial"}); 
