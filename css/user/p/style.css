@@ -509,6 +509,8 @@ right: 0;
 { 
     width: 100%; 
     height: 100%; 
+    border: none; 
+    position: absolute; 
 } 
 
 #file_expl #preview #file_preview #file pre 
