@@ -194,16 +194,23 @@ $("#files .file").click(function(i, tr){
     } 
     FileToRequest= FileToRequest.slice(0, strtgIx + 1) + "/raw/" + FileToRequest.slice(strtgIx + 2, FileToRequest.length); 
 
-    switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].indexOf(".") + 1)){ 
-        case "png": 
-        case "jpg": 
-            $("#preview #file_preview #file")[0].innerHTML= "<img src='" +  FileToRequest + "'></img>"; 
-            break; 
-        default: 
-            $("#preview #file_preview #file")[0].innerHTML= "<pre data-src='" +  FileToRequest + "'></pre>"; 
-                                  
-            Prism.highlightAll(); 
-            break; 
+    if($("#preview #file_preview #options #Archivo").hasClass("selected")){
+        $("#preview #file_preview #file").css({"visibility": "visible", "opacity": "1"}); 
+        $("#preview #file_preview #filePr")[0].innerHTML= ""; 
+        switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].indexOf(".") + 1)){ 
+            case "png": 
+            case "jpg": 
+                $("#preview #file_preview #file")[0].innerHTML= "<img src='" +  FileToRequest + "'></img>"; 
+                break; 
+            default: 
+                $("#preview #file_preview #file")[0].innerHTML= "<pre data-src='" +  FileToRequest + "'></pre>"; 
+                                      
+                Prism.highlightAll(); 
+                break; 
+        } 
+    }else{ 
+        $("#preview #file_preview #file")[0].innerHTML= ""; 
+        $("#preview #file_preview #filePr")[0].innerHTML= "<div><iframe src='" +  FileToRequest + "'></iframe></div>"; 
     } 
     /*function reqListener () {
         
@@ -1163,6 +1170,7 @@ updateRoot= function(a7){
 
     $('#root div').click( function(e){ 
        if(!!e.target.getAttribute("url")){ 
+        $("#preview #file_preview #file").css({"visibility": "hidden", "opacity": "0"}); 
         $("#preview #file_preview #filePr")[0].innerHTML= ""; 
         $("#preview #file_preview #file")[0].innerHTML=""; 
         $("#file_expl #information_cont").hasClass("visible")? $("#file_expl #information_cont").toggleClass("visible"): 666 
