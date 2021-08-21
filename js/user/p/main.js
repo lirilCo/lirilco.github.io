@@ -1136,9 +1136,12 @@ $("#theater .comments").height($("#theater").height() - 40);
         $("#file_expl #information_cont").height($("#file_expl").height() - 26.4);
         $("#preview #file").height($("#preview").height() - $("#preview #options").height()); 
         $("#preview #filePr").height($("#preview").height() - $("#preview #options").height()); 
-        $(".code-filler").width(function () {
-            return $("#file pre code").width() + $("#file pre").css("padding-left").slice(0, $("#file pre").css("padding-left").length - 2) * 2; 
-        });
+        $("#preview #edit").height($("#preview").height() - $("#preview #options").height()); 
+        if($("#Archivo").hasClass("selected")){
+            $(".code-filler").width(function () {
+                return $("#file pre code").width() + $("#file pre").css("padding-left").slice(0, $("#file pre").css("padding-left").length - 2) * 2; 
+            });
+        }
  }
 
  function newChat(a, b){

@@ -460,7 +460,7 @@ right: 0;
     background-color: white; 
 } 
 
-#file_expl #preview #file_preview #file, #file_expl #preview #file_preview #filePr
+#file_expl #preview #file_preview #file, #file_expl #preview #file_preview #filePr, #file_expl #preview #file_preview #edit
 { 
     width: 100%; 
     position: absolute; 

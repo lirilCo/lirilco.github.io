@@ -250,7 +250,7 @@
                          | 
                         <li id= "Raw"><a>Raw</a></li>
                          | 
-                        <li><a>Editar</a></li>
+                        <li id= "Editar"><a>Editar</a></li>
                     </ul>
                 </aside> 
                 <div class="code-scroll"><div class="code-filler"></div></div>
@@ -258,6 +258,9 @@
                     
                 </aside>
                 <aside id="filePr">
+                    
+                </aside>
+                <aside id="edit">
                     
                 </aside>
             </aside> 
@@ -344,7 +347,7 @@
     </section>
         <script>
             $( "#files" ).resizable({
-                handles: "e",maxWidth: ($(window).width()), resize: function(){$("#file").css({"z-index": "6", "visibility": "visible"})}, stop: function(){$("#file").css({"z-index": ""})} })
+                handles: "e",maxWidth: ($(window).width()), resize: function(){$("#edit")[0].style.zIndex= "6"; $("#edit")[0].style.visibility= "visible"}, stop: function(){$("#edit")[0].style.zIndex= ""; $("#edit")[0].style.visibility= ""} })
         </script>
 </body>
 </html>
