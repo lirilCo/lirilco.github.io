@@ -202,6 +202,10 @@ $("#files .file").click(function(i, tr){
             case "jpg": 
                 $("#preview #file_preview #file")[0].innerHTML= "<img src='" +  FileToRequest + "'></img>"; 
                 break; 
+            case "webm": 
+            case "mp4": 
+                $("#preview #file_preview #file")[0].innerHTML= "<video src='" +  FileToRequest + "' controls= 'true' autoplay= 'true'></video>"; 
+                break; 
             default: 
                 $("#preview #file_preview #file")[0].innerHTML= "<pre data-src='" +  FileToRequest + "'></pre>"; 
 
@@ -773,6 +777,10 @@ $("#Archivo, #Live").click(function(){
                 case "png": 
                 case "jpg": 
                     $("#preview #file_preview #file")[0].innerHTML= "<img src='" +  FileToRequest + "'></img>"; 
+                    break; 
+                case "webm": 
+                case "mp4": 
+                    $("#preview #file_preview #file")[0].innerHTML= "<video src='" +  FileToRequest + "' controls= 'true' autoplay= 'true'></video>"; 
                     break; 
                 default: 
                     $("#preview #file_preview #file")[0].innerHTML= "<pre onchange= 'alert(" +"'Yayy'" + ");' data-src='" +  FileToRequest + "'></pre>"; 
