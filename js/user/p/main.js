@@ -204,7 +204,41 @@ $("#files .file").click(function(i, tr){
                 break; 
             default: 
                 $("#preview #file_preview #file")[0].innerHTML= "<pre data-src='" +  FileToRequest + "'></pre>"; 
-                                      
+
+                const mainNode = document.getElementsByTagName('pre')[0]
+
+                function callback(mutationsList, observer) {
+                    mutationsList.forEach(mutation => {
+                        if (mutation.attributeName === 'data-src-status') {
+                            //$("#preview #file_preview #file pre")[0].getAttribute("data-src-status") == "loaded"? console.log("loaded"): 1; 
+                            $("#preview #file_preview #file pre")[0].getAttribute("data-src-status") == "loaded"? responsive(): 1; 
+                        }
+                    })
+                }
+                
+                const mutationObserver = new MutationObserver(callback)
+                
+                mutationObserver.observe(mainNode, { attributes: true }) 
+                
+                function create(t) {
+                  // create an observer instance
+                  var observer = new MutationObserver(function(mutations) {
+                    mutations.forEach(function(mutation) {
+                      var foo = t.getAttribute("data-src-status")
+                
+                      if (foo == "loaded")
+                        responsive(); 
+                    });
+                  });
+                  // configuration of the observer
+                  var config = {
+                    attributes: true
+                  };
+                
+                  // pass in the target node, as well as the observer options
+                  observer.observe(t, config);
+                }
+
                 Prism.highlightAll(); 
                 break; 
         } 
@@ -741,12 +775,47 @@ $("#Archivo, #Live").click(function(){
                     $("#preview #file_preview #file")[0].innerHTML= "<img src='" +  FileToRequest + "'></img>"; 
                     break; 
                 default: 
-                    $("#preview #file_preview #file")[0].innerHTML= "<pre data-src='" +  FileToRequest + "'></pre>"; 
+                    $("#preview #file_preview #file")[0].innerHTML= "<pre onchange= 'alert(" +"'Yayy'" + ");' data-src='" +  FileToRequest + "'></pre>"; 
+                    const mainNode = document.getElementsByTagName('pre')[0]
+
+                    function callback(mutationsList, observer) {
+                        mutationsList.forEach(mutation => {
+                            if (mutation.attributeName === 'data-src-status') {
+                                //$("#preview #file_preview #file pre")[0].getAttribute("data-src-status") == "loaded"? console.log("loaded"): 1; 
+                                $("#preview #file_preview #file pre")[0].getAttribute("data-src-status") == "loaded"? responsive(): 1; 
+                            }
+                        })
+                    }
+                    
+                    const mutationObserver = new MutationObserver(callback)
+                    
+                    mutationObserver.observe(mainNode, { attributes: true }) 
+                    
+                    function create(t) {
+                      // create an observer instance
+                      var observer = new MutationObserver(function(mutations) {
+                        mutations.forEach(function(mutation) {
+                          var foo = t.getAttribute("data-src-status")
+                    
+                          if (foo == "loaded")
+                            responsive(); 
+                        });
+                      });
+                      // configuration of the observer
+                      var config = {
+                        attributes: true
+                      };
+                    
+                      // pass in the target node, as well as the observer options
+                      observer.observe(t, config);
+                    }
+
                                           
                     Prism.highlightAll(); 
                     break; 
             } 
     }else{ 
+        $(".code-filler").width(0); 
         $("#preview #file_preview #file").css({"visibility": "hidden", "opacity": "0"}); 
         $("#preview #file_preview #filePr").css({"visibility": "visible", "opacity": "1"}); 
         $("#preview #file_preview #file")[0].innerHTML= ""; 
@@ -756,6 +825,10 @@ $("#Archivo, #Live").click(function(){
     
 $("#Raw").click(function(){ 
     window.open(FileToRequest, '_blank').focus(); 
+}); 
+
+$('.code-scroll').on('scroll', function () { 
+    $("#preview #file_preview #file pre").scrollLeft($(this).scrollLeft()); 
 }); 
 });
 $(document).keypress(function (e) {
@@ -1019,6 +1092,7 @@ $(window).on("resize", function(){
     responsive();
 })
 function responsive() {
+
     $("#file_expl").height($(window).height() - $("header").outerHeight() - $("#root").outerHeight());
      $("#picContainer").width($("#theater").width()- $(".comments").outerWidth())
     $("#Store #actualStore").height($(window).height() - $("header").height() - 21);
@@ -1062,6 +1136,9 @@ $("#theater .comments").height($("#theater").height() - 40);
         $("#file_expl #information_cont").height($("#file_expl").height() - 26.4);
         $("#preview #file").height($("#preview").height() - $("#preview #options").height()); 
         $("#preview #filePr").height($("#preview").height() - $("#preview #options").height()); 
+        $(".code-filler").width(function () {
+            return $("#file pre code").width() + $("#file pre").css("padding-left").slice(0, $("#file pre").css("padding-left").length - 2) * 2; 
+        });
  }
 
  function newChat(a, b){
@@ -1170,6 +1247,7 @@ updateRoot= function(a7){
 
     $('#root div').click( function(e){ 
        if(!!e.target.getAttribute("url")){ 
+        $(".code-filler").width(0); 
         $("#preview #file_preview #file").css({"visibility": "hidden", "opacity": "0"}); 
         $("#preview #file_preview #filePr")[0].innerHTML= ""; 
         $("#preview #file_preview #file")[0].innerHTML=""; 
