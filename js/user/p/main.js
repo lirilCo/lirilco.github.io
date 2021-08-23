@@ -197,6 +197,7 @@ $("#files .file").click(function(i, tr){
     if($("#preview #file_preview #options #Archivo").hasClass("selected")){
         $("#preview #file_preview #file").css({"visibility": "visible", "opacity": "1"}); 
         $("#preview #file_preview #filePr")[0].innerHTML= ""; 
+        $("#preview #file_preview #edit")[0].innerHTML= ""; 
         switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].indexOf(".") + 1)){ 
             case "png": 
             case "jpg": 
@@ -246,9 +247,38 @@ $("#files .file").click(function(i, tr){
                 Prism.highlightAll(); 
                 break; 
         } 
-    }else{ 
+    }else if($("#Live").hasClass("selected")){ 
+        $(".code-filler").width(0); 
+
         $("#preview #file_preview #file")[0].innerHTML= ""; 
+        $("#preview #file_preview #edit")[0].innerHTML= ""; 
         $("#preview #file_preview #filePr")[0].innerHTML= "<div><iframe src='" +  FileToRequest + "'></iframe></div>"; 
+    }else{ 
+        $(".code-filler").width(0); 
+
+        $("#preview #file_preview #file").css({"visibility": "hidden", "opacity": "0"}); 
+    $("#preview #file_preview #filePr").css({"visibility": "hidden", "opacity": "0"}); 
+    $("#preview #file_preview #edit").css({"visibility": "visible", "opacity": "1"}); 
+    a= ""; 
+
+        function reqListener () {
+            $("#preview #file_preview #edit")[0].innerHTML= "<div id= 'editor'>" + this.responseText + "</div>"; 
+            var editor = ace.edit("editor");
+            editor.setTheme("ace/theme/monokai"); 
+            var JavaScriptMode = ace.require("ace/mode/"+ sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].indexOf(".") + 1)).Mode;
+            editor.session.setMode(new JavaScriptMode());
+        }
+
+    
+    
+        var xxa = new XMLHttpRequest();
+        xxa.addEventListener("load", reqListener);
+        xxa.open("GET", FileToRequest);
+        xxa.send(); 
+
+
+    
+    
     } 
     /*function reqListener () {
         
@@ -748,12 +778,9 @@ $('#root div').click( function(e){
     updateRoot(separateUrl(getToBusiness(e.target.url))); 
 }); 
     
-$("#Archivo, #Live").click(function(){ 
-    if(!$(this).hasClass("selected")){ 
-        $("#Archivo").toggleClass("selected"); 
-        $("#Live").toggleClass("selected"); 
-    } 
-
+$("#Archivo, #Live, #Editar").click(function(){ 
+    $(".selected").removeClass("selected"); 
+        $(this).addClass("selected"); 
     FileToRequest= window.location.pathname 
     slashCt= 0; 
     strtgIx= 0; 
@@ -769,10 +796,11 @@ $("#Archivo, #Live").click(function(){
     FileToRequest= FileToRequest.slice(0, strtgIx + 1) + "/raw/" + FileToRequest.slice(strtgIx + 2, FileToRequest.length); 
                                             
     if($("#Archivo").hasClass("selected")){ 
+        $("#preview #file_preview #edit").css({"visibility": "hidden", "opacity": "0"}); 
         $("#preview #file_preview #filePr").css({"visibility": "hidden", "opacity": "0"}); 
         $("#preview #file_preview #file").css({"visibility": "visible", "opacity": "1"}); 
         $("#preview #file_preview #filePr")[0].innerHTML= ""; 
-
+        $("#preview #file_preview #edit")[0].innerHTML= ""; 
             switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].indexOf(".") + 1)){ 
                 case "png": 
                 case "jpg": 
@@ -822,19 +850,52 @@ $("#Archivo, #Live").click(function(){
                     Prism.highlightAll(); 
                     break; 
             } 
-    }else{ 
+    }else if($("#Live").hasClass("selected")){ 
         $(".code-filler").width(0); 
+        $("#preview #file_preview #edit").css({"visibility": "hidden", "opacity": "0"}); 
         $("#preview #file_preview #file").css({"visibility": "hidden", "opacity": "0"}); 
         $("#preview #file_preview #filePr").css({"visibility": "visible", "opacity": "1"}); 
         $("#preview #file_preview #file")[0].innerHTML= ""; 
+        $("#preview #file_preview #edit")[0].innerHTML= ""; 
         $("#preview #file_preview #filePr")[0].innerHTML= "<div><iframe src='" +  FileToRequest + "'></iframe></div>"; 
+    }else{ 
+        $(".code-filler").width(0); 
+
+        $("#preview #file_preview #file").css({"visibility": "hidden", "opacity": "0"}); 
+    $("#preview #file_preview #filePr").css({"visibility": "hidden", "opacity": "0"}); 
+    $("#preview #file_preview #edit").css({"visibility": "visible", "opacity": "1"}); 
+    a= ""; 
+
+    function reqListener () {
+            $("#preview #file_preview #edit")[0].innerHTML= "<div id= 'editor'>" + this.responseText + "</div>"; 
+            var editor = ace.edit("editor");
+            editor.setTheme("ace/theme/monokai"); 
+            var JavaScriptMode = ace.require("ace/mode/"+ sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].indexOf(".") + 1)).Mode;
+            editor.session.setMode(new JavaScriptMode());
+        }
+
+    
+    
+        var xxa = new XMLHttpRequest();
+        xxa.addEventListener("load", reqListener);
+        xxa.open("GET", FileToRequest);
+        xxa.send(); 
+
+
+
+
+    
     }
 }); 
     
 $("#Raw").click(function(){ 
     window.open(FileToRequest, '_blank').focus(); 
 }); 
+$("#Editar").click(function(){ 
+    
 
+    
+}); 
 $('.code-scroll').on('scroll', function () { 
     $("#preview #file_preview #file pre").scrollLeft($(this).scrollLeft()); 
 }); 
@@ -1262,6 +1323,7 @@ updateRoot= function(a7){
         $("#preview #file_preview #file").css({"visibility": "hidden", "opacity": "0"}); 
         $("#preview #file_preview #filePr")[0].innerHTML= ""; 
         $("#preview #file_preview #file")[0].innerHTML=""; 
+        $("#preview #file_preview #edit")[0].innerHTML=""; 
         $("#file_expl #information_cont").hasClass("visible")? $("#file_expl #information_cont").toggleClass("visible"): 666 
         $(".file").css({"top": "initial"}); 
         $(".folder_cont").css({"top": "initial"}); 
