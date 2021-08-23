@@ -138,11 +138,25 @@ $('#profileSettings').click(function(){
 }); 
 $("#files .file").click(function(i, tr){ 
     $("#preview #file_preview #file")[0].innerHTML=""; 
-    !tr? index= Array.from(i.target.parentElement.children).indexOf(i.target): index= 1; 
-    !$(this).parent().hasClass("folder_cont")? $(this).css({"position": "absolute", "top": index * 26.4}): $(this).css({"position": "absolute", "top": index * 26.4 - 26.4});
+    arr= []; 
+
+    eleo= $(this)[0]; 
+    
+    for(eForensics in eleo.parentElement.children){ 
+        if(parseInt(eForensics) < $(eleo).index() && eleo.parentElement.children[eForensics].getBoundingClientRect().y >= 110 && ((!!eleo.parentElement.children[eForensics].children[0] && $(eleo.parentElement.children[eForensics].children[0]).hasClass("inScope")) || (!eleo.parentElement.children[eForensics].children[0] && $(eleo.parentElement.children[eForensics]).hasClass("inScope")))){ 
+            arr[arr.length]= eleo.parentElement.children[eForensics]
+        }
+    } 
+
+    topS= (arr[0] && !!$(arr[0].parentElement.children[$(arr[0]).index() - 1]).hasClass("inScope"))? (arr.length * 26.4) + (26.4 - (110 - arr[0].parentElement.children[$(arr[0]).index() - 1].getBoundingClientRect().y)): arr.length * 26.4; 
+
     $(".folder_cont .folder").css({"opacity": "0", "height": "0"}); 
     $(".file").css({"opacity": "0", "height": "0"}); 
 
+
+    !tr? topS= topS: topS= 0; 
+
+    $(this).css({"position": "absolute", "top": topS + "px"}); 
 
     $(this).css({"opacity": "1"}); 
     $(this).css({"height": "auto"}); 
@@ -434,15 +448,29 @@ for(let folder of document.querySelectorAll("#files .folder")) {
                         
     $("#preview .file_tree").addClass("visible"); 
 
-    lr= $(this).parent()[0]; 
 
-    index= Array.from(lr.parentElement.children).indexOf(lr); 
-    !$(lr).parent().hasClass("folder_cont")? $(lr).css({"position": "absolute", "top": index * 26.4}): $(lr).css({"position": "absolute", "top": index * 26.4 - 26.4});
+    arr= []; 
+
+    eleo= $(this).parent()[0]; 
+    
+    for(eForensics in eleo.parentElement.children){ 
+        if(parseInt(eForensics) < $(eleo).index() && eleo.parentElement.children[eForensics].getBoundingClientRect().y >= 110 && ((!!eleo.parentElement.children[eForensics].children[0] && $(eleo.parentElement.children[eForensics].children[0]).hasClass("inScope")) || (!eleo.parentElement.children[eForensics].children[0] && $(eleo.parentElement.children[eForensics]).hasClass("inScope")))){ 
+            arr[arr.length]= eleo.parentElement.children[eForensics]
+        }
+    } 
+
+    topS= (arr[0] && !!$(arr[0].parentElement.children[$(arr[0]).index() - 1]).hasClass("inScope"))? (arr.length * 26.4) + (26.4 - (110 - arr[0].parentElement.children[$(arr[0]).index() - 1].getBoundingClientRect().y)): arr.length * 26.4; 
+
     $(".folder_cont .folder").css({"opacity": "0", "height": "0", "padding": "0", "border-bottom": "none"}); 
     $(".file").css({"opacity": "0", "height": "0", "padding": "0", "border-bottom": "none"}); 
 
-    $($(lr).children()[0]).css({"opacity": "1"}); 
-    $($(lr).children()[0]).css({"height": "auto"}); 
+
+    $($(eleo).children()[0]).css({"opacity": "1"}); 
+    $($(eleo).children()[0]).css({"height": "auto"}); 
+
+
+    $(this).parent().css({"position": "absolute", "top": topS + "px"}); 
+
     (function () {
         $('.file.inScope').filter(function () {
             return $(this).css('height') != '0';
@@ -453,7 +481,7 @@ for(let folder of document.querySelectorAll("#files .folder")) {
             return $(this).css('height') != '0';
         }).css({"padding": "","border-bottom": ''});
     })(); 
-    setTimeout(function(){lr.style.top= 0; 
+    setTimeout(function(){eleo.style.top= 0; 
     }, 1); 
     setTimeout(function(){!$("#file_expl #information_cont").hasClass("visible")? $("#file_expl #information_cont").toggleClass("visible"): 666 
     }, 101); 
