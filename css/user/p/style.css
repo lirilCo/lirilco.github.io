@@ -566,3 +566,9 @@ right: 0;
     height: 1px; 
     position: absolute;; 
 } 
+
+#file_expl #files 
+{ 
+    overflow-y: auto; 
+    overflow-x: hidden; 
+} 
