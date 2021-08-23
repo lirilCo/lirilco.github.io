@@ -27,6 +27,11 @@
     ></script>
     <script src="../../js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="../../js/prism.js"></script>
+    <script src="../../js/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/theme-monokai.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/Ace's Modes/mode-javascript.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/Ace's Modes/mode-css.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/Ace's Modes/mode-html.js" type="text/javascript" charset="utf-8"></script>
 
     <script src="../../js/user/p/main.js"></script>
 
@@ -137,6 +142,20 @@
             });
         });
     </script>
+    <style type="text/css" media="screen">
+        body {
+            overflow: hidden;
+        }
+        
+        #editor { 
+            margin: 0;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    </style>
 </head>
 
 <body>
@@ -435,9 +454,14 @@
         </aside>
        
     </section>
+
+
+
         <script>
             $( "#files" ).resizable({
-                handles: "e",maxWidth: ($(window).width()), resize: function(){$("#edit")[0].style.zIndex= "6"; $("#edit")[0].style.visibility= "visible"}, stop: function(){$("#edit")[0].style.zIndex= ""; $("#edit")[0].style.visibility= ""} })
+                handles: "e",maxWidth: ($(window).width()), resize: function(){$("#edit")[0].style.zIndex= "6"; $("#edit")[0].style.visibility= "visible"}, stop: function(){$("#edit")[0].style.zIndex= ""; $("#edit")[0].style.visibility= ""} }); 
+
         </script>
+
 </body>
 </html>
