@@ -539,6 +539,7 @@ right: 0;
     margin: 0; 
     border-radius: 0; 
     overflow: hidden; 
+    padding-top: 2em; 
 } 
   
 #file_expl #preview #file_preview #file img, #file_expl #preview #file_preview #file video 

@@ -262,11 +262,25 @@ $("#files .file").click(function(i, tr){
     a= ""; 
 
         function reqListener () {
-            $("#preview #file_preview #edit")[0].innerHTML= "<div id= 'editor'>" + this.responseText + "</div>"; 
+            $("#preview #file_preview #edit")[0].innerHTML= "<div id= 'editor'></div>"; 
             var editor = ace.edit("editor");
             editor.setTheme("ace/theme/monokai"); 
-            var JavaScriptMode = ace.require("ace/mode/"+ sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].indexOf(".") + 1)).Mode;
-            editor.session.setMode(new JavaScriptMode());
+            editor.setValue(this.responseText); 
+            switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].indexOf(".") + 1)){ 
+                case "js": 
+                    var JavaScriptMode = ace.require("ace/mode/javascript").Mode; 
+                    editor.session.setMode(new JavaScriptMode()); 
+                    break; 
+                case "css": 
+                    var JavaScriptMode = ace.require("ace/mode/css").Mode; 
+                    editor.session.setMode(new JavaScriptMode()); 
+                    break; 
+                case "html": 
+                    var JavaScriptMode = ace.require("ace/mode/html").Mode; 
+                    editor.session.setMode(new JavaScriptMode()); 
+                    break; 
+            } 
+            
         }
 
     
@@ -867,12 +881,27 @@ $("#Archivo, #Live, #Editar").click(function(){
     a= ""; 
 
     function reqListener () {
-            $("#preview #file_preview #edit")[0].innerHTML= "<div id= 'editor'>" + this.responseText + "</div>"; 
+            $("#preview #file_preview #edit")[0].innerHTML= "<div id= 'editor'></div>"; 
             var editor = ace.edit("editor");
             editor.setTheme("ace/theme/monokai"); 
-            var JavaScriptMode = ace.require("ace/mode/"+ sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].indexOf(".") + 1)).Mode;
-            editor.session.setMode(new JavaScriptMode());
+            editor.setValue(this.responseText); 
+            switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].indexOf(".") + 1)){ 
+                case "js": 
+                    var JavaScriptMode = ace.require("ace/mode/javascript").Mode; 
+                    editor.session.setMode(new JavaScriptMode()); 
+                    break; 
+                case "css": 
+                    var JavaScriptMode = ace.require("ace/mode/css").Mode; 
+                    editor.session.setMode(new JavaScriptMode()); 
+                    break; 
+                case "html": 
+                    var JavaScriptMode = ace.require("ace/mode/html").Mode; 
+                    editor.session.setMode(new JavaScriptMode()); 
+                    break; 
+            } 
+            
         }
+
 
     
     
