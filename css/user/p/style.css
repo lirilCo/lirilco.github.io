@@ -351,6 +351,12 @@ right: 0;
     overflow-y: auto; 
 } 
   
+#file_expl #files .file_tree
+{ 
+    overflow-y: auto; 
+    margin-right: 3.5px; 
+} 
+  
 #file_expl #preview .file_tree.visible
 { 
     visibility: visible; 

@@ -1264,6 +1264,8 @@ $("#theater .comments").height($("#theater").height() - 40);
         $("#preview #filePr").height($("#preview").height() - $("#preview #options").height()); 
         $("#preview #edit").height($("#preview").height() - $("#preview #options").height()); 
         $("#preview .file_tree").height($("#preview").height() - $("#options").height()); 
+        $("#files .file_tree").height($("#files").height()); 
+
         if($("#Archivo").hasClass("selected")){
             $(".code-filler").width(function () {
                 return $("#file pre code").width() + $("#file pre").css("padding-left").slice(0, $("#file pre").css("padding-left").length - 2) * 2; 
