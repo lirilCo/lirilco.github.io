@@ -184,10 +184,10 @@ $("#files .file").click(function(i, tr){
             uRL= t[0].innerText + uRL; 
         }else{ 
             uRL= t[0].children[0].textContent + "/" + uRL; 
+    } 
         } 
       
         t= t.parent(); 
-    } 
       
     history.pushState({page: 1}, "", "/user/p/ZJhfn8drprZfy/" + uRL); 
                                                               
@@ -459,7 +459,7 @@ for(let folder of document.querySelectorAll("#files .folder")) {
         }
     } 
 
-    topS= (arr[0] && !!$(arr[0].parentElement.children[$(arr[0]).index() - 1]).hasClass("inScope"))? (arr.length * 26.4) + (26.4 - (110 - arr[0].parentElement.children[$(arr[0]).index() - 1].getBoundingClientRect().y)): arr.length * 26.4; 
+    topS= (arr[0] && !!$(arr[0].parentElement.children[$(arr[0]).index() - 1]).hasClass("inScope"))? (arr.length * 26.4) + (26.4 - (110 - arr[0].parentElement.children[$(arr[0]).index() - 1].getBoundingClientRect().y)): (!arr[0] && $(eleo.parentElement.children[$(eleo).index() - 1]).hasClass("inScope") && ((26.4 - (110 - eleo.parentElement.children[$(eleo).index() - 1].getBoundingClientRect().y)) <= 26.4))?topS=  26.4 - (110 - eleo.parentElement.children[$(eleo).index() - 1].getBoundingClientRect().y): arr.length * 26.4; 
 
     $(".folder_cont .folder").css({"opacity": "0", "height": "0", "padding": "0", "border-bottom": "none"}); 
     $(".file").css({"opacity": "0", "height": "0", "padding": "0", "border-bottom": "none"}); 
