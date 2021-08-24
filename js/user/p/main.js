@@ -137,6 +137,7 @@ $('#profileSettings').click(function(){
    
 }); 
 $("#files .file").click(function(i, tr){ 
+    $("#preview .file_tree").removeClass("visible"); 
     $("#preview #file_preview #file")[0].innerHTML=""; 
     arr= []; 
 
@@ -448,7 +449,6 @@ for(let folder of document.querySelectorAll("#files .folder")) {
                         
     $("#preview .file_tree").addClass("visible"); 
 
-
     arr= []; 
 
     eleo= $(this).parent()[0]; 
@@ -626,6 +626,7 @@ for(let folder of document.querySelectorAll("#preview .folder")) {
 } 
 
 $("#files .folder").click(function(i){ 
+    $("#preview .file_tree").removeClass("visible"); 
     $("#preview #file_preview #file")[0].innerHTML=""; 
     $("#file_expl #information_cont").hasClass("visible")? $("#file_expl #information_cont").toggleClass("visible"): 666 
     $(".file").css({"top": "initial"}); 
@@ -821,6 +822,7 @@ $('#root div').click( function(e){
 }); 
     
 $("#Archivo, #Live, #Editar").click(function(){ 
+    $("#preview .file_tree").removeClass("visible"); 
     $(".selected").removeClass("selected"); 
         $(this).addClass("selected"); 
     FileToRequest= window.location.pathname 
@@ -1379,6 +1381,7 @@ updateRoot= function(a7){
 
     $('#root div').click( function(e){ 
        if(!!e.target.getAttribute("url")){ 
+        $("#preview .file_tree").removeClass("visible"); 
         $(".code-filler").width(0); 
         $("#preview #file_preview #file").css({"visibility": "hidden", "opacity": "0"}); 
         $("#preview #file_preview #filePr")[0].innerHTML= ""; 
