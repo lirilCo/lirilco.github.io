@@ -1267,7 +1267,9 @@ $("#theater .comments").height($("#theater").height() - 40);
         $("#preview #edit").height($("#preview").height() - $("#preview #options").height()); 
         $("#preview .file_tree").height($("#preview").height() - $("#options").height()); 
         $("#files .file_tree").height($("#files").height()); 
-
+        if(!!$("#preview pre")[0]){ 
+            if($("#preview pre")[0].scrollWidth > $("#preview pre").innerWidth() + 1){$("#preview pre").css({"padding-top": "32px"})}else{$("#preview pre").css({"padding-top": "16px"})}; 
+        }
         if($("#Archivo").hasClass("selected")){
             $(".code-filler").width(function () {
                 return $("#file pre code").width() + $("#file pre").css("padding-left").slice(0, $("#file pre").css("padding-left").length - 2) * 2; 
