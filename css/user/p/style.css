@@ -354,7 +354,7 @@ right: 0;
 #file_expl #files .file_tree
 { 
     overflow-y: auto; 
-    margin-right: 3.5px; 
+    margin-right: 5.5px; 
 } 
   
 #file_expl #preview .file_tree.visible
