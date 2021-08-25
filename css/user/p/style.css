@@ -319,11 +319,12 @@ right: 0;
     width:  140px;
     vertical-align: top;
 }
-*
+  
+body 
 { 
     color: #2ecc71; 
 } 
-
+  
 #file_expl 
 { 
     white-space: nowrap; 
@@ -590,4 +591,9 @@ right: 0;
 #editor span 
 { 
     font-family: "consolas"; 
+} 
+  
+#options ul li 
+{ 
+    color: #2ecc71;   
 } 
