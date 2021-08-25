@@ -580,3 +580,9 @@ right: 0;
     overflow-y: auto; 
     overflow-x: hidden; 
 } 
+  
+#files .ui-resizable-handle.ui-resizable-e 
+{ 
+    width: 6px; 
+    right: 0; 
+} 
