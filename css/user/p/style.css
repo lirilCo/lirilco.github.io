@@ -586,3 +586,8 @@ right: 0;
     width: 6px; 
     right: 0; 
 } 
+  
+#editor span 
+{ 
+    font-family: "consolas"; 
+} 
