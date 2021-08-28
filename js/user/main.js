@@ -4,7 +4,7 @@ function openProfilePicModal(a) {
         "display": "block"
     })
     $this = a
-    var source = a.find("img").attr('src');
+    var source = a.find(".pic").attr('src');
     $('.theater #bigPic').attr('src', source);
 
     var user = a.find(".hidden").find(".username").html();
@@ -118,6 +118,11 @@ function closeModal() {
     })
 }
 $(document).on("ready",function(e){
+    for(eForensics= 0; eForensics < $(".audio").length; eForensics ++){ 
+        jP_player= "#" + $($($(".audio")[eForensics]).next()).attr("id"); 
+        jPlayerify($($(".audio")[eForensics]), jP_player);
+    }
+    
     $('.chats').click(function(e){ 
 	    aa= e.target; 
 	    ii= false; 
@@ -545,4 +550,22 @@ function sizeMessages(a){
 }
 function scrollBottom(d){
     d.scrollTop(d.prop("scrollHeight"));
+}
+function jPlayerify(audio, player){ 
+    audio.jPlayer({
+        ready: function () {
+          $(this).jPlayer("setMedia", {
+            title:$(this).attr("Au_title"),
+            mp3: $(this).attr("src"),
+          });
+        },
+        cssSelectorAncestor:  player,
+        supplied: "mp3",
+        useStateClassSkin: true,
+        autoBlur: false,
+        smoothPlayBar: true,
+        keyEnabled: true,
+        remainingDuration: true,
+        toggleDuration: true
+    });
 }

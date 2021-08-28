@@ -1,0 +1,40 @@
+body{ 
+  position: relative; 
+} 
+#rawrrawrrawrrawr{ 
+  width: 100%; 
+  overflow-x: scroll; 
+} 
+#rawr{ 
+  overflow-x: hidden; 
+  width: 985845px; 
+} 
+#lasrxs, #me, #vrbl{ 
+  border: #000 1px dashed;  
+  margin: 2px; 
+} 
+.rwr{ 
+  background-color: #74fa9f; /*Misteriouscolrws*/
+  width: 70px; 
+  height: 100px; 
+  margin: 3px; 
+  display: inline-block; 
+  position: relative; 
+  border: 1px dotted #78ff1e; 
+} 
+.rwrwr{ 
+  background-color: #fe3338; /*Misteriouscolrws*/
+  width: 70px; 
+  height: 100px; 
+  margin: 3px; 
+  display: inline-block; 
+  position: relative; 
+  border: 1px dotted #78ff1e; 
+  cursor: grab; /*Innovatiplusonal*/
+} 
+.rwrwr:active{ 
+  cursor: grabbing; 
+} 
+.rwarr{ 
+  position: absolute; 
+} 
