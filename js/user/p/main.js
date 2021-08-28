@@ -151,8 +151,8 @@ $("#files .file").click(function(i, tr){
 
     topS= (arr[0] && !!$(arr[0].parentElement.children[$(arr[0]).index() - 1]).hasClass("inScope"))? (arr.length * 26.4) + (26.4 - (110 - arr[0].parentElement.children[$(arr[0]).index() - 1].getBoundingClientRect().y)): (!arr[0] && $(eleo.parentElement.children[$(eleo).index() - 1]).hasClass("inScope") && ((26.4 - (110 - eleo.parentElement.children[$(eleo).index() - 1].getBoundingClientRect().y)) <= 26.4))?topS=  26.4 - (110 - eleo.parentElement.children[$(eleo).index() - 1].getBoundingClientRect().y): arr.length * 26.4; 
 
-    $(".folder_cont .folder").css({"opacity": "0", "height": "0"}); 
-    $(".file").css({"opacity": "0", "height": "0"}); 
+    $(".folder_cont .folder").css({"opacity": "0", "height": "0", "padding": "0", "border-bottom": "none"}); 
+    $(".file").css({"opacity": "0", "height": "0", "padding": "0", "border-bottom": "none"}); 
 
 
     !tr? topS= topS: topS= 0; 
@@ -161,16 +161,10 @@ $("#files .file").click(function(i, tr){
 
     $(this).css({"opacity": "1"}); 
     $(this).css({"height": "auto"}); 
-    (function () {
-        $('.file.inScope').filter(function () {
-            return $(this).css('height') != '0';
-        }).css({"padding": "","border-bottom": ''});
-    })(); 
-    (function () {
-        $('.folder.inScope').filter(function () {
-            return $(this).css('height') != '0';
-        }).css({"padding": "","border-bottom": ''});
-    })(); 
+    $(this).css({"padding": ""}); 
+    $(this).css({"border-bottom": ""}); 
+
+    
     setTimeout(function(){i.target.style.top= 0; 
     }, 1); 
     setTimeout(function(){!$("#file_expl #information_cont").hasClass("visible")? $("#file_expl #information_cont").toggleClass("visible"): 666 
@@ -669,8 +663,8 @@ $("#files .folder").click(function(i){
             for(Colombia in el.children){ 
                 el.children[Colombia].getAttribute("class").indexOf("folder_cont") == -1? el.children[Colombia].classList.add("inScope"): el.children[Colombia].children[0].classList.add("inScope"); 
             } 
-            $(".folder_cont .folder").css({"opacity": "0", "height": "0"}); 
-            $(".file").css({"opacity": "0", "height": "0"}); 
+            $(".folder_cont .folder").css({"opacity": "0", "height": "0", "padding": "0"}); 
+            $(".file").css({"opacity": "0", "height": "0", "padding": "0"}); 
             $(".folder_cont > .folder.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
             $(".file.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
         }else{ 
@@ -693,8 +687,8 @@ $("#files .folder").click(function(i){
                 
                 for(Colombia in getSiblings(el.children[0])){ 
                     getSiblings(el.children[0])[Colombia].getAttribute("class").indexOf("folder_cont") == -1? getSiblings(el.children[0])[Colombia].classList.add("inScope"): getSiblings(el.children[0])[Colombia].children[0].classList.add("inScope"); 
-                } $(".folder_cont .folder").css({"opacity": "0", "height": "0"}); 
-            $(".file").css({"opacity": "0", "height": "0"}); 
+                } $(".folder_cont .folder").css({"opacity": "0", "height": "0", "padding": "0"}); 
+            $(".file").css({"opacity": "0", "height": "0", "padding": "0"}); 
             $(".folder_cont > .folder.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
             $(".file.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
             }, 10); 
@@ -715,8 +709,8 @@ $("#files .folder").click(function(i){
             
             for(Colombia in getSiblings(el.children[0])){ 
                 getSiblings(el.children[0])[Colombia].getAttribute("class").indexOf("folder_cont") == -1? getSiblings(el.children[0])[Colombia].classList.add("inScope"): getSiblings(el.children[0])[Colombia].children[0].classList.add("inScope"); 
-            } $(".folder_cont .folder").css({"opacity": "0", "height": "0"}); 
-            $(".file").css({"opacity": "0", "height": "0"}); 
+            } $(".folder_cont .folder").css({"opacity": "0", "height": "0", "padding": "0"}); 
+            $(".file").css({"opacity": "0", "height": "0", "padding": "0"}); 
             $(".folder_cont > .folder.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
             $(".file.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
         }
@@ -1403,8 +1397,8 @@ updateRoot= function(a7){
     $(this).css({"display": "block"}); 
    
  
-    $(".folder_cont .folder").css({"opacity": "0", "height": "0"}); 
-            $(".file").css({"opacity": "0", "height": "0"}); 
+    $(".folder_cont .folder").css({"opacity": "0", "height": "0", "padding": "0"}); 
+            $(".file").css({"opacity": "0", "height": "0", "padding": "0"}); 
             $(".folder_cont > .folder.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
             $(".file.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
 
@@ -1419,8 +1413,8 @@ updateRoot= function(a7){
             for(Colombia in el.children){ 
                 $(el.children[Colombia]).hasClass("folder_cont")? $($(el.children[Colombia]).children()[0]).addClass("inScope"): $(el.children[Colombia]).addClass("inScope"); 
             } 
-            $(".folder_cont .folder").css({"opacity": "0", "height": "0"}); 
-            $(".file").css({"opacity": "0", "height": "0"}); 
+            $(".folder_cont .folder").css({"opacity": "0", "height": "0", "padding": "0"}); 
+            $(".file").css({"opacity": "0", "height": "0", "padding": "0"}); 
             $(".folder_cont > .folder.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
             $(".file.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
         }else{ 
@@ -1443,8 +1437,8 @@ updateRoot= function(a7){
                 
                 for(Colombia in getSiblings(el.children[0])){ 
                     getSiblings(el.children[0])[Colombia].getAttribute("class").indexOf("folder_cont") == -1? getSiblings(el.children[0])[Colombia].classList.add("inScope"): getSiblings(el.children[0])[Colombia].children[0].classList.add("inScope"); 
-                } $(".folder_cont .folder").css({"opacity": "0", "height": "0"}); 
-            $(".file").css({"opacity": "0", "height": "0"}); 
+                } $(".folder_cont .folder").css({"opacity": "0", "height": "0", "padding": "0"}); 
+            $(".file").css({"opacity": "0", "height": "0", "padding": "0"}); 
             $(".folder_cont > .folder.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
             $(".file.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
 
@@ -1466,8 +1460,8 @@ updateRoot= function(a7){
             
             for(Colombia in getSiblings(el.children[0])){ 
                 getSiblings(el.children[0])[Colombia].getAttribute("class").indexOf("folder_cont") == -1? getSiblings(el.children[0])[Colombia].classList.add("inScope"): getSiblings(el.children[0])[Colombia].children[0].classList.add("inScope"); 
-            } $(".folder_cont .folder").css({"opacity": "0", "height": "0"}); 
-            $(".file").css({"opacity": "0", "height": "0"}); 
+            } $(".folder_cont .folder").css({"opacity": "0", "height": "0", "padding": "0"}); 
+            $(".file").css({"opacity": "0", "height": "0", "padding": "0"}); 
             $(".folder_cont > .folder.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
             $(".file.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
 
