@@ -319,11 +319,12 @@ right: 0;
     width:  140px;
     vertical-align: top;
 }
-*
+  
+body 
 { 
     color: #2ecc71; 
 } 
-
+  
 #file_expl 
 { 
     white-space: nowrap; 
@@ -354,7 +355,7 @@ right: 0;
 #file_expl #files .file_tree
 { 
     overflow-y: auto; 
-    margin-right: 3.5px; 
+    margin-right: 5.5px; 
 } 
   
 #file_expl #preview .file_tree.visible
@@ -579,4 +580,20 @@ right: 0;
 { 
     overflow-y: auto; 
     overflow-x: hidden; 
+} 
+  
+#files .ui-resizable-handle.ui-resizable-e 
+{ 
+    width: 6px; 
+    right: 0; 
+} 
+  
+#editor span 
+{ 
+    font-family: "consolas"; 
+} 
+  
+#options ul li 
+{ 
+    color: #2ecc71;   
 } 
