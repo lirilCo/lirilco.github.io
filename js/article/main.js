@@ -289,7 +289,7 @@ function responsive(){
                                                                alert(mutation.target)
 
                                     $(mutation.target).prev().find(".code-filler").width(function () {
-                                        return $(this).parent().next("pre").find("code").width()
+                                        return $(this).parent().next("pre").find("code").width() + ($(this).parent().next("pre").outerWidth() - $(this).parent().next("pre").width()) / 2 
                                     });
                                }
                                

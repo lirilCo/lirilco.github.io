@@ -617,7 +617,9 @@ right: 0;
 #article{
     position: relative;
     text-align: center;
-    
+    width: 100%;
+    padding-right: 273px;
+    box-sizing: border-box;
 }
 #article #text
 {
@@ -670,7 +672,6 @@ right: 0;
 .code-scroll{
     overflow-x: scroll;
     width: 100%;
-    margin-top: 44px
 }
 .code-filler
 {
