@@ -868,3 +868,7 @@ margin: 0 auto;
 #profile div{ 
     display: inline-block !important; 
 } 
+#root 
+{ 
+  margin-top: 46px !important; 
+} 

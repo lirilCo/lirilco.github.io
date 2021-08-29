@@ -276,9 +276,51 @@ $( window ).on("load", function(){
     responsive()
 })
 function responsive(){
-     $(".code-filler").width(function () {
-    return $(this).parent().siblings("pre").find("code").width() + parseInt($(this).parent().siblings("pre").css("padding-left"))+ parseInt($(this).parent().siblings("pre").css("padding-right")) - 1
-});
+    for(eForensics in document.getElementsByTagName('pre')){ 
+
+
+    const mainNode = document.getElementsByTagName('pre')[eForensics]
+
+                function callback(mutationsList, observer) {
+                    mutationsList.forEach(mutation => {
+                        if (mutation.attributeName === 'data-src-status') {
+                            //$("#preview #file_preview #file pre")[0].getAttribute("data-src-status") == "loaded"? console.log("loaded"): 1; 
+                               if(mutation.target.getAttribute("data-src-status") == "loaded"){ 
+                                                               alert(mutation.target)
+
+                                    $(mutation.target).prev().find(".code-filler").width(function () {
+                                        return $(this).parent().next("pre").find("code").width()
+                                    });
+                               }
+                               
+                        }
+                    })
+                }
+                
+                const mutationObserver = new MutationObserver(callback)
+                
+                mutationObserver.observe(mainNode, { attributes: true }) 
+                
+                function create(t) {
+                  // create an observer instance
+                  var observer = new MutationObserver(function(mutations) {
+                    mutations.forEach(function(mutation) {
+                      var foo = t.getAttribute("data-src-status")
+                
+                      if (foo == "loaded")
+                        responsive(); 
+                    });
+                  });
+                  // configuration of the observer
+                  var config = {
+                    attributes: true
+                  };
+                
+                  // pass in the target node, as well as the observer options
+                  observer.observe(t, config);
+                }
+     
+     }
          $("#picContainer").width($("#theater").width()- $(".comments").outerWidth())
         $("#article").width($(window).width()- $("#sidebar").outerWidth(true) );
         $("#theater .comments").height($("#theater").height()- 40 );
