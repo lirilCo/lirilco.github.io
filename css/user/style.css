@@ -16,7 +16,7 @@ a{
     text-decoration: none;
     }
 a:hover{
-    text-decoration: underline !important;
+    text-decoration: underline;
     }
 html,
 body {
@@ -1244,3 +1244,29 @@ display: inline-block;
 #profile div{ 
     display: inline-block !important; 
 } 
+
+
+.linktype {
+  float: right;
+}
+.linktype:before {
+  content: "|  ";
+  color: #ccc;
+}
+.link {
+  padding: 17px 9px;
+  text-align: left;
+  cursor: pointer;
+  display: block; 
+}
+.Title {
+  /*! text-align: left; */
+  /*! float: left; */
+  color: #666;
+}
+.Title {
+}
+.link:hover {
+  background-color: #eee;
+  text-decoration: none; 
+}
