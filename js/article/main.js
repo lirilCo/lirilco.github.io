@@ -55,6 +55,59 @@ $('#profileSettings').click(function(i){
 }); 
 
     responsive()
+    function openBlImage(a) {
+    $("#theater").addClass("animated fadeIn ")
+    $(".theater").css({
+        "display": "block"
+    })
+    $this = a.closest('figure')
+    var source = a.attr('src');
+    $('.theater #bigPic').attr('src', source);
+    $(".more").text(a.closest("figure").find("figcaption")[0].innerText)
+    var user = "";
+    $('.theater .comments .info .username').html(user);
+
+    var time = "";
+    $('.theater .comments .info .time').html(time);
+    
+    var title = "";
+    $('.theater .comments .title').html(title);
+
+    if (a.closest('.story').find(".options .bookmark").hasClass("true")) {
+        $('.theater .comments .options .bookmark').addClass("true");
+    } else {
+        $('.theater .comments .options .bookmark').removeClass("true");
+    }
+    if (a.closest('.story').find(".options .star").hasClass("true")) {
+        $('.theater .comments .options .star').addClass("true");
+    } else {
+        $('.theater .comments .options .star').removeClass("true");
+    }
+    
+    var pic = "";
+    $('.theater .comments .info #pic').attr('src', pic);
+
+    var ref = "";
+    $('.theater .comments .options ul a').attr('href', ref);
+    
+    if($("#bigPic").width()<=$("#bigPic").height()){
+        $("#bigPic").css({ "width":"100%"})
+    }else{
+
+    }
+    $(".more").mCustomScrollbar({theme: 
+        "minimal-dark", 
+        autoExpandScrollbar: true,
+        scrollInertia: 100});
+      
+        $("#theater").height($(window).height() - 40);
+
+    $("#picContainer").width($("#bigPic").width());
+    $("#theater .comments").height($("#theater").height() - 40);
+    $("#theater .comments .more").height($("#theater .comments").height() - $("#theater .info").outerHeight(true) - $("#theater .comments .title").outerHeight(true) - $("#theater .comments .options").outerHeight(true));
+    $("#theater").width("90%");
+    responsive()
+}
     function openModal(a) {
     $("#theater").addClass("animated fadeIn ")
     $(".theater").css({
@@ -200,7 +253,9 @@ function closeModal() {
  $(".story .pic").on("click", function () {
         openModal($(this))
     });
-    
+    $("figure img").on("click", function () {
+        openBlImage($(this))
+    });
     $("#close").on("click",function(){
         closeModal() 
 	});
@@ -322,7 +377,7 @@ function responsive(){
                 }
             );
         }
-        for(eForensics in document.getElementsByTagName('pre')){ 
+        for(eForensics= 0; eForensics < document.getElementsByTagName('pre').length; eForensics++){ 
 
 
     const mainNode = document.getElementsByTagName('pre')[eForensics]
@@ -332,7 +387,7 @@ function responsive(){
                         if (mutation.attributeName === 'data-src-status') {
                             //$("#preview #file_preview #file pre")[0].getAttribute("data-src-status") == "loaded"? console.log("loaded"): 1; 
                                if(mutation.target.getAttribute("data-src-status") == "loaded"){ 
-                                                               alert(mutation.target)
+                                                               //alert(mutation.target) 
 
                                     $(mutation.target).prev().find(".code-filler").width(function () {
                                         return $(this).parent().next("pre").find("code").width() + ($(this).parent().next("pre").outerWidth() - $(this).parent().next("pre").width()) / 2 
@@ -345,7 +400,7 @@ function responsive(){
                 
                 const mutationObserver = new MutationObserver(callback)
                 
-                mutationObserver.observe(mainNode, { attributes: true }) 
+                 mutationObserver.observe(mainNode, { attributes: true }); 
                 
                 function create(t) {
                   // create an observer instance

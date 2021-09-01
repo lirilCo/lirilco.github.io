@@ -184,9 +184,9 @@ $("#files .file").click(function(i, tr){
         t= t.parent(); 
     } 
       
-    history.pushState({page: 1}, "", "/user/p/ZJhfn8drprZfy/" + uRL); 
+    history.pushState({page: 1}, "", "/" + username + "/p/" + pId + "/" + uRL); 
                                                               
-    (!!uRL.length && uRL.length > 0)? $("#root")[0].children[$("#root")[0].children.length - 1].outerHTML= '<div><a url=\"/user/p/ZJhfn8drprZfy\">' + $("#root")[0].children[$("#root")[0].children.length - 1].innerText + '</a></div>': 1; 
+    (!!uRL.length && uRL.length > 0)? $("#root")[0].children[$("#root")[0].children.length - 1].outerHTML= '<div><a url=\"/' + username + '/p/' + pId + '\">' + $("#root")[0].children[$("#root")[0].children.length - 1].innerText + '</a></div>': 1; 
                                   
     updateRoot(separateUrl(uRL)); 
 
@@ -334,10 +334,10 @@ $("#preview .file").click(function(i){
       
     //uRL= uRL.slice(0, uRL.length - 1); 
                                        
-    history.pushState({page: 1}, "", "/user/p/ZJhfn8drprZfy/" + uRL); 
+    history.pushState({page: 1}, "", "/" + username + "/p/" + pId + "/" + uRL); 
 
                                                               
-    (!!uRL.length && uRL.length > 0)? $("#root")[0].children[$("#root")[0].children.length - 1].outerHTML= '<div><a url=\"/user/p/ZJhfn8drprZfy\">' + $("#root")[0].children[$("#root")[0].children.length - 1].innerText + '</a></div>': 1; 
+    (!!uRL.length && uRL.length > 0)? $("#root")[0].children[$("#root")[0].children.length - 1].outerHTML= '<div><a url=\"/' + username + '/p/' + pId + '\">' + $("#root")[0].children[$("#root")[0].children.length - 1].innerText + '</a></div>': 1; 
     /*window.location.hash= "infor"; */
                               
     updateRoot(separateUrl(uRL)); 
@@ -496,10 +496,10 @@ for(let folder of document.querySelectorAll("#files .folder")) {
       
     uRL= uRL.slice(0, uRL.length - 1); 
                                        
-    history.pushState({page: 1}, "", "/user/p/ZJhfn8drprZfy/" + uRL); 
+    history.pushState({page: 1}, "", "/" + username + "/p/" + pId + "/" + uRL); 
 
                                                               
-    (!!uRL.length && uRL.length > 0)? $("#root")[0].children[$("#root")[0].children.length - 1].outerHTML= '<div><a url=\"/user/p/ZJhfn8drprZfy\">' + $("#root")[0].children[$("#root")[0].children.length - 1].innerText + '</a></div>': 1; 
+    (!!uRL.length && uRL.length > 0)? $("#root")[0].children[$("#root")[0].children.length - 1].outerHTML= '<div><a url=\"/' + username + '/p/' + pId + '\">' + $("#root")[0].children[$("#root")[0].children.length - 1].innerText + '</a></div>': 1; 
        window.location.hash= "infor"; 
                               
     updateRoot(separateUrl(uRL)); 
@@ -645,9 +645,9 @@ $("#files .folder").click(function(i){
       
     uRL= uRL.slice(0, uRL.length - 1); 
                                   
-    history.pushState({page: 1}, "", "/user/p/ZJhfn8drprZfy/" + uRL); 
+    history.pushState({page: 1}, "", "/" + username + "/p/" + pId + "/" + uRL); 
                                                                       
-    (!!uRL.length && uRL.length > 0)? $("#root")[0].children[$("#root")[0].children.length - 1].outerHTML= '<div><a href=\"/user/p/ZJhfn8drprZfy\">' + $("#root")[0].children[$("#root")[0].children.length - 1].innerText + '</a></div>': 1; 
+    (!!uRL.length && uRL.length > 0)? $("#root")[0].children[$("#root")[0].children.length - 1].outerHTML= '<div><a href=\"/' + username + '/p/' + pId + '\">' + $("#root")[0].children[$("#root")[0].children.length - 1].innerText + '</a></div>': 1; 
                                   
     updateRoot(separateUrl(uRL)); 
 
@@ -1349,13 +1349,13 @@ separateUrl= function (r3){
 } 
   
 updateRoot= function(a7){ 
-    $("#root")[0].innerHTML= '<div><a url="/user.html">Walter White</a></div><div><a url="/user/p.html">Proyectos</a></div><span><span>dinosaurios</span></span>'; 
+    $("#root")[0].innerHTML= '<div><a url="/' + username + '.html">' + users_name + '</a></div><div><a url="/' + username + '/p.html">Proyectos</a></div><span><span>' + pNa + '</span></span>'; 
     
-    (!!uRL.length && uRL.length > 0)? $("#root")[0].children[$("#root")[0].children.length - 1].outerHTML= '<div><a url=\"/user/p/ZJhfn8drprZfy\">' + $("#root")[0].children[$("#root")[0].children.length - 1].innerText + '</a></div>': 1; 
+    (!!uRL.length && uRL.length > 0)? $("#root")[0].children[$("#root")[0].children.length - 1].outerHTML= '<div><a url=\"/' + username + '/p/' + pId + '\">' + $("#root")[0].children[$("#root")[0].children.length - 1].innerText + '</a></div>': 1; 
 
     for(eForensics in a7){ 
         if(window.location.hash== "#infor" && parseInt(eForensics) == a7.length - 1){ 
-            genurl= "/user/p/ZJhfn8drprZfy"; 
+            genurl= "/" + username + "/p/" + pId + ""; 
                               
             for(idr= 0; idr <= parseInt(eForensics); idr++){ 
                 genurl+= "/" + a7[idr]; 
@@ -1363,7 +1363,7 @@ updateRoot= function(a7){
       
             $("#root")[0].innerHTML= $("#root")[0].innerHTML + "<div class= 'noArrow'><a url=" + "'" + genurl +"'"+ ">" + a7[eForensics] + "</a></div>" + "<span><span>" + "#infor" + "</span></span>"
         }else if(parseInt(eForensics) != a7.length - 1){ 
-            genurl= "/user/p/ZJhfn8drprZfy"; 
+            genurl= "/" + username + "/p/" + pId + ""; 
                               
             for(idr= 0; idr <= parseInt(eForensics); idr++){ 
                 genurl+= "/" + a7[idr]; 

@@ -873,3 +873,25 @@ margin: 0 auto;
 { 
   margin-top: 46px !important; 
 } 
+.link {
+    padding: 17px 9px;
+    text-align: left;
+    cursor: pointer;
+    display: block;
+}
+.Title {
+    text-align: left;
+    /*! float: left; */
+    color: #666;
+}
+.linktype::before {
+    content: "| ";
+    color: #ccc;
+}
+.linktype {
+    float: right;
+}
+.link:hover {
+    background-color: #eee;
+    text-decoration: none;
+}
