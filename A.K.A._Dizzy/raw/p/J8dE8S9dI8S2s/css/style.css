@@ -58,3 +58,7 @@ b{
     display: inline-block; 
     padding-right: 1em !important; 
 } 
+#Sara p#parsed {
+    font-size: inherit !important;
+    position: static;
+}
