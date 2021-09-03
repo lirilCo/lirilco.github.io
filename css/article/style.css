@@ -895,3 +895,7 @@ margin: 0 auto;
     background-color: #eee;
     text-decoration: none;
 }
+i, q  
+{ 
+  color: inherit; 
+} 

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>
+      Liril
+    </title>
+    <link rel="shortcut icon" type="image/ico" href="/resources/icons/favicon.ico"  />
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300,600,700' rel='stylesheet' type='text/css'>
+      
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/article/style.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/video-js.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/jquery.mCustomScrollbar.min.css">
+
+
+    <script src="/js/jquery.js"></script>
+    <script src="/js/article/main.js"></script>
+    <script src="/js/main.js"></script> <!-- Resource jQuery -->
+    <script src="/js/prism.js"></script>
+    <script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="/js/index/modernizr.custom.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    <script src="/js/sticky-kit.min.js"></script>
+
+  
+
+ <script src="/js/jquery.knob.js">
+    </script>
+
+   <script>
+        $(function ($) {
+
+            $(".knob").knob({
+                change: function (value) {
+                    //console.log("change : " + value);
+                },
+                release: function (value) {
+                    //console.log(this.$.attr('value'));
+                    console.log("release : " + value);
+                },
+                cancel: function () {
+                    console.log("cancel : ", this);
+                },
+                /*format : function (value) {
+                  return value + '%';
+                  }
+                  ,*/
+                draw: function () {
+
+                    // "tron" case
+                    if (this.$.data('skin') == 'tron') {
+
+                        this.cursorExt = 0.3;
+
+                        var a = this.arc(this.cv) // Arc
+                            ,
+                            pa // Previous arc
+                            , r = 1;
+
+                        this.g.lineWidth = this.lineWidth;
+
+                        if (this.o.displayPrevious) {
+                            pa = this.arc(this.v);
+                            this.g.beginPath();
+                            this.g.strokeStyle = this.pColor;
+                            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, pa.s, pa.e, pa.d);
+                            this.g.stroke();
+                        }
+
+                        this.g.beginPath();
+                        this.g.strokeStyle = r ? this.o.fgColor : this.fgColor;
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, a.s, a.e, a.d);
+                        this.g.stroke();
+
+                        this.g.lineWidth = 2;
+                        this.g.beginPath();
+                        this.g.strokeStyle = this.o.fgColor;
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
+                        this.g.stroke();
+
+                        return false;
+                    }
+                }
+            });
+
+            // Example of infinite knob, iPod click wheel
+            var v, up = 0,
+                down = 0,
+                i = 0,
+                $idir = $("div.idir"),
+                $ival = $("div.ival"),
+                incr = function () {
+                    i++;
+                    $idir.show().html("+").fadeOut();
+                    $ival.html(i);
+                },
+                decr = function () {
+                    i--;
+                    $idir.show().html("-").fadeOut();
+                    $ival.html(i);
+                };
+            $("input.infinite").knob({
+                min: 0,
+                max: 20,
+                stopper: false,
+                change: function () {
+                    if (v > this.cv) {
+                        if (up) {
+                            decr();
+                            up = 0;
+                        } else {
+                            up = 1;
+                            down = 0;
+                        }
+                    } else {
+                        if (v < this.cv) {
+                            if (down) {
+                                incr();
+                                down = 0;
+                            } else {
+                                down = 1;
+                                up = 0;
+                            }
+                        }
+                    }
+                    v = this.cv;
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+<div class="wrapper">
+  </div>
+    <header>
+        <nav>
+            <ul>
+                <li id="index">
+                    <a href="index.html"><section id="index-trigger">
+                        <span class="back-arrow button">
+              </span>
+                        <span id="index-text" class="text button">
+Inicio              </span>
+                    </section></a>
+
+                </li>
+               <li>
+          <input class="buscar" type="text" placeholder="Busca aquí cursos, personas o cualquier cosa">
+          </li>
+                <li id="Options">
+                <div class="options first button">
+                    <ul>
+                        <li class="star"></li>
+                         <li class="bookmark"></li>
+
+                    </ul>
+                </div>
+                </li>
+                
+                <li id="right-menu" class="button">
+                    <section id="dots" class="button">
+                        <span id="store" class="button">
+              </span>
+                        <span id="dots-icon" class="button">
+              </span>
+                        <span id="dots-text" class="button">
+                6'000.600
+              </span>
+
+                    </section>
+                    <section id="profileTrigger">
+                    </section>
+                    <div id="profile" class="button">
+                        <img id="profile-pic" src="/resources/images/white.jpg" alt="Walter White">
+                        <input class="knob button" data-width="35"  data-height="35" data-fgColor="#2ecc71" data-bgColor="rgba(0,0,0,0)" data-displayInput=false data-thickness=".15" readonly value="60">
+                    </div>
+                    <span class="index-arrow button">
+              </span>
+
+                    <section id="profileSettings">
+                    </section>
+                </li>
+
+                <li>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div id="root">
+    <div>
+        <a href="A.K.A._Dizzy.html">Luis Eduardo Gallego García</a>
+    </div>
+    <div>
+        <a href="A.K.A._Dizzy.html">Blog</a>
+    </div>
+    <span>
+        <span href="#">Una Breve Historia De La Creación</span>
+    </span>
+
+    </div>
+    <section id="wrapper" class="theater"></section>
+    
+    <section id="theater" class="theater">
+        <section id="picContainer">
+            <img id="bigPic" alt="">
+        </section>
+        <aside class="comments">
+        <div class="info">
+                    <img id="pic" alt="">
+                    <p class="username"><a href="#"></a></p>
+        </div>
+        <p class="title"></p>
+        <p class="more">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sit amet varius lectus, congue rutrum urna. Suspendisse in ultrices enim. In hac habitasse platea dictumst. Praesent aliquet, nisi nec euismod vulputate, odio velit porta erat, ut semper lacus erat ac nulla. Aenean ex libero, volutpat vel sem et, blandit dictum dui. Duis suscipit sed nisi finibus vestibulum. Quisque finibus porttitor nisl, nec consequat metus. Quisque commodo, libero nec volutpat suscipit, quam urna volutpat turpis, quis rhoncus magna dui sit amet lacus. Donec pellentesque aliquam turpis nec commodo. Aliquam lobortis facilisis auctor. Sed libero nisi, scelerisque et porttitor vel, accumsan sed lacus. Pellentesque at tortor pellentesque, vestibulum turpis at, iaculiuisque finibus porttitor nisl, nec consequat metus. Quisque commodo, libero nec volutpat suscipit, quam urna volutpat turpis, quis rhoncus magna dui sit amet lacus. Donec pellentesque aliquam turpis nec commodo. Aliquam lobortis facilisis auctor. Sed libero nisi, scelerisque et porttitor vel, accumsan sed lacus. Pellentesque at tortor pellentesque, vestibulum turpis at, iaculis nibh.
+        </p>
+        <div class="options button">
+        <ul>
+            <li class="bookmark"></li>
+            <li class="star"></li>
+            <a><li class="read"></li></a>
+        </ul></div>
+        <p id="close"></p>
+        </aside>
+        
+    </section>
+    
+    <section id="article">
+       
+        <aside id="title">
+            Una Breve Historia De La Creación
+        </aside>
+        <section class="filler"style= "height: 180px"></section>
+        
+       <aside id="text">
+        <p style= "width: 100%; text-align: center; "><b style= "font-size: 138px; color: #fe7241; width: 100%; text-align: center; ">⚠</b></p>
+              
+           <p style="font-size: 0.75em; text-align: center; ">Advertencia: peligro de crisis existencial. En caso de existencialismo, consulta autores como Arthur Schopenhauer o Jean-Paul Sartre, y lee mucho los poemas de <a target= "_blank" href= "https://tantubular.tumblr.com/" >mi blog</a>. Una crisis existencial no es para siempre y normalmente no dura mucho tiempo. Puedes aprender algo de ésta, pero recuerda, hay cosas que aprendemos para aprender a olvidar.</br></br>
+Yo soy el nieto de Dios Jesucristo; el hijo de Satanás Belcebú; y el amor de la vida de la Madre Naturaleza, la que hace que crezcan los árboles.</p>
+        <section class="filler"style= "border-bottom: 1px solid #eee; height: 80px"></section>
+        <section class="filler"style= "height: 80px"></section>
+
+        <p>Mi abuelo, Dios Jesucristo, decidió "salir" de un lugar en el que estaban los dioses, hacia la inexistencia. Es ridículo especular sobre de qué principio vino él, pues allí muchos dioses son principios, otros finales; mi abuelo, por ejemplo, era bondadoso.</p>
+
+        <p>&nbsp&nbsp&nbsp&nbspEn el lugar donde estaban los dioses, el "cielo" que tenían podía albergar seres de todas las clases, bondadosos, como mi abuelo, amarillo, magenta, etcétera. Al salir, Dios Jesucristo debía crear un "cielo" lo más rápidamente posible, para no asfixiarse, entonces debía tener lo más esencial, así que sólo podía albergar seres bondadosos, como él. </p>
+
+        <p>&nbsp&nbsp&nbsp&nbspLuego creó allí <i>El Espacio-tiempo</i> y<i> Los Elementos Químicos</i> y <i>La Química</i>.</p>
+
+        <p>&nbsp&nbsp&nbsp&nbspDios Jesucristo era muy bueno creando cosas robustas, como<i> El Espacio-tiempo</i> y<i> La Química</i>, pero a la hora de hacer algo con esto, no tenía la atención a los detalles necesaria para ésto. Así que decidió tener un hijo.</p>
+
+        <p>&nbsp&nbsp&nbsp&nbspLos dioses tienen hijos consigo mismos. El hijo de un dios es lo opuesto a su padre; lo opuesto es diferente a lo contrario, lo <i>contrario</i> forma algo <i>binario</i>, ambas palabras suenan parecidas, en tanto que lo <i>opuesto</i> forma un <i>espectro</i>. Es decir que cualquier descendiente de un dios va a ser de un tipo diferente a todos sus ancestros </p>
+
+        <figure>
+            <img src="/A.K.A._Dizzy/blog/Una Breve Historia De La Creación/resources/Opuesto.png" style= "width: 100%; padding: 13px; box-sizing: border-box; border: 1px solid #ccc">
+            <figcaption style= "text-align: right; "><i style= "color: #888; font-size: 13px; ">Los opuestos son los dos puntos que están más lejos y los dos puntos que están más cerca del origen. Cada uno tiene su reflejo, que tiene la misma magnitud pero va en dirección opuesta</i></figcaption>
+        </figure>
+
+        <figure>
+            <img src="/A.K.A._Dizzy/blog/Una Breve Historia De La Creación/resources/Contrario.png" style= "width: 100%; padding: 13px; box-sizing: border-box; border: 1px solid #ccc">
+            <figcaption style= "text-align: right; "><i style= "color: #888; font-size: 13px; ">Lo contrario de bueno es malo, lo contrario de malo es bueno, lo contrario de bueno es malo y así, eterna, sucesivamente. Por eso se dice que es algo binario</i></figcaption>
+        </figure>
+
+        <p>&nbsp&nbsp&nbsp&nbspEl hijo de Dios Jesucristo fue lo opuesto a bondadoso; malicioso.</p>
+        <p>&nbsp&nbsp&nbsp&nbspSatanás Belcebú se asfixió en<i> El Cielo</i>, porque éste fue creado para albergar seres bondadosos exclusivamente, y el era malicioso, así que creó <i>El Infierno</i> en otra dimensión; como un "cielo" para albergar seres maliciosos.</p>
+        <p>&nbsp&nbsp&nbsp&nbspLuego, Satanás Belcebú creó<i> El Amor</i>, que era otra cosa muy robusta y lo puso por doquier,  en<i> El Cielo</i> y en<i> El Infierno</i>. Sin embargo, él tampoco tenía mucha habilidad con los detalles, así que no podía crear lo que había que crear con la creación de su padre Dios Jesucristo.</p>
+        <p>&nbsp&nbsp&nbsp&nbspSatanás Belcebú tuvo entonces un hijo, el curso de la verdad y la mentira, Luis Eduardo Gallego García Echeverri Arias Ruiz Cardona; yo.</p>
+        <p>&nbsp&nbsp&nbsp&nbspYo era el curso de la verdad y la mentira, así que encontraba verdad en todo y las mentiras las veía destruibles, por lo que podía estar tranquilamente en<i> El Cielo</i> o en<i> El Infierno</i>. Y no tuve que crear mi propio "cielo" ni nada parecido.</p>
+        <p>&nbsp&nbsp&nbsp&nbspCuando yo nací, mi abuelo Dios Jesucristo me regaló<i> El Espacio-tiempo</i> y <i>La Química</i>. Yo les dije que yo sí sabía qué crear con estas cosas, pero que necesitaba ayuda de otro dios para crearlo, así que necesitaba permiso e instrucciones de mi abuelo Dios Jesucristo para ir al lugar del que él vino y volver de allí.</p>
+        <p>&nbsp&nbsp&nbsp&nbspDios Jesucristo me dio permiso e instrucciones y yo fui y volví con La Madre Naturaleza, La Que Hace Que Crezcan Los Árboles.</p>
+        <p>&nbsp&nbsp&nbsp&nbspCreé<i> La Física</i> y se la regalé a mi abuelo Dios Jesucristo. Creé los planetas, y La Madre Naturaleza, La Que Hace Que Crezcan Los Árboles les creó vegetación. Yo le regalé a ella todos los astros y los animales y ella me regaló todas las plantas. Y le regalé los seres humanos a mi abuelo Dios Jesucristo.</p>
+        <h2>¿Qué implica esto?</h2>
+        <p>Yo escribí la Sagrada Biblia, así que en estos respectos podrán encontrar muchas respuestas. La Sagrada Biblia dice, por ejemplo:</p>
+        <p>&nbsp&nbsp&nbsp&nbspGénesis 1: <q>En el principio creó Dios los cielos y la tierra.</q></p>
+        <p>&nbsp&nbsp&nbsp&nbspEsto describe lo que hizo mi abuelo, Dios Jesucristo, en el principio; crear <i>El Cielo</i>, el "cielo" que creó para albergar seres bondadosos, y<i> La Química</i>.</p>
+        <p>&nbsp&nbsp&nbsp&nbspEl que la Sagrada Biblia esté en lo correcto, no implica que la ciencia se equivoque; Adán, por ejemplo, fue el ADN, las características de la primera "semilla", y Eva fue la evolución, las leyes para que, de esa primera "semilla", evolucionaran todos los seres vivos que queríamos crear.</p>
+        <p>&nbsp&nbsp&nbsp&nbspYo creé la música y se la regalé a mi padre, Satanás Belcebú. También creé todos los lenguajes, y se los regalé a La Madre Naturaleza, La Que Hace Que Crezcan Los Árboles.</p>
+        <p>[...]</p>
+       </aside>
+    </section>
+    <aside id="sidebar">
+        <section class="story project">
+            <div class="info">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><a href="#">Walter White</a> </p>
+                    <p class="time">Ayer a las 3:30 pm</p>
+                    
+            </div>
+            <p class="title">Elizabeth Elam</p>
+            <img class="pic" src="/A.K.A._Dizzy/blog/Dinosaurios/resources/tumblr_oezvmcymMl1siavito1_500.jpg" alt="" class="big">
+            <div class="options button">
+            <ul>
+                <li class="bookmark"></li>
+                <li class="star"></li>
+                <a href=""><li class="read"></li></a>
+            </ul>
+        </div>
+
+        </section>
+        
+        <section class="story news">
+            <div class="info">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><a href="#">Walter White</a></p>
+                    <p class="time">24 de Octubre a las 0:30 am</p>
+            </div>
+            <p class="title">Novedades En GitHub</p>
+            <img class="pic" src="/A.K.A._Dizzy/blog/Dinosaurios/resources/25231.png" alt="" class="big">
+        <div class="options button">
+            <ul>
+                <li class="bookmark"></li>
+                <li class="star"></li>
+                <a href="article.html"><li class="read"></li></a>
+            </ul>
+        </div>
+           
+        </section>
+        <section class="story news">
+            
+            <p class="title">Nuevos conceptos de diseño por <a href="#">Walter White</a></p>
+            <img class="pic" src="/resources/images/grid/2.jpg" alt="" class="big">
+        <div class="options button">
+            <ul>
+                <li class="bookmark"></li>
+                <li class="star"></li>
+                <a href=""><li class="read"></li></a>   
+             </ul>
+        </div>
+           
+        </section>
+        
+    </aside>
+    <section id="Store" class="button">
+            
+        <aside id="actualStore" class="button">
+            <aside id="storeList" class="button">
+                <ul>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                </ul>
+            </aside>
+            <aside id="storeSection">
+                
+            </aside>
+        </aside>
+       
+    </section>
+		<script>
+    $('.code-scroll').on('scroll', function () {
+        $(this).siblings("pre").scrollLeft($(this).scrollLeft());
+    });
+    $('.code pre').on('scroll', function () {
+        $(this).siblings(".code-scroll").scrollLeft($(this).scrollLeft());
+        
+    });
+
+    $(".code-scroll").stick_in_parent({recalc_every: 1, offset_top: 44 })
+    $(document).on("ready", function(){ 
+        Prism.highlightAll(); 
+    })
+    </script>
+</body>
+</html>
