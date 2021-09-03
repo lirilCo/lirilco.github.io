@@ -654,7 +654,7 @@ margin: auto ;
     
    font-size: 14px;
        width: auto !important;
-
+padding-left: 47px;
 
 }
 #theater .title
@@ -835,10 +835,11 @@ right: 0;
     color: #666;
 }
 
-.info img
-{
-    position: static;
+#theater .info img {
+    position: absolute;
     display: inline-block;
+    object-fit: contain;
+    height: 100% !important;
 }
 .info p
 {
