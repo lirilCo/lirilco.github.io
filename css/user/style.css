@@ -510,11 +510,10 @@ padding: 10px;
 {
     color: #555;
 }
-#biography #content #main #summary aside#sections #pics img
-{
+#biography #content #main #summary aside#sections #pics > img, #biography #content #main #summary aside#sections #pics .foto {
     width: 32%;
-    display:inline-block;
-    cursor: pointer
+    display: inline-block;
+    cursor: pointer;
 }
 #biography #content #options
 {
@@ -1270,4 +1269,21 @@ display: inline-block;
 .link:hover {
   background-color: #eee;
   text-decoration: none; 
+}
+#pics .info, #pics p.title, #pics .options, #pics .bigPic {
+    display: none;
+}
+#pics .foto img
+{
+    width: 100%; 
+}
+#pics .foto
+{
+    padding: 0 !important; 
+    margin: 0 !important; 
+}
+#pics .foto #picture
+{
+    padding: 0 !important; 
+    margin: 0 !important; 
 }
