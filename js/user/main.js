@@ -241,6 +241,7 @@ $('#profileSettings').click(function(i){
 });
 $(document).keypress(function (e) {
 if(!$("textarea").is(":focus") && !$("input").is(":focus")){
+    //console.log(e.keyCide) 
     if (e.keyCode == 108) {
         $(".current").find('.options .star').toggleClass("true");
     }
