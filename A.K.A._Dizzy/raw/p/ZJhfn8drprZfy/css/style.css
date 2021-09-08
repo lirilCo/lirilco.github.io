@@ -38,3 +38,11 @@ body{
 .rwarr{ 
   position: absolute; 
 } 
+#dinosaurios input{ 
+    color: #433ccf; 
+    outline: 1px solid rgba(250, 250, 250, 0); 
+    transition: outline 345ms ease-in; 
+} 
+#dinosaurios input:focus{ 
+    outline: 1px solid #433ccf; 
+} 

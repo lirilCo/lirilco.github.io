@@ -39,8 +39,6 @@
   }, 0.00); 
   
   document.addEventListener("mousemove", function(i){ 
-    $("input")[0].focus(); 
-
     (mousedown && i.target == lastChild)? $(".rwr")[$(".rwr").length - 1].innerHTML = $(".rwr")[$(".rwr").length - 1].innerHTML + "<div class= 'rwarr' style='position: absolute; width: 5px; height:5px; " + "background-color: " + dsrcrs[parseInt(Math.random() * dsrcrs.length)] + "; " + "left: " + i.layerX + "px; " + "top: " + i.layerY + "px; "+ "'></div>": 1; 
   }); 
 
@@ -84,5 +82,17 @@
     i.keyCode == 17 && lastChild.outerHTML.indexOf("rwrwr") != -1? lastChild.outerHTML= "": 1; 
 
     vrbl= dsrcrs[a]; 
+  }); 
+      
+  document.addEventListener("mousemove", function(i){ 
+    switch(i.target){
+      case document.getElementById("dinosaurios"): case document.getElementById("lasrxs"): case document.getElementById("me"): case document.getElementById("vrbl"):
+        $("input").attr("corrupt")? jQuery("input")[0].outerHTML= "<input type= 'text'> ": 1; 
+        $("input").focus(); 
+        break; 
+      default:
+        jQuery("input")[0].outerHTML= "<input corrupt='true'  type= 'text'>"
+        break; 
+    } 
   }); 
 //} 
