@@ -649,4 +649,30 @@ $(document).on("ready", function(){
             Number--; 
         } 
     } 
+
+    var distance; 
+    el= $($("#profilePic > div")[0]); 
+                    
+    
+    document.addEventListener("mousemove", function(event){ 
+        circleWidth = el.outerWidth( true ),
+    circleHeight  = el.outerHeight( true ),
+    circleLeft    = el.offset().left,
+    circleTop     = el.offset().top,
+    circlePos     = {
+        x     : circleLeft + circleWidth / 2,
+        y     : circleTop + circleHeight / 2,
+        radius: circleWidth / 2
+    }; 
+
+       distance    = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) ); 
+
+       if(distance <= circlePos.radius){ 
+           $($("#profilePic > div")[0]).css({"pointer-events": "all"}); 
+           $($("#profilePic > img")[0]).css({"pointer-events": "all"}); 
+       }else{ 
+           $($("#profilePic > div")[0]).css({"pointer-events": "none"}); 
+           $($("#profilePic > img")[0]).css({"pointer-events": "none"}); 
+       }   
+    }); 
 })
