@@ -923,11 +923,12 @@ right: 0;
     content: "\e615";
     color: #ccc;
 }
-
-#sidebar ul li img{
-   height: 35px;
-    
-}
+  
+#sidebar ul li img { 
+   height: 35px; 
+   width: 35px; 
+   object-fit: contain; 
+} 
 #chats
 {
     bottom: 0;
