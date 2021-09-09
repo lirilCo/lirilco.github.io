@@ -1,5 +1,6 @@
 function openProfilePicModal(a) {
     $("body")[0].style.overflowY= "hidden"; 
+    responsive(); 
     $("#theater").addClass("animated fadeIn ")
     $(".theater").css({
         "display": "block"
@@ -51,6 +52,7 @@ function openProfilePicModal(a) {
 } 
 function openFotosModal(a) {
     $("body")[0].style.overflowY= "hidden"; 
+    responsive(); 
     $("#theater").addClass("animated fadeIn ")
     $(".theater").css({
         "display": "block"
@@ -102,6 +104,7 @@ function openFotosModal(a) {
 } 
 function openModal(a) {
     $("body")[0].style.overflowY= "hidden"; 
+    responsive(); 
     $("#theater").addClass("animated fadeIn ")
     $(".theater").css({
         "display": "block"
@@ -157,6 +160,7 @@ function openModal(a) {
 
 function closeModal() {
     $("body")[0].style.overflowY= "scroll"; 
+    responsive(); 
     if ($('.theater .comments .options .bookmark').hasClass("true")) {
         $this.find('.options .bookmark').addClass("true");
     } else {
