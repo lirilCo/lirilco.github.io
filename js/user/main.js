@@ -651,7 +651,7 @@ $(document).on("ready", function(){
     } 
 
     var distance; 
-    el= $($("#profilePic > div")[0]); 
+    el= $($("#profilePic > img")[0]); 
                     
     
     document.addEventListener("mousemove", function(event){ 
