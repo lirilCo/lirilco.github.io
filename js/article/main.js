@@ -56,6 +56,7 @@ $('#profileSettings').click(function(i){
 
     responsive()
     function openBlImage(a) {
+    $("body")[0].style.overflowY= "hidden"; 
     $("#theater").addClass("animated fadeIn ")
     $(".theater").css({
         "display": "block"
@@ -109,6 +110,7 @@ $('#profileSettings').click(function(i){
     responsive()
 }
     function openModal(a) {
+    $("body")[0].style.overflowY= "hidden"; 
     $("#theater").addClass("animated fadeIn ")
     $(".theater").css({
         "display": "block"
@@ -163,6 +165,7 @@ $('#profileSettings').click(function(i){
 }
 
 function closeModal() {
+    $("body")[0].style.overflowY= "scroll"; 
     if ($('.theater .comments .options .bookmark').hasClass("true")) {
         $this.find('.options .bookmark').addClass("true");
     } else {
@@ -253,7 +256,7 @@ function closeModal() {
  $(".story .pic").on("click", function () {
         openModal($(this))
     });
-    $("figure img").on("click", function () {
+    $("#article figure img").on("click", function () {
         openBlImage($(this))
     });
     $("#close").on("click",function(){

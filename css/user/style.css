@@ -1200,11 +1200,46 @@ display: inline-block;
     border-radius: 50%; 
     margin:5px;
     position:absolute; 
-    border: 3px solid #2ecc71; 
     padding: 4px; 
     bottom: 0;
     height: 90px;
     width: 90px;
+}
+.tool canvas
+{
+    position: absolute; 
+    bottom: 3px; 
+    left: 3px; 
+}
+.tool p.username
+{ 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+} 
+.city .thumbnail {
+    height: 100%;
+    width: 80px;
+    border-radius: 0;
+    left: 0;
+    object-fit: cover;
+    margin: 0;
+    border: 5px solid #fff;
+    padding: 0;
+}
+.city .introduction {
+    height: 100%;
+    width: 185px;
+    float: right;
+    overflow-y: scroll;
+    font-size: 12px;
+    padding: 5px;
+    box-sizing: border-box;
+    margin-top: -10px;
+    color: #666;
+}
+.city .thumbnail:hover {
+    width: auto;
 }
 .insignia
 {

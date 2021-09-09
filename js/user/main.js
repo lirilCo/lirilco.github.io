@@ -1,4 +1,5 @@
 function openProfilePicModal(a) {
+    $("body")[0].style.overflowY= "hidden"; 
     $("#theater").addClass("animated fadeIn ")
     $(".theater").css({
         "display": "block"
@@ -49,6 +50,7 @@ function openProfilePicModal(a) {
     responsive(); 
 } 
 function openFotosModal(a) {
+    $("body")[0].style.overflowY= "hidden"; 
     $("#theater").addClass("animated fadeIn ")
     $(".theater").css({
         "display": "block"
@@ -99,6 +101,7 @@ function openFotosModal(a) {
     responsive(); 
 } 
 function openModal(a) {
+    $("body")[0].style.overflowY= "hidden"; 
     $("#theater").addClass("animated fadeIn ")
     $(".theater").css({
         "display": "block"
@@ -153,6 +156,7 @@ function openModal(a) {
 }
 
 function closeModal() {
+    $("body")[0].style.overflowY= "scroll"; 
     if ($('.theater .comments .options .bookmark').hasClass("true")) {
         $this.find('.options .bookmark').addClass("true");
     } else {
@@ -675,4 +679,41 @@ $(document).on("ready", function(){
            $($("#profilePic > img")[0]).css({"pointer-events": "none"}); 
        }   
     }); 
+    
+    async function searchWikipedia(searchQuery) {
+  const endpoint = `https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=20&srsearch=${searchQuery}`;
+  const response = await fetch(endpoint);
+  if (!response.ok) {
+    throw Error(response.statusText);
+  }
+  const json = await response.json();
+  return json;
+}
 })
+$(document).on('DOMMouseScroll mousewheel', '.Scrollable', function(ev) {
+    var $this = $(this),
+        scrollTop = this.scrollTop,
+        scrollHeight = this.scrollHeight,
+        height = $this.innerHeight(),
+        delta = (ev.type == 'DOMMouseScroll' ?
+            ev.originalEvent.detail * -40 :
+            ev.originalEvent.wheelDelta),
+        up = delta > 0;
+
+    var prevent = function() {
+        ev.stopPropagation();
+        ev.preventDefault();
+        ev.returnValue = false;
+        return false;
+    }
+
+    if (!up && -delta > scrollHeight - height - scrollTop) {
+        // Scrolling down, but this will take us past the bottom.
+        $this.scrollTop(scrollHeight);
+        return prevent();
+    } else if (up && delta > scrollTop) {
+        // Scrolling up, but this will take us past the top.
+        $this.scrollTop(0);
+        return prevent();
+    }
+});

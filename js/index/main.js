@@ -651,6 +651,7 @@ $(document).on("ready", function(){
 }); 
                         
 function openModal(a) {
+    $("body")[0].style.overflowY= "hidden"; 
     $("#theater").addClass("animated fadeIn ")
     $(".theater").css({
         "display": "block"
@@ -705,6 +706,7 @@ function openModal(a) {
 }
 
 function closeModal() {
+    $("body")[0].style.overflowY= "scroll"; 
     if ($('.theater .comments .options .bookmark').hasClass("true")) {
         $this.find('.options .bookmark').addClass("true");
     } else {
