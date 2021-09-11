@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>
+      Robot De Dedicatorias | Proyectos | Luis Eduardo Gallego Garcìa | liril
+    </title>
+    <link rel="shortcut icon" type="image/ico" href="../../resources/icons/favicon.ico"  />
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300,600,700' rel='stylesheet' type='text/css'>
+    
+    <link rel="stylesheet" href="../../css/animate.css">
+    <link rel="stylesheet" href="../../css/courses/style.css">
+    <link rel="stylesheet" href="../../css/jquery-ui.min.css">
+    <link rel="stylesheet" href="../../css/normalize.css">
+    <link rel="stylesheet" href="../../css/video-js.css">
+    <link rel="stylesheet" href="../../css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="../../css/user/p/style.css">
+    <link rel="stylesheet" href="../../css/prism.css">
+    <script type="text/javascript">
+        var pId= "8d9D77d36wSaR"; 
+        var pNa= "Robot De Dedicatorias"; 
+        var username= "A.K.A._Dizzy"; 
+        var users_name= "Luis Eduardo Gallego García"; 
+    </script>
+
+    <script src="../../js/jquery.js"></script>
+    <script src="../../js/video.js"></script>
+    <script src="../../js/jquery-ui.min.js"
+    ></script>
+    <script src="../../js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="../../js/prism.js"></script>
+    <script src="../../js/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/theme-monokai.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/Ace's Modes/mode-css.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/Ace's Modes/mode-html.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/Ace's Modes/mode-javascript.js" type="text/javascript" charset="utf-8"></script>
+
+    <script src="../../js/user/p/main.js"></script>
+
+    <script src="../../js/courses/modernizr.custom.js"></script>
+
+ <script src="../../js/jquery.knob.js">
+
+    </script>
+
+    <script>
+        $(function ($) {
+
+            $(".knob").knob({
+                change: function (value) {
+                    //console.log("change : " + value);
+                },
+                release: function (value) {
+                    //console.log(this.$.attr('value'));
+                    console.log("release : " + value);
+                },
+                cancel: function () {
+                    console.log("cancel : ", this);
+                },
+                /*format : function (value) {
+                  return value + '%';
+                  }
+                  ,*/
+                draw: function () {
+
+                    // "tron" case
+                    if (this.$.data('skin') == 'tron') {
+
+                        this.cursorExt = 0.3;
+
+                        var a = this.arc(this.cv) // Arc
+                            ,
+                            pa // Previous arc
+                            , r = 1;
+
+                        this.g.lineWidth = this.lineWidth;
+
+                        if (this.o.displayPrevious) {
+                            pa = this.arc(this.v);
+                            this.g.beginPath();
+                            this.g.strokeStyle = this.pColor;
+                            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, pa.s, pa.e, pa.d);
+                            this.g.stroke();
+                        }
+
+                        this.g.beginPath();
+                        this.g.strokeStyle = r ? this.o.fgColor : this.fgColor;
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, a.s, a.e, a.d);
+                        this.g.stroke();
+
+                        this.g.lineWidth = 2;
+                        this.g.beginPath();
+                        this.g.strokeStyle = this.o.fgColor;
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
+                        this.g.stroke();
+
+                        return false;
+                    }
+                }
+            });
+
+            // Example of infinite knob, iPod click wheel
+            var v, up = 0,
+                down = 0,
+                i = 0,
+                $idir = $("div.idir"),
+                $ival = $("div.ival"),
+                incr = function () {
+                    i++;
+                    $idir.show().html("+").fadeOut();
+                    $ival.html(i);
+                },
+                decr = function () {
+                    i--;
+                    $idir.show().html("-").fadeOut();
+                    $ival.html(i);
+                };
+            $("input.infinite").knob({
+                min: 0,
+                max: 20,
+                stopper: false,
+                change: function () {
+                    if (v > this.cv) {
+                        if (up) {
+                            decr();
+                            up = 0;
+                        } else {
+                            up = 1;
+                            down = 0;
+                        }
+                    } else {
+                        if (v < this.cv) {
+                            if (down) {
+                                incr();
+                                down = 0;
+                            } else {
+                                down = 1;
+                                up = 0;
+                            }
+                        }
+                    }
+                    v = this.cv;
+                }
+            });
+        });
+    </script>
+    <style type="text/css" media="screen">
+        body {
+            overflow: hidden;
+        }
+        
+        #editor { 
+            margin: 0;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+<div class="wrapper"></div>
+    <header>
+        <nav>
+            <ul>
+                <li id="index">
+                    <a href="../../index.html"><section id="index-trigger">
+                        <span class="back-arrow button">
+              </span>
+                        <span id="index-text" class="text button">
+                Inicio
+              </span>
+                    </section></a>
+
+                </li>
+               
+                 <li>
+          <input class="buscar" type="text" placeholder="Busca aquí cursos, personas o cualquier cosa">
+          </li>
+                <li id="right-menu" class="button">
+                    <section id="dots" class="button">
+                        <span id="store" class="button">
+              </span>
+                        <span id="dots-icon" class="button">
+              </span>
+                        <span id="dots-text" class="button">
+                6'000.600
+              </span>
+
+                    </section>
+                    <section id="profileTrigger">
+                    </section>
+                    <div id="profile" class="button">
+                        <img id="profile-pic" src="../../resources/images/white.jpg" alt="Walter White">
+                        <input class="knob button" data-width="35" data-height="35" data-fgColor="#2ecc71" data-bgColor="rgba(0,0,0,0)" data-displayInput=false data-thickness=".15" readonly value="60">
+                    </div>
+                    <span class="index-arrow button">
+              </span>
+
+                    <section id="profileSettings">
+                    </section>
+                </li>
+
+                <li>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div id="root">
+    <div>
+        <a url="/A.K.A._Dizzy.html">Luis Eduardo Gallego García</a>
+    </div>
+    <div>
+        <a url="/A.K.A._Dizzy/p.html">Proyectos</a>
+    </div>
+    <span>
+        <span >Robot De Dedicatorias</span>
+    </span>
+    </div>
+
+    <section id= "file_expl">
+        <aside id="files">
+            <aside id="information_cont"><aside id="information">Laura, ¿Cuándo va a venir a darme unos piquitos?</aside></aside>
+            <ul class="file_tree">
+                <div class="folder_cont">
+                    <li class= "folder inScope">css</li>
+                    <li class= "file">style.css</li>
+                </div>
+                <div class="folder_cont">
+                    <li class= "folder inScope">js</li>
+                    <li class= "file">Alphabets.js</li>
+                    <li class= "file">main.js</li>
+                </div>
+                <li class= "file inScope">index.html</li>
+            </ul> 
+        </aside>
+        <aside id="preview">
+            <aside id="file_preview"> 
+                <aside id="options"> 
+                    <ul> 
+                        <li id= "Archivo" class= "selected"><a>Archivo</a></li>
+                        <li id= "Live"><a>Live</a></li>
+                         | 
+                        <li id= "Raw"><a>Raw</a></li>
+                         | 
+                        <li id= "Editar"><a>Editar</a></li>
+                    </ul>
+                </aside> 
+                <div class="code-scroll"><div class="code-filler"></div></div>
+                <aside id="file">
+                    
+                </aside>
+                <aside id="filePr">
+                    
+                </aside>
+                <aside id="edit">
+                    
+                </aside>
+            </aside> 
+                     
+            <ul class="file_tree">
+                <div class="folder_cont">
+                    <li class= "folder inScope">css</li>
+                    <li class= "file">style.css</li>
+                </div>
+                <div class="folder_cont">
+                    <li class= "folder inScope">js</li>
+                    <li class="file">Alphabets.js</li>
+                    <li class= "file"mainL.js</li>>
+                </div>
+                <li class= "file inScope">index.html</li>
+            </ul> 
+        </aside>
+    </section>
+    
+    <section id="Store" class="button">
+        <aside id="storeHeader" class="button">
+            
+        </aside>
+        <aside id="actualStore" class="button">
+            <aside id="storeList" class="button">
+                <ul>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                </ul>
+            </aside>
+            <aside id="storeSection">
+                
+            </aside>
+        </aside>
+       
+    </section>
+
+
+
+        <script>
+            $( "#files" ).resizable({
+                handles: "e",maxWidth: ($(window).width()), resize: function(){if($("#Live").hasClass("selected")){$("#edit")[0].style.zIndex= "6"; $("#edit")[0].style.visibility= "visible"}else if($("#Editar").hasClass("selected")){$("#filePr")[0].style.zIndex= "6"; $("#filePr")[0].style.visibility= "visible"}}, stop: function(){if($("#Live").hasClass("selected")){$("#edit")[0].style.zIndex= ""; $("#edit")[0].style.visibility= ""}else if($("#Editar").hasClass("selected")){$("#filePr")[0].style.zIndex= ""; $("#filePr")[0].style.visibility= ""}} }); 
+
+        </script>
+
+</body>
+</html>

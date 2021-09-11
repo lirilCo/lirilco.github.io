@@ -1,0 +1,20 @@
+*{ 
+  font-family: "Open Sans"; 
+} 
+.form-control, button{ 
+  border-radius: 0 !important; 
+  box-shadow: none !important; 
+  color: #495057; 
+} 
+.form-control:focus{ 
+  border-color: #001203 !important;
+box-shadow: none !important;
+outline: 0 none !important;
+} 
+button{ 
+  border-color: #001203 !important;
+  color: #001203 !important;
+} 
+button:hover{ 
+  background-color: #fff !important; 
+} 

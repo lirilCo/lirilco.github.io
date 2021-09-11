@@ -938,3 +938,9 @@ h1, h2, h3, div
     text-align: left !important;
     font-size: 0.7em;
 }
+.diálogo
+{ 
+  background-color: #ddd;
+  padding: 5px;
+  border-radius: 2px;
+}
