@@ -1,7 +1,17 @@
 var $this
 
 $(document).on("ready",function(){
-
+$(".revelar").on("click", function(){ 
+    if($(this).text()[0] != "O"){ 
+        $(this).parent().css({"height": "auto"}); 
+        $(this).text("Ocultar de nuevo el texto."); 
+        $(this).addClass("activado"); 
+    }else{ 
+        $(this).parent().css({"height": "0"}); 
+        $(this).text("Mostrar el texto oculto."); 
+        $(this).removeClass("activado"); 
+    } 
+})
     $("html").click(function(e) {
         $(".wrapper").removeClass("visible")
         $("#right-menu .index-arrow").removeClass("open");

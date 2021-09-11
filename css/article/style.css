@@ -920,3 +920,21 @@ h1, h2, h3, div
 #article figure > img { 
     cursor: pointer; 
 } 
+.oculto {
+    height: 0;
+    overflow: hidden;
+    padding: 20px;
+    border: 1px solid #ccc;
+    transition: height 1005ms cubic-bezier(.83,1.12,.27,.21);
+}
+.revelar {
+    width: 100%;
+    text-align: center;
+    display: block;
+    margin-top: -13px;
+    cursor: pointer;
+}
+.revelar.activado {
+    text-align: left !important;
+    font-size: 0.7em;
+}
