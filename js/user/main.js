@@ -657,7 +657,17 @@ $(document).on("ready", function(){
             Number--; 
         } 
     } 
-
+$(".revelar").on("click", function(){ 
+    if($(this).text()[0] != "O"){ 
+        $(this).parent().css({"height": "auto"}); 
+        $(this).text("Ocultar de nuevo la imagen."); 
+        $(this).addClass("activado"); 
+    }else{ 
+        $(this).parent().css({"height": "0"}); 
+        $(this).text("Mostrar la imagen oculta."); 
+        $(this).removeClass("activado"); 
+    } 
+})
     var distance; 
     el= $($("#profilePic > img")[0]); 
                     
