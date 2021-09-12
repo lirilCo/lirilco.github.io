@@ -1406,3 +1406,7 @@ display: inline-block;
     font-size: 0.7em;
     margin-bottom: initial; 
 }
+.oculto p 
+{ 
+    color: #aaa; 
+ }
