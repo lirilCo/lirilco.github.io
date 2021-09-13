@@ -944,3 +944,10 @@ h1, h2, h3, div
   padding: 5px;
   border-radius: 2px;
 }
+.nombre
+{ 
+  background-color: rgb(255, 255, 255);
+  padding: 13px 0px 22px 0px;
+  margin: 0px;
+  border-bottom: 1px solid #eee; 
+}
