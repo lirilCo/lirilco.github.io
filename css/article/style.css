@@ -903,7 +903,7 @@ header .bookmark
 { 
   margin: 0 21px !important; 
 } 
-h1, h2, h3, div 
+h1, h2, h3, div, u, h4
 { 
   color: inherit; 
 } 
@@ -951,3 +951,18 @@ h1, h2, h3, div
   margin: 0px;
   border-bottom: 1px solid #eee; 
 }
+.poema.autoScrollTo
+{ 
+  padding-top: 91.80000000000001px; 
+ }
+.poema.autoScrollTo h4
+{ 
+  padding-bottom: 28px;
+  position: sticky; 
+  top: 0; 
+  background-color: #fff;
+  padding-top: 23.4px;
+  margin: 0; 
+    border-bottom: 1px solid #eee; 
+
+ }

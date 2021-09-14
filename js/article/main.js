@@ -1,6 +1,34 @@
 var $this
 
 $(document).on("ready",function(){
+    var firstTime= true; 
+    /*Haha*/
+    let video = document.querySelector('.poema.autoScrollTo');
+    let isPaused = false; /* Flag for auto-paused video */
+    let observer = new IntersectionObserver((entries, observer) => { 
+      entries.forEach(entry => {
+        if(entry.intersectionRatio!=1){
+          firstTime= true; //Ha...
+        }
+      });
+    }, {threshold: 1});
+    observer.observe(video);
+
+    $($(".poema.autoScrollTo")).on("scroll", function(Zz){
+        pageXOffset= $(this).scrollTop() || 0; 
+        if(firstTime){
+                    $(this).css({"overflowY": "hidden"}); 
+
+            a=$(this)
+                               
+
+                    firstTime= false; 
+                    $("body, html").animate({
+                        scrollTop: $(this).offset().top - 50
+                    }, 400, function() {
+    a.css({"overflowY": "scroll"}); 
+  });
+                }});
 $(".revelar").on("click", function(){ 
     if($(this).text()[0] != "O"){ 
         $(this).parent().css({"height": "auto"}); 
@@ -344,7 +372,7 @@ $( window ).on("load", function(){
     responsive()
 })
 function responsive(){
-    
+        $(".poema.autoScrollTo").css({"max-height": $(window).height() - 56 - 6.84})
          $("#picContainer").width($("#theater").width()- $(".comments").outerWidth())
         $("#article").width($(window).width()- $("#sidebar").outerWidth(true) );
         $("#theater .comments").height($("#theater").height()- 40 );
