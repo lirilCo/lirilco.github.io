@@ -1,7 +1,9 @@
 var $this
 
 $(document).on("ready",function(){
+    if($('.poema.autoScrollTo').length > 0){
     var firstTime= true; 
+
     /*Haha*/
     let video = document.querySelector('.poema.autoScrollTo');
     let isPaused = false; /* Flag for auto-paused video */
@@ -12,7 +14,8 @@ $(document).on("ready",function(){
         }
       });
     }, {threshold: 1});
-    observer.observe(video);
+    observer.observe(video); 
+} 
 
     $($(".poema.autoScrollTo")).on("scroll", function(Zz){
         pageXOffset= $(this).scrollTop() || 0; 
