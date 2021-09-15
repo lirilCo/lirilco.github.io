@@ -2,30 +2,32 @@ var $this
 
 $(document).on("ready",function(){
     if($('.poema.autoScrollTo').length > 0){
-    var firstTime= true; 
+      
 
     /*Haha*/
-    let video = document.querySelector('.poema.autoScrollTo');
     let isPaused = false; /* Flag for auto-paused video */
     let observer = new IntersectionObserver((entries, observer) => { 
       entries.forEach(entry => {
         if(entry.intersectionRatio!=1){
-          firstTime= true; //Ha...
+          entry.target.firstTime= true; //Ha...
         }
       });
     }, {threshold: 1});
-    observer.observe(video); 
+     for(aST= 0; aST < document.querySelectorAll('.poema.autoScrollTo').length; aST++){ 
+            document.querySelectorAll('.poema.autoScrollTo')[aST].firstTime= true; 
+            observer.observe(document.querySelectorAll('.poema.autoScrollTo')[aST]); 
+        }
 } 
 
     $($(".poema.autoScrollTo")).on("scroll", function(Zz){
         pageXOffset= $(this).scrollTop() || 0; 
-        if(firstTime){
+        if($(this)[0].firstTime){
                     $(this).css({"overflowY": "hidden"}); 
 
             a=$(this)
                                
 
-                    firstTime= false; 
+                    $(this)[0].firstTime= false; 
                     $("body, html").animate({
                         scrollTop: $(this).offset().top - 50
                     }, 400, function() {
