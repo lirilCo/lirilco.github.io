@@ -222,6 +222,7 @@ function closeModal() {
     $(".theater").css({
         "display": "none"
     })
+    responsive(); 
 }
 		$('.knob').trigger(
         		'configure',
