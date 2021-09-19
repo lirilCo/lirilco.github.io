@@ -13,9 +13,9 @@ return [[b, i.replaceAll(" ", "").length], i];
 document.addEventListener("DOMContentLoaded", function(){ 
     document.getElementById("ñ").checked? Accents= ÑAccents: Accents= NAccents; 
 	
-    document.addEventListener("keypress", function(){ 	(function(){document.querySelector("#Sara p").outerHTML= "<p style= 'font-size: 15px; display: inline-block; '>" + contr( document.getElementsByTagName("textarea")[3].value )[0][0] + " Palabras. " + "</br>" + contr( document.getElementsByTagName("textarea")[3].value )[0][1] + " Caracteres (Sin espacios)." + "</p>"; })() }); 
+    document.addEventListener("keypress", function(){ 	(function(){document.querySelector("#Sara p").outerHTML= "<p style= 'font-size: 15px; display: inline-block; '>" + contr( document.getElementsByTagName("textarea")[0].value )[0][0] + " Palabras. " + "</br>" + contr( document.getElementsByTagName("textarea")[0].value )[0][1] + " Caracteres (Sin espacios)." + "</p>"; })() }); 
 
-    document.addEventListener("keyup", function(){ 	(function(){document.querySelector("#Sara p").outerHTML= "<p style= 'font-size: 15px; display: inline-block; '>" + contr( document.getElementsByTagName("textarea")[3].value )[0][0] + " Palabras. " + "</br>" + contr( document.getElementsByTagName("textarea")[3].value )[0][1] + " Caracteres (Sin espacios)." + "</p>"; })() }); 
+    document.addEventListener("keyup", function(){ 	(function(){document.querySelector("#Sara p").outerHTML= "<p style= 'font-size: 15px; display: inline-block; '>" + contr( document.getElementsByTagName("textarea")[0].value )[0][0] + " Palabras. " + "</br>" + contr( document.getElementsByTagName("textarea")[0].value )[0][1] + " Caracteres (Sin espacios)." + "</p>"; })() }); 
     
     document.addEventListener("keydown", function(i){ 
 	i.keyCode == 13? aNGEL(document.getElementById("dieded").value): 1; 
