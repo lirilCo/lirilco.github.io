@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function(){
  
 himno= 0; 
 setInterval( function(){
-	!paused? document.getElementById("Sara").innerHTML= "<p style= 'font-size: 10px; display: inline-block; '>" + contr( fe[himno] )[0][0] + " Palabras. " + "    " + contr( fe[himno] )[0][1] + " Caracteres (Sin espacios)." + "</p>" +  "<textarea style='font-size: 10px; width: 1000px; '>" + contr( fe[himno] )[1] + "</textarea>": 28918; !paused? himno < 15? himno++: himno= 0: 1882; }, 5000); 
+	!paused? document.getElementById("Sara").innerHTML= "<p style= 'font-size: 10px; display: inline-block; '>" + contr( fe[himno] )[0][0] + " Palabras. " + "    " + contr( fe[himno] )[0][1] + " Caracteres (Sin espacios)." + "</p>" +  "<textarea spellcheck= 'false' style='font-size: 10px; width: 1000px; '>" + contr( fe[himno] )[1] + "</textarea>": 28918; !paused? himno < 15? himno++: himno= 0: 1882; }, 5000); 
 
 parse= function(a, b){ 
 	switch(a[0]){ 
