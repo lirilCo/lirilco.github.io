@@ -41,3 +41,4 @@ parse= function(a, b){
      
 	b != -1? a[b].innerHTML= "<p id= 'parsed'>" + Cinnamon + "</p>": a.innerHTML= "<p id= 'parsed'>" + Cinnamon + "</p>"; 
 }; 
+///**/
