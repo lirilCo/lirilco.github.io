@@ -13,9 +13,9 @@ return [[b, i.replaceAll(" ", "").length], i];
 document.addEventListener("DOMContentLoaded", function(){ 
     document.getElementById("ñ").checked? Accents= ÑAccents: Accents= NAccents; 
 	
-    document.addEventListener("keypress", function(){ 	(function(){document.querySelector("#Sara p").outerHTML= "<p style= 'font-size: 15px; display: inline-block; '>" + contr( document.getElementsByTagName("textarea")[0].value )[0][0] + " Palabras. " + "</br>" + contr( document.getElementsByTagName("textarea")[0].value )[0][1] + " Caracteres (Sin espacios)." + "</p>"; })() }); 
+    document.addEventListener("keypress", function(){ 	(function(){document.querySelector("#Sara p").outerHTML= "<p style= 'font-size: 10px; display: inline-block; '>" + contr( document.getElementsByTagName("textarea")[0].value )[0][0] + " Palabras. " + "    " + contr( document.getElementsByTagName("textarea")[0].value )[0][1] + " Caracteres (Sin espacios)." + "</p>"; })() }); 
 
-    document.addEventListener("keyup", function(){ 	(function(){document.querySelector("#Sara p").outerHTML= "<p style= 'font-size: 15px; display: inline-block; '>" + contr( document.getElementsByTagName("textarea")[0].value )[0][0] + " Palabras. " + "</br>" + contr( document.getElementsByTagName("textarea")[0].value )[0][1] + " Caracteres (Sin espacios)." + "</p>"; })() }); 
+    document.addEventListener("keyup", function(){ 	(function(){document.querySelector("#Sara p").outerHTML= "<p style= 'font-size: 10px; display: inline-block; '>" + contr( document.getElementsByTagName("textarea")[0].value )[0][0] + " Palabras. " + "    " + contr( document.getElementsByTagName("textarea")[0].value )[0][1] + " Caracteres (Sin espacios)." + "</p>"; })() }); 
     
     document.addEventListener("keydown", function(i){ 
 	i.keyCode == 13? aNGEL(document.getElementById("dieded").value): 1; 
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function(){
  
 himno= 0; 
 setInterval( function(){
-	!paused? document.getElementById("Sara").innerHTML= "<p style= 'font-size: 15px; display: inline-block; '>" + contr( fe[himno] )[0][0] + " Palabras. " + "    " + contr( fe[himno] )[0][1] + " Caracteres (Sin espacios)." + "</p>" +  "<textarea style='font-size: 10px; width: 1000px; '>" + contr( fe[himno] )[1] + "</textarea>": 28918; !paused? himno < 15? himno++: himno= 0: 1882; }, 5000); 
+	!paused? document.getElementById("Sara").innerHTML= "<p style= 'font-size: 15px; display: inline-block; '>" + contr( fe[himno] )[0][0] + " Palabras. " + "    " + contr( fe[himno] )[0][1] + " Caracteres (Sin espacios)." + "</p>" +  "<textarea spellcheck= 'false' style='font-size: 10px; width: 1000px; '>" + contr( fe[himno] )[1] + "</textarea>": 28918; !paused? himno < 15? himno++: himno= 0: 1882; }, 5000); 
 
 console.log('parse("#Sara", -1);      '); 
 
