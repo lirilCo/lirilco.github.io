@@ -186,7 +186,7 @@ $("#files .file").click(function(i, tr){
       
     history.pushState({page: 1}, "", "/" + username + "/p/" + pId + "/" + uRL); 
                                                               
-    (!!uRL.length && uRL.length > 0)? $("#root")[0].children[$("#root")[0].children.length - 1].outerHTML= '<div><a url=\"/' + username + '/p/' + pId + '\">' + $("#root")[0].children[$("#root")[0].children.length - 1].innerText + '</a></div>': 1; 
+    (!!uRL.length && uRL.length > 0)? $("#root")[0].children[0].children[$("#root")[0].children[0].children.length - 1].outerHTML= '<div><a url=\"/' + username + '/p/' + pId + '\">' + $("#root")[0].children[0].children[$("#root")[0].children[0].children.length - 1].innerText + '</a></div>': 1; 
                                   
     updateRoot(separateUrl(uRL)); 
 
@@ -207,7 +207,7 @@ $("#files .file").click(function(i, tr){
         $("#preview #file_preview #file").css({"visibility": "visible", "opacity": "1"}); 
         $("#preview #file_preview #filePr")[0].innerHTML= ""; 
         $("#preview #file_preview #edit")[0].innerHTML= ""; 
-        switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].indexOf(".") + 1)){ 
+        switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].lastIndexOf(".") + 1)){ 
             case "png": 
             case "jpg": 
                 $("#preview #file_preview #file")[0].innerHTML= "<img src='" +  FileToRequest + "'></img>"; 
@@ -275,7 +275,7 @@ $("#files .file").click(function(i, tr){
             var editor = ace.edit("editor");
             editor.setTheme("ace/theme/monokai"); 
             editor.setValue(this.responseText); 
-            switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].indexOf(".") + 1)){ 
+            switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].lastIndexOf(".") + 1)){ 
                 case "js": 
                     var JavaScriptMode = ace.require("ace/mode/javascript").Mode; 
                     editor.session.setMode(new JavaScriptMode()); 
@@ -337,7 +337,7 @@ $("#preview .file").click(function(i){
     history.pushState({page: 1}, "", "/" + username + "/p/" + pId + "/" + uRL); 
 
                                                               
-    (!!uRL.length && uRL.length > 0)? $("#root")[0].children[$("#root")[0].children.length - 1].outerHTML= '<div><a url=\"/' + username + '/p/' + pId + '\">' + $("#root")[0].children[$("#root")[0].children.length - 1].innerText + '</a></div>': 1; 
+    (!!uRL.length && uRL.length > 0)? $("#root")[0].children[0].children[$("#root")[0].children[0].children.length - 1].outerHTML= '<div><a url=\"/' + username + '/p/' + pId + '\">' + $("#root")[0].children[0].children[$("#root")[0].children[0].children.length - 1].innerText + '</a></div>': 1; 
     /*window.location.hash= "infor"; */
                               
     updateRoot(separateUrl(uRL)); 
@@ -499,7 +499,7 @@ for(let folder of document.querySelectorAll("#files .folder")) {
     history.pushState({page: 1}, "", "/" + username + "/p/" + pId + "/" + uRL); 
 
                                                               
-    (!!uRL.length && uRL.length > 0)? $("#root")[0].children[$("#root")[0].children.length - 1].outerHTML= '<div><a url=\"/' + username + '/p/' + pId + '\">' + $("#root")[0].children[$("#root")[0].children.length - 1].innerText + '</a></div>': 1; 
+    (!!uRL.length && uRL.length > 0)? $("#root")[0].children[0].children[$("#root")[0].children[0].children.length - 1].outerHTML= '<div><a url=\"/' + username + '/p/' + pId + '\">' + $("#root")[0].children[0].children[$("#root")[0].children[0].children.length - 1].innerText + '</a></div>': 1; 
        window.location.hash= "infor"; 
                               
     updateRoot(separateUrl(uRL)); 
@@ -647,7 +647,7 @@ $("#files .folder").click(function(i){
                                   
     history.pushState({page: 1}, "", "/" + username + "/p/" + pId + "/" + uRL); 
                                                                       
-    (!!uRL.length && uRL.length > 0)? $("#root")[0].children[$("#root")[0].children.length - 1].outerHTML= '<div><a href=\"/' + username + '/p/' + pId + '\">' + $("#root")[0].children[$("#root")[0].children.length - 1].innerText + '</a></div>': 1; 
+    (!!uRL.length && uRL.length > 0)? $("#root")[0].children[0].children[$("#root")[0].children.length - 1].outerHTML= '<div><a href=\"/' + username + '/p/' + pId + '\">' + $("#root")[0].children[0].children[$("#root")[0].children.length - 1].innerText + '</a></div>': 1; 
                                   
     updateRoot(separateUrl(uRL)); 
 
@@ -839,7 +839,7 @@ $("#Archivo, #Live, #Editar").click(function(){
         $("#preview #file_preview #file").css({"visibility": "visible", "opacity": "1"}); 
         $("#preview #file_preview #filePr")[0].innerHTML= ""; 
         $("#preview #file_preview #edit")[0].innerHTML= ""; 
-            switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].indexOf(".") + 1)){ 
+            switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].lastIndexOf(".") + 1)){ 
                 case "png": 
                 case "jpg": 
                     $("#preview #file_preview #file")[0].innerHTML= "<img src='" +  FileToRequest + "'></img>"; 
@@ -909,7 +909,7 @@ $("#Archivo, #Live, #Editar").click(function(){
             var editor = ace.edit("editor");
             editor.setTheme("ace/theme/monokai"); 
             editor.setValue(this.responseText); 
-            switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].indexOf(".") + 1)){ 
+            switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].lastIndexOf(".") + 1)){ 
                 case "js": 
                     var JavaScriptMode = ace.require("ace/mode/javascript").Mode; 
                     editor.session.setMode(new JavaScriptMode()); 
@@ -1349,9 +1349,9 @@ separateUrl= function (r3){
 } 
   
 updateRoot= function(a7){ 
-    $("#root")[0].innerHTML= '<div><a url="/' + username + '.html">' + users_name + '</a></div><div><a url="/' + username + '/p.html">Proyectos</a></div><span><span>' + pNa + '</span></span>'; 
+    $("#root")[0].children[0].innerHTML= '<div><a url="/' + username + '.html">' + users_name + '</a></div><div><a url="/' + username + '/p.html">Proyectos</a></div><span><span>' + pNa + '</span></span>'; 
     
-    (!!uRL.length && uRL.length > 0)? $("#root")[0].children[$("#root")[0].children.length - 1].outerHTML= '<div><a url=\"/' + username + '/p/' + pId + '\">' + $("#root")[0].children[$("#root")[0].children.length - 1].innerText + '</a></div>': 1; 
+    (!!uRL.length && uRL.length > 0)? $("#root")[0].children[0].children[$("#root")[0].children[0].children.length - 1].outerHTML= '<div><a url=\"/' + username + '/p/' + pId + '\">' + $("#root")[0].children[0].children[$("#root")[0].children[0].children.length - 1].innerText + '</a></div>': 1; 
 
     for(eForensics in a7){ 
         if(window.location.hash== "#infor" && parseInt(eForensics) == a7.length - 1){ 
@@ -1361,7 +1361,7 @@ updateRoot= function(a7){
                 genurl+= "/" + a7[idr]; 
             } 
       
-            $("#root")[0].innerHTML= $("#root")[0].innerHTML + "<div class= 'noArrow'><a url=" + "'" + genurl +"'"+ ">" + a7[eForensics] + "</a></div>" + "<span><span>" + "#infor" + "</span></span>"
+            $("#root")[0].children[0].innerHTML= $("#root")[0].children[0].innerHTML + "<div class= 'noArrow'><a url=" + "'" + genurl +"'"+ ">" + a7[eForensics] + "</a></div>" + "<span><span>" + "#infor" + "</span></span>"
         }else if(parseInt(eForensics) != a7.length - 1){ 
             genurl= "/" + username + "/p/" + pId + ""; 
                               
@@ -1369,13 +1369,13 @@ updateRoot= function(a7){
                 genurl+= "/" + a7[idr]; 
             } 
       
-            $("#root")[0].innerHTML= $("#root")[0].innerHTML + "<div><a url=" + "'" + genurl +"'"+ ">" + a7[eForensics] + "</a></div>"
+            $("#root")[0].children[0].innerHTML= $("#root")[0].children[0].innerHTML + "<div><a url=" + "'" + genurl +"'"+ ">" + a7[eForensics] + "</a></div>"
         }else{ 
-            $("#root")[0].innerHTML= $("#root")[0].innerHTML + "<span><span>" + a7[eForensics] + "</span></span>"; 
+            $("#root")[0].children[0].innerHTML= $("#root")[0].children[0].innerHTML + "<span><span>" + a7[eForensics] + "</span></span>"; 
         } 
     } 
 
-    $('#root div').click( function(e){ 
+    $('#root div div').click( function(e){ 
        if(!!e.target.getAttribute("url")){ 
         $("#preview .file_tree").removeClass("visible"); 
         $(".code-filler").width(0); 
@@ -1388,7 +1388,7 @@ updateRoot= function(a7){
         $(".folder_cont").css({"top": "initial"}); 
         history.pushState({page: 1}, "", e.target.getAttribute("url")); 
         updateRoot(separateUrl(getToBusiness(e.target.getAttribute("url")))); 
-        $("#root")[0].lastChild.outerHTML= '<span><span>' + $("#root")[0].lastChild.textContent + '</span></span>'; 
+        $("#root")[0].children[0].lastChild.outerHTML= '<span><span>' + $("#root")[0].children[0].lastChild.textContent + '</span></span>'; 
 
         $(".file").css({"position": "initial"}); 
         $(".folder_cont").css({"position": "initial"})

@@ -1,3 +1,4 @@
+
 @font-face
 
 {
@@ -1069,7 +1070,7 @@ display: inline-block;
 .data table{
     height: 50px;
     width: 100%;
-
+    /*line-height: 0; */ 
 }
 table .static{
     width:15%;
@@ -1117,6 +1118,7 @@ table .static{
     font-weight: normal;
     font-size: 13px;
     color: #666;
+    height: 50px; 
 }
 .value{
     font-weight: normal;
@@ -1127,7 +1129,8 @@ table .static{
     font-weight: normal;
     vertical-align: middle;
     position: absolute;
-    top: 16px
+    top: 16px; 
+    line-height: 45px;
 }
 .curso a{
     position: absolute;
@@ -1182,3 +1185,8 @@ body .achievements-tooltip{
 #profile div{ 
     display: inline-block !important; 
 } 
+#root
+{
+    margin-top: 46px !important; 
+    margin-bottom: -47px !important; 
+}

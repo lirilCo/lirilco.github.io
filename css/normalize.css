@@ -435,14 +435,16 @@ th {
   list-style-type: none; 
   margin: 0; 
   display: flex; 
+  overflow-x: auto; 
 } 
-#root div, #root span 
+#root .contnr div, #root .contnr span 
 { 
   color: #2ecc71; 
-  padding-right: 4.15px; 
-
+  /*padding-right: 4.15px; */ 
+  display: inline; 
+  white-space: nowrap; 
 } 
-#root div:after 
+#root .contnr div:after 
 { 
   content: " > "; 
   color: #ccc; 
@@ -466,7 +468,7 @@ cursor: pointer;
 }
 #root span span
 {
-color: #bbb
+color: #bbb !important; 
 }
 input.knob
 {
