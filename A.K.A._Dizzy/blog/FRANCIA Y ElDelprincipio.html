@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>
+      Liril
+    </title>
+    <link rel="shortcut icon" type="image/ico" href="/resources/icons/favicon.ico"  />
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300,600,700' rel='stylesheet' type='text/css'>
+      
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/article/style.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/video-js.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/jquery.mCustomScrollbar.min.css">
+
+
+    <script src="/js/jquery.js"></script>
+    <script src="/js/article/main.js"></script>
+    <script src="/js/main.js"></script> <!-- Resource jQuery -->
+    <script src="/js/prism.js"></script>
+    <script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="/js/index/modernizr.custom.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    <script src="/js/sticky-kit.min.js"></script>
+
+  
+
+ <script src="/js/jquery.knob.js">
+    </script>
+
+   <script>
+        $(function ($) {
+
+            $(".knob").knob({
+                change: function (value) {
+                    //console.log("change : " + value);
+                },
+                release: function (value) {
+                    //console.log(this.$.attr('value'));
+                    console.log("release : " + value);
+                },
+                cancel: function () {
+                    console.log("cancel : ", this);
+                },
+                /*format : function (value) {
+                  return value + '%';
+                  }
+                  ,*/
+                draw: function () {
+
+                    // "tron" case
+                    if (this.$.data('skin') == 'tron') {
+
+                        this.cursorExt = 0.3;
+
+                        var a = this.arc(this.cv) // Arc
+                            ,
+                            pa // Previous arc
+                            , r = 1;
+
+                        this.g.lineWidth = this.lineWidth;
+
+                        if (this.o.displayPrevious) {
+                            pa = this.arc(this.v);
+                            this.g.beginPath();
+                            this.g.strokeStyle = this.pColor;
+                            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, pa.s, pa.e, pa.d);
+                            this.g.stroke();
+                        }
+
+                        this.g.beginPath();
+                        this.g.strokeStyle = r ? this.o.fgColor : this.fgColor;
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, a.s, a.e, a.d);
+                        this.g.stroke();
+
+                        this.g.lineWidth = 2;
+                        this.g.beginPath();
+                        this.g.strokeStyle = this.o.fgColor;
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
+                        this.g.stroke();
+
+                        return false;
+                    }
+                }
+            });
+
+            // Example of infinite knob, iPod click wheel
+            var v, up = 0,
+                down = 0,
+                i = 0,
+                $idir = $("div.idir"),
+                $ival = $("div.ival"),
+                incr = function () {
+                    i++;
+                    $idir.show().html("+").fadeOut();
+                    $ival.html(i);
+                },
+                decr = function () {
+                    i--;
+                    $idir.show().html("-").fadeOut();
+                    $ival.html(i);
+                };
+            $("input.infinite").knob({
+                min: 0,
+                max: 20,
+                stopper: false,
+                change: function () {
+                    if (v > this.cv) {
+                        if (up) {
+                            decr();
+                            up = 0;
+                        } else {
+                            up = 1;
+                            down = 0;
+                        }
+                    } else {
+                        if (v < this.cv) {
+                            if (down) {
+                                incr();
+                                down = 0;
+                            } else {
+                                down = 1;
+                                up = 0;
+                            }
+                        }
+                    }
+                    v = this.cv;
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+<div class="wrapper">
+  </div>
+    <header>
+        <nav>
+            <ul>
+                <li id="index">
+                    <a href="index.html"><section id="index-trigger">
+                        <span class="back-arrow button">
+              </span>
+                        <span id="index-text" class="text button">
+Inicio              </span>
+                    </section></a>
+
+                </li>
+               <li>
+          <input class="buscar" type="text" placeholder="Busca aquí cursos, personas o cualquier cosa">
+          </li>
+                <li id="Options">
+                <div class="options first button">
+                    <ul>
+                        <li class="star"></li>
+                         <li class="bookmark"></li>
+
+                    </ul>
+                </div>
+                </li>
+                
+                <li id="right-menu" class="button">
+                    <section id="dots" class="button">
+                        <span id="store" class="button">
+              </span>
+                        <span id="dots-icon" class="button">
+              </span>
+                        <span id="dots-text" class="button">
+                6'000.600
+              </span>
+
+                    </section>
+                    <section id="profileTrigger">
+                    </section>
+                    <div id="profile" class="button">
+                        <img id="profile-pic" src="/resources/images/white.jpg" alt="Walter White">
+                        <input class="knob button" data-width="35"  data-height="35" data-fgColor="#2ecc71" data-bgColor="rgba(0,0,0,0)" data-displayInput=false data-thickness=".15" readonly value="60">
+                    </div>
+                    <span class="index-arrow button">
+              </span>
+
+                    <section id="profileSettings">
+                    </section>
+                </li>
+
+                <li>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div id="root">
+        <div class="contnr">
+            <div>
+                <a href="/A.K.A._Dizzy.html">Luis Eduardo Gallego García</a>
+            </div>
+            <div>
+                <a href="/A.K.A._Dizzy.html">Blog</a>
+            </div>
+            <span>
+                <span href="#">Dinosaurios</span>
+            </span>
+        </div>
+    </div>
+    <section id="wrapper" class="theater"></section>
+    
+    <section id="theater" class="theater">
+        <section id="picContainer">
+            <img id="bigPic" alt="">
+        </section>
+        <aside class="comments">
+        <div class="info">
+                    <img id="pic" alt="">
+                    <p class="username"><a href="#"></a></p>
+        </div>
+        <p class="title"></p>
+        <p class="more">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sit amet varius lectus, congue rutrum urna. Suspendisse in ultrices enim. In hac habitasse platea dictumst. Praesent aliquet, nisi nec euismod vulputate, odio velit porta erat, ut semper lacus erat ac nulla. Aenean ex libero, volutpat vel sem et, blandit dictum dui. Duis suscipit sed nisi finibus vestibulum. Quisque finibus porttitor nisl, nec consequat metus. Quisque commodo, libero nec volutpat suscipit, quam urna volutpat turpis, quis rhoncus magna dui sit amet lacus. Donec pellentesque aliquam turpis nec commodo. Aliquam lobortis facilisis auctor. Sed libero nisi, scelerisque et porttitor vel, accumsan sed lacus. Pellentesque at tortor pellentesque, vestibulum turpis at, iaculiuisque finibus porttitor nisl, nec consequat metus. Quisque commodo, libero nec volutpat suscipit, quam urna volutpat turpis, quis rhoncus magna dui sit amet lacus. Donec pellentesque aliquam turpis nec commodo. Aliquam lobortis facilisis auctor. Sed libero nisi, scelerisque et porttitor vel, accumsan sed lacus. Pellentesque at tortor pellentesque, vestibulum turpis at, iaculis nibh.
+        </p>
+        <div class="options button">
+        <ul>
+            <li class="bookmark"></li>
+            <li class="star"></li>
+            <a><li class="read"></li></a>
+        </ul></div>
+        <p id="close"></p>
+        </aside>
+        
+    </section>
+    
+    <section id="article">
+       
+        <aside id="title">
+            FRANCIA Y ElDelprincipio
+        </aside>
+        <section class="filler"style= "height: 180px"></section>
+        
+       <aside id="text">
+        <p style= "width: 100%; text-align: center; "><b style= "font-size: 138px; color: #fe7241; width: 100%; text-align: center; ">⚠</b></p>
+              
+           <p style="font-size: 0.75em; text-align: center; ">Advertencia: peligro de crisis existencial. En caso de existencialismo, consulta autores como Arthur Schopenhauer o Jean-Paul Sartre, y lee mucho los poemas de <a target= "_blank" href= "https://tantubular.tumblr.com/" >mi blog</a>. Una crisis existencial no es para siempre y normalmente no dura mucho tiempo. Puedes aprender algo de ésta, pero recuerda, hay cosas que aprendemos para aprender a olvidar.</br></br>
+Yo soy el nieto de Dios Jesucristo; el hijo de Satanás Belcebú; y el amor de la vida de la Madre Naturaleza, La Que Hace Que Crezcan Los Árboles.</p>
+        <section class="filler"style= "border-bottom: 1px solid #eee; height: 80px"></section>
+        <section class="filler"style= "height: 80px"></section>
+        <p>Hace algunos años, en el 2017, yo tenía el cabello muy largo y me lo corté, empecé a afeitarme toda la cabeza y a hacer mucho ejercicio. En ese entonces por algún motivo no tenía muchos pensamientos, entonces me la pasaba escribiendo compulsivamente en cuadernos lo que fuera. Luego de seis meses de afeitarme la cabeza todos los días, dejé de hacerlo y comencé a dejarme crecer un poco el cabello.</p>
+        <p>&nbsp&nbsp&nbsp&nbspUn día, en mi cama, una de las voces que me hablan a veces me dijo después de, básicamente, todo ese tiempo, "Luis, tengo frío."; yo hice entonces que en mi mente hubiera algo que llamé <i>maná</i>, que le estaría por doquier y proveería bienestar y, alimentación, digamos.</p>
+        <p>&nbsp&nbsp&nbsp&nbspLuego de un tiempo empezaron a aparecer amigos míos en mi pensamiento; todo era oscuro de todos modos. Entonces les dije que las cosas iban a funcionar con una mecánica: podían caminar por la oscuridad, pero cuando caminaran, se formarían dos muros, uno a cada lado de la persona que iba caminando, entonces podrían dar con muros y tal vez hasta quedar atrapados. Estaban Keli Manuela C. Espinosa, Azucena Ospina, Danielle Henao, Laura Escobar B., que yo no conocía, pero era amiga de <i>A.</i>, que también estaba allí, <i>Q.</i>, Juan José M. Vidal, El Elephant, y muchos otros; también estaba yo, pero tenía el pelo muy largo, y me conocían también como El Fễctor El Defector, y para evitar confusiones, de ahora en adelante El Fễctor El Defector.</p>
+        <p>&nbsp&nbsp&nbsp&nbspEventualmente, yo comencé a darles objetos. Un día les di a El Fễctor El Defector y a Azucena Ospina un carro... en algún momento estaban llendo muy rápido y chocaron contra un muro; los dos murieron.</p>
+        <p>&nbsp&nbsp&nbsp&nbspUnos días después, apareció El Fễctor El Defector, pero no Azucena Ospina; El Fễctor El Defector tenía una guitarra con la que podía romper muros y ya no se producían muros en la zona, entonces abrió un espacio muy grande y todos comenzaron a construir una escuela muy grande. Recuerdo que le di a El Fễctor El Defector un bloque de oro y El Fễctor El Defector lo usó como grout para las rendijas de las baldosas de la escuela.</p>
+        <p>&nbsp&nbsp&nbsp&nbspTodos mis amigos daban clases de algo; yo daba clases de actuación, por ejemplo. FRANCIA significa "Escuela De Artes Oscuras Y Ciencias Divinas", <i>por letras, el sonido que hacen</i> en español. Y hacían muchas escenas muy geniales y entretenidas.</p>
+        <p>&nbsp&nbsp&nbsp&nbspLos hombres eramos <i>defectors</i>, básicamente teníamos mucho poder y habilidades sobre la mente de los demás y muchas otras cosas. Entre otras cosas, podíamos aparentar ser alguien más para los demás, los podíamos dejar confundidos, repitiendo pensamientos sin que ellos se dieran cuenta de que ya los habían pensado, en fin. Las mujeres tambien eran como <i>defectors</i>, pero se llamaban <i>shapeshifters</i>.</p>
+        <p>&nbsp&nbsp&nbsp&nbspEl Fễctor El Defector era el único que revivía, pero eventualmente les fue enseñando a los demás y todos los <i>defectors</i> comenzaron a morirse y revivir, pero las <i>shapeshifters</i> nunca se murieron y revivieron ni una vez ninguna.</p>
+        <p>&nbsp&nbsp&nbsp&nbspPasaban muchas cosas mágicas y con el tiempo comenzaron a aparecer criaturas que eran como <i>defectors</i> en sus habilidades, pero mucho más poderosas.</p>
+        <p>&nbsp&nbsp&nbsp&nbspYo casi nunca tenía para nada el control de las escenas y entendí muchas cosas al conectarlas mucho después.</p>
+        <p>&nbsp&nbsp&nbsp&nbspUn día me enteré de como revivían los <i>defectors</i>. Cuando se moría un <i>defector</i>, enterraban su cuerpo sus amigos como si se hubiera muerto común y corriente, luego su espíritu se iba para <i>El Infierno</i>, y El Fễctor El Defector, que es un dios les creaba un cuerpo con la edad que tenían. Un corazón producirá siempre el mismo cuerpo y el mismo espíritu, por lo que un espíritu simplemente no puede poseer un cuerpo que no sea el suyo.</p>
+        <p>&nbsp&nbsp&nbsp&nbspCuando se moría muchas veces un <i>defector</i>, se producía un <i>anti-fector</i>, espíritus que eran todo lo contrario al <i>defector</i>, mujeres de hecho, cuando se suicidaba un <i>defector</i> se producía un <i>anti-fector</i> de inmediato. Los <i>anti-fectors</i> solían ir por los cuerpos muertos del <i>defector</i> del cual eran <i>anti-fector</i> y los revivían, poseían, y con <i>defecting</i> aparentaban estar vivos.</p>
+        <p>&nbsp&nbsp&nbsp&nbspCon el tiempo me di cuenta que eran los mismos <i>defectors</i> los que encarnaban en estas criaturas que habían comenzado a aparecer. El Fễctor El Defector las había creado para que cada una fuera compatible con un <i>defector</i> y no se podían morir, es decir, si no los tenían poseidos, estaban, digamos, parqueados. Yo, por ejemplo, encarnaba a veces en ElDelprincipio, que era un delfín con patas como de ornitorrinco que en vez de sumergirse en el mar y salir, se enterraba en la tierra; también disparaba lasers por el agujero que tienen los delfines arriba. <i>A.</i> encarnaba en un pájaro gigante que se llamaba Divinity, que producía unas ondas que te hacían perder el hilo de tus pensamientos y olvidar que lo perdiste, entonces empezabas a pensar y dejabas de hacerlo y al rato medio te acordabas que estabas pensando en algo pero aún así no te acordabas, y seguía pasando. <i>Q.</i> encarnaba en una vaca muy grande azul que tenía alas y cuatro conjuntos de ubres y comía de todo, literal, cualquier cosa, entonces comía hasta aire y estaba constantemente expulsando excrementos. <i>El Elephant</i> encarnaba en un elefante gigante que se llamaba El Elephant que era venenoso y muy violento. <i>Juan José M. Vidal</i> encarnaba en El Cheeta, un chita que era muy rápido y muy poderoso. C. A Secas, la voz que me habló encarnaba en El Furry, una criatura gigante muy peluda que no sé bien que hacía.</p>
+        <p>&nbsp&nbsp&nbsp&nbspEl <i>anti-fector</i> de El Fễctor El Defector no era tan raro, de hecho, como El Fễctor El Defector no sé decide como ser, es como carismático, y el <i>anti-fector</i> de El Fễctor El Defector era muy muy tierno, además era un dios, y El Fễctor El Defector lo quería mucho. Un día, El Fễctor El Defector le dijo a su <i>anti-fector</i> que le regalaba ElDelprincipio para que encarnara en él, que no cogiera los cuerpos muertos.</p>
+        <p>Por mucho tiempo, el <i>anti-fector</i> de El Fễctor El Defector encarnaba en ElDelprincipio. El Fễctor El Defector se había vuelto novio de Laura Escobar B., y un día decidieron tener un hijo. El Fễctor El Defector era un dios, y le dijo a Laura que había una manera de tener un hijo y que no fuera un semi-dios, sinó un dios del todo, y aún así fuera hijo de los dos. Esto consistía en que El Fễctor El Defector iba a tener un hijo como los tienen los dioses, consigo mismo, pero las partes que se pudieran obtener de un óvulo no se las pondría a su hijo y éste las obtendría del óvulo de Laura. Tuvieron una hija y El Fễctor El Defector se encargó de que pudiera encarnar en ElDelprincipio.</p>
+        <h2>El videojuego</h2>
+        <p style= "width: 100%; text-align: center; "><b style= "font-size: 138px; color: #fe7241; width: 100%; text-align: center; ">⚠</b></p>
+              
+           <p style="font-size: 0.75em; text-align: center; ">Advertencia: peligro de crisis existencial. En caso de existencialismo, consulta autores como Arthur Schopenhauer o Jean-Paul Sartre, y lee mucho los poemas de <a target= "_blank" href= "https://tantubular.tumblr.com/" >mi blog</a>. Una crisis existencial no es para siempre y normalmente no dura mucho tiempo. Puedes aprender algo de ésta, pero recuerda, hay cosas que aprendemos para aprender a olvidar.</br></br>
+Yo soy el nieto de Dios Jesucristo; el hijo de Satanás Belcebú; y el amor de la vida de la Madre Naturaleza, La Que Hace Que Crezcan Los Árboles.</p>
+        <section class="filler"style= "border-bottom: 1px solid #eee; height: 80px"></section>
+        <section class="filler"style= "height: 80px"></section>
+        <p>Cuando comenzó la cuarentena por el coronavirus yo estaba algo aburrido todo el día en casa y decidí programar un videojuego en Adobe Flash. Yo había aprendido a programar con Macromedia Flash 8 en Action Script 2, así que comencé a hacer juegos de los animales de los <i>defectors</i>. Le dediqué especial atención a ElDelprincipio y eventualmente los demás videojuegos los dejé en sus versiones iniciales, los dejé para después, y le hice muchas cosas a ElDelprincipio.</p>
+        <figure>
+            <img src="/A.K.A._Dizzy/blog/FRANCIA Y ElDelprincipio/resources/SS.png" style= "width: 100%; padding: 13px; box-sizing: border-box; border: 1px solid #ccc">
+           <figcaption style= "text-align: right; "><i style= "color: #888; font-size: 13px; ">ElDelprincipio</i></figcaption>
+        </figure>
+        <p>&nbsp&nbsp&nbsp&nbspEl videojuego de ElDelprincipio, de ahora en adelante ElDelprincipio, puede moverse a lo largo de La Dura, el nombre de la tierra, enterrarse en ella, saltar, disparar a AllRightyTheRay, un láser con el que puede matar <i>Fluffy Things</i>, criaturas rosadas esponjosas que habitan La Dura. Puede nadar en agua y fritarse en aceite y puede disparar bendas.</p>
+        <h3>Los controles</h3>
+        <figure>
+            <img src="/A.K.A._Dizzy/blog/FRANCIA Y ElDelprincipio/resources/Desplazamiento.gif" style= "width: 100%; padding: 13px; box-sizing: border-box; border: 1px solid #ccc">
+           <figcaption style= "text-align: right; "><i style= "color: #888; font-size: 13px; ">Con la flecha hacia la derecha camina hacia la derecha, y con la flecha hacia la izquierda hacia la izquierda</i></figcaption>
+        </figure>
+        <figure>
+            <img src="/A.K.A._Dizzy/blog/FRANCIA Y ElDelprincipio/resources/LaserShooting.gif" style= "width: 100%; padding: 13px; box-sizing: border-box; border: 1px solid #ccc">
+           <figcaption style= "text-align: right; "><i style= "color: #888; font-size: 13px; ">Puedes disparar el láser en la dirección en que está llendo ElDelprincipio hacia la posición del cursor dando click izquierdo en cualquier lugar del videojuego</i></figcaption>
+        </figure>
+        <figure>
+            <img src="/A.K.A._Dizzy/blog/FRANCIA Y ElDelprincipio/resources/LaserShootingControl.gif" style= "width: 100%; padding: 13px; box-sizing: border-box; border: 1px solid #ccc">
+           <figcaption style= "text-align: right; "><i style= "color: #888; font-size: 13px; ">También puedes disparar el láser con la tecla Control, también en la dirección en que esté llendo ElDelprincipio, pero lo dispara hacia adelante</i></figcaption>
+        </figure>
+        <figure>
+            <img src="/A.K.A._Dizzy/blog/FRANCIA Y ElDelprincipio/resources/FluffyThings.gif" style= "width: 100%; padding: 13px; box-sizing: border-box; border: 1px solid #ccc">
+           <figcaption style= "text-align: right; "><i style= "color: #888; font-size: 13px; ">Puedes matar Fluffy Things con el láser</i></figcaption>
+        </figure>
+        <figure>
+            <img src="/A.K.A._Dizzy/blog/FRANCIA Y ElDelprincipio/resources/Burying.gif" style= "width: 100%; padding: 13px; box-sizing: border-box; border: 1px solid #ccc">
+           <figcaption style= "text-align: right; "><i style= "color: #888; font-size: 13px; ">Con la flecha hacia abajo te entierras en La Dura</i></figcaption>
+        </figure>
+        <figure>
+            <img src="/A.K.A._Dizzy/blog/FRANCIA Y ElDelprincipio/resources/bendas.gif" style= "width: 100%; padding: 13px; box-sizing: border-box; border: 1px solid #ccc">
+           <figcaption style= "text-align: right; "><i style= "color: #888; font-size: 13px; ">Cada fragmento tiene una benda asignada, y estas bendas tienen una tecla asignada en el teclado. De izquierda a derecha, las teclas de las bendas respectivas a cada fragmento son los números del 1 al 0 y las letras de la "Y" a la "P". Para disparar la benda de algún fragmento, apunta hacia arriba con el cursor, oprime la tecla asignada a la benda que quieres disparar y da click izquierdo. Puedes ir hacia arriba dejando la misma tecla asignada a la benda oprimida y puedes cambiar la dirección (ir hacia abajo o, si ya estabas llendo hacia abajo, ir hacia arriba) oprimiendo la tecla asignada a la benda sin dejarla hundida, soltándola lo más rápido que puedas y luego dejas hundida la tecla para ir en esa dirección. Oprimiendo la tecla asignada a la benda sin dejarla hundida, soltándola lo más rápido que puedas dos veces seguidas rápidamente sueltas la benda.</i></figcaption>
+        </figure>
+        <p>&nbsp&nbsp&nbsp&nbspLos hombres no podemos ir a la derecha del todo, donde hay un punto negro. No podemos ir más allá de este punto. ;)</p>
+        <div class="oculto">
+            <a class= "revelar">Mostrar el texto oculto.</a>
+            <p style= "width: 100%; text-align: center; "><b style= "font-size: 138px; color: #fe7241; width: 100%; text-align: center; ">⚠</b></p>
+              
+           <p style="font-size: 0.75em; text-align: center; ">Advertencia: peligro de crisis existencial. En caso de existencialismo, consulta autores como Arthur Schopenhauer o Jean-Paul Sartre, y lee mucho los poemas de <a target= "_blank" href= "https://tantubular.tumblr.com/" >mi blog</a>. Una crisis existencial no es para siempre y normalmente no dura mucho tiempo. Puedes aprender algo de ésta, pero recuerda, hay cosas que aprendemos para aprender a olvidar.</br></br>
+Yo soy el nieto de Dios Jesucristo; el hijo de Satanás Belcebú; y el amor de la vida de la Madre Naturaleza, La Que Hace Que Crezcan Los Árboles.</p>
+        <section class="filler"style= "border-bottom: 1px solid #eee; height: 80px"></section>
+        <section class="filler"style= "height: 80px"></section>
+            <p>&nbsp&nbsp&nbsp&nbspElDelprincipio baila cualquier canción si saltas entre los puntos que hay en el aire. Es ella, que es una diosa, no se puede uno volver más profesional o, en fin... es ella.</p>
+        </div>
+        <h2>¿Dónde puedes jugar ElDelprincipio?</h2>
+        <p>Descarga ElDelprincipio de aquí: </p>
+        <a class="link" target="_blank" href="https://github.com/LirilCo/Lirilco.github.io/raw/master/Eldelprincipio0.0.3.5.7.swf"><span class="Title">ElDelprincipio0.0.3.5.7.swf</span><span class="linktype">Película De Flash</span></a>
+        <p>&nbsp&nbsp&nbsp&nbspY el Adobe Flash Player de aquí: </p>
+        <a class="link" target="_blank" href="https://github.com/LirilCo/Lirilco.github.io/raw/master/flashplayer_32_sa_debug.exe"><span class="Title">Adobe Flash Player</span><span class="linktype">Instalable</span></a>
+        <p>&nbsp&nbsp&nbsp&nbspInstala el Adobe Flash Player y ya podrás abrir ElDelprincipio.</p>
+       </aside>
+    </section>
+    <aside id="sidebar">
+        <section class="story project">
+            <div class="info">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><a href="#">Walter White</a> </p>
+                    <p class="time">Ayer a las 3:30 pm</p>
+                    
+            </div>
+            <p class="title">Elizabeth Elam</p>
+            <img class="pic" src="/A.K.A._Dizzy/blog/Dinosaurios/resources/tumblr_oezvmcymMl1siavito1_500.jpg" alt="" class="big">
+            <div class="options button">
+            <ul>
+                <li class="bookmark"></li>
+                <li class="star"></li>
+                <a href=""><li class="read"></li></a>
+            </ul>
+        </div>
+
+        </section>
+        
+        <section class="story news">
+            <div class="info">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><a href="#">Walter White</a></p>
+                    <p class="time">24 de Octubre a las 0:30 am</p>
+            </div>
+            <p class="title">Novedades En GitHub</p>
+            <img class="pic" src="/A.K.A._Dizzy/blog/Dinosaurios/resources/25231.png" alt="" class="big">
+        <div class="options button">
+            <ul>
+                <li class="bookmark"></li>
+                <li class="star"></li>
+                <a href="article.html"><li class="read"></li></a>
+            </ul>
+        </div>
+           
+        </section>
+        <section class="story news">
+            
+            <p class="title">Nuevos conceptos de diseño por <a href="#">Walter White</a></p>
+            <img class="pic" src="/resources/images/grid/2.jpg" alt="" class="big">
+        <div class="options button">
+            <ul>
+                <li class="bookmark"></li>
+                <li class="star"></li>
+                <a href=""><li class="read"></li></a>   
+             </ul>
+        </div>
+           
+        </section>
+        
+    </aside>
+    <section id="Store" class="button">
+            
+        <aside id="actualStore" class="button">
+            <aside id="storeList" class="button">
+                <ul>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                </ul>
+            </aside>
+            <aside id="storeSection">
+                
+            </aside>
+        </aside>
+       
+    </section>
+		<script>
+    $('.code-scroll').on('scroll', function () {
+        $(this).siblings("pre").scrollLeft($(this).scrollLeft());
+    });
+    $('.code pre').on('scroll', function () {
+        $(this).siblings(".code-scroll").scrollLeft($(this).scrollLeft());
+        
+    });
+
+    $(".code-scroll").stick_in_parent({recalc_every: 1, offset_top: 44 })
+    $(document).on("ready", function(){ 
+        Prism.highlightAll(); 
+    })
+    </script>
+</body>
+</html>
