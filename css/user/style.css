@@ -1409,4 +1409,52 @@ display: inline-block;
 .oculto p 
 { 
     color: #aaa; 
- }
+} 
+.d88fer .vjs-progress-holder 
+{ 
+    position: absolute !important; 
+    z-index: 1; 
+} 
+.video 
+{ 
+    position: relative; 
+} 
+.Playuse 
+{ 
+    position: absolute; 
+    left: 0; 
+    top: 0; 
+    font-family: "icomoon"; 
+    font-size: 43px; 
+    cursor: pointer; 
+    display: block; 
+    z-index: 1; 
+} 
+.Playuse::after 
+{ 
+    content: "\e603"; 
+} 
+.Playuse.playing 
+{ 
+    display: none; 
+} 
+.vjs-control-bar
+{ 
+    display: block !important; 
+} 
+.vjs-poster 
+{ 
+    background-position: unset !important;  
+} 
+.vjs-volume-level 
+{ 
+    background: #2ecc71 !important; 
+} 
+.vjs-volume-bar.vjs-slider 
+{ 
+    background: #fff !important; 
+} 
+.vjs-time-divider div span, .vjs-default-skin .vjs-current-time div, .vjs-default-skin .vjs-duration div 
+{ 
+    color: #aaa; 
+} 

@@ -18,7 +18,6 @@ $(document).on("ready",function(){
             observer.observe(document.querySelectorAll('.poema.autoScrollTo')[aST]); 
         }
 } 
-
     $($(".poema.autoScrollTo")).on("scroll", function(Zz){
         pageXOffset= $(this).scrollTop() || 0; 
         if($(this)[0].firstTime){
