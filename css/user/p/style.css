@@ -403,6 +403,7 @@ body
     color: #666; 
     width: 100%; 
     box-sizing: border-box; 
+    word-wrap: anywhere; 
 } 
 
 #file_expl #information_cont 
