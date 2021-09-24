@@ -404,6 +404,7 @@ body
     width: 100%; 
     box-sizing: border-box; 
     word-wrap: anywhere; 
+    white-space: nowrap; 
 } 
 
 #file_expl #information_cont 
