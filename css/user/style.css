@@ -1413,7 +1413,7 @@ display: inline-block;
 .d88fer .vjs-progress-holder 
 { 
     position: absolute !important; 
-    z-index: 1; 
+    z-index: 1 !important;  
 } 
 .video 
 { 
@@ -1457,4 +1457,5 @@ display: inline-block;
 .vjs-time-divider div span, .vjs-default-skin .vjs-current-time div, .vjs-default-skin .vjs-duration div 
 { 
     color: #aaa; 
+    font-size: 11px; 
 } 
