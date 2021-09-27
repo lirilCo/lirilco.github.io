@@ -853,6 +853,7 @@ margin: 0 auto;
     margin: 0;
     border-radius: 0;
     margin-bottom: 6px; 
+    max-width: 100%; 
 }
 .wrapper{
     display: none;
@@ -971,3 +972,14 @@ h1, h2, h3, div, u, h4
   height: 0; 
   padding: 0 !important;  
  }
+#buscar 
+{ 
+  position: absolute;
+  left: 0;
+  width: 100%;
+  padding-left: 135px;
+  height: 40px;
+  padding-top: 4px;
+  box-sizing: border-box;
+  padding-right: 410px;
+} 

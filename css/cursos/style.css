@@ -1190,3 +1190,18 @@ body .achievements-tooltip{
     margin-top: 46px !important; 
     margin-bottom: -47px !important; 
 }
+#buscar 
+{ 
+  position: absolute;
+  left: 0;
+  width: 100%;
+  padding-left: 135px;
+  height: 40px;
+  padding-top: 4px;
+  box-sizing: border-box;
+  padding-right: 300px;
+} 
+.buscar 
+{ 
+    max-width: 100%; 
+} 

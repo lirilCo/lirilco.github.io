@@ -603,3 +603,22 @@ body
 {
     width: max-content; 
 }
+.contnr > span
+{
+    padding-right: 20px; 
+}
+#buscar 
+{ 
+  position: absolute;
+  left: 0;
+  width: 100%;
+  padding-left: 135px;
+  height: 40px;
+  padding-top: 4px;
+  box-sizing: border-box;
+  padding-right: 300px;
+} 
+.buscar 
+{ 
+    max-width: 100%; 
+} 
