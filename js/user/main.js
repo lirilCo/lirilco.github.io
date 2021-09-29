@@ -176,6 +176,10 @@ function closeModal() {
     })
 }
 $(document).on("ready",function(e){
+    $("#search input").on("keydown keyup", function(){for(a= 0; a < $("#resizeBottom")[0].children[0].children[0].children[0].children[0].children.length; a++){ 
+        $("#resizeBottom")[0].children[0].children[0].children[0].children[0].children[a].style.display= ""; 
+        $("#resizeBottom")[0].children[0].children[0].children[0].children[0].children[a].innerText.toLowerCase().indexOf($("#search input")[0].value.toLowerCase()) == -1? $("#resizeBottom")[0].children[0].children[0].children[0].children[0].children[a].style.display= "none": 1; 
+    }})
     for(eForensics= 0; eForensics < $(".audio").length; eForensics ++){ 
         jP_player= "#" + $($($(".audio")[eForensics]).next()).attr("id"); 
         jPlayerify($($(".audio")[eForensics]), jP_player);
