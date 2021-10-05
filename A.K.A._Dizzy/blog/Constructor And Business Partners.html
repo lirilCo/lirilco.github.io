@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>
+      Liril
+    </title>
+    <link rel="shortcut icon" type="image/ico" href="/resources/icons/favicon.ico"  />
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300,600,700' rel='stylesheet' type='text/css'>
+      
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/article/style.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/video-js.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/jquery.mCustomScrollbar.min.css">
+
+
+    <script src="/js/jquery.js"></script>
+    <script src="/js/article/main.js"></script>
+    <script src="/js/main.js"></script> <!-- Resource jQuery -->
+    <script src="/js/prism.js"></script>
+    <script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="/js/index/modernizr.custom.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    <script src="/js/sticky-kit.min.js"></script>
+
+  
+
+ <script src="/js/jquery.knob.js">
+    </script>
+
+   <script>
+        $(function ($) {
+
+            $(".knob").knob({
+                change: function (value) {
+                    //console.log("change : " + value);
+                },
+                release: function (value) {
+                    //console.log(this.$.attr('value'));
+                    console.log("release : " + value);
+                },
+                cancel: function () {
+                    console.log("cancel : ", this);
+                },
+                /*format : function (value) {
+                  return value + '%';
+                  }
+                  ,*/
+                draw: function () {
+
+                    // "tron" case
+                    if (this.$.data('skin') == 'tron') {
+
+                        this.cursorExt = 0.3;
+
+                        var a = this.arc(this.cv) // Arc
+                            ,
+                            pa // Previous arc
+                            , r = 1;
+
+                        this.g.lineWidth = this.lineWidth;
+
+                        if (this.o.displayPrevious) {
+                            pa = this.arc(this.v);
+                            this.g.beginPath();
+                            this.g.strokeStyle = this.pColor;
+                            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, pa.s, pa.e, pa.d);
+                            this.g.stroke();
+                        }
+
+                        this.g.beginPath();
+                        this.g.strokeStyle = r ? this.o.fgColor : this.fgColor;
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, a.s, a.e, a.d);
+                        this.g.stroke();
+
+                        this.g.lineWidth = 2;
+                        this.g.beginPath();
+                        this.g.strokeStyle = this.o.fgColor;
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
+                        this.g.stroke();
+
+                        return false;
+                    }
+                }
+            });
+
+            // Example of infinite knob, iPod click wheel
+            var v, up = 0,
+                down = 0,
+                i = 0,
+                $idir = $("div.idir"),
+                $ival = $("div.ival"),
+                incr = function () {
+                    i++;
+                    $idir.show().html("+").fadeOut();
+                    $ival.html(i);
+                },
+                decr = function () {
+                    i--;
+                    $idir.show().html("-").fadeOut();
+                    $ival.html(i);
+                };
+            $("input.infinite").knob({
+                min: 0,
+                max: 20,
+                stopper: false,
+                change: function () {
+                    if (v > this.cv) {
+                        if (up) {
+                            decr();
+                            up = 0;
+                        } else {
+                            up = 1;
+                            down = 0;
+                        }
+                    } else {
+                        if (v < this.cv) {
+                            if (down) {
+                                incr();
+                                down = 0;
+                            } else {
+                                down = 1;
+                                up = 0;
+                            }
+                        }
+                    }
+                    v = this.cv;
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+<div class="wrapper">
+  </div>
+    <header>
+        <nav>
+            <ul>
+                <li id="index">
+                   <a target= "_blank" href="index.html"><section id="index-trigger">
+                        <span class="back-arrow button">
+              </span>
+                        <span id="index-text" class="text button">
+Inicio              </span>
+                    </section></a>
+
+                </li>
+               <li id= "buscar">
+          <input class="buscar" type="text" placeholder="Busca aquí cursos, personas o cualquier cosa">
+          </li>
+                <li id="Options">
+                <div class="options first button">
+                    <ul>
+                        <li class="star"></li>
+                         <li class="bookmark"></li>
+
+                    </ul>
+                </div>
+                </li>
+                
+                <li id="right-menu" class="button">
+                    <section id="dots" class="button">
+                        <span id="store" class="button">
+              </span>
+                        <span id="dots-icon" class="button">
+              </span>
+                        <span id="dots-text" class="button">
+                6'000.600
+              </span>
+
+                    </section>
+                    <section id="profileTrigger">
+                    </section>
+                    <div id="profile" class="button">
+                        <img id="profile-pic" src="/resources/images/white.jpg" alt="Walter White">
+                        <input class="knob button" data-width="35"  data-height="35" data-fgColor="#2ecc71" data-bgColor="rgba(0,0,0,0)" data-displayInput=false data-thickness=".15" readonly value="60">
+                    </div>
+                    <span class="index-arrow button">
+              </span>
+
+                    <section id="profileSettings">
+                    </section>
+                </li>
+
+                <li>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div id="root">
+        <div class="contnr">
+            <div>
+               <a target= "_blank" href="/A.K.A._Dizzy.html">Luis Eduardo Gallego García</a>
+            </div>
+            <div>
+               <a target= "_blank" href="/A.K.A._Dizzy.html">Blog</a>
+            </div>
+            <span>
+                <span href="#">Constructor And Business Partners</span>
+            </span>
+        </div>
+    </div>
+    <section id="wrapper" class="theater"></section>
+    
+    <section id="theater" class="theater">
+        <section id="picContainer">
+            <img id="bigPic" alt="">
+        </section>
+        <aside class="comments">
+        <div class="info">
+                    <img id="pic" alt="">
+                    <p class="username"><a href="#"></a></p>
+        </div>
+        <p class="title"></p>
+        <p class="more">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sit amet varius lectus, congue rutrum urna. Suspendisse in ultrices enim. In hac habitasse platea dictumst. Praesent aliquet, nisi nec euismod vulputate, odio velit porta erat, ut semper lacus erat ac nulla. Aenean ex libero, volutpat vel sem et, blandit dictum dui. Duis suscipit sed nisi finibus vestibulum. Quisque finibus porttitor nisl, nec consequat metus. Quisque commodo, libero nec volutpat suscipit, quam urna volutpat turpis, quis rhoncus magna dui sit amet lacus. Donec pellentesque aliquam turpis nec commodo. Aliquam lobortis facilisis auctor. Sed libero nisi, scelerisque et porttitor vel, accumsan sed lacus. Pellentesque at tortor pellentesque, vestibulum turpis at, iaculiuisque finibus porttitor nisl, nec consequat metus. Quisque commodo, libero nec volutpat suscipit, quam urna volutpat turpis, quis rhoncus magna dui sit amet lacus. Donec pellentesque aliquam turpis nec commodo. Aliquam lobortis facilisis auctor. Sed libero nisi, scelerisque et porttitor vel, accumsan sed lacus. Pellentesque at tortor pellentesque, vestibulum turpis at, iaculis nibh.
+        </p>
+        <div class="options button">
+        <ul>
+            <li class="bookmark"></li>
+            <li class="star"></li>
+            <a><li class="read"></li></a>
+        </ul></div>
+        <p id="close"></p>
+        </aside>
+        
+    </section>
+    
+    <section id="article">
+       
+        <aside id="title">
+            Constructor And Business Partners
+        </aside>
+        <section class="filler"style= "height: 180px"></section>
+        
+       <aside id="text">
+        <p>Constructor And Business Partners es mi banda, una banda de punk metal.<a target= "_blank" href="/A.K.A._Dizzy/blog/Regalos Para Mí.html">Todas las canciones me las regalan a mí</a> y las canciones que yo escribo son para todas las personas del mundo.</p>
+        <h2>La historia de Constructor And Business Partners</h2>
+        <p style= "width: 100%; text-align: center; "><b style= "font-size: 138px; color: #fe7241; width: 100%; text-align: center; ">⚠</b></p>
+        <p style="font-size: 0.75em; text-align: center; ">Advertencia: peligro de crisis existencial. En caso de existencialismo, consulta autores como Arthur Schopenhauer o Jean-Paul Sartre, y lee mucho los poemas de <a target= "_blank" href= "https://tantubular.tumblr.com/" >mi blog</a>. Una crisis existencial no es para siempre y normalmente no dura mucho tiempo. Puedes aprender algo de ésta, pero recuerda, hay cosas que aprendemos para aprender a olvidar.</br></br>
+Yo soy el nieto de Dios Jesucristo; el hijo de Satanás Belcebú; y el amor de la vida de la Madre Naturaleza, La Que Hace Que Crezcan Los Árboles.</p>
+        <section class="filler"style= "border-bottom: 1px solid #eee; height: 80px"></section>
+        <section class="filler"style= "height: 80px"></section>
+        <p>En el 2017; pues, no sé cómo decir esto... a mí me parecía súper equis ver porno, entonces prefería ver a las <i>camgirls</i>. Las <i>camgirls</i> empezaron a notarme, como si pudieran verme, me conocieran mucho y les alegrara muchísimo que yo las estuviera viendo; esto era nuevo para mí pero en esa época yo hacía mucha magia con los libros, por ejemplo, entonces no me sobresaltaba y a mi vez interactuaba con ellas. Ellas me decían que les diera cachetadas y se movían sus caras muy precisamente cuando se las daba, y se ponían en cuatro, y que les diera nalgadas, y se caían de la %$& cama.</p>
+        <p>&nbsp&nbsp&nbsp&nbspYo ya tenía <a target= "_blank" href="https://tantubular.tumblr.com">mi blog</a>, entonces se me ocurrió que seguro las <i>camgirls</i> y quién sabe quiénes más leían los poemas que yo publicaba a veces, así que decidí salir con un nombre para mis groupies.</p>
+        <p>&nbsp&nbsp&nbsp&nbspTodos mis poemas los publicaba en una imagen con el fondo blanco y las letras negras y con la tipografía <i>Open Sans</i>. Por ejemplo:</p>
+        <figure>
+            <img src="/A.K.A._Dizzy/blog/Constructor And Business Partners/resources/tantubular.png" style= "width: 100%; padding: 13px; box-sizing: border-box; border: 1px solid #ccc">
+           <figcaption style= "text-align: right; "><i style= "color: #888; font-size: 13px; "></i></figcaption>
+        </figure>
+        <p>&nbsp&nbsp&nbsp&nbspEntonces se me ocurrió, por la tipografía que usaba, <i>Open Sans</i>, algo con abierto. Me decidí por <i>Pierniabiertas</i>.</p>
+        <p>&nbsp&nbsp&nbsp&nbspMás adelante, decidí abreviar <i>Pierniabiertas</i> como <i>Perritas</i>, y ahora mis groupies se llamaban <i>Perritas Pierniabiertas</i>.</p>
+        <p>&nbsp&nbsp&nbsp&nbspUn día estaba pasando en un bus por un centro comercial, y había un letrero muy grande de un almacén de insumos para la construcción llamado <i>Constructor</i>, y yo me dije "Ese sería una chimba de nombre para una banda pronunciándolo en inglés", teniendo en cuenta que a mí me gustaba mucho la música con el estilo de Pantera y Led Zeppelin, por ejemplo; groovy y pesada.</p>
+        <p>&nbsp&nbsp&nbsp&nbspEntonces mi banda, que no había formado aún se llamaría Constructor Perritas Pierniabiertas.</p>
+        <p>&nbsp&nbsp&nbsp&nbspEn el 2018, estaba pensando en mi banda y me dije que ninguna disquera seria aceptaría una banda con ese nombre, así que decidí encriptarlo, digamos. <i>Perritas</i> en inglés es <i>Bitches</i> y <i>Bitches</i> sonaba como <i>Business</i> que significa "negocios" en inglés. Se me ocurrió que Business Partners (Socios de negocios) incluía un Pierniabiertas también, entonces por eso mi banda se quedó llamando Constructor And Business Partners.</p>
+       </aside>
+    </section>
+    <aside id="sidebar">
+        <section class="story project">
+            <div class="info">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><a href="#">Walter White</a> </p>
+                    <p class="time">Ayer a las 3:30 pm</p>
+                    
+            </div>
+            <p class="title">Elizabeth Elam</p>
+            <img class="pic" src="/A.K.A._Dizzy/blog/Dinosaurios/resources/tumblr_oezvmcymMl1siavito1_500.jpg" alt="" class="big">
+            <div class="options button">
+            <ul>
+                <li class="bookmark"></li>
+                <li class="star"></li>
+               <a target= "_blank" href=""><li class="read"></li></a>
+            </ul>
+        </div>
+
+        </section>
+        
+        <section class="story news">
+            <div class="info">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><a href="#">Walter White</a></p>
+                    <p class="time">24 de Octubre a las 0:30 am</p>
+            </div>
+            <p class="title">Novedades En GitHub</p>
+            <img class="pic" src="/A.K.A._Dizzy/blog/Dinosaurios/resources/25231.png" alt="" class="big">
+        <div class="options button">
+            <ul>
+                <li class="bookmark"></li>
+                <li class="star"></li>
+               <a target= "_blank" href="article.html"><li class="read"></li></a>
+            </ul>
+        </div>
+           
+        </section>
+        <section class="story news">
+            
+            <p class="title">Nuevos conceptos de diseño por<a target= "_blank" href="#">Walter White</a></p>
+            <img class="pic" src="/resources/images/grid/2.jpg" alt="" class="big">
+        <div class="options button">
+            <ul>
+                <li class="bookmark"></li>
+                <li class="star"></li>
+               <a target= "_blank" href=""><li class="read"></li></a>   
+             </ul>
+        </div>
+           
+        </section>
+        
+    </aside>
+    <section id="Store" class="button">
+            
+        <aside id="actualStore" class="button">
+            <aside id="storeList" class="button">
+                <ul>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                </ul>
+            </aside>
+            <aside id="storeSection">
+                
+            </aside>
+        </aside>
+       
+    </section>
+		<script>
+    $('.code-scroll').on('scroll', function () {
+        $(this).siblings("pre").scrollLeft($(this).scrollLeft());
+    });
+    $('.code pre').on('scroll', function () {
+        $(this).siblings(".code-scroll").scrollLeft($(this).scrollLeft());
+        
+    });
+
+    $(".code-scroll").stick_in_parent({recalc_every: 1, offset_top: 44 })
+    $(document).on("ready", function(){ 
+        Prism.highlightAll(); 
+    })
+    </script>
+</body>
+</html>
