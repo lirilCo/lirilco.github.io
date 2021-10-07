@@ -1,4 +1,8 @@
-@font-face
+
+.ui-tooltip 
+{ 
+    z-index: 1 !important;
+} @font-face
 
 {
     font-family: 'icomoon';
@@ -1474,4 +1478,8 @@ display: inline-block;
   padding-top: 4px;
   box-sizing: border-box;
   padding-right: 300px;
+} 
+.ui-tooltip, .vjs-slider 
+{ 
+    z-index: 1 !important;
 } 
