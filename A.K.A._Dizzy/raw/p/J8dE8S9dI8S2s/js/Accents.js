@@ -192,7 +192,8 @@ NAccents= /*Were I able to access it*/{
     "ɨ", 
     "ᶖ", 
     "i̇", 
-    "ı" 
+    "ı", 
+    "í"
   ], 
   "j": [ 
     "j", 

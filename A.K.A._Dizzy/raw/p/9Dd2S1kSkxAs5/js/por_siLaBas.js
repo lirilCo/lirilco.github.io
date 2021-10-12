@@ -4,8 +4,8 @@ por_siLaBas= function(í){
   syl= ""; 
   Widgets= true; 
   Cinnamon= ""; 
-  Chocolate= ["!", "?", "'", "’"]; 
-  Anti_joint= ["¡", "¿", "'", "’"]; 
+  Chocolate= ["!", "?", "'", "’", "ʻ"]; 
+  Anti_joint= ["¡", "¿", "'", "’", "ʻ"]; 
                   
   for(e in Text){ 
     constructor= function(u){ 
