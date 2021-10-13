@@ -273,7 +273,9 @@ if(!$("textarea").is(":focus") && !$("input").is(":focus")){
 
 
     if (!$(".story.current").length) {
-        $(".story:first").addClass("current");
+        $(".story:first").addClass("current"); 
+$($(".current")[0]).attr("tabindex", 0); 
+$(".current")[0].focus(); 
     }
 
     if ($(".story.current").length) {
@@ -286,7 +288,9 @@ if(!$("textarea").is(":focus") && !$("input").is(":focus")){
         }
         if (next.length) {
             current.removeClass("current");
-            next.addClass("current");
+            next.addClass("current"); 
+$($(".current")[0]).attr("tabindex", 0); 
+$(".current")[0].focus(); 
         } else {
             loadMore();
         }
@@ -337,7 +341,9 @@ $(window).on("load", function () {
       });
     $(".story").on("click", function () {
         $(".current").removeClass("current");
-        $(this).addClass("current")
+        $(this).addClass("current"); 
+        $($(".current")[0]).attr("tabindex", 0); 
+        $(".current")[0].focus(); 
     })
     $("li").prop("title", function () {
         return $(this).find("p").text();
