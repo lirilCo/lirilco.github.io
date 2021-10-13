@@ -1,0 +1,37 @@
+ <!DOCTYPE html>
+<html>
+<head>
+  <title>Robot De Dedicatorias</title>
+  <meta charset="utf-8">
+    <script src="/js/jquery.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <script type="text/javascript" src= "../js/Alphabets.js"></script>
+  <script type="text/javascript" src= "../js/maindA0.js"></script>
+</head>
+
+<body>
+<div class="form-group">
+  <form target="remember" method="post" action="/content/blank" style="height:80px"class="input-group mb-3">
+
+    <input spellcheck= "false" autocomplete="text" type="text" name="namex" placeholder="Nombre" style="height:80px;  -webkit-appearance: textarea;"class="name form-control"></input>
+
+    <button type="submit" class="btn btn-outline-primary getSp" style="border-radius: 0">Español</button>
+    <button type="submit" class="btn btn-outline-primary getEn" style="border-radius: 0">English</button>
+    <button type="submit" class="btn btn-outline-primary tidyName" style="font-size: 23px;position:relative; border-radius: 0"><i style="font-style:normal;position:absolute;font-size:12px;left:0;right:0;top:3px">nombre</i><i class="material-icons">delete</i></button>
+    <button type="submit" class="btn btn-outline-primary tidyText" style="font-size: 23px;position:relative; border-radius: 0"><i style="font-style:normal;position:absolute;font-size:12px;left:0;right:0;top:3px">texto</i><i class="material-icons">delete</i></button>
+  </form>
+  </div>
+    <textarea spellcheck= "false" class="dedications toHyphenate form-control" lang="es" rows="5" placeholder="Texto separado por sílabas (con guiones)"></textarea>
+    <textarea spellcheck= "false" class="results C form-control" rows="5" placeholder="Dedicatorias en español"></textarea>
+    <textarea spellcheck= "false" class="resultsEn C form-control" rows="5" placeholder="Dedicatorias en inglés"></textarea></body>
+
+<script type="text/javascript">
+  $("form").submit(function(e){
+    e.preventDefault(); 
+  });
+</script>
+</html> 
