@@ -41,6 +41,7 @@
     margin: 0;
     box-sizing: border-box;
     border-left: 20px solid #000;
+    resize: none; 
 } 
 b{ 
     font-weight: bolder !important; 
