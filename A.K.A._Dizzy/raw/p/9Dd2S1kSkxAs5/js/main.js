@@ -19,6 +19,12 @@ document.addEventListener("DOMContentLoaded", function(){
     document.addEventListener("keydown", function(i){ 
     	i.keyCode == 16? por_siLaBas(document.getElementById("dieded").value): 1; 
     	i.keyCode == 17? parse("#Sara", -1): 1; 
+      if(i.keyCode == 17) 
+      { 
+        document.getElementById('pause').innerText == '>'? document.getElementById('pause').innerText = 'll': 252; 
+                                     
+        !paused? 252: paused= false; 
+      } 
     }); 
 })
  
