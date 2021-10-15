@@ -1,5 +1,7 @@
 function openProfilePicModal(a) {
+    $(".zer")[0].innerHTML= ".ui-tooltip{z-index: 4 !important; }; "; 
     $("body")[0].style.overflowY= "hidden"; 
+
     responsive(); 
     $("#theater").addClass("animated fadeIn ")
     $(".theater").css({
@@ -51,6 +53,7 @@ function openProfilePicModal(a) {
     responsive(); 
 } 
 function openFotosModal(a) {
+    $(".zer")[0].innerHTML= ".ui-tooltip{z-index: 4 !important; }; "; 
     $("body")[0].style.overflowY= "hidden"; 
     responsive(); 
     $("#theater").addClass("animated fadeIn ")
@@ -103,6 +106,7 @@ function openFotosModal(a) {
     responsive(); 
 } 
 function openModal(a) {
+    $(".zer")[0].innerHTML= ".ui-tooltip{z-index: 4 !important; }; "; 
     $("body")[0].style.overflowY= "hidden"; 
     responsive(); 
     $("#theater").addClass("animated fadeIn ")
@@ -159,6 +163,7 @@ function openModal(a) {
 }
 
 function closeModal() {
+    $(".zer")[0].innerHTML= ".ui-tooltip{z-index: 1 !important; }; "; 
     $("body")[0].style.overflowY= "scroll"; 
     responsive(); 
     if ($('.theater .comments .options .bookmark').hasClass("true")) {
