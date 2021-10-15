@@ -185,10 +185,7 @@ $(document).on("ready",function(e){
         $("#resizeBottom")[0].children[0].children[0].children[0].children[0].children[a].style.display= ""; 
         $("#resizeBottom")[0].children[0].children[0].children[0].children[0].children[a].innerText.toLowerCase().indexOf($("#search input")[0].value.toLowerCase()) == -1? $("#resizeBottom")[0].children[0].children[0].children[0].children[0].children[a].style.display= "none": 1; 
     }})
-    for(eForensics= 0; eForensics < $(".audio").length; eForensics ++){ 
-        jP_player= "#" + $($($(".audio")[eForensics]).next()).attr("id"); 
-        jPlayerify($($(".audio")[eForensics]), jP_player);
-    }
+
     $('.chats').click(function(e){ 
 	    aa= e.target; 
 	    ii= false; 
@@ -628,24 +625,7 @@ function sizeMessages(a){
 function scrollBottom(d){
     d.scrollTop(d.prop("scrollHeight"));
 }
-function jPlayerify(audio, player){ 
-    audio.jPlayer({
-        ready: function () {
-          $(this).jPlayer("setMedia", {
-            title:$(this).attr("Au_title"),
-            mp3: $(this).attr("src"),
-          });
-        },
-        cssSelectorAncestor:  player,
-        supplied: "mp3",
-        useStateClassSkin: true,
-        autoBlur: false,
-        smoothPlayBar: true,
-        keyEnabled: true,
-        remainingDuration: true,
-        toggleDuration: true
-    });
-}
+
 
 $(document).on("ready", function(){
     Used= []; 

@@ -27,6 +27,8 @@
     <script src="/js/index/modernizr.custom.js"></script>
     <script src="/js/jquery-ui.min.js"></script>
     <script src="/js/sticky-kit.min.js"></script>
+    <script src="/js/audio.min.js"></script>
+
 
   
 
@@ -246,10 +248,13 @@ Inicio              </span>
 Yo soy el nieto de Dios Jesucristo; el hijo de Satanás Belcebú; y el amor de la vida de la Madre Naturaleza, La Que Hace Que Crezcan Los Árboles.</p>
         <section class="filler"style= "border-bottom: 1px solid #eee; height: 80px"></section>
         <section class="filler"style= "height: 80px"></section>
-        <p>Para ver algunas propiedades de este poema, visita este link:</p>
+        <p>Para ver algunas propiedades de la letra de esta canción, visita este link:</p>
         <a class="link" target="_blank" href="/A.K.A._Dizzy/blog/Algunas Propiedades De Mis Escritos.html"><span class="Title">Algunas Propiedades De Mis Escritos </span><span class="linktype">Blog</span></a>
         
-
+        <div class="media">
+            <audio src= "/resources/Punk Für Sie.mp3"></audio>
+            <p>Constructor And Business Partners - Punk Für Sie (LQ)</p>
+        </div>
         <div class="poema">
             <h3>Punk Für Sie</h3>
             <p>El planeta es más verde</p>
@@ -479,6 +484,11 @@ Yo soy el nieto de Dios Jesucristo; el hijo de Satanás Belcebú; y el amor de l
     $(document).on("ready", function(){ 
         Prism.highlightAll(); 
     })
+    </script>
+    <script>
+    audiojs.events.ready(function() {
+        var as = audiojs.createAll();
+    });
     </script>
 </body>
 </html>
