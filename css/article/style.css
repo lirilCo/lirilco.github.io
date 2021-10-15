@@ -983,3 +983,7 @@ h1, h2, h3, div, u, h4
   box-sizing: border-box;
   padding-right: 410px;
 } 
+.sA:hover 
+{ 
+  cursor: pointer; 
+} 
