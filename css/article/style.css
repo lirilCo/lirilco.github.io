@@ -1054,3 +1054,7 @@ h1, h2, h3, div, u, h4
     color: #666;
     bottom: 15px;
 } 
+sup 
+{ 
+  z-index: -1 !important; 
+} 
