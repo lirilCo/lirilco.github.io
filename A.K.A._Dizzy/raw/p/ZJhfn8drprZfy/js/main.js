@@ -4,6 +4,8 @@
   }; 
  mousedown= false; 
  control= false; 
+ lastChild= false; 
+
  sSeloMeteoryt= function(){ 
   newSet= ""; 
 
@@ -70,7 +72,11 @@
   
     $("#rawr")[0].innerHTML= $("#rawr")[0].innerHTML + "<div class= 'rwrwr'></div>"; 
   
-    lastChild= $(".rwrwr")[$(".rwrwr").length - 1]; 
+    lastChild= false; 
+                                                    
+    $("input").attr("corrupt")? jQuery("input")[0].outerHTML= "<input type= 'text'> ": 1; 
+
+    $("input").focus(); 
   }; 
 }); 
 
@@ -79,15 +85,16 @@
     
     i.keyCode == 17? control= false: 1;  
     
-    i.keyCode == 17 && lastChild.outerHTML.indexOf("rwrwr") != -1? lastChild.outerHTML= "": 1; 
+    i.keyCode == 17 && !lastChild? $(".rwrwr")[0].outerHTML= "": 1; 
 
     vrbl= dsrcrs[a]; 
   }); 
       
   document.addEventListener("mousemove", function(i){ 
     switch(i.target){
-      case document.getElementById("dinosaurios"): case document.getElementById("lasrxs"): case document.getElementById("me"): case document.getElementById("vrbl"):
+      case document.getElementById("dinosaurios"): case document.getElementsByClassName("rwrwr")[0]: case document.getElementById("lasrxs"): case document.getElementById("me"): case document.getElementById("vrbl"):
         $("input").attr("corrupt")? jQuery("input")[0].outerHTML= "<input type= 'text'> ": 1; 
+
         $("input").focus(); 
         break; 
       default:
