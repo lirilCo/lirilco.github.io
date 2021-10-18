@@ -92,7 +92,7 @@
       
   document.addEventListener("mousemove", function(i){ 
     switch(i.target){
-      case document.getElementById("dinosaurios"): case document.getElementsByClassName("rwrwr")[0]: case document.getElementById("lasrxs"): case document.getElementById("me"): case document.getElementById("vrbl"):
+      case document.getElementById("dinosaurios"): case document.getElementsByClassName("rwrwr")[0]:case document.getElementsByTagName("input")[0]: case document.getElementById("lasrxs"): case document.getElementById("me"): case document.getElementById("vrbl"):
         $("input").attr("corrupt")? jQuery("input")[0].outerHTML= "<input type= 'text'> ": 1; 
 
         $("input").focus(); 
