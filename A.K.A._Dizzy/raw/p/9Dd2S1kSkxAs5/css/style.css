@@ -1,6 +1,9 @@
 *{ 
     font-family: "Open Sans"; 
 } 
+body{ 
+    margin: 0; 
+}
 #dieded{ 
     position: absolute; 
     right: 0; 
@@ -8,6 +11,14 @@
     width: 70px; 
     font-family: "Open Sans"; 
     z-index: 1000; 
+} 
+#dieded{ 
+    position: absolute; 
+    right: 0; 
+    top: 0; 
+    width: 70px; 
+    font-family: "Open Sans"; 
+    z-index: 10011111111111111111110; 
 } 
 #Sara{ 
     color: #883fd9; 
@@ -21,28 +32,33 @@
     /*top: 1em; */
     left: 0; 
     display: block; 
-    /*z-index: 1000000; */ 
+    z-index: 1000000; 
     position: relative; 
 } 
 #Sara p{ 
     margin: 0 17.5px; 
-    position: absolute; 
-    bottom: 0; 
-    font-size: 12px !important; 
 } 
 #Sara textarea{ 
-    font-size: 13px !important;
-    border-right: 71px solid #000;
-    border-bottom: none;
-    border-top: none;
+    margin: 0 17.5px; 
+    width: 70% !important; 
+    font-size: 10px;
+    width: 1000px;
+    position: absolute;
     width: 100% !important;
     left: 0;
-    position: absolute;
     margin: 0;
+    border-left: 250px dotted rgba(159, 32, 32, 0) !important;
     box-sizing: border-box;
-    border-left: 20px solid #000;
+    z-index: -1;
+    border: none;
+    top: 0;
+    height: 100%;
+    border-right: 80px dotted rgba(159, 32, 32, 0) !important;
     resize: none; 
-} 
+    line-height: 20px; 
+    color: #222; 
+}
+
 b{ 
     font-weight: bolder !important; 
     color: #b16bff; 
@@ -51,16 +67,17 @@ b{
     position: absolute; 
     top: 0; 
     right: 6px;  
-    z-index: 1000; 
+    z-index: 10011111111111111111110; 
 } 
 #pause{ 
     position: relative; 
     right: 8px; 
-    margin-top: -3.8em; 
+    margin-top: -4.8em; 
     cursor: pointer; 
     float: right; 
     z-index: 1000001; 
-    color: #aaa; 
+    font-size: 13px; 
+    color: #666769; 
 } 
 #parsed{ 
     display: inline-block; 

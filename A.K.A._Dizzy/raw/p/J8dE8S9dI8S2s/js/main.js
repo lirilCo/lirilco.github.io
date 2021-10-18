@@ -15,7 +15,7 @@ return [[b, i.replaceAll(" ", "").replaceAll("\n", "").length], i];
 } 
   
 function sto(){ 
-  (function(){document.querySelector("#Sara p").outerHTML= "<p style= 'font-size: 15px; display: inline-block; '>" + contr( document.getElementsByTagName("textarea")[0].value )[0][0] + " Palabras. " + contr( document.getElementsByTagName("textarea")[0].value )[0][1] + " Caracteres (Sin espacios)." + "</p>"; })(); 
+  (function(){document.querySelector("#Sara p").outerHTML= "<p style= 'font-size: 15px; display: inline-block; '>" + contr( document.getElementsByTagName("textarea")[0].value )[0][0] + " Palabras. </br>" + contr( document.getElementsByTagName("textarea")[0].value )[0][1] + " Caracteres (Sin espacios)." + "</p>"; })(); 
 }; 
    
 $.fn.selectRange = function(start, end) { if(!end) end = start; return this.each(function() { if (this.setSelectionRange) { this.focus(); this.setSelectionRange(start, end); } else if (this.createTextRange) { var range = this.createTextRange(); range.collapse(true); range.moveEnd('character', end); range.moveStart('character', start); range.select(); } }); };
@@ -23,6 +23,16 @@ $.fn.selectRange = function(start, end) { if(!end) end = start; return this.each
 document.addEventListener("DOMContentLoaded", function(){ 
     document.getElementById("ñ").checked? Accents= ÑAccents: Accents= NAccents; 
 	                                                    
+    let observer= new IntersectionObserver( 
+    (entries, observer) => { 
+    entries.forEach(entry => { 
+        entry.intersectionRatio == 0?  document.activeElement.blur(): 1; 
+        entry.intersectionRatio == 0?  sECF= false: 1; 
+      }); 
+    }); 
+        
+    observer.observe(document.getElementById('Sara')); 
+                                                      
     const mainNode = document.getElementById('Sara'); 
                                                  
     function callback(mutationsList, observer) { 
@@ -67,8 +77,8 @@ document.addEventListener("DOMContentLoaded", function(){
  
 himno= 0; 
 setInterval( function(){
-  (!paused && document.activeElement == document.getElementsByTagName("textarea")[0])? sECF= true: sECF= false; 
-	!paused? document.getElementById("Sara").innerHTML= "<p style= 'font-size: 15px; display: inline-block; '>" + contr( fe[himno] )[0][0] + " Palabras. " + "    " + contr( fe[himno] )[0][1] + " Caracteres (Sin espacios)." + "</p>" +  "<textarea spellcheck= 'false' style='font-size: 10px; width: 1000px; '>" + contr( fe[himno] )[1] + "</textarea>": 28918; !paused? himno < 15? himno++: himno= 0: 1882; }, 5000); 
+    (!paused && document.activeElement == document.getElementsByTagName("textarea")[0])? sECF= true: sECF= false; 
+  !paused? document.getElementById("Sara").innerHTML= "<p style= 'font-size: 15px; display: inline-block; '>" + contr( fe[himno] )[0][0] + " Palabras. " + "</br>" + contr( fe[himno] )[0][1] + " Caracteres (Sin espacios)." + "</p>" +  "<textarea spellcheck= 'false'>" + contr( fe[himno] )[1] + "</textarea>": 28918; !paused? himno < 15? himno++: himno= 0: 1882; }, 5000); 
 
 console.log('parse("#Sara", -1);      '); 
 
