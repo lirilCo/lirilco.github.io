@@ -37,11 +37,13 @@ $(".revelar").on("click", function(){
     if($(this).text()[0] != "O"){ 
         $(this).parent().css({"height": "auto"}); 
         $(this).parent().find("pre").css({"height": "auto", "padding": "20px"}); 
+        $(this).parent().find(".poema").css({"height": "auto", "padding": "20px"}); 
         $(this).text("Ocultar de nuevo el texto."); 
         $(this).addClass("activado"); 
     }else{ 
         $(this).parent().css({"height": "0"}); 
         $(this).parent().find("pre").css({"height": "0", "padding": "0"}); 
+        $(this).parent().find(".poema").css({"height": "0", "padding": "0"}); 
         $(this).text("Mostrar el texto oculto."); 
         $(this).removeClass("activado"); 
     } 

@@ -967,7 +967,7 @@ h1, h2, h3, div, u, h4
     border-bottom: 1px solid #eee; 
 
  }
- .oculto pre 
+ .oculto pre, .oculto .poema 
  { 
   height: 0; 
   padding: 0 !important;  
