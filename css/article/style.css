@@ -769,7 +769,7 @@ margin: 0 auto;
   left: 0;
 }
 .is-visible .cd-resize-img {
-  width: 50%;
+  width: 17.5148%;
   /* bounce in animation of the modified image */
   -webkit-animation: cd-bounce-in 0.7s;
   -moz-animation: cd-bounce-in 0.7s;
