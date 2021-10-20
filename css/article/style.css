@@ -1058,3 +1058,8 @@ sup
 { 
   z-index: -1 !important; 
 } 
+sub, sux, xx
+{
+  color: inherit; 
+  font-size: 35% !important; 
+}
