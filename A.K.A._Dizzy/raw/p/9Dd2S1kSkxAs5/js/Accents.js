@@ -493,7 +493,7 @@ NAccents= /*Were I able to access it*/{
     "ȳ", 
     "ỷ", 
     "ỵ", 
-    "ɏ",  
+    "ɏ", 
     "ƴ", 
     "ỿ" 
   ], 
@@ -1013,7 +1013,7 @@ NAccents= /*Were I able to access it*/{
     "ȳ", 
     "ỷ", 
     "ỵ", 
-    "ɏ",  
+    "ɏ", 
     "ƴ", 
     "ỿ" 
   ], 
