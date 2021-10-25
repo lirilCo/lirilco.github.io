@@ -71,7 +71,9 @@ document.addEventListener("DOMContentLoaded", function(){
     }); 
 
     document.addEventListener("keydown", function(i){ 
-	i.keyCode == 13? aNGEL(document.getElementById("dieded").value): 1; 
+	i.keyCode == 13? document.getElementsByTagName("body")[0].style.cursor= "text": 1; 
+
+    	i.keyCode == 13? setTimeout(function(){aNGEL(document.getElementById("dieded").value)}, 152): 1; 
     }); 
 })
  
