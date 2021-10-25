@@ -457,11 +457,12 @@ position: absolute;
     padding: 0;
     
 }
-#feed
-{
-    text-align: center;
-    width: 100%;
-}
+#feed 
+{ 
+    text-align: center; 
+    width: 100%; 
+    padding-bottom: 10px; 
+} 
 .story
 {
 margin: 10px 0 0 auto;   
