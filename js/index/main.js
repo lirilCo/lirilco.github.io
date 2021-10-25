@@ -14,7 +14,7 @@ parse= function(a, b){
     b != -1 ? a[b].innerHTML = Cinnamon : a.innerHTML = Cinnamon; 
 }; 
 
-Accents= /*Were I able to access it*/{
+Accents= /*Were I able to access it*/{ 
   "a": [ 
     "a", 
     "á", 
@@ -208,7 +208,8 @@ Accents= /*Were I able to access it*/{
     "ɨ", 
     "ᶖ", 
     "i̇", 
-    "ı" 
+    "ı", 
+    "í" 
   ], 
   "j": [ 
     "j", 
@@ -297,7 +298,7 @@ Accents= /*Were I able to access it*/{
     "ꬼ" 
   ], 
   "ñ": [ 
-    "ñ" 
+    "ñ"
   ], 
   "o": [ 
     "o", 
@@ -510,7 +511,7 @@ Accents= /*Were I able to access it*/{
     "ȳ", 
     "ỷ", 
     "ỵ", 
-    "ɏ",  
+    "ɏ", 
     "ƴ", 
     "ỿ" 
   ], 
@@ -533,45 +534,49 @@ Accents= /*Were I able to access it*/{
   ] 
 } 
 
-por_siLaBas = function(í){ 
-         
-Text= "-" + í.toLowerCase() + "   "; 
-word= ""; 
-syl= ""; 
-Widgets= true; 
-Cinnamon= ""; 
-Chocolate= ["!", "?", "'"]; 
-Anti_joint= ["¡", "¿", "'"]; 
-              
-for(e in Text){ 
-                
-    constructor= function(u){ 
-            u ? word= word + "<b>" + syl + "</b>" : word= word + syl; 
-            syl= ""; 
-            raged= false; 
-    } 
-    
-    Widgets= true; 
-    raged= false; 
+por_siLaBas= function(í){ 
+  Text= "-" + í.toLowerCase() + "     "; 
+  word= ""; 
+  syl= ""; 
+  Widgets= true; 
+  Cinnamon= ""; 
+  Chocolate= ["!", "?", "'", "’", "ʻ"]; 
+  Anti_joint= ["¡", "¿", "'", "’", "ʻ"]; 
                   
-    if(Text[e] == " " || e == Text.length - 1){ 
-        for(Text[e] == " " ? i= e : i= e; i--; Widgets === false){ 
-            (Text[i] == " " || i == 0) ? Widgets= false : 1; 
-            for(eForensics in Accents){ 
-                Accents[eForensics].indexOf(Text[i]) >= 1 ? raged= true : 1; 
-                Accents[eForensics].indexOf(Text[i]) >= 1 ? Text= Text.slice(0, i) + Accents[eForensics][0] + Text.slice(i + 1, Text.length - 1) : 1; 
-            } 
-            (Widgets && Anti_joint.indexOf(Text[i]) != -1)  ? raged= true : 1; 
-            (Widgets && Anti_joint.indexOf(Text[i]) != -1 && Anti_joint.indexOf(Text[i]) != Anti_joint.length - 1)  ? constructor(raged) : 1; 
-            (Widgets && Anti_joint.indexOf(Text[i]) != -1 && Anti_joint.indexOf(Text[i]) != Anti_joint.length - 1)  ? Widgets= false : 1; 
-            (Widgets && Chocolate.indexOf(Text[i]) != -1)  ? raged= true : ((Widgets && Text[i] == "-") || i == 0) ? constructor(raged) : Widgets ? syl= Text[i] + syl : 1; 
+  for(e in Text){ 
+    constructor= function(u){ 
+      u? word= word + "<b>" + syl + "</b>": word= word + syl; 
+               
+      syl= ""; 
+      raged= false; 
+	} 
+      
+	Widgets= true; 
+	raged= false; 
+                  
+	if(Text[e] == " " || e == Text.length - 1){ 
+      for(Text[e] == " "? i= e: i= e; i--; Widgets === false){ 
+        (Text[i] == " " || i == 0)? Widgets= false: 1; 
+                                    
+        for(eForensics in Accents){ 
+          Accents[eForensics].indexOf(Text[i]) >= 1? raged= true: 1; 
+                                                                     
+          Accents[eForensics].indexOf(Text[i]) >= 1? Text= Text.slice(0, i) + Accents[eForensics][0] + Text.slice(i + 1, Text.length - 1): 1; 
         } 
-            
-        Cinnamon= Cinnamon + word; 
-        word= ""; 
-    } 
-        
-} 
+          
+        (Widgets && Anti_joint.indexOf(Text[i]) != -1)? raged= true: 1; 
+                                                                        
+        (Widgets && Anti_joint.indexOf(Text[i]) != -1 && Anti_joint.indexOf(Text[i]) != Anti_joint.length - 1)? constructor(raged): 1; 
+                                                                                                                                   
+        (Widgets && Anti_joint.indexOf(Text[i]) != -1 && Anti_joint.indexOf(Text[i]) != Anti_joint.length - 1)? Widgets= false: 1; 
+                                                                                                                                   
+        (Widgets && Chocolate.indexOf(Text[i]) != -1)? raged= true: ((Widgets && Text[i] == "-") || i == 0)? constructor(raged): Widgets? syl= Text[i] + syl: 1; 
+      } 
+			
+      Cinnamon= Cinnamon + word; 
+      word= ""; 
+	  } 
+  } 
 } 
 
 aNGEL= function(r){ 
@@ -587,14 +592,14 @@ aNGEL= function(r){
       i == " "? (Tsunami= i - 1): (Tsunami= i); 
                                    
       rageComics= [",", ".", ";"]; 
-	  Anti_joint= ["¡", "¿", "'"]; /*Está hecho de arrugami y es un porro que soplas, thereof, anti_joint*/ 
-	  Chocolate= ["!", "?", "'"]; /*ElDelprincipio's decision*/ 
+	    Anti_joint= ["¡", "¿", "'", "’", "ʻ"]; /*Está hecho de arrugami y es un porro que soplas, thereof, anti_joint*/ 
+	    Chocolate= ["!", "?", "'", "’", "ʻ"]; /*ElDelprincipio's decision*/ 
                                                                 
       if(rageComics.indexOf(Mistery[Tsunami - 1]) != -1){ 
         Summer= Mistery[Tsunami - 1]; 
         Tsunami-= 1; 
                      
-		alert("Summer"); 
+		    alert("Summer"); 
       }else{ 
         Summer= ""; 
       } 
@@ -604,21 +609,21 @@ aNGEL= function(r){
                                            
         e == -1 ? (walkiwalki= false) : 1; 
                                     
-        for(eForensics in Accents){ 
-		  Accents[eForensics].indexOf(Mistery[e]) >= 1? Winter= "<b>" + Accents[eForensics][0] + "</b>": 1; 
-		} 
-          
-        if(Anti_joint.indexOf(Mistery[e-1]) != -1 || Chocolate.indexOf(Mistery[e+1]) != -1 && !Winter){ 
-		  Winter= "<b>" + Mistery[e] + "</b>"; 
-		} 
-		      
-		if(Anti_joint.indexOf(Mistery[e]) != -1 || Chocolate.indexOf(Mistery[e]) != -1){ 
-		  Winter= ""; 
-		}else if(!Winter){ 
+		    if(Anti_joint.indexOf(Mistery[e]) != -1 || Chocolate.indexOf(Mistery[e]) != -1){ 
+		      Winter= ""; 
+		    }else if(!Winter){ 
           Winter= Mistery[e]; 
         } 
+
+        for(eForensics in Accents){ 
+		      Accents[eForensics].indexOf(Mistery[e]) >= 1? Winter= "<b>" + Accents[eForensics][0] + "</b>": 1; 
+		    } 
           
-		(((e == Tsunami - 1 && (Chocolate.indexOf(Mistery[e]) == -1 && Anti_joint.indexOf(Mistery[e]) == -1) )  || (e == Tsunami - 2 && (Chocolate.indexOf(Mistery[e]) == -1 && Anti_joint.indexOf(Mistery[e]) == -1) && (Chocolate.indexOf(Mistery[Tsunami - 1]) != -1 || Anti_joint.indexOf(Mistery[Tsunami - 1]) != -1) ) || (e == Tsunami - 3 && (Chocolate.indexOf(Mistery[e]) == -1 && Anti_joint.indexOf(Mistery[e]) == -1) && ((Chocolate.indexOf(Mistery[Tsunami - 1]) != -1 || Anti_joint.indexOf(Mistery[Tsunami - 1]) != -1) && (Chocolate.indexOf(Mistery[Tsunami - 2]) != -1 || Anti_joint.indexOf(Mistery[Tsunami - 2]) != -1)) ) ) && Summer)? Winter= Winter + Summer: 1; 
+        if(Anti_joint.indexOf(Mistery[e-1]) != -1 || Chocolate.indexOf(Mistery[e+1]) != -1){ 
+		      Winter= "<b>" + Winter + "</b>"; 
+		    } 
+		      
+		    (((e == Tsunami - 1 && (Chocolate.indexOf(Mistery[e]) == -1 && Anti_joint.indexOf(Mistery[e]) == -1) )  || (e == Tsunami - 2 && (Chocolate.indexOf(Mistery[e]) == -1 && Anti_joint.indexOf(Mistery[e]) == -1) && (Chocolate.indexOf(Mistery[Tsunami - 1]) != -1 || Anti_joint.indexOf(Mistery[Tsunami - 1]) != -1) ) || (e == Tsunami - 3 && (Chocolate.indexOf(Mistery[e]) == -1 && Anti_joint.indexOf(Mistery[e]) == -1) && ((Chocolate.indexOf(Mistery[Tsunami - 1]) != -1 || Anti_joint.indexOf(Mistery[Tsunami - 1]) != -1) && (Chocolate.indexOf(Mistery[Tsunami - 2]) != -1 || Anti_joint.indexOf(Mistery[Tsunami - 2]) != -1)) ) ) && Summer)? Winter= Winter + Summer: 1; 
 				                                              
         walkiwalki? (Cinnamon= Cinnamon + Winter): 1; 
                        
@@ -631,7 +636,11 @@ aNGEL= function(r){
 }; 
 
 $(document).on("ready", function(){ 
-    document.getElementsByClassName("buscar")[0].addEventListener("keydown", function(i){i.keyCode == 13? aNGEL(document.getElementsByClassName("buscar")[0].value): 1; }); 
+    document.getElementsByClassName("buscar")[0].addEventListener("keydown", function(i){
+	    i.keyCode == 13? document.getElementsByTagName("body")[0].style.cursor= "text": 1; 
+
+    	    i.keyCode == 13? setTimeout(function(){aNGEL(document.getElementsByClassName("buscar")[0].value)}, 152): 1; 
+    }); 
     document.getElementsByTagName("input")[2].addEventListener("keydown", function(i){i.keyCode == 13? por_siLaBas(document.getElementsByTagName("input")[2].value): 1; }); 
     document.getElementsByTagName("input")[2].addEventListener("keydown", function(i){i.keyCode == 53? parse("header", 0): 1; }); 
     console.log('parse("header", 0);   '); 
