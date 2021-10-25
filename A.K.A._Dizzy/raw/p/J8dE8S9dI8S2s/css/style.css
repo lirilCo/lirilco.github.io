@@ -4,6 +4,9 @@
 body{
     margin: 0; 
 }
+html, body{
+    height: 100%; 
+}
 #dieded{ 
     position: absolute; 
     right: 0; 
@@ -58,7 +61,6 @@ body{
     line-height: 20px; 
     color: #222; 
 }
-
 b{ 
     font-weight: bolder !important; 
     color: #b16bff; 
