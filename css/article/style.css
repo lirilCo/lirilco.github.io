@@ -1063,3 +1063,15 @@ sub, sux, xx
   color: inherit; 
   font-size: 35% !important; 
 }
+.ui-resizable-handle.ui-resizable-e { 
+    position: absolute; 
+    right: 0; 
+    background: white; 
+    width: 6px; 
+    height: 100%; 
+    cursor: e-resize; 
+} 
+.cd-resize-img
+{
+    max-width: 100% !important; 
+}
