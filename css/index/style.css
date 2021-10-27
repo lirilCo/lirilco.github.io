@@ -745,10 +745,11 @@ right: 0;
     color: #ccc;
 }
 
-#sidebar ul li img{
-   height: 35px;
-    
-}
+#sidebar ul li img { 
+   height: 35px; 
+   width: 35px; 
+   object-fit: contain; 
+} 
 #chats
 {
     bottom: 0;
@@ -1081,4 +1082,28 @@ display: inline-block;
 .buscar 
 { 
     max-width: 100%; 
+} 
+.oculto {
+    height: 0;
+    overflow: hidden;
+    padding: 20px;
+    border: 1px solid #ccc;
+    transition: height 1005ms cubic-bezier(.83,1.12,.27,.21);
+}
+.revelar {
+    width: 100%;
+    text-align: center;
+    display: block;
+    margin-top: -11px;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+.revelar.activado {
+    text-align: left !important;
+    font-size: 0.7em;
+    margin-bottom: initial; 
+}
+.oculto p 
+{ 
+    color: #aaa; 
 } 
