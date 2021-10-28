@@ -692,12 +692,17 @@ $(".revelar").on("click", function(){
         $(i.target).parent().find("video")[0].play(); 
         $(i.target).addClass("playing"); 
     }); 
-    videojs("example_video_1").on("pause", function(){ 
-        $(".Playuse").removeClass("playing"); 
-    });
-    videojs("example_video_1").on("play", function(){ 
-        $(".Playuse").addClass("playing"); 
-    });
+
+    if(!!$("#example_video_1")[0]){
+        videojs("example_video_1").on("pause", function(){ 
+            $(".Playuse").removeClass("playing"); 
+        });
+        videojs("example_video_1").on("play", function(){ 
+            $(".Playuse").addClass("playing"); 
+        });
+    }
+
+    
 })
 $(document).on('DOMMouseScroll mousewheel', '.Scrollable', function(ev) {
     var $this = $(this),
