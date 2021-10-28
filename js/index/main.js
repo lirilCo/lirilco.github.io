@@ -14,7 +14,7 @@ parse= function(a, b){
     b != -1 ? a[b].innerHTML = Cinnamon : a.innerHTML = Cinnamon; 
 }; 
 
-Accents= /*Were I able to access it*/{
+Accents= /*Were I able to access it*/{ 
   "a": [ 
     "a", 
     "á", 
@@ -208,7 +208,8 @@ Accents= /*Were I able to access it*/{
     "ɨ", 
     "ᶖ", 
     "i̇", 
-    "ı" 
+    "ı", 
+    "í" 
   ], 
   "j": [ 
     "j", 
@@ -297,7 +298,7 @@ Accents= /*Were I able to access it*/{
     "ꬼ" 
   ], 
   "ñ": [ 
-    "ñ" 
+    "ñ"
   ], 
   "o": [ 
     "o", 
@@ -510,7 +511,7 @@ Accents= /*Were I able to access it*/{
     "ȳ", 
     "ỷ", 
     "ỵ", 
-    "ɏ",  
+    "ɏ", 
     "ƴ", 
     "ỿ" 
   ], 
@@ -533,45 +534,49 @@ Accents= /*Were I able to access it*/{
   ] 
 } 
 
-por_siLaBas = function(í){ 
-         
-Text= "-" + í.toLowerCase() + "   "; 
-word= ""; 
-syl= ""; 
-Widgets= true; 
-Cinnamon= ""; 
-Chocolate= ["!", "?", "'"]; 
-Anti_joint= ["¡", "¿", "'"]; 
-              
-for(e in Text){ 
-                
-    constructor= function(u){ 
-            u ? word= word + "<b>" + syl + "</b>" : word= word + syl; 
-            syl= ""; 
-            raged= false; 
-    } 
-    
-    Widgets= true; 
-    raged= false; 
+por_siLaBas= function(í){ 
+  Text= "-" + í.toLowerCase() + "     "; 
+  word= ""; 
+  syl= ""; 
+  Widgets= true; 
+  Cinnamon= ""; 
+  Chocolate= ["!", "?", "'", "’", "ʻ"]; 
+  Anti_joint= ["¡", "¿", "'", "’", "ʻ"]; 
                   
-    if(Text[e] == " " || e == Text.length - 1){ 
-        for(Text[e] == " " ? i= e : i= e; i--; Widgets === false){ 
-            (Text[i] == " " || i == 0) ? Widgets= false : 1; 
-            for(eForensics in Accents){ 
-                Accents[eForensics].indexOf(Text[i]) >= 1 ? raged= true : 1; 
-                Accents[eForensics].indexOf(Text[i]) >= 1 ? Text= Text.slice(0, i) + Accents[eForensics][0] + Text.slice(i + 1, Text.length - 1) : 1; 
-            } 
-            (Widgets && Anti_joint.indexOf(Text[i]) != -1)  ? raged= true : 1; 
-            (Widgets && Anti_joint.indexOf(Text[i]) != -1 && Anti_joint.indexOf(Text[i]) != Anti_joint.length - 1)  ? constructor(raged) : 1; 
-            (Widgets && Anti_joint.indexOf(Text[i]) != -1 && Anti_joint.indexOf(Text[i]) != Anti_joint.length - 1)  ? Widgets= false : 1; 
-            (Widgets && Chocolate.indexOf(Text[i]) != -1)  ? raged= true : ((Widgets && Text[i] == "-") || i == 0) ? constructor(raged) : Widgets ? syl= Text[i] + syl : 1; 
+  for(e in Text){ 
+    constructor= function(u){ 
+      u? word= word + "<b>" + syl + "</b>": word= word + syl; 
+               
+      syl= ""; 
+      raged= false; 
+	} 
+      
+	Widgets= true; 
+	raged= false; 
+                  
+	if(Text[e] == " " || e == Text.length - 1){ 
+      for(Text[e] == " "? i= e: i= e; i--; Widgets === false){ 
+        (Text[i] == " " || i == 0)? Widgets= false: 1; 
+                                    
+        for(eForensics in Accents){ 
+          Accents[eForensics].indexOf(Text[i]) >= 1? raged= true: 1; 
+                                                                     
+          Accents[eForensics].indexOf(Text[i]) >= 1? Text= Text.slice(0, i) + Accents[eForensics][0] + Text.slice(i + 1, Text.length - 1): 1; 
         } 
-            
-        Cinnamon= Cinnamon + word; 
-        word= ""; 
-    } 
-        
-} 
+          
+        (Widgets && Anti_joint.indexOf(Text[i]) != -1)? raged= true: 1; 
+                                                                        
+        (Widgets && Anti_joint.indexOf(Text[i]) != -1 && Anti_joint.indexOf(Text[i]) != Anti_joint.length - 1)? constructor(raged): 1; 
+                                                                                                                                   
+        (Widgets && Anti_joint.indexOf(Text[i]) != -1 && Anti_joint.indexOf(Text[i]) != Anti_joint.length - 1)? Widgets= false: 1; 
+                                                                                                                                   
+        (Widgets && Chocolate.indexOf(Text[i]) != -1)? raged= true: ((Widgets && Text[i] == "-") || i == 0)? constructor(raged): Widgets? syl= Text[i] + syl: 1; 
+      } 
+			
+      Cinnamon= Cinnamon + word; 
+      word= ""; 
+	  } 
+  } 
 } 
 
 aNGEL= function(r){ 
@@ -587,14 +592,14 @@ aNGEL= function(r){
       i == " "? (Tsunami= i - 1): (Tsunami= i); 
                                    
       rageComics= [",", ".", ";"]; 
-	  Anti_joint= ["¡", "¿", "'"]; /*Está hecho de arrugami y es un porro que soplas, thereof, anti_joint*/ 
-	  Chocolate= ["!", "?", "'"]; /*ElDelprincipio's decision*/ 
+	    Anti_joint= ["¡", "¿", "'", "’", "ʻ"]; /*Está hecho de arrugami y es un porro que soplas, thereof, anti_joint*/ 
+	    Chocolate= ["!", "?", "'", "’", "ʻ"]; /*ElDelprincipio's decision*/ 
                                                                 
       if(rageComics.indexOf(Mistery[Tsunami - 1]) != -1){ 
         Summer= Mistery[Tsunami - 1]; 
         Tsunami-= 1; 
                      
-		alert("Summer"); 
+		    alert("Summer"); 
       }else{ 
         Summer= ""; 
       } 
@@ -604,21 +609,21 @@ aNGEL= function(r){
                                            
         e == -1 ? (walkiwalki= false) : 1; 
                                     
-        for(eForensics in Accents){ 
-		  Accents[eForensics].indexOf(Mistery[e]) >= 1? Winter= "<b>" + Accents[eForensics][0] + "</b>": 1; 
-		} 
-          
-        if(Anti_joint.indexOf(Mistery[e-1]) != -1 || Chocolate.indexOf(Mistery[e+1]) != -1 && !Winter){ 
-		  Winter= "<b>" + Mistery[e] + "</b>"; 
-		} 
-		      
-		if(Anti_joint.indexOf(Mistery[e]) != -1 || Chocolate.indexOf(Mistery[e]) != -1){ 
-		  Winter= ""; 
-		}else if(!Winter){ 
+		    if(Anti_joint.indexOf(Mistery[e]) != -1 || Chocolate.indexOf(Mistery[e]) != -1){ 
+		      Winter= ""; 
+		    }else if(!Winter){ 
           Winter= Mistery[e]; 
         } 
+
+        for(eForensics in Accents){ 
+		      Accents[eForensics].indexOf(Mistery[e]) >= 1? Winter= "<b>" + Accents[eForensics][0] + "</b>": 1; 
+		    } 
           
-		(((e == Tsunami - 1 && (Chocolate.indexOf(Mistery[e]) == -1 && Anti_joint.indexOf(Mistery[e]) == -1) )  || (e == Tsunami - 2 && (Chocolate.indexOf(Mistery[e]) == -1 && Anti_joint.indexOf(Mistery[e]) == -1) && (Chocolate.indexOf(Mistery[Tsunami - 1]) != -1 || Anti_joint.indexOf(Mistery[Tsunami - 1]) != -1) ) || (e == Tsunami - 3 && (Chocolate.indexOf(Mistery[e]) == -1 && Anti_joint.indexOf(Mistery[e]) == -1) && ((Chocolate.indexOf(Mistery[Tsunami - 1]) != -1 || Anti_joint.indexOf(Mistery[Tsunami - 1]) != -1) && (Chocolate.indexOf(Mistery[Tsunami - 2]) != -1 || Anti_joint.indexOf(Mistery[Tsunami - 2]) != -1)) ) ) && Summer)? Winter= Winter + Summer: 1; 
+        if(Anti_joint.indexOf(Mistery[e-1]) != -1 || Chocolate.indexOf(Mistery[e+1]) != -1){ 
+		      Winter= "<b>" + Winter + "</b>"; 
+		    } 
+		      
+		    (((e == Tsunami - 1 && (Chocolate.indexOf(Mistery[e]) == -1 && Anti_joint.indexOf(Mistery[e]) == -1) )  || (e == Tsunami - 2 && (Chocolate.indexOf(Mistery[e]) == -1 && Anti_joint.indexOf(Mistery[e]) == -1) && (Chocolate.indexOf(Mistery[Tsunami - 1]) != -1 || Anti_joint.indexOf(Mistery[Tsunami - 1]) != -1) ) || (e == Tsunami - 3 && (Chocolate.indexOf(Mistery[e]) == -1 && Anti_joint.indexOf(Mistery[e]) == -1) && ((Chocolate.indexOf(Mistery[Tsunami - 1]) != -1 || Anti_joint.indexOf(Mistery[Tsunami - 1]) != -1) && (Chocolate.indexOf(Mistery[Tsunami - 2]) != -1 || Anti_joint.indexOf(Mistery[Tsunami - 2]) != -1)) ) ) && Summer)? Winter= Winter + Summer: 1; 
 				                                              
         walkiwalki? (Cinnamon= Cinnamon + Winter): 1; 
                        
@@ -631,7 +636,15 @@ aNGEL= function(r){
 }; 
 
 $(document).on("ready", function(){ 
-    document.getElementsByClassName("buscar")[0].addEventListener("keydown", function(i){i.keyCode == 13? aNGEL(document.getElementsByClassName("buscar")[0].value): 1; }); 
+    $("#search input").on("keydown keyup", function(){for(a= 0; a < $("#resizeBottom")[0].children[0].children[0].children[0].children[0].children.length; a++){ 
+        $("#resizeBottom")[0].children[0].children[0].children[0].children[0].children[a].style.display= ""; 
+        $("#resizeBottom")[0].children[0].children[0].children[0].children[0].children[a].innerText.toLowerCase().indexOf($("#search input")[0].value.toLowerCase()) == -1? $("#resizeBottom")[0].children[0].children[0].children[0].children[0].children[a].style.display= "none": 1; 
+    }})
+    document.getElementsByClassName("buscar")[0].addEventListener("keydown", function(i){
+	    i.keyCode == 13? document.getElementsByTagName("body")[0].style.cursor= "text": 1; 
+
+    	    i.keyCode == 13? setTimeout(function(){aNGEL(document.getElementsByClassName("buscar")[0].value)}, 152): 1; 
+    }); 
     document.getElementsByTagName("input")[2].addEventListener("keydown", function(i){i.keyCode == 13? por_siLaBas(document.getElementsByTagName("input")[2].value): 1; }); 
     document.getElementsByTagName("input")[2].addEventListener("keydown", function(i){i.keyCode == 53? parse("header", 0): 1; }); 
     console.log('parse("header", 0);   '); 
@@ -722,7 +735,40 @@ function closeModal() {
     })
 }
 $(document).on("ready",function(e){
+    Used= []; 
+    Urls= ["Abigail O'Neill.jpg", "Alana Campos.png", "Alexandra Tyler.jpeg", "Ali Chanel.jpg", "Ali Michael.jpg", "Alicia Loraina Olivas.jpg", "Allie Leggett.jpg", "Allie Silva.jpg", "Alyssa Arcè.jpg", "Amanda Booth.jpg", "Amanda Cerny.webp", "Amanda Streich.jpg", "Amberleigh West.jpg", "Amelia Talon.jpg", "Amy Leigh Andrews.jpg", "Ana Cheri.webp", "Anita Pathammavong.jpg", "Anna Sophia Berglund.jpg", "Ashley Doris.jpg", "Ashley Hobbs.jpg", "Ashley Smith.webp", "Audrey Aleen Allen.jpg", "Beth Williams.jpg", "Bridget Malcolm.jpg", "Britany Nola.jpg", "Britt Linn.jpeg", "Brittany Brousseau.jpg", "Brittny Ward.jpg", "Brook Power.jpg", "Bryiana Noelle.jpg", "Camille Rowe.jpg", "Carly Lauren.jpg", "Carolina Ballesteros.jpg", "Cassandra Dawn.webp", "Chasity Samone.jpg", "Chelsie Aryn.jpg", "Ciara Price.jpg", "Claire Sinclair.jpg", "Dana Taylor.jpg", "Dani Mathers.jpg", "Danielle Alcaraz.jpg", "Dominique Jane.jpg", "Dree Hemingway.jpg", "Elizabeth Elam.webp", "Elizabeth Ostrander.webp", "Elsie Hewitt.jpg", "Emily Agnes.jpg", "Enikő Mihalik.jpg", "Eugena Washington.jpg", "Fo Porter.jpg", "Francesca Frigo.jpg", "Geena Rocero.jpg", "Gemma Lee Farrell.jpg", "Gia Marie.jpg", "Gillian Chan.jpg", "Heather Knox.jpg", "Heather Rae Young.webp", "Hilda Dias Pimentel.jpg", "Ines Rau.jpg", "Iryna Ivanova.jpg", "Jaclyn Swedberg.jpg", "Jaime Faith Edmonson.jpg", "Jaslyn Ome.jpg", "Jenny Watwood.jpg", "Jessa Lynn Hinton.jpg", "Jessica Ashley.jpg", "Jessica Wall.jpg", "Jordan Emanuel.webp", "Jordy Murray.jpg", "Josie Canseco.jpg", "Joy Corrigan.jpg", "Karina Marie.jpg", "Kassie Lyn Logsdon.jpg", "Katie Vernola.jpg", "Kayla Garvin.jpg", "Kayla Rae Reid.webp", "Kaylia Cassandra.webp", "Kayslee Collins.webp", "Kelly Gale.png", "Kennedy Summers.jpg", "Khrystyana.jpg", "Kirby Griffin.jpg", "Kristen Nicole.jpeg", "Kristy Garett.jpg", "Kylie Johnson.jpg", "Kyra Milan.jpg", "Lada Kravchenko.jpg", "Leola Bell.jpg", "Lisa Seiffert.jpg", "Liza Kei.png", "Lorena Medina.jpg", "Maggie May.jpg", "Marsha Elle.jpg", "Megan Moore.jpg", "Megan Samperi.jpg", "Mei-Ling Lam.jpg", "Miki Hamano.jpg", "Milan Dixon.jpg", "Monica Sims.jpg", "Nereyda Bird.jpg", "Nikki Leigh.jpg", "Nina Daniele.jpg", "Olga de Mar.jpg", "Olivia Paige.jpg", "Pamela Horton.jpg", "Priscilla Huggins.jpg", "Rachel Harris.jpg", "Rainy Day Jordan.jpg", "Raquel Pomplun.jpg", "Riley Ticotin.jpg", "Roos van Montfort.jpg", "Roxanna June.jpg", "Sasha Bonilova.jpg", "Savannah Smith.jpeg", "Shanice Jordyn.jpg", "Shanna McLaughlin.jpg", "Shauna Sexton.jpg", "Shawn Dillon.jpeg", "Shelby Chesnes.jpg", "Shelby Rose.jpg", "Shelby Rose.webp", "Shera Bechard.jpg", "Sophie O’Neil.jpg", "Stephanie Branton.jpg", "Tanerélle.jpg", "Teela LaRoux.jpg", "Tiffany Toth.jpg", "Val Keil.jpeg", "Valeria Lakhina.jpg", "Vendela Lindblom.jpg", "Yoli Lara.jpg"]; 
 
+    while(Used.length != Urls.length){ 
+        randmIntgr= parseInt(Math.random() * Urls.length );
+
+        while(Used.indexOf(randmIntgr) != -1){ 
+            randmIntgr= parseInt(Math.random() * Urls.length ); 
+        }
+
+        $("#resizeBottom ul")[0].innerHTML= $("#resizeBottom ul")[0].innerHTML + '<li class="button offline"><img src="/resources/images/chat/' + Urls[randmIntgr] + '" alt=""><p>' + Urls[randmIntgr].slice(0, Urls[randmIntgr].indexOf(".")) + '</p><span ></span></li>'
+        Used[Used.length]= randmIntgr
+    }
+
+    Number= 7 + parseInt(Math.random() * 78);  
+                                          
+    for(eForensics in document.querySelector("#resizeBottom ul").children){ 
+        if(Number > 0){ 
+            $($("#resizeBottom ul").children()[eForensics]).removeClass("offline"); 
+            $($("#resizeBottom ul").children()[eForensics]).addClass("connected"); 
+            Number--; 
+        } 
+    } 
+    $(".revelar").on("click", function(){ 
+        if($(this).text()[0] != "O"){ 
+            $(this).parent().css({"height": "auto"}); 
+            $(this).text("Ocultar de nuevo la imagen."); 
+            $(this).addClass("activado"); 
+        }else{ 
+            $(this).parent().css({"height": "0"}); 
+            $(this).text("Mostrar la imagen oculta."); 
+            $(this).removeClass("activado"); 
+        } 
+    })
     $("html").click(function() {
         $(".wrapper").removeClass("visible")
         $("#right-menu .index-arrow").removeClass("open");

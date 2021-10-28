@@ -193,7 +193,7 @@ NAccents= /*Were I able to access it*/{
     "ᶖ", 
     "i̇", 
     "ı", 
-    "í"
+    "í" 
   ], 
   "j": [ 
     "j", 
@@ -493,7 +493,7 @@ NAccents= /*Were I able to access it*/{
     "ȳ", 
     "ỷ", 
     "ỵ", 
-    "ɏ",  
+    "ɏ", 
     "ƴ", 
     "ỿ" 
   ], 
@@ -710,7 +710,8 @@ NAccents= /*Were I able to access it*/{
     "ɨ", 
     "ᶖ", 
     "i̇", 
-    "ı" 
+    "ı", 
+    "í" 
   ], 
   "j": [ 
     "j", 
@@ -1012,7 +1013,7 @@ NAccents= /*Were I able to access it*/{
     "ȳ", 
     "ỷ", 
     "ỵ", 
-    "ɏ",  
+    "ɏ", 
     "ƴ", 
     "ỿ" 
   ], 
