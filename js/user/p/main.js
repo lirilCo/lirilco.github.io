@@ -272,10 +272,14 @@ $("#files .file").click(function(i, tr){
 
         function reqListener () {
             $("#preview #file_preview #edit")[0].innerHTML= "<div id= 'editor'></div>"; 
+            ace.require("ace/ext/language_tools");
             var editor = ace.edit("editor");
             editor.setTheme("ace/theme/monokai"); 
             editor.setValue(this.responseText); 
             editor.setOption("enableEmmet", true);
+            editor.setOption("enableBasicAutocompletion", true); 
+            editor.setOption("enableLiveAutocompletion", true); 
+            editor.setOption("enableSnippets", true); 
             switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].lastIndexOf(".") + 1)){ 
                 case "js": 
                     var JavaScriptMode = ace.require("ace/mode/javascript").Mode; 
@@ -907,10 +911,14 @@ $("#Archivo, #Live, #Editar").click(function(){
 
     function reqListener () {
             $("#preview #file_preview #edit")[0].innerHTML= "<div id= 'editor'></div>"; 
+            ace.require("ace/ext/language_tools");
             var editor = ace.edit("editor");
             editor.setTheme("ace/theme/monokai"); 
             editor.setValue(this.responseText); 
             editor.setOption("enableEmmet", true);
+            editor.setOption("enableBasicAutocompletion", true); 
+            editor.setOption("enableLiveAutocompletion", true); 
+            editor.setOption("enableSnippets", true); 
             switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].lastIndexOf(".") + 1)){ 
                 case "js": 
                     var JavaScriptMode = ace.require("ace/mode/javascript").Mode; 
