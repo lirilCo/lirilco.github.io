@@ -275,6 +275,7 @@ $("#files .file").click(function(i, tr){
             var editor = ace.edit("editor");
             editor.setTheme("ace/theme/monokai"); 
             editor.setValue(this.responseText); 
+            editor.setOption("enableEmmet", true);
             switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].lastIndexOf(".") + 1)){ 
                 case "js": 
                     var JavaScriptMode = ace.require("ace/mode/javascript").Mode; 
@@ -909,6 +910,7 @@ $("#Archivo, #Live, #Editar").click(function(){
             var editor = ace.edit("editor");
             editor.setTheme("ace/theme/monokai"); 
             editor.setValue(this.responseText); 
+            editor.setOption("enableEmmet", true);
             switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].lastIndexOf(".") + 1)){ 
                 case "js": 
                     var JavaScriptMode = ace.require("ace/mode/javascript").Mode; 
