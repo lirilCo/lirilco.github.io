@@ -1179,18 +1179,42 @@ function update(){
   
 rwrrw= ""; 
 mousedown= false; 
-dsrcrs= ["#339dc1", "#ff6711", "#339dc1", "#339dc1", "#339dc1", "#339dc1", "#339dc1", "#339dc1", "#d3ef30", "#2253ed", "#21ff34", "#339dc1"]; 
-
+dsrcrs= [ 
+  "#339dc1", 
+  "#ff1213", 
+  "#339dc1", 
+  "#339dc1", 
+  "#339dc1", 
+  "#339dc1", 
+  "#339dc1", 
+  "#339dc1", 
+  "#d5cd30", 
+  "#52dded", 
+  "#13df35", 
+  "#339dc1" 
+]; 
+   
 opacity= function(color, op){ 
-    for(iu in document.getElementsByTagName("div")){ 
-        (document.getElementsByTagName("div")[iu].style && document.getElementsByTagName("div")[iu].style.backgroundColor == color)? document.getElementsByTagName("div")[iu].style.opacity= op: 1; 
+    switch(color){
+        case azul:
+            $("#styA")[0].innerHTML= ".\\#52dded{opacity:" + op + "}"; 
+            break;
+        case verde:
+            $("#styV")[0].innerHTML= ".\\#13df35{opacity:" + op + "}"; 
+            break;
+        case rojo:
+            $("#styR")[0].innerHTML= ".\\#ff1213{opacity:" + op + "}"; 
+            break;
+        case amarillo:
+            $("#styAm")[0].innerHTML= ".\\#d5cd30{opacity:" + op + "}"; 
+            break;
     }
 } 
 
-azul= "rgb(34, 83, 237)"; 
-verde= "rgb(33, 255, 52)"; 
-rojo= "rgb(255, 103, 17)"; 
-amarillo= "rgb(211, 239, 48)"; 
+azul= "rgb(82, 221, 237)"; 
+verde= "rgb(19, 223, 53)"; 
+rojo= "rgb(255, 18, 19)"; 
+amarillo= "rgb(213, 205, 48)"; 
 function2= false; 
 
 var interval; 
@@ -1298,6 +1322,8 @@ setInterval(function(){
           
 document.addEventListener("keydown", function(i){                                                                                                               
     if(i.keyCode == 113){ 
+        $("#r4Ndom div").css({"opacity": ""}); 
+                            
         i.preventDefault(); 
                           
         opacity(azul, 0); 
@@ -1317,6 +1343,8 @@ document.addEventListener("keydown", function(i){
     } 
       
     if(i.keyCode == 114){ 
+        $("#r4Ndom div").css({"opacity": ""}); 
+                            
         i.preventDefault(); 
 
         ioi= 0; 
@@ -1325,7 +1353,10 @@ document.addEventListener("keydown", function(i){
     } 
       
     if(i.keyCode == 115){ 
+        $("#r4Ndom div").css({"opacity": ""}); 
+                            
         i.preventDefault(); 
+
 
         ioi= 0; 
                 
@@ -1333,6 +1364,8 @@ document.addEventListener("keydown", function(i){
     } 
       
     if(i.keyCode == 116){ 
+        $("#r4Ndom div").css({"opacity": ""}); 
+                            
         i.preventDefault(); 
 
         ioi= 0; 
@@ -1349,6 +1382,8 @@ document.addEventListener("keydown", function(i){
     } 
 
     if(i.keyCode == 112){ 
+        $("#r4Ndom div").css({"opacity": ""}); 
+                            
         i.preventDefault(); 
 
         ioi= 1; 
@@ -1388,7 +1423,7 @@ document.addEventListener("mousemove", function(i){
                                                               
     dsrcrs[L] == "#339dc1"? MNSWMTG = false: 214;                                   
 
-    (mousedown)? document.getElementById("r4Ndom").innerHTML= document.getElementById("r4Ndom").innerHTML + "<div style= 'width: 6.8px; height: 6.8px; background-color: " + dsrcrs[L] + PpPE + "; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>" + (MNSWMTG > 1? "<div style= 'width: 6.8px; height: 6.8px; background-color: #339dc1; z-index: 2; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>": ""): 13781;
+    (mousedown)? document.getElementById("r4Ndom").innerHTML= document.getElementById("r4Ndom").innerHTML + "<div class= '" + dsrcrs[L] + "' style= 'width: 6.8px; height: 6.8px; background-color: " + dsrcrs[L] + PpPE + "; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>" + (MNSWMTG > 1? "<div class= '#339dc1' style= 'width: 6.8px; height: 6.8px; background-color: #339dc1; z-index: 2; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>": ""): 13781;
 }); 
     
 document.addEventListener("keyup", function(i){                                                
