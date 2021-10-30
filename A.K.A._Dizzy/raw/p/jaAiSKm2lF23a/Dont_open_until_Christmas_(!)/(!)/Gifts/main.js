@@ -1424,16 +1424,16 @@ shift_droped= true;
 opacity= function(color, op){ 
     switch(color){
         case azul:
-            $("#sty")[0].innerHTML= ".\\#52dded{opacity:" + op + "}"; 
+            $("#styA")[0].innerHTML= ".\\#52dded{opacity:" + op + "}"; 
             break;
         case verde:
-            $("#sty")[0].innerHTML= ".\\#13df35{opacity:" + op + "}"; 
+            $("#styV")[0].innerHTML= ".\\#13df35{opacity:" + op + "}"; 
             break;
         case rojo:
-            $("#sty")[0].innerHTML= ".\\#ff1213{opacity:" + op + "}"; 
+            $("#styR")[0].innerHTML= ".\\#ff1213{opacity:" + op + "}"; 
             break;
         case amarillo:
-            $("#sty")[0].innerHTML= ".\\#d5cd30{opacity:" + op + "}"; 
+            $("#styAm")[0].innerHTML= ".\\#d5cd30{opacity:" + op + "}"; 
             break;
     }
 } 
@@ -1610,6 +1610,8 @@ document.addEventListener("keyup", function(i){
 
 document.addEventListener("keydown", function(i){                                                                                                               
     if(i.keyCode == 113){ 
+        $(".rwr div").css({"opacity": ""}); 
+                            
         i.preventDefault(); 
                           
         opacity(azul, 0); 
@@ -1629,6 +1631,8 @@ document.addEventListener("keydown", function(i){
     } 
       
     if(i.keyCode == 114){ 
+        $(".rwr div").css({"opacity": ""}); 
+                            
         i.preventDefault(); 
 
         ioi= 0; 
@@ -1637,6 +1641,8 @@ document.addEventListener("keydown", function(i){
     } 
       
     if(i.keyCode == 115){ 
+        $(".rwr div").css({"opacity": ""}); 
+                            
         i.preventDefault(); 
 
         ioi= 0; 
@@ -1645,6 +1651,8 @@ document.addEventListener("keydown", function(i){
     } 
       
     if(i.keyCode == 116){ 
+        $(".rwr div").css({"opacity": ""}); 
+                            
         i.preventDefault(); 
 
         ioi= 0; 
@@ -1661,6 +1669,8 @@ document.addEventListener("keydown", function(i){
     } 
 
     if(i.keyCode == 112){ 
+        $(".rwr div").css({"opacity": ""}); 
+
         i.preventDefault(); 
 
         ioi= 1; 
