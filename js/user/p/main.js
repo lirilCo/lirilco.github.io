@@ -1,5 +1,7 @@
 el= document.getElementsByClassName("file_tree")[0]; 
 
+var editor; 
+
 function openModal(a) {
     $("#theater").addClass("animated fadeIn ")
     $(".theater").css({
@@ -273,7 +275,7 @@ $("#files .file").click(function(i, tr){
         function reqListener () {
             $("#preview #file_preview #edit")[0].innerHTML= "<div id= 'editor'></div>"; 
             ace.require("ace/ext/language_tools");
-            var editor = ace.edit("editor");
+            editor = ace.edit("editor");
             editor.setTheme("ace/theme/monokai"); 
             editor.setValue(this.responseText); 
             editor.setOption("enableEmmet", true);
@@ -300,8 +302,6 @@ $("#files .file").click(function(i, tr){
     
     
         var xxa = new XMLHttpRequest();
-        xxa.addEventListener("load", reqListener);
-        xxa.open("GET", FileToRequest);
         xxa.send(); 
 
 
@@ -912,7 +912,7 @@ $("#Archivo, #Live, #Editar").click(function(){
     function reqListener () {
             $("#preview #file_preview #edit")[0].innerHTML= "<div id= 'editor'></div>"; 
             ace.require("ace/ext/language_tools");
-            var editor = ace.edit("editor");
+            editor = ace.edit("editor");
             editor.setTheme("ace/theme/monokai"); 
             editor.setValue(this.responseText); 
             editor.setOption("enableEmmet", true);

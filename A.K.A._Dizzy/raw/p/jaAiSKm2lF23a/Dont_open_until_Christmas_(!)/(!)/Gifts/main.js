@@ -1401,11 +1401,144 @@ function sSeloMeteoryte(){
   
 rwrrw= ""; 
 mousedown= false; 
-dsrcrs= ["#339dc1", "#ff6711", "#339dc1", "#339dc1", "#339dc1", "#339dc1", "#339dc1", "#339dc1", "#d3ef30", "#2253ed", "#21ff34", "#339dc1"]; 
-                                                                                                 
+
+dsrcrs= [ 
+  "#339dc1", 
+  "#ff1213", 
+  "#339dc1", 
+  "#339dc1", 
+  "#339dc1", 
+  "#339dc1", 
+  "#339dc1", 
+  "#339dc1", 
+  "#d5cd30", 
+  "#52dded", 
+  "#13df35", 
+  "#339dc1" 
+]; 
+
 document.getElementsByTagName("input")[2].style.top= document.body.clientHeight - 5.9898 + "px"; 
                     
 shift_droped= true; 
+
+opacity= function(color, op){ 
+    switch(color){
+        case azul:
+            $("#sty")[0].innerHTML= ".\\#52dded{opacity:" + op + "}"; 
+            break;
+        case verde:
+            $("#sty")[0].innerHTML= ".\\#13df35{opacity:" + op + "}"; 
+            break;
+        case rojo:
+            $("#sty")[0].innerHTML= ".\\#ff1213{opacity:" + op + "}"; 
+            break;
+        case amarillo:
+            $("#sty")[0].innerHTML= ".\\#d5cd30{opacity:" + op + "}"; 
+            break;
+    }
+} 
+
+azul= "rgb(82, 221, 237)"; 
+verde= "rgb(19, 223, 53)"; 
+rojo= "rgb(255, 18, 19)"; 
+amarillo= "rgb(213, 205, 48)"; 
+
+var interval; 
+
+function setinterval(f)
+{
+    clearInterval(interval); 
+
+    interval= setInterval(function(){f();}, 235); 
+}
+function2= function(){ 
+    cr != azul? opacity(azul, 0): 1; 
+    cr != verde? opacity(verde, 0): 1; 
+    cr != rojo? opacity(rojo, 0): 1; 
+    cr != amarillo? opacity(amarillo, 0): 1; 
+
+    if(goingUp && ioi < 1){ 
+        ioi+= 0.01; 
+        opacity(cr, ioi); 
+    } 
+      
+    if(goingDown && ioi > 0){ 
+        ioi-= 0.01; 
+        opacity(cr, ioi); 
+    } 
+
+    if(goingUp && ioi >= 1){ 
+        goingUp= false; 
+        setTimeout(function(){ 
+            goingDown= true; 
+        }, 2345) 
+    } 
+      
+    if(goingDown && ioi <= 0){ 
+        goingDown= false; 
+        setTimeout(function(){ 
+            cr == azul? cr= verde: cr == verde? cr= rojo: cr == rojo? cr= amarillo: cr == amarillo? cr= azul: 1; 
+            goingUp= true; 
+        }, 2345) 
+    }
+}
+        
+function3= function(){ 
+    switch(ioi){ 
+        case 0: 
+            opacity(azul, 0); 
+            opacity(verde, 0); 
+            opacity(rojo, 1); 
+            opacity(amarillo, 1); 
+        break; 
+        case 1: 
+            opacity(azul, 1); 
+            opacity(verde, 1); 
+            opacity(rojo, 0); 
+            opacity(amarillo, 0); 
+        break; 
+    } 
+    ioi < 1? ioi++: ioi= 0; 
+}
+        
+function4= function(){ 
+    switch(ioi){ 
+        case 0: 
+            opacity(azul, 0); 
+            opacity(rojo, 0); 
+            opacity(verde, 1); 
+            opacity(amarillo, 1); 
+        break; 
+        case 1: 
+            opacity(azul, 1); 
+            opacity(rojo, 1); 
+            opacity(verde, 0); 
+            opacity(amarillo, 0); 
+        break; 
+    } 
+    ioi < 1? ioi++: ioi= 0; 
+}
+        
+function5= function(){ 
+    switch(ioi){ 
+        case 0: 
+            opacity(azul, 0); 
+            opacity(amarillo, 0); 
+            opacity(rojo, 1); 
+            opacity(verde, 1); 
+        break; 
+        case 1: 
+            opacity(azul, 1); 
+            opacity(amarillo, 1); 
+            opacity(rojo, 0); 
+            opacity(verde, 0); 
+        break; 
+    } 
+    ioi < 1? ioi++: ioi= 0; 
+}
+
+
+function6= function(){for(e= 0; e < document.querySelectorAll("#rawr .rwr div").length - 1; e++){document.querySelectorAll("#rawr .rwr div")[e].style.backgroundColor != "rgb(51, 157, 193)"? Math.random() * 2 > 1? document.querySelectorAll("#rawr .rwr div")[e].style.opacity= 1: document.querySelectorAll("#rawr .rwr div")[e].style.opacity= 0: 1; };}
 //} 
     
 //onClipEvent(enterframe){ 
@@ -1416,7 +1549,7 @@ setInterval(function(){
 document.addEventListener("mousemove", function(i){ 
     vrbl= i; 
 
-    if(vrbl.target.outerHTML.indexOf("dsrtg") == 1 || vrbl.target.outerHTML.indexOf("h1") == 1){ if(document.getElementsByTagName("h1")[0].hasAttribute("corrupt")){ document.getElementsByTagName("h1")[0].outerHTML= "<h1 spellcheck='false' autocorrect='off' autocomplete= 'off' contenteditable= 'true'></h1>"; document.getElementsByTagName("h1")[0].focus(); }}else{ !document.getElementsByTagName("h1")[0].hasAttribute("corrupt")? document.getElementsByTagName("h1")[0].outerHTML= "<h1 spellcheck='false' autocorrect='off' autocomplete= 'off' contenteditable= 'true' corrupt= 'true'></h1>": 12817; }
+    if(vrbl.target.outerHTML.indexOf("dsrtg") == 1 || vrbl.target.outerHTML.indexOf("h1") == 1){ if(!!document.getElementsByTagName("h1")[0].getAttribute("corrupt")){ document.getElementsByTagName("h1")[0].removeAttribute("corrupt"); document.getElementsByTagName("h1")[0].focus(); }}else{ $(document.getElementsByTagName("h1")[0]).attr("corrupt", true); document.activeElement.blur();}
 }); 
     
 document.addEventListener("keydown", function(i){ 
@@ -1466,13 +1599,82 @@ document.addEventListener("mousemove", function(i){
                                                                
     PpPE= dsrcrs[L] == "#339dc1"? "; z-index: 2": "; border-radius: 50%; z-index: " + MNSWMTG; 
                                                                                                
-    (mousedown && rawrrawrrawrrawr)? i.target == lastChild? lastChild.innerHTML= lastChild.innerHTML + "<div style= 'width: 4.78px; height: 4.78px; background-color: " + dsrcrs[L] + PpPE + "; position: absolute; left: " + i.layerX + "px; top: " + i.layerY +  "px; '></div>": 1: 13781; 
+    (mousedown && rawrrawrrawrrawr)? i.target == lastChild? lastChild.innerHTML= lastChild.innerHTML + "<div class= '" + dsrcrs[L] + "' style= 'width: 4.78px; height: 4.78px; background-color: " + dsrcrs[L] + PpPE + "; position: absolute; left: " + i.layerX + "px; top: " + i.layerY +  "px; '></div>" + (MNSWMTG > 1? "<div class= '#339dc1' style= 'width: 4.78px; height: 4.78px; background-color: #339dc1; z-index: 2; position: absolute; left: " + i.layerX + "px; top: " + i.layerY +  "px; '></div>": ""): 1: 13781; 
 }); 
     
 document.addEventListener("keyup", function(i){ 
     (i.keyCode == 17 && lastChild.outerHTML.indexOf("Rwawwr") == 9)? lastChild.outerHTML= "": 3251; 
                                                
     i.keyCode == 16? shift_droped= true: 2311; 
+}); 
+
+document.addEventListener("keydown", function(i){                                                                                                               
+    if(i.keyCode == 113){ 
+        i.preventDefault(); 
+                          
+        opacity(azul, 0); 
+                          
+        opacity(verde, 0); 
+                          
+        opacity(rojo, 0); 
+                          
+        opacity(amarillo, 0); 
+                       
+        goingUp= true; 
+        goingDown= false; 
+        cr= azul; 
+        ioi= 0; 
+                
+        setinterval(function2); 
+    } 
+      
+    if(i.keyCode == 114){ 
+        i.preventDefault(); 
+
+        ioi= 0; 
+                
+        setinterval(function3); 
+    } 
+      
+    if(i.keyCode == 115){ 
+        i.preventDefault(); 
+
+        ioi= 0; 
+                
+        setinterval(function4); 
+    } 
+      
+    if(i.keyCode == 116){ 
+        i.preventDefault(); 
+
+        ioi= 0; 
+
+        setinterval(function5); 
+    } 
+      
+    if(i.keyCode == 117){ 
+        i.preventDefault(); 
+
+        ioi= 0; 
+
+        setinterval(function6); 
+    } 
+
+    if(i.keyCode == 112){ 
+        i.preventDefault(); 
+
+        ioi= 1; 
+                
+        opacity(azul, ioi); 
+                            
+        opacity(verde, ioi); 
+                            
+        opacity(rojo, ioi); 
+                            
+        opacity(amarillo, ioi); 
+
+        clearInterval(interval);                           
+    } 
 }); 
 //} 
     

@@ -1180,146 +1180,28 @@ function update(){
 rwrrw= ""; 
 mousedown= false; 
 dsrcrs= ["#339dc1", "#ff6711", "#339dc1", "#339dc1", "#339dc1", "#339dc1", "#339dc1", "#339dc1", "#d3ef30", "#2253ed", "#21ff34", "#339dc1"]; 
+
 opacity= function(color, op){ 
     for(iu in document.getElementsByTagName("div")){ 
         (document.getElementsByTagName("div")[iu].style && document.getElementsByTagName("div")[iu].style.backgroundColor == color)? document.getElementsByTagName("div")[iu].style.opacity= op: 1; 
     }
 } 
+
 azul= "rgb(34, 83, 237)"; 
 verde= "rgb(33, 255, 52)"; 
 rojo= "rgb(255, 103, 17)"; 
 amarillo= "rgb(211, 239, 48)"; 
 function2= false; 
-//} 
-    
-//onClipEvent(enterframe){ 
-setInterval(function(){ 
-    update(); 
-}, 0.00); 
-          
-document.addEventListener("keydown", function(i){                                                                                                               
-    if(i.keyCode == 113){ 
-        i.preventDefault(); 
-                          
-        opacity(azul, 0); 
-                          
-        opacity(verde, 0); 
-                          
-        opacity(rojo, 0); 
-                          
-        opacity(amarillo, 0); 
-                       
-        goingUp= true; 
-        goingDown= false; 
-        cr= azul; 
-        ioi= 0; 
-        function1= false; 
-        function3= false; 
-        function4= false; 
-        function5= false; 
-        function6= false; 
-        function2= true; 
-    } 
-      
-    if(i.keyCode == 114){ 
-        i.preventDefault(); 
 
-        ioi= 0; 
-        function1= false; 
-        function2= false; 
-        function4= false; 
-        function5= false; 
-        function6= false; 
-        function3= true; 
-    } 
-      
-    if(i.keyCode == 115){ 
-        i.preventDefault(); 
+var interval; 
 
-        ioi= 0; 
-        function1= false; 
-        function2= false; 
-        function3= false; 
-        function5= false; 
-        function6= false; 
-        function4= true; 
-    } 
-      
-    if(i.keyCode == 116){ 
-        i.preventDefault(); 
+function setinterval(f)
+{
+	clearInterval(interval); 
 
-        ioi= 0; 
-        function1= false; 
-        function2= false; 
-        function3= false; 
-        function4= false; 
-        function6= false; 
-        function5= true; 
-    } 
-      
-    if(i.keyCode == 117){ 
-        i.preventDefault(); 
-
-        ioi= 0; 
-        function1= false; 
-        function2= false; 
-        function3= false; 
-        function4= false; 
-        function5= false; 
-        function6= true; 
-    } 
-
-    if(i.keyCode == 112){ 
-        i.preventDefault(); 
-
-        ioi= 1; 
-                
-        opacity(azul, ioi); 
-                            
-        opacity(verde, ioi); 
-                            
-        opacity(rojo, ioi); 
-                            
-        opacity(amarillo, ioi); 
-                          
-        function1= false; 
-        function2= false; 
-        function3= false; 
-        function4= false; 
-        function5= false; 
-        function6= false; 
-    } 
-}); 
-    
-document.addEventListener("mousedown", function(i){ 
-    mousedown= true; 
-                     
-    //i.target == lastChild? lastChild.innerHTML= lastChild.innerHTML + "<div style= 'width: 4.78px; height: 4.78px; background-color: " + "#339dc1" + "; position: absolute; left: " + i.layerX + "px; top: " + i.layerY +  "px; '></div>": 1; 
-                     
-    /*(i.keyCode == 17 && lastChild.outerHTML.indexOf("Rwawwr") == 9)? lastChild.outerHTML= "": 3251; */ 
-}); 
-    
-document.addEventListener("mouseup", function(i){ 
-    mousedown= false; 
-                      
-    /*me= w.keyCode; */ 
-}); //The question, the quest off...  
-    
-document.addEventListener("mousemove", function(i){                                                 
-    L= parseInt(Math.random() * dsrcrs.length); 
-                                                
-    MNSWMTG= parseInt(Math.random() * 2) == 0? "1": "1000000"; 
-                                                               
-    PpPE= dsrcrs[L] == "#339dc1"? "; z-index: 2": "; border-radius: 50%; z-index: " + MNSWMTG; 
-                                                                                               
-    (mousedown)? document.getElementById("r4Ndom").innerHTML= document.getElementById("r4Ndom").innerHTML + "<div style= 'width: 6.8px; height: 6.8px; background-color: " + dsrcrs[L] + PpPE + "; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>": 13781;
-}); 
-    
-document.addEventListener("keyup", function(i){                                                
-
-}); 
-setInterval(function(){ 
-if(function2){ 
+	interval= setInterval(function(){f();}, 235); 
+}
+function2= function(){ 
     cr != azul? opacity(azul, 0): 1; 
     cr != verde? opacity(verde, 0): 1; 
     cr != rojo? opacity(rojo, 0): 1; 
@@ -1349,11 +1231,9 @@ if(function2){
             goingUp= true; 
         }, 2345) 
     }
-} 
-}, 161) 
+}
         
-setInterval(function(){ 
-if(function3){ 
+function3= function(){ 
     switch(ioi){ 
         case 0: 
             opacity(azul, 0); 
@@ -1369,11 +1249,9 @@ if(function3){
         break; 
     } 
     ioi < 1? ioi++: ioi= 0; 
-} 
-}, 235) 
+}
         
-setInterval(function(){ 
-if(function4){ 
+function4= function(){ 
     switch(ioi){ 
         case 0: 
             opacity(azul, 0); 
@@ -1389,11 +1267,9 @@ if(function4){
         break; 
     } 
     ioi < 1? ioi++: ioi= 0; 
-} 
-}, 235) 
+}
         
-setInterval(function(){ 
-if(function5){ 
+function5= function(){ 
     switch(ioi){ 
         case 0: 
             opacity(azul, 0); 
@@ -1409,10 +1285,113 @@ if(function5){
         break; 
     } 
     ioi < 1? ioi++: ioi= 0; 
-} 
-}, 235) 
+}
 
 
-setInterval(function(){if(function6){for(e in document.getElementsByTagName("div")){document.getElementsByTagName("div")[e].style.backgroundColor != "rgb(51, 157, 193)"? Math.random() * 2 > 1? document.getElementsByTagName("div")[e].style.opacity= 1: document.getElementsByTagName("div")[e].style.opacity= 0: 1; };}}, 138); 
+function6= function(){for(e= 0; e < document.getElementsByTagName("div").length - 1; e++){document.getElementsByTagName("div")[e].style.backgroundColor != "rgb(51, 157, 193)"? Math.random() * 2 > 1? document.getElementsByTagName("div")[e].style.opacity= 1: document.getElementsByTagName("div")[e].style.opacity= 0: 1; };}
+//} 
+    
+//onClipEvent(enterframe){ 
+setInterval(function(){ 
+    update(); 
+}, 0.00); 
+          
+document.addEventListener("keydown", function(i){                                                                                                               
+    if(i.keyCode == 113){ 
+        i.preventDefault(); 
+                          
+        opacity(azul, 0); 
+                          
+        opacity(verde, 0); 
+                          
+        opacity(rojo, 0); 
+                          
+        opacity(amarillo, 0); 
+                       
+        goingUp= true; 
+        goingDown= false; 
+        cr= azul; 
+        ioi= 0; 
+                
+        setinterval(function2); 
+    } 
+      
+    if(i.keyCode == 114){ 
+        i.preventDefault(); 
 
+        ioi= 0; 
+                
+        setinterval(function3); 
+    } 
+      
+    if(i.keyCode == 115){ 
+        i.preventDefault(); 
+
+        ioi= 0; 
+                
+        setinterval(function4); 
+    } 
+      
+    if(i.keyCode == 116){ 
+        i.preventDefault(); 
+
+        ioi= 0; 
+
+        setinterval(function5); 
+    } 
+      
+    if(i.keyCode == 117){ 
+        i.preventDefault(); 
+
+        ioi= 0; 
+
+        setinterval(function6); 
+    } 
+
+    if(i.keyCode == 112){ 
+        i.preventDefault(); 
+
+        ioi= 1; 
+                
+        opacity(azul, ioi); 
+                            
+        opacity(verde, ioi); 
+                            
+        opacity(rojo, ioi); 
+                            
+        opacity(amarillo, ioi); 
+
+		clearInterval(interval);                           
+    } 
+}); 
+    
+document.addEventListener("mousedown", function(i){ 
+    mousedown= true; 
+                     
+    //i.target == lastChild? lastChild.innerHTML= lastChild.innerHTML + "<div style= 'width: 4.78px; height: 4.78px; background-color: " + "#339dc1" + "; position: absolute; left: " + i.layerX + "px; top: " + i.layerY +  "px; '></div>": 1; 
+                     
+    /*(i.keyCode == 17 && lastChild.outerHTML.indexOf("Rwawwr") == 9)? lastChild.outerHTML= "": 3251; */ 
+}); 
+    
+document.addEventListener("mouseup", function(i){ 
+    mousedown= false; 
+                      
+    /*me= w.keyCode; */ 
+}); //The question, the quest off...  
+    
+document.addEventListener("mousemove", function(i){                                                 
+    L= parseInt(Math.random() * dsrcrs.length); 
+                                                
+    MNSWMTG= parseInt(Math.random() * 2) == 0? "1": "1000000"; 
+                                                               
+    PpPE= dsrcrs[L] == "#339dc1"? "; z-index: 2": "; border-radius: 50%; z-index: " + MNSWMTG; 
+                                                              
+    dsrcrs[L] == "#339dc1"? MNSWMTG = false: 214;                                   
+
+    (mousedown)? document.getElementById("r4Ndom").innerHTML= document.getElementById("r4Ndom").innerHTML + "<div style= 'width: 6.8px; height: 6.8px; background-color: " + dsrcrs[L] + PpPE + "; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>" + (MNSWMTG > 1? "<div style= 'width: 6.8px; height: 6.8px; background-color: #339dc1; z-index: 2; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>": ""): 13781;
+}); 
+    
+document.addEventListener("keyup", function(i){                                                
+
+}); 
 //} 
