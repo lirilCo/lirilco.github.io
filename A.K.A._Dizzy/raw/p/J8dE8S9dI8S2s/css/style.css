@@ -82,4 +82,5 @@ b{
 #Sara p#parsed {
     font-size: inherit !important;
     position: static;
+    margin: 0 38px 0 17.5px; 
 }

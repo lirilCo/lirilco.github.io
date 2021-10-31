@@ -1350,6 +1350,13 @@ document.addEventListener("keydown", function(i){
     i.keyCode == 13? aNGEL(document.getElementById("dieded").value): 1; 
 
     i.keyCode == 17? parse("#Sara", -1): 1; 
+                        
+    if(i.keyCode == 17) 
+    { 
+      document.getElementById('pause').innerText == '>'? document.getElementById('pause').innerText = 'll': 252; 
+                                   
+      !paused? 252: paused= false; 
+    } 
     }); 
 parse= function(a, b){ 
 	switch(a[0]){ 
