@@ -1419,7 +1419,7 @@ dsrcrs= [
   "#339dc1", 
   "#339dc1", 
   "#f3d21d", 
-  "#2919dd", 
+  "#1e51e8", 
   "#71ff21", 
   "#339dc1" 
 ]; 
@@ -1431,7 +1431,7 @@ shift_droped= true;
 opacity= function(color, op){ 
     switch(color){
         case azul:
-            $("#styA")[0].innerHTML= ".\\#2919dd{opacity:" + op + "}"; 
+            $("#styA")[0].innerHTML= ".\\#1e51e8{opacity:" + op + "}"; 
             break;
         case verde:
             $("#styV")[0].innerHTML= ".\\#71ff21{opacity:" + op + "}"; 
@@ -1445,7 +1445,7 @@ opacity= function(color, op){
     }
 } 
 
-azul= "rgb(41, 25, 221)"; 
+azul= "rgb(30, 81, 232)"; 
 verde= "rgb(113, 255, 33)"; 
 rojo= "rgb(255, 18, 19)"; 
 amarillo= "rgb(243,210,29)"; 
@@ -1701,6 +1701,12 @@ window.addEventListener("resize", function(){
 
 
 document.addEventListener("DOMContentLoaded", function(){ 
+    $(document).bind('keydown', function(event) {
+        event.preventDefaul
+        if(event.keyCode == 65 && event.shiftKey) {
+            $("#rawr").toggleClass("tgld"); 
+       }
+    });
     document.getElementById("ñ").checked? Accents= ÑAccents: Accents= NAccents; 
                                                         
     let observer= new IntersectionObserver( 
