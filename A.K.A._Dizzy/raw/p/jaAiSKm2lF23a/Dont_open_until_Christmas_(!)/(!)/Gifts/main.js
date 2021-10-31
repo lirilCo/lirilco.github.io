@@ -1404,7 +1404,7 @@ mousedown= false;
 
 dsrcrs= [ 
   "#339dc1", 
-  "#ff1213", 
+  "#ce0c27", 
   "#339dc1", 
   "#339dc1", 
   "#339dc1", 
@@ -1412,7 +1412,7 @@ dsrcrs= [
   "#339dc1", 
   "#339dc1", 
   "#d5cd30", 
-  "#52dded", 
+  "#86ddff", 
   "#13df35", 
   "#339dc1" 
 ]; 
@@ -1424,13 +1424,13 @@ shift_droped= true;
 opacity= function(color, op){ 
     switch(color){
         case azul:
-            $("#styA")[0].innerHTML= ".\\#52dded{opacity:" + op + "}"; 
+            $("#styA")[0].innerHTML= ".\\#86ddff{opacity:" + op + "}"; 
             break;
         case verde:
             $("#styV")[0].innerHTML= ".\\#13df35{opacity:" + op + "}"; 
             break;
         case rojo:
-            $("#styR")[0].innerHTML= ".\\#ff1213{opacity:" + op + "}"; 
+            $("#styR")[0].innerHTML= ".\\#ce0c27{opacity:" + op + "}"; 
             break;
         case amarillo:
             $("#styAm")[0].innerHTML= ".\\#d5cd30{opacity:" + op + "}"; 
@@ -1438,7 +1438,7 @@ opacity= function(color, op){
     }
 } 
 
-azul= "rgb(82, 221, 237)"; 
+azul= "rgb(134, 221, 255)"; 
 verde= "rgb(19, 223, 53)"; 
 rojo= "rgb(255, 18, 19)"; 
 amarillo= "rgb(213, 205, 48)"; 
@@ -1549,7 +1549,7 @@ setInterval(function(){
 document.addEventListener("mousemove", function(i){ 
     vrbl= i; 
 
-    if(vrbl.target.outerHTML.indexOf("dsrtg") == 1 || vrbl.target.outerHTML.indexOf("h1") == 1){ if(!!document.getElementsByTagName("h1")[0].getAttribute("corrupt")){ document.getElementsByTagName("h1")[0].removeAttribute("corrupt"); document.getElementsByTagName("h1")[0].focus(); }}else{ $(document.getElementsByTagName("h1")[0]).attr("corrupt", true); document.activeElement.blur();}
+    if(vrbl.target.outerHTML.indexOf("dsrtg") == 1 || vrbl.target.outerHTML.indexOf("h1") == 1){ if(!!document.getElementsByTagName("h1")[0].getAttribute("corrupt")){ document.getElementsByTagName("h1")[0].removeAttribute("corrupt"); document.getElementsByTagName("h1")[0].focus(); }}else{ $(document.getElementsByTagName("h1")[0]).attr("corrupt", true); document.activeElement == document.getElementsByTagName("h1")[0]? document.activeElement.blur(): 1;}
 }); 
     
 document.addEventListener("keydown", function(i){ 
