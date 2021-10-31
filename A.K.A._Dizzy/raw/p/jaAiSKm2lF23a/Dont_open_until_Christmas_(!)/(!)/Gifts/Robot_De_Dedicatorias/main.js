@@ -1188,34 +1188,33 @@ dsrcrs= [
   "#339dc1", 
   "#339dc1", 
   "#339dc1", 
-  "#d5cd30", 
-  "#86ddff", 
-  "#13df35", 
+  "#f3d21d", 
+  "#2919dd", 
+  "#71ff21", 
   "#339dc1" 
 ]; 
 
 opacity= function(color, op){ 
     switch(color){
         case azul:
-            $("#styA")[0].innerHTML= ".\\#86ddff{opacity:" + op + "}"; 
+            $("#styA")[0].innerHTML= ".\\#2919dd{opacity:" + op + "}"; 
             break;
         case verde:
-            $("#styV")[0].innerHTML= ".\\#13df35{opacity:" + op + "}"; 
+            $("#styV")[0].innerHTML= ".\\#71ff21{opacity:" + op + "}"; 
             break;
         case rojo:
             $("#styR")[0].innerHTML= ".\\#ce0c27{opacity:" + op + "}"; 
             break;
         case amarillo:
-            $("#styAm")[0].innerHTML= ".\\#d5cd30{opacity:" + op + "}"; 
+            $("#styAm")[0].innerHTML= ".\\#f3d21d{opacity:" + op + "}"; 
             break;
     }
 } 
 
-azul= "rgb(134, 221, 255)"; 
-verde= "rgb(19, 223, 53)"; 
+azul= "rgb(41, 25, 221)"; 
+verde= "rgb(113, 255, 33)"; 
 rojo= "rgb(255, 18, 19)"; 
-amarillo= "rgb(213, 205, 48)"; 
-function2= false; 
+amarillo= "rgb(243,210,29)"; 
 
 var interval; 
 
@@ -1423,7 +1422,7 @@ document.addEventListener("mousemove", function(i){
                                                               
     dsrcrs[L] == "#339dc1"? MNSWMTG = false: 214;                                   
 
-    (mousedown)? document.getElementById("r4Ndom").innerHTML= document.getElementById("r4Ndom").innerHTML + "<div class= '" + dsrcrs[L] + "' style= 'width: 6.8px; height: 6.8px; background-color: " + dsrcrs[L] + PpPE + "; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>" + (MNSWMTG > 1? "<div class= '#339dc1' style= 'width: 6.8px; height: 6.8px; background-color: #339dc1; z-index: 2; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>": ""): 13781;
+    (mousedown)? $("#r4Ndom").append("<div class= '" + dsrcrs[L] + "' style= 'width: 6.8px; height: 6.8px; background-color: " + dsrcrs[L] + PpPE + "; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>" + (MNSWMTG > 1? "<div class= '#339dc1' style= 'width: 6.8px; height: 6.8px; background-color: #339dc1; z-index: 2; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>": "")): 13781;
 }); 
     
 document.addEventListener("keyup", function(i){                                                
