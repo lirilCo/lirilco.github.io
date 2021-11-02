@@ -1418,8 +1418,8 @@ dsrcrs= [
   "#339dc1", 
   "#339dc1", 
   "#339dc1", 
-  "#f3d21d", 
-  "#1e51e8", 
+  "#e3f9a9", 
+  "#68d4f4", 
   "#71ff21", 
   "#339dc1" 
 ]; 
@@ -1431,7 +1431,7 @@ shift_droped= true;
 opacity= function(color, op){ 
     switch(color){
         case azul:
-            $("#styA")[0].innerHTML= ".\\#1e51e8{opacity:" + op + "}"; 
+            $("#styA")[0].innerHTML= ".\\#68d4f4{opacity:" + op + "}"; 
             break;
         case verde:
             $("#styV")[0].innerHTML= ".\\#71ff21{opacity:" + op + "}"; 
@@ -1440,15 +1440,15 @@ opacity= function(color, op){
             $("#styR")[0].innerHTML= ".\\#ce0c27{opacity:" + op + "}"; 
             break;
         case amarillo:
-            $("#styAm")[0].innerHTML= ".\\#f3d21d{opacity:" + op + "}"; 
+            $("#styAm")[0].innerHTML= ".\\#e3f9a9{opacity:" + op + "}"; 
             break;
     }
 } 
 
-azul= "rgb(30, 81, 232)"; 
+azul= "rgb(104, 212, 244)"; 
 verde= "rgb(113, 255, 33)"; 
 rojo= "rgb(255, 18, 19)"; 
-amarillo= "rgb(243,210,29)"; 
+amarillo= "rgb(227, 249, 169)"; 
 
 var interval; 
 
