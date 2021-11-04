@@ -1570,9 +1570,9 @@ document.addEventListener("keydown", function(i){
                                                 
     i.keyCode == 17 && lastChild.outerHTML.indexOf("Rwawwr") == -1? document.getElementById("rawr").innerHTML= document.getElementById("rawr").innerHTML + "<div id= 'Rwawwr'></div>": 3251; 
                               
-    i.keyCode == 17 && lastChild.outerHTML.indexOf("Rwawwr") == -1? document.getElementsByTagName("h1")[0].removeAttribute("corrupt"): 3251; 
+    (i.keyCode == 17 && lastChild.outerHTML.indexOf("Rwawwr") == -1 && document.activeElement != $("input")[0] && document.activeElement != $("textarea")[0])? document.getElementsByTagName("h1")[0].removeAttribute("corrupt"): 3251; 
 
-    i.keyCode == 17 && lastChild.outerHTML.indexOf("Rwawwr") == -1? document.getElementsByTagName("h1")[0].focus(): 3251; 
+    (i.keyCode == 17 && lastChild.outerHTML.indexOf("Rwawwr") == -1 && document.activeElement != $("input")[0] && document.activeElement != $("textarea")[0])? document.getElementsByTagName("h1")[0].focus(): 3251; 
 
     i.keyCode == 16? document.getElementById("dinosaurios").scrollLeft= (90.8 + 5.89) * document.getElementById("rawr").children.length - document.body.clientWidth / 2: 21198291; 
                                                                                                               
