@@ -1410,18 +1410,18 @@ rwrrw= "";
 mousedown= false; 
 
 dsrcrs= [ 
-  "#339dc1", 
+  "#597c2d", 
   "#ce0c27", 
-  "#339dc1", 
-  "#339dc1", 
-  "#339dc1", 
-  "#339dc1", 
-  "#339dc1", 
-  "#339dc1", 
-  "#e3f9a9", 
-  "#68d4f4", 
-  "#71ff21", 
-  "#339dc1" 
+  "#597c2d", 
+  "#597c2d", 
+  "#597c2d", 
+  "#597c2d", 
+  "#597c2d", 
+  "#597c2d", 
+  "#ffef6d", 
+  "#51a2ca", 
+  "#24cc36", 
+  "#597c2d" 
 ]; 
 
 document.getElementsByTagName("input")[2].style.top= document.body.clientHeight - 5.9898 + "px"; 
@@ -1431,24 +1431,24 @@ shift_droped= true;
 opacity= function(color, op){ 
     switch(color){
         case azul:
-            $("#styA")[0].innerHTML= ".\\#68d4f4{opacity:" + op + "}"; 
+            $("#styA")[0].innerHTML= ".\\#51a2ca{opacity:" + op + "}"; 
             break;
         case verde:
-            $("#styV")[0].innerHTML= ".\\#71ff21{opacity:" + op + "}"; 
+            $("#styV")[0].innerHTML= ".\\#24cc36{opacity:" + op + "}"; 
             break;
         case rojo:
             $("#styR")[0].innerHTML= ".\\#ce0c27{opacity:" + op + "}"; 
             break;
         case amarillo:
-            $("#styAm")[0].innerHTML= ".\\#e3f9a9{opacity:" + op + "}"; 
+            $("#styAm")[0].innerHTML= ".\\#ffef6d{opacity:" + op + "}"; 
             break;
     }
 } 
 
-azul= "rgb(104, 212, 244)"; 
-verde= "rgb(113, 255, 33)"; 
+azul= "rgb(0, 159, 255)"; 
+verde= "rgb(36, 204, 54)"; 
 rojo= "rgb(255, 18, 19)"; 
-amarillo= "rgb(227, 249, 169)"; 
+amarillo= "rgb(238, 238, 82)"; 
 
 var interval; 
 
@@ -1545,7 +1545,7 @@ function5= function(){
 }
 
 
-function6= function(){for(e= 0; e < document.querySelectorAll("#rawr .rwr div").length - 1; e++){document.querySelectorAll("#rawr .rwr div")[e].style.backgroundColor != "rgb(51, 157, 193)"? Math.random() * 2 > 1? document.querySelectorAll("#rawr .rwr div")[e].style.opacity= 1: document.querySelectorAll("#rawr .rwr div")[e].style.opacity= 0: 1; };}
+function6= function(){for(e= 0; e < document.querySelectorAll("#rawr .rwr div").length - 1; e++){document.querySelectorAll("#rawr .rwr div")[e].style.backgroundColor != "rgb(89, 124, 45)"? Math.random() * 2 > 1? document.querySelectorAll("#rawr .rwr div")[e].style.opacity= 1: document.querySelectorAll("#rawr .rwr div")[e].style.opacity= 0: 1; };}
 //} 
     
 //onClipEvent(enterframe){ 
@@ -1556,7 +1556,7 @@ setInterval(function(){
 document.addEventListener("mousemove", function(i){ 
     vrbl= i; 
 
-    if(vrbl.target.outerHTML.indexOf("dsrtg") == 1 || vrbl.target.outerHTML.indexOf("h1") == 1){ if(!!document.getElementsByTagName("h1")[0].getAttribute("corrupt")){ document.getElementsByTagName("h1")[0].removeAttribute("corrupt"); document.getElementsByTagName("h1")[0].focus(); }}else{ $(document.getElementsByTagName("h1")[0]).attr("corrupt", true); document.activeElement == document.getElementsByTagName("h1")[0]? document.activeElement.blur(): 1;}
+    if(vrbl.target.outerHTML.indexOf("dsrtg") == 1 || vrbl.target.outerHTML.indexOf("h1") == 1 || $(vrbl.target).attr("id") == "Rwawwr"){ if(!!document.getElementsByTagName("h1")[0].getAttribute("corrupt")){ document.getElementsByTagName("h1")[0].removeAttribute("corrupt"); document.getElementsByTagName("h1")[0].focus(); }}else{ $(document.getElementsByTagName("h1")[0]).attr("corrupt", true); document.activeElement == document.getElementsByTagName("h1")[0]? document.activeElement.blur(): 1;}
 }); 
     
 document.addEventListener("keydown", function(i){ 
@@ -1569,7 +1569,11 @@ document.addEventListener("keydown", function(i){
     i.keyCode == 16? shift_droped= false: 1152; 
                                                 
     i.keyCode == 17 && lastChild.outerHTML.indexOf("Rwawwr") == -1? document.getElementById("rawr").innerHTML= document.getElementById("rawr").innerHTML + "<div id= 'Rwawwr'></div>": 3251; 
-                                                                                                                                                                                   
+                              
+    i.keyCode == 17 && lastChild.outerHTML.indexOf("Rwawwr") == -1? document.getElementsByTagName("h1")[0].removeAttribute("corrupt"): 3251; 
+
+    i.keyCode == 17 && lastChild.outerHTML.indexOf("Rwawwr") == -1? document.getElementsByTagName("h1")[0].focus(): 3251; 
+
     i.keyCode == 16? document.getElementById("dinosaurios").scrollLeft= (90.8 + 5.89) * document.getElementById("rawr").children.length - document.body.clientWidth / 2: 21198291; 
                                                                                                               
     lastChild= document.getElementById("rawr").children[document.getElementById("rawr").children.length - 1]; /*Random is the RAM and the hour, that is why it is called random*/ 
@@ -1603,10 +1607,12 @@ document.addEventListener("mousemove", function(i){
     L= parseInt(Math.random() * dsrcrs.length); 
                                                 
     MNSWMTG= parseInt(Math.random() * 2) == 0? "1": "1000000"; 
+
+    dsrcrs[L] == "#597c2d"? MNSWMTG = false: 214;                                   
                                                                
-    PpPE= dsrcrs[L] == "#339dc1"? "; z-index: 2": "; border-radius: 50%; z-index: " + MNSWMTG; 
+    PpPE= dsrcrs[L] == "#597c2d"? "; z-index: 2": "; border-radius: 50%; z-index: " + MNSWMTG; 
                                                                                                
-    (mousedown && rawrrawrrawrrawr)? i.target == lastChild? $(lastChild).append("<div class= '" + dsrcrs[L] + "' style= 'width: 4.78px; height: 4.78px; background-color: " + dsrcrs[L] + PpPE + "; position: absolute; left: " + i.layerX + "px; top: " + i.layerY +  "px; '></div>" + (MNSWMTG > 1? "<div class= '#339dc1' style= 'width: 4.78px; height: 4.78px; background-color: #339dc1; z-index: 2; position: absolute; left: " + i.layerX + "px; top: " + i.layerY +  "px; '></div>": "")): 1: 13781; 
+    (mousedown && rawrrawrrawrrawr)? i.target == lastChild? $(lastChild).append("<div class= '" + dsrcrs[L] + "' style= 'width: 4.78px; height: 4.78px; background-color: " + dsrcrs[L] + PpPE + "; position: absolute; left: " + i.layerX + "px; top: " + i.layerY +  "px; '></div>" + (MNSWMTG > 1? "<div class= '#597c2d24cc36' style= 'width: 4.78px; height: 4.78px; background-color: #597c2d; z-index: 2; position: absolute; left: " + i.layerX + "px; top: " + i.layerY +  "px; '></div>": "")): 1: 13781; 
 }); 
     
 document.addEventListener("keyup", function(i){ 
