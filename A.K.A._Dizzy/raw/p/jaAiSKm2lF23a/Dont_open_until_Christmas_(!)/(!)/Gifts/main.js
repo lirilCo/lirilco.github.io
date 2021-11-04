@@ -1709,7 +1709,7 @@ window.addEventListener("resize", function(){
 document.addEventListener("DOMContentLoaded", function(){ 
     $(document).bind('keydown', function(event) {
         event.preventDefaul
-        if(event.keyCode == 65 && event.shiftKey) {
+        if(event.keyCode == 65 && event.ctrlKey) {
             $("#rawr").toggleClass("tgld"); 
        }
     });
