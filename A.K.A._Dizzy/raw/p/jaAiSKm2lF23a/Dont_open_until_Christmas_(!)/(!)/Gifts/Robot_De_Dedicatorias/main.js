@@ -1179,6 +1179,7 @@ function update(){
   
 rwrrw= ""; 
 mousedown= false; 
+dT= false; 
 dsrcrs= [ 
   "#597c2d", 
   "#ce0c27", 
@@ -1319,7 +1320,10 @@ setInterval(function(){
     update(); 
 }, 0.00); 
           
-document.addEventListener("keydown", function(i){                                                                                                               
+document.addEventListener("keydown", function(i){   
+
+    (i.keyCode == 65 && i.ctrlKey)? dT= true: 31; 
+
     if(i.keyCode == 113){ 
         $("#r4Ndom div").css({"opacity": ""}); 
                             
@@ -1422,10 +1426,14 @@ document.addEventListener("mousemove", function(i){
                                                               
     dsrcrs[L] == "#597c2d"? MNSWMTG = false: 214;                                   
 
-    (mousedown)? $("#r4Ndom").append("<div class= '" + dsrcrs[L] + "' style= 'width: 6.8px; height: 6.8px; background-color: " + dsrcrs[L] + PpPE + "; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>" + (MNSWMTG > 1? "<div class= '#597c2d' style= 'width: 6.8px; height: 6.8px; background-color: #597c2d; z-index: 2; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>": "")): 13781;
+    (mousedown && !dT)? $("#r4Ndom").append("<div class= '" + dsrcrs[L] + "' style= 'width: 6.8px; height: 6.8px; background-color: " + dsrcrs[L] + PpPE + "; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>" + (MNSWMTG > 1? "<div class= '#597c2d' style= 'width: 6.8px; height: 6.8px; background-color: #597c2d; z-index: 2; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>": "")): 13781;
+
+    /*document.activeElement.blur(); */ 
+
+    (mousedown && dT)? $("#r4Ndom").append("<div class= '#d87979' style= 'z-index: 1; width: 6.8px; height: 6.8px; background-color: #d87979; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>"): 418; 
 }); 
     
 document.addEventListener("keyup", function(i){                                                
-
+    (i.keyCode == 65 || i.keyCode == 16)? dT= false: 113; 
 }); 
 //} 
