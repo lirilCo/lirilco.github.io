@@ -1312,7 +1312,7 @@ function5= function(){
 }
 
 
-function6= function(){for(e= 0; e < document.getElementsByTagName("div").length - 1; e++){document.getElementsByTagName("div")[e].style.backgroundColor != "rgb(89, 124, 45)"? Math.random() * 2 > 1? document.getElementsByTagName("div")[e].style.opacity= 1: document.getElementsByTagName("div")[e].style.opacity= 0: 1; };}
+function6= function(){for(e= 0; e < document.getElementsByTagName("div").length - 1; e++){(document.getElementsByTagName("div")[e].style.backgroundColor != "rgb(89, 124, 45)" && document.getElementsByTagName("div")[e].style.backgroundColor != "rgb(216, 121, 121)")? Math.random() * 2 > 1? document.getElementsByTagName("div")[e].style.opacity= 1: document.getElementsByTagName("div")[e].style.opacity= 0: 1; };}
 //} 
     
 //onClipEvent(enterframe){ 
