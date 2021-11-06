@@ -1180,6 +1180,8 @@ function update(){
 rwrrw= ""; 
 mousedown= false; 
 dT= false; 
+sS= false; 
+Fr= true; 
 dsrcrs= [ 
   "#597c2d", 
   "#ce0c27", 
@@ -1312,7 +1314,13 @@ function5= function(){
 }
 
 
-function6= function(){for(e= 0; e < document.getElementsByTagName("div").length - 1; e++){(document.getElementsByTagName("div")[e].style.backgroundColor != "rgb(89, 124, 45)" && document.getElementsByTagName("div")[e].style.backgroundColor != "rgb(216, 121, 121)")? Math.random() * 2 > 1? document.getElementsByTagName("div")[e].style.opacity= 1: document.getElementsByTagName("div")[e].style.opacity= 0: 1; };}
+function6= function(){for(e= 0; e < document.querySelectorAll("#r4Ndom div").length - 1; e++){(document.querySelectorAll("#r4Ndom div")[e].style.backgroundColor != "rgb(89, 124, 45)" && document.querySelectorAll("#r4Ndom div")[e].style.backgroundColor != "rgb(216, 121, 121)")? Math.random() * 2 > 1? document.querySelectorAll("#r4Ndom div")[e].style.opacity= 1: document.querySelectorAll("#r4Ndom div")[e].style.opacity= 0: 1; };}
+
+function $$(selector, context) { 
+  context = context || document; 
+  var elements = context.querySelectorAll(selector); 
+  return Array.prototype.slice.call(elements); 
+} 
 //} 
     
 //onClipEvent(enterframe){ 
@@ -1323,6 +1331,8 @@ setInterval(function(){
 document.addEventListener("keydown", function(i){   
 
     (i.keyCode == 65 && i.ctrlKey)? dT= true: 31; 
+
+    (i.keyCode == 83 && i.shiftKey)? sS= true: 31; 
 
     if(i.keyCode == 113){ 
         $("#r4Ndom div").css({"opacity": ""}); 
@@ -1404,6 +1414,8 @@ document.addEventListener("keydown", function(i){
 }); 
     
 document.addEventListener("mousedown", function(i){ 
+    i.keyCode == 118? i.preventDefault(): 4102; 
+
     mousedown= true; 
                      
     //i.target == lastChild? lastChild.innerHTML= lastChild.innerHTML + "<div style= 'width: 4.78px; height: 4.78px; background-color: " + "#339dc1" + "; position: absolute; left: " + i.layerX + "px; top: " + i.layerY +  "px; '></div>": 1; 
@@ -1414,6 +1426,39 @@ document.addEventListener("mousedown", function(i){
 document.addEventListener("mouseup", function(i){ 
     mousedown= false; 
                       
+    sS? $("outerbody").append('<div class= "Star" style= "width: 50px; height: 50px; top: ' + (i.pageY - 25) + 'px; left: ' + (i.pageX -25) + 'px; position: absolute; "><img src= "Star.png" style= "width: 100%; height: 100%;"></img><div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div><div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div><div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div><div class="ui-resizable-handle ui-resizable-se" id="segrip"></div><div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div><div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div><div class="ui-resizable-handle ui-resizable-e" id="egrip"></div><div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div></div>'): 54109; 
+
+    if(sS){ 
+        $(".Star").resizable({
+         handles: {
+                'nw': '#nwgrip',
+                'ne': '#negrip',
+                'sw': '#swgrip',
+                'se': '#segrip',
+                'n': '#ngrip',
+                'e': '#egrip',
+                's': '#sgrip',
+                'w': '#wgrip'
+            },
+         aspectRatio: true, 
+        start: function(){ 
+            Fr= false; 
+         }, 
+         resize: function(){ 
+            Fr= false; 
+         }, 
+         stop: function(){ 
+            Fr= true; 
+         } 
+        }); 
+            
+        $(".Star").draggable({
+            stop: function(){ 
+                Fr= true; 
+            }
+        }); 
+    } 
+    sS? sS= false: 419; 
     /*me= w.keyCode; */ 
 }); //The question, the quest off...  
     
@@ -1426,14 +1471,16 @@ document.addEventListener("mousemove", function(i){
                                                               
     dsrcrs[L] == "#597c2d"? MNSWMTG = false: 214;                                   
 
-    (mousedown && !dT)? $("#r4Ndom").append("<div class= '" + dsrcrs[L] + "' style= 'width: 6.8px; height: 6.8px; background-color: " + dsrcrs[L] + PpPE + "; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>" + (MNSWMTG > 1? "<div class= '#597c2d' style= 'width: 6.8px; height: 6.8px; background-color: #597c2d; z-index: 2; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>": "")): 13781;
+    (($(".ui-draggable-resizing").length === 0 && $(".ui-draggable-dragging").length === 0) && ((document.querySelectorAll(".Star div").length > 0 && $$(".Star div").indexOf(i.target) == -1) || document.querySelectorAll(".Star div").length === 0) && ((document.querySelectorAll(".Star img").length > 0 && $$(".Star img").indexOf(i.target) == -1) || document.querySelectorAll(".Star img").length === 0) && Fr && mousedown && !dT && !sS)? $("#r4Ndom").append("<div class= '" + dsrcrs[L] + "' style= 'width: 6.8px; height: 6.8px; background-color: " + dsrcrs[L] + PpPE + "; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>" + (MNSWMTG > 1? "<div class= '#597c2d' style= 'width: 6.8px; height: 6.8px; background-color: #597c2d; z-index: 2; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>": "")): 13781;
                                         
     /*document.activeElement.blur(); */ 
                                         
-    (mousedown && dT)? $("#r4Ndom").append("<div class= '#d87979' style= 'z-index: 1; width: 6.8px; height: 6.8px; background-color: #d87979; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>"): 418; 
+    (($(".ui-draggable-resizing").length === 0 && $(".ui-draggable-dragging").length === 0) && ((document.querySelectorAll(".Star div").length > 0 && $$(".Star div").indexOf(i.target) == -1) || document.querySelectorAll(".Star div").length === 0) && ((document.querySelectorAll(".Star img").length > 0 && $$(".Star img").indexOf(i.target) == -1) || document.querySelectorAll(".Star img").length === 0) && Fr && mousedown && dT && !sS)? $("#r4Ndom").append("<div class= '#d87979' style= 'z-index: 1; width: 6.8px; height: 6.8px; background-color: #d87979; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>"): 418; 
 }); 
     
 document.addEventListener("keyup", function(i){                                                
-    (i.keyCode == 65 || i.keyCode == 16)? dT= false: 113; 
+    (i.keyCode == 65 || i.keyCode == 17)? dT= false: 113; 
+
+    (i.keyCode == 83 || i.keyCode == 16)? sS= false: 113; 
 }); 
 //} 

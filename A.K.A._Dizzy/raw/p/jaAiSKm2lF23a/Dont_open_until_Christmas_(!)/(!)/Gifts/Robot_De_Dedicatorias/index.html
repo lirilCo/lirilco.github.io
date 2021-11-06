@@ -7,6 +7,9 @@
           src="https://code.jquery.com/jquery-3.6.0.min.js"
           integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
           crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.0-rc.3/jquery-ui.min.js" 
+    		integrity="sha256-R6eRO29lbCyPGfninb/kjIXeRjMOqY3VWPVk6gMhREk=" 
+    		crossorigin="anonymous"></script>
 	<style type="text/css"> 
 		textarea{ 
 			width: 100%; 
@@ -27,6 +30,9 @@
 			height: 219px; 
 			box-sizing: border-box; 
 		} 
+		.Star{ 
+			z-index: 100000000000000000000000000; 
+		} 
 		body{ 
 			background-color: #ffe939; 
 			margin: 0; 
@@ -39,10 +45,47 @@
 			right: 1.07px;
 			box-sizing: border-box; 
 		} 
+		#nwgrip{ 
+			left: unset; 
+			cursor: nw-resize; 
+			top: 0 !important; 
+			position: absolute; 
+			width: 6px; 
+			height: 6px; 
+			background-color: #ccc; 
+		} 
+		#negrip{ 
+			left: unset; 
+			cursor: ne-resize; 
+			top: 0 !important; 
+			position: absolute; 
+			right: 0; 
+			width: 6px; 
+			height: 6px; 
+			background-color: #ccc; 
+		} 
+		#swgrip{ 
+			left: unset; 
+			cursor: sw-resize; 
+			top: 100% !important; 
+			position: absolute; 
+			width: 6px; 
+			height: 6px; 
+			background-color: #ccc; 
+		} 
+		#segrip{ 
+			left: unset; 
+			cursor: se-resize; 
+			top: 100% !important; 
+			position: absolute; 
+			right: 0; 
+			width: 6px; 
+			height: 6px; 
+			background-color: #ccc; 
+		} 
 	</style> 
 </head> 
-       
-<body ondragstart="return false;" ondrop="return false;"> 
+<body> 
 	<style id="styA"></style>
 	<style id="styV"></style>
 	<style id="styR"></style>
@@ -54,7 +97,9 @@
 		<textarea id="dedications"></textarea> 
 	</form> 
 
-	<aside id="r4Ndom"> 
+	<outerbody ondragstart="Fr= false" ondragend="Fr= true"></outerbody> 
+
+	<aside ondragstart="return false;" ondrop="return false;" id="r4Ndom"> 
 	</aside> 
 	<script src= "main.js" type="text/javascript"></script> 
 </body> 

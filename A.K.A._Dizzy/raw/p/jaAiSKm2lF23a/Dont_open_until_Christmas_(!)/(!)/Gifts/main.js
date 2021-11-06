@@ -1583,7 +1583,7 @@ document.addEventListener("mousedown", function(i){
     mousedown= true; 
     vrbl= "mousedown" + ": "+ mousedown; 
                                          
-    //i.target == lastChild? lastChild.innerHTML= lastChild.innerHTML + "<div style= 'width: 4.78px; height: 4.78px; background-color: " + "#339dc1" + "; position: absolute; left: " + i.layerX + "px; top: " + i.layerY +  "px; '></div>": 1; 
+    //i.target == lastChild? lastChild.innerHTML= lastChild.innerHTML + "<div style= 'width: 5.88px; height: 5.88px; background-color: " + "#339dc1" + "; position: absolute; left: " + i.layerX + "px; top: " + i.layerY +  "px; '></div>": 1; 
                                          
     lasrxs= "Constructor && Business Partners"; //♪  
                                                 
@@ -1612,7 +1612,7 @@ document.addEventListener("mousemove", function(i){
                                                                
     PpPE= dsrcrs[L] == "#597c2d"? "; z-index: 2": "; border-radius: 50%; z-index: " + MNSWMTG; 
                                                                                                
-    (mousedown && rawrrawrrawrrawr)? i.target == lastChild? $(lastChild).append("<div class= '" + dsrcrs[L] + "' style= 'width: 4.78px; height: 4.78px; background-color: " + dsrcrs[L] + PpPE + "; position: absolute; left: " + i.layerX + "px; top: " + i.layerY +  "px; '></div>" + (MNSWMTG > 1? "<div class= '#597c2d24cc36' style= 'width: 4.78px; height: 4.78px; background-color: #597c2d; z-index: 2; position: absolute; left: " + i.layerX + "px; top: " + i.layerY +  "px; '></div>": "")): 1: 13781; 
+    (mousedown && rawrrawrrawrrawr)? i.target == lastChild? $(lastChild).append("<div class= '" + dsrcrs[L] + "' style= 'width: 5.88px; height: 5.88px; background-color: " + dsrcrs[L] + PpPE + "; position: absolute; left: " + i.layerX + "px; top: " + i.layerY +  "px; '></div>" + (MNSWMTG > 1? "<div class= '#597c2d24cc36' style= 'width: 5.88px; height: 5.88px; background-color: #597c2d; z-index: 2; position: absolute; left: " + i.layerX + "px; top: " + i.layerY +  "px; '></div>": "")): 1: 13781; 
 }); 
     
 document.addEventListener("keyup", function(i){ 
