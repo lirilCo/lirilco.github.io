@@ -1334,6 +1334,8 @@ document.addEventListener("keydown", function(i){
 
     (i.keyCode == 83 && i.shiftKey)? sS= true: 31; 
 
+    (i.keyCode == 46)? $("#selectedStar").remove(): 151; 
+
     if(i.keyCode == 113){ 
         $("#r4Ndom div").css({"opacity": ""}); 
                             
@@ -1418,6 +1420,16 @@ document.addEventListener("mousedown", function(i){
 
     mousedown= true; 
                      
+    console.log($(i.target).is(".Star")); 
+                              
+    console.log($(i.target)); 
+
+    $(i.target).parent().is(".Star")? $("#selectedStar").attr("id", ""): 1319; 
+
+    !$(i.target).parent().is(".Star")? $("#selectedStar").attr("id", ""): 1319; 
+
+    $(i.target).parent().is(".Star")? $(i.target.parentElement).attr("id", "selectedStar"): 1319; 
+
     //i.target == lastChild? lastChild.innerHTML= lastChild.innerHTML + "<div style= 'width: 4.78px; height: 4.78px; background-color: " + "#339dc1" + "; position: absolute; left: " + i.layerX + "px; top: " + i.layerY +  "px; '></div>": 1; 
                      
     /*(i.keyCode == 17 && lastChild.outerHTML.indexOf("Rwawwr") == 9)? lastChild.outerHTML= "": 3251; */ 
@@ -1426,31 +1438,33 @@ document.addEventListener("mousedown", function(i){
 document.addEventListener("mouseup", function(i){ 
     mousedown= false; 
                       
-    sS? $("outerbody").append('<div class= "Star" style= "width: 50px; height: 50px; top: ' + (i.pageY - 25) + 'px; left: ' + (i.pageX -25) + 'px; position: absolute; "><img src= "Star.png" style= "width: 100%; height: 100%;"></img><div class="ui-resizable-handle ui-resizable-nw" id="nwgrip"></div><div class="ui-resizable-handle ui-resizable-ne" id="negrip"></div><div class="ui-resizable-handle ui-resizable-sw" id="swgrip"></div><div class="ui-resizable-handle ui-resizable-se" id="segrip"></div><div class="ui-resizable-handle ui-resizable-n" id="ngrip"></div><div class="ui-resizable-handle ui-resizable-s" id="sgrip"></div><div class="ui-resizable-handle ui-resizable-e" id="egrip"></div><div class="ui-resizable-handle ui-resizable-w" id="wgrip"></div></div>'): 54109; 
+    sS? $("#selectedStar").attr("id", ""): 1319; 
+
+    sS? $("outerbody").append('<div id= "selectedStar" class= "Star" style= "width: 50px; height: 50px; top: ' + (i.pageY - 25) + 'px; left: ' + (i.pageX -25) + 'px; position: absolute; "><img src= "Star.png" style= "width: 100%; height: 100%;"></img><div class="nwgrip ui-resizable-handle ui-resizable-nw"></div><div class="negrip ui-resizable-handle ui-resizable-ne"></div><div class="swgrip ui-resizable-handle ui-resizable-sw"></div><div class="segrip ui-resizable-handle ui-resizable-se"></div></div>'): 54109; 
 
     if(sS){ 
-        $(".Star").resizable({
-         handles: {
-                'nw': '#nwgrip',
-                'ne': '#negrip',
-                'sw': '#swgrip',
-                'se': '#segrip',
-                'n': '#ngrip',
-                'e': '#egrip',
-                's': '#sgrip',
-                'w': '#wgrip'
-            },
-         aspectRatio: true, 
-        start: function(){ 
-            Fr= false; 
-         }, 
-         resize: function(){ 
-            Fr= false; 
-         }, 
-         stop: function(){ 
-            Fr= true; 
-         } 
-        }); 
+        $(".Star").not(".ui-resizable").each(function(){
+            $(this).resizable({
+             handles: {
+                    'nw': this.querySelector('.nwgrip'),
+                    'ne': this.querySelector('.negrip'),
+                    'sw': this.querySelector('.swgrip'),
+                    'se': this.querySelector('.segrip') 
+                },
+             aspectRatio: true, 
+            start: function(){ 
+                Fr= false; 
+             }, 
+             resize: function(){ 
+                Fr= false; 
+             }, 
+             stop: function(){ 
+                Fr= true; 
+             } 
+            }); 
+
+        })
+
             
         $(".Star").draggable({
             stop: function(){ 
