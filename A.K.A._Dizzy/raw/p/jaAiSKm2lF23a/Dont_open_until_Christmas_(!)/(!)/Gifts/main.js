@@ -187,7 +187,7 @@ Ariana= function(qwert, yuiop, a, i){u= 0; t= u; r= t; s= u; p= 100; n= "s-resiz
   
 Ariana("video", "a", "c", 0); 
 
-ü= 0; 
+/*ü= 0; 
 setInterval(function(){
 if(!document.getElementsByTagName("article")[1].children[3].children[2].children[0].children[ü].children[1] && ü < document.getElementsByTagName("article")[1].children[3].children[2].children[0].children.length){
 
@@ -206,7 +206,60 @@ if(document.getElementsByTagName("article")[1].children[3].children[2].children[
     ü= 0; 
     x= false;
 }
-}, 1256); 
+}, 1256); */ 
+
+//Insta's Injected Code
+
+const cSS = document.getElementsByTagName('body')[0]; 
+                                                 
+    function callback(mutationsList, observer) { 
+      mutationsList.forEach(mutation => { 
+            
+            if(mutation.addedNodes.length > 0 && mutation.addedNodes[0].getAttribute && mutation.addedNodes[0].getAttribute("role") && mutation.addedNodes[0].getAttribute("role") == "dialog"){
+                var selfDetr= setInterval(function(){
+                if(typeof $$("article")[1] != "undefined" && typeof $$("article")[1].children[0].children[1] != "undefined"){
+                
+                clearInterval(aA); 
+
+                iu= false;
+                xPlrn= 0; 
+                ui= -1; 
+
+                var aA= setInterval(function(){
+                    !xPlrn? ui++: 14; 
+
+                    if($$("article")[1].children[0].children[1].children[0].children[0].children[1].children[2].querySelector("ul").children[ui].children[0].querySelector("h3") != null && $$("article")[1].children[0].children[1].children[0].children[0].children[1].children[2].querySelector("ul").children[ui].children[0].querySelector("h3").innerText != $("h2").innerText){
+                        $$("article")[1].children[0].children[1].children[0].children[0].children[1].children[2].querySelector("ul").children[ui].children[0].style.opacity= "0.1"; 
+                    }
+                    if($$("article")[1].children[0].children[1].children[0].children[0].children[1].children[2].querySelector("ul").children[ui].children.length >= 2){ 
+                        $$("article")[1].children[0].children[1].children[0].children[0].children[1].children[2].querySelector("ul").children[ui].children[1].querySelector("button").innerText.match(/\(([^()]+)\)/g) != null? $$("article")[1].children[0].children[1].children[0].children[0].children[1].children[2].querySelector("ul").children[ui].children[1].querySelector("button").click(): 134; 
+    
+                        !xPlrn? iu= -2: 141; 
+
+                        xPlrn= true; 
+   
+                        if(iu + 1 <= $$("article")[1].children[0].children[1].children[0].children[0].children[1].children[2].querySelector("ul").children[ui].children[1].querySelectorAll("ul > div").length - 1){
+                            iu++; 
+                        }
+
+                        (xPlrn && $$("article")[1].children[0].children[1].children[0].children[0].children[1].children[2].querySelector("ul").children[ui].children[1].querySelectorAll("ul > div")[iu].querySelector("h3").innerText != $("h2").innerText)? $$("article")[1].children[0].children[1].children[0].children[0].children[1].children[2].querySelector("ul").children[ui].children[1].querySelectorAll("ul > div")[iu].style.opacity= "0.1": 11231; 
+
+                        iu == $$("article")[1].children[0].children[1].children[0].children[0].children[1].children[2].querySelector("ul").children[ui].children[1].querySelectorAll("ul > div").length - 1? xPlrn= false: 4124; 
+                        
+                        clearInterval(selfDetr); 
+                    }
+                }, 2200); 
+                }
+            }, 200)
+            }
+      })
+    }
+      
+    const mutationObserver = new MutationObserver(callback); 
+                                         
+    mutationObserver.observe(cSS, { 
+      childList: true,
+    }); 
 
 ÑAccents= /*Were I able to access it*/{ 
   "a": [ 
