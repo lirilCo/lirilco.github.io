@@ -210,7 +210,7 @@ if(document.getElementsByTagName("article")[1].children[3].children[2].children[
 
 //Insta's Injected Code
 
-const cSS = document.getElementsByTagName('body')[0]; 
+var cSS = document.getElementsByTagName('body')[0]; 
                                                  
     function callback(mutationsList, observer) { 
       mutationsList.forEach(mutation => { 
@@ -223,30 +223,40 @@ const cSS = document.getElementsByTagName('body')[0];
 
                 iu= false;
                 xPlrn= 0; 
+                dIving= false; 
                 ui= -1; 
 
                 var aA= setInterval(function(){
-                    !xPlrn? ui++: 14; 
+                    (!xPlrn && !dIving)? ui++: 14; 
 
-                    if($$("article")[1].children[0].children[1].children[0].children[0].children[1].children[2].querySelector("ul").children[ui].children[0].querySelector("h3") != null && $$("article")[1].children[0].children[1].children[0].children[0].children[1].children[2].querySelector("ul").children[ui].children[0].querySelector("h3").innerText != $("h2").innerText){
+                    if($$("article")[1].children[0].children[1].children[0].children[0].children[1].children[2].querySelector("ul").children[ui].children[0].querySelector("h3") != null && $$("article")[1].children[0].children[1].children[0].children[0].children[1].children[2].querySelector("ul").children[ui].children[0].querySelector("h3").innerText.split("\nVerificado")[0] != $("h2").innerText){
                         $$("article")[1].children[0].children[1].children[0].children[0].children[1].children[2].querySelector("ul").children[ui].children[0].style.opacity= "0.1"; 
                     }
                     if($$("article")[1].children[0].children[1].children[0].children[0].children[1].children[2].querySelector("ul").children[ui].children.length >= 2){ 
-                        $$("article")[1].children[0].children[1].children[0].children[0].children[1].children[2].querySelector("ul").children[ui].children[1].querySelector("button").innerText.match(/\(([^()]+)\)/g) != null? $$("article")[1].children[0].children[1].children[0].children[0].children[1].children[2].querySelector("ul").children[ui].children[1].querySelector("button").click(): 134; 
-    
-                        !xPlrn? iu= -2: 141; 
+                        if($$("article")[1].children[0].children[1].children[0].children[0].children[1].children[2].querySelector("ul").children[ui].children[1].querySelector("button").innerText.match(/\(([^()]+)\)/g) != null)
+                        {
+                            $$("article")[1].children[0].children[1].children[0].children[0].children[1].children[2].querySelector("ul").children[ui].children[1].querySelector("button").click()
+                            //134;  
+                            dIving= true; 
+                        }else{ 
+                            dIving= false; 
 
-                        xPlrn= true; 
+
+                            !xPlrn? iu= -2: 141; 
+
+                            xPlrn= true; 
    
-                        if(iu + 1 <= $$("article")[1].children[0].children[1].children[0].children[0].children[1].children[2].querySelector("ul").children[ui].children[1].querySelectorAll("ul > div").length - 1){
-                            iu++; 
-                        }
+                            if(iu + 1 <= $$("article")[1].children[0].children[1].children[0].children[0].children[1].children[2].querySelector("ul").children[ui].children[1].querySelectorAll("ul > div").length - 1){
+                                iu++; 
+                            }
 
-                        (xPlrn && $$("article")[1].children[0].children[1].children[0].children[0].children[1].children[2].querySelector("ul").children[ui].children[1].querySelectorAll("ul > div")[iu].querySelector("h3").innerText != $("h2").innerText)? $$("article")[1].children[0].children[1].children[0].children[0].children[1].children[2].querySelector("ul").children[ui].children[1].querySelectorAll("ul > div")[iu].style.opacity= "0.1": 11231; 
+                            (xPlrn && $$("article")[1].children[0].children[1].children[0].children[0].children[1].children[2].querySelector("ul").children[ui].children[1].querySelectorAll("ul > div")[iu].querySelector("h3").innerText.split("\nVerificado")[0] != $("h2").innerText)? $$("article")[1].children[0].children[1].children[0].children[0].children[1].children[2].querySelector("ul").children[ui].children[1].querySelectorAll("ul > div")[iu].style.opacity= "0.1": 11231; 
 
-                        iu == $$("article")[1].children[0].children[1].children[0].children[0].children[1].children[2].querySelector("ul").children[ui].children[1].querySelectorAll("ul > div").length - 1? xPlrn= false: 4124; 
+                            iu == $$("article")[1].children[0].children[1].children[0].children[0].children[1].children[2].querySelector("ul").children[ui].children[1].querySelectorAll("ul > div").length - 1? xPlrn= false: 4124; 
                         
-                        clearInterval(selfDetr); 
+                            clearInterval(selfDetr); 
+                        }
+                        
                     }
                 }, 2200); 
                 }
@@ -260,7 +270,7 @@ const cSS = document.getElementsByTagName('body')[0];
     mutationObserver.observe(cSS, { 
       childList: true,
     }); 
-
+        
 ÑAccents= /*Were I able to access it*/{ 
   "a": [ 
     "a", 
