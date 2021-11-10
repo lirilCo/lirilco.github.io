@@ -1359,7 +1359,11 @@ document.addEventListener("keydown", function(i){
 
     (i.keyCode == 46)? $("#selectedStar").remove(): 151; 
 
+    (i.keyCode == 46)? $("#selectedBall").remove(): 151; 
+
     (i.ctrlKey && i.shiftKey)? ctft= true: 1313; 
+
+    (i.keyCode == 90 && i.shiftKey)? sB= true: 31; 
 
     if(i.keyCode == 113){ 
         $("#r4Ndom div").css({"opacity": ""}); 
@@ -1465,11 +1469,13 @@ document.addEventListener("mousedown", function(i){
                               
     console.log($(i.target)); */ 
 
-    $(i.target).parent().is(".Star")? $("#selectedStar").attr("id", ""): 1319; 
+    $("#selectedStar").attr("id", ""); 
 
-    !$(i.target).parent().is(".Star")? $("#selectedStar").attr("id", ""): 1319; 
+    $("#selectedBall").attr("id", "")
 
     $(i.target).parent().is(".Star")? $(i.target.parentElement).attr("id", "selectedStar"): 1319; 
+
+    $(i.target).parent().is(".Ball")? $(i.target.parentElement).attr("id", "selectedBall"): 1319; 
 
     //i.target == lastChild? lastChild.innerHTML= lastChild.innerHTML + "<div style= 'width: 4.78px; height: 4.78px; background-color: " + "#339dc1" + "; position: absolute; left: " + i.layerX + "px; top: " + i.layerY +  "px; '></div>": 1; 
                      
@@ -1518,6 +1524,44 @@ document.addEventListener("mouseup", function(i){
         }); 
     } 
     sS? sS= false: 419; 
+
+    sB? $("#selectedBall").attr("id", ""): 1319; 
+
+    sB? $("outerbody").append('<div id= "selectedBall" class= "Ball" style= "width: 19px; height: auto; user-select: none; top: ' + (i.pageY - 0.7) + 'px; left: ' + (i.pageX - 9.5) + 'px; position: absolute; "><img src= "rEDbALL.png" style= "width: 100%; height: 100%; user-select: none; "></img><div class="swgrip ui-resizable-handle ui-resizable-sw"></div><div class="segrip ui-resizable-handle ui-resizable-se"></div></div>'): 54109; 
+
+    if(sB){ 
+        $(".Ball").not(".ui-resizable").each(function(){
+            $(this).resizable({
+             handles: {
+                    'sw': this.querySelector('.swgrip'),
+                    'se': this.querySelector('.segrip') 
+                },
+             aspectRatio: true, 
+            start: function(){ 
+                Fr= false; 
+             }, 
+             resize: function(){ 
+                Fr= false; 
+             }, 
+             stop: function(){ 
+                Fr= true; 
+             } 
+            }); 
+
+        })
+
+            
+        $(".Ball").draggable({
+            stop: function(){ 
+                Fr= true; 
+
+                $(this)[0].lFt= $(this)[0].style.left.slice(0, -2); 
+
+                $(this)[0].tOp= $(this)[0].style.top.slice(0, -2);
+            }
+        }); 
+    } 
+    sB? sB= false: 419; 
     /*me= w.keyCode; */ 
 }); //The question, the quest off...  
     
@@ -1530,17 +1574,19 @@ document.addEventListener("mousemove", function(i){
                                                               
     dsrcrs[L] == "#597c2d"? MNSWMTG = false: 214;                                   
 
-    (($(".ui-draggable-resizing").length === 0 && $(".ui-draggable-dragging").length === 0) && ((document.querySelectorAll(".Star div").length > 0 && $$(".Star div").indexOf(i.target) == -1) || document.querySelectorAll(".Star div").length === 0) && ((document.querySelectorAll(".Star img").length > 0 && $$(".Star img").indexOf(i.target) == -1) || document.querySelectorAll(".Star img").length === 0) && Fr && mousedown && !dT && !sS)? $("#r4Ndom").append("<div class= '" + dsrcrs[L] + "' style= 'width: 6.8px; height: 6.8px; background-color: " + dsrcrs[L] + PpPE + "; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>" + (MNSWMTG > 1? "<div class= '#597c2d' style= 'width: 6.8px; height: 6.8px; background-color: #597c2d; z-index: 2; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>": "")): 13781;
+    (($(".ui-draggable-resizing").length === 0 && $(".ui-draggable-dragging").length === 0) && ((document.querySelectorAll(".Star div").length > 0 && $$(".Star div").indexOf(i.target) == -1) || document.querySelectorAll(".Star div").length === 0) && ((document.querySelectorAll(".Star img").length > 0 && $$(".Star img").indexOf(i.target) == -1) || document.querySelectorAll(".Star img").length === 0) && ((document.querySelectorAll(".Ball div").length > 0 && $$(".Ball div").indexOf(i.target) == -1) || document.querySelectorAll(".Ball div").length === 0) && ((document.querySelectorAll(".Ball img").length > 0 && $$(".Ball img").indexOf(i.target) == -1) || document.querySelectorAll(".Ball img").length === 0) && Fr && mousedown && !dT && !sS)? $("#r4Ndom").append("<div class= '" + dsrcrs[L] + "' style= 'width: 6.8px; height: 6.8px; background-color: " + dsrcrs[L] + PpPE + "; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>" + (MNSWMTG > 1? "<div class= '#597c2d' style= 'width: 6.8px; height: 6.8px; background-color: #597c2d; z-index: 2; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>": "")): 13781;
                                         
     /*document.activeElement.blur(); */ 
                                         
-    (($(".ui-draggable-resizing").length === 0 && $(".ui-draggable-dragging").length === 0) && ((document.querySelectorAll(".Star div").length > 0 && $$(".Star div").indexOf(i.target) == -1) || document.querySelectorAll(".Star div").length === 0) && ((document.querySelectorAll(".Star img").length > 0 && $$(".Star img").indexOf(i.target) == -1) || document.querySelectorAll(".Star img").length === 0) && Fr && mousedown && dT && !sS)? $("#r4Ndom").append("<div class= '#d87979' style= 'z-index: 1; width: 6.8px; height: 6.8px; background-color: #d87979; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>"): 418; 
+    (($(".ui-draggable-resizing").length === 0 && $(".ui-draggable-dragging").length === 0) && ((document.querySelectorAll(".Star div").length > 0 && $$(".Star div").indexOf(i.target) == -1) || document.querySelectorAll(".Star div").length === 0) && ((document.querySelectorAll(".Star img").length > 0 && $$(".Star img").indexOf(i.target) == -1) || document.querySelectorAll(".Star img").length === 0) && ((document.querySelectorAll(".Ball div").length > 0 && $$(".Ball div").indexOf(i.target) == -1) || document.querySelectorAll(".Ball div").length === 0) && ((document.querySelectorAll(".Ball img").length > 0 && $$(".Ball img").indexOf(i.target) == -1) || document.querySelectorAll(".Ball img").length === 0) && Fr && mousedown && dT && !sS)? $("#r4Ndom").append("<div class= '#d87979' style= 'z-index: 1; width: 6.8px; height: 6.8px; background-color: #d87979; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>"): 418; 
 }); 
     
 document.addEventListener("keyup", function(i){                                                
     (i.keyCode == 65 || i.keyCode == 17)? dT= false: 113; 
 
     (i.keyCode == 83 || i.keyCode == 16)? sS= false: 113; 
+
+    (i.keyCode == 90 || i.keyCode == 16)? sB= false: 113; 
 
     (i.ctrlKey || i.shiftKey)? ctft= false: 1313; 
 }); 
