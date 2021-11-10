@@ -1333,11 +1333,11 @@ glitch= function(irt){
             if(Math.random() * 2 <= 1){ 
                 irt.style.left= parseInt(Math.random() * (18 * irt.style.width.slice(0, -2) * 0.035557)  + parseInt(irt.lFt) - ((18 * irt.style.width.slice(0, -2) * 0.035557) / 2)) + "px"; 
                 irt.style.top= parseInt(Math.random() * (18 * irt.style.height.slice(0, -2) * 0.035557)  + parseInt(irt.tOp) - ((18 * irt.style.width.slice(0, -2) * 0.035557) / 2)) + "px";
-                irt.style.opacity= Math.random() * 0.53 + 0.47;
+                $(irt).find("img").css({"opacity": Math.random() * 0.53 + 0.47}); 
             }else{ 
                 irt.style.left=  parseInt(irt.lFt) + "px"; 
                 irt.style.top= parseInt(irt.tOp) + "px";
-                irt.style.opacity= Math.random() * 0.53 + 0.47;
+                $(irt).find("img").css({"opacity": Math.random() * 0.53 + 0.47}); 
             } 
         }
     }, 41)
@@ -1454,6 +1454,8 @@ document.addEventListener("mousedown", function(i){
             i.target.parentElement.style.top= i.target.parentElement.tOp + "px"; 
             
             i.target.parentElement.style.left= i.target.parentElement.lFt + "px"; 
+
+            i.target.style.opacity= ""; 
         } 
      } 
 
