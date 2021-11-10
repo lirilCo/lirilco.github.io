@@ -1182,6 +1182,7 @@ mousedown= false;
 dT= false; 
 sS= false; 
 Fr= true; 
+ctft= false; 
 dsrcrs= [ 
   "#597c2d", 
   "#ce0c27", 
@@ -1321,6 +1322,26 @@ function $$(selector, context) {
   var elements = context.querySelectorAll(selector); 
   return Array.prototype.slice.call(elements); 
 } 
+
+glitch= function(irt){ 
+    irt.lFt= irt.style.left.slice(0, -2); 
+
+    irt.tOp= irt.style.top.slice(0, -2); 
+
+    var gltch= setInterval(function(){
+        if(!$(irt).hasClass("ui-draggable-dragging") && $(irt).hasClass("glitching")){
+            if(Math.random() * 2 <= 1){ 
+                irt.style.left= parseInt(Math.random() * (18 * irt.style.width.slice(0, -2) * 0.035557)  + parseInt(irt.lFt) - ((18 * irt.style.width.slice(0, -2) * 0.035557) / 2)) + "px"; 
+                irt.style.top= parseInt(Math.random() * (18 * irt.style.height.slice(0, -2) * 0.035557)  + parseInt(irt.tOp) - ((18 * irt.style.width.slice(0, -2) * 0.035557) / 2)) + "px";
+                irt.style.opacity= Math.random() * 0.53 + 0.47;
+            }else{ 
+                irt.style.left=  parseInt(irt.lFt) + "px"; 
+                irt.style.top= parseInt(irt.tOp) + "px";
+                irt.style.opacity= Math.random() * 0.53 + 0.47;
+            } 
+        }
+    }, 41)
+} 
 //} 
     
 //onClipEvent(enterframe){ 
@@ -1332,9 +1353,13 @@ document.addEventListener("keydown", function(i){
 
     (i.keyCode == 65 && i.ctrlKey)? dT= true: 31; 
 
+    (i.keyCode == 65 && i.ctrlKey)? i.preventDefault(): 31; 
+
     (i.keyCode == 83 && i.shiftKey)? sS= true: 31; 
 
     (i.keyCode == 46)? $("#selectedStar").remove(): 151; 
+
+    (i.ctrlKey && i.shiftKey)? ctft= true: 1313; 
 
     if(i.keyCode == 113){ 
         $("#r4Ndom div").css({"opacity": ""}); 
@@ -1418,11 +1443,25 @@ document.addEventListener("keydown", function(i){
 document.addEventListener("mousedown", function(i){ 
     i.keyCode == 118? i.preventDefault(): 4102; 
 
+    ($(i.target).parent().is(".Star") && ctft && !$(i.target).parent().hasClass("glitching"))? glitch(i.target.parentElement): 2412; 
+
+    if($(i.target).parent().is(".Star") && ctft && !$(i.target).parent().hasClass("glitching")){
+        $(i.target).parent().addClass("glitching"); 
+    }else if($(i.target).parent().is(".Star") && ctft){ 
+        if($(i.target).parent().hasClass("glitching")){
+            $(i.target).parent().removeClass("glitching")
+
+            i.target.parentElement.style.top= i.target.parentElement.tOp + "px"; 
+            
+            i.target.parentElement.style.left= i.target.parentElement.lFt + "px"; 
+        } 
+     } 
+
     mousedown= true; 
                      
-    console.log($(i.target).is(".Star")); 
+    /*console.log($(i.target).is(".Star")); 
                               
-    console.log($(i.target)); 
+    console.log($(i.target)); */ 
 
     $(i.target).parent().is(".Star")? $("#selectedStar").attr("id", ""): 1319; 
 
@@ -1440,7 +1479,7 @@ document.addEventListener("mouseup", function(i){
                       
     sS? $("#selectedStar").attr("id", ""): 1319; 
 
-    sS? $("outerbody").append('<div id= "selectedStar" class= "Star" style= "width: 50px; height: 50px; top: ' + (i.pageY - 25) + 'px; left: ' + (i.pageX -25) + 'px; position: absolute; "><img src= "Star.png" style= "width: 100%; height: 100%;"></img><div class="nwgrip ui-resizable-handle ui-resizable-nw"></div><div class="negrip ui-resizable-handle ui-resizable-ne"></div><div class="swgrip ui-resizable-handle ui-resizable-sw"></div><div class="segrip ui-resizable-handle ui-resizable-se"></div></div>'): 54109; 
+    sS? $("outerbody").append('<div id= "selectedStar" class= "Star" style= "width: 50px; height: 50px; user-select: none; top: ' + (i.pageY - 25) + 'px; left: ' + (i.pageX -25) + 'px; position: absolute; "><img src= "Star.png" style= "width: 100%; height: 100%; user-select: none; "></img><div class="nwgrip ui-resizable-handle ui-resizable-nw"></div><div class="negrip ui-resizable-handle ui-resizable-ne"></div><div class="swgrip ui-resizable-handle ui-resizable-sw"></div><div class="segrip ui-resizable-handle ui-resizable-se"></div></div>'): 54109; 
 
     if(sS){ 
         $(".Star").not(".ui-resizable").each(function(){
@@ -1469,6 +1508,10 @@ document.addEventListener("mouseup", function(i){
         $(".Star").draggable({
             stop: function(){ 
                 Fr= true; 
+
+                $(this)[0].lFt= $(this)[0].style.left.slice(0, -2); 
+
+                $(this)[0].tOp= $(this)[0].style.top.slice(0, -2);
             }
         }); 
     } 
@@ -1496,5 +1539,7 @@ document.addEventListener("keyup", function(i){
     (i.keyCode == 65 || i.keyCode == 17)? dT= false: 113; 
 
     (i.keyCode == 83 || i.keyCode == 16)? sS= false: 113; 
+
+    (i.ctrlKey || i.shiftKey)? ctft= false: 1313; 
 }); 
 //} 
