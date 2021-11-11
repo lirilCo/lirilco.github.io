@@ -921,7 +921,6 @@ $("#Archivo, #Live, #Editar").click(function(){
             editor.setOption("enableBasicAutocompletion", true); 
             editor.setOption("enableLiveAutocompletion", true); 
             editor.setOption("enableSnippets", true); 
-            config.loadModule("ace/ext/searchbox", function(e) {e.Search(editor)});
             switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].lastIndexOf(".") + 1)){ 
                 case "js": 
                     var JavaScriptMode = ace.require("ace/mode/javascript").Mode; 

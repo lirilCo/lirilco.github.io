@@ -1552,6 +1552,7 @@ document.addEventListener("mouseup", function(i){
 
             
         $(".Ball").draggable({
+            stack: "outerbody", 
             stop: function(){ 
                 Fr= true; 
 
@@ -1570,7 +1571,7 @@ document.addEventListener("mousemove", function(i){
                                                 
     MNSWMTG= parseInt(Math.random() * 2) == 0? "1": "1000000"; 
                                                                
-    PpPE= dsrcrs[L] == "#597c2d"? "; z-index: 2": "; border-radius: 50%; z-index: " + MNSWMTG; 
+    PpPE= (dsrcrs[L] == "#597c2d")? "; z-index: 2": "; border-radius: 50%; z-index: " + MNSWMTG; 
                                                               
     dsrcrs[L] == "#597c2d"? MNSWMTG = false: 214;                                   
 
