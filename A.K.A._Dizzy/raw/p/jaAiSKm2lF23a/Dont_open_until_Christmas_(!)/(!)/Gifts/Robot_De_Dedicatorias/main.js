@@ -1179,10 +1179,13 @@ function update(){
   
 rwrrw= ""; 
 mousedown= false; 
+sB= false; 
 dT= false; 
 sS= false; 
 Fr= true; 
 ctft= false; 
+var maxz = 0; 
+var best = 0; 
 dsrcrs= [ 
   "#597c2d", 
   "#ce0c27", 
@@ -1342,6 +1345,22 @@ glitch= function(irt){
         }
     }, 41)
 } 
+
+function getActual (){
+    $('outerbody .Ball').each(function(){
+        var z = parseInt($(this).css('z-index'), 10);
+        if ( z>maxz) {
+            maxz = z;
+            best= $(this)
+        }
+    });
+    if(maxz == 0){
+     return $('outerbody .Ball').last()
+    }else{
+    maxz = 0;
+        return best.css("z-index")
+    }
+}
 //} 
     
 //onClipEvent(enterframe){ 
@@ -1482,6 +1501,10 @@ document.addEventListener("mousedown", function(i){
     /*(i.keyCode == 17 && lastChild.outerHTML.indexOf("Rwawwr") == 9)? lastChild.outerHTML= "": 3251; */ 
 }); 
     
+$('.Ball').click(function(event){ 
+    $(this).css({"z-index": (parseInt(getActual()) + 1)}); 
+}); 
+
 document.addEventListener("mouseup", function(i){ 
     mousedown= false; 
                       
@@ -1527,9 +1550,14 @@ document.addEventListener("mouseup", function(i){
 
     sB? $("#selectedBall").attr("id", ""): 1319; 
 
-    sB? $("outerbody").append('<div id= "selectedBall" class= "Ball" style= "width: 19px; height: auto; user-select: none; top: ' + (i.pageY - 0.7) + 'px; left: ' + (i.pageX - 9.5) + 'px; position: absolute; z-index: ' + $(".Ball").length + '; "><img src= "rEDbALL.png" style= "width: 100%; height: 100%; user-select: none; "></img><div class="swgrip ui-resizable-handle ui-resizable-sw"></div><div class="segrip ui-resizable-handle ui-resizable-se"></div></div>'): 54109; 
+    sB? $("outerbody").append('<div id= "selectedBall" class= "Ball" style= "width: 19px; height: auto; user-select: none; top: ' + (i.pageY - 0.7) + 'px; left: ' + (i.pageX - 9.5) + 'px; position: absolute; z-index: ' + (parseInt(getActual()) + 1) + '; "><img src= "rEDbALL.png" style= "width: 100%; height: 100%; user-select: none; "></img><div class="swgrip ui-resizable-handle ui-resizable-sw"></div><div class="segrip ui-resizable-handle ui-resizable-se"></div></div>'): 54109; 
 
     if(sB){ 
+
+        /*$('.Ball').click(function(event){ 
+            $(this).css({"z-index": (parseInt(getActual()) + 1)}); 
+        }); */ 
+
         $(".Ball").not(".ui-resizable").each(function(){
             $(this).resizable({
              handles: {
@@ -1551,8 +1579,9 @@ document.addEventListener("mouseup", function(i){
         })
 
             
-        $(".Ball").draggable({
+        $(".Ball").last().draggable({
             stack: ".Ball", 
+            distance: 0, 
             stop: function(){ 
                 Fr= true; 
 
