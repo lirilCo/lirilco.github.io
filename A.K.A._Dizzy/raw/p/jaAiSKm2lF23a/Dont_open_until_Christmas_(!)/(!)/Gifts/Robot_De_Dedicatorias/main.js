@@ -1527,7 +1527,7 @@ document.addEventListener("mouseup", function(i){
 
     sB? $("#selectedBall").attr("id", ""): 1319; 
 
-    sB? $("outerbody").append('<div id= "selectedBall" class= "Ball" style= "width: 19px; height: auto; user-select: none; top: ' + (i.pageY - 0.7) + 'px; left: ' + (i.pageX - 9.5) + 'px; position: absolute; "><img src= "rEDbALL.png" style= "width: 100%; height: 100%; user-select: none; "></img><div class="swgrip ui-resizable-handle ui-resizable-sw"></div><div class="segrip ui-resizable-handle ui-resizable-se"></div></div>'): 54109; 
+    sB? $("outerbody").append('<div id= "selectedBall" class= "Ball" style= "width: 19px; height: auto; user-select: none; top: ' + (i.pageY - 0.7) + 'px; left: ' + (i.pageX - 9.5) + 'px; position: absolute; z-index: ' + $(".Ball").length + '; "><img src= "rEDbALL.png" style= "width: 100%; height: 100%; user-select: none; "></img><div class="swgrip ui-resizable-handle ui-resizable-sw"></div><div class="segrip ui-resizable-handle ui-resizable-se"></div></div>'): 54109; 
 
     if(sB){ 
         $(".Ball").not(".ui-resizable").each(function(){
@@ -1552,7 +1552,7 @@ document.addEventListener("mouseup", function(i){
 
             
         $(".Ball").draggable({
-            stack: "outerbody", 
+            stack: ".Ball", 
             stop: function(){ 
                 Fr= true; 
 
@@ -1569,17 +1569,17 @@ document.addEventListener("mouseup", function(i){
 document.addEventListener("mousemove", function(i){                                                 
     L= parseInt(Math.random() * dsrcrs.length); 
                                                 
-    MNSWMTG= parseInt(Math.random() * 2) == 0? "1": "1000000"; 
+    MNSWMTG= parseInt(Math.random() * 2) == 0? "-3": "-1"; 
                                                                
-    PpPE= (dsrcrs[L] == "#597c2d")? "; z-index: 2": "; border-radius: 50%; z-index: " + MNSWMTG; 
+    PpPE= (dsrcrs[L] == "#597c2d")? "; z-index: -2": "; border-radius: 50%; z-index: " + MNSWMTG; 
                                                               
     dsrcrs[L] == "#597c2d"? MNSWMTG = false: 214;                                   
 
-    (($(".ui-draggable-resizing").length === 0 && $(".ui-draggable-dragging").length === 0) && ((document.querySelectorAll(".Star div").length > 0 && $$(".Star div").indexOf(i.target) == -1) || document.querySelectorAll(".Star div").length === 0) && ((document.querySelectorAll(".Star img").length > 0 && $$(".Star img").indexOf(i.target) == -1) || document.querySelectorAll(".Star img").length === 0) && ((document.querySelectorAll(".Ball div").length > 0 && $$(".Ball div").indexOf(i.target) == -1) || document.querySelectorAll(".Ball div").length === 0) && ((document.querySelectorAll(".Ball img").length > 0 && $$(".Ball img").indexOf(i.target) == -1) || document.querySelectorAll(".Ball img").length === 0) && Fr && mousedown && !dT && !sS)? $("#r4Ndom").append("<div class= '" + dsrcrs[L] + "' style= 'width: 6.8px; height: 6.8px; background-color: " + dsrcrs[L] + PpPE + "; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>" + (MNSWMTG > 1? "<div class= '#597c2d' style= 'width: 6.8px; height: 6.8px; background-color: #597c2d; z-index: 2; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>": "")): 13781;
+    (($(".ui-draggable-resizing").length === 0 && $(".ui-draggable-dragging").length === 0) && ((document.querySelectorAll(".Star div").length > 0 && $$(".Star div").indexOf(i.target) == -1) || document.querySelectorAll(".Star div").length === 0) && ((document.querySelectorAll(".Star img").length > 0 && $$(".Star img").indexOf(i.target) == -1) || document.querySelectorAll(".Star img").length === 0) && ((document.querySelectorAll(".Ball div").length > 0 && $$(".Ball div").indexOf(i.target) == -1) || document.querySelectorAll(".Ball div").length === 0) && ((document.querySelectorAll(".Ball img").length > 0 && $$(".Ball img").indexOf(i.target) == -1) || document.querySelectorAll(".Ball img").length === 0) && Fr && mousedown && !dT && !sS)? $("#r4Ndom").append("<div class= '" + dsrcrs[L] + "' style= 'width: 6.8px; height: 6.8px; background-color: " + dsrcrs[L] + PpPE + "; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>" + (MNSWMTG >= -1? "<div class= '#597c2d' style= 'width: 6.8px; height: 6.8px; background-color: #597c2d; z-index: -2; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>": "")): 13781;
                                         
     /*document.activeElement.blur(); */ 
                                         
-    (($(".ui-draggable-resizing").length === 0 && $(".ui-draggable-dragging").length === 0) && ((document.querySelectorAll(".Star div").length > 0 && $$(".Star div").indexOf(i.target) == -1) || document.querySelectorAll(".Star div").length === 0) && ((document.querySelectorAll(".Star img").length > 0 && $$(".Star img").indexOf(i.target) == -1) || document.querySelectorAll(".Star img").length === 0) && ((document.querySelectorAll(".Ball div").length > 0 && $$(".Ball div").indexOf(i.target) == -1) || document.querySelectorAll(".Ball div").length === 0) && ((document.querySelectorAll(".Ball img").length > 0 && $$(".Ball img").indexOf(i.target) == -1) || document.querySelectorAll(".Ball img").length === 0) && Fr && mousedown && dT && !sS)? $("#r4Ndom").append("<div class= '#d87979' style= 'z-index: 1; width: 6.8px; height: 6.8px; background-color: #d87979; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>"): 418; 
+    (($(".ui-draggable-resizing").length === 0 && $(".ui-draggable-dragging").length === 0) && ((document.querySelectorAll(".Star div").length > 0 && $$(".Star div").indexOf(i.target) == -1) || document.querySelectorAll(".Star div").length === 0) && ((document.querySelectorAll(".Star img").length > 0 && $$(".Star img").indexOf(i.target) == -1) || document.querySelectorAll(".Star img").length === 0) && ((document.querySelectorAll(".Ball div").length > 0 && $$(".Ball div").indexOf(i.target) == -1) || document.querySelectorAll(".Ball div").length === 0) && ((document.querySelectorAll(".Ball img").length > 0 && $$(".Ball img").indexOf(i.target) == -1) || document.querySelectorAll(".Ball img").length === 0) && Fr && mousedown && dT && !sS)? $("#r4Ndom").append("<div class= '#d87979' style= 'z-index: -3; width: 6.8px; height: 6.8px; background-color: #d87979; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>"): 418; 
 }); 
     
 document.addEventListener("keyup", function(i){                                                
