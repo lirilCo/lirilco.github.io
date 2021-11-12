@@ -73,8 +73,15 @@ if($("#customizationBars").hasClass("open")){
 	$( ".widgetero" )[0].insertAdjacentHTML("beforeend", widg); 
 var dropped = false;
 $('.widgetero .widget').last().draggable({
-	stack: false,
+	stack:".widgetero .widget",
 	cursor: "move", 
+	snap: ".vidVidCustomizationMode, .widget", 
+	snapMode: "both", 
+	revertDuration: 100,
+	snapTolerance: 10,
+	  distance: 10,
+containment: "window",
+	revert: false,
     start: function(event, ui) {
     	if(!$('.widgetero .widget').last().hasClass("dropped")){ 
     		ui.helper.data('dropped', false);

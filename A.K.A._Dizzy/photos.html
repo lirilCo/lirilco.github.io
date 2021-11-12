@@ -134,6 +134,48 @@
             });
         });
     </script>
+    <script type="text/javascript">
+        $(function () {
+      $.widget("ui.tooltip", $.ui.tooltip, {
+          options: {
+              content: function () {
+                  return $(this).prop('title');
+              }
+          }
+      });
+      
+$('.username').tooltip({
+    items: 'a.target',
+    open: function(event, ui)
+    {
+        if (typeof(event.originalEvent) === 'undefined')
+        {
+            return false;
+        }
+        $(".knob").knob();
+        var $id = $(ui.tooltip).attr('id');
+        
+        // close any lingering tooltips
+        $('div.ui-tooltip').not('#' + $id).remove();
+        
+        // ajax function to pull in data and add it to the tooltip goes here
+    },
+    close: function(event, ui)
+    {
+        ui.tooltip.hover(function()
+        {
+            $(this).stop(true).fadeTo(400, 1); 
+        },
+        function()
+        {
+            $(this).fadeOut('400', function()
+            {
+                $(this).remove();
+            });
+        });
+    }
+});  });
+    </script>
 </head>
 
 <body>
@@ -185,13 +227,16 @@
         </nav>
     </header>
     <div id="root">
-    <div>
-        <a href="../A.K.A._Dizzy.html">Luis Eduardo Gallego García</a>
-    </div>
-    <span>
-        <span >Fotos</span>
-    </span>
+        <div class="contnr">
 
+            <div>
+                <a href="../A.K.A._Dizzy.html">Luis Eduardo Gallego García</a>
+            </div>
+            <span>
+                <span >Fotos</span>
+            </span>
+
+        </div>
     </div>
     <section id="wrapper" class="theater">
  
@@ -235,20 +280,808 @@
         <div class="container"> 
             
             <div id="gallery">
-                        <img src="../resources/images/grid/1.jpg" alt="">
-                        <img src="../resources/images/grid/1.jpg" alt="">
-                        <img src="../resources/images/grid/1.jpg" alt="">
-                        <img src="../resources/images/grid/1.jpg" alt="">
-                        <img src="../resources/images/grid/1.jpg" alt="">
-                        <img src="../resources/images/grid/1.jpg" alt="">
-                        <img src="../resources/images/grid/2.jpg" alt="">
-                        <img src="../resources/images/grid/3.jpg" alt="">
-                        <img src="../resources/images/grid/2.jpg" alt="">
-                        <img src="../resources/images/grid/1.jpg" alt="">
-                        <img src="../resources/images/grid/3.jpg" alt="">
-                        <img src="../resources/images/grid/3.jpg" alt="">
-                        <img src="../resources/images/grid/2.jpg" alt="">
-                        <img src="../resources/images/grid/1.jpg" alt="">
+                <section class="photo">
+                    <img class="pic" src="/resources/images/A.K.A._Dizzy/5124172471248172748127312_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg" alt="">
+                                <p class="username"><a class= "target" href="A.K.A._Dizzy.html" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a>; en <a href="#" class= "target"  title="         
+              <div class='tool city'>
+                <figure>
+                   <img class='thumbnail' src= 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Panor%C3%A1mica_de_San_Andres.JPG/1024px-Panor%C3%A1mica_de_San_Andres.JPG'></img>
+               </figure>
+         
+               <div class='introduction'>
+                   La Isla de San Andrés (conocida también como San Andrés Isla) es una isla colombiana del mar Caribe, ubicada frente a las costas de Nicaragua. Es la más grande de las islas que forman parte del Archipiélago de San Andrés, Providencia y Santa Catalina, con una extensión total de 26 km² siendo así, la isla más grande del país. <a target= '_blank'style= 'font-size:0.8em; ' href= 'https://es.wikipedia.org/wiki/Isla_de_San_Andr%C3%A9s_(Colombia)'><span style= 'color: #2ecc71; font-size: 1.5em; '>···</span> es.wikipedia.org</a>
+               </div>
+              </div>">Isla de San Andrés</a> <br><span class="time">Ayer a las 5:40 pm</span></p>                    
+                            </div>
+                            <p class="title">¡San Andrés!</p>
+                            <section id="picture">
+                                <img class="bigPic" src="/resources/images/A.K.A._Dizzy/5124172471248172748127312.jpg" alt="" class="big">
+                            </section>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                </section>
+                <section class="photo">
+                    <img class="pic" src="/resources/images/A.K.A._Dizzy/228717891724817284617274612_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg" alt="">
+                                <p class="username"><a class= "target" href="A.K.A._Dizzy.html" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a>; en <a href="#" class= "target"  title="         
+              <div class='tool city'>
+                <figure>
+                   <img class='thumbnail' src= 'https://upload.wikimedia.org/wikipedia/commons/2/26/Atardecer-parque.jpg'></img>
+               </figure>
+         
+               <div class='introduction'>
+                   Rionegro es una pequeña ciudad en los Andes colombianos. Aquí se encuentra el aeropuerto internacional de Medellín. En la Plaza de la Libertad está la Catedral de San Nicolás, con sus cúpulas. El Museo Histórico Casa de la Convención se encuentra en un edificio en el que se sancionó una versión de la constitución colombiana en 1863. Al sudoeste, está Tutucán, que es una réplica de un pueblo típico local, con una iglesia, un molino y una granja. <a target= '_blank'style= 'font-size:0.8em; ' href= 'https://es.wikipedia.org/wiki/Rionegro_(Antioquia)'><span style= 'color: #2ecc71; font-size: 1.5em; '>···</span> es.wikipedia.org</a>
+               </div>
+              </div>">Rionegro</a> <br><span class="time">8 de Mayo a las 1:15 pm</span></p>                    
+                            </div>
+                            <p class="title"></p>
+                            <section id="picture">
+                                <img class="bigPic" src="/resources/images/A.K.A._Dizzy/228717891724817284617274612.jpg" alt="" class="big">
+                            </section>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                </section>
+                <section class="photo">
+                    <img class="pic" src="/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg" alt="">
+                                <p class="username"><a class= "target" href="A.K.A._Dizzy.html" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a>; en <a href="#" class= "target"  title="         
+              <div class='tool city'>
+                <figure>
+                   <img class='thumbnail' src= 'https://upload.wikimedia.org/wikipedia/commons/2/26/Atardecer-parque.jpg'></img>
+               </figure>
+         
+               <div class='introduction'>
+                   Rionegro es una pequeña ciudad en los Andes colombianos. Aquí se encuentra el aeropuerto internacional de Medellín. En la Plaza de la Libertad está la Catedral de San Nicolás, con sus cúpulas. El Museo Histórico Casa de la Convención se encuentra en un edificio en el que se sancionó una versión de la constitución colombiana en 1863. Al sudoeste, está Tutucán, que es una réplica de un pueblo típico local, con una iglesia, un molino y una granja. <a target= '_blank'style= 'font-size:0.8em; ' href= 'https://es.wikipedia.org/wiki/Rionegro_(Antioquia)'><span style= 'color: #2ecc71; font-size: 1.5em; '>···</span> es.wikipedia.org</a>
+               </div>
+              </div>">Rionegro</a> <br><span class="time">8 de Mayo a las 1:13 pm</span></p>                    
+                            </div>
+                            <p class="title"></p>
+                            <section id="picture">
+                                <img class="bigPic" src="/resources/images/A.K.A._Dizzy/1821931783173167471671613.jpg" alt="" class="big">
+                            </section>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                </section>
+
+                <section class="photo">
+                    <img class="pic" src="/resources/images/A.K.A._Dizzy/3423482334823349233242_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg" alt="">
+                                <p class="username"><a class= "target" href="A.K.A._Dizzy.html" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a>; en <a href="#" class= "target"  title="         
+              <div class='tool city'>
+                <figure>
+                   <img class='thumbnail' src= 'https://upload.wikimedia.org/wikipedia/commons/2/26/Atardecer-parque.jpg'></img>
+               </figure>
+         
+               <div class='introduction'>
+                   Rionegro es una pequeña ciudad en los Andes colombianos. Aquí se encuentra el aeropuerto internacional de Medellín. En la Plaza de la Libertad está la Catedral de San Nicolás, con sus cúpulas. El Museo Histórico Casa de la Convención se encuentra en un edificio en el que se sancionó una versión de la constitución colombiana en 1863. Al sudoeste, está Tutucán, que es una réplica de un pueblo típico local, con una iglesia, un molino y una granja. <a target= '_blank'style= 'font-size:0.8em; ' href= 'https://es.wikipedia.org/wiki/Rionegro_(Antioquia)'><span style= 'color: #2ecc71; font-size: 1.5em; '>···</span> es.wikipedia.org</a>
+               </div>
+              </div>">Rionegro</a> <br><span class="time">7 de Abril a las 10:40 pm</span></p>                    
+                            </div>
+                            <p class="title">Suit up!</p>
+                            <section id="picture">
+                                <img class="bigPic" src="/resources/images/A.K.A._Dizzy/3423482334823349233242.jpg" alt="" class="big">
+                            </section>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                </section>
+                <section class="photo">
+                    <img class="pic" src="/resources/images/A.K.A._Dizzy/321251265026711241125425125_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg" alt="">
+                                <p class="username"><a class= "target" href="A.K.A._Dizzy.html" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a>; en <a href="#" class= "target"  title="         
+              <div class='tool city'>
+                <figure>
+                   <img class='thumbnail' src= 'https://upload.wikimedia.org/wikipedia/commons/2/26/Atardecer-parque.jpg'></img>
+               </figure>
+         
+               <div class='introduction'>
+                   Rionegro es una pequeña ciudad en los Andes colombianos. Aquí se encuentra el aeropuerto internacional de Medellín. En la Plaza de la Libertad está la Catedral de San Nicolás, con sus cúpulas. El Museo Histórico Casa de la Convención se encuentra en un edificio en el que se sancionó una versión de la constitución colombiana en 1863. Al sudoeste, está Tutucán, que es una réplica de un pueblo típico local, con una iglesia, un molino y una granja. <a target= '_blank'style= 'font-size:0.8em; ' href= 'https://es.wikipedia.org/wiki/Rionegro_(Antioquia)'><span style= 'color: #2ecc71; font-size: 1.5em; '>···</span> es.wikipedia.org</a>
+               </div>
+              </div>">Rionegro</a> <br><span class="time">18 de Febrero a las 11:25 am</span></p>                    
+                            </div>
+                            <p class="title"></p>
+                            <section id="picture">
+                                <img class="bigPic" src="/resources/images/A.K.A._Dizzy/321251265026711241125425125.jpg" alt="" class="big">
+                            </section>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                </section>
+                <section class="photo">
+                    <img class="pic" src="/resources/images/A.K.A._Dizzy/3423427334817624124_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg" alt="">
+                                <p class="username"><a class= "target" href="A.K.A._Dizzy.html" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a>; en <a href="#" class= "target"  title="         
+              <div class='tool city'>
+                <figure>
+                   <img class='thumbnail' src= 'https://upload.wikimedia.org/wikipedia/commons/2/26/Atardecer-parque.jpg'></img>
+               </figure>
+         
+               <div class='introduction'>
+                   Rionegro es una pequeña ciudad en los Andes colombianos. Aquí se encuentra el aeropuerto internacional de Medellín. En la Plaza de la Libertad está la Catedral de San Nicolás, con sus cúpulas. El Museo Histórico Casa de la Convención se encuentra en un edificio en el que se sancionó una versión de la constitución colombiana en 1863. Al sudoeste, está Tutucán, que es una réplica de un pueblo típico local, con una iglesia, un molino y una granja. <a target= '_blank'style= 'font-size:0.8em; ' href= 'https://es.wikipedia.org/wiki/Rionegro_(Antioquia)'><span style= 'color: #2ecc71; font-size: 1.5em; '>···</span> es.wikipedia.org</a>
+               </div>
+              </div>">Rionegro</a> <br><span class="time">10 de Febrero a las 8:38 pm</span></p>                    
+                            </div>
+                            <p class="title">¡Ashley I.!</p>
+                            <section id="picture">
+                                <img class="bigPic" src="/resources/images/A.K.A._Dizzy/3423427334817624124.jpg" alt="" class="big">
+                            </section>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                </section>
+                <section class="photo">
+                    <img class="pic" src="/resources/images/A.K.A._Dizzy/6346348583848558384534_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg" alt="">
+                                <p class="username"><a class= "target" href="A.K.A._Dizzy.html" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a>; en <a href="#" class= "target"  title="         
+              <div class='tool city'>
+                <figure>
+                   <img class='thumbnail' src= 'https://upload.wikimedia.org/wikipedia/commons/2/26/Atardecer-parque.jpg'></img>
+               </figure>
+         
+               <div class='introduction'>
+                   Rionegro es una pequeña ciudad en los Andes colombianos. Aquí se encuentra el aeropuerto internacional de Medellín. En la Plaza de la Libertad está la Catedral de San Nicolás, con sus cúpulas. El Museo Histórico Casa de la Convención se encuentra en un edificio en el que se sancionó una versión de la constitución colombiana en 1863. Al sudoeste, está Tutucán, que es una réplica de un pueblo típico local, con una iglesia, un molino y una granja. <a target= '_blank'style= 'font-size:0.8em; ' href= 'https://es.wikipedia.org/wiki/Rionegro_(Antioquia)'><span style= 'color: #2ecc71; font-size: 1.5em; '>···</span> es.wikipedia.org</a>
+               </div>
+              </div>">Rionegro</a> <br><span class="time">Noviembre de 2020</span></p>                    
+                            </div>
+                            <p class="title">Mi hermana, la que emana (amor).</p>
+                            <section id="picture">
+                                <img class="bigPic" src="/resources/images/A.K.A._Dizzy/6346348583848558384534.jpg" alt="" class="big">
+                            </section>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                </section>
+                <section class="photo">
+                    <img class="pic" src="/resources/images/A.K.A._Dizzy/4126164655354738473552354_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg" alt="">
+                                <p class="username"><a class= "target" href="A.K.A._Dizzy.html" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a>; en <a href="#" class= "target"  title="         
+              <div class='tool city'>
+                <figure>
+                   <img class='thumbnail' src= 'https://upload.wikimedia.org/wikipedia/commons/2/26/Atardecer-parque.jpg'></img>
+               </figure>
+         
+               <div class='introduction'>
+                   Rionegro es una pequeña ciudad en los Andes colombianos. Aquí se encuentra el aeropuerto internacional de Medellín. En la Plaza de la Libertad está la Catedral de San Nicolás, con sus cúpulas. El Museo Histórico Casa de la Convención se encuentra en un edificio en el que se sancionó una versión de la constitución colombiana en 1863. Al sudoeste, está Tutucán, que es una réplica de un pueblo típico local, con una iglesia, un molino y una granja. <a target= '_blank'style= 'font-size:0.8em; ' href= 'https://es.wikipedia.org/wiki/Rionegro_(Antioquia)'><span style= 'color: #2ecc71; font-size: 1.5em; '>···</span> es.wikipedia.org</a>
+               </div>
+              </div>">Rionegro</a> <br><span class="time">Noviembre de 2020</span></p>                    
+                            </div>
+                            <p class="title">My gear-l</p>
+                            <section id="picture">
+                                <img class="bigPic" src="/resources/images/A.K.A._Dizzy/4126164655354738473552354.jpg" alt="" class="big">
+                            </section>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                </section>
+                <section class="photo">
+                    <img class="pic" src="/resources/images/A.K.A._Dizzy/99585634283249283241513667_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg" alt="">
+                                <p class="username"><a class= "target" href="A.K.A._Dizzy.html" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a>; en <a href="#" class= "target"  title="         
+              <div class='tool city'>
+                <figure>
+                   <img class='thumbnail' src= 'https://upload.wikimedia.org/wikipedia/commons/2/26/Atardecer-parque.jpg'></img>
+               </figure>
+         
+               <div class='introduction'>
+                   Rionegro es una pequeña ciudad en los Andes colombianos. Aquí se encuentra el aeropuerto internacional de Medellín. En la Plaza de la Libertad está la Catedral de San Nicolás, con sus cúpulas. El Museo Histórico Casa de la Convención se encuentra en un edificio en el que se sancionó una versión de la constitución colombiana en 1863. Al sudoeste, está Tutucán, que es una réplica de un pueblo típico local, con una iglesia, un molino y una granja. <a target= '_blank'style= 'font-size:0.8em; ' href= 'https://es.wikipedia.org/wiki/Rionegro_(Antioquia)'><span style= 'color: #2ecc71; font-size: 1.5em; '>···</span> es.wikipedia.org</a>
+               </div>
+              </div>">Rionegro</a> <br><span class="time">Septiembre de 2020</span></p>                    
+                            </div>
+                            <p class="title">Friends! <a href= "#">#tbt</a></p>
+                            <section id="picture">
+                                <img class="bigPic" src="/resources/images/A.K.A._Dizzy/99585634283249283241513667.jpg" alt="" class="big">
+                            </section>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                </section>
+                <section class="photo">
+                    <img class="pic" src="/resources/images/A.K.A._Dizzy/829179174912847719128794819256_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg" alt="">
+                                <p class="username"><a class= "target" href="A.K.A._Dizzy.html" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a>; en <a href="#" class= "target"  title="         
+              <div class='tool city'>
+                <figure>
+                   <img class='thumbnail' src= 'https://upload.wikimedia.org/wikipedia/commons/2/26/Atardecer-parque.jpg'></img>
+               </figure>
+         
+               <div class='introduction'>
+                   Rionegro es una pequeña ciudad en los Andes colombianos. Aquí se encuentra el aeropuerto internacional de Medellín. En la Plaza de la Libertad está la Catedral de San Nicolás, con sus cúpulas. El Museo Histórico Casa de la Convención se encuentra en un edificio en el que se sancionó una versión de la constitución colombiana en 1863. Al sudoeste, está Tutucán, que es una réplica de un pueblo típico local, con una iglesia, un molino y una granja. <a target= '_blank'style= 'font-size:0.8em; ' href= 'https://es.wikipedia.org/wiki/Rionegro_(Antioquia)'><span style= 'color: #2ecc71; font-size: 1.5em; '>···</span> es.wikipedia.org</a>
+               </div>
+              </div>">Rionegro</a> <br><span class="time">Julio de 2020</span></p>                    
+                            </div>
+                            <p class="title"></p>
+                            <section id="picture">
+                                <img class="bigPic" src="/resources/images/A.K.A._Dizzy/829179174912847719128794819256.jpg" alt="" class="big">
+                            </section>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                </section>
+                <section class="photo">
+                    <img class="pic" src="/resources/images/A.K.A._Dizzy/41322412832123219231231231254_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg" alt="">
+                                <p class="username"><a class= "target" href="A.K.A._Dizzy.html" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a>; en <a href="#" class= "target"  title="         
+              <div class='tool city'>
+                <figure>
+                   <img class='thumbnail' src= 'https://cdn.forbes.co/2020/09/Medell%C3%ADn-foto-ProColombia-1536x1024.jpg'></img>
+               </figure>
+         
+               <div class='introduction'>
+                   Medellín es la capital de la provincia montañosa de Antioquia en Colombia. Es apodada la Ciudad de la eterna primavera por su clima templado y alberga la famosa Feria de las Flores anual. El moderno Metrocable conecta la ciudad con los barrios circundantes y tiene vistas del Valle de Aburrá que se encuentra debajo. Las esculturas de Fernando Botero decoran la Plaza Botero en el centro de la ciudad, mientras que el Museo de Antioquia exhibe más obras del artista colombiano. <a target= '_blank'style= 'font-size:0.8em; ' href= 'https://es.wikipedia.org/wiki/Medell%C3%ADn'><span style= 'color: #2ecc71; font-size: 1.5em; '>···&nbsp</span>es.wikipedia.org</a>
+               </div>
+              </div>">Medellín</a> <br><span class="time">Marzo de 2020</span></p>                    
+                            </div>
+                            <p class="title">El dolor; es veneno, nena.</p>
+                            <section id="picture">
+                                <img class="bigPic" src="/resources/images/A.K.A._Dizzy/41322412832123219231231231254.jpg" alt="" class="big">
+                            </section>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                </section>
+                <section class="photo">
+                    <img class="pic" src="/resources/images/A.K.A._Dizzy/1241251235245635432241214_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg" alt="">
+                                <p class="username"><a class= "target" href="A.K.A._Dizzy.html" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a>; en <a href="#" class= "target"  title="         
+              <div class='tool city'>
+                <figure>
+                   <img class='thumbnail' src= 'https://cdn.forbes.co/2020/09/Medell%C3%ADn-foto-ProColombia-1536x1024.jpg'></img>
+               </figure>
+         
+               <div class='introduction'>
+                   Medellín es la capital de la provincia montañosa de Antioquia en Colombia. Es apodada la Ciudad de la eterna primavera por su clima templado y alberga la famosa Feria de las Flores anual. El moderno Metrocable conecta la ciudad con los barrios circundantes y tiene vistas del Valle de Aburrá que se encuentra debajo. Las esculturas de Fernando Botero decoran la Plaza Botero en el centro de la ciudad, mientras que el Museo de Antioquia exhibe más obras del artista colombiano. <a target= '_blank'style= 'font-size:0.8em; ' href= 'https://es.wikipedia.org/wiki/Medell%C3%ADn'><span style= 'color: #2ecc71; font-size: 1.5em; '>···&nbsp</span>es.wikipedia.org</a>
+               </div>
+              </div>">Medellín</a> <br><span class="time">Marzo de 2020</span></p>                    
+                            </div>
+                            <p class="title"></p>
+                            <section id="picture">
+                                <img class="bigPic" src="/resources/images/A.K.A._Dizzy/1241251235245635432241214.jpg" alt="" class="big">
+                            </section>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                </section>
+                <section class="photo">
+                    <img class="pic" src="/resources/images/A.K.A._Dizzy/1351613624624123123636_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg" alt="">
+                                <p class="username"><a class= "target" href="A.K.A._Dizzy.html" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a>; en <a href="#" class= "target"  title="         
+              <div class='tool city'>
+                <figure>
+                   <img class='thumbnail' src= 'https://cdn.forbes.co/2020/09/Medell%C3%ADn-foto-ProColombia-1536x1024.jpg'></img>
+               </figure>
+         
+               <div class='introduction'>
+                   Medellín es la capital de la provincia montañosa de Antioquia en Colombia. Es apodada la Ciudad de la eterna primavera por su clima templado y alberga la famosa Feria de las Flores anual. El moderno Metrocable conecta la ciudad con los barrios circundantes y tiene vistas del Valle de Aburrá que se encuentra debajo. Las esculturas de Fernando Botero decoran la Plaza Botero en el centro de la ciudad, mientras que el Museo de Antioquia exhibe más obras del artista colombiano. <a target= '_blank'style= 'font-size:0.8em; ' href= 'https://es.wikipedia.org/wiki/Medell%C3%ADn'><span style= 'color: #2ecc71; font-size: 1.5em; '>···&nbsp</span>es.wikipedia.org</a>
+               </div>
+              </div>">Medellín</a> <br><span class="time">Marzo de 2020</span></p>                    
+                            </div>
+                            <p class="title"></p>
+                            <section id="picture">
+                                <img class="bigPic" src="/resources/images/A.K.A._Dizzy/1351613624624123123636.jpg" alt="" class="big">
+                            </section>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                </section>
+                <section class="photo">
+                    <img class="pic" src="/resources/images/A.K.A._Dizzy/98797234923233423523623623_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg" alt="">
+                                <p class="username"><a class= "target" href="A.K.A._Dizzy.html" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a>; en <a href="#" class= "target"  title="         
+              <div class='tool city'>
+                <figure>
+                   <img class='thumbnail' src= 'https://upload.wikimedia.org/wikipedia/commons/2/26/Atardecer-parque.jpg'></img>
+               </figure>
+         
+               <div class='introduction'>
+                   Rionegro es una pequeña ciudad en los Andes colombianos. Aquí se encuentra el aeropuerto internacional de Medellín. En la Plaza de la Libertad está la Catedral de San Nicolás, con sus cúpulas. El Museo Histórico Casa de la Convención se encuentra en un edificio en el que se sancionó una versión de la constitución colombiana en 1863. Al sudoeste, está Tutucán, que es una réplica de un pueblo típico local, con una iglesia, un molino y una granja. <a target= '_blank'style= 'font-size:0.8em; ' href= 'https://es.wikipedia.org/wiki/Rionegro_(Antioquia)'><span style= 'color: #2ecc71; font-size: 1.5em; '>···</span> es.wikipedia.org</a>
+               </div>
+              </div>">Rionegro</a> <br><span class="time">Junio de 2019</span></p>                    
+                            </div>
+                            <p class="title">🤘</p>
+                            <section id="picture">
+                                <img class="bigPic" src="/resources/images/A.K.A._Dizzy/98797234923233423523623623.jpg" alt="" class="big">
+                            </section>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                </section>
+                <section class="photo">
+                    <img class="pic" src="/resources/images/A.K.A._Dizzy/2334234262635754672845623245_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg" alt="">
+                                <p class="username"><a class= "target" href="A.K.A._Dizzy.html" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a>; en <a href="#" class= "target"  title="         
+              <div class='tool city'>
+                <figure>
+                   <img class='thumbnail' src= 'https://upload.wikimedia.org/wikipedia/commons/2/26/Atardecer-parque.jpg'></img>
+               </figure>
+         
+               <div class='introduction'>
+                   Rionegro es una pequeña ciudad en los Andes colombianos. Aquí se encuentra el aeropuerto internacional de Medellín. En la Plaza de la Libertad está la Catedral de San Nicolás, con sus cúpulas. El Museo Histórico Casa de la Convención se encuentra en un edificio en el que se sancionó una versión de la constitución colombiana en 1863. Al sudoeste, está Tutucán, que es una réplica de un pueblo típico local, con una iglesia, un molino y una granja. <a target= '_blank'style= 'font-size:0.8em; ' href= 'https://es.wikipedia.org/wiki/Rionegro_(Antioquia)'><span style= 'color: #2ecc71; font-size: 1.5em; '>···</span> es.wikipedia.org</a>
+               </div>
+              </div>">Rionegro</a> <br><span class="time">Abril de 2018</span></p>                    
+                            </div>
+                            <p class="title">🤘 🤘 ✊</p>
+                            <section id="picture">
+                                <img class="bigPic" src="/resources/images/A.K.A._Dizzy/2334234262635754672845623245.jpg" alt="" class="big">
+                            </section>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                </section>
+                <section class="photo">
+                    <img class="pic" src="/resources/images/A.K.A._Dizzy/341234127471723712312_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg" alt="">
+                                <p class="username"><a class= "target" href="A.K.A._Dizzy.html" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a>; en <a href="#" class= "target"  title="         
+              <div class='tool city'>
+                <figure>
+                   <img class='thumbnail' src= 'https://upload.wikimedia.org/wikipedia/commons/2/26/Atardecer-parque.jpg'></img>
+               </figure>
+         
+               <div class='introduction'>
+                   Rionegro es una pequeña ciudad en los Andes colombianos. Aquí se encuentra el aeropuerto internacional de Medellín. En la Plaza de la Libertad está la Catedral de San Nicolás, con sus cúpulas. El Museo Histórico Casa de la Convención se encuentra en un edificio en el que se sancionó una versión de la constitución colombiana en 1863. Al sudoeste, está Tutucán, que es una réplica de un pueblo típico local, con una iglesia, un molino y una granja. <a target= '_blank'style= 'font-size:0.8em; ' href= 'https://es.wikipedia.org/wiki/Rionegro_(Antioquia)'><span style= 'color: #2ecc71; font-size: 1.5em; '>···</span> es.wikipedia.org</a>
+               </div>
+              </div>">Rionegro</a> <br><span class="time">Junio de 2016</span></p>                    
+                            </div>
+                            <p class="title"></p>
+                            <section id="picture">
+                                <img class="bigPic" src="/resources/images/A.K.A._Dizzy/341234127471723712312.jpg" alt="" class="big">
+                            </section>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                </section>
+                <section class="photo">
+                    <img class="pic" src="/resources/images/A.K.A._Dizzy/3412734817274881277381323_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg" alt="">
+                                <p class="username"><a class= "target" href="A.K.A._Dizzy.html" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a>; en <a href="#" class= "target"  title="         
+              <div class='tool city'>
+                <figure>
+                   <img class='thumbnail' src= 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Wiki_training_0226.jpg/1024px-Wiki_training_0226.jpg'></img>
+               </figure>
+         
+               <div class='introduction'>
+                   Los Ángeles, oficialmente Ciudad de Los Ángeles y de manera abreviada LA, es la ciudad más poblada del estado estadounidense de California y la segunda ciudad más poblada de Estados Unidos, tras Nueva York. Tiene, según el Censo de los Estados Unidos de 2020, una población de 3 979 576 habitantes, experimentando un crecimiento de un 4,9 % en 10 años. Está ubicada en el sur de California y abarca una superficie de 1215 km².  <a target= '_blank'style= 'font-size:0.8em; ' href= 'https://es.wikipedia.org/wiki/Los_%C3%81ngeles'><span style= 'color: #2ecc71; font-size: 1.5em; '>···</span> es.wikipedia.org</a>
+               </div>
+              </div>">Los Ángeles</a><br><span class="time">Abril de 2015</span></p>                    
+                            </div>
+                            <p class="title">Por aquí... con Megan</p>
+                            <section id="picture">
+                                <img class="bigPic" src="/resources/images/A.K.A._Dizzy/3412734817274881277381323.jpg " alt="" class="big">
+                            </section>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                </section>
+                <section class="photo">
+                    <img class="pic" src="/resources/images/A.K.A._Dizzy/199182931781748271827182764612817_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg" alt="">
+                                <p class="username"><a class= "target" href="A.K.A._Dizzy.html" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a><br><span class="time">Marzo de 2015</span></p>                    
+                            </div>
+                            <p class="title">Cuando estudiábamos en La Industrial.</p>
+                            <section id="picture">
+                                <img class="bigPic" src="/resources/images/A.K.A._Dizzy/199182931781748271827182764612817.jpg" alt="" class="big">
+                            </section>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                </section>
             </div>
     </div>
     

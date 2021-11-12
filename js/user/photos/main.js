@@ -1,36 +1,36 @@
 function openModal(a) {
+    $("body")[0].style.overflowY= "hidden"; 
+    responsive(); 
     $("#theater").addClass("animated fadeIn ")
     $(".theater").css({
         "display": "block"
     })
-    $this = a.closest('.story')
-    var source = a.attr('src');
+    $this = a
+    var source = a.parent().find(".bigPic").attr('src');
     $('.theater #bigPic').attr('src', source);
 
-    var user = '<a href="user.html">Walter White</a><br><span class="time">24 de Octubre a las 0:30 am</span>'; 
-    $('.theater .comments .info .username').html(user); 
+    var user = a.parent().find(".username").html();
+    $('.theater .comments .info .username').html(user);
 
-    var time = a.closest('.story').find(".time").html();
+    var time = a.parent().find(".time").html();
     $('.theater .comments .info .time').html(time);
 
-    var title = a.closest('.story').find(".title").html();
+    var title = a.parent().find(".title").html();
     $('.theater .comments .title').html(title);
-
-    if (a.closest('.story').find(".options .bookmark").hasClass("true")) {
+    if (a.parent().find(".options .bookmark").hasClass("true")) {
         $('.theater .comments .options .bookmark').addClass("true");
     } else {
         $('.theater .comments .options .bookmark').removeClass("true");
     }
-    if (a.closest('.story').find(".options .star").hasClass("true")) {
+    if (a.parent().find(".options .star").hasClass("true")) {
         $('.theater .comments .options .star').addClass("true");
     } else {
         $('.theater .comments .options .star').removeClass("true");
     }
+    var pic = a.parent().find(".info img").attr('src');
+    $('.theater .comments .info #pic').attr('src', pic);
 
-    var pic = "../resources/images/white.jpg"; 
-    $('.theater .comments .info #pic').attr('src', pic); 
-
-    var ref = a.closest('.story').find(".options ul a").attr('href');
+    var ref = a.parent().find(".options ul a").attr('href');
     $('.theater .comments .options ul a').attr('href', ref);
 
     if($("#bigPic").width()<=$("#bigPic").height()){
@@ -38,18 +38,17 @@ function openModal(a) {
     }else{
 
     }
-      $(".more").mCustomScrollbar({theme: 
+    $(".more").mCustomScrollbar({theme: 
         "minimal-dark", 
         autoExpandScrollbar: true,
         scrollInertia: 100});
-      
-        $("#theater").height($(window).height() - 40);
 
+    $("#theater").height($(window).height() - 40);
     $("#picContainer").width($("#bigPic").width());
     $("#theater .comments").height($("#theater").height() - 40);
     $("#theater .comments .more").height($("#theater .comments").height() - $("#theater .info").outerHeight(true) - $("#theater .comments .title").outerHeight(true) - $("#theater .comments .options").outerHeight(true));
     $("#theater").width("90%");
-    responsive()
+    responsive(); 
 }
 
 function closeModal() {
@@ -66,6 +65,7 @@ function closeModal() {
     $(".theater").css({
         "display": "none"
     })
+    $("body")[0].style.overflowY= ""; 
 }
 $(document).on("ready",function(e){
     $('.chats').click(function(e){ 

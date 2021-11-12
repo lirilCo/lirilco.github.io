@@ -48,9 +48,8 @@ margin: auto ;
 {
     
    font-size: 14px;
-       width: auto !important;
-
-
+    width: auto !important;
+    padding-left: 47px;
 }
 #theater .title
 {
@@ -303,10 +302,16 @@ right: 0;
 {
     content: "\e60e"
 }
+.info 
+{ 
+    position: relative; 
+} 
 .info img
 {
-    position: static;
+    position: absolute;
     display: inline-block;
+    object-fit: contain;
+    height: 100% !important;
 }
 .info p
 {
@@ -322,4 +327,128 @@ right: 0;
 *
 { 
     color: #2ecc71; 
+    font-family: "Open Sans"; 
+} 
+.photo .info, .photo .title, .photo #picture, .photo .options
+{
+    display: none; 
+}
+.photo 
+{ 
+    display: inline-block; 
+} 
+.tool
+{
+    width: 280px; 
+    height:150px; 
+    background: #fff; 
+    position:relative;
+}
+.tool .datos .rol
+{
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    bottom: 5px;
+    margin: auto;
+    width: 100%;
+    font-size: 20px; 
+    background: #2ecc71;
+}
+.tool .datos .username
+{
+    position: absolute;
+    top: 55px;
+    margin: auto;
+    width: 100%;
+    font-size: 16px; 
+    padding-left: 5px; 
+    box-sizing: border-box;
+}
+.tool .datos
+{
+    position: absolute; 
+    z-index: 3; 
+    bottom: 0; 
+    left: 114px; 
+    width: 161px; 
+    height:109px;
+}
+.tool .datos .actions
+{
+    margin: 0;
+    padding: 0;
+}
+.tool .datos .actions li
+{
+    display: inline-block;
+    width: 
+    list-style: none;
+    width: 30%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 30px;
+    cursor: pointer;
+}
+.tool img
+{
+    z-index: 2; 
+    border-radius: 50%; 
+    margin:5px;
+    position:absolute; 
+    padding: 4px; 
+    bottom: 0;
+    height: 90px;
+    width: 90px;
+}
+.tool canvas
+{
+    position: absolute; 
+    bottom: 3px; 
+    left: 3px; 
+}
+.tool p.username
+{ 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+} 
+.city .thumbnail {
+    height: 100%;
+    width: 80px;
+    border-radius: 0;
+    left: 0;
+    object-fit: cover;
+    margin: 0;
+    border: 5px solid #fff;
+    padding: 0;
+}
+.city .introduction {
+    height: 100%;
+    width: 185px;
+    float: right;
+    overflow-y: scroll;
+    font-size: 12px;
+    padding: 5px;
+    box-sizing: border-box;
+    margin-top: -10px;
+    color: #666;
+}
+.city .thumbnail:hover {
+    width: auto;
+}
+.insignia
+{
+    position: absolute; 
+    width: 100%; 
+    border-bottom: 3px solid #f1c40f; 
+}
+a 
+{ 
+    text-decoration: none; 
+} 
+a:hover 
+{ 
+    text-decoration: underline; 
 } 
