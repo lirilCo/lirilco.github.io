@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>
+        Juan José Martínez Vidal | liril
+    </title>
+    <link rel="shortcut icon" type="image/ico" href="resources/icons/favicon.ico"  />
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300,600,700' rel='stylesheet' type='text/css'>
+    
+     <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/user/style.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/video-js.css">
+   <link rel="stylesheet" href="css/jquery-ui.min.css">
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/resources/blue.monday/css/jplayer.blue.monday.css" rel="stylesheet" />
+
+    
+    <script src="js/user/modernizr.custom.js"></script>
+    <script src="js/jquery.js"></script>
+    <!--<script type="text/javascript" src= "js/jquery.circlemouse.js"></script> //Thanks to Mary Lou from Codrops, this helped me a lot!-->
+    <script src="js/user/main.js"></script>
+    <script src="js/jquery.dotdotdot.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/js/jquery.jplayer.min.js"></script> 
+
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="js/jquery.textarea_autosize.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+ <script src="js/jquery.knob.js"></script>
+    <script src="js/video.js"></script>
+    <script src="/js/audio.min.js"></script>
+    <script type="text/javascript">
+  $(function () {
+      $.widget("ui.tooltip", $.ui.tooltip, {
+          options: {
+              content: function () {
+                  return $(this).prop('title');
+              }
+          }
+      });
+      
+$('.username').tooltip({
+    items: 'a.target',
+    open: function(event, ui)
+    {
+        if (typeof(event.originalEvent) === 'undefined')
+        {
+            return false;
+        }
+        $(".knob").knob();
+        var $id = $(ui.tooltip).attr('id');
+        
+        // close any lingering tooltips
+        $('div.ui-tooltip').not('#' + $id).remove();
+        
+        // ajax function to pull in data and add it to the tooltip goes here
+    },
+    close: function(event, ui)
+    {
+        ui.tooltip.hover(function()
+        {
+            $(this).stop(true).fadeTo(400, 1); 
+        },
+        function()
+        {
+            $(this).fadeOut('400', function()
+            {
+                $(this).remove();
+            });
+        });
+    }
+});  });
+</script>
+
+   <script>
+        $(function ($) {
+
+            $(".knob").knob({
+                change: function (value) {
+                    //console.log("change : " + value);
+                },
+                release: function (value) {
+                    //console.log(this.$.attr('value'));
+                    console.log("release : " + value);
+                },
+                cancel: function () {
+                    console.log("cancel : ", this);
+                },
+                /*format : function (value) {
+                  return value + '%';
+                  }
+                  ,*/
+                draw: function () {
+
+                    // "tron" case
+                    if (this.$.data('skin') == 'tron') {
+
+                        this.cursorExt = 0.3;
+
+                        var a = this.arc(this.cv) // Arc
+                            ,
+                            pa // Previous arc
+                            , r = 1;
+
+                        this.g.lineWidth = this.lineWidth;
+
+                        if (this.o.displayPrevious) {
+                            pa = this.arc(this.v);
+                            this.g.beginPath();
+                            this.g.strokeStyle = this.pColor;
+                            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, pa.s, pa.e, pa.d);
+                            this.g.stroke();
+                        }
+
+                        this.g.beginPath();
+                        this.g.strokeStyle = r ? this.o.fgColor : this.fgColor;
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, a.s, a.e, a.d);
+                        this.g.stroke();
+
+                        this.g.lineWidth = 2;
+                        this.g.beginPath();
+                        this.g.strokeStyle = this.o.fgColor;
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
+                        this.g.stroke();
+
+                        return false;
+                    }
+                }
+            });
+
+            // Example of infinite knob, iPod click wheel
+            var v, up = 0,
+                down = 0,
+                i = 0,
+                $idir = $("div.idir"),
+                $ival = $("div.ival"),
+                incr = function () {
+                    i++;
+                    $idir.show().html("+").fadeOut();
+                    $ival.html(i);
+                },
+                decr = function () {
+                    i--;
+                    $idir.show().html("-").fadeOut();
+                    $ival.html(i);
+                };
+            $("input.infinite").knob({
+                min: 0,
+                max: 20,
+                stopper: false,
+                change: function () {
+                    if (v > this.cv) {
+                        if (up) {
+                            decr();
+                            up = 0;
+                        } else {
+                            up = 1;
+                            down = 0;
+                        }
+                    } else {
+                        if (v < this.cv) {
+                            if (down) {
+                                incr();
+                                down = 0;
+                            } else {
+                                down = 1;
+                                up = 0;
+                            }
+                        }
+                    }
+                    v = this.cv;
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+<div class="wrapper">
+  </div>
+    <header>
+        <nav>
+            <ul>
+                <li id="index">
+                    <a href="index.html"><section id="index-trigger">
+                        <span class="back-arrow button">
+              </span>
+                        <span id="index-text" class="text button">
+                Inicio
+              </span>
+                    </section></a>
+
+                </li>
+               
+                <li id= "buscar">
+          <input class="buscar" type="text" placeholder="Busca aquí cursos, personas o cualquier cosa">
+          </li>
+                <li id="right-menu" class="button">
+                    <section id="dots" class="button">
+                        <span id="store" class="button">
+              </span>
+                        <span id="dots-icon" class="button">
+              </span>
+                        <span id="dots-text" class="button">
+                6'000.600
+              </span>
+
+                    </section>
+                    <section id="profileTrigger">
+                    </section>
+                    <div id="profile" class="button">
+                        <img id="profile-pic" src="resources/images/white.jpg" alt="Walter White">
+                        <input class="knob button" data-width="35" data-height="35" data-fgColor="#2ecc71" data-bgColor="rgba(0,0,0,0)" data-displayInput=false data-thickness=".15" readonly value="60">
+                    </div>
+                    <span class="index-arrow button">
+              </span>
+
+                    <section id="profileSettings">
+                    </section>
+                </li>
+
+                <li>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <section id="wrapper" class="theater"></section>
+    <style class="zer">
+        
+    </style>
+    <section id="theater" class="theater">
+        <section id="picContainer">
+            <img id="bigPic" alt="">
+        </section>
+        <aside class="comments">
+        <div class="info">
+                    <img id="pic" alt="">
+                    <p class="username"><a href="#"></a></p>
+        </div>
+        <p class="title"></p>
+        <p class="more">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sit amet varius lectus, congue rutrum urna. Suspendisse in ultrices enim. In hac habitasse platea dictumst. Praesent aliquet, nisi nec euismod vulputate, odio velit porta erat, ut semper lacus erat ac nulla. Aenean ex libero, volutpat vel sem et, blandit dictum dui. Duis suscipit sed nisi finibus vestibulum. Quisque finibus porttitor nisl, nec consequat metus. Quisque commodo, libero nec volutpat suscipit, quam urna volutpat turpis, quis rhoncus magna dui sit amet lacus. Donec pellentesque aliquam turpis nec commodo. Aliquam lobortis facilisis auctor. Sed libero nisi, scelerisque et porttitor vel, accumsan sed lacus. Pellentesque at tortor pellentesque, vestibulum turpis at, iaculiuisque finibus porttitor nisl, nec consequat metus. Quisque commodo, libero nec volutpat suscipit, quam urna volutpat turpis, quis rhoncus magna dui sit amet lacus. Donec pellentesque aliquam turpis nec commodo. Aliquam lobortis facilisis auctor. Sed libero nisi, scelerisque et porttitor vel, accumsan sed lacus. Pellentesque at tortor pellentesque, vestibulum turpis at, iaculis nibh.
+        </p>
+        <div class="options button">
+        <ul>
+            <li class="bookmark"></li>
+            <li class="star"></li>
+            <a><li class="read"></li></a>
+        </ul></div>
+        <p id="close"></p>
+        </aside>
+        
+    </section>
+    <aside id="biography">
+        <section id="content">
+            <section id="cover">
+                <div title="Curso completado (Dubbing en español)" class="line" style="top: 32%;"></div>
+                <div title="Curso completado (Sub syncing)" class="line" style="top: 43%;"></div>
+                <div title="Rol asignado (Dubber)" class="line" style="top: 37.5%;"></div>
+                <figure id="profilePic">
+                    <img src="resources/images/LamaMadora/4971928471927491569123659182749121231545_tn.jpg" alt="">
+                    <input class="knob button" data-width="195" data-height="195" data-fgColor="#2ecc71" data-bgColor="rgba(0,0,0,0)" data-displayInput=false data-thickness=".06" readonly value="88">
+                    <figcaption>Juan José Martínez Vidal</figcaption>
+                    <section class="hidden">
+                        <div class="info">
+                    <img src="resources/images/LamaMadora/4971928471927491569123659182749121231545_tn.jpg" alt="">
+                    <p class="username"><a class= "target" href="G-Suschrist.html" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='88'>
+                <img src='resources/images/LamaMadora/4971928471927491569123659182749121231545_tn.jpg'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p title= 'Juan José Martínez Vidal' class='username'>Juan José Martínez Vidal</p>
+                  <p class='rol'>Dubber <b style='color:#fff;'>+88</b></p>
+
+                </div>
+                <div class='insignia' style='top: 11px;' title='Curso completado (Dubbing en español)'></div>
+                <div class='insignia' style='top: 23px;'title='Curso completado (Sub syncing)'></div>
+                <div class='insignia' style='top: 17px;' title='Rol asignado (Dubber)'> </div>
+
+              </div>">Juan José Martínez Vidal</a><br><span class="time">12 de Septiembre a las 2:18 pm</span></p>
+                        </div>
+                        <p class="title"></p>
+                        <section id="picture">
+                            <img class="pic" src="resources/images/LamaMadora/4971928471927491569123659182749121231545.jpg" alt="" class="big">
+                        </section>
+                    <div class="options button">
+                        <ul>
+                            <li class="bookmark"></li>
+                            <li class="star"></li>
+                            <a href="article.html"><li class="read"></li></a>
+                        </ul>
+                    </div>
+                    </section>
+                </figure>
+                <p id="rol">Dubber <b>+88</b></p>
+            </section>
+            <section id="options">
+                <ul>
+                    <li>Resumen</li>
+                    <li><a href="courses.html">Cursos (Alumno)</a></li>
+                    <li>Cursos (Tutor)</li>
+                    <li>Información</li>
+                </ul>
+            </section>
+            <section id="main">
+            
+            <section id="summary">
+                <aside id="sections">
+		    <section id="pics">
+                       <h2 class="title"><a href="LamaMadora/photos.html">Fotos</a> (7)</h2>
+                    
+
+                    
+                    <section class="foto img">
+                            <img class="pic" src="resources/images/LamaMadora/23523592836592836592837492837915612956_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="resources/images/LamaMadora/4971928471927491569123659182749121231545_tn.jpg" alt="">
+                                <p class="username"><a class= "target" href="G-Suschrist.html" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='88'>
+                <img src='resources/images/LamaMadora/4971928471927491569123659182749121231545_tn.jpg'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p title= 'Juan José Martínez Vidal' class='username'>Juan José Martínez Vidal</p>
+                  <p class='rol'>Dubber <b style='color:#fff;'>+88</b></p>
+
+                </div>
+                <div class='insignia' style='top: 11px;' title='Curso completado (Dubbing en español)'></div>
+                <div class='insignia' style='top: 23px;'title='Curso completado (Sub syncing)'></div>
+                <div class='insignia' style='top: 17px;' title='Rol asignado (Dubber)'> </div>
+
+              </div>">Juan José Martínez Vidal</a> <br><span class="time">31 de Octubre a las 12:32 pm</span></p>                    
+                            </div>
+                            <p class="title"></p>
+                            <section id="picture">
+                                <img class="bigPic" src="resources/images/LamaMadora/23523592836592836592837492837915612956.jpg" alt="" class="big">
+                            </section>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                    </section>
+                    <section class="foto img">
+                            <img class="pic" src="resources/images/LamaMadora/952739856262398527938651092974_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="resources/images/LamaMadora/4971928471927491569123659182749121231545_tn.jpg" alt="">
+                                <p class="username"><a class= "target" href="G-Suschrist.html" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='88'>
+                <img src='resources/images/LamaMadora/4971928471927491569123659182749121231545_tn.jpg'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p title= 'Juan José Martínez Vidal' class='username'>Juan José Martínez Vidal</p>
+                  <p class='rol'>Dubber <b style='color:#fff;'>+88</b></p>
+
+                </div>
+                <div class='insignia' style='top: 11px;' title='Curso completado (Dubbing en español)'></div>
+                <div class='insignia' style='top: 23px;'title='Curso completado (Sub syncing)'></div>
+                <div class='insignia' style='top: 17px;' title='Rol asignado (Dubber)'> </div>
+
+              </div>">Juan José Martínez Vidal</a> <br><span class="time">31 de Octubre a las 12:31 pm</span></p>                    
+                            </div>
+                            <p class="title"></p>
+                            <section id="picture">
+                                <img class="bigPic" src="resources/images/LamaMadora/952739856262398527938651092974.jpg" alt="" class="big">
+                            </section>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                    </section>
+                    <section class="foto img">
+                            <img class="pic" src="resources/images/LamaMadora/352352395629352356236236_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="resources/images/LamaMadora/4971928471927491569123659182749121231545_tn.jpg" alt="">
+                                <p class="username"><a class= "target" href="G-Suschrist.html" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='88'>
+                <img src='resources/images/LamaMadora/4971928471927491569123659182749121231545_tn.jpg'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p title= 'Juan José Martínez Vidal' class='username'>Juan José Martínez Vidal</p>
+                  <p class='rol'>Dubber <b style='color:#fff;'>+88</b></p>
+
+                </div>
+                <div class='insignia' style='top: 11px;' title='Curso completado (Dubbing en español)'></div>
+                <div class='insignia' style='top: 23px;'title='Curso completado (Sub syncing)'></div>
+                <div class='insignia' style='top: 17px;' title='Rol asignado (Dubber)'> </div>
+
+              </div>">Juan José Martínez Vidal</a> <br><span class="time">17 de Octubre a las 2:51 pm</span></p>                    
+                            </div>
+                            <p class="title"></p>
+                            <section id="picture">
+                                <img class="bigPic" src="resources/images/LamaMadora/352352395629352356236236.jpg" alt="" class="big">
+                            </section>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                    </section>
+                    <section class="foto img">
+                            <img class="pic" src="resources/images/LamaMadora/5103957123059273502395701_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="resources/images/LamaMadora/4971928471927491569123659182749121231545_tn.jpg" alt="">
+                                <p class="username"><a class= "target" href="G-Suschrist.html" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='88'>
+                <img src='resources/images/LamaMadora/4971928471927491569123659182749121231545_tn.jpg'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p title= 'Juan José Martínez Vidal' class='username'>Juan José Martínez Vidal</p>
+                  <p class='rol'>Dubber <b style='color:#fff;'>+88</b></p>
+
+                </div>
+                <div class='insignia' style='top: 11px;' title='Curso completado (Dubbing en español)'></div>
+                <div class='insignia' style='top: 23px;'title='Curso completado (Sub syncing)'></div>
+                <div class='insignia' style='top: 17px;' title='Rol asignado (Dubber)'> </div>
+
+              </div>">Juan José Martínez Vidal</a> <br><span class="time">17 de Octubre a las 2:50 pm</span></p>                    
+                            </div>
+                            <p class="title"></p>
+                            <section id="picture">
+                                <img class="bigPic" src="resources/images/LamaMadora/5103957123059273502395701.jpg" alt="" class="big">
+                            </section>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                    </section>
+                    <section class="foto img">
+                            <img class="pic" src="resources/images/LamaMadora/4971928471927491569123659182749121231545_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="resources/images/LamaMadora/4971928471927491569123659182749121231545_tn.jpg" alt="">
+                                <p class="username"><a class= "target" href="G-Suschrist.html" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='88'>
+                <img src='resources/images/LamaMadora/4971928471927491569123659182749121231545_tn.jpg'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p title= 'Juan José Martínez Vidal' class='username'>Juan José Martínez Vidal</p>
+                  <p class='rol'>Dubber <b style='color:#fff;'>+88</b></p>
+
+                </div>
+                <div class='insignia' style='top: 11px;' title='Curso completado (Dubbing en español)'></div>
+                <div class='insignia' style='top: 23px;'title='Curso completado (Sub syncing)'></div>
+                <div class='insignia' style='top: 17px;' title='Rol asignado (Dubber)'> </div>
+
+              </div>">Juan José Martínez Vidal</a> <br><span class="time">12 de Septiembre a las 2:18 pm</span></p>                    
+                            </div>
+                            <p class="title"></p>
+                            <section id="picture">
+                                <img class="bigPic" src="resources/images/LamaMadora/4971928471927491569123659182749121231545.jpg" alt="" class="big">
+                            </section>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                    </section>
+                    <section class="foto img">
+                            <img class="pic" src="resources/images/LamaMadora/24069274039512803957012927041_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="resources/images/LamaMadora/4971928471927491569123659182749121231545_tn.jpg" alt="">
+                                <p class="username"><a class= "target" href="G-Suschrist.html" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='88'>
+                <img src='resources/images/LamaMadora/4971928471927491569123659182749121231545_tn.jpg'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p title= 'Juan José Martínez Vidal' class='username'>Juan José Martínez Vidal</p>
+                  <p class='rol'>Dubber <b style='color:#fff;'>+88</b></p>
+
+                </div>
+                <div class='insignia' style='top: 11px;' title='Curso completado (Dubbing en español)'></div>
+                <div class='insignia' style='top: 23px;'title='Curso completado (Sub syncing)'></div>
+                <div class='insignia' style='top: 17px;' title='Rol asignado (Dubber)'> </div>
+
+              </div>">Juan José Martínez Vidal</a> <br><span class="time">12 de Septiembre a las 2:17 pm</span></p>                    
+                            </div>
+                            <p class="title"></p>
+                            <section id="picture">
+                                <img class="bigPic" src="resources/images/LamaMadora/24069274039512803957012927041.jpg" alt="" class="big">
+                            </section>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                    </section>
+                    <section class="foto img">
+                            <img class="pic" src="resources/images/LamaMadora/12412541239057129058719285712_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="resources/images/LamaMadora/4971928471927491569123659182749121231545_tn.jpg" alt="">
+                                <p class="username"><a class= "target" href="G-Suschrist.html" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='88'>
+                <img src='resources/images/LamaMadora/4971928471927491569123659182749121231545_tn.jpg'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p title= 'Juan José Martínez Vidal' class='username'>Juan José Martínez Vidal</p>
+                  <p class='rol'>Dubber <b style='color:#fff;'>+88</b></p>
+
+                </div>
+                <div class='insignia' style='top: 11px;' title='Curso completado (Dubbing en español)'></div>
+                <div class='insignia' style='top: 23px;'title='Curso completado (Sub syncing)'></div>
+                <div class='insignia' style='top: 17px;' title='Rol asignado (Dubber)'> </div>
+
+              </div>">Juan José Martínez Vidal</a> <br><span class="time">15 de Julio a las 8:21 pm</span></p>                    
+                            </div>
+                            <p class="title"></p>
+                            <section id="picture">
+                                <img class="bigPic" src="resources/images/LamaMadora/12412541239057129058719285712.jpg" alt="" class="big">
+                            </section>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                    </section>
+                    </section>
+                </aside>
+                <aside id="updates">
+                    <aside id="feed">
+        
+       <section class="story project img">
+      <div class="info">
+        <img src="resources/images/LamaMadora/4971928471927491569123659182749121231545_tn.jpg" alt="">
+        <p id="target" class="username">
+          <a class="target" href="LamaMadora.html" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='88'>
+                <img src='resources/images/LamaMadora/4971928471927491569123659182749121231545_tn.jpg'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p title= 'Juan José Martínez Vidal' class='username'>Juan José Martínez Vidal</p>
+                  <p class='rol'>Dubber <b style='color:#fff;'>+88</b></p>
+
+                </div>
+                <div class='insignia' style='top: 11px;' title='Curso completado (Dubbing en español)'></div>
+                <div class='insignia' style='top: 23px;'title='Curso completado (Sub syncing)'></div>
+                <div class='insignia' style='top: 17px;' title='Rol asignado (Dubber)'> </div>
+
+              </div>">
+
+           Juan José Martínez Vidal 
+          </a>          
+          <br>
+          <span class="time">
+            10 de Octubre a las 5:41 pm
+          </span>
+        </p>
+        
+      </div>
+      <p class="title"></p>
+      <section id="links">
+        <p style= "color: #666; ">Algunas personas ofendieron mucho a las brujas, las mujeres, los animales y las plantas; entre muchas otras cosas. Si quieres saber qué hicimos con esas personas, visita este link:</p>
+        <div class="oculto">
+          <a class="revelar">Mostrar el link oculto.</a>
+          <a style= "margin-top: 20px; " class="link" target= "_blank" href= "https://www.evernote.com/shard/s413/sh/9b7b1bf3-4d3c-4eae-8d42-1ab07ac838f8/e01650aa47ca3b0acb211411ce02e18e"><span class="Title">¡Hola; hola!</span><span class="linktype">Nota De Evernote</span></a>
+        </div>
+      </section>
+      <div class="options button">
+        <ul>
+          <li class="bookmark">
+          </li>
+          <li class="star">
+          </li>
+          <a href="#">
+            <li class="read">
+            </li>
+          </a>
+        </ul>
+      </div>
+      
+    </section>
+    <section class="story img repost">
+            <div class="info">
+                    <img src="resources/images/LamaMadora/4971928471927491569123659182749121231545_tn.jpg" alt="">
+                    <div class="repostedFrom"></div>
+                    <img src="resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg" alt="">
+                    <p class="username"><a class="target" href="LamaMadora.html" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='88'>
+                <img src='resources/images/LamaMadora/4971928471927491569123659182749121231545_tn.jpg'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p title= 'Juan José Martínez Vidal' class='username'>Juan José Martínez Vidal</p>
+                  <p class='rol'>Dubber <b style='color:#fff;'>+88</b></p>
+
+                </div>
+                <div class='insignia' style='top: 11px;' title='Curso completado (Dubbing en español)'></div>
+                <div class='insignia' style='top: 23px;'title='Curso completado (Sub syncing)'></div>
+                <div class='insignia' style='top: 17px;' title='Rol asignado (Dubber)'> </div>
+
+              </div>">
+
+           Juan José Martínez Vidal 
+          </a> Reposteó de <a class= "target" href="A.K.A._Dizzy.html" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='resources/images/A.K.A._Dizzy/1821931783173167471671613_tn.jpg'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a> <br><span class="time">Noviembre de 2020</span></p>                    
+            </div>
+            <p class="title">dinosaurios(); </p>
+            <section id="links">
+                <a class="link" target= "_blank" href= "/A.K.A._Dizzy/blog/Dinosaurios.html"><span class="Title">Dinosaurios</span><span class="linktype">Blog</span></a>
+                <a class="link" target= "_blank" href= "/A.K.A._Dizzy/p/ZJhfn8drprZfy.html"><span class="Title">dinosaurios</span><span class="linktype">Proyecto</span></a>
+            </section>
+            <div class="options button">
+            <ul>
+                <li class="bookmark"></li>
+                <li class="star"></li>
+                <a href="#"><li class="read"></li></a>
+            </ul>
+        </div>
+
+        </section>
+            </section>
+        </section>
+    </aside>
+    <aside id="sidebar">
+     <div id="container">
+        <div id="resizeTop">
+       <div id="notifications">
+        <ul>
+            <div class="info button">
+                    <img src="resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">;)</b> <br><a href="/A.K.A._Dizzy.html">A.K.A._Dizzy</a></p>
+                   
+            </div>
+            <div class="info button">
+                    <img src="resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora amigo de  Walter White.</p>
+                  
+            </div>
+            <div class="info button">
+                    <img src="resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> hizo un commit a eBay.</p>
+            </div> 
+             <div class="info button">
+                    <img src="resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora Moderador.</p>
+                   
+            </div>
+            <div class="info button">
+                    <img src="resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora amigo de  Walter White.</p>
+                  
+            </div>
+            <div class="info button">
+                    <img src="resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> hizo un commit a eBay.</p>
+            </div> 
+             <div class="info button">
+                    <img src="resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora Moderador.</p>
+                   
+            </div>
+            <div class="info button">
+                    <img src="resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora amigo de  Walter White.</p>
+                  
+            </div>
+            <div class="info button">
+                    <img src="resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> hizo un commit a eBay.</p>
+            </div> 
+             <div class="info button">
+                    <img src="resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora Moderador.</p>
+                   
+            </div>
+            <div class="info button">
+                    <img src="resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora amigo de  Walter White.</p>
+                  
+            </div>
+            <div class="info button">
+                    <img src="resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> hizo un commit a eBay.</p>
+            </div> 
+             <div class="info button">
+                    <img src="resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora Moderador.</p>
+                   
+            </div>
+            <div class="info button">
+                    <img src="resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora amigo de  Walter White.</p>
+                  
+            </div>
+            <div class="info button">
+                    <img src="resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> hizo un commit a eBay.</p>
+            </div> 
+        </ul>
+        
+        </div>
+        </div>
+      <div id="resizeBottom">
+       <div id="chat">
+        <ul>
+        </ul>
+        
+        </div>
+        </div>
+        </div>
+        <section id="search">
+            <i id="searchIcon"></i>
+           <input type="text" placeholder="Buscar">
+        </section>
+    </aside>
+    <section id="Store" class="button">
+            
+        <aside id="actualStore" class="button">
+            <aside id="storeList" class="button">
+                <ul>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                </ul>
+            </aside>
+            <aside id="storeSection">
+                
+            </aside>
+        </aside>
+       
+    </section>
+	    
+  <section id="chats">
+    <div class="chats">
+
+
+    </div>
+  </section>
+	    <script>
+          $("#notifications").mCustomScrollbar({theme: 
+        "minimal-dark", 
+        autoExpandScrollbar: true,
+        scrollInertia: 100,
+         mouseWheel:{ scrollAmount: 40 }
+
+    });
+      $("#chat").mCustomScrollbar({theme: 
+        "minimal-dark", 
+        autoExpandScrollbar: true,
+        scrollInertia: 100,
+            mouseWheel:{ scrollAmount: 40 }
+
+             });
+    </script>
+    <script>
+        $( "#resizeBottom" ).resizable({ handles: "n",maxHeight: ($(window).height()-$("#sidebar #search").outerHeight() - 51),minHeight: 50 }).bind("resize", function (e, ui) {
+            $(this).css("top", "auto");
+            
+        });
+
+    $(".line").tooltip({      
+        track: true,
+        position: {
+        my: "center bottom-6",
+        at: "center top"
+      }
+});
+
+    </script>
+    <script>
+            $(".story .info").height($(this).find(".username").outerHeight())
+</script>
+<script>
+  audiojs.events.ready(function() {
+    var as = audiojs.createAll();
+  });
+</script>
+</body>
+</html>

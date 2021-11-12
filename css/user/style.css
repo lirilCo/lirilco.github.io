@@ -361,10 +361,31 @@ normal #fff*/
     height: 40px !important;
     width: 40px!important;
     cursor: pointer;
+    position: absolute; 
 }
 .story .info  p{
     width: auto !important;
-    font-size: 15px
+    font-size: 15px; 
+    padding-left: 50px; 
+}
+.story.repost .info  p{
+    width: auto !important;
+    font-size: 15px; 
+    padding-left: 114px; 
+}
+.story.repost .info img:first-child{
+    height: 40px !important;
+    width: 40px!important;
+    cursor: pointer;
+    position: absolute; 
+    left: 0; 
+}
+.story.repost .info  img{
+    height: 40px !important;
+    width: 40px!important;
+    cursor: pointer;
+    position: absolute; 
+    left: 64px; 
 }
 .info  .time {
     color: #aaa;
@@ -849,7 +870,7 @@ right: 0;
 {
     margin: 0;
         color: #666;
-
+    padding-left: 50px; 
     position: static;
    font-size: 13px ;
     display: inline-block;
@@ -1484,3 +1505,17 @@ display: inline-block;
 { 
     z-index: 1 !important;
 } 
+.repostedFrom {
+    position: absolute;
+    left: 44px;
+    height: 40px;
+    vertical-align: middle;
+    display: inline;
+    color: #666;
+    font-size: ;
+    top: 10px;
+}
+.repostedFrom::after {
+    font-family: "icomoon";
+    content: "\e900";
+}
