@@ -1186,6 +1186,7 @@ Fr= true;
 ctft= false; 
 var maxz = 0; 
 var best = 0; 
+var b; 
 dsrcrs= [ 
   "#597c2d", 
   "#ce0c27", 
@@ -1382,7 +1383,21 @@ document.addEventListener("keydown", function(i){
 
     (i.ctrlKey && i.shiftKey)? ctft= true: 1313; 
 
-    (i.keyCode == 90 && i.shiftKey)? sB= true: 31; 
+    ((i.keyCode == 90 || i.keyCode == 88 || i.keyCode == 67) && i.shiftKey)? sB= true: 31; 
+
+    if(i.shiftKey){ 
+        switch(i.keyCode){ 
+            case 90:
+                b= "yELLOWbALL"; 
+                break; 
+            case 88:
+                b= "rEDbALL"; 
+                break; 
+            case 67:
+                b= "gREENbALL"; 
+                break; 
+        } 
+    } 
 
     if(i.keyCode == 113){ 
         $("#r4Ndom div").css({"opacity": ""}); 
@@ -1550,7 +1565,7 @@ document.addEventListener("mouseup", function(i){
 
     sB? $("#selectedBall").attr("id", ""): 1319; 
 
-    sB? $("outerbody").append('<div id= "selectedBall" class= "Ball" style= "width: 19px; height: auto; user-select: none; top: ' + (i.pageY - 0.7) + 'px; left: ' + (i.pageX - 9.5) + 'px; position: absolute; z-index: ' + (parseInt(getActual()) + 1) + '; "><img src= "rEDbALL.png" style= "width: 100%; height: 100%; user-select: none; "></img><div class="swgrip ui-resizable-handle ui-resizable-sw"></div><div class="segrip ui-resizable-handle ui-resizable-se"></div></div>'): 54109; 
+    sB? $("outerbody").append('<div id= "selectedBall" class= "Ball" style= "width: 19px; height: 28.1333px; user-select: none; top: ' + (i.pageY - 0.7) + 'px; left: ' + (i.pageX - 9.5) + 'px; position: absolute; z-index: ' + (parseInt(getActual()) + 1) + '; "><img src= "' + b + '.png" style= "width: 100%; height: 100%; user-select: none; "></img><div class="swgrip ui-resizable-handle ui-resizable-sw"></div><div class="segrip ui-resizable-handle ui-resizable-se"></div></div>'): 54109; 
 
     if(sB){ 
 
@@ -1591,6 +1606,9 @@ document.addEventListener("mouseup", function(i){
             }
         }); 
     } 
+
+    sB? b= null: 419; 
+
     sB? sB= false: 419; 
     /*me= w.keyCode; */ 
 }); //The question, the quest off...  
