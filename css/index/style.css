@@ -660,12 +660,18 @@ right: 0;
 {
     position: static;
     display: inline-block;
+    position: absolute; 
 }
+#notifications .info img{ 
+    top: 0; 
+    height: 100% !important; 
+    object-fit: contain; 
+} 
 .info p
 {
     margin: 0;
-        color: #666;
-
+    color: #666;
+    padding-left: 50px; 
     position: static;
    font-size: 13px ;
     display: inline-block;
