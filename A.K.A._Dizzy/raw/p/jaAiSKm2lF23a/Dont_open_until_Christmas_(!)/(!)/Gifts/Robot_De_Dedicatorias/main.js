@@ -1495,11 +1495,9 @@ function click(x, y)
     });
 
     var iy = document.elementFromPoint(x, y);
-    console.log(iy); //print element to console
     iy.dispatchEvent(ev);
 }
 $(document).mousemove(function(event){
-    console.log(event);
     if(illIng){
       // We need to set this to our own clickEvent, otherwise
       // it won't position correctly.
@@ -1527,41 +1525,7 @@ seekAndDestroy= function(aa, bb, cc, dd, ee, ill){
         distance    = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) ); 
         
         if(distance <= circlePos.radius && baull.length > 0){ 
-            $("outerbody").append(baull)
-            $(".Ball").not(".ui-resizable").each(function(){
-            $(this).resizable({
-             handles: {
-                    'sw': this.querySelector('.swgrip'),
-                    'se': this.querySelector('.segrip') 
-                },
-             aspectRatio: true, 
-            start: function(){ 
-                Fr= false; 
-             }, 
-             resize: function(){ 
-                Fr= false; 
-             }, 
-             stop: function(){ 
-                Fr= true; 
-             } 
-            }); 
-
-        })
-
-        $(".Ball").not(".ui-draggable").each(function(){
-            $(this).draggable({
-            stack: ".Ball", 
-            distance: 0, 
-            stop: function(){ 
-                Fr= true; 
-
-                $(this)[0].lFt= $(this)[0].style.left.slice(0, -2); 
-
-                $(this)[0].tOp= $(this)[0].style.top.slice(0, -2);
-            }
-        }); 
-
-        })
+            $(baull).each(function(){$(this).css("display", "block"); $(this).trigger("mouseup")}); 
 
             $("#selectedBall").attr("id", ""); 
             el.attr("id", "selectedBall"); 
@@ -1571,15 +1535,16 @@ seekAndDestroy= function(aa, bb, cc, dd, ee, ill){
     widget = myDraggable.data('ui-draggable');
     ill.target= el[0]; 
       if(!illIng){
+        console.log(ill.target)
         widget._mouseStart(ill);
         illIng = ill;
       }
    
             dc= ill; 
         }else if(distance > circlePos.radius){ 
-            baull[baull.length]= el.attr("id", "").attr("class", "Ball")[0].outerHTML; 
+            el.css("display", "none")
+            baull[baull.length]= el; 
 
-            el.remove(); 
 
             aaa= [dd, ee]
 
@@ -1648,6 +1613,8 @@ document.addEventListener("mouseup", function(i){
     mousedown= false; 
                       
     resizing= false; 
+
+    $(".Ball").draggable("option", "disabled", false); 
 
     illIng= false; 
 
