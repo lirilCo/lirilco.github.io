@@ -1099,6 +1099,7 @@ Alphabets= {
 	}
 }; 
    
+   var aaa; 
 getDedications= function(language){ 
 	s= 0; 
 	Name= []; 
@@ -1346,7 +1347,7 @@ glitch= function(irt){
         }
     }, 41)
 } 
-
+  
 function getActual (){
     $('outerbody .Ball').each(function(){
         var z = parseInt($(this).css('z-index'), 10);
@@ -1361,7 +1362,9 @@ function getActual (){
     maxz = 0;
         return best.css("z-index")
     }
-}
+} 
+  
+var distance; 
 //} 
     
 //onClipEvent(enterframe){ 
@@ -1478,7 +1481,127 @@ document.addEventListener("keydown", function(i){
     } 
 }); 
     
-document.addEventListener("mousedown", function(i){ 
+function click(x, y)
+{
+    var ev = new MouseEvent('mousedown', {
+        'view': window,
+        'bubbles': true,
+        'cancelable': true,
+        'clientX': x,
+        'clientY': y,
+        'pageX': x + $("html").scrollLeft(),
+        'pageY': y + $("html").scrollTop()
+    });
+
+    var iy = document.elementFromPoint(x, y);
+    console.log(iy); //print element to console
+    iy.dispatchEvent(ev);
+}
+$(document).mousemove(function(event){
+    console.log(event);
+    if(illIng){
+      // We need to set this to our own clickEvent, otherwise
+      // it won't position correctly.
+      widget._mouseDownEvent = illIng;
+      event.target= illIng.target; 
+      widget._mouseMove(event);
+    }
+  });
+var widget; 
+var illIng = null; 
+seekAndDestroy= function(aa, bb, cc, dd, ee, ill){ 
+    if($(aa).parent().is(".Ball")){ 
+        el= $(aa).parent(); 
+
+        circleWidth = el.outerWidth( true ),
+        circleHeight  = el.outerHeight( true ),
+        circleLeft    = el.offset().left,
+        circleTop     = el.offset().top,
+        circlePos     = {
+            x     : circleLeft + circleWidth / 2,
+            y     : circleTop + circleHeight / 2 + circleHeight * 0.09006823914,
+            radius: circleWidth / 2
+        }; 
+        
+        distance    = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) ); 
+        
+        if(distance <= circlePos.radius && baull.length > 0){ 
+            $("outerbody").append(baull)
+            $(".Ball").not(".ui-resizable").each(function(){
+            $(this).resizable({
+             handles: {
+                    'sw': this.querySelector('.swgrip'),
+                    'se': this.querySelector('.segrip') 
+                },
+             aspectRatio: true, 
+            start: function(){ 
+                Fr= false; 
+             }, 
+             resize: function(){ 
+                Fr= false; 
+             }, 
+             stop: function(){ 
+                Fr= true; 
+             } 
+            }); 
+
+        })
+
+        $(".Ball").not(".ui-draggable").each(function(){
+            $(this).draggable({
+            stack: ".Ball", 
+            distance: 0, 
+            stop: function(){ 
+                Fr= true; 
+
+                $(this)[0].lFt= $(this)[0].style.left.slice(0, -2); 
+
+                $(this)[0].tOp= $(this)[0].style.top.slice(0, -2);
+            }
+        }); 
+
+        })
+
+            $("#selectedBall").attr("id", ""); 
+            el.attr("id", "selectedBall"); 
+            var myDraggable = el;
+  
+  // Yeah... we're going to hack the widget
+    widget = myDraggable.data('ui-draggable');
+    ill.target= el[0]; 
+      if(!illIng){
+        widget._mouseStart(ill);
+        illIng = ill;
+      }
+   
+            dc= ill; 
+        }else if(distance > circlePos.radius){ 
+            baull[baull.length]= el.attr("id", "").attr("class", "").addClass("Ball")[0].outerHTML; 
+
+            el.remove(); 
+
+            aaa= [dd, ee]
+
+
+            $(document.elementFromPoint(dd, ee)).parent().is(".Ball")? Az= document.elementFromPoint(dd, ee): Az= null; 
+
+            Az != null? seekAndDestroy(Az, dd + $("html").scrollLeft(), ee + $("html").scrollTop(), dd, ee, ill): 1251; 
+
+        }       
+    }
+    
+} 
+
+$(document).on("mousedown", function(i){ 
+
+
+
+    baull= []; 
+
+
+
+    seekAndDestroy(i.target, i.pageX, i.pageY, i.clientX, i.clientY, i)
+    
     i.keyCode == 118? i.preventDefault(): 4102; 
 
     ($(i.target).parent().is(".Star") && ctft && !$(i.target).parent().hasClass("glitching"))? glitch(i.target.parentElement): 2412; 
@@ -1523,6 +1646,8 @@ $('.Ball').click(function(event){
 document.addEventListener("mouseup", function(i){ 
     mousedown= false; 
                       
+    illIng= false; 
+
     sS? $("#selectedStar").attr("id", ""): 1319; 
 
     sS? $("outerbody").append('<div id= "selectedStar" class= "Star" style= "width: 50px; height: 50px; user-select: none; top: ' + (i.pageY - 25) + 'px; left: ' + (i.pageX -25) + 'px; position: absolute; "><img src= "Star.png" style= "width: 100%; height: 100%; user-select: none; "></img><div class="nwgrip ui-resizable-handle ui-resizable-nw"></div><div class="negrip ui-resizable-handle ui-resizable-ne"></div><div class="swgrip ui-resizable-handle ui-resizable-sw"></div><div class="segrip ui-resizable-handle ui-resizable-se"></div></div>'): 54109; 
@@ -1565,7 +1690,7 @@ document.addEventListener("mouseup", function(i){
 
     sB? $("#selectedBall").attr("id", ""): 1319; 
 
-    sB? $("outerbody").append('<div id= "selectedBall" class= "Ball" style= "width: 19px; height: 28.1333px; user-select: none; top: ' + (i.pageY - 0.7) + 'px; left: ' + (i.pageX - 9.5) + 'px; position: absolute; z-index: ' + (parseInt(getActual()) + 1) + '; "><img src= "' + b + '.png" style= "width: 100%; height: 100%; user-select: none; "></img><div class="swgrip ui-resizable-handle ui-resizable-sw"></div><div class="segrip ui-resizable-handle ui-resizable-se"></div></div>'): 54109; 
+    sB? $("outerbody").append('<div id= "selectedBall" class= "Ball" style= "width: 19px; height: 23.4608695652px; user-select: none; top: ' + (i.pageY - 0.7) + 'px; left: ' + (i.pageX - 9.5) + 'px; position: absolute; z-index: ' + (parseInt(getActual()) + 1) + '; "><img src= "' + b + '.png" style= "width: 100%; height: 100%; user-select: none; "></img><div class="swgrip ui-resizable-handle ui-resizable-sw"></div><div class="segrip ui-resizable-handle ui-resizable-se"></div></div>'): 54109; 
 
     if(sB){ 
 
