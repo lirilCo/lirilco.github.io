@@ -1189,6 +1189,8 @@ var maxz = 0;
 var best = 0; 
 var b; 
 var resizing= false; 
+var dc= false; 
+var eventx; 
 dsrcrs= [ 
   "#597c2d", 
   "#ce0c27", 
@@ -1498,12 +1500,18 @@ function click(x, y)
     iy.dispatchEvent(ev);
 }
 $(document).mousemove(function(event){
+    eventx= event; 
+
     if(illIng){
-      // We need to set this to our own clickEvent, otherwise
-      // it won't position correctly.
-      widget._mouseDownEvent = illIng;
-      event.target= illIng.target; 
-      widget._mouseMove(event);
+      if(dc == 1){
+        widget._mouseStart(illIng); 
+        dc++; 
+      }else{
+        widget._mouseDownEvent = illIng;
+        event.target= illIng.target; 
+        widget._mouseMove(event);
+      }
+      
     }
   });
 var widget; 
@@ -1531,16 +1539,19 @@ seekAndDestroy= function(aa, bb, cc, dd, ee, ill){
             el.attr("id", "selectedBall"); 
             var myDraggable = el;
   
-  // Yeah... we're going to hack the widget
+  // Yeah... we're going to hack the widget /*sTACKoVERFLOW tHE MOST EeeeVERS! <3*/
     widget = myDraggable.data('ui-draggable');
     ill.target= el[0]; 
       if(!illIng){
-        console.log(ill.target)
-        widget._mouseStart(ill);
-        illIng = ill;
+        $(".Ball").draggable("option", "stack", ".Ball"); 
+
+        illIng = ill; 
+        dc= 1; 
+        widget._mouseStart(event);
+        widget._mouseDrag(event);
+        widget._mouseStop(event);   
       }
    
-            dc= ill; 
         }else if(distance > circlePos.radius){ 
             el.css("display", "none")
             baull[baull.length]= el; 
@@ -1548,8 +1559,9 @@ seekAndDestroy= function(aa, bb, cc, dd, ee, ill){
 
             aaa= [dd, ee]
 
+            Az= null; 
 
-            $(document.elementFromPoint(dd, ee)).parent().is(".Ball")? Az= document.elementFromPoint(dd, ee): Az= null; 
+            $(document.elementFromPoint(dd, ee)).parent().is(".Ball")? Az= document.elementFromPoint(dd, ee): $(baull).each(function(){$(this).css("display", "block")}); ; 
 
             Az != null? seekAndDestroy(Az, dd + $("html").scrollLeft(), ee + $("html").scrollTop(), dd, ee, ill): 1251; 
 
@@ -1558,7 +1570,9 @@ seekAndDestroy= function(aa, bb, cc, dd, ee, ill){
     
 } 
 
-$(document).on("mousedown", function(i){ 
+$(document).on("mousedown", function(i, tr){ 
+
+    typeof tr == "undefined"? tr= false: 241; 
 
     $(i.target).is(".ui-resizable-handle")? resizing= true: 214; 
 
@@ -1566,7 +1580,7 @@ $(document).on("mousedown", function(i){
 
 
 
-    !resizing? seekAndDestroy(i.target, i.pageX, i.pageY, i.clientX, i.clientY, i): 141; 
+    (!tr && !resizing)? seekAndDestroy(i.target, i.pageX, i.pageY, i.clientX, i.clientY, i): 141; 
     
     i.keyCode == 118? i.preventDefault(): 4102; 
 
@@ -1594,11 +1608,29 @@ $(document).on("mousedown", function(i){
 
     $("#selectedStar").attr("id", ""); 
 
-    $("#selectedBall").attr("id", "")
+    !resizing? $("#selectedBall").attr("id", ""): 12; 
+
+    el= $(i.target.parentElement); 
+
+        circleWidth = el.outerWidth( true ),
+        circleHeight  = el.outerHeight( true ),
+        circleLeft    = el.offset().left,
+        circleTop     = el.offset().top,
+        circlePos     = {
+            x     : circleLeft + circleWidth / 2,
+            y     : circleTop + circleHeight / 2 + circleHeight * 0.09006823914,
+            radius: circleWidth / 2
+        }; 
+        
+        distance    = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) ); 
+        
+        if(distance <= circlePos.radius)
+        {
+            $(i.target).parent().is(".Ball")? $(i.target.parentElement).attr("id", "selectedBall"): 1319; 
+        }
 
     $(i.target).parent().is(".Star")? $(i.target.parentElement).attr("id", "selectedStar"): 1319; 
 
-    $(i.target).parent().is(".Ball")? $(i.target.parentElement).attr("id", "selectedBall"): 1319; 
 
     //i.target == lastChild? lastChild.innerHTML= lastChild.innerHTML + "<div style= 'width: 4.78px; height: 4.78px; background-color: " + "#339dc1" + "; position: absolute; left: " + i.layerX + "px; top: " + i.layerY +  "px; '></div>": 1; 
                      
@@ -1614,9 +1646,10 @@ document.addEventListener("mouseup", function(i){
                       
     resizing= false; 
 
-    $(".Ball").draggable("option", "disabled", false); 
-
     illIng= false; 
+    
+    dc= false; 
+
 
     sS? $("#selectedStar").attr("id", ""): 1319; 
 
@@ -1687,11 +1720,58 @@ document.addEventListener("mouseup", function(i){
             }); 
 
         })
-
+        var distancex; 
             
         $(".Ball").last().draggable({
             stack: ".Ball", 
             distance: 0, 
+            start: function()
+            {
+
+                el= $(this); 
+
+                circleWidth = el.outerWidth( true ),
+                circleHeight  = el.outerHeight( true ),
+                circleLeft    = el.offset().left,
+                circleTop     = el.offset().top,
+                circlePos     = {
+                    x     : circleLeft + circleWidth / 2,
+                    y     : circleTop + circleHeight / 2 + circleHeight * 0.09006823914,
+                    radius: circleWidth / 2
+                }; 
+        
+                distancex    = Math.sqrt( Math.pow( eventx.pageX - circlePos.x, 2 ) + Math.pow( eventx.pageY - circlePos.y, 2 ) ); 
+        
+                if(distancex <= circlePos.radius){ 
+                    $(this).trigger("mousedown.draggable");
+                    $(this).trigger("dragstop");   
+                }else{ 
+                }
+
+            P= 1; },
+            drag: function(){ 
+                if(P == 1){
+                el= $(this); 
+
+                circleWidth = el.outerWidth( true ),
+                circleHeight  = el.outerHeight( true ),
+                circleLeft    = el.offset().left,
+                circleTop     = el.offset().top,
+                circlePos     = {
+                    x     : circleLeft + circleWidth / 2,
+                    y     : circleTop + circleHeight / 2 + circleHeight * 0.09006823914,
+                    radius: circleWidth / 2
+                }; 
+        
+                distancex    = Math.sqrt( Math.pow( eventx.pageX - circlePos.x, 2 ) + Math.pow( eventx.pageY - circlePos.y, 2 ) ); 
+        
+                if(distancex > circlePos.radius){ 
+                    console.log("out")
+                    $(this).trigger("mouseup"); 
+                }
+                P++; 
+                }
+            }, 
             stop: function(){ 
                 Fr= true; 
 
@@ -1708,7 +1788,30 @@ document.addEventListener("mouseup", function(i){
     /*me= w.keyCode; */ 
 }); //The question, the quest off...  
     
-document.addEventListener("mousemove", function(i){                                                 
+document.addEventListener("mousemove", function(i){                   
+
+    if($(i.target).parent().is(".Ball"))
+    {
+        el= $(i.target).parent(); 
+
+                circleWidth = el.outerWidth( true ),
+                circleHeight  = el.outerHeight( true ),
+                circleLeft    = el.offset().left,
+                circleTop     = el.offset().top,
+                circlePos     = {
+                    x     : circleLeft + circleWidth / 2,
+                    y     : circleTop + circleHeight / 2 + circleHeight * 0.09006823914,
+                    radius: circleWidth / 2
+                }; 
+        
+                distancex    = Math.sqrt( Math.pow( i.pageX - circlePos.x, 2 ) + Math.pow( i.pageY - circlePos.y, 2 ) ); 
+        
+                if(distancex <= circlePos.radius){ 
+                    $(".Ball").draggable("option", "stack", ".Ball"); 
+                }else{ 
+                    $(".Ball").draggable("option", "stack", false); 
+                }
+    }                              
     L= parseInt(Math.random() * dsrcrs.length); 
                                                 
     MNSWMTG= parseInt(Math.random() * 2) == 0? "-3": "-1"; 
