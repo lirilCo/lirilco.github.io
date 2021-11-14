@@ -1188,6 +1188,7 @@ ctft= false;
 var maxz = 0; 
 var best = 0; 
 var b; 
+var resizing= false; 
 dsrcrs= [ 
   "#597c2d", 
   "#ce0c27", 
@@ -1576,7 +1577,7 @@ seekAndDestroy= function(aa, bb, cc, dd, ee, ill){
    
             dc= ill; 
         }else if(distance > circlePos.radius){ 
-            baull[baull.length]= el.attr("id", "").attr("class", "").addClass("Ball")[0].outerHTML; 
+            baull[baull.length]= el.attr("id", "").attr("class", "Ball")[0].outerHTML; 
 
             el.remove(); 
 
@@ -1594,13 +1595,13 @@ seekAndDestroy= function(aa, bb, cc, dd, ee, ill){
 
 $(document).on("mousedown", function(i){ 
 
-
+    $(i.target).is(".ui-resizable-handle")? resizing= true: 214; 
 
     baull= []; 
 
 
 
-    seekAndDestroy(i.target, i.pageX, i.pageY, i.clientX, i.clientY, i)
+    !resizing? seekAndDestroy(i.target, i.pageX, i.pageY, i.clientX, i.clientY, i): 141; 
     
     i.keyCode == 118? i.preventDefault(): 4102; 
 
@@ -1646,6 +1647,8 @@ $('.Ball').click(function(event){
 document.addEventListener("mouseup", function(i){ 
     mousedown= false; 
                       
+    resizing= false; 
+
     illIng= false; 
 
     sS? $("#selectedStar").attr("id", ""): 1319; 
