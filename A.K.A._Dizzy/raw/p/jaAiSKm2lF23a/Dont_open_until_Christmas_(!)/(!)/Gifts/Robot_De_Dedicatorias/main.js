@@ -1099,7 +1099,6 @@ Alphabets= {
 	}
 }; 
    
-   var aaa; 
 getDedications= function(language){ 
 	s= 0; 
 	Name= []; 
@@ -1191,6 +1190,9 @@ var b;
 var resizing= false; 
 var dc= false; 
 var eventx; 
+var dW= false; 
+var oW_F= []; 
+var dnW= [];
 dsrcrs= [ 
   "#597c2d", 
   "#ce0c27", 
@@ -1387,6 +1389,10 @@ document.addEventListener("keydown", function(i){
 
     (i.keyCode == 46)? $("#selectedBall").remove(): 151; 
 
+    (i.keyCode == 87 && mousedown)? dW= true: 2; 
+
+    (i.keyCode == 87 && mousedown)? oW_F= [mousedown[0], mousedown[1]]: 2; 
+
     (i.ctrlKey && i.shiftKey)? ctft= true: 1313; 
 
     ((i.keyCode == 90 || i.keyCode == 88 || i.keyCode == 67) && i.shiftKey)? sB= true: 31; 
@@ -1556,9 +1562,6 @@ seekAndDestroy= function(aa, bb, cc, dd, ee, ill){
             el.css("display", "none")
             baull[baull.length]= el; 
 
-
-            aaa= [dd, ee]
-
             Az= null; 
 
             $(document.elementFromPoint(dd, ee)).parent().is(".Ball")? Az= document.elementFromPoint(dd, ee): $(baull).each(function(){$(this).css("display", "block")}); ; 
@@ -1600,7 +1603,7 @@ $(document).on("mousedown", function(i, tr){
         } 
      } 
 
-    mousedown= true; 
+    mousedown= [i.pageX, i.pageY]; 
                      
     /*console.log($(i.target).is(".Star")); 
                               
@@ -1650,6 +1653,7 @@ document.addEventListener("mouseup", function(i){
     
     dc= false; 
 
+    dW= false; 
 
     sS? $("#selectedStar").attr("id", ""): 1319; 
 
@@ -1820,11 +1824,33 @@ document.addEventListener("mousemove", function(i){
                                                               
     dsrcrs[L] == "#597c2d"? MNSWMTG = false: 214;                                   
 
-    (($(".ui-draggable-resizing").length === 0 && $(".ui-draggable-dragging").length === 0) && ((document.querySelectorAll(".Star div").length > 0 && $$(".Star div").indexOf(i.target) == -1) || document.querySelectorAll(".Star div").length === 0) && ((document.querySelectorAll(".Star img").length > 0 && $$(".Star img").indexOf(i.target) == -1) || document.querySelectorAll(".Star img").length === 0) && ((document.querySelectorAll(".Ball div").length > 0 && $$(".Ball div").indexOf(i.target) == -1) || document.querySelectorAll(".Ball div").length === 0) && ((document.querySelectorAll(".Ball img").length > 0 && $$(".Ball img").indexOf(i.target) == -1) || document.querySelectorAll(".Ball img").length === 0) && Fr && mousedown && !dT && !sS)? $("#r4Ndom").append("<div class= '" + dsrcrs[L] + "' style= 'width: 6.8px; height: 6.8px; background-color: " + dsrcrs[L] + PpPE + "; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>" + (MNSWMTG >= -1? "<div class= '#597c2d' style= 'width: 6.8px; height: 6.8px; background-color: #597c2d; z-index: -2; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>": "")): 13781;
+    (($(".ui-draggable-resizing").length === 0 && $(".ui-draggable-dragging").length === 0) && ((document.querySelectorAll(".Star div").length > 0 && $$(".Star div").indexOf(i.target) == -1) || document.querySelectorAll(".Star div").length === 0) && ((document.querySelectorAll(".Star img").length > 0 && $$(".Star img").indexOf(i.target) == -1) || document.querySelectorAll(".Star img").length === 0) && ((document.querySelectorAll(".Ball div").length > 0 && $$(".Ball div").indexOf(i.target) == -1) || document.querySelectorAll(".Ball div").length === 0) && ((document.querySelectorAll(".Ball img").length > 0 && $$(".Ball img").indexOf(i.target) == -1) || document.querySelectorAll(".Ball img").length === 0) && Fr && mousedown && !dW && !dT && !sS)? $("#r4Ndom").append("<div class= '" + dsrcrs[L] + "' style= 'width: 6.8px; height: 6.8px; background-color: " + dsrcrs[L] + PpPE + "; position: absolute; left: " + (i.pageX - 3.4)+ "px; top: " + (i.pageY - 3.4)+  "px; '></div>" + (MNSWMTG >= -1? "<div class= '#597c2d' style= 'width: 6.8px; height: 6.8px; background-color: #597c2d; z-index: -2; position: absolute; left: " + (i.pageX - 3.4) + "px; top: " + (i.pageY - 3.4) +  "px; '></div>": "")): 13781;
                                         
     /*document.activeElement.blur(); */ 
                                         
-    (($(".ui-draggable-resizing").length === 0 && $(".ui-draggable-dragging").length === 0) && ((document.querySelectorAll(".Star div").length > 0 && $$(".Star div").indexOf(i.target) == -1) || document.querySelectorAll(".Star div").length === 0) && ((document.querySelectorAll(".Star img").length > 0 && $$(".Star img").indexOf(i.target) == -1) || document.querySelectorAll(".Star img").length === 0) && ((document.querySelectorAll(".Ball div").length > 0 && $$(".Ball div").indexOf(i.target) == -1) || document.querySelectorAll(".Ball div").length === 0) && ((document.querySelectorAll(".Ball img").length > 0 && $$(".Ball img").indexOf(i.target) == -1) || document.querySelectorAll(".Ball img").length === 0) && Fr && mousedown && dT && !sS)? $("#r4Ndom").append("<div class= '#d87979' style= 'z-index: -3; width: 6.8px; height: 6.8px; background-color: #d87979; position: absolute; left: " + i.pageX + "px; top: " + i.pageY +  "px; '></div>"): 418; 
+    (($(".ui-draggable-resizing").length === 0 && $(".ui-draggable-dragging").length === 0) && ((document.querySelectorAll(".Star div").length > 0 && $$(".Star div").indexOf(i.target) == -1) || document.querySelectorAll(".Star div").length === 0) && ((document.querySelectorAll(".Star img").length > 0 && $$(".Star img").indexOf(i.target) == -1) || document.querySelectorAll(".Star img").length === 0) && ((document.querySelectorAll(".Ball div").length > 0 && $$(".Ball div").indexOf(i.target) == -1) || document.querySelectorAll(".Ball div").length === 0) && ((document.querySelectorAll(".Ball img").length > 0 && $$(".Ball img").indexOf(i.target) == -1) || document.querySelectorAll(".Ball img").length === 0) && Fr && mousedown && !dW && dT && !sS)? $("#r4Ndom").append("<div class= '#d87979' style= 'z-index: -3; width: 6.8px; height: 6.8px; background-color: #d87979; position: absolute; left: " + (i.pageX - 3.4) + "px; top: " + (i.pageY - 3.4) +  "px; '></div>"): 418; 
+
+    if(dW){
+    /*circlePos     = {
+        x     : mousedown[0],
+        y     : mousedown[1],
+        radius: 30
+    }; 
+        
+    distance    = Math.sqrt( Math.pow( i.pageX - circlePos.x, 2 ) + Math.pow( i.pageY - circlePos.y, 2 ) ); 
+        wwwwwwww
+    if(distance > circlePos.radius){
+        console.log("XInicio: ", mousedown[0])
+        console.log("YInicio: ", mousedown[1])
+        console.log("XFinal: ", i.pageX)
+        console.log("YFinal: ", i.pageY)
+        console.log("rotation: ", (Math.atan2((mousedown[1] - i.pageY), (mousedown[0] - i.pageX)) * (180 / Math.PI)))
+        rt= (Math.atan2((mousedown[1] - i.pageY), (mousedown[0] - i.pageX)) * (180 / Math.PI)); */
+        $("outerbody").append("<div class= 'w' style= 'width: 7.5px; height: 7.5px; background-color: #44de48; left: " + (i.pageX - 3.75) + "px; top: " + (i.pageY - 3.75) + "px; position: absolute; '></div>")
+        /*mousedown[0]= i.pageX; 
+        mousedown[1]= i.pageY;   
+    }*/
+    }
 }); 
     
 document.addEventListener("keyup", function(i){                                                
@@ -1833,6 +1859,8 @@ document.addEventListener("keyup", function(i){
     (i.keyCode == 83 || i.keyCode == 16)? sS= false: 113; 
 
     (i.keyCode == 90 || i.keyCode == 16)? sB= false: 113; 
+
+    (i.keyCode == 87)? dW= false: 113; 
 
     (i.ctrlKey || i.shiftKey)? ctft= false: 1313; 
 }); 
