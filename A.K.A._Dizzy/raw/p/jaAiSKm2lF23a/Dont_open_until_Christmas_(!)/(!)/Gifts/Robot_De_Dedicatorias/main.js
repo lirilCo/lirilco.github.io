@@ -1697,7 +1697,7 @@ document.addEventListener("mouseup", function(i){
 
     sB? $("#selectedBall").attr("id", ""): 1319; 
 
-    sB? $("outerbody").append('<div id= "selectedBall" class= "Ball" style= "width: 19px; height: 23.4608695652px; user-select: none; top: ' + (i.pageY - 0.7) + 'px; left: ' + (i.pageX - 9.5) + 'px; position: absolute; z-index: ' + (parseInt(getActual()) + 1) + '; "><img src= "' + b + '.png" style= "width: 100%; height: 100%; user-select: none; "></img><div class="swgrip ui-resizable-handle ui-resizable-sw"></div><div class="segrip ui-resizable-handle ui-resizable-se"></div></div>'): 54109; 
+    sB? $("outerbody").append('<div id= "selectedBall" class= "Ball" style= "width: 19px; height: 23.4608695652px; user-select: none; top: ' + (i.pageY - 0.7) + 'px; left: ' + (i.pageX - 9.5) + 'px; position: absolute; z-index: ' + (!!(parseInt(getActual()) + 1)? (parseInt(getActual()) + 1): 1) + '; "><img src= "' + b + '.png" style= "width: 100%; height: 100%; user-select: none; "></img><div class="swgrip ui-resizable-handle ui-resizable-sw"></div><div class="segrip ui-resizable-handle ui-resizable-se"></div></div>'): 54109; 
 
     if(sB){ 
 
@@ -1846,7 +1846,7 @@ document.addEventListener("mousemove", function(i){
         console.log("YFinal: ", i.pageY)
         console.log("rotation: ", (Math.atan2((mousedown[1] - i.pageY), (mousedown[0] - i.pageX)) * (180 / Math.PI)))
         rt= (Math.atan2((mousedown[1] - i.pageY), (mousedown[0] - i.pageX)) * (180 / Math.PI)); */
-        $("outerbody").append("<div class= 'w' style= 'width: 7.5px; height: 7.5px; background-color: #44de48; left: " + (i.pageX - 3.75) + "px; top: " + (i.pageY - 3.75) + "px; position: absolute; '></div>")
+        $("middlebody").append("<div class= 'w' style= 'width: 7.5px; height: 7.5px; background-color: #44de48; left: " + (i.pageX - 3.75) + "px; top: " + (i.pageY - 3.75) + "px; position: absolute; '></div>")
         /*mousedown[0]= i.pageX; 
         mousedown[1]= i.pageY;   
     }*/
