@@ -1204,7 +1204,7 @@ dsrcrs= [
   "#597c2d", 
   "#ffef6d", 
   "#51a2ca", 
-  "#24cc36", 
+  "#96f064", 
   "#597c2d" 
 ]; 
 
@@ -1214,7 +1214,7 @@ opacity= function(color, op){
             $("#styA")[0].innerHTML= ".\\#51a2ca{opacity:" + op + "}"; 
             break;
         case verde:
-            $("#styV")[0].innerHTML= ".\\#24cc36{opacity:" + op + "}"; 
+            $("#styV")[0].innerHTML= ".\\#96f064{opacity:" + op + "}"; 
             break;
         case rojo:
             $("#styR")[0].innerHTML= ".\\#ce0c27{opacity:" + op + "}"; 
@@ -1226,7 +1226,7 @@ opacity= function(color, op){
 } 
 
 azul= "rgb(0, 159, 255)"; 
-verde= "rgb(36, 204, 54)"; 
+verde= "rgb(150, 240, 100)"; 
 rojo= "rgb(255, 18, 19)"; 
 amarillo= "rgb(238, 238, 82)"; 
 
@@ -1395,7 +1395,12 @@ document.addEventListener("keydown", function(i){
 
     (i.ctrlKey && i.shiftKey)? ctft= true: 1313; 
 
-    ((i.keyCode == 90 || i.keyCode == 88 || i.keyCode == 67) && i.shiftKey)? sB= true: 31; 
+    ((i.keyCode == 90 || i.keyCode == 88 || i.keyCode == 67))? sB= true: 31; 
+
+    if(((i.keyCode == 90 || i.keyCode == 88 || i.keyCode == 67) && i.shiftKey)){
+        typeof $("#cvr")[0] == "undefined"? $("outerbody").append("<div id= 'cvr' style= 'width: 7px; height: 7px; position: absolute; z-index: 71111008301895471991511921221; '><div>"): 1254; 
+        $("#cvr").css({"left": (eventx.pageX - 3.5) + "px", "top": (eventx.pageY - 3.5) + "px"}); 
+    }
 
     if(i.shiftKey){ 
         switch(i.keyCode){ 
@@ -1523,7 +1528,7 @@ $(document).mousemove(function(event){
 var widget; 
 var illIng = null; 
 seekAndDestroy= function(aa, bb, cc, dd, ee, ill){ 
-    if($(aa).parent().is(".Ball")){ 
+    if($(aa).parent().is(".Ball") && !b){ 
         el= $(aa).parent(); 
 
         circleWidth = el.outerWidth( true ),
@@ -1794,6 +1799,12 @@ document.addEventListener("mouseup", function(i){
     
 document.addEventListener("mousemove", function(i){                   
 
+if(b){
+    typeof $("#cvr")[0] == "undefined"? $("outerbody").append("<div id= 'cvr' style= 'width: 7px; height: 7px; position: absolute; z-index: 71111008301895471991511921221; '><div>"): 1254; 
+    $("#cvr").css({"left": (i.pageX - 3.5) + "px", "top": (i.pageY - 3.5) + "px"}); 
+}else{
+    $("#cvr").remove(); 
+}
     if($(i.target).parent().is(".Ball"))
     {
         el= $(i.target).parent(); 
@@ -1858,10 +1869,14 @@ document.addEventListener("keyup", function(i){
 
     (i.keyCode == 83 || i.keyCode == 16)? sS= false: 113; 
 
-    (i.keyCode == 90 || i.keyCode == 16)? sB= false: 113; 
+    sB? $("#cvr").remove(): 315; 
+
+    (i.keyCode == 90 || i.keyCode == 88 || i.keyCode == 67 || i.keyCode == 16)? sB= false: 113; 
 
     (i.keyCode == 87)? dW= false: 113; 
 
     (i.ctrlKey || i.shiftKey)? ctft= false: 1313; 
+
+    b= false; 
 }); 
 //} 

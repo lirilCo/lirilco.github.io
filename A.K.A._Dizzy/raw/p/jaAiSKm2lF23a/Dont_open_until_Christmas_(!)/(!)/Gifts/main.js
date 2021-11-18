@@ -1483,7 +1483,7 @@ dsrcrs= [
   "#597c2d", 
   "#ffef6d", 
   "#51a2ca", 
-  "#24cc36", 
+  "#96f064", 
   "#597c2d" 
 ]; 
 
@@ -1497,7 +1497,7 @@ opacity= function(color, op){
             $("#styA")[0].innerHTML= ".\\#51a2ca{opacity:" + op + "}"; 
             break;
         case verde:
-            $("#styV")[0].innerHTML= ".\\#24cc36{opacity:" + op + "}"; 
+            $("#styV")[0].innerHTML= ".\\#96f064{opacity:" + op + "}"; 
             break;
         case rojo:
             $("#styR")[0].innerHTML= ".\\#ce0c27{opacity:" + op + "}"; 
@@ -1509,7 +1509,7 @@ opacity= function(color, op){
 } 
 
 azul= "rgb(0, 159, 255)"; 
-verde= "rgb(36, 204, 54)"; 
+verde= "rgb(150, 240, 100)"; 
 rojo= "rgb(255, 18, 19)"; 
 amarillo= "rgb(238, 238, 82)"; 
 
