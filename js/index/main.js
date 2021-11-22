@@ -753,11 +753,12 @@ function closeModal() {
     })
 }
 ar= false; 
-$(".carr").on("scroll", function(){ 
-    $(this)[0].scrollLeft / $(this).width() == $(this).find(".pic").length - 1? $(".nav_arrow.right").addClass("disabled"): $(".nav_arrow.right").removeClass("disabled"); 
-    $(this)[0].scrollLeft == 0? $(".nav_arrow.left").addClass("disabled"): $(".nav_arrow.left").removeClass("disabled"); 
-}) 
+
 $(document).on("ready",function(e){
+    $(".carr").on("scroll", function(){ 
+        $(this)[0].scrollLeft / $(this).width() == $(this).find(".pic").length - 1? $(".nav_arrow.right").addClass("disabled"): $(".nav_arrow.right").removeClass("disabled"); 
+        $(this)[0].scrollLeft == 0? $(".nav_arrow.left").addClass("disabled"): $(".nav_arrow.left").removeClass("disabled"); 
+    }) 
     $(".nav_arrow.left .arrow").on("click", function(){th= $(this).parent(); !th.parent().find(".carr").is(":animated")? th.parent().find(".carr").animate({scrollLeft: th.parent().find(".carr")[0].scrollLeft - th.parent().find(".carr").width()}, 400): 672;}); 
 
     $(".nav_arrow.right .arrow").on("click", function(){th= $(this).parent(); !th.parent().find(".carr").is(":animated")? th.parent().find(".carr").animate({scrollLeft: th.parent().find(".carr")[0].scrollLeft + th.parent().find(".carr").width()}, 400): 672;}); 
