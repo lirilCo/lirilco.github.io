@@ -1130,3 +1130,64 @@ display: inline-block;
   background-color: #eee;
   text-decoration: none; 
 }
+.navigation{ 
+    width: 100%; 
+    position: relative; 
+} 
+.mult_img .carr{ 
+    writing-mode: vertical-lr; 
+    width: 100%; 
+    overflow-x: hidden; 
+} 
+.mult_img .picture{ 
+    width: 100%; 
+} 
+.mult_img .picture .pic{ 
+    width: 100%; 
+    object-fit: contain; 
+} 
+.nav_arrow{ 
+    display: flex; 
+    justify-content: center; 
+    flex-direction: column; 
+    font-family: "icomoon"; 
+    height: 100%; 
+    position: absolute; 
+    text-align: center; 
+} 
+.nav_arrow .arrow{ 
+    font-family: "icomoon"; 
+} 
+.nav_arrow .arrow::after {
+    background-color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+}
+.nav_arrow.disabled .arrow {
+    color: #ccc;
+}
+
+.nav_arrow.left .arrow:after{ 
+    content: "\e902"; 
+} 
+
+.nav_arrow.left{ 
+    left: 0; 
+} 
+.nav_arrow.right{ 
+    right: 0; 
+} 
+.nav_arrow.right .arrow:after{ 
+    content: "\e901"; 
+} 
+#theater .nav_arrow.left{ 
+    left: 1.1%; 
+    top: 0; 
+    position: fixed; 
+} 
+#theater .nav_arrow.right{ 
+    right: 1.1%; 
+    top: 0; 
+    position: fixed; 
+} 
