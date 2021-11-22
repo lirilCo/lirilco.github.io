@@ -1,6 +1,8 @@
 var $this
 
 $(document).on("ready",function(){
+
+
     if($('.poema.autoScrollTo').length > 0){
       
 
@@ -18,6 +20,7 @@ $(document).on("ready",function(){
             observer.observe(document.querySelectorAll('.poema.autoScrollTo')[aST]); 
         }
 } 
+
     $($(".poema.autoScrollTo")).on("scroll", function(Zz){
         pageXOffset= $(this).scrollTop() || 0; 
         if($(this)[0].firstTime){
@@ -36,11 +39,13 @@ $(document).on("ready",function(){
 $(".revelar").on("click", function(){ 
         if($(this).text()[0] != "O"){ 
             $(this).parent().css({"height": "auto"}); 
+            $(this).parent().find(".poema").css({"height": "auto"}); 
             $(this)[0].tx= $(this).text(); 
             $(this).text("Ocultar de nuevo."); 
             $(this).addClass("activado"); 
         }else{ 
             $(this).parent().css({"height": "0"}); 
+            $(this).parent().find(".poema").css({"height": "0"}); 
             $(this).text($(this)[0].tx); 
             $(this).removeClass("activado"); 
         } 

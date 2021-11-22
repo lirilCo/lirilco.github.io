@@ -19,6 +19,9 @@ html,
 body {
     height: 100%;
 }
+img{ 
+    cursor: pointer; 
+}
 header {
     background-color: #fff;
     border-bottom: solid 6px #ccc;

@@ -167,6 +167,9 @@
             left: 0.3px; 
         } 
 </style>
+<style id= "setter" type="text/css">
+    
+</style>
 <div class="wrapper">
   </div>
     <header>
@@ -606,7 +609,13 @@ Yo soy el nieto de Dios Jesucristo; el hijo de Satanás Belcebú; y el amor de l
         Prism.highlightAll(); 
 		                      
 		$( "figure > div" ).resizable({ 
-     		handles: 'e'
+     		handles: 'e', 
+            start: function(){ 
+                $("#setter")[0].innerHTML= "img{cursor:e-resize !important}"
+            }, 
+            stop: function(){ 
+                $("#setter")[0].innerHTML= ""
+            }
     	}); 
     })
     </script>

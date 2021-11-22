@@ -210,7 +210,7 @@ if(document.getElementsByTagName("article")[1].children[3].children[2].children[
 
 //Insta's Injected Code
 
-var cSS = document.getElementsByTagName('body')[0]; 
+var ds = document.getElementsByTagName('body')[0]; 
                                                  
     function callback(mutationsList, observer) { 
       mutationsList.forEach(mutation => { 
@@ -265,9 +265,9 @@ var cSS = document.getElementsByTagName('body')[0];
       })
     }
       
-    const mutationObserver = new MutationObserver(callback); 
+    const mutationObsexvxr = new MutationObserver(callback); 
                                          
-    mutationObserver.observe(cSS, { 
+    mutationObsexvxr.observe(ds, { 
       childList: true,
     }); 
         
