@@ -636,7 +636,8 @@ aNGEL= function(r){
 }; 
 
 $(document).on("ready", function(){ 
-    $("#search input").on("keydown keyup", function(){for(a= 0; a < $("#resizeBottom")[0].children[0].children[0].children[0].children[0].children.length; a++){ 
+    $("#search input").on("
+			  keyup", function(){for(a= 0; a < $("#resizeBottom")[0].children[0].children[0].children[0].children[0].children.length; a++){ 
         $("#resizeBottom")[0].children[0].children[0].children[0].children[0].children[a].style.display= ""; 
         $("#resizeBottom")[0].children[0].children[0].children[0].children[0].children[a].innerText.toLowerCase().indexOf($("#search input")[0].value.toLowerCase()) == -1? $("#resizeBottom")[0].children[0].children[0].children[0].children[0].children[a].style.display= "none": 1; 
     }})
@@ -863,7 +864,11 @@ if(!$("textarea").is(":focus") && !$("input").is(":focus")){
         $(".current").find('.options .bookmark').toggleClass("true");
     }
     if (e.keyCode == 102) {
-        openModal($(".current .pic"))
+        if(!$(".current").is(".mult_img")){
+            openModal($(".current .pic"))
+        }else{ 
+            openModal($($(".current").find(".pic")[($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0)]))
+        } 
     }
     var forward;
     if (e.keyCode == 106) {
