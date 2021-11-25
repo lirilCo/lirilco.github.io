@@ -1549,7 +1549,11 @@ $(document).mousemove(function(event){
 var widget; 
 var illIng = null; 
 seekAndDestroy= function(aa, bb, cc, dd, ee, ill){ 
-    if($(aa).parent().is(".Ball") && !b){ 
+    if(aa== 3){ 
+        console.log(aa)
+        $(baull).each(function(){$(this).css("display", "block"); $(this).trigger("mouseup")}); 
+        $(".Ball").css({"pointer-events": "none"})
+    }else if($(aa).parent().is(".Ball") && !b){ 
         el= $(aa).parent(); 
 
         circleWidth = el.outerWidth( true ),
@@ -1576,14 +1580,13 @@ seekAndDestroy= function(aa, bb, cc, dd, ee, ill){
 
         Tr= [[parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.35567896759688755, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.20679615290632955], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.35567896759688755, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.1693026334672326], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.35887249368081026, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.16671687350591557], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.360185473174673, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.10985130272934898], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.36733555700940596, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.09827277279740179], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.3930197268588771, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.09313549617382665], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.44764795144157815, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.019413467540190736], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.5569044006069803, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.019413467540190736], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6115326251896813, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.09313549617382665], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6255319216883534, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.09172983462772168], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6319189738561987, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.09690135455035574], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6395596590909091, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.09770353561434765], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6409801136363636, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.10575444496455876], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6423508564678087, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.10803753335820253], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6435321913762552, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.17403655772045107], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.644762217138222, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.17433140819445775], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.644762217138222, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.18314715576434185], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6467405190349308, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.18411933770235026], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6467405190349308, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.21145647853295602]]; 
 
-        if((inside([event.pageX, event.pageY], Tr) || distance <= circlePos.radius || distanceT <= RadT) && baull.length > 0){ 
+        if((inside([event.pageX, event.pageY], Tr) || distance <= circlePos.radius || distanceT <= RadT)){ 
             $(baull).each(function(){$(this).css("display", "block"); $(this).trigger("mouseup")}); 
 
             $("#selectedBall").attr("id", ""); 
             el.attr("id", "selectedBall"); 
             var myDraggable = el;
   
-  // Yeah... we're going to hack the widget /*sTACKoVERFLOW tHE MOST EeeeVERS! <3*/
     widget = myDraggable.data('ui-draggable');
     ill.target= el[0]; 
       if(!illIng){
@@ -1597,12 +1600,12 @@ seekAndDestroy= function(aa, bb, cc, dd, ee, ill){
       }
    
         }else{ 
-            el.css("display", "none")
-            baull[baull.length]= el; 
+            el.is(".Ball")? el.css("display", "none"): 12
+            el.is(".Ball")? baull[baull.length]= el: 12; 
 
             Az= null; 
 
-            $(document.elementFromPoint(dd, ee)).parent().is(".Ball")? Az= document.elementFromPoint(dd, ee): $(baull).each(function(){$(this).css("display", "block")}); ; 
+            $(document.elementFromPoint(dd, ee)).parent().is(".Ball")? Az= document.elementFromPoint(dd, ee): Az= 3; 
 
             Az != null? seekAndDestroy(Az, dd + $("html").scrollLeft(), ee + $("html").scrollTop(), dd, ee, ill): 1251; 
 
@@ -1621,7 +1624,7 @@ $(document).on("mousedown", function(i, tr){
 
 
 
-    (!tr && !resizing)? seekAndDestroy(i.target, i.pageX, i.pageY, i.clientX, i.clientY, i): 141; 
+    ($(i.target).parent().is(".Ball") && !tr && !resizing)? seekAndDestroy(i.target, i.pageX, i.pageY, i.clientX, i.clientY, i): $(".Ball").css({"pointer-events": "none"}); 
     
     i.keyCode == 118? i.preventDefault(): 4102; 
 
@@ -1653,6 +1656,8 @@ $(document).on("mousedown", function(i, tr){
 
     el= $(i.target.parentElement); 
 
+    if(el.is(".Ball")){ 
+
         circleWidth = el.outerWidth( true ),
         circleHeight  = el.outerHeight( true ),
         circleLeft    = el.offset().left,
@@ -1669,6 +1674,7 @@ $(document).on("mousedown", function(i, tr){
         {
             $(i.target).parent().is(".Ball")? $(i.target.parentElement).attr("id", "selectedBall"): 1319; 
         }
+    } 
 
     $(i.target).parent().is(".Star")? $(i.target.parentElement).attr("id", "selectedStar"): 1319; 
 
@@ -1683,6 +1689,8 @@ $('.Ball').click(function(event){
 }); 
 
 document.addEventListener("mouseup", function(i){ 
+    $(".Ball").css({"pointer-events": ""})
+
     mousedown= false; 
                       
     resizing= false; 
@@ -1784,7 +1792,13 @@ document.addEventListener("mouseup", function(i){
         
                 distancex    = Math.sqrt( Math.pow( eventx.pageX - circlePos.x, 2 ) + Math.pow( eventx.pageY - circlePos.y, 2 ) ); 
         
-                if(distancex <= circlePos.radius){ 
+                RadT= circleWidth / 16; 
+
+                distanceT    = Math.sqrt( Math.pow( eventx.pageX - (circleLeft + circleWidth * 0.5), 2 ) + Math.pow( eventx.pageY - (circleTop + RadT), 2 ) ); 
+
+                Tr= [[parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.35567896759688755, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.20679615290632955], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.35567896759688755, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.1693026334672326], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.35887249368081026, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.16671687350591557], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.360185473174673, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.10985130272934898], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.36733555700940596, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.09827277279740179], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.3930197268588771, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.09313549617382665], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.44764795144157815, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.019413467540190736], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.5569044006069803, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.019413467540190736], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6115326251896813, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.09313549617382665], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6255319216883534, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.09172983462772168], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6319189738561987, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.09690135455035574], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6395596590909091, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.09770353561434765], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6409801136363636, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.10575444496455876], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6423508564678087, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.10803753335820253], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6435321913762552, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.17403655772045107], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.644762217138222, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.17433140819445775], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.644762217138222, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.18314715576434185], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6467405190349308, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.18411933770235026], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6467405190349308, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.21145647853295602]]; 
+
+                if(distancex > circlePos.radius && !inside([eventx.pageX, eventx.pageY], Tr) && distanceT > RadT){ //:P
                     $(this).trigger("mousedown.draggable");
                     $(this).trigger("dragstop");   
                 }else{ 
@@ -1809,12 +1823,12 @@ document.addEventListener("mouseup", function(i){
                 
                 RadT= circleWidth / 16; 
 
-                distanceT    = Math.sqrt( Math.pow( event.pageX - (circleLeft + circleWidth * 0.5), 2 ) + Math.pow( event.pageY - (circleTop + RadT), 2 ) ); 
+                distanceT    = Math.sqrt( Math.pow( eventx.pageX - (circleLeft + circleWidth * 0.5), 2 ) + Math.pow( eventx.pageY - (circleTop + RadT), 2 ) ); 
 
                 Tr= [[parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.35567896759688755, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.20679615290632955], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.35567896759688755, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.1693026334672326], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.35887249368081026, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.16671687350591557], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.360185473174673, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.10985130272934898], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.36733555700940596, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.09827277279740179], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.3930197268588771, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.09313549617382665], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.44764795144157815, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.019413467540190736], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.5569044006069803, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.019413467540190736], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6115326251896813, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.09313549617382665], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6255319216883534, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.09172983462772168], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6319189738561987, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.09690135455035574], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6395596590909091, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.09770353561434765], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6409801136363636, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.10575444496455876], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6423508564678087, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.10803753335820253], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6435321913762552, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.17403655772045107], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.644762217138222, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.17433140819445775], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.644762217138222, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.18314715576434185], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6467405190349308, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.18411933770235026], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6467405190349308, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.21145647853295602]]; 
 
 
-                if(distancex > circlePos.radius && !(inside([event.pageX, event.pageY], Tr) || distanceT <= RadT)){ 
+                if(distancex > circlePos.radius && !(inside([eventx.pageX, eventx.pageY], Tr) || distanceT <= RadT)){ 
                     console.log("out")
                     $(this).trigger("mouseup"); 
                 }
