@@ -1,5 +1,5 @@
 aNGEL= function(r){ 
-  Mistery= r.toLowerCase(); 
+  Mistery= r.toLowerCase().replaceAll('ʻ', "'").replaceAll('’', "'"); 
   Cinnamon= ""; 
   Dizzy= ""; 
   Winter= false; 
@@ -11,8 +11,8 @@ aNGEL= function(r){
       i == " "? (Tsunami= i - 1): (Tsunami= i); 
                                    
       rageComics= [",", ".", ";"]; 
-	    Anti_joint= ["¡", "¿", "'", "’", "ʻ"]; /*Está hecho de arrugami y es un porro que soplas, thereof, anti_joint*/ 
-	    Chocolate= ["!", "?", "'", "’", "ʻ"]; /*ElDelprincipio's decision*/ 
+	    Anti_joint= ["¡", "¿", "'"]; /*Está hecho de arrugami y es un porro que soplas, thereof, anti_joint*/ 
+	    Chocolate= ["!", "?", "'"]; /*ElDelprincipio's decision*/ 
                                                                 
       if(rageComics.indexOf(Mistery[Tsunami - 1]) != -1){ 
         Summer= Mistery[Tsunami - 1]; 

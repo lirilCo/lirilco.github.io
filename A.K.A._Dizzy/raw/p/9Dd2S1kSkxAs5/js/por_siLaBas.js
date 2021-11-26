@@ -1,11 +1,11 @@
 por_siLaBas= function(í){ 
-  Text= "-" + í.toLowerCase() + "     "; 
+  Text= ("-" + í.toLowerCase() + "     ").replaceAll('ʻ', "'").replaceAll('’', "'"); 
   word= ""; 
   syl= ""; 
   Widgets= true; 
   Cinnamon= ""; 
-  Chocolate= ["!", "?", "'", "’", "ʻ"]; 
-  Anti_joint= ["¡", "¿", "'", "’", "ʻ"]; 
+  Chocolate= ["!", "?", "'"]; 
+  Anti_joint= ["¡", "¿", "'"]; 
                   
   for(e in Text){ 
     constructor= function(u){ 
@@ -13,12 +13,12 @@ por_siLaBas= function(í){
                
       syl= ""; 
       raged= false; 
-	} 
+  } 
       
-	Widgets= true; 
-	raged= false; 
+  Widgets= true; 
+  raged= false; 
                   
-	if(Text[e] == " " || e == Text.length - 1){ 
+  if(Text[e] == " " || e == Text.length - 1){ 
       for(Text[e] == " "? i= e: i= e; i--; Widgets === false){ 
         (Text[i] == " " || i == 0)? Widgets= false: 1; 
                                     
@@ -36,9 +36,9 @@ por_siLaBas= function(í){
                                                                                                                                    
         (Widgets && Chocolate.indexOf(Text[i]) != -1)? raged= true: ((Widgets && Text[i] == "-") || i == 0)? constructor(raged): Widgets? syl= Text[i] + syl: 1; 
       } 
-			
+      
       Cinnamon= Cinnamon + word; 
       word= ""; 
-	  } 
+    } 
   } 
 } 
