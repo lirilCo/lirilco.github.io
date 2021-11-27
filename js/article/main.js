@@ -40,12 +40,16 @@ $(".revelar").on("click", function(){
         if($(this).text()[0] != "O"){ 
             $(this).parent().css({"height": "auto"}); 
             $(this).parent().find(".poema").css({"height": "auto"}); 
+	    $(this).parent().find("pre").css({"height": "auto"}); 
+	    $(this).parent().find("pre").css({"padding": "1em"}); 
             $(this)[0].tx= $(this).text(); 
             $(this).text("Ocultar de nuevo."); 
             $(this).addClass("activado"); 
         }else{ 
             $(this).parent().css({"height": "0"}); 
             $(this).parent().find(".poema").css({"height": "0"}); 
+	    $(this).parent().find("pre").css({"height": "0"}); 
+	    $(this).parent().find("pre").css({"padding": "0"}); 
             $(this).text($(this)[0].tx); 
             $(this).removeClass("activado"); 
         } 
