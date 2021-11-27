@@ -42,6 +42,7 @@ $(".revelar").on("click", function(){
             $(this).parent().find(".poema").css({"height": "auto"}); 
 	    $(this).parent().find("pre").css({"height": "auto"}); 
 	    $(this).parent().find("pre").css({"padding": "1em"}); 
+	    $($(this).parent().children()).each(function(){$(this).is(".code")? $(this).find(".code-scroll").css({"display": "block"}): 1}); 
             $(this)[0].tx= $(this).text(); 
             $(this).text("Ocultar de nuevo."); 
             $(this).addClass("activado"); 
@@ -50,6 +51,7 @@ $(".revelar").on("click", function(){
             $(this).parent().find(".poema").css({"height": "0"}); 
 	    $(this).parent().find("pre").css({"height": "0"}); 
 	    $(this).parent().find("pre").css({"padding": "0"}); 
+	    $($(this).parent().children()).each(function(){$(this).is(".code")? $(this).find(".code-scroll").css({"display": "none"}): 1}); 
             $(this).text($(this)[0].tx); 
             $(this).removeClass("activado"); 
         } 
