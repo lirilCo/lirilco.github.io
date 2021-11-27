@@ -810,7 +810,7 @@ h1, h2, h3, div, u, h4
  }
 .oculto .code-scroll 
  { 
-  display: none; 
+  visibility: hidden; 
  }
 #buscar 
 { 
