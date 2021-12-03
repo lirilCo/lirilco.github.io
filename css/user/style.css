@@ -657,28 +657,26 @@ cursor: pointer
     margin-left: auto;
     position: fixed;
     height: 500px;
-    background-color: #fff;
     z-index: 3;
     top: 20px;
     max-width: 1400px;
 }
 #theater #picContainer
 {
-   position: relative;
+   position: absolute;
     height: 100%;
-    background-color: #fff
+    background-color: #fff; 
+    width: 100%; 
+    padding-right: 340px; 
+    box-sizing: border-box; 
+
 } 
 #theater #bigPic
 {
-  position: absolute;
-     width: 100%;
-       height: 100%;
-top: 0;
-bottom: 0;
-left: 0;
-object-fit: contain;
-margin: auto ;
-
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    margin: auto ;
 }
 
 #theater .info p
@@ -779,10 +777,13 @@ content: "\e627"
 {
     width: 300px;
     display: inline-block;
-     padding: 20px;
     position: absolute;
-top: 0;
-right: 0;
+    top: 0;
+    right: 20px;
+    background-color: #fff; 
+    height: 100%; 
+    box-sizing: border-box; 
+    padding: 20px 0; 
 }
 #theater .comments #close
 {
@@ -793,7 +794,7 @@ right: 0;
     font-family: "icomoon";
     position: absolute;
     top: 0;
-    right: 0;
+    right: -20px;
     padding: 2px;
     cursor: pointer
     
@@ -1218,7 +1219,6 @@ display: inline-block;
 .tool .datos .actions li
 {
     display: inline-block;
-    width: 
     list-style: none;
     width: 30%;
     margin: 0;
@@ -1586,4 +1586,34 @@ display: inline-block;
     right: 1.1%; 
     top: 0; 
     position: fixed; 
+} 
+#theater{ 
+    height: 100%; 
+    position: fixed; 
+    top: 0; 
+    box-sizing: border-box; 
+    padding: 20px 0;
+    width: 90%; 
+} 
+#theater > section{ 
+    background-color: #fff; 
+    height: 100%; 
+    position: relative; 
+} 
+#theater .description{ 
+    display: flex;
+    flex-flow: column;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 58px 0 87px 0;
+}
+/*.RIPonsive{}*/ 
+#theater .more{ 
+    flex-grow: 1; 
+    overflow: hidden !important; 
+} 
+#theater .info{ 
+    z-index: 1; 
 } 
