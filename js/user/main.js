@@ -143,9 +143,7 @@ function openModal(a) {
         autoExpandScrollbar: true,
         scrollInertia: 100});
       
-        $("#theater").height($(window).height() - 40);
 
-    $("#theater .comments .more").height($("#theater .comments").height() - $("#theater .info").outerHeight(true) - $("#theater .comments .title").outerHeight(true) - $("#theater .comments .options").outerHeight(true));
     responsive()
     if(a.closest('.story').is(".mult_img")){ 
         ar= a.closest('.story'); 
