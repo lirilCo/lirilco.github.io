@@ -551,6 +551,9 @@ body
     border-radius: 0; 
     overflow: hidden; 
     padding-top: 2em; 
+    padding-bottom: 16px; 
+    padding-left: 12.8px; 
+    padding-right: 42.8px; 
 } 
   
 #file_expl #preview #file_preview #file img, #file_expl #preview #file_preview #file video 

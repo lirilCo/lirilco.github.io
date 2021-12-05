@@ -1278,7 +1278,7 @@ $("#theater .comments").height($("#theater").height() - 40);
         }
         if($("#Archivo").hasClass("selected")){
             $(".code-filler").width(function () {
-                return $("#file pre code").width() + $("#file pre").css("padding-left").slice(0, $("#file pre").css("padding-left").length - 2) * 2; 
+                return parseFloat($("#file pre code").width()) + parseFloat($("#file pre").css("padding-left").slice(0, $("#file pre").css("padding-left").length - 2)) + parseFloat($("#file pre").css("padding-right").slice(0, $("#file pre").css("padding-right").length - 2)); 
             });
         }
  }
