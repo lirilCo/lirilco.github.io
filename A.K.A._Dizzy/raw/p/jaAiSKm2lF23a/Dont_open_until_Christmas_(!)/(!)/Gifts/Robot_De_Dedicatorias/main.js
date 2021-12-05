@@ -1530,6 +1530,10 @@ function inside(point, vs) {
     return inside;
 };
 
+$("form").on("submit", function (ev) {
+    ev.preventDefault();
+});
+
 $(document).mousemove(function(event){
     //console.log("x: " + event.originalEvent.layerX + ". y: " + event.originalEvent.layerY + ". "); 
     eventx= event; 
@@ -1549,7 +1553,7 @@ $(document).mousemove(function(event){
 var widget; 
 var illIng = null; 
 seekAndDestroy= function(aa, bb, cc, dd, ee, ill){ 
-    if(aa== 3){ 
+    if(aa== 3 || $(ill.target).is("html")){ 
         console.log(aa)
         $(baull).each(function(){$(this).css("display", "block"); $(this).trigger("mouseup")}); 
         $(".Ball").css({"pointer-events": "none"})
@@ -1581,7 +1585,7 @@ seekAndDestroy= function(aa, bb, cc, dd, ee, ill){
         Tr= [[parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.35567896759688755, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.20679615290632955], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.35567896759688755, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.1693026334672326], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.35887249368081026, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.16671687350591557], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.360185473174673, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.10985130272934898], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.36733555700940596, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.09827277279740179], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.3930197268588771, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.09313549617382665], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.44764795144157815, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.019413467540190736], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.5569044006069803, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.019413467540190736], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6115326251896813, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.09313549617382665], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6255319216883534, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.09172983462772168], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6319189738561987, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.09690135455035574], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6395596590909091, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.09770353561434765], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6409801136363636, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.10575444496455876], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6423508564678087, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.10803753335820253], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6435321913762552, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.17403655772045107], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.644762217138222, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.17433140819445775], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.644762217138222, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.18314715576434185], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6467405190349308, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.18411933770235026], [parseInt(el.css("left").slice(0, -2)) + circleWidth * 0.6467405190349308, parseInt(el.css("top").slice(0, -2)) + circleHeight * 0.21145647853295602]]; 
 
         if((inside([event.pageX, event.pageY], Tr) || distance <= circlePos.radius || distanceT <= RadT)){ 
-            $(baull).each(function(){$(this).css("display", "block"); $(this).trigger("mouseup")}); 
+            $(baull).each(function(){$(this).css("display", "block"); el.is(".Ball")? $(this).trigger("mouseup"): 1}); 
 
             $("#selectedBall").attr("id", ""); 
             el.attr("id", "selectedBall"); 
@@ -1624,7 +1628,7 @@ $(document).on("mousedown", function(i, tr){
 
 
 
-    ($(i.target).parent().is(".Ball") && !tr && !resizing)? seekAndDestroy(i.target, i.pageX, i.pageY, i.clientX, i.clientY, i): $(".Ball").css({"pointer-events": "none"}); 
+    ($(i.target).parent().is(".Ball") && !tr && !resizing)? seekAndDestroy(i.target, i.pageX, i.pageY, i.clientX, i.clientY, i): (function(){$(".Ball").css({"pointer-events": "none"}); $(".ui-draggable-dragging").removeClass("ui-draggable-dragging"); Fr= true; })(); 
     
     i.keyCode == 118? i.preventDefault(): 4102; 
 
@@ -1830,7 +1834,7 @@ document.addEventListener("mouseup", function(i){
 
                 if(distancex > circlePos.radius && !(inside([eventx.pageX, eventx.pageY], Tr) || distanceT <= RadT)){ 
                     console.log("out")
-                    $(this).trigger("mouseup"); 
+                    $(eventx.target).parent().is(".Ball")? $(this).trigger("mouseup"): 1; 
                 }
                 P++; 
                 }

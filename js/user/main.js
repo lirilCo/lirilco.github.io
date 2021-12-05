@@ -164,11 +164,11 @@ function openModal(a) {
         $("#theater").append('<div class="nav_arrow left' + (a.closest('.story').find(".nav_arrow.left").is(".disabled")? ' disabled': '') + '"><div class= "arrow"></div></div><div class="nav_arrow right' + (a.closest('.story').find(".nav_arrow.right").is(".disabled")? ' disabled': '') + '"><div class= "arrow"></div></div>'); 
         $("#theater .nav_arrow.left .arrow").on("click", function(){
             !a.closest('.story').find(".carr").is(":animated")? a.closest('.story').find(".carr")[0].scrollLeft= a.closest('.story').find(".carr")[0].scrollLeft - a.closest('.story').find(".carr").width(): 672; 
-            $("#theater").find("#bigPic")[0].src= un_tn($(".current .carr .pic")[$(".current .carr")[0].scrollLeft / $(".current .carr").width()].src); 
+            $("#theater").find("#bigPic")[0].src= $(".current .carr .pic")[$(".current .carr")[0].scrollLeft / $(".current .carr").width()].src; 
         }); 
         $("#theater .nav_arrow.right .arrow").on("click", function(){
             !a.closest('.story').find(".carr").is(":animated")? a.closest('.story').find(".carr")[0].scrollLeft= a.closest('.story').find(".carr")[0].scrollLeft + a.closest('.story').find(".carr").width(): 672; 
-            $("#theater").find("#bigPic")[0].src= un_tn($(".current .carr .pic")[$(".current .carr")[0].scrollLeft / $(".current .carr").width()].src); 
+            $("#theater").find("#bigPic")[0].src= $(".current .carr .pic")[$(".current .carr")[0].scrollLeft / $(".current .carr").width()].src; 
         }); 
         $(".nav_arrow").on("click", function(i){$(i.target).is(".nav_arrow")? closeModal(): 1; }); 
     }
