@@ -56,31 +56,31 @@ function openFotosModal(a) {
         "display": "block"
     })
     $this = a
-    var source = a.parent().find(".bigPic").attr('src');
+    var source = a.closest(".foto").find(".bigPic").attr('src');
     $('.theater #bigPic').attr('src', source);
 
-    var user = a.parent().find(".username").html();
+    var user = a.closest(".foto").find(".username").html();
     $('.theater .comments .info .username').html(user);
 
-    var time = a.parent().find(".time").html();
+    var time = a.closest(".foto").find(".time").html();
     $('.theater .comments .info .time').html(time);
 
-    var title = a.parent().find(".title").html();
+    var title = a.closest(".foto").find(".title").html();
     $('.theater .comments .title').html(title);
-    if (a.parent().find(".options .bookmark").hasClass("true")) {
+    if (a.closest(".foto").find(".options .bookmark").hasClass("true")) {
         $('.theater .comments .options .bookmark').addClass("true");
     } else {
         $('.theater .comments .options .bookmark').removeClass("true");
     }
-    if (a.parent().find(".options .star").hasClass("true")) {
+    if (a.closest(".foto").find(".options .star").hasClass("true")) {
         $('.theater .comments .options .star').addClass("true");
     } else {
         $('.theater .comments .options .star').removeClass("true");
     }
-    var pic = a.parent().find(".info img").attr('src');
+    var pic = a.closest(".foto").find(".info img").attr('src');
     $('.theater .comments .info #pic').attr('src', pic);
 
-    var ref = a.parent().find(".options ul a").attr('href');
+    var ref = a.closest(".foto").find(".options ul a").attr('href');
     $('.theater .comments .options ul a').attr('href', ref);
 
     if($("#bigPic").width()<=$("#bigPic").height()){
@@ -92,7 +92,20 @@ function openFotosModal(a) {
         "minimal-dark", 
         autoExpandScrollbar: true,
         scrollInertia: 100});
-
+    if(a.closest('.foto').is(".mult_img")){ 
+        ar= $(a.closest('.foto')); 
+        $("#theater").find("#bigPic")[0].src= ar.find(".carr .pic")[Math.round(ar.find(".carr")[0].scrollLeft / ar.find(".carr").width())].src; 
+        $("#theater").append('<div class="nav_arrow left' + (ar.find(".nav_arrow.left").is(".disabled")? ' disabled': '') + '"><div class= "arrow"></div></div><div class="nav_arrow right' + (ar.find(".nav_arrow.right").is(".disabled")? ' disabled': '') + '"><div class= "arrow"></div></div>'); 
+        $("#theater .nav_arrow.left .arrow").on("click", function(){
+            !ar.find(".carr").is(":animated")? ar.find(".carr")[0].scrollLeft= ar.find(".carr")[0].scrollLeft - ar.find(".carr").width(): 672; 
+            $("#theater").find("#bigPic")[0].src= ar.find(".carr .pic")[Math.round(ar.find(".carr")[0].scrollLeft / ar.find(".carr").width())].src; 
+        }); 
+        $("#theater .nav_arrow.right .arrow").on("click", function(){
+            !ar.find(".carr").is(":animated")? ar.find(".carr")[0].scrollLeft= ar.find(".carr")[0].scrollLeft + ar.find(".carr").width(): 672; 
+            $("#theater").find("#bigPic")[0].src= ar.find(".carr .pic")[Math.round(ar.find(".carr")[0].scrollLeft / ar.find(".carr").width())].src; 
+        }); 
+        $(".nav_arrow").on("click", function(i){$(i.target).is(".nav_arrow")? closeModal(): 1; }); 
+    }
     responsive(); 
 } 
 function openModal(a) {
@@ -436,8 +449,9 @@ $(window).on("load", function () {
    
 
 $(".carr").on("scroll", function(){ 
-    $(this)[0].scrollLeft / $(this).width() == $(this).find(".pic").length - 1? $(".nav_arrow.right").addClass("disabled"): $(".nav_arrow.right").removeClass("disabled"); 
-    $(this)[0].scrollLeft == 0? $(".nav_arrow.left").addClass("disabled"): $(".nav_arrow.left").removeClass("disabled"); 
+    rf= $(this)
+    Math.round($(this)[0].scrollLeft / $(this).width()) == $(this).find(".pic").length - 1? (function(){rf.parent().find(".nav_arrow.right").addClass("disabled"); $("#theater").find(".nav_arrow.right").addClass("disabled")})(): (function(){rf.parent().find(".nav_arrow.right").removeClass("disabled"); $("#theater").find(".nav_arrow.right").removeClass("disabled")})(); 
+    $(this)[0].scrollLeft == 0? (function(){rf.parent().find(".nav_arrow.left").addClass("disabled"); $("#theater").find(".nav_arrow.left").addClass("disabled");})(): (function(){rf.parent().find(".nav_arrow.left").removeClass("disabled"); $("#theater").find(".nav_arrow.left").removeClass("disabled")})(); 
 }) 
 document.onkeydown = function (evt) {
     //console.log(evt.keyCode); 
@@ -450,7 +464,7 @@ document.onkeydown = function (evt) {
                     !$(th.find(".carr")).is(":animated")? $(th.find(".carr")).animate({scrollLeft: th.find(".carr")[0].scrollLeft - $(th.find(".carr")).width()}, 400): 672; 
                 }else{ 
                      th.find(".carr")[0].scrollLeft= th.find(".carr")[0].scrollLeft - $(th.find(".carr")).width(); 
-                     $("#theater").find("#bigPic")[0].src= $(th.find(".carr")).find(".pic")[th.find(".carr")[0].scrollLeft / $(th.find(".carr")).width()].src; 
+                     $("#theater").find("#bigPic")[0].src= $(th.find(".carr")).find(".pic")[Math.round(th.find(".carr")[0].scrollLeft / $(th.find(".carr")).width())].src; 
                 } 
                 break; 
             case 39: 
@@ -459,7 +473,7 @@ document.onkeydown = function (evt) {
                     !$(th.find(".carr")).is(":animated")? $(th.find(".carr")).animate({scrollLeft: th.find(".carr")[0].scrollLeft + $(th.find(".carr")).width()}, 400): 672; 
                 }else{ 
                      th.find(".carr")[0].scrollLeft= th.find(".carr")[0].scrollLeft + $(th.find(".carr")).width(); 
-                     $("#theater").find("#bigPic")[0].src= $(th.find(".carr")).find(".pic")[th.find(".carr")[0].scrollLeft / $(th.find(".carr")).width()].src; 
+                     $("#theater").find("#bigPic")[0].src= $(th.find(".carr")).find(".pic")[Math.round(th.find(".carr")[0].scrollLeft / $(th.find(".carr")).width())].src; 
                 } 
                 break; 
     }

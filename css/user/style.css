@@ -518,7 +518,7 @@ padding: 10px;
    width: 100%;
    padding-left: 350px;
 }
-#biography #content #main #summary aside#sections section
+#biography #content #main #summary aside#sections > section
 {
     box-sizing: border-box;
    background-color: #fff;
@@ -1530,15 +1530,18 @@ display: inline-block;
     width: 100%; 
     position: relative; 
 } 
-.mult_img .carr{ 
+.foto .navigation, .foto .carr, .foto .picture{ 
+    height: 105.7px; 
+} 
+.foto .carr, .mult_img .carr{ 
     writing-mode: vertical-lr; 
     width: 100%; 
-    overflow-x: hidden; 
+    overflow: hidden; 
 } 
-.mult_img .picture{ 
+.foto .picture, .mult_img .picture{ 
     width: 100%; 
 } 
-.mult_img .picture .pic{ 
+.foto .picture .pic, .mult_img .picture .pic{ 
     width: 100%; 
     object-fit: contain; 
 } 
