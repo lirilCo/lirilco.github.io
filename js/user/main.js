@@ -8,7 +8,7 @@ function openProfilePicModal(a) {
         "display": "block"
     })
     $this = a.parent(); 
-    var source = a.find(".pic").attr('src');
+    var source = un_tn($(a.closest("#profilePic").children()[0]).attr('src'));
     $('.theater #bigPic').attr('src', source);
 
     var user = a.find(".hidden").find(".username").html();
@@ -56,8 +56,6 @@ function openFotosModal(a) {
         "display": "block"
     })
     $this = a
-    var source = a.closest(".foto").find(".bigPic").attr('src');
-    $('.theater #bigPic').attr('src', source);
 
     var user = a.closest(".foto").find(".username").html();
     $('.theater .comments .info .username').html(user);
@@ -94,18 +92,21 @@ function openFotosModal(a) {
         scrollInertia: 100});
     if(a.closest('.foto').is(".mult_img")){ 
         ar= $(a.closest('.foto')); 
-        $("#theater").find("#bigPic")[0].src= ar.find(".carr .pic")[Math.round(ar.find(".carr")[0].scrollLeft / ar.find(".carr").width())].src; 
+        $("#theater").find("#bigPic")[0].src= un_tn(ar.find(".carr .pic")[Math.round(ar.find(".carr")[0].scrollLeft / ar.find(".carr").width())].src); 
         $("#theater").append('<div class="nav_arrow left' + (ar.find(".nav_arrow.left").is(".disabled")? ' disabled': '') + '"><div class= "arrow"></div></div><div class="nav_arrow right' + (ar.find(".nav_arrow.right").is(".disabled")? ' disabled': '') + '"><div class= "arrow"></div></div>'); 
         $("#theater .nav_arrow.left .arrow").on("click", function(){
             !ar.find(".carr").is(":animated")? ar.find(".carr")[0].scrollLeft= ar.find(".carr")[0].scrollLeft - ar.find(".carr").width(): 672; 
-            $("#theater").find("#bigPic")[0].src= ar.find(".carr .pic")[Math.round(ar.find(".carr")[0].scrollLeft / ar.find(".carr").width())].src; 
+            $("#theater").find("#bigPic")[0].src= un_tn(ar.find(".carr .pic")[Math.round(ar.find(".carr")[0].scrollLeft / ar.find(".carr").width())].src); 
         }); 
         $("#theater .nav_arrow.right .arrow").on("click", function(){
             !ar.find(".carr").is(":animated")? ar.find(".carr")[0].scrollLeft= ar.find(".carr")[0].scrollLeft + ar.find(".carr").width(): 672; 
-            $("#theater").find("#bigPic")[0].src= ar.find(".carr .pic")[Math.round(ar.find(".carr")[0].scrollLeft / ar.find(".carr").width())].src; 
+            $("#theater").find("#bigPic")[0].src= un_tn(ar.find(".carr .pic")[Math.round(ar.find(".carr")[0].scrollLeft / ar.find(".carr").width())].src); 
         }); 
         $(".nav_arrow").on("click", function(i){$(i.target).is(".nav_arrow")? closeModal(): 1; }); 
-    }
+    }else{ 
+        var source = un_tn($(a.closest(".foto").children()[0]).attr('src')); 
+        $('.theater #bigPic').attr('src', source); 
+    } 
     responsive(); 
 } 
 function openModal(a) {
@@ -163,11 +164,11 @@ function openModal(a) {
         $("#theater").append('<div class="nav_arrow left' + (a.closest('.story').find(".nav_arrow.left").is(".disabled")? ' disabled': '') + '"><div class= "arrow"></div></div><div class="nav_arrow right' + (a.closest('.story').find(".nav_arrow.right").is(".disabled")? ' disabled': '') + '"><div class= "arrow"></div></div>'); 
         $("#theater .nav_arrow.left .arrow").on("click", function(){
             !a.closest('.story').find(".carr").is(":animated")? a.closest('.story').find(".carr")[0].scrollLeft= a.closest('.story').find(".carr")[0].scrollLeft - a.closest('.story').find(".carr").width(): 672; 
-            $("#theater").find("#bigPic")[0].src= $(".current .carr .pic")[$(".current .carr")[0].scrollLeft / $(".current .carr").width()].src; 
+            $("#theater").find("#bigPic")[0].src= un_tn($(".current .carr .pic")[$(".current .carr")[0].scrollLeft / $(".current .carr").width()].src); 
         }); 
         $("#theater .nav_arrow.right .arrow").on("click", function(){
             !a.closest('.story').find(".carr").is(":animated")? a.closest('.story').find(".carr")[0].scrollLeft= a.closest('.story').find(".carr")[0].scrollLeft + a.closest('.story').find(".carr").width(): 672; 
-            $("#theater").find("#bigPic")[0].src= $(".current .carr .pic")[$(".current .carr")[0].scrollLeft / $(".current .carr").width()].src; 
+            $("#theater").find("#bigPic")[0].src= un_tn($(".current .carr .pic")[$(".current .carr")[0].scrollLeft / $(".current .carr").width()].src); 
         }); 
         $(".nav_arrow").on("click", function(i){$(i.target).is(".nav_arrow")? closeModal(): 1; }); 
     }
@@ -193,6 +194,9 @@ function closeModal() {
         "display": "none"
     })
 }
+function un_tn(u){ 
+    return u.slice(0, u.indexOf("_tn")) + u.slice(u.indexOf("_tn") + 3); 
+} 
 $(document).on("ready",function(e){
     $(".nav_arrow.left .arrow").on("click", function(){th= $(this).parent(); !th.parent().find(".carr").is(":animated")? th.parent().find(".carr").animate({scrollLeft: th.parent().find(".carr")[0].scrollLeft - th.parent().find(".carr").width()}, 400): 672;}); 
 
@@ -317,9 +321,7 @@ $(".current")[0].focus();
             next.addClass("current"); 
 $($(".current")[0]).attr("tabindex", 0); 
 $(".current")[0].focus(); 
-        } else {
-            loadMore();
-        }
+        } 
     }
 
     $("html, body").animate({
@@ -464,7 +466,7 @@ document.onkeydown = function (evt) {
                     !$(th.find(".carr")).is(":animated")? $(th.find(".carr")).animate({scrollLeft: th.find(".carr")[0].scrollLeft - $(th.find(".carr")).width()}, 400): 672; 
                 }else{ 
                      th.find(".carr")[0].scrollLeft= th.find(".carr")[0].scrollLeft - $(th.find(".carr")).width(); 
-                     $("#theater").find("#bigPic")[0].src= $(th.find(".carr")).find(".pic")[Math.round(th.find(".carr")[0].scrollLeft / $(th.find(".carr")).width())].src; 
+                     $("#theater").find("#bigPic")[0].src= un_tn($(th.find(".carr")).find(".pic")[Math.round(th.find(".carr")[0].scrollLeft / $(th.find(".carr")).width())].src); 
                 } 
                 break; 
             case 39: 
@@ -473,7 +475,7 @@ document.onkeydown = function (evt) {
                     !$(th.find(".carr")).is(":animated")? $(th.find(".carr")).animate({scrollLeft: th.find(".carr")[0].scrollLeft + $(th.find(".carr")).width()}, 400): 672; 
                 }else{ 
                      th.find(".carr")[0].scrollLeft= th.find(".carr")[0].scrollLeft + $(th.find(".carr")).width(); 
-                     $("#theater").find("#bigPic")[0].src= $(th.find(".carr")).find(".pic")[Math.round(th.find(".carr")[0].scrollLeft / $(th.find(".carr")).width())].src; 
+                     $("#theater").find("#bigPic")[0].src= un_tn($(th.find(".carr")).find(".pic")[Math.round(th.find(".carr")[0].scrollLeft / $(th.find(".carr")).width())].src); 
                 } 
                 break; 
     }
