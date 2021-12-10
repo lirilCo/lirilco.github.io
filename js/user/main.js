@@ -194,7 +194,7 @@ function openModal(a) {
 }
 
 function closeModal() {
-    ar= false; 
+    ar= null; 
     $("#theater").find(".more")[0].outerHTML= "<p class= 'more'></p>"; 
     $("#theater .nav_arrow").remove(); 
     $(".zer")[0].innerHTML= ".ui-tooltip{z-index: 1 !important; }; "; 
@@ -478,10 +478,10 @@ $(".carr").on("scroll", function(){
 document.onkeydown = function (evt) {
     //console.log(evt.keyCode); 
 
-    (!!ar || $(".current").is(".mult_img"))? (function(){ 
+    (!!ar || ($("#theater").css("display") == "none" && $(".current").is(".mult_img")))? (function(){ 
         switch(evt.keyCode){
             case 37: 
-                ar? th= ar: th= $(".current"); 
+                th= ar; 
                 if($("#theater").css("display") == "none"){ 
                     !$(th.find(".carr")).is(":animated")? $(th.find(".carr")).animate({scrollLeft: th.find(".carr")[0].scrollLeft - $(th.find(".carr")).width()}, 400): 672; 
                 }else{ 
