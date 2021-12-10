@@ -32,7 +32,6 @@
     width: 100%; 
     padding-right: 340px; 
     box-sizing: border-box; 
-
 } 
 #theater #bigPic
 {
@@ -167,143 +166,6 @@ content: "\e627"
 {
     content: "\e60e"
 }
-#gallery img 
-{ 
-    cursor: pointer; 
-} 
-.info  img{
-    height: 40px !important;
-    width: 40px!important;
-    cursor: pointer;
-}
-.story .info  p{
-    width: auto !important;
-    font-size: 15px
-}
-.info  .time {
-    color: #aaa;
-    font-size: 14px;
-    margin: 0;
-   
-}
-.info  p a{
-  font-weight: bold;
-    text-decoration: none;
-}
-#theater .title
-{
-    
-  color: #666;
-    font-weight: bold
-
-}
-#theater .more
-{
-  color: #666 !important;
-  font-size: 15px;
-    margin: 0;
-}
-
-.options
-{
-    
-    height: 60px;
-    
-
-}
-.options ul
-{
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    line-height: 50px;
-    height: 100%;
-    vertical-align: middle;
-    text-align: center;
-} 
-#theater .options
-{
-   
-    bottom: 0;
-position: absolute;
-width: 100%;
-left: 0;
-    
-} 
-#theater .options ul
-{
-   
-    line-height: 0;
-    
-} 
-#theater .options ul li
-{
-   
-font-size: 40px    
-} 
-.options ul li
-{
-display: inline-block;
-    width: 30%;;
-    margin: 0;
-    height: 100%;
-    vertical-align: middle;
-    text-align: center;
-    font-family: "icomoon";
-    line-height:50px;
-    font-size: 30px;
-    cursor: pointer;
-    
-    
-} 
-.options ul li.bookmark:after
-{
-content: "\f097"
-} 
-.options ul li.bookmark.true:after
-{
-content: "\f02e"
-} 
-.options ul li.star:after
-{
-content: "\e60d"
-} 
-.options ul li.star.true:after
-{
-content: "\e60c"
-} 
-.options ul li.read:after
-{
-content: "\e627"
-} 
-#theater .comments
-{
-    width: 300px;
-    display: inline-block;
-     padding: 20px;
-    position: absolute;
-top: 0;
-right: 0;
-}
-#theater .comments #close
-{
-    text-align: right;
-    font-size: 9px;
-    color: #bbb;
-    margin: 5px 5px;
-    font-family: "icomoon";
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 2px;
-    cursor: pointer
-    
-}
-
-#theater .comments #close:before
-{
-    content: "\e60e"
-}
 .info 
 { 
     position: relative; 
@@ -325,6 +187,9 @@ right: 0;
     display: inline-block;
     width:  140px;
     vertical-align: top;
+}
+.info  p a{
+  font-weight: bold;
 }
 *
 { 
@@ -555,3 +420,15 @@ a:hover
     width: 220px; 
     height: 220px; 
  } 
+.info  .time {
+    color: #aaa;
+    font-size: 14px;
+    margin: 0;
+}
+#theater .info img {
+    position: absolute;
+    display: inline-block;
+    object-fit: contain;
+    height: 100% !important;
+    width: 40px; 
+}

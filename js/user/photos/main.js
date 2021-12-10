@@ -38,8 +38,8 @@ function openModal(a) {
     }else{
 
     }
-    $("#theater").find(".info").height() < $("#theater").find(".info").find("img").width()? $("#theater").find(".description").css({"padding-top": "58px"}): $("#theater").find(".description").css({"padding-top": "76px"})
-    
+    $("#theater").find(".info").height() <= $("#theater").find(".info").find("img").width()? $("#theater").find(".description").css({"padding-top": "58px"}): $("#theater").find(".description").css({"padding-top": "76px"})
+
     $(".more").mCustomScrollbar({theme: 
         "minimal-dark", 
         autoExpandScrollbar: true,
