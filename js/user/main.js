@@ -193,7 +193,9 @@ function openModal(a) {
 
 }
 
-function closeModal() {
+function closeModal() { 
+    $("#theater #bigPic")[0].src= ""; 
+
     ar= null; 
     $("#theater").find(".more")[0].outerHTML= "<p class= 'more'></p>"; 
     $("#theater .nav_arrow").remove(); 
@@ -481,7 +483,7 @@ document.onkeydown = function (evt) {
     (!!ar || ($("#theater").css("display") == "none" && $(".current").is(".mult_img")))? (function(){ 
         switch(evt.keyCode){
             case 37: 
-                th= ar; 
+                $("#theater").css("display") == "none"? th= $(".current"): th= ar; 
                 if($("#theater").css("display") == "none"){ 
                     !$(th.find(".carr")).is(":animated")? $(th.find(".carr")).animate({scrollLeft: th.find(".carr")[0].scrollLeft - $(th.find(".carr")).width()}, 400): 672; 
                 }else{ 
@@ -490,7 +492,7 @@ document.onkeydown = function (evt) {
                 } 
                 break; 
             case 39: 
-                ar? th= ar: th= $(".current"); 
+                $("#theater").css("display") == "none"? th= $(".current"): th= ar; 
                 if($("#theater").css("display") == "none"){ 
                     !$(th.find(".carr")).is(":animated")? $(th.find(".carr")).animate({scrollLeft: th.find(".carr")[0].scrollLeft + $(th.find(".carr")).width()}, 400): 672; 
                 }else{ 

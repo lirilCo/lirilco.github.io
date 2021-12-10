@@ -735,6 +735,8 @@ function openModal(a) {
 }
 
 function closeModal() {
+    $("#theater #bigPic")[0].src= ""; 
+               
     ar= false; 
     $("#theater").find(".more")[0].outerHTML= "<p class= 'more'></p>"; 
     $("#theater .nav_arrow").remove(); 
