@@ -736,7 +736,7 @@ function openModal(a) {
 
 function closeModal() {
     $("#theater #bigPic")[0].src= ""; 
-               
+
     ar= false; 
     $("#theater").find(".more")[0].outerHTML= "<p class= 'more'></p>"; 
     $("#theater .nav_arrow").remove(); 
@@ -878,9 +878,11 @@ $(document).keypress(function (e) {
 if(!$("textarea").is(":focus") && !$("input").is(":focus")){
     if (e.keyCode == 108) {
         $(".current").find('.options .star').toggleClass("true");
+        $("#theater").find('.options .star').toggleClass("true");        
     }
     if (e.keyCode == 98) {
         $(".current").find('.options .bookmark').toggleClass("true");
+        $("#theater").find('.options .bookmark').toggleClass("true");
     }
     if (e.keyCode == 102) {
         if(!$(".current").is(".mult_img")){

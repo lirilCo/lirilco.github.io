@@ -303,9 +303,12 @@ if(!$("textarea").is(":focus") && !$("input").is(":focus")){
     //console.log(e.keyCide) 
     if (e.keyCode == 108) {
         $(".current").find('.options .star').toggleClass("true");
+        $("#theater").find('.options .star').toggleClass("true");        
     }
     if (e.keyCode == 98) {
         $(".current").find('.options .bookmark').toggleClass("true");
+        $("#theater").find('.options .bookmark').toggleClass("true");
+        
     }
     if (e.keyCode == 102) {
         if(!$(".current").is(".mult_img")){

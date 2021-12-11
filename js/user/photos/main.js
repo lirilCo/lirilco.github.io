@@ -178,9 +178,11 @@ $(document).keypress(function (e) {
 if(!$("textarea").is(":focus") && !$("input").is(":focus")){
     if (e.keyCode == 108) {
         $(".current").find('.options .star').toggleClass("true");
+        $("#theater").find('.options .star').toggleClass("true");
     }
     if (e.keyCode == 98) {
         $(".current").find('.options .bookmark').toggleClass("true");
+        $("#theater").find('.options .bookmark').toggleClass("true");        
     }
     if (e.keyCode == 102) {
         openModal($(".current .pic"))
