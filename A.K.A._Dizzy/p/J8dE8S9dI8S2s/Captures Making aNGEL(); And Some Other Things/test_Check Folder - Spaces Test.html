@@ -25,6 +25,7 @@
         var username= "A.K.A._Dizzy"; 
         var users_name= "Luis Eduardo Gallego García"; 
     </script>
+    
     <script src="/js/jquery.js"></script>
     <script src="/js/video.js"></script>
     <script src="/js/jquery-ui.min.js"
@@ -40,23 +41,7 @@
     <script src="/js/Ace's Modes/mode-javascript.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src= "/js/ext-language_tools.js"></script>
     <script src="/js/user/p/main.js"></script>
-    <script type="text/javascript">
-        document.addEventListener("DOMContentLoaded", function(){ 
-            sprtdUrl= separateUrl(getToBusiness(window.location.pathname)); 
-                             
-            LEB= $("#files .file_tree"); 
-                             
-            for(eForensics in sprtdUrl){ 
-                for(fi in $(LEB).children()){ 
-                    if(($($(LEB).children()[fi]).hasClass("folder_cont") || $($(LEB).children()[fi]).hasClass("file")) && !$($(LEB).children()[fi]).hasClass("folder")){ 
-                        (!$($(LEB).children()[fi]).hasClass("file") && $($(LEB).children()[fi]).children()[0].innerText == sprtdUrl[eForensics])? LEB= $($(LEB).children()[fi])[0]: $($(LEB).children()[fi])[0].innerText == sprtdUrl[eForensics]? LEB= $($(LEB).children()[fi]): 1; 
-                    } 
-                } 
-            } 
-  
-            $(LEB).is(".folder_cont")? LEB= $(LEB).children()[0]: 1; 
-        })
-    </script>
+
     <script src="/js/courses/modernizr.custom.js"></script>
 
  <script src="/js/jquery.knob.js">
@@ -2002,6 +1987,25 @@
                 handles: "e",maxWidth: ($(window).width()), resize: function(){if($("#Live").hasClass("selected")){$("#edit")[0].style.zIndex= "6"; $("#edit")[0].style.visibility= "visible"}else if($("#Editar").hasClass("selected")){$("#filePr")[0].style.zIndex= "6"; $("#filePr")[0].style.visibility= "visible"}}, stop: function(){if($("#Live").hasClass("selected")){$("#edit")[0].style.zIndex= ""; $("#edit")[0].style.visibility= ""}else if($("#Editar").hasClass("selected")){$("#filePr")[0].style.zIndex= ""; $("#filePr")[0].style.visibility= ""}} }); 
 
         </script>
+        <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function(){ 
+            sprtdUrl= separateUrl(getToBusiness(window.location.pathname))
+
+            LEB= $("#files .file_tree"); 
+                             
+            for(eForensics in sprtdUrl){ 
+                for(fi= 0; fi <= $(LEB).children().length - 1; fi++){ 
+                    if(($($(LEB).children()[fi]).hasClass("folder_cont") || $($(LEB).children()[fi]).hasClass("file"))){ 
+                        (!$($(LEB).children()[fi]).hasClass("file") && $($(LEB).children()[fi]).children()[0].innerText == sprtdUrl[eForensics])? LEB= $($(LEB).children()[fi])[0]: $($(LEB).children()[fi])[0].innerText == sprtdUrl[eForensics]? LEB= $($(LEB).children()[fi])[0]: 1; 
+                    } 
+                } 
+            } 
+  
+            $(LEB).is(".folder_cont")? LEB= $(LEB).children()[0]: 1; 
+
+            LEB.click(); 
+        })
+    </script>
 
 </body>
 </html>
