@@ -1350,7 +1350,7 @@ separateUrl= function (r3){
     for(eForensics in r3){ 
         if(parseInt(eForensics) == r3.length - 1 || r3[eForensics] == "/"){ 
             parseInt(eForensics) == r3.length - 1? fragment+= r3[eForensics]: 1; 
-            sprtdUrl[sprtdUrl.length]= fragment; 
+            sprtdUrl[sprtdUrl.length]= fragment.replaceAll("%20", " "); 
             fragment= ""; 
         }else{ 
             fragment+= r3[eForensics]; 
