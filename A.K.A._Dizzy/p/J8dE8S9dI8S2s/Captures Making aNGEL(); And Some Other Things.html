@@ -42,7 +42,7 @@
     <script type="text/javascript" src= "/js/ext-language_tools.js"></script>
     <script src="/js/user/p/main.js"></script>
     <script type="text/javascript">
-        document.addEventListener("DOMContentLoaded", function(){ 
+        $(window).on("load", function(){ 
             sprtdUrl= separateUrl(getToBusiness(window.location.pathname)); 
                              
             LEB= $("#files .file_tree"); 
