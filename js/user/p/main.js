@@ -1388,6 +1388,7 @@ updateRoot= function(a7){
     } 
 
     $('#root div div').click( function(e){ 
+       $(".inScope").removeClass("inScope"); 
        if(!!e.target.getAttribute("url")){ 
         $("#preview .file_tree").removeClass("visible"); 
         $(".code-filler").width(0); 
