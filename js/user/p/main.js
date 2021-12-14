@@ -372,7 +372,7 @@ $("#preview .file").click(function(i){
         } 
     } 
 
-    $(LEB).trigger("click", true); ; 
+    $(LEB).trigger("click", true); 
 
         }else{ 
                                    

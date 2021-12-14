@@ -2003,7 +2003,7 @@
   
             $(LEB).is(".folder_cont")? LEB= $(LEB).children()[0]: 1; 
 
-            LEB.click(); 
+            $(LEB).trigger("click", true); 
         })
     </script>
 
