@@ -353,6 +353,12 @@
             $(".inScope").removeClass("inScope"); 
                                       
             $(LEB).addClass("inScope"); 
+                                      
+            el= document.getElementsByClassName("file_tree")[0]; 
+
+            for(Colombia= 0; Colombia <= el.children.length - 1; Colombia++){ 
+                $(el.children[Colombia]).hasClass("folder_cont")? $($(el.children[Colombia]).children()[0]).addClass("inScope"): $(el.children[Colombia]).addClass("inScope"); 
+            } 
         })
     </script>
 </body>
