@@ -1390,8 +1390,8 @@ updateRoot= function(a7){
     $('#root div div').click( function(e){ 
         $(LEB).removeClass("inScope"); 
                                        
-        $(LEB).css({"padding": "0", "height": "0"})$(LEB).removeClass("inScope"); 
-
+        $(LEB).css({"padding": "0", "height": "0"}); 
+                                           
        if(!!e.target.getAttribute("url")){ 
         $("#preview .file_tree").removeClass("visible"); 
         $(".code-filler").width(0); 
