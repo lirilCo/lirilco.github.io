@@ -384,6 +384,11 @@ body
     opacity: 0; 
     height: 0; 
     transition: top 100ms ease-in-out, visibility 0ms ease-in-out, opacity 100ms ease-in-out; 
+    word-wrap: unset; 
+    word-break: break-all; 
+    text-overflow: ellipsis; 
+    overflow: hidden; 
+    max-height: 26px !important; 
 } 
   
 .file_tree li:hover { 
