@@ -829,7 +829,7 @@ $("#Archivo, #Live, #Editar").click(function(){
     $(".selected").removeClass("selected"); 
         $(this).addClass("selected"); 
 
-        localStorage.setItem("selected", $(".selected").attr("id")); 
+        localStorage.setItem("selected", $(this)[0].innerText); 
                                             
     FileToRequest= window.location.pathname 
     slashCt= 0; 
