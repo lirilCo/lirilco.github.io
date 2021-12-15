@@ -1431,8 +1431,6 @@ updateRoot= function(a7){
 
     $('#root div div').click( function(e){ 
         debugger; 
-        typeof LEB != "undefined"? $(LEB).removeClass("inScope"): 15637; 
-                                       
         typeof LEB != "undefined"? $(LEB).css({"padding": "", "height": "", "opacity": "1"}): 15637; 
                                            
        if(!!e.target.getAttribute("url")){ 
