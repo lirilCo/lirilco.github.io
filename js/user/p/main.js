@@ -320,6 +320,8 @@ $("#files .file").click(function(i, tr){
     oReq.addEventListener("load", reqListener);
     oReq.open("GET", FileToRequest);
     oReq.send(); */ 
+             
+    title(); 
 }); 
 
 $("#preview .file").click(function(i){ 
@@ -602,7 +604,7 @@ LEB= $("#preview .file_tree");
 
     }) 
 
-
+    title(); 
 } 
 
 for(let folder of document.querySelectorAll("#preview .folder")) { 
@@ -1222,9 +1224,36 @@ $("#chats .chats").on("keydown", ".chat .chatBox .newMessage textarea", function
  })
 });
 
-$(window).on("resize", function(){
-    responsive();
-})
+$(window).on("resize", function(){ 
+    responsive(); 
+}) 
+
+$(document).on("resize", function(){ 
+    title(); 
+}) 
+   
+title= function(){ 
+    $("li").each(function(){ 
+        var height= 0; 
+        if(document.createRange){ 
+            var range= document.createRange(); 
+            range.selectNodeContents($(this)[0].childNodes[0]); 
+            if(range.getBoundingClientRect){ 
+                var rect= range.getBoundingClientRect(); 
+                if(rect){ 
+                    height= rect.bottom - rect.top; 
+                } 
+            } 
+        } 
+          
+        if(height > 22){ 
+            $(this).attr("title", $(this)[0].innerText); 
+        }else{ 
+            $(this).attr("title", ""); 
+        } 
+    }); 
+}; 
+   
 function responsive() {
 
     $("#file_expl").height($(window).height() - $("header").outerHeight() - $("#root").outerHeight());
@@ -1482,7 +1511,9 @@ updateRoot= function(a7){
             $(".file.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
 
         }
-       }
+       } 
+
+       title(); 
     }); 
 
     
