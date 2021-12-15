@@ -467,28 +467,33 @@ cursor: pointer
     margin-left: auto;
     position: fixed;
     height: 500px;
-    background-color: #fff;
     z-index: 3;
     top: 20px;
     max-width: 1400px;
-
 }
 #theater #picContainer
 {
-    position: relative;
+   position: absolute;
     height: 100%;
-    background-color: #fff
+    background-color: #fff; 
+    width: 100%; 
+    padding-right: 340px; 
+    box-sizing: border-box; 
 } 
 #theater #bigPic
 {
-   position: absolute;
-     width: 100%;
-       height: 100%;
-top: 0;
-bottom: 0;
-left: 0;
-object-fit: contain;
-margin: auto ;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    margin: auto ;
+}
+
+#theater .info p
+{
+    
+   font-size: 14px;
+       width: auto !important;
+padding-left: 47px;
 
 }
 #theater .title
@@ -503,28 +508,43 @@ margin: auto ;
   color: #666;
   font-size: 15px;
     margin: 0;
-    overflow: hidden
 }
 .options
 {
     
-    height: 50px;
+    height: 60px;
+    
+
 }
 .options ul
 {
     list-style: none;
     padding: 0;
     margin: 0;
-    line-height: 35px;
+    line-height: 50px;
     height: 100%;
     vertical-align: middle;
     text-align: center;
 } 
+#theater .options
+{
+   
+    bottom: 0;
+position: absolute;
+width: 100%;
+left: 0;
+    
+} 
 #theater .options ul
 {
    
-    line-height: 70px;
+    line-height: 0;
     
+} 
+#theater .options ul li
+{
+   
+font-size: 40px    
 } 
 .options ul li
 {
@@ -566,10 +586,13 @@ content: "\e627"
 {
     width: 300px;
     display: inline-block;
-     padding: 20px;
     position: absolute;
-top: 0;
-right: 0;
+    top: 0;
+    right: 20px;
+    background-color: #fff; 
+    height: 100%; 
+    box-sizing: border-box; 
+    padding: 20px 0; 
 }
 #theater .comments #close
 {
@@ -580,11 +603,17 @@ right: 0;
     font-family: "icomoon";
     position: absolute;
     top: 0;
-    right: 0;
+    right: -20px;
     padding: 2px;
     cursor: pointer
     
 }
+
+#theater .comments #close:before
+{
+    content: "\e60e"
+} 
+  
 #article .options
 {
     position: absolute;
@@ -915,6 +944,130 @@ sub, sux, xx
 {
     max-width: 100% !important; 
 }
+a 
+{ 
+    text-decoration: none; 
+} 
+a:hover 
+{ 
+    text-decoration: underline; 
+} 
+.navigation{ 
+    width: 100%; 
+    position: relative; 
+} 
+.photo .navigation, .photo .carr, .photo .picture{ 
+    height: 100%; 
+} 
+.photo .carr, .mult_img .carr{ 
+    writing-mode: vertical-lr; 
+    width: 100%; 
+    overflow: hidden; 
+} 
+.photo .picture, .mult_img .picture{ 
+    width: 100%; 
+} 
+.photo .picture .pic, .mult_img .picture .pic{ 
+    width: 100%; 
+    object-fit: contain; 
+} 
+.nav_arrow{ 
+    display: flex; 
+    justify-content: center; 
+    flex-direction: column; 
+    font-family: "icomoon"; 
+    height: 100%; 
+    position: absolute; 
+    text-align: center; 
+} 
+.nav_arrow .arrow{ 
+    font-family: "icomoon"; 
+} 
+.nav_arrow .arrow::after {
+    background-color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+}
+.nav_arrow.disabled .arrow {
+    color: #ccc;
+}
+
+.nav_arrow.left .arrow:after{ 
+    content: "\e902"; 
+} 
+
+.nav_arrow.left{ 
+    left: 0; 
+} 
+.nav_arrow.right{ 
+    right: 0; 
+} 
+.nav_arrow.right .arrow:after{ 
+    content: "\e901"; 
+} 
+#theater .nav_arrow.left{ 
+    left: 1.1%; 
+    top: 0; 
+    position: fixed; 
+} 
+#theater .nav_arrow.right{ 
+    right: 1.1%; 
+    top: 0; 
+    position: fixed; 
+} 
+#theater{ 
+    height: 100%; 
+    position: fixed; 
+    top: 0; 
+    box-sizing: border-box; 
+    padding: 20px 0;
+    width: 90%; 
+} 
+#theater > section{ 
+    background-color: #fff; 
+    height: 100%; 
+    position: relative; 
+} 
+#theater .description{ 
+    display: flex;
+    flex-flow: column;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 58px 0 87px 0;
+}
+/*.RIPonsive{}*/ 
+#theater .more{ 
+    flex-grow: 1; 
+    overflow: hidden !important; 
+} 
+#theater .info{ 
+    z-index: 1; 
+} 
+.moreI{ 
+    display: none; 
+} 
+.photo.mult_img{ 
+    width: 220px; 
+    height: 220px; 
+ } 
+.info  .time {
+    color: #aaa;
+    font-size: 14px;
+    margin: 0;
+}
+#theater .info img {
+    position: absolute;
+    display: inline-block;
+    object-fit: contain;
+    height: 100% !important;
+    width: 40px; 
+}
+.info a:hover { 
+    text-decoration: none !important; 
+} 
 header nav ul li#right-menu #store::before {
     background-image: url("https://www.freepnglogos.com/uploads/santa-hat-png/download-santa-hat-png-transparent-image-and-clipart-2.png");
     background-repeat: no-repeat;
@@ -924,3 +1077,6 @@ header nav ul li#right-menu #store::before {
     background-size: contain;
     background-position-x: -3px;
 }
+figure .info{ 
+    display: none; 
+} 

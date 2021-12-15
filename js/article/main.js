@@ -119,21 +119,24 @@ $('#profileSettings').click(function(i){
     var source = a.attr('src');
     $('.theater #bigPic').attr('src', source);
     $(".more").text(a.closest("figure").find("figcaption")[0].innerText)
-    var user = "";
-    $('.theater .comments .info .username').html(user);
 
-    var time = "";
+
+    
+    var user = a.closest('figure').find(".username").html();
+    $('.theater .comments .info .username').html(user);
+alert(user)
+    var time = a.closest('figure').find(".time").html();
     $('.theater .comments .info .time').html(time);
     
-    var title = "";
+    var title = a.closest('figure').find(".title").html();
     $('.theater .comments .title').html(title);
 
-    if (a.closest('.story').find(".options .bookmark").hasClass("true")) {
+    if (a.closest('figure').find(".options .bookmark").hasClass("true")) {
         $('.theater .comments .options .bookmark').addClass("true");
     } else {
         $('.theater .comments .options .bookmark').removeClass("true");
     }
-    if (a.closest('.story').find(".options .star").hasClass("true")) {
+    if (a.closest('figure').find(".options .star").hasClass("true")) {
         $('.theater .comments .options .star').addClass("true");
     } else {
         $('.theater .comments .options .star').removeClass("true");
@@ -155,12 +158,7 @@ $('#profileSettings').click(function(i){
         autoExpandScrollbar: true,
         scrollInertia: 100});
       
-        $("#theater").height($(window).height() - 40);
 
-    $("#picContainer").width($("#bigPic").width());
-    $("#theater .comments").height($("#theater").height() - 40);
-    $("#theater .comments .more").height($("#theater .comments").height() - $("#theater .info").outerHeight(true) - $("#theater .comments .title").outerHeight(true) - $("#theater .comments .options").outerHeight(true));
-    $("#theater").width("90%");
     responsive()
 }
     function openModal(a) {
@@ -209,12 +207,7 @@ $('#profileSettings').click(function(i){
         autoExpandScrollbar: true,
         scrollInertia: 100});
       
-        $("#theater").height($(window).height() - 40);
 
-    $("#picContainer").width($("#bigPic").width());
-    $("#theater .comments").height($("#theater").height() - 40);
-    $("#theater .comments .more").height($("#theater .comments").height() - $("#theater .info").outerHeight(true) - $("#theater .comments .title").outerHeight(true) - $("#theater .comments .options").outerHeight(true));
-    $("#theater").width("90%");
     responsive()
 }
 
@@ -392,9 +385,6 @@ function responsive(){
         $(".poema.autoScrollTo").css({"max-height": $(window).height() - 56 - 6.84})
          $("#picContainer").width($("#theater").width()- $(".comments").outerWidth())
         $("#article").width($(window).width()- $("#sidebar").outerWidth(true) );
-        $("#theater .comments").height($("#theater").height()- 40 );
-        $("#theater .comments .more").height($("#theater .comments").height()- $("#theater .info").outerHeight(true)  - $("#theater .comments .title").outerHeight(true) -  $("#theater .comments .options").outerHeight(true));
-        $("#theater").height($(window).height()-40);
         $("#Store #actualStore").height($(window).height() - $("header").height() - 21);
         $("#sidebar").height($(window).height() - 46);
         $("#Store #actualStore #storeSection").width($(window).width() - $("#Store #actualStore #storeList").width() - 87);
