@@ -1537,7 +1537,7 @@ getToBusiness= function(r6){
         (slashCount == 4 && iX == 0123666123)? iX= parseInt(eForensics) + 1: 1; 
     } 
       
-    return r6.slice(iX, r6.length); // -1??
+    return r6.slice(iX, r6.length).replaceAll("%20", " "); // -1??
 }
 
 var getSiblings = function (elem) {
