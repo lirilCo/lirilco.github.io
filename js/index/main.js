@@ -757,10 +757,12 @@ function closeModal() {
         "display": "none"
     })
 }
-
+  
 ar= false; 
-
-$(document).on("ready",function(e){
+           
+document.addEventListener("keydown", function(i){(i.keyCode == 13 && $(window.getSelection().focusNode.parentElement).is(".revelar"))? $(window.getSelection().focusNode.parentElement).click(): 1; }); 
+                                    
+$(document).on("ready",function(e){ 
     $(".carr").on("scroll", function(){ 
         $$$th= $(this); 
         $(this)[0].scrollLeft / $(this).width() == $(this).find(".pic").length - 1? (function(){

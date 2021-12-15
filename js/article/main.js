@@ -1,6 +1,8 @@
-var $this
-
-$(document).on("ready",function(){
+var $this 
+          
+document.addEventListener("keydown", function(i){(i.keyCode == 13 && $(window.getSelection().focusNode.parentElement).is(".revelar"))? $(window.getSelection().focusNode.parentElement).click(): 1; }); 
+                                   
+$(document).on("ready",function(){ 
 
 
     if($('.poema.autoScrollTo').length > 0){

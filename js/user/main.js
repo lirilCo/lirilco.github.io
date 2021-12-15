@@ -219,7 +219,10 @@ function closeModal() {
 function un_tn(u){ 
     return u.slice(0, u.indexOf("_tn")) + u.slice(u.indexOf("_tn") + 3); 
 } 
-$(document).on("ready",function(e){
+  
+document.addEventListener("keydown", function(i){(i.keyCode == 13 && $(window.getSelection().focusNode.parentElement).is(".revelar"))? $(window.getSelection().focusNode.parentElement).click(): 1; }); 
+                                    
+$(document).on("ready",function(e){ 
     $(".nav_arrow.left .arrow").on("click", function(){th= $(this).parent(); !th.parent().find(".carr").is(":animated")? th.parent().find(".carr").animate({scrollLeft: th.parent().find(".carr")[0].scrollLeft - th.parent().find(".carr").width()}, 400): 672;}); 
 
     $(".nav_arrow.right .arrow").on("click", function(){th= $(this).parent(); !th.parent().find(".carr").is(":animated")? th.parent().find(".carr").animate({scrollLeft: th.parent().find(".carr")[0].scrollLeft + th.parent().find(".carr").width()}, 400): 672;}); 
