@@ -446,7 +446,6 @@ for(eForensics in sprtdUrl){
 
         }
 
-    typeof LEB != "undefined"? $(LEB).css({"padding": "", "height": "", "opacity": "1"}): 15637; 
 }); 
 
 for(let folder of document.querySelectorAll("#files .folder")) { 
@@ -822,7 +821,6 @@ $("#preview .folder").click(function(i, triggered){
         LEB.children[0].click(); 
     } 
 
-    typeof LEB != "undefined"? $(LEB).css({"padding": "", "height": "", "opacity": "1"}): 15637; 
 }); 
     
 $('#root div').click( function(e){ 
@@ -1427,8 +1425,6 @@ updateRoot= function(a7){
     } 
 
     $('#root div div').click( function(e){ 
-        debugger; 
-                                           
        if(!!e.target.getAttribute("url")){ 
         $("#preview .file_tree").removeClass("visible"); 
         $(".code-filler").width(0); 
