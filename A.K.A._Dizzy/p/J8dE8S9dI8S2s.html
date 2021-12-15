@@ -1987,6 +1987,14 @@
                 handles: "e",maxWidth: ($(window).width()), resize: function(){if($("#Live").hasClass("selected")){$("#edit")[0].style.zIndex= "6"; $("#edit")[0].style.visibility= "visible"}else if($("#Editar").hasClass("selected")){$("#filePr")[0].style.zIndex= "6"; $("#filePr")[0].style.visibility= "visible"}}, stop: function(){localStorage.setItem("filesWidth", $("#files").width()); if($("#Live").hasClass("selected")){$("#edit")[0].style.zIndex= ""; $("#edit")[0].style.visibility= ""}else if($("#Editar").hasClass("selected")){$("#filePr")[0].style.zIndex= ""; $("#filePr")[0].style.visibility= ""}} }); 
 
         </script>
-
+        <script>
+            document.addEventListener("DOMContentLoaded", function(){ 
+                localStorage.getItem("filesWidth") != null? $("#files").width(parseInt(localStorage.getItem("filesWidth")) + "px"): 1216564; 
+                          
+            responsive(); 
+                          
+            localStorage.getItem("selected") != null? $("#"+ localStorage.getItem("selected")).click(): 3413221227; 
+            })
+        </script>
 </body>
 </html>

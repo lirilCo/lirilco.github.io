@@ -828,6 +828,9 @@ $("#Archivo, #Live, #Editar").click(function(){
     $("#preview .file_tree").removeClass("visible"); 
     $(".selected").removeClass("selected"); 
         $(this).addClass("selected"); 
+
+        localStorage.setItem("selected", $(".selected").attr("id")); 
+                                            
     FileToRequest= window.location.pathname 
     slashCt= 0; 
     strtgIx= 0; 
