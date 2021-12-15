@@ -1530,8 +1530,6 @@ updateRoot= function(a7){
 
         $(".file.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
 
-       typeof LEB != "undefined"? $(LEB).css({"padding": "", "height": "", "opacity": "1"}): 15637; 
-
        title(); 
     }); 
 
