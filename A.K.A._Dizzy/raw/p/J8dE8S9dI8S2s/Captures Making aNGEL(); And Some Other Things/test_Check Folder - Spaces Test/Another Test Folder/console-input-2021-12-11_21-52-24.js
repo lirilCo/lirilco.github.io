@@ -1,1 +1,0 @@
-separateUrl(getToBusiness(window.location.pathname))
