@@ -1516,6 +1516,8 @@ updateRoot= function(a7){
         }
        } 
 
+       typeof LEB != "undefined"? $(LEB).css({"padding": "", "height": "", "opacity": "1"}): 15637; 
+
        title(); 
     }); 
 
