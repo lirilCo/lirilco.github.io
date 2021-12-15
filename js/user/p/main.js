@@ -1422,7 +1422,7 @@ updateRoot= function(a7){
     $('#root div div').click( function(e){ 
         typeof LEB != "undefined"? $(LEB).removeClass("inScope"): 15637; 
                                        
-        typeof LEB != "undefined"? $(LEB).css({"padding": "0", "height": "0"}): 15637; 
+        typeof LEB != "undefined"? $(LEB).css({"padding": "", "height": "", "opacity": "1"}): 15637; 
                                            
        if(!!e.target.getAttribute("url")){ 
         $("#preview .file_tree").removeClass("visible"); 
