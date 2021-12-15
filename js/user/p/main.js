@@ -321,7 +321,6 @@ $("#files .file").click(function(i, tr){
     oReq.open("GET", FileToRequest);
     oReq.send(); */ 
                     
-    typeof LEB != "undefined"? $(LEB).css({"padding": "", "height": "", "opacity": "1"}): 15637; 
 
     title(); 
 }); 
@@ -608,7 +607,6 @@ LEB= $("#preview .file_tree");
 
     }) 
 
-    typeof LEB != "undefined"? $(LEB).css({"padding": "", "height": "", "opacity": "1"}): 15637; 
              
     title(); 
 } 
@@ -730,7 +728,6 @@ $("#files .folder").click(function(i){
             $(".file.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
         } 
           
-        typeof LEB != "undefined"? $(LEB).css({"padding": "", "height": "", "opacity": "1"}): 15637; 
 }); 
     
 $("#preview .folder").click(function(i, triggered){ 
@@ -1431,7 +1428,6 @@ updateRoot= function(a7){
 
     $('#root div div').click( function(e){ 
         debugger; 
-        typeof LEB != "undefined"? $(LEB).css({"padding": "", "height": "", "opacity": "1"}): 15637; 
                                            
        if(!!e.target.getAttribute("url")){ 
         $("#preview .file_tree").removeClass("visible"); 
@@ -1458,7 +1454,6 @@ updateRoot= function(a7){
             $(".file").css({"opacity": "0", "height": "0", "padding": "0"}); 
             $(".folder_cont > .folder.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
             $(".file.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
-            typeof LEB != "undefined"? $(LEB).css({"padding": "", "height": "auto", "opacity": "1"}): 15637; 
 
         aar= getToBusiness(window.location.pathname); 
                  
@@ -1475,7 +1470,6 @@ updateRoot= function(a7){
             $(".file").css({"opacity": "0", "height": "0", "padding": "0"}); 
             $(".folder_cont > .folder.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
             $(".file.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
-            typeof LEB != "undefined"? $(LEB).css({"padding": "", "height": "auto", "opacity": "1"}): 15637; 
         }else{ 
             $(".inScope").removeClass("inScope"); 
                                    
@@ -1502,7 +1496,6 @@ updateRoot= function(a7){
                 $(".file").css({"opacity": "0", "height": "0", "padding": "0"}); 
                 $(".folder_cont > .folder.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
                 $(".file.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
-                typeof LEB != "undefined"? $(LEB).css({"padding": "", "height": "auto", "opacity": "1"}): 15637; 
             }, 10); 
 
             spr= separateUrl(aar); 
@@ -1525,7 +1518,6 @@ updateRoot= function(a7){
             $(".file").css({"opacity": "0", "height": "0", "padding": "0"}); 
             $(".folder_cont > .folder.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
             $(".file.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
-            typeof LEB != "undefined"? $(LEB).css({"padding": "", "height": "auto", "opacity": "1"}): 15637; 
         }
        } 
 
