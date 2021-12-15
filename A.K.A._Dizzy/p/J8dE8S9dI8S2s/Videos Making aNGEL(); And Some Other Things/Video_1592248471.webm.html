@@ -2015,9 +2015,18 @@
                 $(el.children[Colombia]).hasClass("folder_cont")? $($(el.children[Colombia]).children()[0]).addClass("inScope"): $(el.children[Colombia]).addClass("inScope"); 
             } 
               
-            localStorage.getItem("filesWidth") != null? $("#files").width(parseInt(localStorage.getItem("filesWidth")) + "px"): 1216564; 
-                          
-            responsive(); 
+            var sC; 
+
+            sC= setInterval(function(){ 
+                if($(".ui-resizable").length > 0){ 
+                    localStorage.getItem("filesWidth") != null? $("#files").width(parseInt(localStorage.getItem("filesWidth")) + "px"): 1216564; 
+                                  
+                    responsive(); 
+                                  
+                    clearInterval(sC); 
+                }
+            }, 100); 
+            
         })
     </script>
 
