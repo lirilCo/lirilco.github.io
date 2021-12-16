@@ -3,6 +3,7 @@ var $this
 document.addEventListener("keydown", function(i){(i.keyCode == 13 && $(window.getSelection().focusNode.parentElement).is(".revelar"))? $(window.getSelection().focusNode.parentElement).click(): 1; }); 
                                    
 $(document).on("ready",function(){ 
+    $("#theater").on("click", function(i){$(i.target).is("#theater")? closeModal(): 1; }); 
 
 
     if($('.poema.autoScrollTo').length > 0){
@@ -112,6 +113,8 @@ $('#profileSettings').click(function(i){
 
     responsive()
     function openBlImage(a) {
+    $(".zer")[0].innerHTML= ".ui-tooltip{z-index: 4 !important; }; "; 
+
     $("body")[0].style.overflowY= "hidden"; 
     $("#theater").addClass("animated fadeIn ")
     $(".theater").css({
@@ -126,7 +129,7 @@ $('#profileSettings').click(function(i){
     
     var user = a.closest('figure').find(".username").html();
     $('.theater .comments .info .username').html(user);
-alert(user)
+
     var time = a.closest('figure').find(".time").html();
     $('.theater .comments .info .time').html(time);
     
@@ -144,8 +147,9 @@ alert(user)
         $('.theater .comments .options .star').removeClass("true");
     }
     
-    var pic = "";
+    var pic = a.closest('figure').find(".info img").attr('src');
     $('.theater .comments .info #pic').attr('src', pic);
+
 
     var ref = "";
     $('.theater .comments .options ul a').attr('href', ref);
@@ -164,6 +168,7 @@ alert(user)
     responsive()
 }
     function openModal(a) {
+    $(".zer")[0].innerHTML= ".ui-tooltip{z-index: 4 !important; }; "; 
     $("body")[0].style.overflowY= "hidden"; 
     $("#theater").addClass("animated fadeIn ")
     $(".theater").css({
@@ -193,6 +198,9 @@ alert(user)
         $('.theater .comments .options .star').removeClass("true");
     }
 
+    var more= !!a.closest('.story').find(".moreI").html()? a.closest('.story').find(".moreI").html(): "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sit amet varius lectus, congue rutrum urna. Suspendisse in ultrices enim. In hac habitasse platea dictumst. Praesent aliquet, nisi nec euismod vulputate, odio velit porta erat, ut semper lacus erat ac nulla. Aenean ex libero, volutpat vel sem et, blandit dictum dui. Duis suscipit sed nisi finibus vestibulum. Quisque finibus porttitor nisl, nec consequat metus. Quisque commodo, libero nec volutpat suscipit, quam urna volutpat turpis, quis rhoncus magna dui sit amet lacus. Donec pellentesque aliquam turpis nec commodo. Aliquam lobortis facilisis auctor. Sed libero nisi, scelerisque et porttitor vel, accumsan sed lacus. Pellentesque at tortor pellentesque, vestibulum turpis at, iaculiuisque finibus porttitor nisl, nec consequat metus. Quisque commodo, libero nec volutpat suscipit, quam urna volutpat turpis, quis rhoncus magna dui sit amet lacus. Donec pellentesque aliquam turpis nec commodo. Aliquam lobortis facilisis auctor. Sed libero nisi, scelerisque et porttitor vel, accumsan sed lacus. Pellentesque at tortor pellentesque, vestibulum turpis at, iaculis nibh.";
+    $('.theater .comments .more').html(more);
+
     var pic = a.closest('.story').find(".info img").attr('src');
     $('.theater .comments .info #pic').attr('src', pic);
 
@@ -214,6 +222,8 @@ alert(user)
 }
 
 function closeModal() {
+    $("#theater").find(".more")[0].outerHTML= "<p class= 'more'></p>"; 
+                                            
     $("body")[0].style.overflowY= "scroll"; 
     if ($('.theater .comments .options .bookmark').hasClass("true")) {
         $this.find('.options .bookmark').addClass("true");
@@ -229,6 +239,8 @@ function closeModal() {
         "display": "none"
     })
     responsive(); 
+
+    $(".zer")[0].innerHTML= ".ui-tooltip{z-index: 1 !important; }; "; 
 }
 		$('.knob').trigger(
         		'configure',
@@ -321,9 +333,20 @@ function closeModal() {
         if (evt.keyCode == 27) {
             closeModal()        
         }
+
     };
 
-
+$(document).on("keypress", function(e){ 
+    if (e.keyCode == 108) {
+        $("#theater").find('.options .star').toggleClass("true");        
+        $(".current").find('.options .star').toggleClass("true");
+    }
+    if (e.keyCode == 98) {
+        $("#theater").find('.options .bookmark').toggleClass("true");
+        $(".current").find('.options .bookmark').toggleClass("true");
+        
+    }
+})
 	$("#profileTrigger").on("click", function (e) {
         $(".wrapper").toggleClass("visible")
         $("#right-menu .index-arrow").toggleClass("open");
@@ -385,7 +408,6 @@ $( window ).on("load", function(){
 })
 function responsive(){
         $(".poema.autoScrollTo").css({"max-height": $(window).height() - 56 - 6.84})
-         $("#picContainer").width($("#theater").width()- $(".comments").outerWidth())
         $("#article").width($(window).width()- $("#sidebar").outerWidth(true) );
         $("#Store #actualStore").height($(window).height() - $("header").height() - 21);
         $("#sidebar").height($(window).height() - 46);

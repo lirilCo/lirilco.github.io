@@ -34,14 +34,16 @@ header {
 }
 header #Options{
     float: right;
-    margin-right: 250px;
-    height: 46px;
+    right: 275px;
+    height: 40px;
     padding: 0;
+    z-index: 12;
+    position: absolute;
 }
 header #Options .options li{
     width: 50%;
     margin: 0;
-    line-height: 32px;
+    line-height: 40px;
     top: 0;
     font-size: 35px;
     display: inline; 
@@ -404,16 +406,7 @@ normal #fff*/
     margin: 0 ;
     position: absolute;
     top: 0;
-    left: 45px;
-}
-.info  .time {
-    color: #aaa;
-    font-size: 13px;
-    margin: 0;
-    position: absolute;
-    top: auto;
-    bottom: 0;
-    left: 44px;
+    left: 0; 
 }
 .story .info  .time {
    left: 45px
@@ -512,7 +505,14 @@ padding-left: 47px;
 .options
 {
     
-    height: 60px;
+    height: 60px; 
+    
+
+}
+header .options
+{
+    
+    height: 100%; 
     
 
 }
@@ -521,7 +521,6 @@ padding-left: 47px;
     list-style: none;
     padding: 0;
     margin: 0;
-    line-height: 50px;
     height: 100%;
     vertical-align: middle;
     text-align: center;
@@ -638,8 +637,8 @@ content: "\e627"
 } 
 #article #title 
 {
-    text-align: center;
-    margin: 80px auto 0 auto;
+    text-align: left;
+    margin: 0 auto 0 auto;
     width: 80%;
     font-size: 50px;
     color: #666;
@@ -652,6 +651,7 @@ content: "\e627"
     width: 100%;
     padding-right: 273px;
     box-sizing: border-box;
+    padding-top: 80px; 
 }
 #article #text
 {
@@ -767,7 +767,7 @@ i, q, b, sup
 } 
 header .bookmark 
 { 
-  margin: 0 21px !important; 
+  margin: 0 14px !important; 
 } 
 h1, h2, h3, div, u, h4
 { 
@@ -1079,4 +1079,171 @@ header nav ul li#right-menu #store::before {
 }
 figure .info{ 
     display: none; 
+} 
+.date{ 
+    color: #9EABB3;
+    text-align: left;
+    width: 80%;
+    display: flow-root list-item;
+    margin: 0 auto;
+    list-style: none;
+} 
+time{ 
+    color: #bbb;
+    text-align: left;
+    width: 100%;
+    font-size: 16px;
+} 
+.ui-tooltip {
+    position: absolute; 
+    background-color: #fff !important; 
+    padding: 6px 10px !important;
+    color: white !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 2px !important;
+  }
+.ui-tooltip-content {
+    color: #f1c40f !important;
+   position: relative;
+  }
+.tool
+{
+    width: 280px; 
+    height:150px; 
+    background: #fff; 
+    position:relative;
+}
+.tool .datos .rol
+{
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    bottom: 5px;
+    margin: auto;
+    width: 100%;
+    font-size: 20px; 
+    background: #2ecc71;
+}
+.tool .datos .username
+{
+    position: absolute;
+    top: 55px;
+    margin: auto;
+    width: 100%;
+    font-size: 16px; 
+    padding-left: 5px; 
+    box-sizing: border-box;
+}
+.tool .datos
+{
+    position: absolute; 
+    z-index: 3; 
+    bottom: 0; 
+    left: 114px; 
+    width: 161px; 
+    height:109px;
+}
+.tool .datos .actions
+{
+    margin: 0;
+    padding: 0;
+}
+.tool .datos .actions li
+{
+    display: inline-block;
+    list-style: none;
+    width: 30%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 30px;
+    cursor: pointer;
+}
+.tool img
+{
+    z-index: 2; 
+    border-radius: 50%; 
+    margin:5px;
+    position:absolute; 
+    padding: 4px; 
+    bottom: 0;
+    height: 90px;
+    width: 90px;
+}
+.tool canvas
+{
+    position: absolute; 
+    bottom: 3px; 
+    left: 3px; 
+}
+.tool p.username
+{ 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+} 
+.city .thumbnail {
+    height: 100%;
+    width: 80px;
+    border-radius: 0;
+    left: 0;
+    object-fit: cover;
+    margin: 0;
+    border: 5px solid #fff;
+    padding: 0;
+}
+.city .introduction {
+    height: 100%;
+    width: 185px;
+    float: right;
+    overflow-y: scroll;
+    font-size: 12px;
+    padding: 5px;
+    box-sizing: border-box;
+    margin-top: -10px;
+    color: #666;
+}
+.city .thumbnail:hover {
+    width: auto;
+}
+.insignia
+{
+    position: absolute; 
+    width: 100%; 
+    border-bottom: 3px solid #f1c40f; 
+}
+.buscar
+{
+        border-bottom: 1px solid #2ecc71;
+   font-size: 16px;
+   width: 350px;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    max-width: 100%; 
+}
+
+.agregar.sent
+{
+    color: blue;
+}
+.hidden
+{
+    display: none;
+}
+.wrapper{
+    display: none;
+}
+.wrapper.visible{
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2
+}
+#profile div{ 
+    display: inline-block !important; 
 } 
