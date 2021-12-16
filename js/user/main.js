@@ -143,6 +143,8 @@ function openModal(a) {
     var source = a.attr('src');
     $('.theater #bigPic').attr('src', source);
 
+    source= un_tn(source); 
+                           
     history.pushState({page: 1}, "", "/" + username + "/i/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
 
     var user = a.closest('.story').find(".username").html();
@@ -194,13 +196,13 @@ function openModal(a) {
         $("#theater .nav_arrow.left .arrow").on("click", function(){
             !a.closest('.story').find(".carr").is(":animated")? a.closest('.story').find(".carr")[0].scrollLeft= a.closest('.story').find(".carr")[0].scrollLeft - a.closest('.story').find(".carr").width(): 672; 
             $("#theater").find("#bigPic")[0].src= $(".current .carr .pic")[$(".current .carr")[0].scrollLeft / $(".current .carr").width()].src; 
-            source= $(".current .carr .pic")[$(".current .carr")[0].scrollLeft / $(".current .carr").width()].src; 
+            source= un_tn($(".current .carr .pic")[$(".current .carr")[0].scrollLeft / $(".current .carr").width()].src)
             history.pushState({page: 1}, "", "/" + username + "/i/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
         }); 
         $("#theater .nav_arrow.right .arrow").on("click", function(){
             !a.closest('.story').find(".carr").is(":animated")? a.closest('.story').find(".carr")[0].scrollLeft= a.closest('.story').find(".carr")[0].scrollLeft + a.closest('.story').find(".carr").width(): 672; 
             $("#theater").find("#bigPic")[0].src= $(".current .carr .pic")[$(".current .carr")[0].scrollLeft / $(".current .carr").width()].src; 
-            source= $(".current .carr .pic")[$(".current .carr")[0].scrollLeft / $(".current .carr").width()].src; 
+            source= un_tn($(".current .carr .pic")[$(".current .carr")[0].scrollLeft / $(".current .carr").width()].src)
             history.pushState({page: 1}, "", "/" + username + "/i/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
         }); 
         $(".nav_arrow").on("click", function(i){$(i.target).is(".nav_arrow")? closeModal(): 1; }); 
