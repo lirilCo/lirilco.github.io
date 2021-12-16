@@ -11,22 +11,21 @@
     
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300,600,700' rel='stylesheet' type='text/css'>
       
-     <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/article/style.css">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/video-js.css">
-    <link rel="stylesheet" href="css/prism.css">
-    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/article/style.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/video-js.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/jquery.mCustomScrollbar.min.css">
 
 
-    <script src="js/jquery.js"></script>
-    <script src="js/article/main.js"></script>
-    <script src="js/main.js"></script> <!-- Resource jQuery -->
-    <script src="js/prism.js"></script>
-    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="js/index/modernizr.custom.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/sticky-kit.min.js"></script>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/article/main.js"></script>
+    <script src="/js/prism.js"></script>
+    <script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="/js/index/modernizr.custom.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    <script src="/js/sticky-kit.min.js"></script>
 
   
 
@@ -134,9 +133,43 @@
             });
         });
     </script>
+    <style type="text/css">
+        figure{ 
+            position: relative;     
+            margin: 0 auto 27px auto !important; 
+        }
+        figure img {
+                width: 100%; 
+        }
+        figure div {
+            position: absolute; 
+            top: 0; 
+            height: calc(100% - 6px); 
+            max-width: 100% !important; 
+            width: 23.4px; 
+        }
+        figure div img {
+            object-fit: cover; 
+            object-position: left; 
+            height: 100%; 
+
+        }
+        .kkjxujshx
+        { 
+            width: 48%; 
+        } 
+        .kkjxujshx div img
+        { 
+            position: relative; 
+            left: 0.3px; 
+        } 
+</style>
 </head>
 
 <body>
+    <style id= "setter" type="text/css">
+    
+</style>
 <div class="wrapper">
   </div>
     <header>
@@ -245,17 +278,13 @@ Inicio              </span>
           <h2>Lorem </h2>
 
 <p>Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic, you know how you can tell who the arch-villain's going to be? He's the exact opposite of the hero. And most times they're friends, like you and me! I should've known way back when... You know why, David? Because of the kids. They called me Mr Glass. </p>
-<figure class="cd-image-container">
-		<img src="resources/images/article/img-original.jpg" alt="Original Image">
-		<span class="cd-image-label" data-type="original"></span>
+<figure style= "width: 60%; ">
+            <img src="resources/images/article/img-original.jpg">
+            <div>
+                <img src="resources/images/article/img-modified.jpg">
+            </div>
+        </figure>
 
-		<div class="cd-resize-img"> <!-- the resizable image on top -->
-			<img src="resources/images/article/img-modified.jpg" alt="Modified Image">
-			<span class="cd-image-label" data-type="modified"></span>
-		</div>
-
-		<span class="cd-handle"></span>
-	</figure>
 	
 	
 	<section class="code">
@@ -537,8 +566,20 @@ header>nav>ul>li#controls #play {
         
     });
 
-    $(".code-scroll").stick_in_parent({recalc_every: 1 })
-
+    $(".code-scroll").stick_in_parent({recalc_every: 1, offset_top: 44 })
+    $(document).on("ready", function(){ 
+        Prism.highlightAll(); 
+                              
+        $( "figure > div" ).resizable({ 
+            handles: 'e', 
+            start: function(){ 
+                $("#setter")[0].innerHTML= "img{cursor:e-resize !important}"
+            }, 
+            stop: function(){ 
+                $("#setter")[0].innerHTML= ""
+            }
+        }); 
+    })
     </script>
 </body>
 </html>

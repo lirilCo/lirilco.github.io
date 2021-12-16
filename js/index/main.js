@@ -675,9 +675,12 @@ function openModal(a) {
     var source = a.attr('src');
     $('.theater #bigPic').attr('src', source);
 
+
     var user = a.closest('.story').find(".username").html();
     $('.theater .comments .info .username').html(user);
 
+    history.pushState({page: 1}, "", "/" + a.closest('.story').find(".username").children()[0].href.slice(a.closest('.story').find(".username").children()[0].href.lastIndexOf("/") + 1) + "/i/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
+    
     var time = a.closest('.story').find(".time").html();
     $('.theater .comments .info .time').html(time);
 
@@ -724,10 +727,14 @@ function openModal(a) {
         $("#theater .nav_arrow.left .arrow").on("click", function(){
             !a.closest('.story').find(".carr").is(":animated")? a.closest('.story').find(".carr")[0].scrollLeft= a.closest('.story').find(".carr")[0].scrollLeft - a.closest('.story').find(".carr").width(): 672; 
             $("#theater").find("#bigPic")[0].src= $(".current .carr .pic")[$(".current .carr")[0].scrollLeft / $(".current .carr").width()].src; 
+            source= $(".current .carr .pic")[$(".current .carr")[0].scrollLeft / $(".current .carr").width()].src; 
+            history.pushState({page: 1}, "", "/" + a.closest('.story').find(".username").children()[0].href.slice(a.closest('.story').find(".username").children()[0].href.lastIndexOf("/") + 1) + "/i/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
         }); 
         $("#theater .nav_arrow.right .arrow").on("click", function(){
             !a.closest('.story').find(".carr").is(":animated")? a.closest('.story').find(".carr")[0].scrollLeft= a.closest('.story').find(".carr")[0].scrollLeft + a.closest('.story').find(".carr").width(): 672; 
             $("#theater").find("#bigPic")[0].src= $(".current .carr .pic")[$(".current .carr")[0].scrollLeft / $(".current .carr").width()].src; 
+            source= $(".current .carr .pic")[$(".current .carr")[0].scrollLeft / $(".current .carr").width()].src; 
+            history.pushState({page: 1}, "", "/" + a.closest('.story').find(".username").children()[0].href.slice(a.closest('.story').find(".username").children()[0].href.lastIndexOf("/") + 1) + "/i/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
         }); 
         $(".nav_arrow").on("click", function(i){$(i.target).is(".nav_arrow")? closeModal(): 1; }); 
     }
@@ -736,6 +743,8 @@ function openModal(a) {
 
 function closeModal() {
     $("#theater #bigPic")[0].src= ""; 
+
+    history.pushState({page: 1}, "", "/"); 
 
     ar= false; 
     $("#theater").find(".more")[0].outerHTML= "<p class= 'more'></p>"; 
@@ -1050,6 +1059,8 @@ document.onkeydown = function (evt) {
                 }else{ 
                      th.find(".carr")[0].scrollLeft= th.find(".carr")[0].scrollLeft - $(th.find(".carr")).width(); 
                      $("#theater").find("#bigPic")[0].src= $(th.find(".carr")).find(".pic")[th.find(".carr")[0].scrollLeft / $(th.find(".carr")).width()].src; 
+                    source= $(th.find(".carr")).find(".pic")[th.find(".carr")[0].scrollLeft / $(th.find(".carr")).width()].src; 
+                    history.pushState({page: 1}, "", "/" + th.find(".username").children()[0].href.slice(th.find(".username").children()[0].href.lastIndexOf("/") + 1) + "/i/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
                 } 
                 break; 
             case 39: 
@@ -1057,8 +1068,10 @@ document.onkeydown = function (evt) {
                 if($("#theater").css("display") == "none"){ 
                     !$(th.find(".carr")).is(":animated")? $(th.find(".carr")).animate({scrollLeft: th.find(".carr")[0].scrollLeft + $(th.find(".carr")).width()}, 400): 672; 
                 }else{ 
-                     th.find(".carr")[0].scrollLeft= th.find(".carr")[0].scrollLeft + $(th.find(".carr")).width(); 
-                     $("#theater").find("#bigPic")[0].src= $(th.find(".carr")).find(".pic")[th.find(".carr")[0].scrollLeft / $(th.find(".carr")).width()].src; 
+                    th.find(".carr")[0].scrollLeft= th.find(".carr")[0].scrollLeft + $(th.find(".carr")).width(); 
+                    $("#theater").find("#bigPic")[0].src= $(th.find(".carr")).find(".pic")[th.find(".carr")[0].scrollLeft / $(th.find(".carr")).width()].src; 
+                    source= $(th.find(".carr")).find(".pic")[th.find(".carr")[0].scrollLeft / $(th.find(".carr")).width()].src; 
+                    history.pushState({page: 1}, "", "/" + th.find(".username").children()[0].href.slice(th.find(".username").children()[0].href.lastIndexOf("/") + 1) + "/i/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
                 } 
                 break; 
             }
