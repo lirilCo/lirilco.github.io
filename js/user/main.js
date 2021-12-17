@@ -11,7 +11,7 @@ function openProfilePicModal(a) {
     var source = un_tn($(a.closest("#profilePic").children()[0]).attr('src'));
     $('.theater #bigPic').attr('src', source);
 
-    history.pushState({page: 1}, "", "/" + username + "/i/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
+    history.pushState({page: 1}, "", "/" + username + "/img/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
 
     var user = a.find(".hidden").find(".username").html();
     $('.theater .comments .info .username').html(user);
@@ -113,21 +113,21 @@ function openFotosModal(a) {
         $("#theater .nav_arrow.left .arrow").on("click", function(){
             !ar.find(".carr").is(":animated")? ar.find(".carr")[0].scrollLeft= ar.find(".carr")[0].scrollLeft - ar.find(".carr").width(): 672; 
             $("#theater").find("#bigPic")[0].src= un_tn(ar.find(".carr .pic")[Math.round(ar.find(".carr")[0].scrollLeft / ar.find(".carr").width())].src); 
-            source= un_tn(ar.find(".carr .pic")[ar.find(".carr")[0].scrollLeft / ar.find(".carr").width()].src); 
-            history.pushState({page: 1}, "", "/" + username + "/i/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
+            source= un_tn($("#theater").find("#bigPic")[0].src); 
+            history.pushState({page: 1}, "", "/" + username + "/img/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
         }); 
         $("#theater .nav_arrow.right .arrow").on("click", function(){
             !ar.find(".carr").is(":animated")? ar.find(".carr")[0].scrollLeft= ar.find(".carr")[0].scrollLeft + ar.find(".carr").width(): 672; 
             $("#theater").find("#bigPic")[0].src= un_tn(ar.find(".carr .pic")[Math.round(ar.find(".carr")[0].scrollLeft / ar.find(".carr").width())].src); 
-            source= un_tn(ar.find(".carr .pic")[ar.find(".carr")[0].scrollLeft / ar.find(".carr").width()].src); 
-            history.pushState({page: 1}, "", "/" + username + "/i/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
+            source= un_tn($("#theater").find("#bigPic")[0].src); 
+            history.pushState({page: 1}, "", "/" + username + "/img/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
         }); 
         $(".nav_arrow").on("click", function(i){$(i.target).is(".nav_arrow")? closeModal(): 1; }); 
-        history.pushState({page: 1}, "", "/" + username + "/i/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
+        history.pushState({page: 1}, "", "/" + username + "/img/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
     }else{ 
         var source = un_tn($(a.closest(".foto").children()[0]).attr('src')); 
         $('.theater #bigPic').attr('src', source); 
-        history.pushState({page: 1}, "", "/" + username + "/i/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
+        history.pushState({page: 1}, "", "/" + username + "/img/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
     } 
     responsive(); 
 } 
@@ -145,7 +145,7 @@ function openModal(a) {
 
     source= un_tn(source); 
                            
-    history.pushState({page: 1}, "", "/" + username + "/i/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
+    history.pushState({page: 1}, "", "/" + username + "/img/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
 
     var user = a.closest('.story').find(".username").html();
     $('.theater .comments .info .username').html(user);
@@ -196,14 +196,14 @@ function openModal(a) {
         $("#theater .nav_arrow.left .arrow").on("click", function(){
             !a.closest('.story').find(".carr").is(":animated")? a.closest('.story').find(".carr")[0].scrollLeft= a.closest('.story').find(".carr")[0].scrollLeft - a.closest('.story').find(".carr").width(): 672; 
             $("#theater").find("#bigPic")[0].src= $(".current .carr .pic")[$(".current .carr")[0].scrollLeft / $(".current .carr").width()].src; 
-            source= un_tn($(".current .carr .pic")[$(".current .carr")[0].scrollLeft / $(".current .carr").width()].src)
-            history.pushState({page: 1}, "", "/" + username + "/i/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
+            source= un_tn($("#theater").find("#bigPic")[0].src)
+            history.pushState({page: 1}, "", "/" + username + "/img/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
         }); 
         $("#theater .nav_arrow.right .arrow").on("click", function(){
             !a.closest('.story').find(".carr").is(":animated")? a.closest('.story').find(".carr")[0].scrollLeft= a.closest('.story').find(".carr")[0].scrollLeft + a.closest('.story').find(".carr").width(): 672; 
             $("#theater").find("#bigPic")[0].src= $(".current .carr .pic")[$(".current .carr")[0].scrollLeft / $(".current .carr").width()].src; 
-            source= un_tn($(".current .carr .pic")[$(".current .carr")[0].scrollLeft / $(".current .carr").width()].src)
-            history.pushState({page: 1}, "", "/" + username + "/i/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
+            source= un_tn($("#theater").find("#bigPic")[0].src)
+            history.pushState({page: 1}, "", "/" + username + "/img/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
         }); 
         $(".nav_arrow").on("click", function(i){$(i.target).is(".nav_arrow")? closeModal(): 1; }); 
     }
@@ -515,8 +515,8 @@ document.onkeydown = function (evt) {
                 }else{ 
                     th.find(".carr")[0].scrollLeft= th.find(".carr")[0].scrollLeft - $(th.find(".carr")).width(); 
                     $("#theater").find("#bigPic")[0].src= (th.is(".story")? $(th.find(".carr")).find(".pic")[Math.round(th.find(".carr")[0].scrollLeft / $(th.find(".carr")).width())].src: un_tn($(th.find(".carr")).find(".pic")[Math.round(th.find(".carr")[0].scrollLeft / $(th.find(".carr")).width())].src)); 
-                    source= un_tn($(th.find(".carr")).find(".pic")[th.find(".carr")[0].scrollLeft / $(th.find(".carr")).width()].src)
-                    history.pushState({page: 1}, "", "/" + username + "/i/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
+                    source= un_tn($("#theater").find("#bigPic")[0].src)
+                    history.pushState({page: 1}, "", "/" + username + "/img/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
                 } 
                 break; 
             case 39: 
@@ -526,8 +526,8 @@ document.onkeydown = function (evt) {
                 }else{ 
                     th.find(".carr")[0].scrollLeft= th.find(".carr")[0].scrollLeft + $(th.find(".carr")).width(); 
                     $("#theater").find("#bigPic")[0].src= (th.is(".story")? $(th.find(".carr")).find(".pic")[Math.round(th.find(".carr")[0].scrollLeft / $(th.find(".carr")).width())].src: un_tn($(th.find(".carr")).find(".pic")[Math.round(th.find(".carr")[0].scrollLeft / $(th.find(".carr")).width())].src)); 
-                    source= un_tn($(th.find(".carr")).find(".pic")[th.find(".carr")[0].scrollLeft / $(th.find(".carr")).width()].src)
-                    history.pushState({page: 1}, "", "/" + username + "/i/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
+                    source= un_tn($("#theater").find("#bigPic")[0].src)
+                    history.pushState({page: 1}, "", "/" + username + "/img/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
                 } 
                 break; 
     }

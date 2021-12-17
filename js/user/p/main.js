@@ -1,5 +1,5 @@
 el= document.getElementsByClassName("file_tree")[0]; 
-
+var pageI= 0; 
 var editor; 
 
 function openModal(a) {
@@ -186,7 +186,8 @@ $("#files .file").click(function(i, tr){
         t= t.parent(); 
     } 
       
-    history.pushState({page: 1}, "", "/" + username + "/p/" + pId + "/" + uRL); 
+    history.pushState({page: pageI}, "", "/" + username + "/p/" + pId + "/" + uRL); 
+    pageI++;
                                                               
     (!!uRL.length && uRL.length > 0)? $("#root")[0].children[0].children[$("#root")[0].children[0].children.length - 1].outerHTML= '<div><a url=\"/' + username + '/p/' + pId + '\">' + $("#root")[0].children[0].children[$("#root")[0].children[0].children.length - 1].innerText + '</a></div>': 1; 
                                   
@@ -344,7 +345,8 @@ $("#preview .file").click(function(i){
       
     //uRL= uRL.slice(0, uRL.length - 1); 
                                        
-    history.pushState({page: 1}, "", "/" + username + "/p/" + pId + "/" + uRL); 
+    history.pushState({page: pageI}, "", "/" + username + "/p/" + pId + "/" + uRL); 
+    pageI++;
 
                                                               
     (!!uRL.length && uRL.length > 0)? $("#root")[0].children[0].children[$("#root")[0].children[0].children.length - 1].outerHTML= '<div><a url=\"/' + username + '/p/' + pId + '\">' + $("#root")[0].children[0].children[$("#root")[0].children[0].children.length - 1].innerText + '</a></div>': 1; 
@@ -507,7 +509,8 @@ for(let folder of document.querySelectorAll("#files .folder")) {
       
     uRL= uRL.slice(0, uRL.length - 1); 
                                        
-    history.pushState({page: 1}, "", "/" + username + "/p/" + pId + "/" + uRL); 
+    history.pushState({page: pageI}, "", "/" + username + "/p/" + pId + "/" + uRL); 
+    pageI++;
 
                                                               
     (!!uRL.length && uRL.length > 0)? $("#root")[0].children[0].children[$("#root")[0].children[0].children.length - 1].outerHTML= '<div><a url=\"/' + username + '/p/' + pId + '\">' + $("#root")[0].children[0].children[$("#root")[0].children[0].children.length - 1].innerText + '</a></div>': 1; 
@@ -657,7 +660,9 @@ $("#files .folder").click(function(i){
       
     uRL= uRL.slice(0, uRL.length - 1); 
                                   
-    history.pushState({page: 1}, "", "/" + username + "/p/" + pId + "/" + uRL); 
+    history.pushState({page: pageI}, "", "/" + username + "/p/" + pId + "/" + uRL); 
+
+    pageI++; 
                                                                       
     (!!uRL.length && uRL.length > 0)? $("#root")[0].children[0].children[$("#root")[0].children.length - 1].outerHTML= '<div><a href=\"/' + username + '/p/' + pId + '\">' + $("#root")[0].children[0].children[$("#root")[0].children.length - 1].innerText + '</a></div>': 1; 
                                   
@@ -824,7 +829,9 @@ $("#preview .folder").click(function(i, triggered){
 }); 
     
 $('#root div').click( function(e){ 
-    history.pushState({page: 1}, "", e.target.url); 
+    history.pushState({page: pageI}, "", e.target.url); 
+
+    pageI++;
 
     updateRoot(separateUrl(getToBusiness(e.target.url))); 
 }); 
@@ -1435,7 +1442,8 @@ updateRoot= function(a7){
         $("#file_expl #information_cont").hasClass("visible")? $("#file_expl #information_cont").toggleClass("visible"): 666 
         $(".file").css({"top": "initial"}); 
         $(".folder_cont").css({"top": "initial"}); 
-        history.pushState({page: 1}, "", e.target.getAttribute("url")); 
+        history.pushState({page: pageI}, "", e.target.getAttribute("url")); 
+        pageI++; 
         updateRoot(separateUrl(getToBusiness(e.target.getAttribute("url")))); 
         $("#root")[0].children[0].lastChild.outerHTML= '<span><span>' + $("#root")[0].children[0].lastChild.textContent + '</span></span>'; 
 

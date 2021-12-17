@@ -5,6 +5,7 @@
 #gallery img{
 	display: inline-block;
 	height: 220px;
+    cursor: pointer; 
 }
 .wrapper{
     display: none;

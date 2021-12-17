@@ -444,3 +444,6 @@ header nav ul li#right-menu #store::before {
     background-size: contain;
     background-position-x: -3px;
 }
+.ui-tooltip{ 
+    padding: 6px 10px !important; 
+} 
