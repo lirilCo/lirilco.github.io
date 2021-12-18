@@ -573,3 +573,16 @@ function sizeMessages(a){
 function scrollBottom(d){
     d.scrollTop(d.prop("scrollHeight"));
 }
+/* 
+function getLink(){ 
+    pSBl= "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
+           
+    lnk= ""; 
+           
+    for(e= 9; e >= 0; e--){ 
+    lnk= lnk + pSBl[parseInt(Math.random() * pSBl.length)]; 
+    } 
+    
+    return lnk; 
+} 
+*/ 
