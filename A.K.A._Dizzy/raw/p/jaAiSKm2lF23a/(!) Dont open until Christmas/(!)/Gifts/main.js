@@ -1608,8 +1608,23 @@ function5= function(){
 }
 
 
-function6= function(){for(e= 0; e < document.querySelectorAll("#rawr .rwr div").length - 1; e++){document.querySelectorAll("#rawr .rwr div")[e].style.backgroundColor != "rgb(89, 124, 45)"? Math.random() * 2 > 1? document.querySelectorAll("#rawr .rwr div")[e].style.opacity= 1: document.querySelectorAll("#rawr .rwr div")[e].style.opacity= 0: 1; };}
-//} 
+function6= function(){
+    for(e= 0; e < document.getElementsByClassName("#96f064").length - 1; e++){
+        Math.random() * 2 > 1? document.getElementsByClassName("#96f064")[e].style.opacity= 1: document.getElementsByClassName("#96f064")[e].style.opacity= 0; 
+    };
+
+    for(e= 0; e < document.getElementsByClassName("#ffef6d").length - 1; e++){
+        Math.random() * 2 > 1? document.getElementsByClassName("#ffef6d")[e].style.opacity= 1: document.getElementsByClassName("#ffef6d")[e].style.opacity= 0; 
+    };
+
+    for(e= 0; e < document.getElementsByClassName("#ce0c27").length - 1; e++){
+        Math.random() * 2 > 1? document.getElementsByClassName("#ce0c27")[e].style.opacity= 1: document.getElementsByClassName("#ce0c27")[e].style.opacity= 0; 
+    };
+
+    for(e= 0; e < document.getElementsByClassName("#51a2ca").length - 1; e++){
+        Math.random() * 2 > 1? document.getElementsByClassName("#51a2ca")[e].style.opacity= 1: document.getElementsByClassName("#51a2ca")[e].style.opacity= 0; 
+    };
+}//} 
     
 //onClipEvent(enterframe){ 
 setInterval(function(){ 

@@ -121,6 +121,10 @@
 			position: relative; 
 			z-index: -7; 
 		} 
+		select{ 
+			position: absolute; 
+			right: 0; 
+		} 
 	</style> 
 </head> 
 <body> 
@@ -129,8 +133,12 @@
 	<style id="styR"></style>
 	<style id="styAm"></style>
 	<form action= "/content/blank" target= "remember" method= "post"> 
+		<select name="Lenguaje" id="">
+    	    <option type= "submit" value= "español">Español</option>
+    	    <option type= "submit" value= "english">English</option>
+    	</select>
 		<input spellcheck= "false" autocomplete= "text" id= "name"> 
-		<button type= "submit" id="button"></button> 
+		<button style= "display: none; " id= "sbMtr" type= "submit"></button> 
 		<textarea spellcheck= "false" id= "text"></textarea> 
 		<textarea spellcheck= "false" id= "dedications"></textarea> 
 	</form> 
