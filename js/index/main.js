@@ -1272,3 +1272,6 @@ function sizeMessages(a){
 function scrollBottom(d){
     d.scrollTop(d.prop("scrollHeight"));
 }
+function un_tn(u){ 
+    return u.slice(0, u.indexOf("_tn")) + u.slice(u.indexOf("_tn") + 3); 
+} 
