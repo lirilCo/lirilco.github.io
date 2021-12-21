@@ -1,6 +1,6 @@
 #gallery {
-	text-align: center;
-	padding: 20px 0;
+	text-align: center; 
+	padding: 20px 205px 0 0; 
 }
 #gallery img{
 	display: inline-block;
@@ -31,3 +31,80 @@ header nav ul li#right-menu #store::before {
     background-size: contain;
     background-position-x: -3px;
 }
+#notifications .info img{ 
+    top: 0; 
+    height: 100% !important; 
+    object-fit: contain; 
+} 
+#sidebar{
+    position: fixed;
+    right: 0;
+    top: 46px;
+    width: 205px;
+    background-color: #fff;
+    z-index: 1;
+}
+#sidebar .slimScrollDiv{
+    position: absolute;
+    bottom: 0;
+    height: 100% !important;
+    width: 100% !important;
+}
+#sidebar #container{
+    position: relative;
+
+}
+#sidebar  #container #resizeBottom{
+    position: absolute;
+    bottom: 0;
+    height: 50%;
+    width: 100%;
+    background-color: #fff;
+}
+#sidebar  #container #resizeBottom #chat
+{
+    padding: 0;
+    height: 100% !important;
+}
+#sidebar  #container #resizeTop{
+    position: absolute;
+    top: 0;
+    height: 50%;
+    width: 100%;
+}
+#sidebar  #container #resizeTop #notifications
+{
+    padding: 0;
+    height: 100% !important;
+}
+#sidebar  #container #resizeTop #notifications .info
+{
+    padding: 4px 0;
+    border-bottom: solid 1px #ddd;
+}
+.info 
+{
+    position: relative;
+    height: auto;
+    cursor: pointer;
+}
+#sidebar  #container #resizeTop #notifications .info:first-child
+{
+    
+    margin-top: 5px !important
+}
+#sidebar .info b
+{
+    color: #666;
+}
+.info  img{
+    height: 40px !important;
+    width: 40px!important;
+    cursor: pointer;
+    position: absolute; 
+}
+#notifications .info img{ 
+    top: 0; 
+    height: 100% !important; 
+    object-fit: contain; 
+} 

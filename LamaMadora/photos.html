@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="../css/user/photos/style.css">
 
     <script type="text/javascript">
-        var username= "/LamaMadora"; 
+        var username= "LamaMadora"; 
         var users_name= "Juan José Martínez Vidal"; 
     </script>
     <script src="../js/jquery.js"></script>
@@ -187,7 +187,7 @@ $('.username').tooltip({
         <nav>
             <ul>
                 <li id="index">
-                    <a href="..//"><section id="index-trigger">
+                    <a href="/"><section id="index-trigger">
                         <span class="back-arrow button">
               </span>
                         <span id="index-text" class="text button">
@@ -520,7 +520,99 @@ $('.username').tooltip({
                     
             </div>
     </div>
-    
+    <aside id="sidebar">
+     <div id="container">
+        <div id="resizeTop">
+       <div id="notifications">
+        <ul>
+            <div class="info button">
+                    <img src="/resources/images/A.K.A._Dizzy/rmmnSm6lge_tn.jpg" alt="">
+                    <p class="username"><b href="#">A.K.A._Dizzy:</b> <br> 😉 Revisen Mi Perfil: <a target= "_blank" href="/A.K.A._Dizzy">A.K.A._Dizzy</a></p>
+                   
+            </div>
+            <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora amigo de  Walter White.</p>
+                  
+            </div>
+            <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> hizo un commit a eBay.</p>
+            </div> 
+             <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora Moderador.</p>
+                   
+            </div>
+            <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora amigo de  Walter White.</p>
+                  
+            </div>
+            <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> hizo un commit a eBay.</p>
+            </div> 
+             <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora Moderador.</p>
+                   
+            </div>
+            <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora amigo de  Walter White.</p>
+                  
+            </div>
+            <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> hizo un commit a eBay.</p>
+            </div> 
+             <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora Moderador.</p>
+                   
+            </div>
+            <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora amigo de  Walter White.</p>
+                  
+            </div>
+            <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> hizo un commit a eBay.</p>
+            </div> 
+             <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora Moderador.</p>
+                   
+            </div>
+            <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora amigo de  Walter White.</p>
+                  
+            </div>
+            <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> hizo un commit a eBay.</p>
+            </div> 
+        </ul>
+        
+        </div>
+        </div>
+      <div id="resizeBottom">
+       <div id="chat">
+        <ul>
+        </ul>
+        
+        </div>
+        </div>
+        </div>
+        <section id="search">
+            <i id="searchIcon"></i>
+           <input type="text" placeholder="Buscar">
+        </section>
+    </aside>
+
     <section id="Store" class="button">
         <aside id="storeHeader" class="button">
             
@@ -560,12 +652,27 @@ $('.username').tooltip({
         </aside>
        
     </section>
+<section id="chats">
+    <div class="chats">
+
+
+    </div>
+  </section>
   <script src="../js/courses/grid.js"></script>
         <script>
             $(function() {
                 Grid.init();
             });
         </script>
+    <script>
+    $( "#resizeBottom" ).resizable({
+      handles: "n",maxHeight: ($(window).height()-$("#sidebar #search").outerHeight() - 51),minHeight: 50 }
+                                  ).bind("resize", function (e, ui) {
+      $(this).css("top", "auto");
+    }
+                                        );
+    
+  </script>
 </body>
 </html>
 <!--For GitHub Pages Page To Refresh-->  

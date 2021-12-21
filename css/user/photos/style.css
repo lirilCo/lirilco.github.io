@@ -166,29 +166,318 @@ content: "\e627"
 {
     content: "\e60e"
 }
-.info 
+#theater .info 
 { 
     position: relative; 
 } 
-.info img
+#theater .info img
 {
     position: absolute;
     display: inline-block;
     object-fit: contain;
     height: 100% !important;
 }
-.info p
-{
+.info p {
     margin: 0;
-        color: #666;
-
+    color: #666;
+    padding-left: 50px;
     position: static;
-   font-size: 13px ;
+    font-size: 13px;
     display: inline-block;
-    width:  140px;
+    width: 140px;
     vertical-align: top;
 }
-.info  p a{
+.ui-resizable-handle{
+    background-color: #ccc;
+}
+.info p a {
+    font-weight: bold;
+}
+#sidebar #search
+{
+    position: absolute;
+    bottom: 0;
+    font-size: 14px;
+    text-align: center;
+    background-color: #fff;
+    width: 100%;
+    padding: 5px 5px 5px 10px;
+}
+#sidebar #search input
+{
+    color: #666;
+}
+#sidebar #search #searchIcon
+{
+    
+    font-style: normal;
+    font-family: "icomoon";
+    color: #666;
+ 
+}
+#sidebar  #search #searchIcon:before
+{
+    content: "\e60b"
+}
+#sidebar ul {
+
+    list-style: none;
+    padding: 0 10px;
+    margin: 0;
+    
+}
+
+#sidebar ul li{
+    height: 35px;
+    margin-bottom: 4px;
+    width: 100%;
+    cursor: pointer
+}
+#sidebar ul li p{
+    color: #666;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    display: inline-block;
+    padding-left: 6px;
+    font-family: Helvetica, "Open Sans";
+    width: 115px;
+
+}
+#sidebar ul li span{
+    font-family: "icomoon";
+    font-size: 9px;
+    width: 10px;
+    float: right;
+    margin-top: 15px
+}
+#sidebar ul li.connected span:before{
+    content: "\e615";
+    color: #2ecc71;
+}
+#sidebar ul li span:before{
+    content: "\e615";
+    color: #ccc;
+}
+  
+#sidebar ul li img { 
+   height: 35px; 
+   width: 35px; 
+   object-fit: contain; 
+} 
+#chats
+{
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    overflow-y: hidden;
+    z-index: 2; 
+}
+#chats .chats
+{
+    white-space: nowrap ;
+    padding: 0 5px;
+    float: right;
+    overflow-x: auto;
+    overflow-y: hidden;
+    text-align: right;
+      direction:rtl;
+
+}
+#chats .chats .chat 
+{
+
+    background-color: #fff;
+    margin-right: 1px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    height: 19px;
+    border: solid 1px #ccc;
+    width: 160px;
+    display: inline-block;
+    direction:ltr;
+    padding-bottom: 9px;
+    vertical-align: bottom;
+}
+#chats .chats .chat.open 
+{
+    height: 285px;
+    width: 260px;
+    border-top: none;
+}
+#chats .chats .chat.open .chatTitle
+{
+    width: 100%;
+    background-color: #2ecc71;
+    color: #fff;
+    text-align: left;
+    height: 30px;
+    line-height: 30px;
+    border-right: 1px solid #2ecc71;
+    border-left: 1px solid #2ecc71;
+    margin-left: -1px;
+}
+#chats .chats .chat.open .chatTitle p{
+    width: 170px;
+    background-color: #2ecc71;
+    color: #fff;
+    text-align: left;
+    height: 30px;
+    line-height: 30px;
+    font-size: 17px;
+    padding-left: 10px;
+    border: none;
+}
+#chats .chats .chat.open .chatTitle .close
+{
+    float: right;
+        color: #cfc;
+    padding-right: 10px;
+    line-height: 27px;
+width: 19px}
+#chats .chats .chat.open .chatTitle .close:after
+{
+display: block;
+    float: right;
+}
+#chats .chats .chat.open .chatTitle .close:hover
+{
+    color: #fff;
+}
+#chats .chats .chat.open .chatBox
+{
+    width: 100%;
+   height: 265px;
+    position: relative;
+    display: block;
+    background-color: #ecf0f1
+}
+#chats .chats .chat.open .chatBox .messages 
+{
+   box-sizing: border-box;
+    padding: 04px;
+    display: inline-block;
+    width: 100%;
+    position: absolute;
+    bottom: 28px;
+    height: 237px;
+    overflow-y: auto;
+    left: 0;
+}
+#chats .chats .chat.open .chatBox .messages .sent
+{
+     border-radius: 1em;
+     background-color: #0083ff;
+    font-size: 13px;
+    color: #fff;
+    resize: none;
+    width: auto !important;
+    max-width: 80%;
+    display: inline-block;
+    clear:both;
+    float: right;
+    text-align: left;
+    padding: 0;
+    margin: 2.5px 0 2.5px 0;
+    white-space: normal;
+    padding: 5px;
+    word-wrap: break-word;
+    
+}
+#chats .chats .chat.open .chatBox .messages .sent i, #chats .chats .chat.open .chatBox .messages .sent u
+{
+    color: inherit; 
+}
+#chats .chats .chat.open .chatBox .newMessage
+{
+  width: 100%;
+   position: absolute;
+    bottom: 0;
+    text-align: left;
+    background-color: #fff;
+    padding: 0;
+    max-height: 80px
+}
+#chats .chats .chat.open .chatBox .newMessage textarea
+{
+     box-sizing: border-box;
+  max-height: 80px;
+  min-height: 28px;
+  width: 100%;
+    padding: 8px 60px 0 5px;
+    border-radius: 0;
+    color: #000;
+    resize: none;
+    font-size: 13px;
+    margin: 0;
+    font-weight: 400;
+    vertical-align: middle;
+    overflow: auto;
+    height: 100%;
+    line-height: 14px
+}
+#chats .chats .chat .chatBox
+{
+
+    display: none;
+}
+#chats .chats .chat .chatTitle 
+{
+    cursor: pointer;
+    height: 24px;
+    width: 100%;
+padding: 0;
+    text-align: center;
+    color: #555;
+    font-size: 15px;
+line-height: 27px;
+overflow: hidden;
+text-overflow: ellipsis;
+        color: #555;
+    line-height: 27px;
+
+
+}
+#chats .chats .chat .chatTitle p
+{
+  color: inherit;
+    line-height: inherit;
+    width: 120px;
+    font-size: 15px;
+overflow: hidden;
+text-overflow: ellipsis;
+margin: 0 0 0 5px;
+display: inline-block;
+    vertical-align: top;
+
+}
+#chats .chats .chat .chatTitle .close
+{
+    font-family: "icomoon";
+    width: 25px;
+    height: 28px;
+    vertical-align: top;
+    font-size: 10px;
+    padding-top: 2px;
+    display: inline-block;
+    color: #aaa;
+}
+#chats .chats .chat .chatTitle .close:hover
+{
+    color: #555;
+}
+
+#chats .chats .chat .chatTitle .close:after
+{
+    content: "\e60e";
+    display: none
+}
+#chats .chats .chat .chatTitle .close.visible:after
+{
+    display: block;
+}
+#theater .info  p a{
   font-weight: bold;
 }
 *
@@ -447,3 +736,23 @@ header nav ul li#right-menu #store::before {
 .ui-tooltip{ 
     padding: 6px 10px !important; 
 } 
+header{ 
+    position: fixed; 
+    top: 0; 
+    z-index: 3; 
+} 
+#root {
+    background-color: #fff;
+    width: 100%;
+    padding: 20px;
+    border-bottom: solid 2px #ccc;
+    list-style-type: none;
+    margin: 0;
+    display: flex;
+    overflow-x: auto;
+    padding-right: 225px;
+    box-sizing: border-box;
+}
+body{ 
+    padding-top: 46px; 
+}
