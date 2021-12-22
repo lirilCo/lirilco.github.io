@@ -172,7 +172,7 @@
   	      inline: true,
   	      container: '#colorpicker',
   	      format: 'hex'
-  	    }).on("colorpickerChange", function(e){$(".pickColor").css({"background-color": e.color.generate('tetrad')[0].string()})})
+  	    }).on("colorpickerChange", function(e){bClr= e.color.generate('tetrad')[0].string().toLowerCase(); $(".pickColor").css({"background-color": e.color.generate('tetrad')[0].string()})})
   	  });
   	</script>
 	<form action= "/content/blank" target= "remember" method= "post"> 

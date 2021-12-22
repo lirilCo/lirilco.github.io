@@ -1193,6 +1193,7 @@ var eventx;
 var dW= false; 
 var oW_F= []; 
 var dnW= [];
+var bClr; 
 dsrcrs= [ 
   "#597c2d", 
   "#ce0c27", 
@@ -1777,7 +1778,7 @@ document.addEventListener("mouseup", function(i){
 
     sB? $("#selectedBall").attr("id", ""): 1319; 
 
-    sB? $("outerbody").append('<div id= "selectedBall" class= "Ball" style= "width: 19px; height: 23.4608695652px; user-select: none; top: ' + (i.pageY - 0.7) + 'px; left: ' + (i.pageX - 9.5) + 'px; position: absolute; z-index: ' + (!!(parseInt(getActual()) + 1)? (parseInt(getActual()) + 1): 1) + '; "><img src= "hANDLE.png" style= "width: 100%; height: 100%; user-select: none; position: absolute;"></img><img style= "width: 100%; height: 100%; user-select: none; background-size: cover; background-blend-mode: luminosity; mask-image: url(bALL.png); mask-mode: alpha; mask-size: cover; background-image: url(bALL.png); position: absolute; background-color: #fff; "></img><div class="swgrip ui-resizable-handle ui-resizable-sw"></div><div class="segrip ui-resizable-handle ui-resizable-se"></div></div>'): 54109; 
+    sB? $("outerbody").append('<div id= "selectedBall" class= "Ball" style= "width: 19px; height: 23.4608695652px; user-select: none; top: ' + (i.pageY - 0.7) + 'px; left: ' + (i.pageX - 9.5) + 'px; position: absolute; z-index: ' + (!!(parseInt(getActual()) + 1)? (parseInt(getActual()) + 1): 1) + '; "><img src= "hANDLE.png" style= "width: 100%; height: 100%; user-select: none; position: absolute;"></img><div style= "width: 100%; height: 100%; user-select: none; background-size: cover; background-blend-mode: luminosity; mask-image: url(bALL.png); mask-mode: alpha; mask-size: cover; background-image: url(bALL.png); position: absolute; background-color: ' + bClr + '; "></div><div class="swgrip ui-resizable-handle ui-resizable-sw"></div><div class="segrip ui-resizable-handle ui-resizable-se"></div></div>'): 54109; 
 
     if(sB){ 
 
