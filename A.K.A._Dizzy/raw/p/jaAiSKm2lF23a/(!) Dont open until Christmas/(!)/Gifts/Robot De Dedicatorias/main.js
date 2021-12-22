@@ -1099,6 +1099,27 @@ Alphabets= {
 	}
 }; 
    
+/* 
+    'A' en inglés suena "ei" en español, 
+    las vocales que tenga el sonido del 
+    nombre de la letra escrito como si  
+    fuera una palabra en español es el 
+    número que va de primero; después  
+    van los acentos que tiene la letra 
+    con cada una de los diacríticos que  
+    existen para ésta. Como el español  
+    es el lenguaje de referencia, en 
+    español el número que va primero 
+    se define por la cantidad de sílabas 
+    del nombre de la letra en español. 
+    En el caso del español, por ejemplo, 
+    la 'ñ' es una letra en sí misma, no, 
+    como en el inglés, una 'ñ' con cuatro 
+    acentos; en este caso, se debe sacar 
+    de los acentos de la 'n' y ponerse 
+    como una letra aparte.
+*/ 
+
 getDedications= function(language){ 
 	s= 0; 
 	Name= []; 
