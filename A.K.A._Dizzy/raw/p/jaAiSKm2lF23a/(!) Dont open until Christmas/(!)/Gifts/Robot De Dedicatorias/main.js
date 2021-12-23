@@ -1989,8 +1989,8 @@ document.addEventListener("keyup", function(i){
 
     b= false; 
 }); 
-
+    
 $(".pickColor").on("mouseup", function(){ 
-    $("#colorpicker").toggleClass("visible")
-})
+    $("#colorpicker").toggleClass("visible"); 
+}); 
 //} 
