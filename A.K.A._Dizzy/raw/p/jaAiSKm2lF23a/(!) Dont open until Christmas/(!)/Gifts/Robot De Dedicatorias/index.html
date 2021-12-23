@@ -153,26 +153,108 @@
 		} 
 		.colorPicker{ 
 			position: relative; 
-		}
+		} 
 		#colorpicker.visible{ 
 			display: block; 
+		} 
+		.swatch{ 
+		  	width: 23px; 
+		  	height: 23px; 
+		  	background-color: #ddd; 
+		  	top: 3px; 
+		  	cursor: pointer; 
+		  	margin-right: 2px; 
+		  	margin-bottom: -3px; 
+		  	box-sizing: border-box; 
+		  	display: inline-block; 
+		} 
+		.swatch.picking{ 
+		    border: 1px solid #000; 
+		} 
+		.colorpicker-swatches{ 
+		  	top: 140px; 
+		  	position: absolute !important; 
+		  	display: table-cell; 
+		  	vertical-align: middle; 
+		  	width: 100%; 
+		  	left: 0;
+		  	text-align: ;
+		  	background-color: #fff;
+		  	padding: 0 10px 12px 12px; 
+		  	box-sizing: border-box;
+		} 
+		.colorpicker{ 
+			padding-bottom: 30px !important; 
+			border: none; 
+  			border-radius: 0; 
+		} 
+		.new.swatch:after{ 
+		  	width: 19px; 
+		  	height: 3px; 
+		  	background-color: #000; 
+		  	content: ""; 
+		  	left: 0; 
+		  	position: absolute; 
+		  	top: 10px; 
+		  	left: 2px; 
+		} 
+		.new.swatch:before{ 
+		  	width: 3px; 
+		  	height: 19px; 
+		  	background-color: #000; 
+		  	content: ""; 
+		  	left: 10px; 
+		  	position: absolute; 
+		  	top: 2px; 
 		} 
 	</style> 
 </head> 
 <body> 
+
 	<style id="styA"></style>
 	<style id="styV"></style>
 	<style id="styR"></style>
 	<style id="styAm"></style>
-	
   	<script>
   	  $(function() {
   	    $('#colorpicker').colorpicker({
   	      popover: false,
   	      inline: true,
   	      container: '#colorpicker',
-  	      format: 'hex'
-  	    }).on("colorpickerChange", function(e){bClr= e.color.generate('tetrad')[0].string().toLowerCase(); $(".pickColor").css({"background-color": e.color.generate('tetrad')[0].string()})})
+  	      format: 'hex', 
+  	      template: '<div class="colorpicker">' +
+          '<div class="colorpicker-saturation"><i class="colorpicker-guide"></i></div>' +
+          '<div class="colorpicker-hue"><i class="colorpicker-guide"></i></div>' +
+          '<div class="colorpicker-alpha">' +
+          '   <div class="colorpicker-alpha-color"></div>' +
+          '   <i class="colorpicker-guide"></i>' +
+          '</div>' +
+          '<div class="colorpicker-swatches"><div class="swatch picking"></div><div class="new swatch"></div></div>' +
+          '</div>'
+  	    }).on("colorpickerChange", function(e){
+  	    	bClr= e.color.generate('tetrad')[0].string().toLowerCase(); 
+  	    	$(".pickColor").css({"background-color": e.color.generate('tetrad')[0].string()}); 
+  	    	$(".swatch.picking").css({"background-color": e.color.generate('tetrad')[0].string()}); 
+  	    }).on("colorpickerCreate", function(){ 
+  	    	$(".swatch").not(".new").on("click", function(){ 
+			    $(".swatch.picking").removeClass("picking"); 
+			    $(this).addClass("picking"); 
+			}); 
+			var b= function(){$(".new.swatch").on("click", function(){ 
+					$(".swatch.picking").removeClass("picking"); 
+				    a= $(".colorpicker-swatches").children().toArray().splice(0, $(".colorpicker-swatches").children().toArray().length - 1); 
+					a[a.length]= '<div class="swatch picking"></div>'; 
+					a[a.length]= $(".colorpicker-swatches").children()[$(".colorpicker-swatches").children().length - 1]; 
+					$(".colorpicker-swatches").html(a); 
+					$(".swatch").not(".new").on("click", function(){ 
+					    $(".swatch.picking").removeClass("picking"); 
+					    $(this).addClass("picking"); 
+					}); 
+					b(); 
+				}); 
+			}; 
+			b(); 
+  	    }); 
   	  });
   	</script>
 	<form action= "/content/blank" target= "remember" method= "post"> 

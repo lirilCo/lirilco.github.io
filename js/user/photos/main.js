@@ -123,6 +123,9 @@ $(document).on("ready",function(e){
             Number--; 
         } 
     } 
+
+    responsive();
+    
     $(".carr").on("scroll", function(){ 
         $$$th= $(this); 
         $(this)[0].scrollLeft / $(this).width() == $(this).find(".pic").length - 1? (function(){
@@ -258,7 +261,6 @@ if(!$("textarea").is(":focus") && !$("input").is(":focus")){
 var c = 0
 var $this
 $(window).on("load", function () {
-    responsive();
     $("#chat ul li").on("click",function(){
         if($(this).attr('class').split(' ')[2] == null){
             $(this).addClass( c.toString() );
