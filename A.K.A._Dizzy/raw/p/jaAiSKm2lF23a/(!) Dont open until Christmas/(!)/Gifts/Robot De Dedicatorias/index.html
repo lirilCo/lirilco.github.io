@@ -1,6 +1,6 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html> 
-<head> 
+<head class= "styles"> 
 	<title>Robot De Dedicatorias</title> 
 	<meta charset="utf-8"> 
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300,600,700" rel="stylesheet" type="text/css">
@@ -46,8 +46,7 @@
 		} 
 		middlebody{ 
 			position: absolute; 
-			top: 0; 
-			filter: drop-shadow(0 0 2px #fff); 
+			top: 18px; 
 		} 
 		#button{ 
 			position: absolute; 
@@ -153,6 +152,7 @@
 		} 
 		.colorPicker{ 
 			position: relative; 
+			z-index: 11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111; 
 		} 
 		#colorpicker.visible{ 
 			display: block; 
@@ -207,15 +207,16 @@
 		  	position: absolute; 
 		  	top: 2px; 
 		} 
+		.label{ 
+			background-color: #a49310; 
+		} 
 	</style> 
 </head> 
 <body> 
-
-	<style id="styA"></style>
-	<style id="styV"></style>
-	<style id="styR"></style>
-	<style id="styAm"></style>
   	<script>
+  	  var last_clr= "rgb(255, 255, 255)"; 
+  	  var divC= 1; 
+
   	  $(function() {
   	    $('#colorpicker').colorpicker({
   	      popover: false,
@@ -229,31 +230,85 @@
           '   <div class="colorpicker-alpha-color"></div>' +
           '   <i class="colorpicker-guide"></i>' +
           '</div>' +
-          '<div class="colorpicker-swatches"><div class="swatch picking"></div><div class="new swatch"></div></div>' +
+          '<div class="colorpicker-swatches"><div class="swatch label bALL"><div class= "bola" style= "width: 19px; height: 23.4608695652px; user-select: none; margin: auto; "><img src= "hANDLE.png" style= "width: 100%; height: 100%; user-select: none; position: absolute;"></img><div style= "width: 100%; height: 100%; user-select: none; background-size: cover; background-blend-mode: luminosity; mask-image: url(bALL.png); mask-mode: alpha; mask-size: cover; background-image: url(bALL.png); position: absolute; background-color: green; "></div></div></div><div id= "bALL" class="swatch picking" style= "background-color: green; "></div><div class="swatch label follaje" style="padding: 8.1px 1.1px; box-sizing: border-box; width: 9px; "><div style="background-color: #597c2d; width: 100%; height: 100%; "></div></div><div id= "follaje" class="swatch" style= "background-color: #597c2d; "></div><input id= "density" value= "50" style= "width: 62px; height: 23px; " type= "number" min= "10" max= "100"><div class="swatch label guirnalda" style="padding: 8.1px 1.1px; box-sizing: border-box; width: 9px; "><div class= "w" style= "width: 7.5px; height: 7.5px; background-color: #44de48; filter: drop-shadow(0 0 2px #fff); "></div></div><div id= "guirnalda" class="swatch" style= "background-color: #44de48; "></div><div id= "sombra_guirnalda" class="swatch" style= "background-color: #fff; "></div><div class="swatch label luces" style="padding: 8.1px 1.1px; box-sizing: border-box; width: 9px; "><div class= "luz" style="background-color: #597c2d; width: 100%; height: 100%; border-radius: 50%; "></div></div><div style= "background-color: #96f064; " class="swatch luz"></div><div style= "background-color: #51a2ca; " class="swatch luz"></div><div style= "background-color: #ce0c27; " class="swatch luz"></div><div style= "background-color: #ffef6d; " class="swatch luz"></div><div class="new swatch"></div></div>' +
           '</div>'
   	    }).on("colorpickerChange", function(e){
-  	    	bClr= e.color.generate('tetrad')[0].string().toLowerCase(); 
+  	    	ww= e; 
   	    	$(".pickColor").css({"background-color": e.color.generate('tetrad')[0].string()}); 
   	    	$(".swatch.picking").css({"background-color": e.color.generate('tetrad')[0].string()}); 
-  	    }).on("colorpickerCreate", function(){ 
-  	    	$(".swatch").not(".new").on("click", function(){ 
+  	    	clrs_luces= []; 
+			$(".swatch").slice(8, -1).each(function(){clrs_luces[clrs_luces.length]= $(this).css("backgroundColor")}); 
+			dsrcrs= []; 
+			for(e in clrs_luces){ 
+			    dsrcrs[dsrcrs.length]= clrs_luces[e]; 
+			} 
+			density= parseInt($("#density").val()) / 50 * dsrcrs.length; 
+			d= 1; 
+			if(parseInt($("#density").val()) == 100){ 
+				dsrcrs= [$(".follaje").find("div").css("background-color")]; 
+			}else{ 
+				while(d <= density){ 
+				    dsrcrs[dsrcrs.length]= $(".follaje").find("div").css("background-color"); 
+					d++; 
+				} 
+			} 
+			$(".label.bALL").find(".bola").find("div").css({"background-color": $("#bALL").css("background-color")}); 
+			$(".label.follaje").find("div").css({"background-color": $("#follaje").css("background-color")}); 
+			$(".label.guirnalda").find("div").css({"background-color": $("#guirnalda").css("background-color")}); 
+			$(".label.guirnalda").find("div").css({"filter": 'drop-shadow(' + $("#sombra_guirnalda").css("background-color") + ' 0px 0px 2px)'}); 
+  	    }).on("colorpickerCreate", function(e){ 
+  	    	$("middlebody").append("<div" + divC + "></div" + divC + ">"); 
+  	    	ww= e; 
+  	    	clrs_luces= []; 
+			$(".swatch").slice(8, -1).each(function(){clrs_luces[clrs_luces.length]= $(this).css("backgroundColor")}); 
+			dsrcrs= []; 
+			for(e in clrs_luces){ 
+			    dsrcrs[dsrcrs.length]= clrs_luces[e]; 
+			} 
+			density= parseInt($("#density").val()) / 50 * dsrcrs.length; 
+			d= 1; 
+			if(parseInt($("#density").val()) == 100){ 
+				dsrcrs= [$(".follaje").find("div").css("background-color")]; 
+			}else{ 
+				while(d <= density){ 
+				    dsrcrs[dsrcrs.length]= $(".follaje").find("div").css("background-color"); 
+					d++; 
+				} 
+			} 
+  	    	$(".swatch").not(".new").not(".label").on("click", function(){ 
 			    $(".swatch.picking").removeClass("picking"); 
 			    $(this).addClass("picking"); 
+			    ww.colorpicker.setValue($(this).css("background-color")); 
 			}); 
 			var b= function(){$(".new.swatch").on("click", function(){ 
 					$(".swatch.picking").removeClass("picking"); 
 				    a= $(".colorpicker-swatches").children().toArray().splice(0, $(".colorpicker-swatches").children().toArray().length - 1); 
-					a[a.length]= '<div class="swatch picking"></div>'; 
+					a[a.length]= '<div class="swatch luz picking"></div>'; 
 					a[a.length]= $(".colorpicker-swatches").children()[$(".colorpicker-swatches").children().length - 1]; 
 					$(".colorpicker-swatches").html(a); 
-					$(".swatch").not(".new").on("click", function(){ 
+					$(".swatch").not(".new").not(".label").on("click", function(){ 
 					    $(".swatch.picking").removeClass("picking"); 
 					    $(this).addClass("picking"); 
 					}); 
+					
+					clrs_luces= []; 
+					$(".swatch").slice(8, -1).each(function(){clrs_luces[clrs_luces.length]= $(this).css("backgroundColor")}); 
 					b(); 
 				}); 
 			}; 
 			b(); 
+			c= 0; 
+			setInterval(function(){ 
+				c <= clrs_luces.length - 1?(function(){ 
+					$(".label.luces").find(".luz").css({"background-color": clrs_luces[c]}); 
+					c++; 
+				})(): c= 0; 
+			}, 782); 
+			$(document).on("keydown", function(f){ 
+						f.keyCode == 46? $(".swatch.luz.picking").remove(): 1; 
+						clrs_luces= []; 
+						$(".swatch").slice(8, -1).each(function(){clrs_luces[clrs_luces.length]= $(this).css("backgroundColor")}); 
+					}); 
   	    }); 
   	  });
   	</script>

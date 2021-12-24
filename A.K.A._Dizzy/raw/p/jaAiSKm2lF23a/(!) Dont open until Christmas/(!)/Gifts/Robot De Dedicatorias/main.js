@@ -1215,6 +1215,7 @@ var dW= false;
 var oW_F= []; 
 var dnW= [];
 var bClr; 
+var lClrs= []; 
 dsrcrs= [ 
   "#597c2d", 
   "#ce0c27", 
@@ -1231,26 +1232,9 @@ dsrcrs= [
 ]; 
 
 opacity= function(color, op){ 
-    switch(color){
-        case azul:
-            $("#styA")[0].innerHTML= ".\\#51a2ca{opacity:" + op + "}"; 
-            break;
-        case verde:
-            $("#styV")[0].innerHTML= ".\\#96f064{opacity:" + op + "}"; 
-            break;
-        case rojo:
-            $("#styR")[0].innerHTML= ".\\#ce0c27{opacity:" + op + "}"; 
-            break;
-        case amarillo:
-            $("#styAm")[0].innerHTML= ".\\#ffef6d{opacity:" + op + "}"; 
-            break;
-    }
+    cr= color.replaceAll("(", "").replaceAll(")", "").replaceAll(" ", ""); 
+    document.getElementById(cr).innerHTML= "." + cr.replaceAll(",", "\\,") + "{opacity:" + op + "}"; 
 } 
-
-azul= "rgb(0, 159, 255)"; 
-verde= "rgb(150, 240, 100)"; 
-rojo= "rgb(255, 18, 19)"; 
-amarillo= "rgb(238, 238, 82)"; 
 
 var interval; 
 
@@ -1261,19 +1245,14 @@ function setinterval(f)
 	interval= setInterval(function(){f();}, 235); 
 }
 function2= function(){ 
-    cr != azul? opacity(azul, 0): 1; 
-    cr != verde? opacity(verde, 0): 1; 
-    cr != rojo? opacity(rojo, 0): 1; 
-    cr != amarillo? opacity(amarillo, 0): 1; 
-
     if(goingUp && ioi < 1){ 
         ioi+= 0.01; 
-        opacity(cr, ioi); 
+        opacity(clr, ioi); 
     } 
       
     if(goingDown && ioi > 0){ 
         ioi-= 0.01; 
-        opacity(cr, ioi); 
+        opacity(clr, ioi); 
     } 
 
     if(goingUp && ioi >= 1){ 
@@ -1286,7 +1265,7 @@ function2= function(){
     if(goingDown && ioi <= 0){ 
         goingDown= false; 
         setTimeout(function(){ 
-            cr == azul? cr= verde: cr == verde? cr= rojo: cr == rojo? cr= amarillo: cr == amarillo? cr= azul: 1; 
+            lClrs.indexOf(clr) + 1 <= lClrs[lClrs.length - 1]? clr= lClrs[lClrs.indexOf(clr) + 1]: clr= lClrs[0]; 
             goingUp= true; 
         }, 2345) 
     }
@@ -1295,16 +1274,14 @@ function2= function(){
 function3= function(){ 
     switch(ioi){ 
         case 0: 
-            opacity(azul, 0); 
-            opacity(verde, 0); 
-            opacity(rojo, 1); 
-            opacity(amarillo, 1); 
+            for(e in lClrs){ 
+                parseFloat(e) / 2 == parseInt(parseFloat(e) / 2)? opacity(lClrs[e], 0): opacity(lClrs[e], 1); 
+            } 
         break; 
         case 1: 
-            opacity(azul, 1); 
-            opacity(verde, 1); 
-            opacity(rojo, 0); 
-            opacity(amarillo, 0); 
+            for(e in lClrs){ 
+                parseFloat(e) / 2 == parseInt(parseFloat(e) / 2)? opacity(lClrs[e], 1): opacity(lClrs[e], 0); 
+            } 
         break; 
     } 
     ioi < 1? ioi++: ioi= 0; 
@@ -1313,16 +1290,14 @@ function3= function(){
 function4= function(){ 
     switch(ioi){ 
         case 0: 
-            opacity(azul, 0); 
-            opacity(rojo, 0); 
-            opacity(verde, 1); 
-            opacity(amarillo, 1); 
+            for(e in lClrs){ 
+                parseFloat(e) / 3 == parseInt(parseFloat(e) / 3)? opacity(lClrs[e], 0): opacity(lClrs[e], 1); 
+            } 
         break; 
         case 1: 
-            opacity(azul, 1); 
-            opacity(rojo, 1); 
-            opacity(verde, 0); 
-            opacity(amarillo, 0); 
+            for(e in lClrs){ 
+                parseFloat(e) / 3 == parseInt(parseFloat(e) / 3)? opacity(lClrs[e], 1): opacity(lClrs[e], 0); 
+            } 
         break; 
     } 
     ioi < 1? ioi++: ioi= 0; 
@@ -1331,16 +1306,14 @@ function4= function(){
 function5= function(){ 
     switch(ioi){ 
         case 0: 
-            opacity(azul, 0); 
-            opacity(amarillo, 0); 
-            opacity(rojo, 1); 
-            opacity(verde, 1); 
+            for(e in lClrs){ 
+                parseFloat(e) / 5 == parseInt(parseFloat(e) / 5)? opacity(lClrs[e], 0): opacity(lClrs[e], 1); 
+            } 
         break; 
         case 1: 
-            opacity(azul, 1); 
-            opacity(amarillo, 1); 
-            opacity(rojo, 0); 
-            opacity(verde, 0); 
+            for(e in lClrs){ 
+                parseFloat(e) / 5 == parseInt(parseFloat(e) / 5)? opacity(lClrs[e], 1): opacity(lClrs[e], 0); 
+            } 
         break; 
     } 
     ioi < 1? ioi++: ioi= 0; 
@@ -1348,21 +1321,11 @@ function5= function(){
 
 
 function6= function(){
-    for(e= 0; e < document.getElementsByClassName("#96f064").length - 1; e++){
-        Math.random() * 2 > 1? document.getElementsByClassName("#96f064")[e].style.opacity= 1: document.getElementsByClassName("#96f064")[e].style.opacity= 0; 
-    };
-
-    for(e= 0; e < document.getElementsByClassName("#ffef6d").length - 1; e++){
-        Math.random() * 2 > 1? document.getElementsByClassName("#ffef6d")[e].style.opacity= 1: document.getElementsByClassName("#ffef6d")[e].style.opacity= 0; 
-    };
-
-    for(e= 0; e < document.getElementsByClassName("#ce0c27").length - 1; e++){
-        Math.random() * 2 > 1? document.getElementsByClassName("#ce0c27")[e].style.opacity= 1: document.getElementsByClassName("#ce0c27")[e].style.opacity= 0; 
-    };
-
-    for(e= 0; e < document.getElementsByClassName("#51a2ca").length - 1; e++){
-        Math.random() * 2 > 1? document.getElementsByClassName("#51a2ca")[e].style.opacity= 1: document.getElementsByClassName("#51a2ca")[e].style.opacity= 0; 
-    };
+    for(eForensics in lClrs){ 
+        for(e= 0; e < document.getElementsByClassName(lClrs[eForensics].replaceAll("(", "").replaceAll(")", "").replaceAll(" ", "")).length - 1; e++){
+            Math.random() * 2 > 1? document.getElementsByClassName(lClrs[eForensics].replaceAll("(", "").replaceAll(")", "").replaceAll(" ", ""))[e].style.opacity= 1: document.getElementsByClassName(lClrs[eForensics].replaceAll("(", "").replaceAll(")", "").replaceAll(" ", ""))[e].style.opacity= 0; 
+        }; 
+    }
 }
 
 function $$(selector, context) { 
@@ -1459,18 +1422,14 @@ document.addEventListener("keydown", function(i){
         $("#r4Ndom div").css({"opacity": ""}); 
                             
         i.preventDefault(); 
-                          
-        opacity(azul, 0); 
-                          
-        opacity(verde, 0); 
-                          
-        opacity(rojo, 0); 
-                          
-        opacity(amarillo, 0); 
                        
+        for(e in lClrs){ 
+            opacity(lClrs[e], 0); 
+        } 
+
         goingUp= true; 
         goingDown= false; 
-        cr= azul; 
+        clr= lClrs[0]; 
         ioi= 0; 
                 
         setinterval(function2); 
@@ -1522,13 +1481,9 @@ document.addEventListener("keydown", function(i){
 
         ioi= 1; 
                 
-        opacity(azul, ioi); 
-                            
-        opacity(verde, ioi); 
-                            
-        opacity(rojo, ioi); 
-                            
-        opacity(amarillo, ioi); 
+        for(e in lClrs){ 
+            opacity(lClrs[e], 1); 
+        } 
 
 		clearInterval(interval);                           
     } 
@@ -1606,7 +1561,7 @@ var widget;
 var illIng = null; 
 seekAndDestroy= function(aa, bb, cc, dd, ee, ill){ 
     if(aa== 3 || $(ill.target).is("html")){ 
-        console.log(aa)
+        //console.log(aa) 
         $(baull).each(function(){$(this).css("display", "block"); $(this).trigger("mouseup")}); 
         $(".Ball").css({"pointer-events": "none"})
     }else if($(aa).parent().is(".Ball") && !b){ 
@@ -1799,7 +1754,7 @@ document.addEventListener("mouseup", function(i){
 
     sB? $("#selectedBall").attr("id", ""): 1319; 
 
-    sB? $("outerbody").append('<div id= "selectedBall" class= "Ball" style= "width: 19px; height: 23.4608695652px; user-select: none; top: ' + (i.pageY - 0.7) + 'px; left: ' + (i.pageX - 9.5) + 'px; position: absolute; z-index: ' + (!!(parseInt(getActual()) + 1)? (parseInt(getActual()) + 1): 1) + '; "><img src= "hANDLE.png" style= "width: 100%; height: 100%; user-select: none; position: absolute;"></img><div style= "width: 100%; height: 100%; user-select: none; background-size: cover; background-blend-mode: luminosity; mask-image: url(bALL.png); mask-mode: alpha; mask-size: cover; background-image: url(bALL.png); position: absolute; background-color: ' + bClr + '; "></div><div class="swgrip ui-resizable-handle ui-resizable-sw"></div><div class="segrip ui-resizable-handle ui-resizable-se"></div></div>'): 54109; 
+    sB? $("outerbody").append('<div id= "selectedBall" class= "Ball" style= "width: 19px; height: 23.4608695652px; user-select: none; top: ' + (i.pageY - 0.7) + 'px; left: ' + (i.pageX - 9.5) + 'px; position: absolute; z-index: ' + (!!(parseInt(getActual()) + 1)? (parseInt(getActual()) + 1): 1) + '; "><img src= "hANDLE.png" style= "width: 100%; height: 100%; user-select: none; position: absolute;"></img><div style= "width: 100%; height: 100%; user-select: none; background-size: cover; background-blend-mode: luminosity; mask-image: url(bALL.png); mask-mode: alpha; mask-size: cover; background-image: url(bALL.png); position: absolute; background-color: ' + $("#colorpicker #bALL").css("background-color") + '; "></div><div class="swgrip ui-resizable-handle ui-resizable-sw"></div><div class="segrip ui-resizable-handle ui-resizable-se"></div></div>'): 54109; 
 
     if(sB){ 
 
@@ -1862,6 +1817,7 @@ document.addEventListener("mouseup", function(i){
 
             P= 1; },
             drag: function(){ 
+                
                 if(P == 1){
                 el= $(this); 
 
@@ -1885,7 +1841,7 @@ document.addEventListener("mouseup", function(i){
 
 
                 if(distancex > circlePos.radius && !(inside([eventx.pageX, eventx.pageY], Tr) || distanceT <= RadT)){ 
-                    console.log("out")
+                    //console.log("out") 
                     $(eventx.target).parent().is(".Ball")? $(this).trigger("mouseup"): 1; 
                 }
                 P++; 
@@ -1937,15 +1893,23 @@ if(b){
                     $(".Ball").draggable("option", "stack", false); 
                 }
     }                              
+
+    if(!$(i.target).parents('.colorpicker-swatches').length && !$(i.target).parents('#colorpicker').length){
     L= parseInt(Math.random() * dsrcrs.length); 
                                                 
     MNSWMTG= parseInt(Math.random() * 2) == 0? "-3": "-1"; 
                                                                
-    PpPE= (dsrcrs[L] == "#597c2d")? "; z-index: -2": "; border-radius: 50%; z-index: " + MNSWMTG; 
-                                                              
-    dsrcrs[L] == "#597c2d"? MNSWMTG = false: 214;                                   
+    dsrcrs[L] != dsrcrs[dsrcrs.length - 1]? lClrs.indexOf(dsrcrs[L]) == -1? lClrs[lClrs.length]= dsrcrs[L]: 1: 1; 
 
-    (($(".ui-draggable-resizing").length === 0 && $(".ui-draggable-dragging").length === 0) && ((document.querySelectorAll(".Star div").length > 0 && $$(".Star div").indexOf(i.target) == -1) || document.querySelectorAll(".Star div").length === 0) && ((document.querySelectorAll(".Star img").length > 0 && $$(".Star img").indexOf(i.target) == -1) || document.querySelectorAll(".Star img").length === 0) && ((document.querySelectorAll(".Ball div").length > 0 && $$(".Ball div").indexOf(i.target) == -1) || document.querySelectorAll(".Ball div").length === 0) && ((document.querySelectorAll(".Ball img").length > 0 && $$(".Ball img").indexOf(i.target) == -1) || document.querySelectorAll(".Ball img").length === 0) && Fr && mousedown && !dW && !dT && !sS)? $("#r4Ndom").append("<div class= '" + dsrcrs[L] + "' style= 'width: 6.8px; height: 6.8px; background-color: " + dsrcrs[L] + PpPE + "; position: absolute; left: " + (i.pageX - 3.4)+ "px; top: " + (i.pageY - 3.4)+  "px; '></div>" + (MNSWMTG >= -1? "<div class= '#597c2d' style= 'width: 6.8px; height: 6.8px; background-color: #597c2d; z-index: -2; position: absolute; left: " + (i.pageX - 3.4) + "px; top: " + (i.pageY - 3.4) +  "px; '></div>": "")): 13781;
+    for(e in lClrs){ 
+        document.getElementById(lClrs[e].replaceAll("(", "").replaceAll(")", "").replaceAll(" ", "")) == null? document.head.insertAdjacentHTML("beforeend", "<style id= " + lClrs[e].replaceAll("(", "").replaceAll(")", "").replaceAll(" ", "") + "></style>"): 1; 
+    } 
+
+    PpPE= (dsrcrs[L] == dsrcrs[dsrcrs.length - 1])? "; z-index: -2": "; border-radius: 50%; z-index: " + MNSWMTG; 
+                                                              
+    dsrcrs[L] == dsrcrs[dsrcrs.length - 1]? MNSWMTG = false: 214;                                   
+
+    (($(".ui-draggable-resizing").length === 0 && $(".ui-draggable-dragging").length === 0) && ((document.querySelectorAll(".Star div").length > 0 && $$(".Star div").indexOf(i.target) == -1) || document.querySelectorAll(".Star div").length === 0) && ((document.querySelectorAll(".Star img").length > 0 && $$(".Star img").indexOf(i.target) == -1) || document.querySelectorAll(".Star img").length === 0) && ((document.querySelectorAll(".Ball div").length > 0 && $$(".Ball div").indexOf(i.target) == -1) || document.querySelectorAll(".Ball div").length === 0) && ((document.querySelectorAll(".Ball img").length > 0 && $$(".Ball img").indexOf(i.target) == -1) || document.querySelectorAll(".Ball img").length === 0) && Fr && mousedown && !dW && !dT && !sS)? $("#r4Ndom").append("<div class= '" + dsrcrs[L].replaceAll("(", "").replaceAll(")", "").replaceAll(" ", "") + "' style= 'width: 6.8px; height: 6.8px; background-color: " + dsrcrs[L] + PpPE + "; position: absolute; left: " + (i.pageX - 3.4)+ "px; top: " + (i.pageY - 3.4)+  "px; '></div>" + (MNSWMTG >= -1? "<div class= '#597c2d' style= 'width: 6.8px; height: 6.8px; background-color: " +  dsrcrs[dsrcrs.length - 1] + "; z-index: -2; position: absolute; left: " + (i.pageX - 3.4) + "px; top: " + (i.pageY - 3.4) +  "px; '></div>": "")): 13781;
                                         
     /*document.activeElement.blur(); */ 
                                         
@@ -1967,10 +1931,20 @@ if(b){
         console.log("YFinal: ", i.pageY)
         console.log("rotation: ", (Math.atan2((mousedown[1] - i.pageY), (mousedown[0] - i.pageX)) * (180 / Math.PI)))
         rt= (Math.atan2((mousedown[1] - i.pageY), (mousedown[0] - i.pageX)) * (180 / Math.PI)); */
-        $("middlebody").append("<div class= 'w' style= 'width: 7.5px; height: 7.5px; background-color: #44de48; left: " + (i.pageX - 3.75) + "px; top: " + (i.pageY - 3.75) + "px; position: absolute; '></div>")
+        last_clr != $("#sombra_guirnalda").css("background-color")? (function(){ 
+            last_clr= $("#sombra_guirnalda").css("background-color"); 
+            divC++; 
+        })(): 1; 
+
+        !$("div" + divC).length? $("middlebody").append("<div" + divC + "></div" + divC + ">"): 1; 
+
+        $("middlebody div" + divC).css({"filter": "drop-shadow(0 0 2px " + $("#sombra_guirnalda").css("background-color") + ")"})
+
+        $("middlebody div" + divC).append("<div class= 'w' style= 'width: 7.5px; height: 7.5px; background-color:" + $("#guirnalda").css("background-color") + "; left: " + (i.pageX - 3.75) + "px; top: " + (i.pageY - 3.75) + "px; position: absolute; '></div>")
         /*mousedown[0]= i.pageX; 
         mousedown[1]= i.pageY;   
     }*/
+    }
     }
 }); 
     
