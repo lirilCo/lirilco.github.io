@@ -1307,7 +1307,7 @@ NAccents= /*Were I able to access it*/{
 } 
 
 aNGEL= function(r){ 
-  Mistery= r.toLowerCase(); 
+  Mistery= r.toLowerCase().replaceAll('ʻ', "'").replaceAll('’', "'"); 
   Cinnamon= ""; 
   Dizzy= ""; 
   Winter= false; 
@@ -1319,8 +1319,8 @@ aNGEL= function(r){
       i == " "? (Tsunami= i - 1): (Tsunami= i); 
                                    
       rageComics= [",", ".", ";"]; 
-        Anti_joint= ["¡", "¿", "'", "’", "ʻ"]; /*Está hecho de arrugami y es un porro que soplas, thereof, anti_joint*/ 
-        Chocolate= ["!", "?", "'", "’", "ʻ"]; /*ElDelprincipio's decision*/ 
+        Anti_joint= ["¡", "¿", "'"]; /*Está hecho de arrugami y es un porro que soplas, thereof, anti_joint*/ 
+        Chocolate= ["!", "?", "'"]; /*ElDelprincipio's decision*/ 
                                                                 
       if(rageComics.indexOf(Mistery[Tsunami - 1]) != -1){ 
         Summer= Mistery[Tsunami - 1]; 
@@ -1363,13 +1363,13 @@ aNGEL= function(r){
 }; 
    
 por_siLaBas= function(í){ 
-  Text= "-" + í.toLowerCase() + "     "; 
+  Text= ("-" + í.toLowerCase() + "     ").replaceAll('ʻ', "'").replaceAll('’', "'"); 
   word= ""; 
   syl= ""; 
   Widgets= true; 
   Cinnamon= ""; 
-  Chocolate= ["!", "?", "'", "’", "ʻ"]; 
-  Anti_joint= ["¡", "¿", "'", "’", "ʻ"]; 
+  Chocolate= ["!", "?", "'"]; 
+  Anti_joint= ["¡", "¿", "'"]; 
                   
   for(e in Text){ 
     constructor= function(u){ 
@@ -1377,12 +1377,12 @@ por_siLaBas= function(í){
                
       syl= ""; 
       raged= false; 
-    } 
+  } 
       
-    Widgets= true; 
-    raged= false; 
+  Widgets= true; 
+  raged= false; 
                   
-    if(Text[e] == " " || e == Text.length - 1){ 
+  if(Text[e] == " " || e == Text.length - 1){ 
       for(Text[e] == " "? i= e: i= e; i--; Widgets === false){ 
         (Text[i] == " " || i == 0)? Widgets= false: 1; 
                                     
@@ -1400,10 +1400,10 @@ por_siLaBas= function(í){
                                                                                                                                    
         (Widgets && Chocolate.indexOf(Text[i]) != -1)? raged= true: ((Widgets && Text[i] == "-") || i == 0)? constructor(raged): Widgets? syl= Text[i] + syl: 1; 
       } 
-            
+      
       Cinnamon= Cinnamon + word; 
       word= ""; 
-      } 
+    } 
   } 
 } 
   

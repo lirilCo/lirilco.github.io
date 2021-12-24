@@ -1216,6 +1216,7 @@ var oW_F= [];
 var dnW= [];
 var bClr; 
 var lClrs= []; 
+var f2= false; 
 dsrcrs= [ 
   "#597c2d", 
   "#ce0c27", 
@@ -1307,12 +1308,12 @@ function5= function(){
     switch(ioi){ 
         case 0: 
             for(e in lClrs){ 
-                parseFloat(e) / 5 == parseInt(parseFloat(e) / 5)? opacity(lClrs[e], 0): opacity(lClrs[e], 1); 
+                parseFloat(e) / 4 == parseInt(parseFloat(e) / 4)? opacity(lClrs[e], 0): opacity(lClrs[e], 1); 
             } 
         break; 
         case 1: 
             for(e in lClrs){ 
-                parseFloat(e) / 5 == parseInt(parseFloat(e) / 5)? opacity(lClrs[e], 1): opacity(lClrs[e], 0); 
+                parseFloat(e) / 4 == parseInt(parseFloat(e) / 4)? opacity(lClrs[e], 1): opacity(lClrs[e], 0); 
             } 
         break; 
     } 
@@ -1433,6 +1434,10 @@ document.addEventListener("keydown", function(i){
         ioi= 0; 
                 
         setinterval(function2); 
+
+        f2= true; 
+    }else{ 
+        f2= false; 
     } 
       
     if(i.keyCode == 114){ 
@@ -1902,14 +1907,17 @@ if(b){
     dsrcrs[L] != dsrcrs[dsrcrs.length - 1]? lClrs.indexOf(dsrcrs[L]) == -1? lClrs[lClrs.length]= dsrcrs[L]: 1: 1; 
 
     for(e in lClrs){ 
-        document.getElementById(lClrs[e].replaceAll("(", "").replaceAll(")", "").replaceAll(" ", "")) == null? document.head.insertAdjacentHTML("beforeend", "<style id= " + lClrs[e].replaceAll("(", "").replaceAll(")", "").replaceAll(" ", "") + "></style>"): 1; 
+        document.getElementById(lClrs[e].replaceAll("(", "").replaceAll(")", "").replaceAll(" ", "")) == null? (function(){ 
+            document.head.insertAdjacentHTML("beforeend", "<style id= " + lClrs[e].replaceAll("(", "").replaceAll(")", "").replaceAll(" ", "") + "></style>"); 
+            !f2? 1: opacity(lClrs[e], 0); 
+        })(): 1; 
     } 
 
     PpPE= (dsrcrs[L] == dsrcrs[dsrcrs.length - 1])? "; z-index: -2": "; border-radius: 50%; z-index: " + MNSWMTG; 
                                                               
     dsrcrs[L] == dsrcrs[dsrcrs.length - 1]? MNSWMTG = false: 214;                                   
 
-    (($(".ui-draggable-resizing").length === 0 && $(".ui-draggable-dragging").length === 0) && ((document.querySelectorAll(".Star div").length > 0 && $$(".Star div").indexOf(i.target) == -1) || document.querySelectorAll(".Star div").length === 0) && ((document.querySelectorAll(".Star img").length > 0 && $$(".Star img").indexOf(i.target) == -1) || document.querySelectorAll(".Star img").length === 0) && ((document.querySelectorAll(".Ball div").length > 0 && $$(".Ball div").indexOf(i.target) == -1) || document.querySelectorAll(".Ball div").length === 0) && ((document.querySelectorAll(".Ball img").length > 0 && $$(".Ball img").indexOf(i.target) == -1) || document.querySelectorAll(".Ball img").length === 0) && Fr && mousedown && !dW && !dT && !sS)? $("#r4Ndom").append("<div class= '" + dsrcrs[L].replaceAll("(", "").replaceAll(")", "").replaceAll(" ", "") + "' style= 'width: 6.8px; height: 6.8px; background-color: " + dsrcrs[L] + PpPE + "; position: absolute; left: " + (i.pageX - 3.4)+ "px; top: " + (i.pageY - 3.4)+  "px; '></div>" + (MNSWMTG >= -1? "<div class= '#597c2d' style= 'width: 6.8px; height: 6.8px; background-color: " +  dsrcrs[dsrcrs.length - 1] + "; z-index: -2; position: absolute; left: " + (i.pageX - 3.4) + "px; top: " + (i.pageY - 3.4) +  "px; '></div>": "")): 13781;
+    (($(".ui-draggable-resizing").length === 0 && $(".ui-draggable-dragging").length === 0) && ((document.querySelectorAll(".Star div").length > 0 && $$(".Star div").indexOf(i.target) == -1) || document.querySelectorAll(".Star div").length === 0) && ((document.querySelectorAll(".Star img").length > 0 && $$(".Star img").indexOf(i.target) == -1) || document.querySelectorAll(".Star img").length === 0) && ((document.querySelectorAll(".Ball div").length > 0 && $$(".Ball div").indexOf(i.target) == -1) || document.querySelectorAll(".Ball div").length === 0) && ((document.querySelectorAll(".Ball img").length > 0 && $$(".Ball img").indexOf(i.target) == -1) || document.querySelectorAll(".Ball img").length === 0) && Fr && mousedown && !dW && !dT && !sS)? $("#r4Ndom").append("<div class= '" + dsrcrs[L].replaceAll("(", "").replaceAll(")", "").replaceAll(" ", "") + "' style= 'width: 6.8px; height: 6.8px; background-color: " + dsrcrs[L] + PpPE + "; position: absolute; left: " + (i.pageX - 3.4)+ "px; top: " + (i.pageY - 3.4)+  "px; '></div>" + (MNSWMTG >= -1? "<div class= '" + dsrcrs[dsrcrs.length -1].replaceAll("(", "").replaceAll(")", "").replaceAll(" ", "") + "' style= 'width: 6.8px; height: 6.8px; background-color: " +  dsrcrs[dsrcrs.length - 1] + "; z-index: -2; position: absolute; left: " + (i.pageX - 3.4) + "px; top: " + (i.pageY - 3.4) +  "px; '></div>": "")): 13781;
                                         
     /*document.activeElement.blur(); */ 
                                         

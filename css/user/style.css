@@ -1630,3 +1630,8 @@ header nav ul li#right-menu #store::before {
     background-size: contain;
     background-position-x: -3px;
 }
+.Editado{ 
+    float: right; 
+    color: #aaa; 
+    font-size: 14px; 
+} 
