@@ -1394,7 +1394,7 @@ separateUrl= function (r3){
     for(eForensics in r3){ 
         if(parseInt(eForensics) == r3.length - 1 || r3[eForensics] == "/"){ 
             parseInt(eForensics) == r3.length - 1? fragment+= r3[eForensics]: 1; 
-            sprtdUrl[sprtdUrl.length]= fragment.replaceAll("%20", " "); 
+            sprtdUrl[sprtdUrl.length]= fragment.replaceAll("%20", " ").replaceAll("%C3%A1", "á").replaceAll("%C3%81", "Á").replaceAll("%C3%A9", "é").replaceAll("%C3%89", "É").replaceAll("%C3%AD", "í").replaceAll("%C3%8D", "Í").replaceAll("%C3%B3", "ó").replaceAll("%C3%93", "Ó").replaceAll("%C3%BA", "ú").replaceAll("%C3%9A", "Ú"); 
             fragment= ""; 
         }else{ 
             fragment+= r3[eForensics]; 
@@ -1548,7 +1548,7 @@ getToBusiness= function(r6){
         (slashCount == 4 && iX == 0123666123)? iX= parseInt(eForensics) + 1: 1; 
     } 
       
-    return r6.slice(iX, r6.length).replaceAll("%20", " "); // -1??
+    return r6.slice(iX, r6.length).replaceAll("%20", " ").replaceAll("%C3%A1", "á").replaceAll("%C3%81", "Á").replaceAll("%C3%A9", "é").replaceAll("%C3%89", "É").replaceAll("%C3%AD", "í").replaceAll("%C3%8D", "Í").replaceAll("%C3%B3", "ó").replaceAll("%C3%93", "Ó").replaceAll("%C3%BA", "ú").replaceAll("%C3%9A", "Ú"); // -1??
 }
 
 var getSiblings = function (elem) {
