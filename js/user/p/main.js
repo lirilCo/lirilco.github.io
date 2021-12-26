@@ -193,7 +193,7 @@ $("#files .file").click(function(i, tr){
                                   
     updateRoot(separateUrl(uRL)); 
 
-    FileToRequest= window.location.pathname
+    FileToRequest= window.location.pathname.replaceAll("%20", " ").replaceAll("%C3%A1", "á").replaceAll("%C3%81", "Á").replaceAll("%C3%A9", "é").replaceAll("%C3%89", "É").replaceAll("%C3%AD", "í").replaceAll("%C3%8D", "Í").replaceAll("%C3%B3", "ó").replaceAll("%C3%93", "Ó").replaceAll("%C3%BA", "ú").replaceAll("%C3%9A", "Ú")
     slashCt= 0; 
     strtgIx= 0; 
     
@@ -354,7 +354,7 @@ $("#preview .file").click(function(i){
                               
     updateRoot(separateUrl(uRL)); 
 
-     aar= getToBusiness(window.location.pathname); 
+     aar= getToBusiness(window.location.pathname.replaceAll("%20", " ").replaceAll("%C3%A1", "á").replaceAll("%C3%81", "Á").replaceAll("%C3%A9", "é").replaceAll("%C3%89", "É").replaceAll("%C3%AD", "í").replaceAll("%C3%8D", "Í").replaceAll("%C3%B3", "ó").replaceAll("%C3%93", "Ó").replaceAll("%C3%BA", "ú").replaceAll("%C3%9A", "Ú")); 
                  
         spr= ""; 
                  
@@ -518,7 +518,7 @@ for(let folder of document.querySelectorAll("#files .folder")) {
                               
     updateRoot(separateUrl(uRL)); 
 
-     aar= getToBusiness(window.location.pathname); 
+     aar= getToBusiness(window.location.pathname.replaceAll("%20", " ").replaceAll("%C3%A1", "á").replaceAll("%C3%81", "Á").replaceAll("%C3%A9", "é").replaceAll("%C3%89", "É").replaceAll("%C3%AD", "í").replaceAll("%C3%8D", "Í").replaceAll("%C3%B3", "ó").replaceAll("%C3%93", "Ó").replaceAll("%C3%BA", "ú").replaceAll("%C3%9A", "Ú")); 
                  
         spr= ""; 
                  
@@ -670,7 +670,7 @@ $("#files .folder").click(function(i){
 
     
 
-    aar= getToBusiness(window.location.pathname); 
+    aar= getToBusiness(window.location.pathname.replaceAll("%20", " ").replaceAll("%C3%A1", "á").replaceAll("%C3%81", "Á").replaceAll("%C3%A9", "é").replaceAll("%C3%89", "É").replaceAll("%C3%AD", "í").replaceAll("%C3%8D", "Í").replaceAll("%C3%B3", "ó").replaceAll("%C3%93", "Ó").replaceAll("%C3%BA", "ú").replaceAll("%C3%9A", "Ú")); 
 
         spr= ""; 
                  
@@ -747,7 +747,7 @@ $("#preview .folder").click(function(i, triggered){
 
     
 
-        aar= getToBusiness(window.location.pathname); 
+        aar= getToBusiness(window.location.pathname.replaceAll("%20", " ").replaceAll("%C3%A1", "á").replaceAll("%C3%81", "Á").replaceAll("%C3%A9", "é").replaceAll("%C3%89", "É").replaceAll("%C3%AD", "í").replaceAll("%C3%8D", "Í").replaceAll("%C3%B3", "ó").replaceAll("%C3%93", "Ó").replaceAll("%C3%BA", "ú").replaceAll("%C3%9A", "Ú")); 
 
         spr= ""; 
                  
@@ -843,7 +843,7 @@ $("#Archivo, #Live, #Editar").click(function(){
 
         localStorage.setItem("selected", $(this)[0].innerText); 
                                             
-    FileToRequest= window.location.pathname 
+    FileToRequest= window.location.pathname.replaceAll("%20", " ").replaceAll("%C3%A1", "á").replaceAll("%C3%81", "Á").replaceAll("%C3%A9", "é").replaceAll("%C3%89", "É").replaceAll("%C3%AD", "í").replaceAll("%C3%8D", "Í").replaceAll("%C3%B3", "ó").replaceAll("%C3%93", "Ó").replaceAll("%C3%BA", "ú").replaceAll("%C3%9A", "Ú") 
     slashCt= 0; 
     strtgIx= 0; 
                 
@@ -1459,7 +1459,7 @@ updateRoot= function(a7){
             $(".folder_cont > .folder.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
             $(".file.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
 
-        aar= getToBusiness(window.location.pathname); 
+        aar= getToBusiness(window.location.pathname.replaceAll("%20", " ").replaceAll("%C3%A1", "á").replaceAll("%C3%81", "Á").replaceAll("%C3%A9", "é").replaceAll("%C3%89", "É").replaceAll("%C3%AD", "í").replaceAll("%C3%8D", "Í").replaceAll("%C3%B3", "ó").replaceAll("%C3%93", "Ó").replaceAll("%C3%BA", "ú").replaceAll("%C3%9A", "Ú")); 
                  
         spr= ""; 
                  
