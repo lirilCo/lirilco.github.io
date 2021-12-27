@@ -1266,7 +1266,7 @@ function2= function(){
     if(goingDown && ioi <= 0){ 
         goingDown= false; 
         setTimeout(function(){ 
-            lClrs.indexOf(clr) + 1 <= lClrs[lClrs.length - 1]? clr= lClrs[lClrs.indexOf(clr) + 1]: clr= lClrs[0]; 
+            lClrs.indexOf(clr) + 1 <= lClrs.length - 1? clr= lClrs[lClrs.indexOf(clr) + 1]: clr= lClrs[0]; 
             goingUp= true; 
         }, 2345) 
     }
@@ -1528,12 +1528,6 @@ function inside(point, vs) {
     
     return inside;
 };
-
-$('form select').on('change', function() { 
-   $("#sbMtr").click(); 
-
-   getDedications($("select")[0].value); 
-}); 
 
 $('form select option').on('click', function() { 
    $("#sbMtr").click(); 
