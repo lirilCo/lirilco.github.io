@@ -51,3 +51,14 @@ Asegurate De Usar El Navegador Web Firefox 84:
 https://ftp.mozilla.org/pub/firefox/releases/81.0/ 
 
 (Elige Tu Sistema Operativo Y Luego Tu Lenguaje)
+
+
+¡Si Abres Xampp Varias Veces, Aparece Un Logo En El Icon Tray (Lo Que Aparece Cuando Hundes Inicio + B Y Luego Espacio Ejecutando aNGEL();) Por Cada Vez Que Lo Abras; Así Puedes Llenarlo Más Para Que Tape El Botón De Detenerlo!  
+
+
+
+
+
+La Familia Gallego Escobar
+
+Everyone's
