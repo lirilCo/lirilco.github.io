@@ -184,8 +184,8 @@ $("#files .file").click(function(i, tr){
         } 
       
         t= t.parent(); 
-    } 
-      
+    }
+       
     history.pushState({page: pageI}, "", "/" + username + "/p/" + pId + "/" + uRL); 
     pageI++;
                                                               

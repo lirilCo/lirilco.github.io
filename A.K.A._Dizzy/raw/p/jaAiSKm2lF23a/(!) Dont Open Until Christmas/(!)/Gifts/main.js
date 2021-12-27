@@ -4,6 +4,8 @@ paused= false;
              
 sECF= false; 
              
+rawrrawrrawrrawr= false; 
+                     
 contr = function(i){ 
 b= 0; 
 for(www in i){ 
