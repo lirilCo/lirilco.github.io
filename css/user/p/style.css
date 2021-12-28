@@ -338,7 +338,7 @@ body
 #file_expl #files, #file_expl #preview 
 { 
     width: 50%; 
-    height: 100%; 
+    height: 100% !important; 
     display: inline-block; 
     white-space: normal; 
     position: relative; 
