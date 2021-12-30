@@ -319,6 +319,7 @@
 					$(".swatch").not(".new").not(".label").on("click", function(){ 
 					    $(".swatch.picking").removeClass("picking"); 
 					    $(this).addClass("picking"); 
+					    ww.colorpicker.setValue($(this).css("background-color")); 
 					}); 
 					
 					clrs_luces= []; 
