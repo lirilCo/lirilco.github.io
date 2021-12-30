@@ -144,6 +144,7 @@ Ariana= function(qwert, yuiop, a, i){u= 0; t= u; r= t; s= u; p= 100; n= "s-resiz
           
         (i.keyCode != 52 && i.keyCode != 51)? s= 0: 1; 
 
+        vrb.length? (function(){
         for(e in vrb){ 
             vrb[e].style.left= t + "px"; 
                                           
@@ -158,7 +159,7 @@ Ariana= function(qwert, yuiop, a, i){u= 0; t= u; r= t; s= u; p= 100; n= "s-resiz
             vrb[e].style.height= parseInt(vrb[e].style.height.slice(0, length - 2)) + s + "px"; 
                                                                                                          
             a == "a"? vrb[e].style.position= "relative": a != "b"? 1: vrb[e].style.position= "absolute"; 
-        } 
+        } })(): 1; 
     }); 
         
     document.addEventListener("mousedown", function(){diedednotdiededbutdieded= true; !rawrrawrrawrrawr? document.getElementsByTagName("body")[0].style.cursor= "grab": 1;grarb === false? grarb= true: 1; setTimeout(function(){if(grarb && !rawrrawrrawrrawr){document.getElementsByTagName("body")[0].style.cursor= "grabbing"}; }, 630); }); 
