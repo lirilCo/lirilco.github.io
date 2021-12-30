@@ -5,6 +5,10 @@ paused= false;
 sECF= false; 
              
 rawrrawrrawrrawr= false; 
+
+var Cinnamon= false; 
+
+var lastChild= null; 
                      
 contr = function(i){ 
 b= 0; 
@@ -1415,9 +1419,9 @@ document.addEventListener("keydown", function(i){
 
     i.keyCode == 13? aNGEL(document.getElementById("dieded").value): 1; 
 
-    i.keyCode == 17? parse("#Sara", -1): 1; 
+    (!!Cinnamon && i.keyCode == 17)? parse("#Sara", -1): 1; 
                         
-    if(i.keyCode == 17) 
+    if(!!Cinnamon && i.keyCode == 17) 
     { 
       document.getElementById('pause').innerText == '>'? document.getElementById('pause').innerText = 'll': 252; 
                                    
@@ -1649,11 +1653,11 @@ document.addEventListener("keydown", function(i){
                                                 
     i.keyCode == 16? shift_droped= false: 1152; 
                                                 
-    i.keyCode == 17 && lastChild.outerHTML.indexOf("Rwawwr") == -1? document.getElementById("rawr").innerHTML= document.getElementById("rawr").innerHTML + "<div id= 'Rwawwr'></div>": 3251; 
+    i.keyCode == 17 && !!lastChild && lastChild.outerHTML.indexOf("Rwawwr") == -1? document.getElementById("rawr").innerHTML= document.getElementById("rawr").innerHTML + "<div id= 'Rwawwr'></div>": 3251; 
                               
-    (i.keyCode == 17 && lastChild.outerHTML.indexOf("Rwawwr") == -1 && document.activeElement != $("input")[0] && document.activeElement != $("textarea")[0])? document.getElementsByTagName("h1")[0].removeAttribute("corrupt"): 3251; 
+    (i.keyCode == 17 && !!lastChild && lastChild.outerHTML.indexOf("Rwawwr") == -1 && document.activeElement != $("input")[0] && document.activeElement != $("textarea")[0])? document.getElementsByTagName("h1")[0].removeAttribute("corrupt"): 3251; 
 
-    (i.keyCode == 17 && lastChild.outerHTML.indexOf("Rwawwr") == -1 && document.activeElement != $("input")[0] && document.activeElement != $("textarea")[0])? document.getElementsByTagName("h1")[0].focus(): 3251; 
+    (i.keyCode == 17 && !!lastChild && lastChild.outerHTML.indexOf("Rwawwr") == -1 && document.activeElement != $("input")[0] && document.activeElement != $("textarea")[0])? document.getElementsByTagName("h1")[0].focus(): 3251; 
 
     i.keyCode == 16? document.getElementById("dinosaurios").scrollLeft= (90.8 + 5.89) * document.getElementById("rawr").children.length - document.body.clientWidth / 2: 21198291; 
                                                                                                               
@@ -1681,7 +1685,7 @@ document.addEventListener("mouseup", function(i){
 }); //The question, the quest off...  
     
 document.addEventListener("mousemove", function(i){ 
-    (i.target.outerHTML.indexOf("rwr") == 12 || i.target.parentElement.outerHTML.indexOf("rwr") == 12)? rawrrawrrawrrawr= true: rawrrawrrawrrawr= false; 
+    (i.target.outerHTML.indexOf("rwr") == 12 || (!!i.target.parentElement && i.target.parentElement.outerHTML.indexOf("rwr") == 12))? rawrrawrrawrrawr= true: rawrrawrrawrrawr= false; 
                           
     me= rawrrawrrawrrawr; 
                           
@@ -1697,7 +1701,7 @@ document.addEventListener("mousemove", function(i){
 }); 
     
 document.addEventListener("keyup", function(i){ 
-    (i.keyCode == 17 && lastChild.outerHTML.indexOf("Rwawwr") == 9)? lastChild.outerHTML= "": 3251; 
+    (i.keyCode == 17 && !!lastChild && lastChild.outerHTML.indexOf("Rwawwr") == 9)? lastChild.outerHTML= "": 3251; 
                                                
     i.keyCode == 16? shift_droped= true: 2311; 
 }); 
