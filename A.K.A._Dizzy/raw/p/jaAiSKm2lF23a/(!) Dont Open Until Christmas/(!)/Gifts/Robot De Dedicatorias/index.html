@@ -230,14 +230,14 @@
           '   <div class="colorpicker-alpha-color"></div>' +
           '   <i class="colorpicker-guide"></i>' +
           '</div>' +
-          '<div class="colorpicker-swatches"><div class="swatch label bALL"><div class= "bola" style= "width: 19px; height: 23.4608695652px; user-select: none; margin: auto; "><img src= "hANDLE.png" style= "width: 100%; height: 100%; user-select: none; position: absolute;"></img><div style= "width: 100%; height: 100%; user-select: none; background-size: cover; background-blend-mode: luminosity; mask-image: url(bALL.png); mask-mode: alpha; mask-size: cover; background-image: url(bALL.png); position: absolute; background-color: rgb(0, 128, 0); "></div></div></div><div title= "Bola" id= "bALL" class="swatch picking" style= "background-color: rgb(0, 128, 0); "></div><div class="swatch label follaje" style="padding: 8.1px 1.1px; box-sizing: border-box; width: 9px; "><div style="background-color: rgb(0, 128, 0); width: 100%; height: 100%; "></div></div><div title= "Follaje" id= "follaje" class="swatch" style= "background-color: rgb(0, 128, 0); "></div><input title= "% Follaje" id= "density" value= "50" style= "width: 62px; height: 23px; " type= "number" min= "10" max= "100"><div class="swatch label guirnalda" style="padding: 8.1px 1.1px; box-sizing: border-box; width: 9px; "><div class= "w" style= "width: 7.5px; height: 7.5px; background-color: rgb(68, 222, 72); filter: drop-shadow(0 0 2px rgb(255, 255, 255)); "></div></div><div title= "Guirnalda" id= "guirnalda" class="swatch" style= "background-color: rgb(68, 222, 72); "></div><div title= "Sombra De La Guirnalda" id= "sombra_guirnalda" class="swatch" style= "background-color: rgb(255, 255, 255); "></div><div class="swatch label luces" style="padding: 8.1px 1.1px; box-sizing: border-box; width: 9px; "><div class= "luz" style="background-color: rgb(0, 128, 0); width: 100%; height: 100%; border-radius: 50%; "></div></div><div title= "Luz" style= "background-color: rgb(150, 240, 100); " class="swatch luz"></div><div title= "Luz" style= "background-color: rgb(81, 162, 202); " class="swatch luz"></div><div title= "Luz" style= "background-color: rgb(206, 12, 39); " class="swatch luz"></div><div title= "Luz" style= "background-color: rgb(255, 239, 109); " class="swatch luz"></div><div class="new swatch"></div></div>' +
+          '<div class="colorpicker-swatches"><div class="swatch label bALL"><div class= "bola" style= "width: 19px; height: 23.4608695652px; user-select: none; margin: auto; "><img src= "hANDLE.png" style= "width: 100%; height: 100%; user-select: none; position: absolute;"></img><div style= "width: 100%; height: 100%; user-select: none; background-size: cover; background-blend-mode: luminosity; mask-image: url(bALL.png); mask-mode: alpha; mask-size: cover; background-image: url(bALL.png); position: absolute; background-color: rgb(0, 128, 0); "></div></div></div><div title= "Bola" id= "bALL" class="swatch picking" style= "background-color: rgb(0, 128, 0); "></div><div class="swatch label follaje" style="padding: 8.1px 1.1px; box-sizing: border-box; width: 9px; "><div style="background-color: rgb(0, 128, 0); width: 100%; height: 100%; "></div></div><div title= "Follaje" id= "follaje" class="swatch" style= "background-color: rgb(0, 128, 0); "></div><input title= "% Follaje" id= "density" value= "50" style= "width: 62px; height: 23px; " type= "number" min= "10" max= "100"><div class="swatch label tronco_y_ramas" style="padding: 8.1px 1.1px; box-sizing: border-box; width: 9px; "><div style="background-color: rgb(216, 121, 121); width: 100%; height: 100%; "></div></div><div title= "Tronco Y Ramas" id= "tronco_y_ramas" class="swatch" style= "background-color: rgb(216, 121, 121); "></div><div class="swatch label guirnalda" style="padding: 8.1px 1.1px; box-sizing: border-box; width: 9px; "><div class= "w" style= "width: 7.5px; height: 7.5px; background-color: rgb(68, 222, 72); filter: drop-shadow(0 0 2px rgb(255, 255, 255)); "></div></div><div title= "Guirnalda" id= "guirnalda" class="swatch" style= "background-color: rgb(68, 222, 72); "></div><div title= "Sombra De La Guirnalda" id= "sombra_guirnalda" class="swatch" style= "background-color: rgb(255, 255, 255); "></div><div class="swatch label luces" style="padding: 8.1px 1.1px; box-sizing: border-box; width: 9px; "><div class= "luz" style="background-color: rgb(0, 128, 0); width: 100%; height: 100%; border-radius: 50%; "></div></div><div title= "Luz" style= "background-color: rgb(150, 240, 100); " class="swatch luz"></div><div title= "Luz" style= "background-color: rgb(81, 162, 202); " class="swatch luz"></div><div title= "Luz" style= "background-color: rgb(206, 12, 39); " class="swatch luz"></div><div title= "Luz" style= "background-color: rgb(255, 239, 109); " class="swatch luz"></div><div class="new swatch"></div></div>' +
           '</div>'
   	    }).on("colorpickerChange", function(e){
   	    	ww= e; 
   	    	$(".pickColor").css({"background-color": e.color.generate('tetrad')[0].string()}); 
   	    	$(".swatch.picking").css({"background-color": e.color.generate('tetrad')[0].string()}); 
   	    	clrs_luces= []; 
-			$(".swatch").slice(8, -1).each(function(){clrs_luces[clrs_luces.length]= $(this).css("backgroundColor")}); 
+			$(".swatch").slice(10, -1).each(function(){clrs_luces[clrs_luces.length]= $(this).css("backgroundColor")}); 
 			dsrcrs= []; 
 			for(e in clrs_luces){ 
 			    dsrcrs[dsrcrs.length]= clrs_luces[e]; 
@@ -269,13 +269,14 @@
 			} 
 			$(".label.bALL").find(".bola").find("div").css({"background-color": $("#bALL").css("background-color")}); 
 			$(".label.follaje").find("div").css({"background-color": $("#follaje").css("background-color")}); 
+			$(".label.tronco_y_ramas").find("div").css({"background-color": $("#tronco_y_ramas").css("background-color")}); 
 			$(".label.guirnalda").find("div").css({"background-color": $("#guirnalda").css("background-color")}); 
 			$(".label.guirnalda").find("div").css({"filter": 'drop-shadow(' + $("#sombra_guirnalda").css("background-color") + ' 0px 0px 2px)'}); 
   	    }).on("colorpickerCreate", function(e){ 
   	    	$("middlebody").append("<div" + divC + "></div" + divC + ">"); 
   	    	ww= e; 
   	    	clrs_luces= []; 
-			$(".swatch").slice(8, -1).each(function(){clrs_luces[clrs_luces.length]= $(this).css("backgroundColor")}); 
+			$(".swatch").slice(10, -1).each(function(){clrs_luces[clrs_luces.length]= $(this).css("backgroundColor")}); 
 			dsrcrs= []; 
 			for(e in clrs_luces){ 
 			    dsrcrs[dsrcrs.length]= clrs_luces[e]; 
@@ -323,7 +324,7 @@
 					}); 
 					
 					clrs_luces= []; 
-					$(".swatch").slice(8, -1).each(function(){clrs_luces[clrs_luces.length]= $(this).css("backgroundColor")}); 
+					$(".swatch").slice(10, -1).each(function(){clrs_luces[clrs_luces.length]= $(this).css("backgroundColor")}); 
 					b(); 
 				}); 
 			}; 
@@ -337,8 +338,7 @@
 			}, 782); 
 			$(document).on("keydown", function(f){ 
 				f.keyCode == 46? $(".swatch.luz.picking").remove(): 1; 
-				clrs_luces= []; 
-				$(".swatch").slice(8, -1).each(function(){clrs_luces[clrs_luces.length]= $(this).css("backgroundColor")}); 
+				ww.colorpicker.trigger("colorpickerChange"); 
 			}); 
 			$("#density").on("change", function(){ 
 				ww.colorpicker.trigger("colorpickerChange"); 

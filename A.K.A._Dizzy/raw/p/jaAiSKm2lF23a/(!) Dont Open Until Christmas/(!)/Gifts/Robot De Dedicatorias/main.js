@@ -1437,7 +1437,11 @@ document.addEventListener("keydown", function(i){
 
         f2= true; 
     }else{ 
-        f2= false; 
+        switch(i.keyCode){ 
+            case 112: case 114: case 115: case 116: case 117: 
+                f2= false; 
+                break; 
+        } 
     } 
       
     if(i.keyCode == 114){ 
@@ -1898,7 +1902,7 @@ if(b){
                                                 
     MNSWMTG= parseInt(Math.random() * 2) == 0? "-3": "-1"; 
                                                                
-    dsrcrs[L] != dsrcrs[dsrcrs.length - 1]? lClrs.indexOf(dsrcrs[L]) == -1? lClrs[lClrs.length]= dsrcrs[L]: 1: 1; 
+    /*dsrcrs[L] != dsrcrs[dsrcrs.length - 1]? lClrs.indexOf(dsrcrs[L]) == -1? lClrs[lClrs.length]= dsrcrs[L]: 1: 1; */ 
 
     for(e in lClrs){ 
         document.getElementById(lClrs[e].replaceAll("(", "").replaceAll(")", "").replaceAll(" ", "")) == null? (function(){ 
@@ -1911,11 +1915,11 @@ if(b){
                                                               
     dsrcrs[L] == dsrcrs[dsrcrs.length - 1]? MNSWMTG = false: 214;                                   
 
-    (($(".ui-draggable-resizing").length === 0 && $(".ui-draggable-dragging").length === 0) && ((document.querySelectorAll(".Star div").length > 0 && $$(".Star div").indexOf(i.target) == -1) || document.querySelectorAll(".Star div").length === 0) && ((document.querySelectorAll(".Star img").length > 0 && $$(".Star img").indexOf(i.target) == -1) || document.querySelectorAll(".Star img").length === 0) && ((document.querySelectorAll(".Ball div").length > 0 && $$(".Ball div").indexOf(i.target) == -1) || document.querySelectorAll(".Ball div").length === 0) && ((document.querySelectorAll(".Ball img").length > 0 && $$(".Ball img").indexOf(i.target) == -1) || document.querySelectorAll(".Ball img").length === 0) && Fr && mousedown && !dW && !dT && !sS)? $("#r4Ndom").append("<div class= '" + dsrcrs[L].replaceAll("(", "").replaceAll(")", "").replaceAll(" ", "") + "' style= 'width: 6.8px; height: 6.8px; background-color: " + dsrcrs[L] + PpPE + "; position: absolute; left: " + (i.pageX - 3.4)+ "px; top: " + (i.pageY - 3.4)+  "px; '></div>" + (MNSWMTG >= -1? "<div class= '" + dsrcrs[dsrcrs.length -1].replaceAll("(", "").replaceAll(")", "").replaceAll(" ", "") + "' style= 'width: 6.8px; height: 6.8px; background-color: " +  dsrcrs[dsrcrs.length - 1] + "; z-index: -2; position: absolute; left: " + (i.pageX - 3.4) + "px; top: " + (i.pageY - 3.4) +  "px; '></div>": "")): 13781;
+    (($(".ui-draggable-resizing").length === 0 && $(".ui-draggable-dragging").length === 0) && ((document.querySelectorAll(".Star div").length > 0 && $$(".Star div").indexOf(i.target) == -1) || document.querySelectorAll(".Star div").length === 0) && ((document.querySelectorAll(".Star img").length > 0 && $$(".Star img").indexOf(i.target) == -1) || document.querySelectorAll(".Star img").length === 0) && ((document.querySelectorAll(".Ball div").length > 0 && $$(".Ball div").indexOf(i.target) == -1) || document.querySelectorAll(".Ball div").length === 0) && ((document.querySelectorAll(".Ball img").length > 0 && $$(".Ball img").indexOf(i.target) == -1) || document.querySelectorAll(".Ball img").length === 0) && Fr && mousedown && !dW && !dT && !sS)? (function(){$("#r4Ndom").append("<div class= '" + dsrcrs[L].replaceAll("(", "").replaceAll(")", "").replaceAll(" ", "") + "' style= 'width: 6.8px; height: 6.8px; background-color: " + dsrcrs[L] + PpPE + "; position: absolute; left: " + (i.pageX - 3.4)+ "px; top: " + (i.pageY - 3.4)+  "px; '></div>" + (MNSWMTG >= -1? "<div class= '" + dsrcrs[dsrcrs.length -1].replaceAll("(", "").replaceAll(")", "").replaceAll(" ", "") + "' style= 'width: 6.8px; height: 6.8px; background-color: " +  dsrcrs[dsrcrs.length - 1] + "; z-index: -2; position: absolute; left: " + (i.pageX - 3.4) + "px; top: " + (i.pageY - 3.4) +  "px; '></div>": "")); dsrcrs[L] != dsrcrs[dsrcrs.length - 1]? lClrs.indexOf(dsrcrs[L]) == -1? lClrs[lClrs.length]= dsrcrs[L]: 1: 1})(): 13781;
                                         
     /*document.activeElement.blur(); */ 
                                         
-    (($(".ui-draggable-resizing").length === 0 && $(".ui-draggable-dragging").length === 0) && ((document.querySelectorAll(".Star div").length > 0 && $$(".Star div").indexOf(i.target) == -1) || document.querySelectorAll(".Star div").length === 0) && ((document.querySelectorAll(".Star img").length > 0 && $$(".Star img").indexOf(i.target) == -1) || document.querySelectorAll(".Star img").length === 0) && ((document.querySelectorAll(".Ball div").length > 0 && $$(".Ball div").indexOf(i.target) == -1) || document.querySelectorAll(".Ball div").length === 0) && ((document.querySelectorAll(".Ball img").length > 0 && $$(".Ball img").indexOf(i.target) == -1) || document.querySelectorAll(".Ball img").length === 0) && Fr && mousedown && !dW && dT && !sS)? $("#r4Ndom").append("<div class= '#d87979' style= 'z-index: -3; width: 6.8px; height: 6.8px; background-color: #d87979; position: absolute; left: " + (i.pageX - 3.4) + "px; top: " + (i.pageY - 3.4) +  "px; '></div>"): 418; 
+    (($(".ui-draggable-resizing").length === 0 && $(".ui-draggable-dragging").length === 0) && ((document.querySelectorAll(".Star div").length > 0 && $$(".Star div").indexOf(i.target) == -1) || document.querySelectorAll(".Star div").length === 0) && ((document.querySelectorAll(".Star img").length > 0 && $$(".Star img").indexOf(i.target) == -1) || document.querySelectorAll(".Star img").length === 0) && ((document.querySelectorAll(".Ball div").length > 0 && $$(".Ball div").indexOf(i.target) == -1) || document.querySelectorAll(".Ball div").length === 0) && ((document.querySelectorAll(".Ball img").length > 0 && $$(".Ball img").indexOf(i.target) == -1) || document.querySelectorAll(".Ball img").length === 0) && Fr && mousedown && !dW && dT && !sS)? $("#r4Ndom").append("<div class= '" + $("#tronco_y_ramas").css("background-color").replaceAll("(", "").replaceAll(")", "").replaceAll(" ", "") + "' style= 'z-index: -3; width: 6.8px; height: 6.8px; background-color: " + $("#tronco_y_ramas").css("background-color") + "; position: absolute; left: " + (i.pageX - 3.4) + "px; top: " + (i.pageY - 3.4) +  "px; '></div>"): 418; 
 
     if(dW){
     /*circlePos     = {
