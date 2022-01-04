@@ -1701,7 +1701,7 @@ document.addEventListener("mousemove", function(i){
 }); 
     
 document.addEventListener("keyup", function(i){ 
-    (i.keyCode == 17 && !!lastChild && lastChild.outerHTML.indexOf("Rwawwr") == 9)? lastChild.outerHTML= "": 3251; 
+    (i.keyCode == 17 && !!lastChild && lastChild.outerHTML.indexOf("Rwawwr") == 9)? (function(){lastChild.outerHTML= ""; (!$(document.activeElement).is("textarea") && !$(document.activeElement).is("#dieded"))? document.activeElement.blur(): 832; })(): 3251; 
                                                
     i.keyCode == 16? shift_droped= true: 2311; 
 }); 
