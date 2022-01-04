@@ -325,6 +325,9 @@
 					
 					clrs_luces= []; 
 					$(".swatch").slice(10, -1).each(function(){clrs_luces[clrs_luces.length]= $(this).css("backgroundColor")}); 
+					$("#density").on("change", function(){ 
+					    ww.colorpicker.trigger("colorpickerChange"); 
+					}); 
 					b(); 
 				}); 
 			}; 
