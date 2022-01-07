@@ -610,4 +610,4 @@ function getLink(){
     
     return lnk; 
 } 
-*/ 
+*/ //!!1 <3 

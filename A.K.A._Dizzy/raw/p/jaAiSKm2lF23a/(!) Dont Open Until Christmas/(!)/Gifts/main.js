@@ -1752,10 +1752,12 @@ document.addEventListener("keydown", function(i){
         $(".rwr div").css({"opacity": ""}); 
                             
         i.preventDefault(); 
-
+                
         ioi= 0; 
-
+                
         setinterval(function5); 
+                           
+        //Mr. Corn St.     
     } 
       
     if(i.keyCode == 117){ 
