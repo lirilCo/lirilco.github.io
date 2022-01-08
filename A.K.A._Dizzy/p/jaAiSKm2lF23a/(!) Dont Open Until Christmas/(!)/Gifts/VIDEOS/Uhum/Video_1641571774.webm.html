@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>
+      Christmas Gifts From The Gallego Escobar Family | Proyectos | Luis Eduardo Gallego García | liril
+    </title>
+    <link rel="shortcut icon" type="image/ico" href="/resources/icons/favicon.ico"  />
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300,600,700' rel='stylesheet' type='text/css'>
+    
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/courses/style.css">
+    <link rel="stylesheet" href="/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/video-js.css">
+    <link rel="stylesheet" href="/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/css/user/p/style.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" type="text/css" href="/css/searchbox.css">
+    <script type="text/javascript">
+        var pId= "jaAiSKm2lF23a"; 
+        var pNa= "Christmas Gifts From The Gallego Escobar Family"; 
+        var username= "A.K.A._Dizzy"; 
+        var users_name= "Luis Eduardo Gallego García"; 
+    </script>
+
+    <script src="/js/jquery.js"></script>
+    <script src="/js/video.js"></script>
+    <script src="/js/jquery-ui.min.js"
+    ></script>
+    <script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="/js/prism.js"></script>
+    <script src="/js/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cloud9ide.github.io/emmet-core/emmet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.13/ext-emmet.js"></script>
+    <script src="/js/theme-monokai.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/js/Ace's Modes/mode-css.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/js/Ace's Modes/mode-html.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/js/Ace's Modes/mode-javascript.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src= "/js/ext-language_tools.js"></script>
+    <script src="/js/user/p/main.js"></script>
+
+    <script src="/js/courses/modernizr.custom.js"></script>
+
+ <script src="/js/jquery.knob.js">
+
+    </script>
+
+    <script>
+        $(function ($) {
+
+            $(".knob").knob({
+                change: function (value) {
+                    //console.log("change : " + value);
+                },
+                release: function (value) {
+                    //console.log(this.$.attr('value'));
+                    console.log("release : " + value);
+                },
+                cancel: function () {
+                    console.log("cancel : ", this);
+                },
+                /*format : function (value) {
+                  return value + '%';
+                  }
+                  ,*/
+                draw: function () {
+
+                    // "tron" case
+                    if (this.$.data('skin') == 'tron') {
+
+                        this.cursorExt = 0.3;
+
+                        var a = this.arc(this.cv) // Arc
+                            ,
+                            pa // Previous arc
+                            , r = 1;
+
+                        this.g.lineWidth = this.lineWidth;
+
+                        if (this.o.displayPrevious) {
+                            pa = this.arc(this.v);
+                            this.g.beginPath();
+                            this.g.strokeStyle = this.pColor;
+                            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, pa.s, pa.e, pa.d);
+                            this.g.stroke();
+                        }
+
+                        this.g.beginPath();
+                        this.g.strokeStyle = r ? this.o.fgColor : this.fgColor;
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, a.s, a.e, a.d);
+                        this.g.stroke();
+
+                        this.g.lineWidth = 2;
+                        this.g.beginPath();
+                        this.g.strokeStyle = this.o.fgColor;
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
+                        this.g.stroke();
+
+                        return false;
+                    }
+                }
+            });
+
+            // Example of infinite knob, iPod click wheel
+            var v, up = 0,
+                down = 0,
+                i = 0,
+                $idir = $("div.idir"),
+                $ival = $("div.ival"),
+                incr = function () {
+                    i++;
+                    $idir.show().html("+").fadeOut();
+                    $ival.html(i);
+                },
+                decr = function () {
+                    i--;
+                    $idir.show().html("-").fadeOut();
+                    $ival.html(i);
+                };
+            $("input.infinite").knob({
+                min: 0,
+                max: 20,
+                stopper: false,
+                change: function () {
+                    if (v > this.cv) {
+                        if (up) {
+                            decr();
+                            up = 0;
+                        } else {
+                            up = 1;
+                            down = 0;
+                        }
+                    } else {
+                        if (v < this.cv) {
+                            if (down) {
+                                incr();
+                                down = 0;
+                            } else {
+                                down = 1;
+                                up = 0;
+                            }
+                        }
+                    }
+                    v = this.cv;
+                }
+            });
+        });
+    </script>
+    <style type="text/css" media="screen">
+        body {
+            overflow: hidden;
+        }
+        
+        #editor { 
+            margin: 0;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+<div class="wrapper"></div>
+    <header>
+        <nav>
+            <ul>
+                <li id="index">
+                    <a href="//"><section id="index-trigger">
+                        <span class="back-arrow button">
+              </span>
+                        <span id="index-text" class="text button">
+                Inicio
+              </span>
+                    </section></a>
+
+                </li>
+               
+                 <li id= "buscar">
+          <input class="buscar" type="text" placeholder="Busca aquí cursos, personas o cualquier cosa">
+          </li>
+                <li id="right-menu" class="button">
+                    <section id="dots" class="button">
+                        <span id="store" class="button">
+              </span>
+                        <span id="dots-icon" class="button">
+              </span>
+                        <span id="dots-text" class="button">
+                6'000.600
+              </span>
+
+                    </section>
+                    <section id="profileTrigger">
+                    </section>
+                    <div id="profile" class="button">
+                        <img id="profile-pic" src="/resources/images/white.jpg" alt="Walter White">
+                        <input class="knob button" data-width="35" data-height="35" data-fgColor="#2ecc71" data-bgColor="rgba(0,0,0,0)" data-displayInput=false data-thickness=".15" readonly value="60">
+                    </div>
+                    <span class="index-arrow button">
+              </span>
+
+                    <section id="profileSettings">
+                    </section>
+                </li>
+
+                <li>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div id="root">
+        <div class="contnr">
+            <div>
+                <a url="/A.K.A._Dizzy.html">Luis Eduardo Gallego García</a>
+            </div>
+            <div>
+                <a url="/A.K.A._Dizzy/p.html">Proyectos</a>
+            </div>
+            <span>
+                <span >Christmas Gifts From The Gallego Escobar Family</span>
+            </span>
+        </div>
+    </div>
+
+    <section id= "file_expl">
+        <aside id="files">
+            <aside id="information_cont"><aside id="information"><i>Infor</i></aside></aside>
+            <ul class="file_tree">
+                <div class="folder_cont">
+                    <li class= "folder inScope">(!) Dont Open Until Christmas</li>
+                    <div class="folder_cont">
+                        <li class= "folder ">(!)</li>
+                        <div class="folder_cont">
+                            <li class= "folder ">Gifts</li>
+                            <div class="folder_cont">
+                                <li class= "folder ">Offline (Presiona Live Antes De Entrar)</li>
+                                <li class= "file">Christmas Gifts From The Gallego Escobar Family.rar</li>
+                                <li class= "file">Open Sans.rar</li>
+                                <li class= "file">Readme.html</li>
+                                <li class= "file">xampp.html</li>
+                            </div>
+                            <div class="folder_cont">
+                                <li class= "folder ">Robot De Dedicatorias</li>
+                                <li class= "file">bALL.png</li>
+                                <li class= "file">hANDLE.png</li>
+                                <li class= "file">index.html</li>
+                                <li class= "file">main.js</li>
+                                <li class= "file">Star.png</li>
+                            </div>
+                            <div class="folder_cont">
+                                <li class="folder">VIDEOS</li>
+                                <div class="folder_cont">
+                                    <li class="folder">First Videos</li>
+                                    <li class="file">Video_1603383808.webm</li>
+                                    <li class="file">Video_1603383826.webm</li>
+                                    <li class="file">Video_1603388270.webm</li>
+                                    <li class="file">Video_1603390989.webm</li>
+                                    <li class="file">Video_1603391384.webm</li>
+                                    <li class="file">Video_1603391553.webm</li>
+                                    <li class="file">Video_1603391840.webm</li>
+                                    <li class="file">Video_1603391898.webm</li>
+                                    <li class="file">Video_1603392032.webm</li>
+                                    <li class="file">Video_1603392066.webm</li>
+                                    <li class="file">Video_1603392164.webm</li>
+                                    <li class="file">Video_1603393831.webm</li>
+                                    <li class="file">Video_1603467449.webm</li>
+                                    <li class="file">Video_1603467989.webm</li>
+                                    <li class="file">Video_1603470301.webm</li>
+                                    <li class="file">Video_1603470545.webm</li>
+                                    <li class="file">Video_1603471251.webm</li>
+                                    <li class="file">Video_1603472787.webm</li>
+                                    <li class="file">Video_1603473783.webm</li>
+                                    <li class="file">Video_1603475075.webm</li>
+                                    <li class="file">Video_1603476357.webm</li>
+                                    <li class="file">Video_1603476579.webm</li>
+                                    <li class="file">Video_1603479124.webm</li>
+                                    <li class="file">Video_1603480144.webm</li>
+                                    <li class="file">Video_1603481107.webm</li>
+                                    <li class="file">Video_1603481447.webm</li>
+                                    <li class="file">Video_1603481870.webm</li>
+                                    <li class="file">Video_1603482319.webm</li>
+                                    <li class="file">Video_1603483014.webm</li>
+                                    <li class="file">Video_1603483025.webm</li>
+                                    <li class="file">Video_1603483187.webm</li>
+                                    <li class="file">Video_1603483686.webm</li>
+                                    <li class="file">Video_1603484205.webm</li>
+                                    <li class="file">Video_1603484531.webm</li>
+                                    <li class="file">Video_1603484860.webm</li>
+                                    <li class="file">Video_1603485068.webm</li>
+                                    <li class="file">Video_1603486201.webm</li>
+                                    <li class="file">Video_1603486566.webm</li>
+                                    <li class="file">Video_1603486977.webm</li>
+                                    <li class="file">Video_1603487186.webm</li>
+                                    <li class="file">Video_1603487214.webm</li>
+                                    <li class="file">Video_1603487455.webm</li>
+                                    <li class="file">Video_1603487597.webm</li>
+                                    <li class="file">Video_1603488160.webm</li>
+                                    <li class="file">Video_1603488801.webm</li>
+                                    <li class="file">Video_1603489131.webm</li>
+                                    <li class="file">Video_1603489813.webm</li>
+                                    <li class="file">Video_1603489843.webm</li>
+                                    <li class="file">Video_1603489884.webm</li>
+                                    <li class="file">Video_1603489945.webm</li>
+                                    <li class="file">Video_1603490394.webm</li>
+                                    <li class="file">Video_1603508269.webm</li>
+                                    <li class="file">Video_1603509181.webm</li>
+                                    <li class="file">Video_1603534736.webm</li>
+                                    <li class="file">Video_1603535589.webm</li>
+                                    <li class="file">Video_1603535842.webm</li>
+                                    <li class="file">Video_1603535984.webm</li>
+                                    <li class="file">Video_1603536162.webm</li>
+                                    <li class="file">Video_1603536611.webm</li>
+                                    <li class="file">Video_1603536886.webm</li>
+                                    <li class="file">Video_1603537446.webm</li>
+                                </div>
+                                <div class="folder_cont">
+                                    <li class="folder">Other Videos</li>
+                                    <li class="file">Video_1603509842.webm</li>
+                                    <li class="file">Video_1603528890.webm</li>
+                                    <li class="file">Video_1603533295.webm</li>
+                                    <li class="file">Video_1603545393.webm</li>
+                                    <li class="file">Video_1603545896.webm</li>
+                                    <li class="file">Video_1603546265.webm</li>
+                                    <li class="file">Video_1603546476.webm</li>
+                                    <li class="file">Video_1603547101.webm</li>
+                                    <li class="file">Video_1603547152.webm</li>
+                                    <li class="file">Video_1603547178.webm</li>
+                                    <li class="file">Video_1603547394.webm</li>
+                                    <li class="file">Video_1603547581.webm</li>
+                                    <li class="file">Video_1603548043.webm</li>
+                                    <li class="file">Video_1603548316.webm</li>
+                                    <li class="file">Video_1603548569.webm</li>
+                                    <li class="file">Video_1603549082.webm</li>
+                                    <li class="file">Video_1603549321.webm</li>
+                                    <li class="file">Video_1603549688.webm</li>
+                                    <li class="file">Video_1603550138.webm</li>
+                                    <li class="file">Video_1603550241.webm</li>
+                                    <li class="file">Video_1603550354.webm</li>
+                                    <li class="file">Video_1603550471.webm</li>
+                                    <li class="file">Video_1603551023.webm</li>
+                                    <li class="file">Video_1603551183.webm</li>
+                                    <li class="file">Video_1603551946.webm</li>
+                                    <li class="file">Video_1603552534.webm</li>
+                                    <li class="file">Video_1603552728.webm</li>
+                                    <li class="file">Video_1603552783.webm</li>
+                                    <li class="file">Video_1603553416.webm</li>
+                                    <li class="file">Video_1603553908.webm</li>
+                                    <li class="file">Video_1603554178.webm</li>
+                                    <li class="file">Video_1603554324.webm</li>
+                                    <li class="file">Video_1603554722.webm</li>
+                                    <li class="file">Video_1603554895.webm</li>
+                                    <li class="file">Video_1603555217.webm</li>
+                                    <li class="file">Video_1603555659.webm</li>
+                                    <li class="file">Video_1603555711.webm</li>
+                                    <li class="file">Video_1603556060.webm</li>
+                                    <li class="file">Video_1603556649.webm</li>
+                                    <li class="file">Video_1603556979.webm</li>
+                                    <li class="file">Video_1603557298.webm</li>
+                                    <li class="file">Video_1603557358.webm</li>
+                                    <li class="file">Video_1603557379.webm</li>
+                                    <li class="file">Video_1603557634.webm</li>
+                                    <li class="file">Video_1603558577.webm</li>
+                                    <li class="file">Video_1603559332.webm</li>
+                                    <li class="file">Video_1603565485.webm</li>
+                                    <li class="file">Video_1603565709.webm</li>
+                                    <li class="file">Video_1603565782.webm</li>
+                                    <li class="file">Video_1603565984.webm</li>
+                                    <li class="file">Video_1603566315.webm</li>
+                                    <li class="file">Video_1603567255.webm</li>
+                                    <li class="file">Video_1603567376.webm</li>
+                                    <li class="file">Video_1603567584.webm</li>
+                                    <li class="file">Video_1603568092.webm</li>
+                                    <li class="file">Video_1603568465.webm</li>
+                                    <li class="file">Video_1603568959.webm</li>
+                                    <li class="file">Video_1603569417.webm</li>
+                                    <li class="file">Video_1603569429.webm</li>
+                                    <li class="file">Video_1603569615.webm</li>
+                                    <li class="file">Video_1603569752.webm</li>
+                                    <li class="file">Video_1603570078.webm</li>
+                                    <li class="file">Video_1603570602.webm</li>
+                                    <li class="file">Video_1603570650.webm</li>
+                                    <li class="file">Video_1603573608.webm</li>
+                                    <li class="file">Video_1603573821.webm</li>
+                                    <li class="file">Video_1603574335.webm</li>
+                                    <li class="file">Video_1603574535.webm</li>
+                                    <li class="file">Video_1603575114.webm</li>
+                                    <li class="file">Video_1603656994.webm</li>
+                                </div>
+                                <div class="folder_cont">
+                                    <li class="folder">Uhum</li>
+                                    <li class="folder">Uhum</li>
+                                    <li class="file">EsoEranFotogramasSíOqué[0]OnHer.png</li>
+                                    <li class="file">Gonorrea[0].png</li>
+                                    <li class="file">Gonorrea[1].png</li>
+                                    <li class="file">sf.png</li>
+                                    <li class="file">1.png</li>
+                                    <li class="file">2.png</li>
+                                    <li class="file">3.png</li>
+                                    <li class="file">NoMeHagasEseOnHer[0].png</li>
+                                    <li class="file">NoMeHagasEseOnHer[1].png</li>
+                                    <li class="file">NoMeHagasEseOnHer[2].png</li>
+                                    <li class="file">NoMeHagasEseOnHer[3].png</li>
+                                    <li class="file">NoMeHagasEseOnHer[4].png</li>
+                                    <li class="file">NoMeHagasEseOnHer[5].png</li>
+                                    <li class="file">NoMeHagasEseOnHer[6].png</li>
+                                    <li class="file">NoMeHagasEseOnHer[7].png</li>
+                                    <li class="file">NoMeHagasEseOnHer[8].png</li>
+                                    <li class="file">empty[0].png</li>
+                                    <li class="file">empty[1].png</li>
+                                    <li class="file">1poruno[0]NaN.png</li>
+                                    <li class="file">Ni Nos Dio Tiempo Para El Primer Pantallazo[0].png</li>
+                                    <li class="file">1poruno[1]GreeicyPlz.png</li>
+                                    <li class="file">1poruno[0]Not A Number.png</li>
+                                    <li class="file">1poruno[4].png</li>
+                                    <li class="file">1poruno[3]NaN.png</li>
+                                    <li class="file">1poruno[5]NaN.png</li>
+                                    <li class="file">1poruno[6]NaN....png</li>
+                                    <li class="file">1poruno[-1]flashtruction.png</li>
+                                    <li class="file">NaNYNoSéQué[0].png</li>
+                                    <li class="file">Video_1641505999.webm</li>
+                                    <li class="file">Video_1641571774.webm</li>
+                                </div>
+                                <div class="folder_cont">
+                                    <li class="folder">Videos From RRoklien</li>
+                                </div>
+                            </div>
+                            <li class= "file">index.html</li>
+                            <li class= "file">main.js</li>
+                        </div>
+                    </div>
+                </div>
+            </ul> 
+        </aside>
+        <aside id="preview">
+            <aside id="file_preview"> 
+                <aside id="options"> 
+                    <ul> 
+                        <li id= "Archivo" class= "selected"><a>Archivo</a></li>
+                        <li id= "Live"><a>Live</a></li>
+                         | 
+                        <li id= "Raw"><a>Raw</a></li>
+                         | 
+                        <li id= "Editar"><a>Editar</a></li>
+                    </ul>
+                </aside> 
+                <div class="code-scroll"><div class="code-filler"></div></div>
+                <aside id="file">
+                    
+                </aside>
+                <aside id="filePr">
+                    
+                </aside>
+                <aside id="edit">
+                    
+                </aside>
+            </aside> 
+                     
+            <ul class="file_tree">
+                <div class="folder_cont">
+                    <li class= "folder inScope">(!) Dont Open Until Christmas</li>
+                    <div class="folder_cont">
+                        <li class= "folder ">(!)</li>
+                        <div class="folder_cont">
+                            <li class= "folder ">Gifts</li>
+                            <div class="folder_cont">
+                                <li class= "folder ">Offline (Presiona Live Antes De Entrar)</li>
+                                <li class= "file">Christmas Gifts From The Gallego Escobar Family.rar</li>
+                                <li class= "file">Open Sans.rar</li>
+                                <li class= "file">Readme.html</li>
+                                <li class= "file">xampp.html</li>
+                            </div>
+                            <div class="folder_cont">
+                                <li class= "folder ">Robot De Dedicatorias</li>
+                                <li class= "file">bALL.png</li>
+                                <li class= "file">hANDLE.png</li>
+                                <li class= "file">index.html</li>
+                                <li class= "file">main.js</li>
+                                <li class= "file">Star.png</li>
+                            </div>
+                            <div class="folder_cont">
+                                <li class="folder">VIDEOS</li>
+                                <div class="folder_cont">
+                                    <li class="folder">First Videos</li>
+                                    <li class="file">Video_1603383808.webm</li>
+                                    <li class="file">Video_1603383826.webm</li>
+                                    <li class="file">Video_1603388270.webm</li>
+                                    <li class="file">Video_1603390989.webm</li>
+                                    <li class="file">Video_1603391384.webm</li>
+                                    <li class="file">Video_1603391553.webm</li>
+                                    <li class="file">Video_1603391840.webm</li>
+                                    <li class="file">Video_1603391898.webm</li>
+                                    <li class="file">Video_1603392032.webm</li>
+                                    <li class="file">Video_1603392066.webm</li>
+                                    <li class="file">Video_1603392164.webm</li>
+                                    <li class="file">Video_1603393831.webm</li>
+                                    <li class="file">Video_1603467449.webm</li>
+                                    <li class="file">Video_1603467989.webm</li>
+                                    <li class="file">Video_1603470301.webm</li>
+                                    <li class="file">Video_1603470545.webm</li>
+                                    <li class="file">Video_1603471251.webm</li>
+                                    <li class="file">Video_1603472787.webm</li>
+                                    <li class="file">Video_1603473783.webm</li>
+                                    <li class="file">Video_1603475075.webm</li>
+                                    <li class="file">Video_1603476357.webm</li>
+                                    <li class="file">Video_1603476579.webm</li>
+                                    <li class="file">Video_1603479124.webm</li>
+                                    <li class="file">Video_1603480144.webm</li>
+                                    <li class="file">Video_1603481107.webm</li>
+                                    <li class="file">Video_1603481447.webm</li>
+                                    <li class="file">Video_1603481870.webm</li>
+                                    <li class="file">Video_1603482319.webm</li>
+                                    <li class="file">Video_1603483014.webm</li>
+                                    <li class="file">Video_1603483025.webm</li>
+                                    <li class="file">Video_1603483187.webm</li>
+                                    <li class="file">Video_1603483686.webm</li>
+                                    <li class="file">Video_1603484205.webm</li>
+                                    <li class="file">Video_1603484531.webm</li>
+                                    <li class="file">Video_1603484860.webm</li>
+                                    <li class="file">Video_1603485068.webm</li>
+                                    <li class="file">Video_1603486201.webm</li>
+                                    <li class="file">Video_1603486566.webm</li>
+                                    <li class="file">Video_1603486977.webm</li>
+                                    <li class="file">Video_1603487186.webm</li>
+                                    <li class="file">Video_1603487214.webm</li>
+                                    <li class="file">Video_1603487455.webm</li>
+                                    <li class="file">Video_1603487597.webm</li>
+                                    <li class="file">Video_1603488160.webm</li>
+                                    <li class="file">Video_1603488801.webm</li>
+                                    <li class="file">Video_1603489131.webm</li>
+                                    <li class="file">Video_1603489813.webm</li>
+                                    <li class="file">Video_1603489843.webm</li>
+                                    <li class="file">Video_1603489884.webm</li>
+                                    <li class="file">Video_1603489945.webm</li>
+                                    <li class="file">Video_1603490394.webm</li>
+                                    <li class="file">Video_1603508269.webm</li>
+                                    <li class="file">Video_1603509181.webm</li>
+                                    <li class="file">Video_1603534736.webm</li>
+                                    <li class="file">Video_1603535589.webm</li>
+                                    <li class="file">Video_1603535842.webm</li>
+                                    <li class="file">Video_1603535984.webm</li>
+                                    <li class="file">Video_1603536162.webm</li>
+                                    <li class="file">Video_1603536611.webm</li>
+                                    <li class="file">Video_1603536886.webm</li>
+                                    <li class="file">Video_1603537446.webm</li>
+                                </div>
+                                <div class="folder_cont">
+                                    <li class="folder">Other Videos</li>
+                                    <li class="file">Video_1603509842.webm</li>
+                                    <li class="file">Video_1603528890.webm</li>
+                                    <li class="file">Video_1603533295.webm</li>
+                                    <li class="file">Video_1603545393.webm</li>
+                                    <li class="file">Video_1603545896.webm</li>
+                                    <li class="file">Video_1603546265.webm</li>
+                                    <li class="file">Video_1603546476.webm</li>
+                                    <li class="file">Video_1603547101.webm</li>
+                                    <li class="file">Video_1603547152.webm</li>
+                                    <li class="file">Video_1603547178.webm</li>
+                                    <li class="file">Video_1603547394.webm</li>
+                                    <li class="file">Video_1603547581.webm</li>
+                                    <li class="file">Video_1603548043.webm</li>
+                                    <li class="file">Video_1603548316.webm</li>
+                                    <li class="file">Video_1603548569.webm</li>
+                                    <li class="file">Video_1603549082.webm</li>
+                                    <li class="file">Video_1603549321.webm</li>
+                                    <li class="file">Video_1603549688.webm</li>
+                                    <li class="file">Video_1603550138.webm</li>
+                                    <li class="file">Video_1603550241.webm</li>
+                                    <li class="file">Video_1603550354.webm</li>
+                                    <li class="file">Video_1603550471.webm</li>
+                                    <li class="file">Video_1603551023.webm</li>
+                                    <li class="file">Video_1603551183.webm</li>
+                                    <li class="file">Video_1603551946.webm</li>
+                                    <li class="file">Video_1603552534.webm</li>
+                                    <li class="file">Video_1603552728.webm</li>
+                                    <li class="file">Video_1603552783.webm</li>
+                                    <li class="file">Video_1603553416.webm</li>
+                                    <li class="file">Video_1603553908.webm</li>
+                                    <li class="file">Video_1603554178.webm</li>
+                                    <li class="file">Video_1603554324.webm</li>
+                                    <li class="file">Video_1603554722.webm</li>
+                                    <li class="file">Video_1603554895.webm</li>
+                                    <li class="file">Video_1603555217.webm</li>
+                                    <li class="file">Video_1603555659.webm</li>
+                                    <li class="file">Video_1603555711.webm</li>
+                                    <li class="file">Video_1603556060.webm</li>
+                                    <li class="file">Video_1603556649.webm</li>
+                                    <li class="file">Video_1603556979.webm</li>
+                                    <li class="file">Video_1603557298.webm</li>
+                                    <li class="file">Video_1603557358.webm</li>
+                                    <li class="file">Video_1603557379.webm</li>
+                                    <li class="file">Video_1603557634.webm</li>
+                                    <li class="file">Video_1603558577.webm</li>
+                                    <li class="file">Video_1603559332.webm</li>
+                                    <li class="file">Video_1603565485.webm</li>
+                                    <li class="file">Video_1603565709.webm</li>
+                                    <li class="file">Video_1603565782.webm</li>
+                                    <li class="file">Video_1603565984.webm</li>
+                                    <li class="file">Video_1603566315.webm</li>
+                                    <li class="file">Video_1603567255.webm</li>
+                                    <li class="file">Video_1603567376.webm</li>
+                                    <li class="file">Video_1603567584.webm</li>
+                                    <li class="file">Video_1603568092.webm</li>
+                                    <li class="file">Video_1603568465.webm</li>
+                                    <li class="file">Video_1603568959.webm</li>
+                                    <li class="file">Video_1603569417.webm</li>
+                                    <li class="file">Video_1603569429.webm</li>
+                                    <li class="file">Video_1603569615.webm</li>
+                                    <li class="file">Video_1603569752.webm</li>
+                                    <li class="file">Video_1603570078.webm</li>
+                                    <li class="file">Video_1603570602.webm</li>
+                                    <li class="file">Video_1603570650.webm</li>
+                                    <li class="file">Video_1603573608.webm</li>
+                                    <li class="file">Video_1603573821.webm</li>
+                                    <li class="file">Video_1603574335.webm</li>
+                                    <li class="file">Video_1603574535.webm</li>
+                                    <li class="file">Video_1603575114.webm</li>
+                                    <li class="file">Video_1603656994.webm</li>
+                                </div>
+                                <div class="folder_cont">
+                                    <li class="folder">Uhum</li>
+                                    <li class="folder">Uhum</li>
+                                    <li class="file">EsoEranFotogramasSíOqué[0]OnHer.png</li>
+                                    <li class="file">Gonorrea[0].png</li>
+                                    <li class="file">Gonorrea[1].png</li>
+                                    <li class="file">sf.png</li>
+                                    <li class="file">1.png</li>
+                                    <li class="file">2.png</li>
+                                    <li class="file">3.png</li>
+                                    <li class="file">NoMeHagasEseOnHer[0].png</li>
+                                    <li class="file">NoMeHagasEseOnHer[1].png</li>
+                                    <li class="file">NoMeHagasEseOnHer[2].png</li>
+                                    <li class="file">NoMeHagasEseOnHer[3].png</li>
+                                    <li class="file">NoMeHagasEseOnHer[4].png</li>
+                                    <li class="file">NoMeHagasEseOnHer[5].png</li>
+                                    <li class="file">NoMeHagasEseOnHer[6].png</li>
+                                    <li class="file">NoMeHagasEseOnHer[7].png</li>
+                                    <li class="file">NoMeHagasEseOnHer[8].png</li>
+                                    <li class="file">empty[0].png</li>
+                                    <li class="file">empty[1].png</li>
+                                    <li class="file">1poruno[0]NaN.png</li>
+                                    <li class="file">Ni Nos Dio Tiempo Para El Primer Pantallazo[0].png</li>
+                                    <li class="file">1poruno[1]GreeicyPlz.png</li>
+                                    <li class="file">1poruno[0]Not A Number.png</li>
+                                    <li class="file">1poruno[4].png</li>
+                                    <li class="file">1poruno[3]NaN.png</li>
+                                    <li class="file">1poruno[5]NaN.png</li>
+                                    <li class="file">1poruno[6]NaN....png</li>
+                                    <li class="file">1poruno[-1]flashtruction.png</li>
+                                    <li class="file">NaNYNoSéQué[0].png</li>
+                                    <li class="file">Video_1641505999.webm</li>
+                                    <li class="file">Video_1641571774.webm</li>
+                                </div>
+                                <div class="folder_cont">
+                                    <li class="folder">Videos From RRoklien</li>
+                                </div>
+                            </div>
+                            <li class= "file">index.html</li>
+                            <li class= "file">main.js</li>
+                        </div>
+                    </div>
+                </div>
+            </ul> 
+        </aside>
+    </section>
+    
+    <section id="Store" class="button">
+        <aside id="storeHeader" class="button">
+            
+        </aside>
+        <aside id="actualStore" class="button">
+            <aside id="storeList" class="button">
+                <ul>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                </ul>
+            </aside>
+            <aside id="storeSection">
+                
+            </aside>
+        </aside>
+       
+    </section>
+
+
+
+        <script>
+            $( "#files" ).resizable({
+                handles: "e",maxWidth: ($(window).width()), resize: function(){if($("#Live").hasClass("selected")){$("#edit")[0].style.zIndex= "6"; $("#edit")[0].style.visibility= "visible"}else if($("#Editar").hasClass("selected")){$("#filePr")[0].style.zIndex= "6"; $("#filePr")[0].style.visibility= "visible"}}, stop: function(){localStorage.setItem("filesWidth", $("#files").width()); if($("#Live").hasClass("selected")){$("#edit")[0].style.zIndex= ""; $("#edit")[0].style.visibility= ""}else if($("#Editar").hasClass("selected")){$("#filePr")[0].style.zIndex= ""; $("#filePr")[0].style.visibility= ""}} }); 
+
+        </script>
+        <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function(){ 
+            sprtdUrl= separateUrl(getToBusiness(window.location.pathname.replaceAll("%20", " ").replaceAll("%C3%A1", "á").replaceAll("%C3%81", "Á").replaceAll("%C3%A9", "é").replaceAll("%C3%89", "É").replaceAll("%C3%AD", "í").replaceAll("%C3%8D", "Í").replaceAll("%C3%B3", "ó").replaceAll("%C3%93", "Ó").replaceAll("%C3%BA", "ú").replaceAll("%C3%9A", "Ú"))); 
+
+
+            LEB= $("#files .file_tree"); 
+                             
+            for(eForensics in sprtdUrl){ 
+                for(fi= 0; fi <= $(LEB).children().length - 1; fi++){ 
+                    if(($($(LEB).children()[fi]).hasClass("folder_cont") || $($(LEB).children()[fi]).hasClass("file"))){ 
+                        (!$($(LEB).children()[fi]).hasClass("file") && $($(LEB).children()[fi]).children()[0].innerText == sprtdUrl[eForensics])? LEB= $($(LEB).children()[fi])[0]: $($(LEB).children()[fi])[0].innerText == sprtdUrl[eForensics]? LEB= $($(LEB).children()[fi])[0]: 1; 
+                    } 
+                } 
+            } 
+  
+            $(LEB).is(".folder_cont")? LEB= $(LEB).children()[0]: 1; 
+
+            $(LEB).trigger("click", true); 
+
+            $(".inScope").removeClass("inScope"); 
+                                      
+            $(LEB).addClass("inScope"); 
+                                      
+            el= document.getElementsByClassName("file_tree")[0]; 
+
+            for(Colombia= 0; Colombia <= el.children.length - 1; Colombia++){ 
+                $(el.children[Colombia]).hasClass("folder_cont")? $($(el.children[Colombia]).children()[0]).addClass("inScope"): $(el.children[Colombia]).addClass("inScope"); 
+            } 
+              
+            localStorage.getItem("filesWidth") != null? $("#files").width(parseInt(localStorage.getItem("filesWidth")) + "px"): 1216564; 
+                          
+            responsive(); 
+                          
+            localStorage.getItem("selected") != null? $("#"+ localStorage.getItem("selected")).click(): 3413221227; 
+        })
+    </script>
+</body>
+</html>
