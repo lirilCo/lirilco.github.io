@@ -213,6 +213,7 @@ $("#files .file").click(function(i, tr){
         switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].lastIndexOf(".") + 1)){ 
             case "png": 
             case "jpg": 
+            case "webp": 
                 $("#preview #file_preview #file")[0].innerHTML= "<img src='" +  FileToRequest + "'></img>"; 
                 break; 
             case "webm": 
@@ -273,32 +274,38 @@ $("#files .file").click(function(i, tr){
     $("#preview #file_preview #edit").css({"visibility": "visible", "opacity": "1"}); 
     a= ""; 
 
-        function reqListener () {
-            $("#preview #file_preview #edit")[0].innerHTML= "<div id= 'editor'></div>"; 
-            ace.require("ace/ext/language_tools");
-            editor = ace.edit("editor");
-            editor.setTheme("ace/theme/monokai"); 
-            editor.setValue(this.responseText); 
-            editor.setOption("enableEmmet", true);
-            editor.setOption("enableBasicAutocompletion", true); 
-            editor.setOption("enableLiveAutocompletion", true); 
-            editor.setOption("enableSnippets", true); 
-            switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].lastIndexOf(".") + 1)){ 
-                case "js": 
-                    var JavaScriptMode = ace.require("ace/mode/javascript").Mode; 
-                    editor.session.setMode(new JavaScriptMode()); 
-                    break; 
-                case "css": 
-                    var JavaScriptMode = ace.require("ace/mode/css").Mode; 
-                    editor.session.setMode(new JavaScriptMode()); 
-                    break; 
-                case "html": 
-                    var JavaScriptMode = ace.require("ace/mode/html").Mode; 
-                    editor.session.setMode(new JavaScriptMode()); 
-                    break; 
-            } 
-            
-        }
+    switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].lastIndexOf(".") + 1)){ 
+        case "js": case "css": case "html": 
+            function reqListener () {
+                $("#preview #file_preview #edit")[0].innerHTML= "<div id= 'editor'></div>"; 
+                ace.require("ace/ext/language_tools");
+                editor = ace.edit("editor");
+                editor.setTheme("ace/theme/monokai"); 
+                editor.setValue(this.responseText); 
+                editor.setOption("enableEmmet", true);
+                editor.setOption("enableBasicAutocompletion", true); 
+                editor.setOption("enableLiveAutocompletion", true); 
+                editor.setOption("enableSnippets", true); 
+                switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].lastIndexOf(".") + 1)){ 
+                    case "js": 
+                        var JavaScriptMode = ace.require("ace/mode/javascript").Mode; 
+                        editor.session.setMode(new JavaScriptMode()); 
+                        break; 
+                    case "css": 
+                        var JavaScriptMode = ace.require("ace/mode/css").Mode; 
+                        editor.session.setMode(new JavaScriptMode()); 
+                        break; 
+                    case "html": 
+                        var JavaScriptMode = ace.require("ace/mode/html").Mode; 
+                        editor.session.setMode(new JavaScriptMode()); 
+                        break; 
+                } 
+                
+            }
+            break; 
+        case "png": case "jpg": case "webm": 
+            $("#preview #file_preview #edit")[0].innerHTML= '<iframe src= ' + "'" + 'https://www.photopea.com/#{&quot;files&quot;:[&quot;' + window.location.origin + FileToRequest + '&quot;],&quot;environment&quot;:{&quot;vmode&quot;:1,&quot;theme&quot;:1,&quot;showtools&quot;:[23,0,31,35,5],&quot;menus&quot;:[[0,0,1,0,0,0,0,0,1],0,0,0,0,0,0,1]}}' + "' " + '></iframe>'
+    }
 
     
     
@@ -866,6 +873,7 @@ $("#Archivo, #Live, #Editar").click(function(){
             switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].lastIndexOf(".") + 1)){ 
                 case "png": 
                 case "jpg": 
+                case "webp": 
                     $("#preview #file_preview #file")[0].innerHTML= "<img src='" +  FileToRequest + "'></img>"; 
                     break; 
                 case "webm": 
@@ -928,33 +936,38 @@ $("#Archivo, #Live, #Editar").click(function(){
     $("#preview #file_preview #edit").css({"visibility": "visible", "opacity": "1"}); 
     a= ""; 
 
-    function reqListener () {
-            $("#preview #file_preview #edit")[0].innerHTML= "<div id= 'editor'></div>"; 
-            ace.require("ace/ext/language_tools");
-            editor = ace.edit("editor");
-            editor.setTheme("ace/theme/monokai"); 
-            editor.setValue(this.responseText); 
-            editor.setOption("enableEmmet", true);
-            editor.setOption("enableBasicAutocompletion", true); 
-            editor.setOption("enableLiveAutocompletion", true); 
-            editor.setOption("enableSnippets", true); 
-            switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].lastIndexOf(".") + 1)){ 
-                case "js": 
-                    var JavaScriptMode = ace.require("ace/mode/javascript").Mode; 
-                    editor.session.setMode(new JavaScriptMode()); 
-                    break; 
-                case "css": 
-                    var JavaScriptMode = ace.require("ace/mode/css").Mode; 
-                    editor.session.setMode(new JavaScriptMode()); 
-                    break; 
-                case "html": 
-                    var JavaScriptMode = ace.require("ace/mode/html").Mode; 
-                    editor.session.setMode(new JavaScriptMode()); 
-                    break; 
-            } 
-            
-        }
-
+    switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].lastIndexOf(".") + 1)){ 
+        case "js": case "css": case "html": 
+            function reqListener () {
+                $("#preview #file_preview #edit")[0].innerHTML= "<div id= 'editor'></div>"; 
+                ace.require("ace/ext/language_tools");
+                editor = ace.edit("editor");
+                editor.setTheme("ace/theme/monokai"); 
+                editor.setValue(this.responseText); 
+                editor.setOption("enableEmmet", true);
+                editor.setOption("enableBasicAutocompletion", true); 
+                editor.setOption("enableLiveAutocompletion", true); 
+                editor.setOption("enableSnippets", true); 
+                switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].lastIndexOf(".") + 1)){ 
+                    case "js": 
+                        var JavaScriptMode = ace.require("ace/mode/javascript").Mode; 
+                        editor.session.setMode(new JavaScriptMode()); 
+                        break; 
+                    case "css": 
+                        var JavaScriptMode = ace.require("ace/mode/css").Mode; 
+                        editor.session.setMode(new JavaScriptMode()); 
+                        break; 
+                    case "html": 
+                        var JavaScriptMode = ace.require("ace/mode/html").Mode; 
+                        editor.session.setMode(new JavaScriptMode()); 
+                        break; 
+                } 
+                
+            }
+            break; 
+        case "png": case "jpg": case "webp": 
+            $("#preview #file_preview #edit")[0].innerHTML= '<iframe src= ' + "'" + 'https://www.photopea.com/#{&quot;files&quot;:[&quot;' + window.location.origin + FileToRequest + '&quot;],&quot;environment&quot;:{&quot;vmode&quot;:1,&quot;theme&quot;:1,&quot;showtools&quot;:[23,0,31,35,5],&quot;menus&quot;:[[0,0,1,0,0,0,0,0,1],0,0,0,0,0,0,1]}}' + "' " + '></iframe>'
+    }
 
     
     
