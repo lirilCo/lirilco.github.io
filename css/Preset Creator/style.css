@@ -854,7 +854,7 @@ ul>li
     bottom: 8px !important; 
 } 
 header nav ul li#right-menu #store::before {
-    background-image: url("https://www.freepnglogos.com/uploads/santa-hat-png/download-santa-hat-png-transparent-image-and-clipart-2.png");
+    /*background-image: url("https://www.freepnglogos.com/uploads/santa-hat-png/download-santa-hat-png-transparent-image-and-clipart-2.png");*/ 
     background-repeat: no-repeat;
     height: 16px;
     display: inline-block;
