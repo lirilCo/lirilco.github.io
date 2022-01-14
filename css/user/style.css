@@ -676,7 +676,37 @@ cursor: pointer
     object-fit: contain;
     margin: auto ;
 }
-
+#theater #bigPic.invisible
+{
+    display: none; 
+}
+#theater #picContainer > div:nth-child(3)
+{
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
+    margin: auto ;
+    box-sizing: border-box;
+    display: none; 
+}
+#theater #picContainer > div video
+{
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 100%;
+    max-height: 100%;
+    box-sizing: border-box;
+    padding-bottom: 44px;
+}
+#theater .Playuse
+{
+    display: none; 
+}
+#theater #picContainer > div.visible, #theater .Playuse.visible
+{
+    display: block; 
+}
 #theater .info p
 {
     
@@ -1468,7 +1498,27 @@ display: inline-block;
 } 
 .Playuse.playing 
 { 
-    display: none; 
+    display: none !important; 
+} 
+.Enlarge 
+{ 
+    position: absolute; 
+    right: 15px; 
+    top: 0; 
+    font-family: "icomoon"; 
+    font-size: 43px; 
+    cursor: pointer; 
+    display: block; 
+    z-index: 1; 
+    line-height: 7.5px;
+} 
+.Enlarge::after 
+{ 
+    content: "\e989";
+    font-size: 26px;
+    top: 23px;
+    left: 0;
+    position: relative;
 } 
 .vjs-control-bar
 { 

@@ -212,10 +212,85 @@ function openModal(a) {
     } 
 
 }
+function openVideoModal(a) {
+    $(".zer")[0].innerHTML= ".ui-tooltip{z-index: 4 !important; }; "; 
+    $("body")[0].style.overflow= "hidden"; 
+    responsive(); 
+    $("#theater").addClass("animated fadeIn ")
+    $(".theater").css({
+        "display": "block"
+    })
+    $this = a.closest('.story')
+    var source = a.closest('.story').find("video").attr('src');
+    $('.theater video').attr('src', source);
 
+    $('.theater video').attr('autoplay', "true");
+
+    source= un_tn(source); 
+                           
+    history.pushState({page: 1}, "", "/" + username + "/vid/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
+
+    var user = a.closest('.story').find(".username").html();
+    $('.theater .comments .info .username').html(user);
+
+    var time = a.closest('.story').find(".time").html();
+    $('.theater .comments .info .time').html(time);
+
+    var title = a.closest('.story').find(".title").html();
+    $('.theater .comments .title').html(title);
+
+    var more= !!a.closest('.story').find(".moreI").html()? a.closest('.story').find(".moreI").html(): "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sit amet varius lectus, congue rutrum urna. Suspendisse in ultrices enim. In hac habitasse platea dictumst. Praesent aliquet, nisi nec euismod vulputate, odio velit porta erat, ut semper lacus erat ac nulla. Aenean ex libero, volutpat vel sem et, blandit dictum dui. Duis suscipit sed nisi finibus vestibulum. Quisque finibus porttitor nisl, nec consequat metus. Quisque commodo, libero nec volutpat suscipit, quam urna volutpat turpis, quis rhoncus magna dui sit amet lacus. Donec pellentesque aliquam turpis nec commodo. Aliquam lobortis facilisis auctor. Sed libero nisi, scelerisque et porttitor vel, accumsan sed lacus. Pellentesque at tortor pellentesque, vestibulum turpis at, iaculiuisque finibus porttitor nisl, nec consequat metus. Quisque commodo, libero nec volutpat suscipit, quam urna volutpat turpis, quis rhoncus magna dui sit amet lacus. Donec pellentesque aliquam turpis nec commodo. Aliquam lobortis facilisis auctor. Sed libero nisi, scelerisque et porttitor vel, accumsan sed lacus. Pellentesque at tortor pellentesque, vestibulum turpis at, iaculis nibh.";
+    $('.theater .comments .more').html(more);
+
+    if (a.closest('.story').find(".options .bookmark").hasClass("true")) {
+        $('.theater .comments .options .bookmark').addClass("true");
+    } else {
+        $('.theater .comments .options .bookmark').removeClass("true");
+    }
+    if (a.closest('.story').find(".options .star").hasClass("true")) {
+        $('.theater .comments .options .star').addClass("true");
+    } else {
+        $('.theater .comments .options .star').removeClass("true");
+    }
+
+    $("#theater #theater_video").addClass("visible")
+
+    $("#theater .Playuse").addClass("visible")
+
+    $("#theater #bigPic").addClass("invisible")
+
+
+
+    var pic = a.closest('.story').find(".info img").attr('src');
+    $('.theater .comments .info #pic').attr('src', pic);
+
+    var ref = a.closest('.story').find(".options ul a").attr('href');
+    $('.theater .comments .options ul a').attr('href', ref);
+
+    if($("#bigPic").width()<=$("#bigPic").height()){
+        $("#bigPic").css({ "width":"100%"})
+    }else{
+
+    }
+    $("#theater").find(".info").height() < $("#theater").find(".info").find("img").width()? $("#theater").find(".description").css({"padding-top": "58px"}): $("#theater").find(".description").css({"padding-top": "76px"})
+
+      $(".more").mCustomScrollbar({theme: 
+        "minimal-dark", 
+        autoExpandScrollbar: true,
+        scrollInertia: 100});
+      
+
+    responsive()
+}
 function closeModal() { 
 
     $("#theater #bigPic")[0].src= ""; 
+
+    $("#theater #theater_video").removeClass("visible")
+
+    $("#theater .Playuse").removeClass("visible")
+
+    $("#theater #bigPic").removeClass("invisible")
 
     ar= null; 
     $("#theater").find(".more")[0].outerHTML= "<p class= 'more'></p>"; 
@@ -490,7 +565,10 @@ $(window).on("load", function () {
         openFotosModal($(this));
 
     });
+    $(".story .Enlarge").on("click", function () {
+        openVideoModal($(this));
 
+    });
     $("#close").on("click", function () {
 
         closeModal()
@@ -806,6 +884,14 @@ $(".revelar").on("click", function(){
             $(".Playuse").removeClass("playing"); 
         });
         videojs("example_video_1").on("play", function(){ 
+            $(".Playuse").addClass("playing"); 
+        });
+    }
+    if(!!$("#theater_video")[0]){
+        videojs("theater_video").on("pause", function(){ 
+            $(".Playuse").removeClass("playing"); 
+        });
+        videojs("theater_video").on("play", function(){ 
             $(".Playuse").addClass("playing"); 
         });
     }
