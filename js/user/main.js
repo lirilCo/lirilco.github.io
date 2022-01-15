@@ -212,7 +212,9 @@ function openModal(a) {
     } 
 
 }
-function openVideoModal(a) {
+function openVideoModal(a){ 
+    th= a.closest(".story"); 
+
     $(".zer")[0].innerHTML= ".ui-tooltip{z-index: 4 !important; }; "; 
     $("body")[0].style.overflow= "hidden"; 
     responsive(); 
@@ -259,7 +261,7 @@ function openVideoModal(a) {
 
     $("#theater #bigPic").addClass("invisible")
 
-
+    th.find("video")[0].pause(); 
 
     var pic = a.closest('.story').find(".info img").attr('src');
     $('.theater .comments .info #pic').attr('src', pic);
@@ -281,10 +283,12 @@ function openVideoModal(a) {
       
 
     responsive()
-}
+} 
 function closeModal() { 
 
     $("#theater #bigPic")[0].src= ""; 
+
+    $("#theater video")[0].src= ""; 
 
     $("#theater #theater_video").removeClass("visible")
 
@@ -412,11 +416,13 @@ if(!$("textarea").is(":focus") && !$("input").is(":focus")){
         
     }
     if (e.keyCode == 102) {
-        if(!$(".current").is(".mult_img")){
-            openModal($(".current .pic"))
-        }else{ 
+        if($(".current").is(".mult_img")){
             openModal($($(".current").find(".pic")[($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0)]))
-        } 
+        }else if($(".current").is(".img")){ 
+            openModal($(".current .pic"))
+        }else if($(".current").is(".video")){ 
+            openVideoModal($(".current").find(".Enlarge"))
+        }
     }
     var forward;
     if (e.keyCode == 106) {
@@ -881,18 +887,18 @@ $(".revelar").on("click", function(){
 
     if(!!$("#example_video_1")[0]){
         videojs("example_video_1").on("pause", function(){ 
-            $(".Playuse").removeClass("playing"); 
+            $(videojs("example_video_1").L.parentElement).siblings().filter(".Playuse").removeClass("playing"); 
         });
         videojs("example_video_1").on("play", function(){ 
-            $(".Playuse").addClass("playing"); 
+            $(videojs("example_video_1").L.parentElement).siblings().filter(".Playuse").addClass("playing"); 
         });
     }
     if(!!$("#theater_video")[0]){
         videojs("theater_video").on("pause", function(){ 
-            $(".Playuse").removeClass("playing"); 
+            $(videojs("theater_video").L.parentElement).siblings().filter(".Playuse").removeClass("playing"); 
         });
         videojs("theater_video").on("play", function(){ 
-            $(".Playuse").addClass("playing"); 
+            $(videojs("theater_video").L.parentElement).siblings().filter(".Playuse").addClass("playing"); 
         });
     }
 
