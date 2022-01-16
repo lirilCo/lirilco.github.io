@@ -318,9 +318,10 @@ input:focus {
 #example_video_1 {
     width: 100%
 }
-#example_video_1_html5_api{
-    height:100%;
-}
+#example_video_1_html5_api{ 
+    height:100%; 
+    max-height: unset; 
+} 
 #Store {
     background-color: #ecf0f1;
     display: none;
