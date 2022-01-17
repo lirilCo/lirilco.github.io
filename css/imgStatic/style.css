@@ -1,0 +1,47 @@
+body
+{
+	padding-top: 46px; 
+	box-sizing: border-box; 
+	overflow-y: hidden; 
+}
+#biography #content
+{
+	margin: 0 auto; 
+    position: static; 
+    width: 100%; 
+    height: 100%; 
+    top: 0; 
+    position: absolute; 
+    padding-top: 46px; 
+    box-sizing: border-box; 
+}
+#theater
+{
+	height: 100%; 
+	box-sizing: border-box; 
+	width: 100%; 
+	margin: 0; 
+	padding: 0 205px 0 0; 
+	position: static; 
+	float: right;
+	max-width: unset;
+}
+#biography
+{
+	width: 100% !important; 
+	top: 0; 
+	position: absolute; 
+	padding-top: 46px; 
+	box-sizing: border-box; 
+	margin-top: unset; 
+	height: 100%; 
+}
+#sidebar
+{
+	height: 100% !important; 
+	height: 100% !important;
+	padding-top: 46px;
+	box-sizing: border-box;
+	margin-top: -46px;
+	/*Básicamente Nos Tocó Crear La Antimateria Para Esa Hijueputa Chimbada*/
+}
