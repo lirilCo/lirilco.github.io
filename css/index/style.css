@@ -370,7 +370,7 @@ text-align: center;
 .story .info
 {
     height: auto;
-    cursor: auto;
+    cursor: pointer; 
     text-align: left
  }   
 .info  img{
@@ -1373,3 +1373,11 @@ header nav ul li#right-menu #store::before {
     background-size: contain;
     background-position-x: -3px;
 }
+.Editado{ 
+    float: right; 
+    color: #aaa; 
+    font-size: 14px; 
+} 
+.uOn_hover:hover{ 
+    text-decoration: underline; 
+} 

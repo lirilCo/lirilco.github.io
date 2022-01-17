@@ -661,6 +661,22 @@ $(document).on("ready", function(){
             $(this).show(); 
         } 
     }); 
+    $(".story .overflowing").on("scroll", function(k){ 
+   var current = $(".story.current"); 
+    current.removeClass("current"); 
+    $(this).closest(".story").addClass("current"); 
+}) 
+$(document).scroll(function(){ 
+(!$("html").is(":animated"))?(function(){ 
+for(i= 0; i <= $(".story").length - 1; i++){ 
+($(window).height() / 2 > $(".story")[i].getBoundingClientRect().y && $(window).height() / 2 < $(".story")[i].getBoundingClientRect().y + parseInt($($(".story")[i]).css("height").slice(0, -2)))? (function(){ 
+var current = $(".story.current"); 
+    current.removeClass("current"); 
+    $($(".story")[i]).addClass("current");
+    })(): 132315
+}
+})(): 13124; 
+}) 
 }); 
                         
 function openModal(a) {
@@ -987,6 +1003,7 @@ $('#profileSettings').click(function(i){
    
 }); 
 });
+
 $(document).keypress(function (e) {
 if(!$("textarea").is(":focus") && !$("input").is(":focus")){
     if (e.keyCode == 108) {
@@ -1382,3 +1399,30 @@ function scrollBottom(d){
 function un_tn(u){ 
     return u.slice(0, u.indexOf("_tn")) + u.slice(u.indexOf("_tn") + 3); 
 } 
+$(document).on('DOMMouseScroll mousewheel', '.Scrollable', function(ev) {
+    var $this = $(this),
+        scrollTop = this.scrollTop,
+        scrollHeight = this.scrollHeight,
+        height = $this.innerHeight(),
+        delta = (ev.type == 'DOMMouseScroll' ?
+            ev.originalEvent.detail * -40 :
+            ev.originalEvent.wheelDelta),
+        up = delta > 0;
+
+    var prevent = function() {
+        ev.stopPropagation();
+        ev.preventDefault();
+        ev.returnValue = false;
+        return false;
+    }
+
+    if (!up && -delta > scrollHeight - height - scrollTop) {
+        // Scrolling down, but this will take us past the bottom.
+        $this.scrollTop(scrollHeight);
+        return prevent();
+    } else if (up && delta > scrollTop) {
+        // Scrolling up, but this will take us past the top.
+        $this.scrollTop(0);
+        return prevent();
+    }
+});

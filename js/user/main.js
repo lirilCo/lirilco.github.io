@@ -402,6 +402,17 @@ $('#profileSettings').click(function(i){
     i.stopPropagation()
    
 }); 
+$(document).scroll(function(){ 
+(!$("html").is(":animated"))?(function(){ 
+for(i= 0; i <= $(".story").length - 1; i++){ 
+($(window).height() / 2 > $(".story")[i].getBoundingClientRect().y && $(window).height() / 2 < $(".story")[i].getBoundingClientRect().y + parseInt($($(".story")[i]).css("height").slice(0, -2)))? (function(){ 
+var current = $(".story.current"); 
+    current.removeClass("current"); 
+    $($(".story")[i]).addClass("current");
+    })(): 132315
+}
+})(): 13124; 
+}) 
 });
 $(document).keypress(function (e) {
 if(!$("textarea").is(":focus") && !$("input").is(":focus")){
