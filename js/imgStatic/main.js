@@ -28,6 +28,6 @@ document.addEventListener("DOMContentLoaded", function(){
         $(this)[0].scrollLeft == 0? (function(){rf.parent().find(".nav_arrow.left").addClass("disabled"); $("#theater").find(".nav_arrow.left").addClass("disabled");})(): (function(){rf.parent().find(".nav_arrow.left").removeClass("disabled"); $("#theater").find(".nav_arrow.left").removeClass("disabled")})(); 
     }) 
 	$(".carr img").each(function(){ 
-		$(this)[0].src.indexOf(window.location.pathname.slice(window.location.pathname.lastIndexOf("/") + 1)) != -1? $(".carr").scrollLeft($(".carr").width() * $(this).parent().index()) : 123
+		$(this)[0].src.indexOf(window.location.pathname.slice(window.location.pathname.lastIndexOf("/") + 1, window.location.pathname.lastIndexOf("."))) != -1? $(".carr").scrollLeft($(".carr").width() * $(this).parent().index()) : 123
 	})
 })
