@@ -45,3 +45,32 @@ body
 	margin-top: -46px;
 	/*Básicamente Nos Tocó Crear La Antimateria Para Esa Hijueputa Chimbada*/
 }
+.nav_arrow
+{
+	padding-top: 46px; 
+	box-sizing: border-box; 
+}
+.carr
+{
+	height: 100%; 
+	writing-mode: vertical-lr; 
+	width: 100%; 
+	overflow-x: hidden; 
+}
+#theater img
+{
+	height: 100%; 
+	width: 100%; 
+	object-fit: contain; 
+}
+.navigation
+{
+	height: 100%;
+}
+.picture {
+    height: 100%;
+    width: 100%;
+}
+#theater .nav_arrow.right {
+    right: 552.9px;
+}

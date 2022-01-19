@@ -325,10 +325,21 @@ function un_tn(u){
 document.addEventListener("keydown", function(i){(i.keyCode == 13 && $(window.getSelection().focusNode.parentElement).is(".revelar"))? $(window.getSelection().focusNode.parentElement).click(): 1; }); 
                                     
 $(document).on("ready",function(e){ 
-    $(".nav_arrow.left .arrow").on("click", function(){th= $(this).parent(); !th.parent().find(".carr").is(":animated")? th.parent().find(".carr").animate({scrollLeft: th.parent().find(".carr")[0].scrollLeft - th.parent().find(".carr").width()}, 400): 672;}); 
+    $(".nav_arrow.left .arrow").not("#picContainer .arrow").on("click", function(){th= $(this).parent(); !th.parent().find(".carr").is(":animated")? th.parent().find(".carr").animate({scrollLeft: th.parent().find(".carr")[0].scrollLeft - th.parent().find(".carr").width()}, 400): 672;}); 
 
-    $(".nav_arrow.right .arrow").on("click", function(){th= $(this).parent(); !th.parent().find(".carr").is(":animated")? th.parent().find(".carr").animate({scrollLeft: th.parent().find(".carr")[0].scrollLeft + th.parent().find(".carr").width()}, 400): 672;}); 
+    $(".nav_arrow.right .arrow").not("#picContainer .arrow").on("click", function(){th= $(this).parent(); !th.parent().find(".carr").is(":animated")? th.parent().find(".carr").animate({scrollLeft: th.parent().find(".carr")[0].scrollLeft + th.parent().find(".carr").width()}, 400): 672;}); 
 
+    $(".nav_arrow.left .arrow").filter("#picContainer .arrow").on("click", function(){aaa= $("#theater"); !aaa.find(".carr").is(":animated")? aaa.find(".carr").animate({scrollLeft: aaa.find(".carr")[0].scrollLeft - aaa.find(".carr").width()}, 400, function(){
+        a$= $(aaa.find(".carr")).find(".pic")[Math.round(aaa.find(".carr")[0].scrollLeft / $(aaa.find(".carr")).width())].src; 
+        a$= a$.slice(a$.lastIndexOf("/") + 1, a$.lastIndexOf(".")); 
+        history.pushState({page: 1}, "", "/" + username + "/img/" + a$); 
+    }): 672;}); 
+
+    $(".nav_arrow.right .arrow").filter("#picContainer .arrow").on("click", function(){aaa= $("#theater"); !aaa.find(".carr").is(":animated")? aaa.find(".carr").animate({scrollLeft: aaa.find(".carr")[0].scrollLeft + aaa.find(".carr").width()}, 400, function(){
+        a$= $(aaa.find(".carr")).find(".pic")[Math.round(aaa.find(".carr")[0].scrollLeft / $(aaa.find(".carr")).width())].src; 
+        a$= a$.slice(a$.lastIndexOf("/") + 1, a$.lastIndexOf(".")); 
+        history.pushState({page: 1}, "", "/" + username + "/img/" + a$); 
+    }): 672;}); 
     
 
 
