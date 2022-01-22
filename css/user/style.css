@@ -692,13 +692,17 @@ cursor: pointer
 #theater #picContainer > div video
 {
     position: absolute;
-    top: -1px;
+    top: 0;
     left: 0;
     width: 100%;
     max-height: unset; 
     height: 100%;
     box-sizing: border-box;
-    padding-bottom: 44px;
+    padding-bottom: 45px;
+}
+#theater #picContainer .vjs-control-bar
+{
+    bottom: 0 !important; 
 }
 section.video section.video:hover .Enlarge {
     display: block;
@@ -1484,6 +1488,8 @@ display: inline-block;
 .video 
 { 
     position: relative; 
+    padding-bottom: 44px; 
+    box-sizing: border-box; 
 } 
 .Playuse 
 { 
@@ -1689,3 +1695,24 @@ header nav ul li#right-menu #store::before {
     color: #aaa; 
     font-size: 14px; 
 } 
+.Cont {
+    position: absolute; 
+    bottom: 5px; 
+    background: #2ecc71; 
+    height: 27px; 
+    width: 161px; 
+    padding: 0 5px; 
+    box-sizing: border-box; 
+    display: flex; 
+    flex-flow: row; 
+}
+.Cont .rol{
+    flex-grow: 1; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    position: unset !important; 
+}
+.story.video {
+    width: 520px;
+}

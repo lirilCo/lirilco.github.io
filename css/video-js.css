@@ -83,7 +83,7 @@ The default control bar that is a container for most of the controls.
   position: absolute;
   /* Place control bar at the bottom of the player box/video.
      If you want more margin below the control bar, add more height. */
-  bottom: 0;
+  bottom: -44px;
   /* Use left/right to stretch to 100% width of player div */
   left: 0;
   right: 0;
@@ -826,8 +826,8 @@ control positioning and full window mode. **
   top: 0;
   left: 0;
   width: 100%;
-      max-height: 230px;
-    box-sizing: border-box;
+  height: 100%;
+  box-sizing: border-box;
 
 }
 /* Fix for Firefox 9 fullscreen (only if it is enabled). Not needed when
@@ -867,7 +867,7 @@ body.vjs-full-window {
 .vjs-poster {
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  background-size: contain;
+  object-fit: contain;
   cursor: pointer;
   margin: 0;
   padding: 0;
@@ -876,6 +876,12 @@ body.vjs-full-window {
   right: 0;
   bottom: 0;
   left: 0;
+  width: 100%;
+  background-size: contain;
+  width: 100%;
+  background-position: center !important;
+  padding-bottom: 44px;
+  box-sizing: border-box;
 }
 .vjs-poster img {
   display: block;

@@ -420,6 +420,8 @@ for(i= 0; i <= $(".story").length - 1; i++){
 var current = $(".story.current"); 
     current.removeClass("current"); 
     $($(".story")[i]).addClass("current");
+    $($(".story")[i]).attr("tabindex", 0); 
+    $(".story")[i].focus(); 
     })(): 132315
 }
 })(): 13124; 
@@ -484,6 +486,7 @@ $(".current")[0].focus();
     }
 });
 var c = 0
+var VIds= []; 
 var $this
 $(window).on("load", function () {
     responsive();
@@ -906,23 +909,23 @@ $(".revelar").on("click", function(){
         $(i.target).parent().find("video")[0].play(); 
         $(i.target).addClass("playing"); 
     }); 
+    
+a= 0; 
+    for(e= 0; e < $("video").length; e++){
+        VIds[VIds.length]= videojs($("video")[e].id); 
 
-    if(!!$("#example_video_1")[0]){
-        videojs("example_video_1").on("pause", function(){ 
-            $(videojs("example_video_1").L.parentElement).siblings().filter(".Playuse").removeClass("playing"); 
+        videojs($("video")[e].id).on("pause", function(i){ 
+            a= i
+            let vId= VIds.length - 1
+            $(videojs(i.target.parentElement.id).L.parentElement).siblings().filter(".Playuse").removeClass("playing"); 
         });
-        videojs("example_video_1").on("play", function(){ 
-            $(videojs("example_video_1").L.parentElement).siblings().filter(".Playuse").addClass("playing"); 
-        });
-    }
-    if(!!$("#theater_video")[0]){
-        videojs("theater_video").on("pause", function(){ 
-            $(videojs("theater_video").L.parentElement).siblings().filter(".Playuse").removeClass("playing"); 
-        });
-        videojs("theater_video").on("play", function(){ 
-            $(videojs("theater_video").L.parentElement).siblings().filter(".Playuse").addClass("playing"); 
-        });
-    }
+        
+        videojs($("video")[e].id).on("play", function(i){ 
+            //console.log(i)
+            let vId= VIds.length - 1
+            $(videojs(i.target.parentElement.id).L.parentElement).siblings().filter(".Playuse").addClass("playing"); 
+        });}
+   
 
     $("#theater").on("click", function(i){$(i.target).is("#theater")? closeModal(): 1; }); 
 })

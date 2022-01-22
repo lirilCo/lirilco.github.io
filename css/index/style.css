@@ -1381,3 +1381,6 @@ header nav ul li#right-menu #store::before {
 .uOn_hover:hover{ 
     text-decoration: underline; 
 } 
+.story.video {
+    width: 520px;
+}
