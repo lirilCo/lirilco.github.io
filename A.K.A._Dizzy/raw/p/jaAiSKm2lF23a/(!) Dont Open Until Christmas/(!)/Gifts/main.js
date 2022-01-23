@@ -187,11 +187,19 @@ Ariana= function(qwert, yuiop, a, i){u= 0; t= u; r= t; s= u; p= 100; n= "s-resiz
     Ai= i.clientX + "px"; 
     Gr= i.clientY + "px"; 
                           
-    document.getElementsByTagName("h1")[0].innerText= "X: " + i.clientX + " Y: " + i.clientY; }); 
+    document.getElementsByTagName("h1")[0].textContent= "\u00a0X: " + i.clientX + " Y: " + i.clientY; }); 
                                                                     
     document.getElementsByTagName("h1")[0].contentEditable= "true"; 
 } 
   
+document.addEventListener("mousedown", function(i){ 
+    vrbl= i; 
+           
+    if(vrbl.target.outerHTML.indexOf("dsrtg") == 1 || vrbl.target.outerHTML.indexOf("h1") == 1 || $(vrbl.target).attr("id") == "Rwawwr"){ 
+        $(document.getElementsByTagName("h1")[0]).attr("corrupt", true); 
+    } 
+}); 
+    
 Ariana("video", "a", "c", 0); 
 
 /*ü= 0; 
