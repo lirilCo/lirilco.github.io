@@ -74,3 +74,8 @@ body
 #theater .nav_arrow.right {
     right: 552.9px;
 }
+.vjs-poster
+{
+	padding-bottom: unset !important; 
+	margin-bottom: 44px; 
+}

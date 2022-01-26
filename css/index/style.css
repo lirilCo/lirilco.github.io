@@ -1185,6 +1185,15 @@ display: inline-block;
 { 
     position: relative; 
 } 
+.story .video 
+{ 
+    padding-bottom: 44px; 
+    box-sizing: border-box; 
+} 
+#theater .vjs-default-skin .vjs-control-bar
+{
+    bottom: 0; 
+}
 .Playuse 
 { 
     position: absolute; 
