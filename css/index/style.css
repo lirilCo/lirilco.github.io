@@ -349,12 +349,13 @@ normal #fff*/
 
 }
 #feed  .story{
-    margin: 10px auto;   
-background-color: #fff;
-width: 500px;
-max-width: 90%;
-padding: 10px;
-text-align: center;
+    margin: 10px auto; 
+    background-color: #fff; 
+    width: 500px; 
+    max-width: 90%; 
+    padding: 10px; 
+    text-align: center; 
+    outline: none !important; 
 }
 #feed  .story.img #picture{
      max-height: 550px;

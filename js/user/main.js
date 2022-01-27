@@ -430,16 +430,15 @@ var current = $(".story.current");
 $(document).keypress(function (e) {
 if(!$("textarea").is(":focus") && !$("input").is(":focus")){
     //console.log(e.keyCide) 
-    if (e.keyCode == 108) {
+    if (e.keyCode == 108 || e.keyCode == 76) {
         $(".current").find('.options .star').toggleClass("true");
         $("#theater").find('.options .star').toggleClass("true");        
     }
-    if (e.keyCode == 98) {
+    if (e.keyCode == 98 || e.keyCode == 66) {
         $(".current").find('.options .bookmark').toggleClass("true");
         $("#theater").find('.options .bookmark').toggleClass("true");
-        
     }
-    if (e.keyCode == 102) {
+    if (e.keyCode == 102 || e.keyCode == 70) {
         if($(".current").is(".mult_img")){
             openModal($($(".current").find(".pic")[($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0)]))
         }else if($(".current").is(".img")){ 
@@ -449,9 +448,9 @@ if(!$("textarea").is(":focus") && !$("input").is(":focus")){
         }
     }
     var forward;
-    if (e.keyCode == 106) {
+    if (e.keyCode == 74 || e.keyCode == 106) {
         forward = true;
-    } else if (e.keyCode == 107) {
+    } else if (e.keyCode == 75 || e.keyCode == 107) {
         forward = false;
     } else {
         return true;
@@ -460,8 +459,8 @@ if(!$("textarea").is(":focus") && !$("input").is(":focus")){
 
     if (!$(".story.current").length) {
         $(".story:first").addClass("current"); 
-$($(".current")[0]).attr("tabindex", 0); 
-$(".current")[0].focus(); 
+        $($(".current")[0]).attr("tabindex", 0); 
+        $(".current")[0].focus(); 
     }
 
     if ($(".story.current").length) {
