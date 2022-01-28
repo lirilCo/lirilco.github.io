@@ -635,7 +635,75 @@ aNGEL= function(r){
   return Cinnamon; 
 }; 
 
+ok= true; 
+waiting= false; 
+var next; 
+
 $(document).on("ready", function(){ 
+    current= $(".story.current");
+    $(document).keypress(function (e) {
+    if(!$("textarea").is(":focus") && !$("input").is(":focus") && !waiting){
+        //console.log(e.keyCide) 
+        if (e.keyCode == 108 || e.keyCode == 76) {
+            $(".current").find('.options .star').toggleClass("true");
+            $("#theater").find('.options .star').toggleClass("true");        
+        }
+        if (e.keyCode == 98 || e.keyCode == 66) {
+            $(".current").find('.options .bookmark').toggleClass("true");
+            $("#theater").find('.options .bookmark').toggleClass("true");
+        }
+        if (e.keyCode == 102 || e.keyCode == 70) {
+            if($(".current").is(".mult_img")){
+                openModal($($(".current").find(".pic")[($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0)]))
+            }else if($(".current").is(".img")){ 
+                openModal($(".current .pic"))
+            }else if($(".current").is(".video")){ 
+                openVideoModal($(".current").find(".Enlarge"))
+            }
+        }
+        var forward;
+                     
+        (e.keyCode == 74 || e.keyCode == 106 || e.keyCode == 75 || e.keyCode == 107)? waiting= true: 143; 
+                                                   
+        if (e.keyCode == 74 || e.keyCode == 106) {
+            forward = true;
+        } else if (e.keyCode == 75 || e.keyCode == 107) {
+            forward = false;
+        } else {
+            return true;
+        }
+    
+    
+        if (!$(".story.current").length) {
+            $(".story:first").addClass("current"); 
+        }
+    
+        if ($(".story.current").length) {
+            next= ""; 
+            if (forward) {
+                !!current.next(".story").length? next = current.next(".story"): 1415; 
+            } else {
+                !!current.prev(".story").length? next = current.prev(".story"): 27721; 
+            }
+            if (!!next.length) {
+                $(".current").removeClass("current");
+                next.addClass("current"); 
+            } 
+        }
+    
+        (!!next.length)? (function(){
+                            ok= false; 
+                            $("html").animate({ 
+                            scrollTop: $(".current").offset().top - 56
+                        }, 400, function(){  
+                            waiting= false; 
+                            current= $(".story.current"); 
+                            $(".current").attr("tabindex", 0); 
+                            $(".current")[0].focus();
+                            setTimeout(function(){!$("html").is(":animated")? ok= true: 1;}, 100) 
+                        })})(): waiting= false; 
+        }
+    });
     $("#search input").on("keyup", function(){for(a= 0; a < $("#resizeBottom")[0].children[0].children[0].children[0].children[0].children.length; a++){ 
         $("#resizeBottom")[0].children[0].children[0].children[0].children[0].children[a].style.display= ""; 
         $("#resizeBottom")[0].children[0].children[0].children[0].children[0].children[a].innerText.toLowerCase().indexOf($("#search input")[0].value.toLowerCase()) == -1? $("#resizeBottom")[0].children[0].children[0].children[0].children[0].children[a].style.display= "none": 1; 
@@ -854,7 +922,7 @@ function closeModal() {
 }
   
 ar= false; 
-           
+
 document.addEventListener("keydown", function(i){(i.keyCode == 13 && $(window.getSelection().focusNode.parentElement).is(".revelar"))? $(window.getSelection().focusNode.parentElement).click(): 1; }); 
                                     
 $(document).on("ready",function(e){ 
@@ -991,13 +1059,14 @@ $('#profileSettings').click(function(i){
     i.stopPropagation()
    
 }); 
-$(document).scroll(function(){ 
-(!$("html").is(":animated"))?(function(){ 
+$(document).scroll(function(iy){ 
+(ok)?(function(){ 
 for(i= 0; i <= $(".story").length - 1; i++){ 
 ($(window).height() / 2 > $(".story")[i].getBoundingClientRect().y && $(window).height() / 2 < $(".story")[i].getBoundingClientRect().y + parseInt($($(".story")[i]).css("height").slice(0, -2)))? (function(){ 
-var current = $(".story.current"); 
+    current = $(".story.current"); 
     current.removeClass("current"); 
-    $($(".story")[i]).addClass("current"); 
+    $($(".story")[i]).addClass("current");
+    current = $($(".story")[i]); 
     $($(".story")[i]).attr("tabindex", 0); 
     $(".story")[i].focus(); 
     })(): 132315
@@ -1005,62 +1074,7 @@ var current = $(".story.current");
 })(): 13124; 
 }) 
 });
-$(document).keypress(function (e) {
-if(!$("textarea").is(":focus") && !$("input").is(":focus")){
-    if (e.keyCode == 108 || e.keyCode == 76) {
-        $(".current").find('.options .star').toggleClass("true");
-        $("#theater").find('.options .star').toggleClass("true");        
-    }
-    if (e.keyCode == 98 || e.keyCode == 66) {
-        $(".current").find('.options .bookmark').toggleClass("true");
-        $("#theater").find('.options .bookmark').toggleClass("true");
-    }
-    if (e.keyCode == 102 || e.keyCode == 70) {
-        if($(".current").is(".mult_img")){
-            openModal($($(".current").find(".pic")[($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0)]))
-        }else if($(".current").is(".img")){ 
-            openModal($(".current .pic"))
-        }else if($(".current").is(".video")){ 
-            openVideoModal($(".current").find(".Enlarge"))
-        }
-    }
-    var forward;
-    if (e.keyCode == 74 || e.keyCode == 106) {
-        forward = true;
-    } else if (e.keyCode == 75 || e.keyCode == 107) {
-        forward = false;
-    } else {
-        return true;
-    }
 
-
-    if (!$(".story.current").length) {
-        $(".story:first").addClass("current"); 
-        $($(".current")[0]).attr("tabindex", 0); 
-        $(".current")[0].focus(); 
-    }
-
-    if ($(".story.current").length) {
-        var current = $(".story.current");
-        var next;
-        if (forward) {
-            next = current.next(".story")
-        } else {
-            next = current.prev(".story");
-        }
-        if (next.length) {
-            current.removeClass("current");
-            next.addClass("current");
-        } else {
-            loadMore();
-        }
-    }
-
-    $("html, body").animate({
-        scrollTop: $(".current").offset().top - 56
-    }, 400);
-    }
-});
 var c = 0
 var $this
 $(window).on("load", function () {
