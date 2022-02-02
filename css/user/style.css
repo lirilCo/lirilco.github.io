@@ -809,6 +809,10 @@ content: "\e60c"
 {
 content: "\e627"
 } 
+#theater .options ul li.read:after
+{
+content: "\e903"
+} 
 
 #theater .comments
 {
@@ -1670,6 +1674,25 @@ display: inline-block;
     height: 100%;
     box-sizing: border-box;
     padding: 58px 0 87px 0;
+    transition: transform 235ms ease-in; 
+}
+#theater .description.closed{ 
+    transform: rotateY(90deg); 
+}
+#theater .comentarios{ 
+    display: flex;
+    flex-flow: column;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 58px 0 87px 0;
+    transition: transform 235ms ease-in; 
+    width: 300px; 
+    transform: rotateY(-90deg); 
+}
+#theater .comentarios.open{ 
+    transform: rotateY(0deg); 
 }
 /*.RIPonsive{}*/ 
 #theater .more{ 
@@ -1678,6 +1701,26 @@ display: inline-block;
 } 
 #theater .info{ 
     z-index: 1; 
+} 
+#theater .comentarios textarea{ 
+    bottom: 87px; 
+    position: absolute; 
+    width: 100%; 
+    color: #000;
+    height: 38px; 
+    font-size: 13px;
+    max-height: 80px;
+    min-height: 28px;
+    background-color: rgb(255, 255, 255); 
+    border-radius: 0px; 
+    resize: none; 
+    border: 1px solid #aaa; 
+    padding: 8px 60px 0 5px;
+    box-sizing: border-box; 
+    font-weight: 400;
+    vertical-align: middle;
+    overflow: auto;
+    line-height: 14px;
 } 
 .moreI{ 
     display: none; 
