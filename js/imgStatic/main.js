@@ -1,4 +1,4 @@
-closeModal= ""; 
+closeModal= function(){1}; 
 
 document.addEventListener("keydown",function(evt){ 
     aaa= $("#theater"); 
@@ -31,3 +31,4 @@ document.addEventListener("DOMContentLoaded", function(){
 		$(this)[0].src.indexOf(window.location.pathname.slice(window.location.pathname.lastIndexOf("/") + 1)) != -1? $(".carr").scrollLeft($(".carr").width() * $(this).parent().index()) : 123
 	})
 })
+
