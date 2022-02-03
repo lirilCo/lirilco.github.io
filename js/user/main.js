@@ -333,13 +333,13 @@ $(document).on("ready",function(e){
     $(".nav_arrow.left .arrow").filter("#picContainer .arrow").on("click", function(){aaa= $("#theater"); !aaa.find(".carr").is(":animated")? aaa.find(".carr").animate({scrollLeft: aaa.find(".carr")[0].scrollLeft - aaa.find(".carr").width()}, 400, function(){
         a$= $(aaa.find(".carr")).find(".pic")[Math.round(aaa.find(".carr")[0].scrollLeft / $(aaa.find(".carr")).width())].src; 
         a$= a$.slice(a$.lastIndexOf("/") + 1, a$.lastIndexOf(".")); 
-        history.pushState({page: 1}, "", "/" + (aaa.closest('.story').is(".repost")? $(aaa.closest('.story').find(".target")[1])[0].href.slice($(aaa.closest('.story').find(".target")[1])[0].href.lastIndexOf("/") + 1): username) + "/img/" + a$); 
+        history.pushState({page: 1}, "", "/" + (ar.closest('.story').is(".repost")? $(ar.closest('.story').find(".target")[1])[0].href.slice($(ar.closest('.story').find(".target")[1])[0].href.lastIndexOf("/") + 1): username) + "/img/" + a$); 
     }): 672;}); 
 
     $(".nav_arrow.right .arrow").filter("#picContainer .arrow").on("click", function(){aaa= $("#theater"); !aaa.find(".carr").is(":animated")? aaa.find(".carr").animate({scrollLeft: aaa.find(".carr")[0].scrollLeft + aaa.find(".carr").width()}, 400, function(){
         a$= $(aaa.find(".carr")).find(".pic")[Math.round(aaa.find(".carr")[0].scrollLeft / $(aaa.find(".carr")).width())].src; 
         a$= a$.slice(a$.lastIndexOf("/") + 1, a$.lastIndexOf(".")); 
-        history.pushState({page: 1}, "", "/" + (aaa.closest('.story').is(".repost")? $(aaa.closest('.story').find(".target")[1])[0].href.slice($(aaa.closest('.story').find(".target")[1])[0].href.lastIndexOf("/") + 1): username) + "/img/" + a$); 
+        history.pushState({page: 1}, "", "/" + (ar.closest('.story').is(".repost")? $(ar.closest('.story').find(".target")[1])[0].href.slice($(ar.closest('.story').find(".target")[1])[0].href.lastIndexOf("/") + 1): username) + "/img/" + a$); 
     }): 672;}); 
     
 
@@ -576,7 +576,7 @@ document.onkeydown = function (evt) {
                     th.find(".carr")[0].scrollLeft= th.find(".carr")[0].scrollLeft - $(th.find(".carr")).width(); 
                     $("#theater").find("#bigPic")[0].src= (th.is(".story")? $(th.find(".carr")).find(".pic")[Math.round(th.find(".carr")[0].scrollLeft / $(th.find(".carr")).width())].src: un_tn($(th.find(".carr")).find(".pic")[Math.round(th.find(".carr")[0].scrollLeft / $(th.find(".carr")).width())].src)); 
                     source= un_tn($("#theater").find("#bigPic")[0].src)
-                    history.pushState({page: 1}, "", "/" + username + "/img/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
+                    history.pushState({page: 1}, "", "/" + (ar.closest('.story').is(".repost")? $(ar.closest('.story').find(".target")[1])[0].href.slice($(ar.closest('.story').find(".target")[1])[0].href.lastIndexOf("/") + 1): username) + "/img/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
                 } 
                 break; 
             case 39: 
@@ -587,7 +587,7 @@ document.onkeydown = function (evt) {
                     th.find(".carr")[0].scrollLeft= th.find(".carr")[0].scrollLeft + $(th.find(".carr")).width(); 
                     $("#theater").find("#bigPic")[0].src= (th.is(".story")? $(th.find(".carr")).find(".pic")[Math.round(th.find(".carr")[0].scrollLeft / $(th.find(".carr")).width())].src: un_tn($(th.find(".carr")).find(".pic")[Math.round(th.find(".carr")[0].scrollLeft / $(th.find(".carr")).width())].src)); 
                     source= un_tn($("#theater").find("#bigPic")[0].src)
-                    history.pushState({page: 1}, "", "/" + username + "/img/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
+                    history.pushState({page: 1}, "", "/" + (ar.closest('.story').is(".repost")? $(ar.closest('.story').find(".target")[1])[0].href.slice($(ar.closest('.story').find(".target")[1])[0].href.lastIndexOf("/") + 1): username) + "/img/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
                 } 
                 break; 
     }
