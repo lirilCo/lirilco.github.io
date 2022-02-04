@@ -45,7 +45,37 @@
               }
           }
       });
-      
+$('.userInfo').tooltip({
+    items: 'img',
+    open: function(event, ui)
+    {
+        if (typeof(event.originalEvent) === 'undefined')
+        {
+            return false;
+        }
+        $(".knob").knob();
+        var $id = $(ui.tooltip).attr('id');
+        
+        // close any lingering tooltips
+        $('div.ui-tooltip').not('#' + $id).remove();
+        
+        // ajax function to pull in data and add it to the tooltip goes here
+    },
+    close: function(event, ui)
+    {
+        ui.tooltip.hover(function()
+        {
+            $(this).stop(true).fadeTo(400, 1); 
+        },
+        function()
+        {
+            $(this).fadeOut('400', function()
+            {
+                $(this).remove();
+            });
+        });
+    }
+}); 
 $('.username').tooltip({
     items: 'a.target',
     open: function(event, ui)
@@ -262,6 +292,29 @@ $('.username').tooltip({
                 </p>
             </div>
             <div class="comentarios">
+                <div class="Comentarios">
+                    <div class="comentario">
+                        <div class="userInfo">
+                                <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                <img title="         
+                                <div class='tool'>
+                                    <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                    <img src='/resources/images/L/OGnpwD3jys_tn.jpg'>
+                                    <div class='datos'>
+                                    <ul class='actions'>
+                                        <li class='chatear' title='Chatear'>C</li>
+                                        <li class='agregar' title='Agregar'>A</li>
+                                        <li class='juzgar' title='Juzgar'>J</li>
+                                    </ul>                  
+                                    <p class='username' title= 'Laura Escobar Bonnett'>Laura Escobar Bonnett</p>
+                                    <p class='rol'>Princesa <b style='color:#fff;'>+100</b></p>
+                                    </div>
+                                </div>" align= "left" src="/resources/images/L/OGnpwD3jys_tn.jpg" alt="">
+                                &nbsp<a class= "target"  href="/L" >Laura Escobar Bonnett</a>
+
+                        </div>
+                    </div>
+                </div>
                 <div class="newComment">
                     <textarea rows="1"></textarea>
                 </div>
@@ -298,7 +351,6 @@ $('.username').tooltip({
                   </ul>                  
                   <p class='username' title= 'Laura Escobar Bonnett'>Laura Escobar Bonnett</p>
                   <p class='rol'>Princesa <b style='color:#fff;'>+100</b></p>
-
                 </div>
               </div>">Laura Escobar Bonnett</a> <br><span title= "2 de Enero de 2022 a las 2:51 pm" class="time">2 de Enero a las 2:51 pm</span></p>
                         </div>
@@ -312,7 +364,7 @@ $('.username').tooltip({
                     </div>
                     </section>
                 </figure>
-                <p id="rol">CEO <b>+100</b></p>
+                <p id="rol">Princesa <b>+100</b></p>
             </section>
             <section id="options">
                 <ul>
@@ -327,7 +379,7 @@ $('.username').tooltip({
             <section id="summary">
                 <aside id="sections">
 		    <section id="pics">
-                       <h2 class="title"><a href="/A.K.A._Dizzy/photos">Fotos</a> (6)</h2>
+                       <h2 class="title"><a href="/L/photos">Fotos</a> (6)</h2>
                        <section class="foto img">
                             <img class="pic" src="/resources/images/L/OGnpwD3jys_tn.jpg" alt="" class="big">
                             <div class="info">
@@ -344,7 +396,6 @@ $('.username').tooltip({
                   </ul>                  
                   <p class='username' title= 'Laura Escobar Bonnett'>Laura Escobar Bonnett</p>
                   <p class='rol'>Princesa <b style='color:#fff;'>+100</b></p>
-
                 </div>
               </div>">Laura Escobar Bonnett</a> <br><span title= "2 de Enero de 2022 a las 2:51 pm" class="time">2 de Enero a las 2:51 pm</span>
  </p>                    
@@ -374,7 +425,6 @@ $('.username').tooltip({
                   </ul>                  
                   <p class='username' title= 'Laura Escobar Bonnett'>Laura Escobar Bonnett</p>
                   <p class='rol'>Princesa <b style='color:#fff;'>+100</b></p>
-
                 </div>
                 </div>">Laura Escobar Bonnett</a>; en <a href="#" class= "target"  title="         
               <div class='tool city'>
@@ -477,7 +527,6 @@ $('.username').tooltip({
                   </ul>                  
                   <p class='username' title= 'Laura Escobar Bonnett'>Laura Escobar Bonnett</p>
                   <p class='rol'>Princesa <b style='color:#fff;'>+100</b></p>
-
                 </div>
                 </div>">Laura Escobar Bonnett</a> Reposteó de <a class= "target" href="/A.K.A._Dizzy" title="         
               <div class='tool'>
@@ -537,7 +586,6 @@ $('.username').tooltip({
                   </ul>                  
                   <p class='username' title= 'Laura Escobar Bonnett'>Laura Escobar Bonnett</p>
                   <p class='rol'>Princesa <b style='color:#fff;'>+100</b></p>
-
                 </div>
                 </div>">Laura Escobar Bonnett</a> Reposteó de <a class= "target" href="/A.K.A._Dizzy" title="         
               <div class='tool'>
@@ -589,7 +637,6 @@ $('.username').tooltip({
                   </ul>                  
                   <p class='username' title= 'Laura Escobar Bonnett'>Laura Escobar Bonnett</p>
                   <p class='rol'>Princesa <b style='color:#fff;'>+100</b></p>
-
                 </div>
                 </div>">Laura Escobar Bonnett</a> Reposteó de <a class= "target" href="/A.K.A._Dizzy" title="         
               <div class='tool'>
@@ -642,7 +689,6 @@ $('.username').tooltip({
                   </ul>                  
                   <p class='username' title= 'Laura Escobar Bonnett'>Laura Escobar Bonnett</p>
                   <p class='rol'>Princesa <b style='color:#fff;'>+100</b></p>
-
                 </div>
                 </div>">Laura Escobar Bonnett</a> Reposteó de <a class= "target" href="/A.K.A._Dizzy" title="         
               <div class='tool'>
@@ -695,7 +741,6 @@ $('.username').tooltip({
                   </ul>                  
                   <p class='username' title= 'Laura Escobar Bonnett'>Laura Escobar Bonnett</p>
                   <p class='rol'>Princesa <b style='color:#fff;'>+100</b></p>
-
                 </div>
                 </div>">Laura Escobar Bonnett</a> Reposteó de <a class= "target" href="/A.K.A._Dizzy" title="         
               <div class='tool'>
@@ -749,7 +794,6 @@ $('.username').tooltip({
                   </ul>                  
                   <p class='username' title= 'Laura Escobar Bonnett'>Laura Escobar Bonnett</p>
                   <p class='rol'>Princesa <b style='color:#fff;'>+100</b></p>
-
                 </div>
                 </div>">Laura Escobar Bonnett</a> Reposteó de <a class= "target" href="/A.K.A._Dizzy" title="         
               <div class='tool'>
@@ -802,7 +846,6 @@ $('.username').tooltip({
                   </ul>                  
                   <p class='username' title= 'Laura Escobar Bonnett'>Laura Escobar Bonnett</p>
                   <p class='rol'>Princesa <b style='color:#fff;'>+100</b></p>
-
                 </div>
                 </div>">Laura Escobar Bonnett</a> Reposteó de <a class= "target" href="/A.K.A._Dizzy" title="         
               <div class='tool'>
@@ -882,7 +925,6 @@ $('.username').tooltip({
                   </ul>                  
                   <p class='username' title= 'Laura Escobar Bonnett'>Laura Escobar Bonnett</p>
                   <p class='rol'>Princesa <b style='color:#fff;'>+100</b></p>
-
                 </div>
                 </div>">Laura Escobar Bonnett</a>; en <a href="#" class= "target"  title="         
               <div class='tool city'>

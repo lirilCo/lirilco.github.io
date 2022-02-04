@@ -1674,6 +1674,7 @@ display: inline-block;
     height: 100%;
     box-sizing: border-box;
     padding: 58px 0 87px 0;
+    width: 300px; 
     transition: transform 235ms ease-in; 
 }
 #theater .description.closed{ 
@@ -1694,6 +1695,32 @@ display: inline-block;
 #theater .comentarios.open{ 
     transform: rotateY(0deg); 
 }
+#theater .comentarios .Comentarios{
+    flex-grow: 1; 
+    background: blueviolet; 
+    border: 1px solid; 
+    padding-top: 16px; 
+}
+#theater .comentarios .Comentarios .comentario .userInfo{ 
+    position: relative; 
+} 
+#theater .comentarios .Comentarios .comentario .userInfo div{ 
+    position: absolute; 
+    left: 0; 
+    top: 0; 
+    cursor: pointer; 
+} 
+#theater .comentarios .Comentarios .comentario .userInfo img{ 
+    height: 20px; 
+    border-radius: 50%; 
+    padding: 4px 4px 4px 4px; 
+    z-index: 2; 
+    position: relative; 
+    cursor: pointer; 
+} 
+#theater .comentarios .Comentarios .comentario .userInfo .username{ 
+    font-size: 13px; 
+} 
 /*.RIPonsive{}*/ 
 #theater .more{ 
     flex-grow: 1; 
@@ -1721,10 +1748,11 @@ display: inline-block;
     /*background-color: grey; */ 
 } 
 #theater .comentarios .newComment{ 
-    bottom: 87px; 
-    position: absolute; 
+    /*bottom: 87px; 
+    position: absolute; */ 
     max-height: 80px; 
     width: 100%; 
+
 } 
 .moreI{ 
     display: none; 
