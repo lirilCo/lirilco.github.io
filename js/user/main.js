@@ -798,7 +798,7 @@ $(document).on("ready", function(){
                         
         
     $(".comentario").on("mousemove", function(event){ 
-        elx= $($(this).find(".userInfo").children()[0])
+        elx= $($(this).children()[0])
         circleWidth = elx.outerWidth( true ),
         circleHeight  = elx.outerHeight( true ),
         circleLeft    = elx.offset().left,
@@ -812,11 +812,11 @@ $(document).on("ready", function(){
         distance    = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) ); 
     
         if(distance <= circlePos.radius){ 
-            $($(this).find(".userInfo").children()[0]).css({"pointer-events": "all"}); 
-            $($(this).find(".userInfo").children()[0]).css({"pointer-events": "all"}); 
+            $($(this).children()[0]).css({"pointer-events": "all"}); 
+            $($(this).children()[0]).css({"pointer-events": "all"}); 
         }else{ 
-            $($(this).find(".userInfo").children()[0]).css({"pointer-events": "none"}); 
-            $($(this).find(".userInfo").children()[0]).css({"pointer-events": "none"}); 
+            $($(this).children()[0]).css({"pointer-events": "none"}); 
+            $($(this).children()[0]).css({"pointer-events": "none"}); 
         }   
     }); 
     $("#theater textarea").on('input', function() { 
