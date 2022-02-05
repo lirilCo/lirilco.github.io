@@ -1691,6 +1691,7 @@ display: inline-block;
     transition: transform 235ms ease-in; 
     width: 300px; 
     transform: rotateY(-90deg); 
+    overflow-x: hidden; 
 }
 #theater .comentarios.open{ 
     transform: rotateY(0deg); 
@@ -1700,6 +1701,19 @@ display: inline-block;
     /*background: blueviolet; 
     border: 1px solid; */ 
     padding-top: 16px; 
+    overflow-x: hidden; 
+    width: 100%; 
+    padding-right: 12px; 
+}
+#theater .comentarios::before {
+    width: 13px;
+    height: 17px;
+    position: absolute;
+    right: 0;
+    background: white;
+    content: "";
+    top: 58px;
+    z-index: 2;
 }
 #theater .comentarios .Comentarios .comentario{ 
     position: relative; 
@@ -1760,7 +1774,17 @@ display: inline-block;
     position: absolute; */ 
     max-height: 80px; 
     width: 100%; 
-
+    position: relative; 
+} 
+#theater .comentarios .newComment::before{ 
+    width: 13px; 
+    height: 17px; 
+    position: absolute; 
+    right: 0; 
+    background: white; 
+    content: ""; 
+    top: -17px; 
+    z-index: 2; 
 } 
 .moreI{ 
     display: none; 
