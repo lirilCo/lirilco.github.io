@@ -1718,13 +1718,34 @@ display: inline-block;
 #theater .comentarios .Comentarios .comentario{ 
     position: relative; 
     font-size: 13px; 
-    padding-bottom: 12px;
+    margin-top: 12px;
+} 
+#theater .comentarios .Comentarios .comentario:first-child{ 
+    margin-top: 12px; 
+} 
+#theater .comentarios .Comentarios .Respuestas{ 
+    color: #323232; 
+    font-size: 12px; 
+    margin-left: 12px; 
+    cursor: pointer; 
+} 
+#theater .comentarios .Comentarios .respuestas{ 
+    padding-left: 12px; 
+} 
+#theater .comentarios .Comentarios .respuestas:first-child{ 
+    margin-top: 12px; 
+} 
+#theater .comentarios .Comentarios .respuestas .comentario.hidden{ 
+    display: none; 
 } 
 #theater .comentarios .Comentarios .comentario div{ 
     position: absolute; 
     left: 0; 
     top: 0; 
     cursor: pointer; 
+} 
+#theater .comentarios .Comentarios .respuestas{ 
+    padding-left: 12px; 
 } 
 #theater .comentarios .Comentarios .comentario img{ 
     height: 20px; 
