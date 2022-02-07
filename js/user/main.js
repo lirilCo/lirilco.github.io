@@ -47,7 +47,9 @@ function openProfilePicModal(a) {
 
     }
 
-    $("#theater").find(".info").height() < $("#theater").find(".info").find("img").width()? $("#theater").find(".description").css({"padding-top": "58px"}): $("#theater").find(".description").css({"padding-top": "76px"})
+    $("#theater").find(".info").height() < $("#theater").find(".info").find("img").width()? $("#theater").find(".description").css({"padding-top": "58px"}): $("#theater").find(".description").css({"padding-top": "76px"}); 
+
+    $("#theater").find(".info").height() < $("#theater").find(".info").find("img").width()? $("#theater").find(".comentarios").css({"padding-top": "74px"}): $("#theater").find(".comentarios").css({"padding-top": "92px"}); 
 
     $(".more").mCustomScrollbar({theme: 
         "minimal-dark", 
@@ -99,7 +101,9 @@ function openFotosModal(a) {
 
     }
 
-    $("#theater").find(".info").height() < $("#theater").find(".info").find("img").width()? $("#theater").find(".description").css({"padding-top": "58px"}): $("#theater").find(".description").css({"padding-top": "76px"})
+    $("#theater").find(".info").height() < $("#theater").find(".info").find("img").width()? $("#theater").find(".description").css({"padding-top": "58px"}): $("#theater").find(".description").css({"padding-top": "76px"}); 
+
+    $("#theater").find(".info").height() < $("#theater").find(".info").find("img").width()? $("#theater").find(".comentarios").css({"padding-top": "74px"}): $("#theater").find(".comentarios").css({"padding-top": "92px"}); 
 
     $(".more").mCustomScrollbar({theme: 
         "minimal-dark", 
@@ -181,7 +185,10 @@ function openModal(a) {
     }else{
 
     }
-    $("#theater").find(".info").height() < $("#theater").find(".info").find("img").width()? $("#theater").find(".description").css({"padding-top": "58px"}): $("#theater").find(".description").css({"padding-top": "76px"})
+
+    $("#theater").find(".info").height() < $("#theater").find(".info").find("img").width()? $("#theater").find(".description").css({"padding-top": "58px"}): $("#theater").find(".description").css({"padding-top": "76px"}); 
+
+    $("#theater").find(".info").height() < $("#theater").find(".info").find("img").width()? $("#theater").find(".comentarios").css({"padding-top": "74px"}): $("#theater").find(".comentarios").css({"padding-top": "92px"}); 
 
       $(".more").mCustomScrollbar({theme: 
         "minimal-dark", 
@@ -274,7 +281,10 @@ function openVideoModal(a){
     }else{
 
     }
-    $("#theater").find(".info").height() < $("#theater").find(".info").find("img").width()? $("#theater").find(".description").css({"padding-top": "58px"}): $("#theater").find(".description").css({"padding-top": "76px"})
+
+    $("#theater").find(".info").height() < $("#theater").find(".info").find("img").width()? $("#theater").find(".description").css({"padding-top": "58px"}): $("#theater").find(".description").css({"padding-top": "76px"}); 
+
+    $("#theater").find(".info").height() < $("#theater").find(".info").find("img").width()? $("#theater").find(".comentarios").css({"padding-top": "74px"}): $("#theater").find(".comentarios").css({"padding-top": "92px"}); 
 
       $(".more").mCustomScrollbar({theme: 
         "minimal-dark", 
@@ -326,11 +336,17 @@ function un_tn(u){
 document.addEventListener("keydown", function(i){(i.keyCode == 13 && $(window.getSelection().focusNode.parentElement).is(".revelar"))? $(window.getSelection().focusNode.parentElement).click(): 1; }); 
                                     
 $(document).on("ready",function(e){ 
+    //$(".Respuestas").text($(this).text("respuestas (" + $(this).parent().find(".comentario.hidden").length + ")")); 
+                                    
+    $(".Respuestas").text(function(){return "Respuestas (" + $(this).parent().children().filter(".comentario.hidden").length + ")"}); 
+                                       
     $(".Respuestas").click(function(){ 
-        $($(this).parent().find(".comentario.hidden")[0]).removeClass("hidden"); 
-        $($(this).parent().find(".comentario.hidden")[0]).removeClass("hidden"); 
-        $($(this).parent().find(".comentario.hidden")[0]).removeClass("hidden"); 
-        !!$(this).parent().find(".comentario.hidden").length? $(this).text("Más respuestas (" + $(this).parent().find(".comentario.hidden").length + ")"): $(this).remove(); 
+        for(a= 1; a<= 3; a++){ 
+            $($(this).parent().children().filter(".comentario.hidden")[0]).next().is(".respuestas.hidden")? $($(this).parent().children().filter(".comentario.hidden")[0]).next().removeClass("hidden"): 1; 
+            $($(this).parent().children().filter(".comentario.hidden")[0]).removeClass("hidden"); 
+        } 
+
+        !!$(this).parent().children().filter(".comentario.hidden").length? $(this).text("Más respuestas (" + $(this).parent().children().filter(".comentario.hidden").length + ")"): $(this).remove(); 
     }); 
 
     $(".nav_arrow.left .arrow").not("#picContainer .arrow").on("click", function(){th= $(this).parent(); !th.parent().find(".carr").is(":animated")? th.parent().find(".carr").animate({scrollLeft: th.parent().find(".carr")[0].scrollLeft - th.parent().find(".carr").width()}, 400): 672;}); 

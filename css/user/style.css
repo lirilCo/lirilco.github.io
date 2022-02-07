@@ -1687,7 +1687,7 @@ display: inline-block;
     top: 0;
     height: 100%;
     box-sizing: border-box;
-    padding: 58px 0 87px 0;
+    padding: 74px 0 87px 0;
     transition: transform 235ms ease-in; 
     width: 300px; 
     transform: rotateY(-90deg); 
@@ -1700,7 +1700,6 @@ display: inline-block;
     flex-grow: 1; 
     /*background: blueviolet; 
     border: 1px solid; */ 
-    padding-top: 16px; 
     overflow-x: hidden; 
     width: 100%; 
     padding-right: 12px; 
@@ -1729,6 +1728,12 @@ display: inline-block;
     margin-left: 12px; 
     cursor: pointer; 
 } 
+#theater .comentarios .Comentarios .Responder{ 
+    color: #323232; 
+    font-size: 12px; 
+    margin-left: 12px; 
+    cursor: pointer; 
+} 
 #theater .comentarios .Comentarios .respuestas{ 
     padding-left: 12px; 
 } 
@@ -1736,6 +1741,9 @@ display: inline-block;
     margin-top: 12px; 
 } 
 #theater .comentarios .Comentarios .respuestas .comentario.hidden{ 
+    display: none; 
+} 
+#theater .comentarios .Comentarios .respuestas .respuestas.hidden{ 
     display: none; 
 } 
 #theater .comentarios .Comentarios .comentario div{ 
