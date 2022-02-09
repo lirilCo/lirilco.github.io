@@ -353,13 +353,13 @@ $(document).on("ready",function(e){
 
     $(".nav_arrow.right .arrow").not("#picContainer .arrow").on("click", function(){th= $(this).parent(); !th.parent().find(".carr").is(":animated")? th.parent().find(".carr").animate({scrollLeft: th.parent().find(".carr")[0].scrollLeft + th.parent().find(".carr").width()}, 400): 672;}); 
 
-    $(".nav_arrow.left .arrow").filter("#picContainer .arrow").on("click", function(){aaa= $("#theater"); !aaa.find(".carr").is(":animated")? aaa.find(".carr").animate({scrollLeft: aaa.find(".carr")[0].scrollLeft - aaa.find(".carr").width()}, 400, function(){
+    $(".nav_arrow.left .arrow").filter("#picContainer .arrow").on("click", function(){ar= $(a.closest('.foto')); aaa= $("#theater"); !aaa.find(".carr").is(":animated")? aaa.find(".carr").animate({scrollLeft: aaa.find(".carr")[0].scrollLeft - aaa.find(".carr").width()}, 400, function(){
         a$= $(aaa.find(".carr")).find(".pic")[Math.round(aaa.find(".carr")[0].scrollLeft / $(aaa.find(".carr")).width())].src; 
         a$= a$.slice(a$.lastIndexOf("/") + 1, a$.lastIndexOf(".")); 
         history.pushState({page: 1}, "", "/" + (ar.closest('.story').is(".repost")? $(ar.closest('.story').find(".target")[1])[0].href.slice($(ar.closest('.story').find(".target")[1])[0].href.lastIndexOf("/") + 1): username) + "/img/" + a$); 
     }): 672;}); 
 
-    $(".nav_arrow.right .arrow").filter("#picContainer .arrow").on("click", function(){aaa= $("#theater"); !aaa.find(".carr").is(":animated")? aaa.find(".carr").animate({scrollLeft: aaa.find(".carr")[0].scrollLeft + aaa.find(".carr").width()}, 400, function(){
+    $(".nav_arrow.right .arrow").filter("#picContainer .arrow").on("click", function(){ar= $(a.closest('.foto')); aaa= $("#theater"); !aaa.find(".carr").is(":animated")? aaa.find(".carr").animate({scrollLeft: aaa.find(".carr")[0].scrollLeft + aaa.find(".carr").width()}, 400, function(){
         a$= $(aaa.find(".carr")).find(".pic")[Math.round(aaa.find(".carr")[0].scrollLeft / $(aaa.find(".carr")).width())].src; 
         a$= a$.slice(a$.lastIndexOf("/") + 1, a$.lastIndexOf(".")); 
         history.pushState({page: 1}, "", "/" + (ar.closest('.story').is(".repost")? $(ar.closest('.story').find(".target")[1])[0].href.slice($(ar.closest('.story').find(".target")[1])[0].href.lastIndexOf("/") + 1): username) + "/img/" + a$); 
@@ -844,7 +844,7 @@ $(document).on("ready", function(){
     }); 
     $("#theater textarea").on('input', function() { 
         $(this).height(""); 
-        !!$(this).val()? $(this).height($(this).prop('scrollHeight') - (parseInt($("#theater textarea").css("padding-top").slice(0, -2)) + parseInt($("#theater textarea").css("padding-bottom").slice(0, -2) + parseInt($("#theater textarea").css("border-top").slice(0, -2)) + parseInt($("#theater textarea").css("border-bottom").slice(0, -2))))): 1; 
+        !!$(this).val()? $(this).height($(this).prop('scrollHeight') - (parseInt($(this).css("padding-top").slice(0, -2)) + parseInt($(this).css("padding-bottom").slice(0, -2) + parseInt($(this).css("border-top").slice(0, -2)) + parseInt($(this).css("border-bottom").slice(0, -2))))): 1; 
     }); 
     $("#theater .read").on("click", function(){ 
         !$("#theater .description").hasClass("closed")? $("#theater .description").addClass("closed"): setTimeout(function(){$("#theater .description").removeClass("closed")}, 235); 
@@ -914,6 +914,32 @@ $(document).on("ready", function(){
                         })})(): waiting= false; 
         }
     });
+
+    $(".Responder").on("click",function(){ 
+        if(!$(this).closest(".comentario").next(".newComment").find("textarea").length){ 
+            $(".newComment").not(".comentarios > .newComment").remove(); 
+                                                                         
+            $(this).closest(".comentario").after('<div class="newComment"><textarea rows="1"></textarea></div>'); 
+                                                                                                           
+            $($(this).closest(".comentario").next(".newComment").find("textarea")).on('input', function(){ 
+                $(this).height(""); 
+                                    
+                !!$(this).val()? $(this).height($(this).prop('scrollHeight') - (parseInt($(this).css("padding-top").slice(0, -2)) + parseInt($(this).css("padding-bottom").slice(0, -2) + parseInt($(this).css("border-top").slice(0, -2)) + parseInt($(this).css("border-bottom").slice(0, -2))))): 1; 
+                            
+                C= $(this); 
+                            
+                $(".Comentarios").scrollTop($(C).parent()[0].offsetTop + $(C).parent().outerHeight + 100); 
+            }); 
+                
+            aa= $(this); 
+                         
+            $(".Comentarios").scrollTop($($(aa).closest(".comentario").next(".newComment"))[0].offsetTop + $($(aa).closest(".comentario").next(".newComment")).outerHeight + 34); 
+                                                                                          
+            $($(aa).closest(".comentario").next(".newComment").find("textarea")).focus(); 
+        }else{ 
+            $(".newComment").not(".comentarios > .newComment").remove(); 
+        } 
+    }) 
 
     Used= []; 
     Urls= ["Abigail O'Neill.jpg", "Alana Campos.png", "Alexandra Tyler.jpeg", "Ali Chanel.jpg", "Ali Michael.jpg", "Alicia Loraina Olivas.jpg", "Allie Leggett.jpg", "Allie Silva.jpg", "Alyssa Arcè.jpg", "Amanda Booth.jpg", "Amanda Cerny.webp", "Amanda Streich.jpg", "Amberleigh West.jpg", "Amelia Talon.jpg", "Amy Leigh Andrews.jpg", "Ana Cheri.webp", "Anita Pathammavong.jpg", "Anna Sophia Berglund.jpg", "Ashley Doris.jpg", "Ashley Hobbs.jpg", "Ashley Smith.webp", "Audrey Aleen Allen.jpg", "Beth Williams.jpg", "Bridget Malcolm.jpg", "Britany Nola.jpg", "Britt Linn.jpeg", "Brittany Brousseau.jpg", "Brittny Ward.jpg", "Brook Power.jpg", "Bryiana Noelle.jpg", "Camille Rowe.jpg", "Carly Lauren.jpg", "Carolina Ballesteros.jpg", "Cassandra Dawn.webp", "Chasity Samone.jpg", "Chelsie Aryn.jpg", "Ciara Price.jpg", "Claire Sinclair.jpg", "Dana Taylor.jpg", "Dani Mathers.jpg", "Danielle Alcaraz.jpg", "Dominique Jane.jpg", "Dree Hemingway.jpg", "Elizabeth Elam.webp", "Elizabeth Ostrander.webp", "Elsie Hewitt.jpg", "Emily Agnes.jpg", "Enikő Mihalik.jpg", "Eugena Washington.jpg", "Fo Porter.jpg", "Francesca Frigo.jpg", "Geena Rocero.jpg", "Gemma Lee Farrell.jpg", "Gia Marie.jpg", "Gillian Chan.jpg", "Heather Knox.jpg", "Heather Rae Young.webp", "Hilda Dias Pimentel.jpg", "Ines Rau.jpg", "Iryna Ivanova.jpg", "Jaclyn Swedberg.jpg", "Jaime Faith Edmonson.jpg", "Jaslyn Ome.jpg", "Jenny Watwood.jpg", "Jessa Lynn Hinton.jpg", "Jessica Ashley.jpg", "Jessica Wall.jpg", "Jordan Emanuel.webp", "Jordy Murray.jpg", "Josie Canseco.jpg", "Joy Corrigan.jpg", "Karina Marie.jpg", "Kassie Lyn Logsdon.jpg", "Katie Vernola.jpg", "Kayla Garvin.jpg", "Kayla Rae Reid.webp", "Kaylia Cassandra.webp", "Kayslee Collins.webp", "Kelly Gale.png", "Kennedy Summers.jpg", "Khrystyana.jpg", "Kirby Griffin.jpg", "Kristen Nicole.jpeg", "Kristy Garett.jpg", "Kylie Johnson.jpg", "Kyra Milan.jpg", "Lada Kravchenko.jpg", "Leola Bell.jpg", "Lisa Seiffert.jpg", "Liza Kei.png", "Lorena Medina.jpg", "Maggie May.jpg", "Marsha Elle.jpg", "Megan Moore.jpg", "Megan Samperi.jpg", "Mei-Ling Lam.jpg", "Miki Hamano.jpg", "Milan Dixon.jpg", "Monica Sims.jpg", "Nereyda Bird.jpg", "Nikki Leigh.jpg", "Nina Daniele.jpg", "Olga de Mar.jpg", "Olivia Paige.jpg", "Pamela Horton.jpg", "Priscilla Huggins.jpg", "Rachel Harris.jpg", "Rainy Day Jordan.jpg", "Raquel Pomplun.jpg", "Riley Ticotin.jpg", "Roos van Montfort.jpg", "Roxanna June.jpg", "Sasha Bonilova.jpg", "Savannah Smith.jpeg", "Shanice Jordyn.jpg", "Shanna McLaughlin.jpg", "Shauna Sexton.jpg", "Shawn Dillon.jpeg", "Shelby Chesnes.jpg", "Shelby Rose.jpg", "Shelby Rose.webp", "Shera Bechard.jpg", "Sophie O’Neil.jpg", "Stephanie Branton.jpg", "Tanerélle.jpg", "Teela LaRoux.jpg", "Tiffany Toth.jpg", "Val Keil.jpeg", "Valeria Lakhina.jpg", "Vendela Lindblom.jpg", "Yoli Lara.jpg"]; 

@@ -242,7 +242,7 @@ font-size: 40px
 } 
 .options ul li
 {
-display: inline-block;
+    display: inline-block;
     width: 30%;;
     margin: 0;
     height: 100%;

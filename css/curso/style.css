@@ -321,6 +321,7 @@ input:focus {
 #example_video_1_html5_api{ 
     height:100%; 
     max-height: unset; 
+    outline: none !important; 
 } 
 #Store {
     background-color: #ecf0f1;

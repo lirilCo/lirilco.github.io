@@ -1704,6 +1704,12 @@ display: inline-block;
     width: 100%; 
     padding-right: 12px; 
 }
+#theater .comentarios .Comentarios::after {
+    content: "";
+    height: 12px;
+    width: 100%;
+    display: block;
+}
 #theater .comentarios::before {
     width: 13px;
     height: 17px;
@@ -1731,7 +1737,6 @@ display: inline-block;
 #theater .comentarios .Comentarios .Responder{ 
     color: #323232; 
     font-size: 12px; 
-    margin-left: 12px; 
     cursor: pointer; 
 } 
 #theater .comentarios .Comentarios .respuestas{ 
@@ -1751,6 +1756,13 @@ display: inline-block;
     left: 0; 
     top: 0; 
     cursor: pointer; 
+} 
+#theater .comentarios .Comentarios .comentario .Responder:after{ 
+    content: " \e904"; 
+    font-family: "icomoon"; 
+    vertical-align: middle; 
+    cursor: pointer; 
+    display: inline-block;  
 } 
 #theater .comentarios .Comentarios .respuestas{ 
     padding-left: 12px; 
