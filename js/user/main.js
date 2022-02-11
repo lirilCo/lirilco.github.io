@@ -338,15 +338,47 @@ document.addEventListener("keydown", function(i){(i.keyCode == 13 && $(window.ge
 $(document).on("ready",function(e){ 
     //$(".Respuestas").text($(this).text("respuestas (" + $(this).parent().find(".comentario.hidden").length + ")")); 
                                     
-    $(".Respuestas").text(function(){return "Respuestas (" + $(this).parent().children().filter(".comentario.hidden").length + ")"}); 
+    $(".Respuestas").html(function(){return '<span class="Responder"></span>' + "Respuestas (" + $(this).parent().children().filter(".comentario.hidden").length + ")"}); 
                                        
-    $(".Respuestas").click(function(){ 
-        for(a= 1; a<= 3; a++){ 
-            $($(this).parent().children().filter(".comentario.hidden")[0]).next().is(".respuestas.hidden")? $($(this).parent().children().filter(".comentario.hidden")[0]).next().removeClass("hidden"): 1; 
-            $($(this).parent().children().filter(".comentario.hidden")[0]).removeClass("hidden"); 
-        } 
+    $(".Respuestas").click(function(l){ 
+        Tt= $(this); 
+                        
+        $(l.target).is(".Respuestas")? (function(){ 
+            ///*console.log(l.target); */ 
 
-        !!$(this).parent().children().filter(".comentario.hidden").length? $(this).text("Más respuestas (" + $(this).parent().children().filter(".comentario.hidden").length + ")"): $(this).remove(); 
+            for(a= 1; a<= 3; a++){ 
+                $(Tt.parent().children().filter(".comentario.hidden")[0]).next().is(".respuestas.hidden")? $(Tt.parent().children().filter(".comentario.hidden")[0]).next().removeClass("hidden"): 1; 
+                $(Tt.parent().children().filter(".comentario.hidden")[0]).removeClass("hidden"); 
+            } 
+        
+            !!Tt.parent().children().filter(".comentario.hidden").length? Tt.html('<span class="Responder"></span>' + "Más respuestas (" + Tt.parent().children().filter(".comentario.hidden").length + ")"): Tt.html('<span class="Responder"></span>'); 
+
+            Tt.find(".Responder").on("click",function(){ 
+                if(!$(this).parent().next(".newComment").find("textarea").length){ 
+                    $(".newComment").not(".comentarios > .newComment").remove(); 
+                                                                                 
+                    $(this).parent().after('<div class="newComment"><textarea rows="1"></textarea></div>'); 
+                                                                                                            
+                    $($(this).parent().next(".newComment").find("textarea")).on('input', function(){ 
+                        $(this).height(""); 
+                                            
+                        !!$(this).val()? $(this).height($(this).prop('scrollHeight') - (parseInt($(this).css("padding-top").slice(0, -2)) + parseInt($(this).css("padding-bottom").slice(0, -2) + parseInt($(this).css("border-top").slice(0, -2)) + parseInt($(this).css("border-bottom").slice(0, -2))))): 1; 
+                                    
+                        C= $(this); 
+                                    
+                        $(".Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $(".Comentarios").height() - 66); 
+                    }); 
+                        
+                    aa= $(this); 
+                                 
+                    $(".Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $(".Comentarios").height() - 66); 
+                                                                                                  
+                    $($(aa).parent().next(".newComment").find("textarea")).focus(); 
+                }else{ 
+                    $(".newComment").not(".comentarios > .newComment").remove(); 
+                } 
+            }) 
+        })(): 1; 
     }); 
 
     $(".nav_arrow.left .arrow").not("#picContainer .arrow").on("click", function(){th= $(this).parent(); !th.parent().find(".carr").is(":animated")? th.parent().find(".carr").animate({scrollLeft: th.parent().find(".carr")[0].scrollLeft - th.parent().find(".carr").width()}, 400): 672;}); 
@@ -916,26 +948,26 @@ $(document).on("ready", function(){
     });
 
     $(".Responder").on("click",function(){ 
-        if(!$(this).closest(".comentario").next(".newComment").find("textarea").length){ 
+        if(!$(this).parent().next(".newComment").find("textarea").length){ 
             $(".newComment").not(".comentarios > .newComment").remove(); 
                                                                          
-            $(this).closest(".comentario").after('<div class="newComment"><textarea rows="1"></textarea></div>'); 
+            $(this).parent().after('<div class="newComment"><textarea rows="1"></textarea></div>'); 
                                                                                                            
-            $($(this).closest(".comentario").next(".newComment").find("textarea")).on('input', function(){ 
+            $($(this).parent().next(".newComment").find("textarea")).on('input', function(){ 
                 $(this).height(""); 
                                     
                 !!$(this).val()? $(this).height($(this).prop('scrollHeight') - (parseInt($(this).css("padding-top").slice(0, -2)) + parseInt($(this).css("padding-bottom").slice(0, -2) + parseInt($(this).css("border-top").slice(0, -2)) + parseInt($(this).css("border-bottom").slice(0, -2))))): 1; 
                             
                 C= $(this); 
                             
-                $(".Comentarios").scrollTop($(C).parent()[0].offsetTop + $(C).parent().outerHeight + 100); 
+                $(".Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $(".Comentarios").height() - 66); 
             }); 
                 
             aa= $(this); 
                          
-            $(".Comentarios").scrollTop($($(aa).closest(".comentario").next(".newComment"))[0].offsetTop + $($(aa).closest(".comentario").next(".newComment")).outerHeight + 34); 
+            $(".Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $(".Comentarios").height() - 66); 
                                                                                           
-            $($(aa).closest(".comentario").next(".newComment").find("textarea")).focus(); 
+            $($(aa).parent().next(".newComment").find("textarea")).focus(); 
         }else{ 
             $(".newComment").not(".comentarios > .newComment").remove(); 
         } 

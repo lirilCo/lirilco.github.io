@@ -1738,6 +1738,7 @@ display: inline-block;
     color: #323232; 
     font-size: 12px; 
     cursor: pointer; 
+    position: relative; 
 } 
 #theater .comentarios .Comentarios .respuestas{ 
     padding-left: 12px; 
@@ -1757,13 +1758,18 @@ display: inline-block;
     top: 0; 
     cursor: pointer; 
 } 
-#theater .comentarios .Comentarios .comentario .Responder:after{ 
+#theater .comentarios .Comentarios .Responder:after{ 
     content: " \e904"; 
     font-family: "icomoon"; 
     vertical-align: middle; 
     cursor: pointer; 
     display: inline-block;  
 } 
+#theater .comentarios .Comentarios .Respuestas .Responder::after {
+    left: -22px;
+    position: absolute;
+    top: 2px;
+}
 #theater .comentarios .Comentarios .respuestas{ 
     padding-left: 12px; 
 } 
