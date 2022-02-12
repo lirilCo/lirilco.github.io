@@ -332,6 +332,69 @@ function closeModal() {
 function un_tn(u){ 
     return u.slice(0, u.indexOf("_tn")) + u.slice(u.indexOf("_tn") + 3); 
 } 
+wD= function(thi){ 
+    if(!thi.parent().next(".newComment").find("textarea").length){ 
+        $(".newComment").not(".comentarios > .newComment").remove(); 
+                                                                        
+        thi.parent().after('<div class="newComment"><textarea rows="1"></textarea></div>'); 
+                                                                                                        
+        $(thi.parent().next(".newComment").find("textarea")).on('input', function(){ 
+            $(this).height(""); 
+                                
+            !!$(this).val()? $(this).height($(this).prop('scrollHeight') - (parseInt($(this).css("padding-top").slice(0, -2)) + parseInt($(this).css("padding-bottom").slice(0, -2) + parseInt($(this).css("border-top").slice(0, -2)) + parseInt($(this).css("border-bottom").slice(0, -2))))): 1; 
+                        
+            C= $(this); 
+                        
+            $(".Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $(".Comentarios").height() - 66); 
+        }); 
+            
+        $(thi.parent().next(".newComment").find("textarea")).on('keydown', function(i){ 
+            abc= $(this); 
+
+            (!i.shiftKey && i.keyCode == 13)? (function(){!abc.parent().next().is(".respuestas")? (function(){ll= $($("textarea")[0]).parent().prev(); abc.parent()[0].outerHTML= "<div class='respuestas'><div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' +  "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>" + '"' + " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>" + abc.val().replaceAll("\n", "<br>") + "</span><span class='Responder'></span></div></div>"; $(ll.next().find(".comentario .Responder")).on("click", function(){wD($(this))})})(): (function(){abc.parent().next().append("<div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' +  "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>" + '"' + " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>" + abc.val().replaceAll("\n", "<br>") + "</span><span class='Responder'></span></div>"); $($(abc.parent().next().children()[abc.parent().next().children().length - 1]).find(".comentario .Responder")).on("click", function(){wD($(this))}); abc.parent().remove()})()})(): 1; 
+
+            $('.comentario').tooltip({ 
+                items: 'img', 
+                open: function(event, ui) 
+                { 
+                    if (typeof(event.originalEvent) === 'undefined') 
+                    { 
+                        return false; 
+                    } 
+                    $(".knob").knob(); 
+                    var $id = $(ui.tooltip).attr('id'); 
+                        
+                    // close any lingering tooltips 
+                    $('div.ui-tooltip').not('#' + $id).remove(); 
+                        
+                    // ajax function to pull in data and add it to the tooltip goes here 
+                }, 
+                close: function(event, ui) 
+                { 
+                    ui.tooltip.hover(function() 
+                    { 
+                        $(this).stop(true).fadeTo(400, 1);  
+                    }, 
+                    function() 
+                    { 
+                        $(this).fadeOut('400', function() 
+                        { 
+                            $(this).remove(); 
+                        }); 
+                    }); 
+                } 
+            }); 
+        }); 
+
+        aa= thi; 
+                        
+        $(".Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $(".Comentarios").height() - 66); 
+                                                                                        
+        $($(aa).parent().next(".newComment").find("textarea")).focus(); 
+    }else{ 
+        $(".newComment").not(".comentarios > .newComment").remove(); 
+    } 
+} 
   
 document.addEventListener("keydown", function(i){(i.keyCode == 13 && $(window.getSelection().focusNode.parentElement).is(".revelar"))? $(window.getSelection().focusNode.parentElement).click(): 1; }); 
                                     
@@ -351,71 +414,9 @@ $(document).on("ready",function(e){
                 $(Tt.parent().children().filter(".comentario.hidden")[0]).removeClass("hidden"); 
             } 
         
-            !!Tt.parent().children().filter(".comentario.hidden").length? Tt.html('<span class="Responder"></span>' + "Más respuestas (" + Tt.parent().children().filter(".comentario.hidden").length + ")"): Tt.html('<span class="Responder"></span>'); 
+            !!Tt.parent().children().filter(".comentario.hidden").length? Tt.html((!$(Tt).next().length? '<span class="Responder"></span>': '') + "Más respuestas (" + Tt.parent().children().filter(".comentario.hidden").length + ")"): !$(Tt).next().length? Tt.html('<span class="Responder"></span>'): Tt.remove(); 
 
-            Tt.find(".Responder").on("click",function(){ 
-                if(!$(this).parent().next(".newComment").find("textarea").length){ 
-                    $(".newComment").not(".comentarios > .newComment").remove(); 
-                                                                                 
-                    $(this).parent().after('<div class="newComment"><textarea rows="1"></textarea></div>'); 
-                                                                                                            
-                    $($(this).parent().next(".newComment").find("textarea")).on('input', function(){ 
-                        $(this).height(""); 
-                                            
-                        !!$(this).val()? $(this).height($(this).prop('scrollHeight') - (parseInt($(this).css("padding-top").slice(0, -2)) + parseInt($(this).css("padding-bottom").slice(0, -2) + parseInt($(this).css("border-top").slice(0, -2)) + parseInt($(this).css("border-bottom").slice(0, -2))))): 1; 
-                                    
-                        C= $(this); 
-                                    
-                        $(".Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $(".Comentarios").height() - 66); 
-                    }); 
-
-                    $($(this).parent().next(".newComment").find("textarea")).on('keydown', function(i){ 
-                        abc= $(this); 
-
-                        i.keyCode == 13? (function(){!abc.parent().next().is(".respuestas")? abc.parent()[0].outerHTML= "<div class='respuestas'><div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' +  "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>" + '"' + " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>" + abc.val() + "</span><span class='Responder'></span></div></div>": (function(){abc.parent().next().append("<div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' +  "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>" + '"' + " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>" + abc.val() + "</span><span class='Responder'></span></div>"); abc.parent().remove()})()})(): 1; 
-
-                        $('.comentario').tooltip({ 
-                            items: 'img', 
-                            open: function(event, ui) 
-                            { 
-                                if (typeof(event.originalEvent) === 'undefined') 
-                                { 
-                                    return false; 
-                                } 
-                                $(".knob").knob(); 
-                                var $id = $(ui.tooltip).attr('id'); 
-                                 
-                                // close any lingering tooltips 
-                                $('div.ui-tooltip').not('#' + $id).remove(); 
-                                 
-                                // ajax function to pull in data and add it to the tooltip goes here 
-                            }, 
-                            close: function(event, ui) 
-                            { 
-                                ui.tooltip.hover(function() 
-                                { 
-                                    $(this).stop(true).fadeTo(400, 1);  
-                                }, 
-                                function() 
-                                { 
-                                    $(this).fadeOut('400', function() 
-                                    { 
-                                        $(this).remove(); 
-                                    }); 
-                                }); 
-                            } 
-                        }); 
-                    }); 
-                        
-                    aa= $(this); 
-                                 
-                    $(".Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $(".Comentarios").height() - 66); 
-                                                                                                  
-                    $($(aa).parent().next(".newComment").find("textarea")).focus(); 
-                }else{ 
-                    $(".newComment").not(".comentarios > .newComment").remove(); 
-                } 
-            }) 
+            Tt.find(".Responder").on("click",function(){wD($(this), 1)}) 
         })(): 1; 
     }); 
 
@@ -985,69 +986,143 @@ $(document).on("ready", function(){
         }
     });
 
-    $(".Responder").on("click",function(){ 
-        if(!$(this).parent().next(".newComment").find("textarea").length){ 
-            $(".newComment").not(".comentarios > .newComment").remove(); 
-                                                                         
-            $(this).parent().after('<div class="newComment"><textarea rows="1"></textarea></div>'); 
-                                                                                                           
-            $($(this).parent().next(".newComment").find("textarea")).on('input', function(){ 
-                $(this).height(""); 
-                                    
-                !!$(this).val()? $(this).height($(this).prop('scrollHeight') - (parseInt($(this).css("padding-top").slice(0, -2)) + parseInt($(this).css("padding-bottom").slice(0, -2) + parseInt($(this).css("border-top").slice(0, -2)) + parseInt($(this).css("border-bottom").slice(0, -2))))): 1; 
-                            
-                C= $(this); 
-                            
-                $(".Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $(".Comentarios").height() - 66); 
-            }); 
-                
-            $($(this).parent().next(".newComment").find("textarea")).on('keydown', function(i){ 
-                abc= $(this); 
 
-                i.keyCode == 13? (function(){!abc.parent().next().is(".respuestas")? abc.parent()[0].outerHTML= "<div class='respuestas'><div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' +  "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>" + '"' + " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>" + abc.val() + "</span><span class='Responder'></span></div></div>": (function(){abc.parent().next().append("<div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' +  "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>" + '"' + " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>" + abc.val() + "</span><span class='Responder'></span></div>"); abc.parent().remove()})()})(): 1; 
-
-                $('.comentario').tooltip({
-                    items: 'img', 
-                    open: function(event, ui) 
-                    { 
-                        if (typeof(event.originalEvent) === 'undefined') 
-                        { 
-                            return false; 
-                        } 
-                        $(".knob").knob(); 
-                        var $id = $(ui.tooltip).attr('id'); 
-                         
-                        // close any lingering tooltips 
-                        $('div.ui-tooltip').not('#' + $id).remove(); 
-                         
-                        // ajax function to pull in data and add it to the tooltip goes here 
-                    }, 
-                    close: function(event, ui) 
-                    { 
-                        ui.tooltip.hover(function() 
-                        { 
-                            $(this).stop(true).fadeTo(400, 1);  
-                        }, 
-                        function() 
-                        { 
-                            $(this).fadeOut('400', function() 
-                            { 
-                                $(this).remove(); 
-                            }); 
-                        }); 
-                    } 
+    wD= function(thi, b){ 
+        if(typeof b == "undefined"){ 
+            if(!thi.parent().next(".newComment").find("textarea").length){ 
+                $(".newComment").not(".comentarios > .newComment").remove(); 
+                                                                             
+                thi.parent().after('<div class="newComment"><textarea rows="1"></textarea></div>'); 
+                                                                                                               
+                $(thi.parent().next(".newComment").find("textarea")).on('input', function(){ 
+                    $(this).height(""); 
+                                        
+                    !!$(this).val()? $(this).height($(this).prop('scrollHeight') - (parseInt($(this).css("padding-top").slice(0, -2)) + parseInt($(this).css("padding-bottom").slice(0, -2) + parseInt($(this).css("border-top").slice(0, -2)) + parseInt($(this).css("border-bottom").slice(0, -2))))): 1; 
+                                
+                    C= $(this); 
+                                
+                    $(".Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $(".Comentarios").height() - 66); 
                 }); 
-            }); 
+                    
+                $(thi.parent().next(".newComment").find("textarea")).on('keydown', function(i){ 
+                    abc= $(this); 
 
-            aa= $(this); 
-                         
-            $(".Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $(".Comentarios").height() - 66); 
-                                                                                          
-            $($(aa).parent().next(".newComment").find("textarea")).focus(); 
+                    (!i.shiftKey && i.keyCode == 13)? (function(){!abc.parent().next().is(".respuestas")? (function(){ll= $($("textarea")[0]).parent().prev(); abc.parent()[0].outerHTML= "<div class='respuestas'><div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' +  "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>" + '"' + " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>" + abc.val().replaceAll("\n", "<br>") + "</span><span class='Responder'></span></div></div>"; $(ll.next().find(".Responder")).on("click", function(){wD($(this))})})(): (function(){abc.parent().next().children().filter(".Respuestas").find(".Responder").remove(); abc.parent().next().append('<span class="Respuestas"><span class="Responder"></span></span>'); $($(abc.parent().next().children()[abc.parent().next().children().length - 1]).find(".Responder")).on("click", function(){wD($(this), 1)}); $(".Respuestas").each(function(){!$(this).html()? $(this).remove(): 1;}); $(abc.parent().next().children()[abc.parent().next().children().length - 1]).before("<div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' +  "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>" + '"' + " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>" + abc.val().replaceAll("\n", "<br>") + "</span><span class='Responder'></span></div>"); $($(abc.parent().next().children()[abc.parent().next().children().length - 2]).find(".Responder")).on("click", function(){wD($(this))}); abc.parent().remove()})()})(): 1; 
+
+                    $(".knob").knob(); 
+
+                    $('.comentario').tooltip({ 
+                        items: 'img', 
+                        open: function(event, ui) 
+                        { 
+                            if (typeof(event.originalEvent) === 'undefined') 
+                            { 
+                                return false; 
+                            } 
+                            $(".knob").knob(); 
+                            var $id = $(ui.tooltip).attr('id'); 
+                             
+                            // close any lingering tooltips 
+                            $('div.ui-tooltip').not('#' + $id).remove(); 
+                             
+                            // ajax function to pull in data and add it to the tooltip goes here 
+                        }, 
+                        close: function(event, ui) 
+                        { 
+                            ui.tooltip.hover(function() 
+                            { 
+                                $(this).stop(true).fadeTo(400, 1);  
+                            }, 
+                            function() 
+                            { 
+                                $(this).fadeOut('400', function() 
+                                { 
+                                    $(this).remove(); 
+                                }); 
+                            }); 
+                        } 
+                    }); 
+                }); 
+
+                aa= thi; 
+                             
+                $(".Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $(".Comentarios").height() - 66); 
+                                                                                              
+                $($(aa).parent().next(".newComment").find("textarea")).focus(); 
+            }else{ 
+                $(".newComment").not(".comentarios > .newComment").remove(); 
+            } 
         }else{ 
-            $(".newComment").not(".comentarios > .newComment").remove(); 
-        } 
-    }) 
+            if(!thi.parent().next(".newComment").find("textarea").length){ 
+                $(".newComment").not(".comentarios > .newComment").remove(); 
+                                                                             
+                thi.parent().after('<div class="newComment"><textarea rows="1"></textarea></div>'); 
+                                                                                                               
+                $(thi.parent().next(".newComment").find("textarea")).on('input', function(){ 
+                    $(this).height(""); 
+                                        
+                    !!$(this).val()? $(this).height($(this).prop('scrollHeight') - (parseInt($(this).css("padding-top").slice(0, -2)) + parseInt($(this).css("padding-bottom").slice(0, -2) + parseInt($(this).css("border-top").slice(0, -2)) + parseInt($(this).css("border-bottom").slice(0, -2))))): 1; 
+                                
+                    C= $(this); 
+                                
+                    $(".Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $(".Comentarios").height() - 66); 
+                }); 
+                    
+                $(thi.parent().next(".newComment").find("textarea")).on('keydown', function(i){ 
+                    abc= $(this); 
+
+                    (!i.shiftKey && i.keyCode == 13)? (function(){abc.parent().parent().children().filter(".Respuestas").find(".Responder").remove(); abc.parent().parent().append('<span class="Respuestas"><span class="Responder"></span></span>'); $($(abc.parent().parent().children()[abc.parent().parent().children().length - 1]).find(".Responder")).on("click", function(){wD($(this), 1)}); $(".Respuestas").each(function(){!$(this).html()? $(this).remove(): 1;}); ll= $($("textarea")[0]).parent().prev(); abc.parent()[0].outerHTML= "<div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' +  "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>" + '"' + " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>" + abc.val().replaceAll("\n", "<br>") + "</span><span class='Responder'></span></div>"; $(ll.next().find(".Responder")).on("click", function(){wD($(this))})})(): 1; 
+
+                    $(".knob").knob(); 
+
+                    $('.comentario').tooltip({ 
+                        items: 'img', 
+                        open: function(event, ui) 
+                        { 
+                            if (typeof(event.originalEvent) === 'undefined') 
+                            { 
+                                return false; 
+                            } 
+                            $(".knob").knob(); 
+                            var $id = $(ui.tooltip).attr('id'); 
+                             
+                            // close any lingering tooltips 
+                            $('div.ui-tooltip').not('#' + $id).remove(); 
+                             
+                            // ajax function to pull in data and add it to the tooltip goes here 
+                        }, 
+                        close: function(event, ui) 
+                        { 
+                            ui.tooltip.hover(function() 
+                            { 
+                                $(this).stop(true).fadeTo(400, 1);  
+                            }, 
+                            function() 
+                            { 
+                                $(this).fadeOut('400', function() 
+                                { 
+                                    $(this).remove(); 
+                                }); 
+                            }); 
+                        } 
+                    }); 
+                }); 
+
+                aa= thi; 
+                             
+                $(".Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $(".Comentarios").height() - 66); 
+                                                                                              
+                $($(aa).parent().next(".newComment").find("textarea")).focus(); 
+            }else{ 
+                $(".newComment").not(".comentarios > .newComment").remove(); 
+            } 
+        }
+    }
+
+    $(".comentario .Responder").on("click", function(){wD($(this))}); 
+
+    $(".Respuestas .Responder").on("click", function(){wD($(this), 1)}); 
+
 
     Used= []; 
     Urls= ["Abigail O'Neill.jpg", "Alana Campos.png", "Alexandra Tyler.jpeg", "Ali Chanel.jpg", "Ali Michael.jpg", "Alicia Loraina Olivas.jpg", "Allie Leggett.jpg", "Allie Silva.jpg", "Alyssa Arcè.jpg", "Amanda Booth.jpg", "Amanda Cerny.webp", "Amanda Streich.jpg", "Amberleigh West.jpg", "Amelia Talon.jpg", "Amy Leigh Andrews.jpg", "Ana Cheri.webp", "Anita Pathammavong.jpg", "Anna Sophia Berglund.jpg", "Ashley Doris.jpg", "Ashley Hobbs.jpg", "Ashley Smith.webp", "Audrey Aleen Allen.jpg", "Beth Williams.jpg", "Bridget Malcolm.jpg", "Britany Nola.jpg", "Britt Linn.jpeg", "Brittany Brousseau.jpg", "Brittny Ward.jpg", "Brook Power.jpg", "Bryiana Noelle.jpg", "Camille Rowe.jpg", "Carly Lauren.jpg", "Carolina Ballesteros.jpg", "Cassandra Dawn.webp", "Chasity Samone.jpg", "Chelsie Aryn.jpg", "Ciara Price.jpg", "Claire Sinclair.jpg", "Dana Taylor.jpg", "Dani Mathers.jpg", "Danielle Alcaraz.jpg", "Dominique Jane.jpg", "Dree Hemingway.jpg", "Elizabeth Elam.webp", "Elizabeth Ostrander.webp", "Elsie Hewitt.jpg", "Emily Agnes.jpg", "Enikő Mihalik.jpg", "Eugena Washington.jpg", "Fo Porter.jpg", "Francesca Frigo.jpg", "Geena Rocero.jpg", "Gemma Lee Farrell.jpg", "Gia Marie.jpg", "Gillian Chan.jpg", "Heather Knox.jpg", "Heather Rae Young.webp", "Hilda Dias Pimentel.jpg", "Ines Rau.jpg", "Iryna Ivanova.jpg", "Jaclyn Swedberg.jpg", "Jaime Faith Edmonson.jpg", "Jaslyn Ome.jpg", "Jenny Watwood.jpg", "Jessa Lynn Hinton.jpg", "Jessica Ashley.jpg", "Jessica Wall.jpg", "Jordan Emanuel.webp", "Jordy Murray.jpg", "Josie Canseco.jpg", "Joy Corrigan.jpg", "Karina Marie.jpg", "Kassie Lyn Logsdon.jpg", "Katie Vernola.jpg", "Kayla Garvin.jpg", "Kayla Rae Reid.webp", "Kaylia Cassandra.webp", "Kayslee Collins.webp", "Kelly Gale.png", "Kennedy Summers.jpg", "Khrystyana.jpg", "Kirby Griffin.jpg", "Kristen Nicole.jpeg", "Kristy Garett.jpg", "Kylie Johnson.jpg", "Kyra Milan.jpg", "Lada Kravchenko.jpg", "Leola Bell.jpg", "Lisa Seiffert.jpg", "Liza Kei.png", "Lorena Medina.jpg", "Maggie May.jpg", "Marsha Elle.jpg", "Megan Moore.jpg", "Megan Samperi.jpg", "Mei-Ling Lam.jpg", "Miki Hamano.jpg", "Milan Dixon.jpg", "Monica Sims.jpg", "Nereyda Bird.jpg", "Nikki Leigh.jpg", "Nina Daniele.jpg", "Olga de Mar.jpg", "Olivia Paige.jpg", "Pamela Horton.jpg", "Priscilla Huggins.jpg", "Rachel Harris.jpg", "Rainy Day Jordan.jpg", "Raquel Pomplun.jpg", "Riley Ticotin.jpg", "Roos van Montfort.jpg", "Roxanna June.jpg", "Sasha Bonilova.jpg", "Savannah Smith.jpeg", "Shanice Jordyn.jpg", "Shanna McLaughlin.jpg", "Shauna Sexton.jpg", "Shawn Dillon.jpeg", "Shelby Chesnes.jpg", "Shelby Rose.jpg", "Shelby Rose.webp", "Shera Bechard.jpg", "Sophie O’Neil.jpg", "Stephanie Branton.jpg", "Tanerélle.jpg", "Teela LaRoux.jpg", "Tiffany Toth.jpg", "Val Keil.jpeg", "Valeria Lakhina.jpg", "Vendela Lindblom.jpg", "Yoli Lara.jpg"]; 

@@ -1766,9 +1766,10 @@ display: inline-block;
     display: inline-block;  
 } 
 #theater .comentarios .Comentarios .Respuestas .Responder::after {
-    left: -22px;
-    position: absolute;
-    top: 2px;
+    left: -22px; 
+    position: absolute; 
+    top: 2px; 
+    word-break: break-word; 
 }
 #theater .comentarios .Comentarios .respuestas{ 
     padding-left: 12px; 
@@ -1823,7 +1824,7 @@ display: inline-block;
     width: 100%; 
     position: relative; 
 } 
-#theater .comentarios .newComment::before{ 
+#theater .comentarios > .newComment::before{ 
     width: 13px; 
     height: 17px; 
     position: absolute; 
