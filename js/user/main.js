@@ -332,67 +332,135 @@ function closeModal() {
 function un_tn(u){ 
     return u.slice(0, u.indexOf("_tn")) + u.slice(u.indexOf("_tn") + 3); 
 } 
-wD= function(thi){ 
-    if(!thi.parent().next(".newComment").find("textarea").length){ 
-        $(".newComment").not(".comentarios > .newComment").remove(); 
-                                                                        
-        thi.parent().after('<div class="newComment"><textarea rows="1"></textarea></div>'); 
-                                                                                                        
-        $(thi.parent().next(".newComment").find("textarea")).on('input', function(){ 
-            $(this).height(""); 
-                                
-            !!$(this).val()? $(this).height($(this).prop('scrollHeight') - (parseInt($(this).css("padding-top").slice(0, -2)) + parseInt($(this).css("padding-bottom").slice(0, -2) + parseInt($(this).css("border-top").slice(0, -2)) + parseInt($(this).css("border-bottom").slice(0, -2))))): 1; 
-                        
-            C= $(this); 
-                        
-            $(".Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $(".Comentarios").height() - 66); 
-        }); 
-            
-        $(thi.parent().next(".newComment").find("textarea")).on('keydown', function(i){ 
-            abc= $(this); 
-
-            (!i.shiftKey && i.keyCode == 13)? (function(){!abc.parent().next().is(".respuestas")? (function(){ll= $($("textarea")[0]).parent().prev(); abc.parent()[0].outerHTML= "<div class='respuestas'><div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' +  "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>" + '"' + " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>" + abc.val().replaceAll("\n", "<br>") + "</span><span class='Responder'></span></div></div>"; $(ll.next().find(".comentario .Responder")).on("click", function(){wD($(this))})})(): (function(){abc.parent().next().append("<div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' +  "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>" + '"' + " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>" + abc.val().replaceAll("\n", "<br>") + "</span><span class='Responder'></span></div>"); $($(abc.parent().next().children()[abc.parent().next().children().length - 1]).find(".comentario .Responder")).on("click", function(){wD($(this))}); abc.parent().remove()})()})(): 1; 
-
-            $('.comentario').tooltip({ 
-                items: 'img', 
-                open: function(event, ui) 
-                { 
-                    if (typeof(event.originalEvent) === 'undefined') 
-                    { 
-                        return false; 
-                    } 
-                    $(".knob").knob(); 
-                    var $id = $(ui.tooltip).attr('id'); 
-                        
-                    // close any lingering tooltips 
-                    $('div.ui-tooltip').not('#' + $id).remove(); 
-                        
-                    // ajax function to pull in data and add it to the tooltip goes here 
-                }, 
-                close: function(event, ui) 
-                { 
-                    ui.tooltip.hover(function() 
-                    { 
-                        $(this).stop(true).fadeTo(400, 1);  
-                    }, 
-                    function() 
-                    { 
-                        $(this).fadeOut('400', function() 
-                        { 
-                            $(this).remove(); 
-                        }); 
-                    }); 
-                } 
+wD= function(thi, b){ 
+    if(typeof b == "undefined"){ 
+        if(!thi.parent().next(".newComment").find("textarea").length){ 
+            $(".newComment").not(".comentarios > .newComment").remove(); 
+                                                                         
+            thi.parent().after('<div class="newComment"><textarea rows="1"></textarea></div>'); 
+                                                                                                           
+            $(thi.parent().next(".newComment").find("textarea")).on('input', function(){ 
+                $(this).height(""); 
+                                    
+                !!$(this).val()? $(this).height($(this).prop('scrollHeight') - (parseInt($(this).css("padding-top").slice(0, -2)) + parseInt($(this).css("padding-bottom").slice(0, -2) + parseInt($(this).css("border-top").slice(0, -2)) + parseInt($(this).css("border-bottom").slice(0, -2))))): 1; 
+                            
+                C= $(this); 
+                            
+                $(".Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $(".Comentarios").height() - 66); 
             }); 
-        }); 
+                
+            $(thi.parent().next(".newComment").find("textarea")).on('keydown', function(i){ 
+                abc= $(this); 
 
-        aa= thi; 
-                        
-        $(".Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $(".Comentarios").height() - 66); 
-                                                                                        
-        $($(aa).parent().next(".newComment").find("textarea")).focus(); 
+                (!i.shiftKey && i.keyCode == 13)? (function(){!abc.parent().next().is(".respuestas")? (function(){ll= $($("textarea")[0]).parent().prev(); abc.parent()[0].outerHTML= "<div class='respuestas'><div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' +  "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>" + '"' + " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>" + abc.val().replaceAll("\n", "<br>") + "</span><span class='Responder'></span></div><span class='Respuestas'><span class='Responder'></span></span></div>"; $(ll.next().find(".Respuestas .Responder")).on("click", function(){wD($(this), 1)}); $(ll.next().find(".comentario .Responder")).on("click", function(){wD($(this))})})(): (function(){abc.parent().next().children().filter(".Respuestas").find(".Responder").remove(); abc.parent().next().append('<span class="Respuestas"><span class="Responder"></span></span>'); $($(abc.parent().next().children()[abc.parent().next().children().length - 1]).find(".Responder")).on("click", function(){wD($(this), 1)}); $(".Respuestas").each(function(){!$(this).html()? $(this).remove(): 1;}); $(abc.parent().next().children()[abc.parent().next().children().length - 1]).before("<div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' +  "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>" + '"' + " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>" + abc.val().replaceAll("\n", "<br>") + "</span><span class='Responder'></span></div>"); $($(abc.parent().next().children()[abc.parent().next().children().length - 2]).find(".Responder")).on("click", function(){wD($(this))}); abc.parent().remove()})()})(): 1; 
+
+                $(".knob").knob(); 
+
+                $('.comentario').tooltip({ 
+                    items: 'img', 
+                    open: function(event, ui) 
+                    { 
+                        if (typeof(event.originalEvent) === 'undefined') 
+                        { 
+                            return false; 
+                        } 
+                        $(".knob").knob(); 
+                        var $id = $(ui.tooltip).attr('id'); 
+                         
+                        // close any lingering tooltips 
+                        $('div.ui-tooltip').not('#' + $id).remove(); 
+                         
+                        // ajax function to pull in data and add it to the tooltip goes here 
+                    }, 
+                    close: function(event, ui) 
+                    { 
+                        ui.tooltip.hover(function() 
+                        { 
+                            $(this).stop(true).fadeTo(400, 1);  
+                        }, 
+                        function() 
+                        { 
+                            $(this).fadeOut('400', function() 
+                            { 
+                                $(this).remove(); 
+                            }); 
+                        }); 
+                    } 
+                }); 
+            }); 
+
+            aa= thi; 
+                         
+            $(".Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $(".Comentarios").height() - 66); 
+                                                                                          
+            $($(aa).parent().next(".newComment").find("textarea")).focus(); 
+        }else{ 
+            $(".newComment").not(".comentarios > .newComment").remove(); 
+        } 
     }else{ 
-        $(".newComment").not(".comentarios > .newComment").remove(); 
+        if(!thi.parent().next(".newComment").find("textarea").length){ 
+            $(".newComment").not(".comentarios > .newComment").remove(); 
+                                                                         
+            thi.parent().after('<div class="newComment"><textarea rows="1"></textarea></div>'); 
+                                                                                                           
+            $(thi.parent().next(".newComment").find("textarea")).on('input', function(){ 
+                $(this).height(""); 
+                                    
+                !!$(this).val()? $(this).height($(this).prop('scrollHeight') - (parseInt($(this).css("padding-top").slice(0, -2)) + parseInt($(this).css("padding-bottom").slice(0, -2) + parseInt($(this).css("border-top").slice(0, -2)) + parseInt($(this).css("border-bottom").slice(0, -2))))): 1; 
+                            
+                C= $(this); 
+                            
+                $(".Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $(".Comentarios").height() - 66); 
+            }); 
+                
+            $(thi.parent().next(".newComment").find("textarea")).on('keydown', function(i){ 
+                abc= $(this); 
+
+                (!i.shiftKey && i.keyCode == 13)? (function(){abc.parent().parent().children().filter(".Respuestas").find(".Responder").remove(); abc.parent().parent().append('<span class="Respuestas"><span class="Responder"></span></span>'); $($(abc.parent().parent().children()[abc.parent().parent().children().length - 1]).find(".Responder")).on("click", function(){wD($(this), 1)}); $(".Respuestas").each(function(){!$(this).html()? $(this).remove(): 1;}); ll= $($("textarea")[0]).parent().prev(); abc.parent()[0].outerHTML= "<div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' +  "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>" + '"' + " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>" + abc.val().replaceAll("\n", "<br>") + "</span><span class='Responder'></span></div>"; $(ll.next().find(".Responder")).on("click", function(){wD($(this))})})(): 1; 
+
+                $(".knob").knob(); 
+
+                $('.comentario').tooltip({ 
+                    items: 'img', 
+                    open: function(event, ui) 
+                    { 
+                        if (typeof(event.originalEvent) === 'undefined') 
+                        { 
+                            return false; 
+                        } 
+                        $(".knob").knob(); 
+                        var $id = $(ui.tooltip).attr('id'); 
+                         
+                        // close any lingering tooltips 
+                        $('div.ui-tooltip').not('#' + $id).remove(); 
+                         
+                        // ajax function to pull in data and add it to the tooltip goes here 
+                    }, 
+                    close: function(event, ui) 
+                    { 
+                        ui.tooltip.hover(function() 
+                        { 
+                            $(this).stop(true).fadeTo(400, 1);  
+                        }, 
+                        function() 
+                        { 
+                            $(this).fadeOut('400', function() 
+                            { 
+                                $(this).remove(); 
+                            }); 
+                        }); 
+                    } 
+                }); 
+            }); 
+
+            aa= thi; 
+                         
+            $(".Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $(".Comentarios").height() - 66); 
+                                                                                          
+            $($(aa).parent().next(".newComment").find("textarea")).focus(); 
+        }else{ 
+            $(".newComment").not(".comentarios > .newComment").remove(); 
+        } 
     } 
 } 
   
@@ -986,138 +1054,6 @@ $(document).on("ready", function(){
         }
     });
 
-
-    wD= function(thi, b){ 
-        if(typeof b == "undefined"){ 
-            if(!thi.parent().next(".newComment").find("textarea").length){ 
-                $(".newComment").not(".comentarios > .newComment").remove(); 
-                                                                             
-                thi.parent().after('<div class="newComment"><textarea rows="1"></textarea></div>'); 
-                                                                                                               
-                $(thi.parent().next(".newComment").find("textarea")).on('input', function(){ 
-                    $(this).height(""); 
-                                        
-                    !!$(this).val()? $(this).height($(this).prop('scrollHeight') - (parseInt($(this).css("padding-top").slice(0, -2)) + parseInt($(this).css("padding-bottom").slice(0, -2) + parseInt($(this).css("border-top").slice(0, -2)) + parseInt($(this).css("border-bottom").slice(0, -2))))): 1; 
-                                
-                    C= $(this); 
-                                
-                    $(".Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $(".Comentarios").height() - 66); 
-                }); 
-                    
-                $(thi.parent().next(".newComment").find("textarea")).on('keydown', function(i){ 
-                    abc= $(this); 
-
-                    (!i.shiftKey && i.keyCode == 13)? (function(){!abc.parent().next().is(".respuestas")? (function(){ll= $($("textarea")[0]).parent().prev(); abc.parent()[0].outerHTML= "<div class='respuestas'><div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' +  "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>" + '"' + " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>" + abc.val().replaceAll("\n", "<br>") + "</span><span class='Responder'></span></div></div>"; $(ll.next().find(".Responder")).on("click", function(){wD($(this))})})(): (function(){abc.parent().next().children().filter(".Respuestas").find(".Responder").remove(); abc.parent().next().append('<span class="Respuestas"><span class="Responder"></span></span>'); $($(abc.parent().next().children()[abc.parent().next().children().length - 1]).find(".Responder")).on("click", function(){wD($(this), 1)}); $(".Respuestas").each(function(){!$(this).html()? $(this).remove(): 1;}); $(abc.parent().next().children()[abc.parent().next().children().length - 1]).before("<div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' +  "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>" + '"' + " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>" + abc.val().replaceAll("\n", "<br>") + "</span><span class='Responder'></span></div>"); $($(abc.parent().next().children()[abc.parent().next().children().length - 2]).find(".Responder")).on("click", function(){wD($(this))}); abc.parent().remove()})()})(): 1; 
-
-                    $(".knob").knob(); 
-
-                    $('.comentario').tooltip({ 
-                        items: 'img', 
-                        open: function(event, ui) 
-                        { 
-                            if (typeof(event.originalEvent) === 'undefined') 
-                            { 
-                                return false; 
-                            } 
-                            $(".knob").knob(); 
-                            var $id = $(ui.tooltip).attr('id'); 
-                             
-                            // close any lingering tooltips 
-                            $('div.ui-tooltip').not('#' + $id).remove(); 
-                             
-                            // ajax function to pull in data and add it to the tooltip goes here 
-                        }, 
-                        close: function(event, ui) 
-                        { 
-                            ui.tooltip.hover(function() 
-                            { 
-                                $(this).stop(true).fadeTo(400, 1);  
-                            }, 
-                            function() 
-                            { 
-                                $(this).fadeOut('400', function() 
-                                { 
-                                    $(this).remove(); 
-                                }); 
-                            }); 
-                        } 
-                    }); 
-                }); 
-
-                aa= thi; 
-                             
-                $(".Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $(".Comentarios").height() - 66); 
-                                                                                              
-                $($(aa).parent().next(".newComment").find("textarea")).focus(); 
-            }else{ 
-                $(".newComment").not(".comentarios > .newComment").remove(); 
-            } 
-        }else{ 
-            if(!thi.parent().next(".newComment").find("textarea").length){ 
-                $(".newComment").not(".comentarios > .newComment").remove(); 
-                                                                             
-                thi.parent().after('<div class="newComment"><textarea rows="1"></textarea></div>'); 
-                                                                                                               
-                $(thi.parent().next(".newComment").find("textarea")).on('input', function(){ 
-                    $(this).height(""); 
-                                        
-                    !!$(this).val()? $(this).height($(this).prop('scrollHeight') - (parseInt($(this).css("padding-top").slice(0, -2)) + parseInt($(this).css("padding-bottom").slice(0, -2) + parseInt($(this).css("border-top").slice(0, -2)) + parseInt($(this).css("border-bottom").slice(0, -2))))): 1; 
-                                
-                    C= $(this); 
-                                
-                    $(".Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $(".Comentarios").height() - 66); 
-                }); 
-                    
-                $(thi.parent().next(".newComment").find("textarea")).on('keydown', function(i){ 
-                    abc= $(this); 
-
-                    (!i.shiftKey && i.keyCode == 13)? (function(){abc.parent().parent().children().filter(".Respuestas").find(".Responder").remove(); abc.parent().parent().append('<span class="Respuestas"><span class="Responder"></span></span>'); $($(abc.parent().parent().children()[abc.parent().parent().children().length - 1]).find(".Responder")).on("click", function(){wD($(this), 1)}); $(".Respuestas").each(function(){!$(this).html()? $(this).remove(): 1;}); ll= $($("textarea")[0]).parent().prev(); abc.parent()[0].outerHTML= "<div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' +  "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>" + '"' + " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>" + abc.val().replaceAll("\n", "<br>") + "</span><span class='Responder'></span></div>"; $(ll.next().find(".Responder")).on("click", function(){wD($(this))})})(): 1; 
-
-                    $(".knob").knob(); 
-
-                    $('.comentario').tooltip({ 
-                        items: 'img', 
-                        open: function(event, ui) 
-                        { 
-                            if (typeof(event.originalEvent) === 'undefined') 
-                            { 
-                                return false; 
-                            } 
-                            $(".knob").knob(); 
-                            var $id = $(ui.tooltip).attr('id'); 
-                             
-                            // close any lingering tooltips 
-                            $('div.ui-tooltip').not('#' + $id).remove(); 
-                             
-                            // ajax function to pull in data and add it to the tooltip goes here 
-                        }, 
-                        close: function(event, ui) 
-                        { 
-                            ui.tooltip.hover(function() 
-                            { 
-                                $(this).stop(true).fadeTo(400, 1);  
-                            }, 
-                            function() 
-                            { 
-                                $(this).fadeOut('400', function() 
-                                { 
-                                    $(this).remove(); 
-                                }); 
-                            }); 
-                        } 
-                    }); 
-                }); 
-
-                aa= thi; 
-                             
-                $(".Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $(".Comentarios").height() - 66); 
-                                                                                              
-                $($(aa).parent().next(".newComment").find("textarea")).focus(); 
-            }else{ 
-                $(".newComment").not(".comentarios > .newComment").remove(); 
-            } 
-        }
-    }
 
     $(".comentario .Responder").on("click", function(){wD($(this))}); 
 
