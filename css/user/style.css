@@ -1675,9 +1675,10 @@ display: inline-block;
     box-sizing: border-box;
     padding: 58px 0 87px 0;
     width: 300px; 
-    transition: transform 235ms ease-in; 
+    transition: 235ms transform 235ms ease-in; 
 }
 #theater .description.closed{ 
+    transition-delay: 0s; 
     transform: rotateY(90deg); 
 }
 #theater .comentarios{ 
@@ -1694,6 +1695,7 @@ display: inline-block;
     overflow-x: hidden; 
 }
 #theater .comentarios.open{ 
+    transition-delay: 235ms; 
     transform: rotateY(0deg); 
 }
 #theater .comentarios .Comentarios{

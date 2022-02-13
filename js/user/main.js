@@ -1041,8 +1041,8 @@ $(document).on("ready", function(){
                 }); 
             }); 
     $("#theater .read").on("click", function(){ 
-        !$("#theater .description").hasClass("closed")? $("#theater .description").addClass("closed"): setTimeout(function(){$("#theater .description").removeClass("closed")}, 235); 
-        !$("#theater .comentarios").hasClass("open")? setTimeout(function(){$("#theater .comentarios").addClass("open")}, 235): $("#theater .comentarios").removeClass("open"); 
+        !$("#theater .description").hasClass("closed")? $("#theater .description").addClass("closed"): $("#theater .description").removeClass("closed"); 
+        !$("#theater .comentarios").hasClass("open")? $("#theater .comentarios").addClass("open"): $("#theater .comentarios").removeClass("open"); 
     })
     current= $(".story.current");
     $(document).keypress(function (e) {
