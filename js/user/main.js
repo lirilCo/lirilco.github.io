@@ -1,4 +1,6 @@
 function openProfilePicModal(a) {
+    Antheater= a; 
+
     $(".zer")[0].innerHTML= ".ui-tooltip{z-index: 4 !important; }; "; 
     $("body")[0].style.overflow= "hidden"; 
 
@@ -41,6 +43,58 @@ function openProfilePicModal(a) {
     var ref = a.find(".hidden").find(".options ul a").attr('href');
     $('.theater .comments .options ul a').attr('href', ref);
 
+    var comments = a.find(".Comentarios").html();
+    $('.theater .comments .comentarios .Comentarios').html(comments);
+
+    $("#theater .Respuestas").html(function(){return '<span class="Responder"></span>' + "Respuestas (" + $(this).parent().children().filter(".comentario.hidden").length + ")"}); 
+                                       
+    $("#theater .Respuestas").click(function(l){wd($(this), l)}); 
+
+    for(let collapse of document.querySelectorAll("#theater .Respuestas .Responder")){ 
+        collapse.addEventListener("contextmenu", function(e){ 
+            e.preventDefault(); 
+            wwd(this); 
+        })
+    }; 
+
+    $(".comentario .Responder").on("click", function(){wD($(this))}); 
+
+    $(".Respuestas .Responder").on("click", function(){wD($(this), 1)}); 
+
+    $(".knob").knob(); 
+
+    $('.comentario').tooltip({ 
+        items: 'img', 
+        open: function(event, ui) 
+        { 
+            if (typeof(event.originalEvent) === 'undefined') 
+            { 
+                return false; 
+            } 
+            $(".knob").knob(); 
+            var $id = $(ui.tooltip).attr('id'); 
+                
+            // close any lingering tooltips 
+            $('div.ui-tooltip').not('#' + $id).remove(); 
+                
+            // ajax function to pull in data and add it to the tooltip goes here 
+        }, 
+        close: function(event, ui) 
+        { 
+            ui.tooltip.hover(function() 
+            { 
+                $(this).stop(true).fadeTo(400, 1);  
+            }, 
+            function() 
+            { 
+                $(this).fadeOut('400', function() 
+                { 
+                    $(this).remove(); 
+                }); 
+            }); 
+        } 
+    }); 
+
     if($("#bigPic").width()<=$("#bigPic").height()){
         $("#bigPic").css({ "width":"100%"})
     }else{
@@ -49,7 +103,7 @@ function openProfilePicModal(a) {
 
     $("#theater").find(".info").height() < $("#theater").find(".info").find("img").width()? $("#theater").find(".description").css({"padding-top": "58px"}): $("#theater").find(".description").css({"padding-top": "76px"}); 
 
-    $("#theater").find(".info").height() < $("#theater").find(".info").find("img").width()? $("#theater").find(".comentarios").css({"padding-top": "74px"}): $("#theater").find(".comentarios").css({"padding-top": "92px"}); 
+    $("#theater").find(".info").height() < $("#theater").find(".info").find("img").width()? (function(){$("#theater").find(".comentarios").removeClass("noventaYDos"); $("#theater").find(".comentarios").addClass("setenta_y_cuatro")})(): (function(){$("#theater").find(".comentarios").removeClass("setenta_y_cuatro"); $("#theater").find(".comentarios").addClass("noventaYDos")})(); 
 
     $(".more").mCustomScrollbar({theme: 
         "minimal-dark", 
@@ -59,6 +113,8 @@ function openProfilePicModal(a) {
     responsive(); 
 } 
 function openFotosModal(a) {
+    Antheater= a.closest(".foto"); 
+
     $(".zer")[0].innerHTML= ".ui-tooltip{z-index: 4 !important; }; "; 
     $("body")[0].style.overflow= "hidden"; 
     responsive(); 
@@ -95,6 +151,58 @@ function openFotosModal(a) {
     var more= !!a.closest('.foto').find(".moreI").html()? a.closest('.foto').find(".moreI").html(): "";
     $('.theater .comments .more').html(more);
 
+    var comments = a.closest('.foto').find(".Comentarios").html();
+    $('.theater .comments .comentarios .Comentarios').html(comments);
+
+    $("#theater .Respuestas").html(function(){return '<span class="Responder"></span>' + "Respuestas (" + $(this).parent().children().filter(".comentario.hidden").length + ")"}); 
+                                       
+    $("#theater .Respuestas").click(function(l){wd($(this), l)}); 
+
+    for(let collapse of document.querySelectorAll("#theater .Respuestas .Responder")){ 
+        collapse.addEventListener("contextmenu", function(e){ 
+            e.preventDefault(); 
+            wwd(this); 
+        })
+    }; 
+
+    $(".comentario .Responder").on("click", function(){wD($(this))}); 
+
+    $(".Respuestas .Responder").on("click", function(){wD($(this), 1)}); 
+
+    $(".knob").knob(); 
+
+    $('.comentario').tooltip({ 
+        items: 'img', 
+        open: function(event, ui) 
+        { 
+            if (typeof(event.originalEvent) === 'undefined') 
+            { 
+                return false; 
+            } 
+            $(".knob").knob(); 
+            var $id = $(ui.tooltip).attr('id'); 
+                
+            // close any lingering tooltips 
+            $('div.ui-tooltip').not('#' + $id).remove(); 
+                
+            // ajax function to pull in data and add it to the tooltip goes here 
+        }, 
+        close: function(event, ui) 
+        { 
+            ui.tooltip.hover(function() 
+            { 
+                $(this).stop(true).fadeTo(400, 1);  
+            }, 
+            function() 
+            { 
+                $(this).fadeOut('400', function() 
+                { 
+                    $(this).remove(); 
+                }); 
+            }); 
+        } 
+    }); 
+
     if($("#bigPic").width()<=$("#bigPic").height()){
         $("#bigPic").css({ "width":"100%"})
     }else{
@@ -103,7 +211,7 @@ function openFotosModal(a) {
 
     $("#theater").find(".info").height() < $("#theater").find(".info").find("img").width()? $("#theater").find(".description").css({"padding-top": "58px"}): $("#theater").find(".description").css({"padding-top": "76px"}); 
 
-    $("#theater").find(".info").height() < $("#theater").find(".info").find("img").width()? $("#theater").find(".comentarios").css({"padding-top": "74px"}): $("#theater").find(".comentarios").css({"padding-top": "92px"}); 
+    $("#theater").find(".info").height() < $("#theater").find(".info").find("img").width()? (function(){$("#theater").find(".comentarios").removeClass("noventaYDos"); $("#theater").find(".comentarios").addClass("setenta_y_cuatro")})(): (function(){$("#theater").find(".comentarios").removeClass("setenta_y_cuatro"); $("#theater").find(".comentarios").addClass("noventaYDos")})(); 
 
     $(".more").mCustomScrollbar({theme: 
         "minimal-dark", 
@@ -136,6 +244,8 @@ function openFotosModal(a) {
     responsive(); 
 } 
 function openModal(a) {
+    Antheater= a.closest(".story"); 
+
     $(".zer")[0].innerHTML= ".ui-tooltip{z-index: 4 !important; }; "; 
     $("body")[0].style.overflow= "hidden"; 
     responsive(); 
@@ -163,6 +273,112 @@ function openModal(a) {
     var more= !!a.closest('.story').find(".moreI").html()? a.closest('.story').find(".moreI").html(): "";
     $('.theater .comments .more').html(more);
 
+    var comments = a.closest('.story').find(".Comentarios").html();
+    $('.theater .comments .comentarios .Comentarios').html(comments);
+
+    $("#theater .Respuestas").html(function(){return '<span class="Responder"></span>' + "Respuestas (" + $(this).parent().children().filter(".comentario.hidden").length + ")"}); 
+                                       
+    $("#theater .Respuestas").click(function(l){wd($(this), l)}); 
+
+    for(let collapse of document.querySelectorAll("#theater .Respuestas .Responder")){ 
+        collapse.addEventListener("contextmenu", function(e){ 
+            e.preventDefault(); 
+            wwd(this); 
+        })
+    }; 
+
+    $("#theater .RespueNtas").click(function(i){ 
+        if($(i.target).is(".RespueNtas")){ 
+            for(j= 0; j <= 2; j++){ 
+                $(this).before(H); 
+                                   
+                $(".knob").knob(); 
+                                   
+                $('.comentario').tooltip({ 
+                    items: 'img', 
+                    open: function(event, ui) 
+                    { 
+                        if (typeof(event.originalEvent) === 'undefined') 
+                        { 
+                            return false; 
+                        } 
+                        $(".knob").knob(); 
+                        var $id = $(ui.tooltip).attr('id'); 
+                            
+                        // close any lingering tooltips 
+                        $('div.ui-tooltip').not('#' + $id).remove(); 
+                            
+                        // ajax function to pull in data and add it to the tooltip goes here 
+                    }, 
+                    close: function(event, ui) 
+                    { 
+                        ui.tooltip.hover(function() 
+                        { 
+                            $(this).stop(true).fadeTo(400, 1);  
+                        }, 
+                        function() 
+                        { 
+                            $(this).fadeOut('400', function() 
+                            { 
+                                $(this).remove(); 
+                            }); 
+                        }); 
+                    } 
+                }); 
+                    
+                H != can493ax? H= can493ax: H= asdknki4; 
+            } 
+        } 
+    }); 
+
+    for(let collapse of document.querySelectorAll("#theater .RespueNtas .Responder")){ 
+        collapse.addEventListener("contextmenu", function(e){ 
+            e.preventDefault(); 
+
+            $(this.parentElement.parentElement).find(".comentario").remove(); 
+                         
+            H= asdknki4; 
+        }) 
+    }; 
+
+    $(".comentario .Responder").on("click", function(){wD($(this))}); 
+
+    $(".Respuestas .Responder").on("click", function(){wD($(this), 1)}); 
+
+    $(".knob").knob(); 
+
+    $('.comentario').tooltip({ 
+        items: 'img', 
+        open: function(event, ui) 
+        { 
+            if (typeof(event.originalEvent) === 'undefined') 
+            { 
+                return false; 
+            } 
+            $(".knob").knob(); 
+            var $id = $(ui.tooltip).attr('id'); 
+                
+            // close any lingering tooltips 
+            $('div.ui-tooltip').not('#' + $id).remove(); 
+                
+            // ajax function to pull in data and add it to the tooltip goes here 
+        }, 
+        close: function(event, ui) 
+        { 
+            ui.tooltip.hover(function() 
+            { 
+                $(this).stop(true).fadeTo(400, 1);  
+            }, 
+            function() 
+            { 
+                $(this).fadeOut('400', function() 
+                { 
+                    $(this).remove(); 
+                }); 
+            }); 
+        } 
+    }); 
+
     if (a.closest('.story').find(".options .bookmark").hasClass("true")) {
         $('.theater .comments .options .bookmark').addClass("true");
     } else {
@@ -188,7 +404,7 @@ function openModal(a) {
 
     $("#theater").find(".info").height() < $("#theater").find(".info").find("img").width()? $("#theater").find(".description").css({"padding-top": "58px"}): $("#theater").find(".description").css({"padding-top": "76px"}); 
 
-    $("#theater").find(".info").height() < $("#theater").find(".info").find("img").width()? $("#theater").find(".comentarios").css({"padding-top": "74px"}): $("#theater").find(".comentarios").css({"padding-top": "92px"}); 
+    $("#theater").find(".info").height() < $("#theater").find(".info").find("img").width()? (function(){$("#theater").find(".comentarios").removeClass("noventaYDos"); $("#theater").find(".comentarios").addClass("setenta_y_cuatro")})(): (function(){$("#theater").find(".comentarios").removeClass("setenta_y_cuatro"); $("#theater").find(".comentarios").addClass("noventaYDos")})(); 
 
       $(".more").mCustomScrollbar({theme: 
         "minimal-dark", 
@@ -220,6 +436,8 @@ function openModal(a) {
 
 }
 function openVideoModal(a){ 
+    Antheater= a.closest(".story"); 
+
     th= a.closest(".story"); 
 
     $(".zer")[0].innerHTML= ".ui-tooltip{z-index: 4 !important; }; "; 
@@ -250,6 +468,60 @@ function openVideoModal(a){
 
     var more= !!a.closest('.story').find(".moreI").html()? a.closest('.story').find(".moreI").html(): "";
     $('.theater .comments .more').html(more);
+
+    var comments = a.closest('.story').find(".Comentarios").html();
+    $('.theater .comments .comentarios .Comentarios').html(comments);
+
+    $("#theater .Respuestas").html(function(){return '<span class="Responder"></span>' + "Respuestas (" + $(this).parent().children().filter(".comentario.hidden").length + ")"}); 
+                                       
+    $("#theater .Respuestas").click(function(l){wd($(this), l)}); 
+
+    for(let collapse of document.querySelectorAll("#theater .Respuestas .Responder")){ 
+        collapse.addEventListener("contextmenu", function(e){ 
+            e.preventDefault(); 
+            wwd(this); 
+        })
+    }; 
+
+    $(".comentario .Responder").on("click", function(){wD($(this))}); 
+
+    $(".Respuestas .Responder").on("click", function(){wD($(this), 1)}); 
+
+    $(".knob").knob(); 
+
+    $('.comentario').tooltip({ 
+        items: 'img', 
+        open: function(event, ui) 
+        { 
+            if (typeof(event.originalEvent) === 'undefined') 
+            { 
+                return false; 
+            } 
+            $(".knob").knob(); 
+            var $id = $(ui.tooltip).attr('id'); 
+                
+            // close any lingering tooltips 
+            $('div.ui-tooltip').not('#' + $id).remove(); 
+                
+            // ajax function to pull in data and add it to the tooltip goes here 
+        }, 
+        close: function(event, ui) 
+        { 
+            ui.tooltip.hover(function() 
+            { 
+                $(this).stop(true).fadeTo(400, 1);  
+            }, 
+            function() 
+            { 
+                $(this).fadeOut('400', function() 
+                { 
+                    $(this).remove(); 
+                }); 
+            }); 
+        } 
+    }); 
+
+    $("#theater .Comentario audio").each(function(){audiojs.create($(this)[0])}); 
 
     if (a.closest('.story').find(".options .bookmark").hasClass("true")) {
         $('.theater .comments .options .bookmark').addClass("true");
@@ -284,7 +556,7 @@ function openVideoModal(a){
 
     $("#theater").find(".info").height() < $("#theater").find(".info").find("img").width()? $("#theater").find(".description").css({"padding-top": "58px"}): $("#theater").find(".description").css({"padding-top": "76px"}); 
 
-    $("#theater").find(".info").height() < $("#theater").find(".info").find("img").width()? $("#theater").find(".comentarios").css({"padding-top": "74px"}): $("#theater").find(".comentarios").css({"padding-top": "92px"}); 
+    $("#theater").find(".info").height() < $("#theater").find(".info").find("img").width()? (function(){$("#theater").find(".comentarios").removeClass("noventaYDos"); $("#theater").find(".comentarios").addClass("setenta_y_cuatro")})(): (function(){$("#theater").find(".comentarios").removeClass("setenta_y_cuatro"); $("#theater").find(".comentarios").addClass("noventaYDos")})(); 
 
       $(".more").mCustomScrollbar({theme: 
         "minimal-dark", 
@@ -295,7 +567,16 @@ function openVideoModal(a){
     responsive()
 } 
 ok= true; 
+var Antheater; //Did We Literally Like Have To Create AntiMatter For The Theater..? /*Yes*/ 
+can493ax= "<div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' + "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/L/OGnpwD3jys_tn.jpg'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Laura Escobar Bonnett'>Laura Escobar Bonnett</p><p class='rol'>Princesa <b style='color:#fff;'>+100</b></p></div></div>" + '"' + " src='/resources/images/L/OGnpwD3jys_tn.jpg'>&nbsp<a target= '_blank'  href='/L' >Laura Escobar Bonnett</a><span class='is'>: </span><span class='Comentario'>¡Yo más, Luis! 💜</span><span class='Respxxder'></span></div>"; 
+asdknki4= "<div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' + "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>" + '"' + " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>Yo más, bebé</span><span class='Respxxder'></span></div>"; 
+H= asdknki4; 
 function closeModal() { 
+    $(".Comentario .media > div").prop('outerHTML', function(){return $(this).find("audio").prop("outerHTML")}); 
+    
+    $("#theater .Comentarios").find(".Respuestas .Responder").each(function(){wwd($(this)[0], true)}); 
+
+    Antheater.find(".Comentarios").html($("#theater .Comentarios").html()); 
 
     $("#theater #bigPic")[0].src= ""; 
 
@@ -346,7 +627,7 @@ wD= function(thi, b){
                             
                 C= $(this); 
                             
-                $(".Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $(".Comentarios").height() - 66); 
+                $("#theater .Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $("#theater .Comentarios").height() - 66); 
             }); 
                 
             $(thi.parent().next(".newComment").find("textarea")).on('keydown', function(i){ 
@@ -391,7 +672,7 @@ wD= function(thi, b){
 
             aa= thi; 
                          
-            $(".Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $(".Comentarios").height() - 66); 
+            $("#theater .Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $("#theater .Comentarios").height() - 66); 
                                                                                           
             $($(aa).parent().next(".newComment").find("textarea")).focus(); 
         }else{ 
@@ -410,7 +691,7 @@ wD= function(thi, b){
                             
                 C= $(this); 
                             
-                $(".Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $(".Comentarios").height() - 66); 
+                $("#theater .Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $("#theater .Comentarios").height() - 66); 
             }); 
                 
             $(thi.parent().next(".newComment").find("textarea")).on('keydown', function(i){ 
@@ -455,7 +736,7 @@ wD= function(thi, b){
 
             aa= thi; 
                          
-            $(".Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $(".Comentarios").height() - 66); 
+            $("#theater .Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $("#theater .Comentarios").height() - 66); 
                                                                                           
             $($(aa).parent().next(".newComment").find("textarea")).focus(); 
         }else{ 
@@ -479,26 +760,29 @@ wd= function(Tt, l){
     })(): 1; 
 }
 wwd= function(t, tr){ 
+    $(".respuestas .newComment").remove(); 
+
     $(t.parentElement.parentElement).children().each(function(){ 
         $(this).index() != $(this).parent().children().length - 1? $(this).addClass("hidden"): 1; 
     }); 
-
+        
     typeof tr === "undefined"? $(t).closest(".respuestas").find(".Respuestas .Responder").each(function(){wwd($(this)[0], true)}): 1; 
-    
+                                                                
     U= $(t).parent().parent().children().filter(".Respuestas"); 
-
+                                                                
     (U.length == 2)? (function(){$(U[1]).html("<span class='Responder'></span>Respuestas (" + $(U[1]).parent().children().filter(".comentario").length + ")"); $(U[1]).click(function(l){wd($(this), l)}); $($(U[1]).find(".Responder")).on("click", function(){wD($(this), 1)}); U[0].remove()})(): (function(){U.html("<span class='Responder'></span>Respuestas (" + U.parent().children().filter(".comentario").length + ")"); U.click(function(l){wd($(this), l)}); $(U.find(".Responder")).on("click", function(){wD($(this), 1)}); })(); 
-}
+} 
+
 document.addEventListener("keydown", function(i){(i.keyCode == 13 && $(window.getSelection().focusNode.parentElement).is(".revelar"))? $(window.getSelection().focusNode.parentElement).click(): 1; }); 
-                                    
+                                                                        
 $(document).on("ready",function(e){ 
     //$(".Respuestas").text($(this).text("respuestas (" + $(this).parent().find(".comentario.hidden").length + ")")); 
                                     
-    $(".Respuestas").html(function(){return '<span class="Responder"></span>' + "Respuestas (" + $(this).parent().children().filter(".comentario.hidden").length + ")"}); 
+    $("#theater .Respuestas").html(function(){return '<span class="Responder"></span>' + "Respuestas (" + $(this).parent().children().filter(".comentario.hidden").length + ")"}); 
                                        
-    $(".Respuestas").click(function(l){wd($(this), l)}); 
+    $("#theater .Respuestas").click(function(l){wd($(this), l)}); 
 
-    for(let collapse of document.querySelectorAll(".Respuestas .Responder")) { 
+    for(let collapse of document.querySelectorAll("#theater .Respuestas .Responder")){ 
         collapse.addEventListener("contextmenu", function(e){ 
             e.preventDefault(); 
             wwd(this); 
@@ -1002,9 +1286,9 @@ $(document).on("ready", function(){
         !!$(this).val()? $(this).height($(this).prop('scrollHeight') - (parseInt($(this).css("padding-top").slice(0, -2)) + parseInt($(this).css("padding-bottom").slice(0, -2) + parseInt($(this).css("border-top").slice(0, -2)) + parseInt($(this).css("border-bottom").slice(0, -2))))): 1; 
     }); 
     $(".comentarios > .newComment").on('keydown', function(i){ 
-                abc= $(".Comentarios"); 
+                abc= $("#theater .Comentarios"); 
 
-                (!i.shiftKey && i.keyCode == 13)? (function(){abc.append("<div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' +  "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>" + '"' + " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>" + $(".comentarios > .newComment textarea").val().replaceAll("\n", "<br>") + "</span><span class='Responder'></span></div>"); $(".comentarios > .newComment textarea").val(""); $($($(".Comentarios").children()[$(".Comentarios").children().length - 1]).find(".Responder")).on("click", function(){wD($(this))}); $(".Comentarios").scrollTop($(".Comentarios")[0].scrollHeight); })(): 1; 
+                (!i.shiftKey && i.keyCode == 13)? (function(){abc.append("<div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' +  "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>" + '"' + " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>" + $(".comentarios > .newComment textarea").val().replaceAll("\n", "<br>") + "</span><span class='Responder'></span></div>"); $(".comentarios > .newComment textarea").val(""); $($($("#theater .Comentarios").children()[$("#theater .Comentarios").children().length - 1]).find(".Responder")).on("click", function(){wD($(this))}); $("#theater .Comentarios").scrollTop($("#theater .Comentarios")[0].scrollHeight); })(): 1; 
 
                 $(".knob").knob(); 
 
