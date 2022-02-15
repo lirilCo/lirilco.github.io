@@ -46,7 +46,37 @@
               }
           }
       });
-      
+$('.title').tooltip({
+    items: 'a.target',
+    open: function(event, ui)
+    {
+        if (typeof(event.originalEvent) === 'undefined')
+        {
+            return false;
+        }
+        $(".knob").knob();
+        var $id = $(ui.tooltip).attr('id');
+        
+        // close any lingering tooltips
+        $('div.ui-tooltip').not('#' + $id).remove();
+        
+        // ajax function to pull in data and add it to the tooltip goes here
+    },
+    close: function(event, ui)
+    {
+        ui.tooltip.hover(function()
+        {
+            $(this).stop(true).fadeTo(400, 1); 
+        },
+        function()
+        {
+            $(this).fadeOut('400', function()
+            {
+                $(this).remove();
+            });
+        });
+    }
+}); 
 $('.username').tooltip({
     items: 'a.target',
     open: function(event, ui)
@@ -260,14 +290,20 @@ $('.username').tooltip({
             <div class="description">
                 <p class="title"></p>
                 <p class="more">
-                
                 </p>
+            </div>
+            <div class="comentarios">
+                <div class="Comentarios">
+                </div>
+                <div class="newComment">
+                    <textarea rows="1"></textarea>
+                </div>
             </div>
             <div class="options button">
             <ul>
                 <li class="bookmark"></li>
                 <li class="star"></li>
-                <a><li class="read"></li></a>
+                <li class="read"></li>
             </ul></div>
             <p id="close"></p>
             </aside>
@@ -535,11 +571,902 @@ $('.username').tooltip({
                                 </ul>
                             </div>
                     </section>
+                    <section class="foto mult_img">
+                            <div class="info">
+                                <img src="/resources/images/AuraCardonaC/v8jX8zvIYN_tn.jpg" alt="">
+                                    <p class="username"><a class= "target" href="/AuraCardonaC" title="         
+                            <div class='tool'>
+                                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='94'>
+                                <img src='/resources/images/AuraCardonaC/v8jX8zvIYN_tn.jpg'>
+                                <div class='datos'>
+                                <ul class='actions'>
+                                    <li class='chatear' title='Chatear'>C</li>
+                                    <li class='agregar' title='Agregar'>A</li>
+                                    <li class='juzgar' title='Juzgar'>J</li>
+                                </ul>                  
+                                <p class='username' title= 'Aura Cardona Demasiado'>Aura Cardona Demasiado</p>
+                                <div class='Cont'><p title= 'Profe  de fitness' class='rol'>Profe  de fitness</p><b style='color:#fff;'>+94</b></div>
+
+                                </div>
+                            </div>">Aura Cardona Demasiado</a>; en <a href='#' class= 'target'  title='         
+                            <div class="tool city">
+                                <figure>
+                                <img class="thumbnail" src= "https://upload.wikimedia.org/wikipedia/commons/3/3e/Miamimetroarea.jpg"></img>
+                            </figure>
+                         
+                            <div class="introduction">
+                                Miami Beach es una ciudad ubicada en el condado de Miami-Dade en el estado de Florida (Estados Unidos). En el Censo de 2010 tenía una población de 87.779 habitantes y una densidad poblacional de 2.233,68 personas por km² <br><a target= "_blank"style= "font-size:0.8em; " href= "https://es.wikipedia.org/wiki/Miami_Beach"><span style= "color: #2ecc71; font-size: 1.5em; ">···</span> es.wikipedia.org</a>
+                            </div>
+                            </div>'>Miami Beach</a> <br><span title= "14 de Febrero de 2022 a las 7:41 pm" class="time">14 de Febrero a las 7:41 pm</span></p>                    
+                            </div>
+                            <p class="title"></p>
+                            <section class="navigation">
+                                <div style= "display: none; " class="nav_arrow left disabled"><div class="arrow"></div></div>
+                                <div style= "display: none; " class="nav_arrow right"><div class="arrow"></div></div>
+                                <section class= "carr">
+                                    <section class="picture">
+                                        <img class="pic" src="/resources/images/AuraCardonaC/jiYQlNRSX9_tn.jpg" alt="" class="big">
+                                    </section>
+                                    <section class="picture">
+                                        <img class="pic" src="/resources/images/AuraCardonaC/pXF49GJHaI_tn.jpg" alt="" class="big">
+                                    </section>
+                                    <section class="picture">
+                                        <img class="pic" src="/resources/images/AuraCardonaC/PGixs4gzlF_tn.jpg" alt="" class="big">
+                                    </section>
+                                    <section class="picture">
+                                        <img class="pic" src="/resources/images/AuraCardonaC/dsM4R5nwut_tn.jpg" alt="" class="big">
+                                    </section>
+                                </section>
+                            </section>
+                            <div class="Comentarios">
+                                <div class="comentario">
+                                    <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                    <img title="         
+                                    <div class='tool'>
+                                        <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                        <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                                        <div class='datos'>
+                                            <ul class='actions'>
+                                            <li class='chatear' title='Chatear'>C</li>
+                                            <li class='agregar' title='Agregar'>A</li>
+                                            <li class='juzgar' title='Juzgar'>J</li>
+                                            </ul>                  
+                                            <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                                            <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+                                        </div>
+                                        <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                                        <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                                        <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                                        <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+                                    </div>" src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                    &nbsp<a target= "_blank"  href="/A.K.A._Dizzy" >Luis Eduardo Gallego García</a><span class="is">: </span><span class="Comentario">
+                                        Jajajajaja dizque vea su fotico 🤣
+                                    </span>
+                                    <span class="Responder"></span>
+                                </div>
+                                <div class="respuestas">
+                                    <div class="comentario hidden">
+                                        <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='94'>
+                                        <img title="         
+                                        <div class='tool'>
+                                            <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='94'>
+                                            <img src='/resources/images/AuraCardonaC/v8jX8zvIYN_tn.jpg'>
+                                            <div class='datos'>
+                                                <ul class='actions'>
+                                                    <li class='chatear' title='Chatear'>C</li>
+                                                    <li class='agregar' title='Agregar'>A</li>
+                                                    <li class='juzgar' title='Juzgar'>J</li>
+                                                </ul>                  
+                                                <p class='username' title= 'Aura Cardona Demasiado'>Aura Cardona Demasiado</p>
+                                                <div class='Cont'><p title= 'Profe  de fitness' class='rol'>Profe  de fitness</p><b style='color:#fff;'>+94</b></div>
+                                            </div>
+                                        </div>" src="/resources/images/AuraCardonaC/v8jX8zvIYN_tn.jpg" alt="">
+                                        &nbsp<a target= "_blank"  href="/AuraCardonaC" >Aura Cardona Demasiado</a><span class="is">: </span><span class="Comentario">
+                                            🥰😘 
+                                        </span>
+                                        <span class="Responder"></span>
+                                    </div>
+                                    <div class="respuestas hidden">
+                                        <div class="comentario hidden">
+                                            <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                            <img title="         
+                                            <div class='tool'>
+                                                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                                <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                                                <div class='datos'>
+                                                    <ul class='actions'>
+                                                    <li class='chatear' title='Chatear'>C</li>
+                                                    <li class='agregar' title='Agregar'>A</li>
+                                                    <li class='juzgar' title='Juzgar'>J</li>
+                                                    </ul>                  
+                                                    <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                                                    <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+                                                </div>
+                                                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                                                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                                                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                                                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+                                            </div>" src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                            &nbsp<a target= "_blank"  href="/A.K.A._Dizzy" >Luis Eduardo Gallego García</a><span class="is">: </span><span class="Comentario">
+                                                😶🙂 
+                                            </span>
+                                            <span class="Responder"></span>
+                                        </div>
+                                        <span class="Respuestas"></span>
+                                    </div>
+                                    <span class="Respuestas"></span>
+                                </div>
+                                <div class="comentario">
+                                    <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                    <img title="         
+                                    <div class='tool'>
+                                        <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                        <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                                        <div class='datos'>
+                                            <ul class='actions'>
+                                            <li class='chatear' title='Chatear'>C</li>
+                                            <li class='agregar' title='Agregar'>A</li>
+                                            <li class='juzgar' title='Juzgar'>J</li>
+                                            </ul>                  
+                                            <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                                            <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+                                        </div>
+                                        <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                                        <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                                        <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                                        <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+                                    </div>" src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                    &nbsp<a target= "_blank"  href="/A.K.A._Dizzy" >Luis Eduardo Gallego García</a><span class="is">: </span><span class="Comentario">
+                                        Gracias ❤
+                                    </span>
+                                    <span class="Responder"></span>
+                                </div>
+                                <div class="respuestas">
+                                    <div class="comentario hidden">
+                                        <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='94'>
+                                        <img title="         
+                                        <div class='tool'>
+                                            <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='94'>
+                                            <img src='/resources/images/AuraCardonaC/v8jX8zvIYN_tn.jpg'>
+                                            <div class='datos'>
+                                                <ul class='actions'>
+                                                    <li class='chatear' title='Chatear'>C</li>
+                                                    <li class='agregar' title='Agregar'>A</li>
+                                                    <li class='juzgar' title='Juzgar'>J</li>
+                                                </ul>                  
+                                                <p class='username' title= 'Aura Cardona Demasiado'>Aura Cardona Demasiado</p>
+                                                <div class='Cont'><p title= 'Profe  de fitness' class='rol'>Profe  de fitness</p><b style='color:#fff;'>+94</b></div>
+                                            </div>
+                                        </div>" src="/resources/images/AuraCardonaC/v8jX8zvIYN_tn.jpg" alt="">
+                                        &nbsp<a target= "_blank"  href="/AuraCardonaC" >Aura Cardona Demasiado</a><span class="is">: </span><span class="Comentario">
+                                            😉
+                                        </span>
+                                        <span class="Responder"></span>
+                                    </div>
+                                    <span class="Respuestas"></span>
+                                </div>
+                                <div class="comentario">
+                                    <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                    <img title="         
+                                    <div class='tool'>
+                                        <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                        <img src='/resources/images/L/OGnpwD3jys_tn.jpg'>
+                                        <div class='datos'>
+                                            <ul class='actions'>
+                                                <li class='chatear' title='Chatear'>C</li>
+                                                <li class='agregar' title='Agregar'>A</li>
+                                                <li class='juzgar' title='Juzgar'>J</li>
+                                            </ul>                  
+                                            <p class='username' title= 'Laura Escobar Bonnett'>Laura Escobar Bonnett</p>
+                                            <p class='rol'>Princesa <b style='color:#fff;'>+100</b></p>
+                                        </div>
+                                    </div>" src="/resources/images/L/OGnpwD3jys_tn.jpg" alt="">
+                                    &nbsp<a target= "_blank"  href="/L" >Laura Escobar Bonnett</a><span class="is">: </span><span class="Comentario">Jajaja</span>
+                                    <span class="Responder"></span>
+                                </div>
+                                <div class="respuestas">
+                                    <div class="comentario hidden">
+                                        <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='94'>
+                                        <img title="         
+                                        <div class='tool'>
+                                            <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='94'>
+                                            <img src='/resources/images/AuraCardonaC/v8jX8zvIYN_tn.jpg'>
+                                            <div class='datos'>
+                                                <ul class='actions'>
+                                                    <li class='chatear' title='Chatear'>C</li>
+                                                    <li class='agregar' title='Agregar'>A</li>
+                                                    <li class='juzgar' title='Juzgar'>J</li>
+                                                </ul>                  
+                                                <p class='username' title= 'Aura Cardona Demasiado'>Aura Cardona Demasiado</p>
+                                                <div class='Cont'><p title= 'Profe  de fitness' class='rol'>Profe  de fitness</p><b style='color:#fff;'>+94</b></div>
+                                            </div>
+                                        </div>" src="/resources/images/AuraCardonaC/v8jX8zvIYN_tn.jpg" alt="">
+                                        &nbsp<a target= "_blank"  href="/AuraCardonaC" >Aura Cardona Demasiado</a><span class="is">: </span><span class="Comentario">
+                                            😜
+                                        </span>
+                                        <span class="Responder"></span>
+                                    </div>
+                                    <div class="respuestas hidden">
+                                        <div class="comentario hidden">
+                                            <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                            <img title="         
+                                            <div class='tool'>
+                                                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                                <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                                                <div class='datos'>
+                                                    <ul class='actions'>
+                                                    <li class='chatear' title='Chatear'>C</li>
+                                                    <li class='agregar' title='Agregar'>A</li>
+                                                    <li class='juzgar' title='Juzgar'>J</li>
+                                                    </ul>                  
+                                                    <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                                                    <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+                                                </div>
+                                                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                                                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                                                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                                                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+                                            </div>" src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                            &nbsp<a target= "_blank"  href="/A.K.A._Dizzy" >Luis Eduardo Gallego García</a><span class="is">: </span><span class="Comentario">
+                                                😏
+                                            </span>
+                                            <span class="Responder"></span>
+                                        </div>
+                                        <div class="respuestas hidden">
+                                            <div class="comentario hidden">
+                                                <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                                <img title="         
+                                                <div class='tool'>
+                                                    <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                                    <img src='/resources/images/L/OGnpwD3jys_tn.jpg'>
+                                                    <div class='datos'>
+                                                        <ul class='actions'>
+                                                            <li class='chatear' title='Chatear'>C</li>
+                                                            <li class='agregar' title='Agregar'>A</li>
+                                                            <li class='juzgar' title='Juzgar'>J</li>
+                                                        </ul>                  
+                                                        <p class='username' title= 'Laura Escobar Bonnett'>Laura Escobar Bonnett</p>
+                                                        <p class='rol'>Princesa <b style='color:#fff;'>+100</b></p>
+                                                    </div>
+                                                </div>" src="/resources/images/L/OGnpwD3jys_tn.jpg" alt="">
+                                                &nbsp<a target= "_blank"  href="/L" >Laura Escobar Bonnett</a><span class="is">: </span><span class="Comentario">
+                                                    Jajaja no
+                                                </span>
+                                                <span class="Responder"></span>
+                                            </div>
+                                            <div class="respuestas hidden">
+                                                <div class="comentario hidden">
+                                                    <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                                    <img title="         
+                                                    <div class='tool'>
+                                                        <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                                        <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                                                        <div class='datos'>
+                                                            <ul class='actions'>
+                                                            <li class='chatear' title='Chatear'>C</li>
+                                                            <li class='agregar' title='Agregar'>A</li>
+                                                            <li class='juzgar' title='Juzgar'>J</li>
+                                                            </ul>                  
+                                                            <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                                                            <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+                                                        </div>
+                                                        <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                                                        <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                                                        <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                                                        <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+                                                    </div>" src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                                    &nbsp<a target= "_blank"  href="/A.K.A._Dizzy" >Luis Eduardo Gallego García</a><span class="is">: </span><span class="Comentario">
+                                                        🙄 Ya lo estoy describiendo..:
+                                                    </span>
+                                                    <span class="Responder"></span>
+                                                </div>
+                                                <div class="respuestas hidden">
+                                                    <div class="comentario hidden">
+                                                        <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                                        <img title="         
+                                                        <div class='tool'>
+                                                            <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                                            <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                                                            <div class='datos'>
+                                                                <ul class='actions'>
+                                                                <li class='chatear' title='Chatear'>C</li>
+                                                                <li class='agregar' title='Agregar'>A</li>
+                                                                <li class='juzgar' title='Juzgar'>J</li>
+                                                                </ul>                  
+                                                                <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                                                                <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+                                                            </div>
+                                                            <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                                                            <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                                                            <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                                                            <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+                                                        </div>" src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                                        &nbsp<a target= "_blank"  href="/A.K.A._Dizzy" >Luis Eduardo Gallego García</a><span class="is">: </span><span class="Comentario">
+                                                            ¿Eran las 2 am?, ¿otras dos diferentes? No sé mucho qué decir sobre esto... puedes salir de un puente o hacia éste, pero, ¿entrar en un puente?, eso no se puede
+                                                        </span>
+                                                        <span class="Responder"></span>
+                                                    </div>
+                                                    <div class="respuestas hidden">
+                                                        <div class="comentario hidden">
+                                                            <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                                            <img title="         
+                                                            <div class='tool'>
+                                                                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                                                <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                                                                <div class='datos'>
+                                                                    <ul class='actions'>
+                                                                    <li class='chatear' title='Chatear'>C</li>
+                                                                    <li class='agregar' title='Agregar'>A</li>
+                                                                    <li class='juzgar' title='Juzgar'>J</li>
+                                                                    </ul>                  
+                                                                    <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                                                                    <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+                                                                </div>
+                                                                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                                                                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                                                                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                                                                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+                                                            </div>" src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                                            &nbsp<a target= "_blank"  href="/A.K.A._Dizzy" >Luis Eduardo Gallego García</a><span class="is">: </span><span class="Comentario">
+                                                                ???
+                                                            </span>
+                                                            <span class="Responder"></span>
+                                                        </div>
+                                                        <div class="comentario hidden">
+                                                            <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                                            <img title="         
+                                                            <div class='tool'>
+                                                                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                                                <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                                                                <div class='datos'>
+                                                                    <ul class='actions'>
+                                                                    <li class='chatear' title='Chatear'>C</li>
+                                                                    <li class='agregar' title='Agregar'>A</li>
+                                                                    <li class='juzgar' title='Juzgar'>J</li>
+                                                                    </ul>                  
+                                                                    <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                                                                    <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+                                                                </div>
+                                                                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                                                                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                                                                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                                                                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+                                                            </div>" src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                                            &nbsp<a target= "_blank"  href="/A.K.A._Dizzy" >Luis Eduardo Gallego García</a><span class="is">: </span><span class="Comentario">
+                                                                ??
+                                                            </span>
+                                                            <span class="Responder"></span>
+                                                        </div>
+                                                        <div class="comentario hidden">
+                                                            <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                                            <img title="         
+                                                            <div class='tool'>
+                                                                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                                                <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                                                                <div class='datos'>
+                                                                    <ul class='actions'>
+                                                                    <li class='chatear' title='Chatear'>C</li>
+                                                                    <li class='agregar' title='Agregar'>A</li>
+                                                                    <li class='juzgar' title='Juzgar'>J</li>
+                                                                    </ul>                  
+                                                                    <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                                                                    <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+                                                                </div>
+                                                                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                                                                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                                                                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                                                                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+                                                            </div>" src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                                            &nbsp<a target= "_blank"  href="/A.K.A._Dizzy" >Luis Eduardo Gallego García</a><span class="is">: </span><span class="Comentario">
+                                                                ;)
+                                                            </span>
+                                                            <span class="Responder"></span>
+                                                        </div>
+                                                        <span class="Respuestas"></span>
+                                                    </div>
+                                                    <span class="Respuestas"></span>
+                                                </div>
+                                                <span class="Respuestas"></span>
+                                            </div>
+                                            <span class="Respuestas"></span>
+                                        </div>
+                                        <span class="Respuestas"></span>
+                                    </div>
+                                    <span class="Respuestas"></span>
+                                </div>
+                            </div>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                    </section>
+                    <section class="foto mult_img">
+                            <div class="info">
+                                <img src="/resources/images/AuraCardonaC/v8jX8zvIYN_tn.jpg" alt="">
+                                    <p class="username"><a class= "target" href="/AuraCardonaC" title="         
+                            <div class='tool'>
+                                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='94'>
+                                <img src='/resources/images/AuraCardonaC/v8jX8zvIYN_tn.jpg'>
+                                <div class='datos'>
+                                <ul class='actions'>
+                                    <li class='chatear' title='Chatear'>C</li>
+                                    <li class='agregar' title='Agregar'>A</li>
+                                    <li class='juzgar' title='Juzgar'>J</li>
+                                </ul>                  
+                                <p class='username' title= 'Aura Cardona Demasiado'>Aura Cardona Demasiado</p>
+                                <div class='Cont'><p title= 'Profe  de fitness' class='rol'>Profe  de fitness</p><b style='color:#fff;'>+94</b></div>
+
+                                </div>
+                            </div>">Aura Cardona Demasiado</a>; en <a href='#' class= 'target'  title='         
+                            <div class="tool city">
+                                <figure>
+                                <img class="thumbnail" src= "https://upload.wikimedia.org/wikipedia/commons/0/06/Miami_Afternoon.jpg"></img>
+                            </figure>
+                         
+                            <div class="introduction">
+                                Miami es una ciudad-puerto ubicada en el sureste de Florida, Estados Unidos, alrededor del río Miami, entre los Everglades y el océano Atlántico. Se pronuncia /miámi/ en español​ y el gentilicio es miamense; sin embargo, en español de América mayoritariamente se pronuncia /maiámi/ o /mayami/ por influencia del inglés y el gentilicio frecuente es mayamero, aunque estas formas no están admitidas por el Diccionario panhispánico de dudas. <br><a target= "_blank"style= "font-size:0.8em; " href= "https://es.wikipedia.org/wiki/Miami"><span style= "color: #2ecc71; font-size: 1.5em; ">···</span> es.wikipedia.org</a>
+                            </div>
+                            </div>'>Miami</a> <br><span title= "14 de Febrero de 2022 a las 9:50 pm" class="time">14 de Febrero a las 9:50 pm</span></p>
+                            </div>
+                            <p class="title"></p>
+                            <section class="navigation">
+                                <div style= "display: none; " class="nav_arrow left disabled"><div class="arrow"></div></div>
+                                <div style= "display: none; " class="nav_arrow right"><div class="arrow"></div></div>
+                                <section class= "carr">
+                                    <section class="picture">
+                                        <img class="pic" src="/resources/images/AuraCardonaC/OeGbHd00FS_tn.jpg" alt="" class="big">
+                                    </section>
+                                    <section class="picture">
+                                        <img class="pic" src="/resources/images/AuraCardonaC/RaSUCI3Caj_tn.jpg" alt="" class="big">
+                                    </section>
+                                </section>
+                            </section>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                    </section>
                     </section>
                 </aside>
                 <aside id="updates">
                     <aside id="feed">
-                        <section class="story current img">
+                        <section class="story current mult_img">
+                            <div class="info">
+                                    <img src="/resources/images/AuraCardonaC/v8jX8zvIYN_tn.jpg" alt="">
+                                    <p class="username"><a class= "target" href="/AuraCardonaC" title="         
+                            <div class='tool'>
+                                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='94'>
+                                <img src='/resources/images/AuraCardonaC/v8jX8zvIYN_tn.jpg'>
+                                <div class='datos'>
+                                <ul class='actions'>
+                                    <li class='chatear' title='Chatear'>C</li>
+                                    <li class='agregar' title='Agregar'>A</li>
+                                    <li class='juzgar' title='Juzgar'>J</li>
+                                </ul>                  
+                                <p class='username' title= 'Aura Cardona Demasiado'>Aura Cardona Demasiado</p>
+                                <div class='Cont'><p title= 'Profe  de fitness' class='rol'>Profe  de fitness</p><b style='color:#fff;'>+94</b></div>
+
+                                </div>
+                            </div>">Aura Cardona Demasiado</a>; en <a href='#' class= 'target'  title='         
+                            <div class="tool city">
+                                <figure>
+                                <img class="thumbnail" src= "https://upload.wikimedia.org/wikipedia/commons/3/3e/Miamimetroarea.jpg"></img>
+                            </figure>
+                         
+                            <div class="introduction">
+                                Miami Beach es una ciudad ubicada en el condado de Miami-Dade en el estado de Florida (Estados Unidos). En el Censo de 2010 tenía una población de 87.779 habitantes y una densidad poblacional de 2.233,68 personas por km² <br><a target= "_blank"style= "font-size:0.8em; " href= "https://es.wikipedia.org/wiki/Miami_Beach"><span style= "color: #2ecc71; font-size: 1.5em; ">···</span> es.wikipedia.org</a>
+                            </div>
+                            </div>'>Miami Beach</a> <br><span title= "14 de Febrero de 2022 a las 7:41 pm" class="time">14 de Febrero a las 7:41 pm</span></p>
+                            </div>
+                            <p class="title"><a class= "target" href="/A.K.A._Dizzy" title="         
+                                <div class='tool'>
+                                    <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                    <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                                    <div class='datos'>
+                                    <ul class='actions'>
+                                        <li class='chatear' title='Chatear'>C</li>
+                                        <li class='agregar' title='Agregar'>A</li>
+                                        <li class='juzgar' title='Juzgar'>J</li>
+                                    </ul>                  
+                                    <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                                    <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                                    </div>
+                                    <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                                    <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                                    <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                                    <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+                                </div>">A.K.A._Dizzy</a>, vea su(s) fotico(s), pues</p>
+                            <section class="navigation">
+                                <div class="nav_arrow left disabled"><div class="arrow"></div></div>
+                                <div class="nav_arrow right"><div class="arrow"></div></div>
+                                <section class= "carr">
+                                    <section class="picture">
+                                        <img class="pic" src="/resources/images/AuraCardonaC/jiYQlNRSX9.jpg" alt="" class="big">
+                                    </section>
+                                    <section class="picture">
+                                        <img class="pic" src="/resources/images/AuraCardonaC/pXF49GJHaI.jpg" alt="" class="big">
+                                    </section>
+                                    <section class="picture">
+                                        <img class="pic" src="/resources/images/AuraCardonaC/PGixs4gzlF.jpg" alt="" class="big">
+                                    </section>
+                                    <section class="picture">
+                                        <img class="pic" src="/resources/images/AuraCardonaC/dsM4R5nwut.jpg" alt="" class="big">
+                                    </section>
+                                </section>
+                            </section>
+                            <div class="Comentarios">
+                                <div class="comentario">
+                                    <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                    <img title="         
+                                    <div class='tool'>
+                                        <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                        <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                                        <div class='datos'>
+                                            <ul class='actions'>
+                                            <li class='chatear' title='Chatear'>C</li>
+                                            <li class='agregar' title='Agregar'>A</li>
+                                            <li class='juzgar' title='Juzgar'>J</li>
+                                            </ul>                  
+                                            <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                                            <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+                                        </div>
+                                        <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                                        <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                                        <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                                        <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+                                    </div>" src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                    &nbsp<a target= "_blank"  href="/A.K.A._Dizzy" >Luis Eduardo Gallego García</a><span class="is">: </span><span class="Comentario">
+                                        Jajajajaja dizque vea su fotico 🤣
+                                    </span>
+                                    <span class="Responder"></span>
+                                </div>
+                                <div class="respuestas">
+                                    <div class="comentario hidden">
+                                        <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='94'>
+                                        <img title="         
+                                        <div class='tool'>
+                                            <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='94'>
+                                            <img src='/resources/images/AuraCardonaC/v8jX8zvIYN_tn.jpg'>
+                                            <div class='datos'>
+                                                <ul class='actions'>
+                                                    <li class='chatear' title='Chatear'>C</li>
+                                                    <li class='agregar' title='Agregar'>A</li>
+                                                    <li class='juzgar' title='Juzgar'>J</li>
+                                                </ul>                  
+                                                <p class='username' title= 'Aura Cardona Demasiado'>Aura Cardona Demasiado</p>
+                                                <div class='Cont'><p title= 'Profe  de fitness' class='rol'>Profe  de fitness</p><b style='color:#fff;'>+94</b></div>
+                                            </div>
+                                        </div>" src="/resources/images/AuraCardonaC/v8jX8zvIYN_tn.jpg" alt="">
+                                        &nbsp<a target= "_blank"  href="/AuraCardonaC" >Aura Cardona Demasiado</a><span class="is">: </span><span class="Comentario">
+                                            🥰😘 
+                                        </span>
+                                        <span class="Responder"></span>
+                                    </div>
+                                    <div class="respuestas hidden">
+                                        <div class="comentario hidden">
+                                            <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                            <img title="         
+                                            <div class='tool'>
+                                                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                                <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                                                <div class='datos'>
+                                                    <ul class='actions'>
+                                                    <li class='chatear' title='Chatear'>C</li>
+                                                    <li class='agregar' title='Agregar'>A</li>
+                                                    <li class='juzgar' title='Juzgar'>J</li>
+                                                    </ul>                  
+                                                    <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                                                    <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+                                                </div>
+                                                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                                                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                                                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                                                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+                                            </div>" src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                            &nbsp<a target= "_blank"  href="/A.K.A._Dizzy" >Luis Eduardo Gallego García</a><span class="is">: </span><span class="Comentario">
+                                                😶🙂 
+                                            </span>
+                                            <span class="Responder"></span>
+                                        </div>
+                                        <span class="Respuestas"></span>
+                                    </div>
+                                    <span class="Respuestas"></span>
+                                </div>
+                                <div class="comentario">
+                                    <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                    <img title="         
+                                    <div class='tool'>
+                                        <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                        <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                                        <div class='datos'>
+                                            <ul class='actions'>
+                                            <li class='chatear' title='Chatear'>C</li>
+                                            <li class='agregar' title='Agregar'>A</li>
+                                            <li class='juzgar' title='Juzgar'>J</li>
+                                            </ul>                  
+                                            <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                                            <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+                                        </div>
+                                        <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                                        <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                                        <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                                        <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+                                    </div>" src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                    &nbsp<a target= "_blank"  href="/A.K.A._Dizzy" >Luis Eduardo Gallego García</a><span class="is">: </span><span class="Comentario">
+                                        Gracias ❤
+                                    </span>
+                                    <span class="Responder"></span>
+                                </div>
+                                <div class="respuestas">
+                                    <div class="comentario hidden">
+                                        <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='94'>
+                                        <img title="         
+                                        <div class='tool'>
+                                            <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='94'>
+                                            <img src='/resources/images/AuraCardonaC/v8jX8zvIYN_tn.jpg'>
+                                            <div class='datos'>
+                                                <ul class='actions'>
+                                                    <li class='chatear' title='Chatear'>C</li>
+                                                    <li class='agregar' title='Agregar'>A</li>
+                                                    <li class='juzgar' title='Juzgar'>J</li>
+                                                </ul>                  
+                                                <p class='username' title= 'Aura Cardona Demasiado'>Aura Cardona Demasiado</p>
+                                                <div class='Cont'><p title= 'Profe  de fitness' class='rol'>Profe  de fitness</p><b style='color:#fff;'>+94</b></div>
+                                            </div>
+                                        </div>" src="/resources/images/AuraCardonaC/v8jX8zvIYN_tn.jpg" alt="">
+                                        &nbsp<a target= "_blank"  href="/AuraCardonaC" >Aura Cardona Demasiado</a><span class="is">: </span><span class="Comentario">
+                                            😉
+                                        </span>
+                                        <span class="Responder"></span>
+                                    </div>
+                                    <span class="Respuestas"></span>
+                                </div>
+                                <div class="comentario">
+                                    <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                    <img title="         
+                                    <div class='tool'>
+                                        <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                        <img src='/resources/images/L/OGnpwD3jys_tn.jpg'>
+                                        <div class='datos'>
+                                            <ul class='actions'>
+                                                <li class='chatear' title='Chatear'>C</li>
+                                                <li class='agregar' title='Agregar'>A</li>
+                                                <li class='juzgar' title='Juzgar'>J</li>
+                                            </ul>                  
+                                            <p class='username' title= 'Laura Escobar Bonnett'>Laura Escobar Bonnett</p>
+                                            <p class='rol'>Princesa <b style='color:#fff;'>+100</b></p>
+                                        </div>
+                                    </div>" src="/resources/images/L/OGnpwD3jys_tn.jpg" alt="">
+                                    &nbsp<a target= "_blank"  href="/L" >Laura Escobar Bonnett</a><span class="is">: </span><span class="Comentario">Jajaja</span>
+                                    <span class="Responder"></span>
+                                </div>
+                                <div class="respuestas">
+                                    <div class="comentario hidden">
+                                        <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='94'>
+                                        <img title="         
+                                        <div class='tool'>
+                                            <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='94'>
+                                            <img src='/resources/images/AuraCardonaC/v8jX8zvIYN_tn.jpg'>
+                                            <div class='datos'>
+                                                <ul class='actions'>
+                                                    <li class='chatear' title='Chatear'>C</li>
+                                                    <li class='agregar' title='Agregar'>A</li>
+                                                    <li class='juzgar' title='Juzgar'>J</li>
+                                                </ul>                  
+                                                <p class='username' title= 'Aura Cardona Demasiado'>Aura Cardona Demasiado</p>
+                                                <div class='Cont'><p title= 'Profe  de fitness' class='rol'>Profe  de fitness</p><b style='color:#fff;'>+94</b></div>
+                                            </div>
+                                        </div>" src="/resources/images/AuraCardonaC/v8jX8zvIYN_tn.jpg" alt="">
+                                        &nbsp<a target= "_blank"  href="/AuraCardonaC" >Aura Cardona Demasiado</a><span class="is">: </span><span class="Comentario">
+                                            😜
+                                        </span>
+                                        <span class="Responder"></span>
+                                    </div>
+                                    <div class="respuestas hidden">
+                                        <div class="comentario hidden">
+                                            <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                            <img title="         
+                                            <div class='tool'>
+                                                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                                <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                                                <div class='datos'>
+                                                    <ul class='actions'>
+                                                    <li class='chatear' title='Chatear'>C</li>
+                                                    <li class='agregar' title='Agregar'>A</li>
+                                                    <li class='juzgar' title='Juzgar'>J</li>
+                                                    </ul>                  
+                                                    <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                                                    <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+                                                </div>
+                                                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                                                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                                                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                                                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+                                            </div>" src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                            &nbsp<a target= "_blank"  href="/A.K.A._Dizzy" >Luis Eduardo Gallego García</a><span class="is">: </span><span class="Comentario">
+                                                😏
+                                            </span>
+                                            <span class="Responder"></span>
+                                        </div>
+                                        <div class="respuestas hidden">
+                                            <div class="comentario hidden">
+                                                <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                                <img title="         
+                                                <div class='tool'>
+                                                    <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                                    <img src='/resources/images/L/OGnpwD3jys_tn.jpg'>
+                                                    <div class='datos'>
+                                                        <ul class='actions'>
+                                                            <li class='chatear' title='Chatear'>C</li>
+                                                            <li class='agregar' title='Agregar'>A</li>
+                                                            <li class='juzgar' title='Juzgar'>J</li>
+                                                        </ul>                  
+                                                        <p class='username' title= 'Laura Escobar Bonnett'>Laura Escobar Bonnett</p>
+                                                        <p class='rol'>Princesa <b style='color:#fff;'>+100</b></p>
+                                                    </div>
+                                                </div>" src="/resources/images/L/OGnpwD3jys_tn.jpg" alt="">
+                                                &nbsp<a target= "_blank"  href="/L" >Laura Escobar Bonnett</a><span class="is">: </span><span class="Comentario">
+                                                    Jajaja no
+                                                </span>
+                                                <span class="Responder"></span>
+                                            </div>
+                                            <div class="respuestas hidden">
+                                                <div class="comentario hidden">
+                                                    <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                                    <img title="         
+                                                    <div class='tool'>
+                                                        <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                                        <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                                                        <div class='datos'>
+                                                            <ul class='actions'>
+                                                            <li class='chatear' title='Chatear'>C</li>
+                                                            <li class='agregar' title='Agregar'>A</li>
+                                                            <li class='juzgar' title='Juzgar'>J</li>
+                                                            </ul>                  
+                                                            <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                                                            <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+                                                        </div>
+                                                        <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                                                        <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                                                        <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                                                        <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+                                                    </div>" src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                                    &nbsp<a target= "_blank"  href="/A.K.A._Dizzy" >Luis Eduardo Gallego García</a><span class="is">: </span><span class="Comentario">
+                                                        🙄 Ya lo estoy describiendo..:
+                                                    </span>
+                                                    <span class="Responder"></span>
+                                                </div>
+                                                <div class="respuestas hidden">
+                                                    <div class="comentario hidden">
+                                                        <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                                        <img title="         
+                                                        <div class='tool'>
+                                                            <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                                            <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                                                            <div class='datos'>
+                                                                <ul class='actions'>
+                                                                <li class='chatear' title='Chatear'>C</li>
+                                                                <li class='agregar' title='Agregar'>A</li>
+                                                                <li class='juzgar' title='Juzgar'>J</li>
+                                                                </ul>                  
+                                                                <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                                                                <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+                                                            </div>
+                                                            <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                                                            <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                                                            <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                                                            <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+                                                        </div>" src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                                        &nbsp<a target= "_blank"  href="/A.K.A._Dizzy" >Luis Eduardo Gallego García</a><span class="is">: </span><span class="Comentario">
+                                                            ¿Eran las 2 am?, ¿otras dos diferentes? No sé mucho qué decir sobre esto... puedes salir de un puente o hacia éste, pero, ¿entrar en un puente?, eso no se puede
+                                                        </span>
+                                                        <span class="Responder"></span>
+                                                    </div>
+                                                    <div class="respuestas hidden">
+                                                        <div class="comentario hidden">
+                                                            <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                                            <img title="         
+                                                            <div class='tool'>
+                                                                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                                                <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                                                                <div class='datos'>
+                                                                    <ul class='actions'>
+                                                                    <li class='chatear' title='Chatear'>C</li>
+                                                                    <li class='agregar' title='Agregar'>A</li>
+                                                                    <li class='juzgar' title='Juzgar'>J</li>
+                                                                    </ul>                  
+                                                                    <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                                                                    <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+                                                                </div>
+                                                                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                                                                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                                                                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                                                                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+                                                            </div>" src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                                            &nbsp<a target= "_blank"  href="/A.K.A._Dizzy" >Luis Eduardo Gallego García</a><span class="is">: </span><span class="Comentario">
+                                                                ???
+                                                            </span>
+                                                            <span class="Responder"></span>
+                                                        </div>
+                                                        <div class="comentario hidden">
+                                                            <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                                            <img title="         
+                                                            <div class='tool'>
+                                                                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                                                <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                                                                <div class='datos'>
+                                                                    <ul class='actions'>
+                                                                    <li class='chatear' title='Chatear'>C</li>
+                                                                    <li class='agregar' title='Agregar'>A</li>
+                                                                    <li class='juzgar' title='Juzgar'>J</li>
+                                                                    </ul>                  
+                                                                    <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                                                                    <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+                                                                </div>
+                                                                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                                                                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                                                                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                                                                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+                                                            </div>" src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                                            &nbsp<a target= "_blank"  href="/A.K.A._Dizzy" >Luis Eduardo Gallego García</a><span class="is">: </span><span class="Comentario">
+                                                                ??
+                                                            </span>
+                                                            <span class="Responder"></span>
+                                                        </div>
+                                                        <div class="comentario hidden">
+                                                            <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                                            <img title="         
+                                                            <div class='tool'>
+                                                                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                                                <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                                                                <div class='datos'>
+                                                                    <ul class='actions'>
+                                                                    <li class='chatear' title='Chatear'>C</li>
+                                                                    <li class='agregar' title='Agregar'>A</li>
+                                                                    <li class='juzgar' title='Juzgar'>J</li>
+                                                                    </ul>                  
+                                                                    <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                                                                    <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+                                                                </div>
+                                                                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                                                                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                                                                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                                                                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+                                                            </div>" src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                                            &nbsp<a target= "_blank"  href="/A.K.A._Dizzy" >Luis Eduardo Gallego García</a><span class="is">: </span><span class="Comentario">
+                                                                ;)
+                                                            </span>
+                                                            <span class="Responder"></span>
+                                                        </div>
+                                                        <span class="Respuestas"></span>
+                                                    </div>
+                                                    <span class="Respuestas"></span>
+                                                </div>
+                                                <span class="Respuestas"></span>
+                                            </div>
+                                            <span class="Respuestas"></span>
+                                        </div>
+                                        <span class="Respuestas"></span>
+                                    </div>
+                                    <span class="Respuestas"></span>
+                                </div>
+                            </div>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                    </section>
+                        <section class="story img">
             <div class="info">
                     <img src="/resources/images/AuraCardonaC/v8jX8zvIYN_tn.jpg" alt="">
                     <p class="username"><a class= "target" href="/AuraCardonaC" title="         
@@ -615,16 +1542,16 @@ $('.username').tooltip({
                 <div class="nav_arrow right"><div class="arrow"></div></div>
                 <section class= "carr">
                     <section class="picture">
-                        <img class="pic" src="/resources/images/AuraCardonaC/BboagO5svp_tn.jpg" alt="" class="big">
+                        <img class="pic" src="/resources/images/AuraCardonaC/BboagO5svp.jpg" alt="" class="big">
                     </section>
                     <section class="picture">
-                        <img class="pic" src="/resources/images/AuraCardonaC/Zl4zRgmqy9_tn.jpg" alt="" class="big">
+                        <img class="pic" src="/resources/images/AuraCardonaC/Zl4zRgmqy9.jpg" alt="" class="big">
                     </section>
                     <section class="picture">
-                        <img class="pic" src="/resources/images/AuraCardonaC/wabDNvXanj_tn.jpg" alt="" class="big">
+                        <img class="pic" src="/resources/images/AuraCardonaC/wabDNvXanj.jpg" alt="" class="big">
                     </section>
                     <section class="picture">
-                        <img class="pic" src="/resources/images/AuraCardonaC/rKn407mzhB_tn.jpg" alt="" class="big">
+                        <img class="pic" src="/resources/images/AuraCardonaC/rKn407mzhB.jpg" alt="" class="big">
                     </section>
                 </section>
             </section>
