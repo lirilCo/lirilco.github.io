@@ -328,18 +328,24 @@ function openModal(a) {
                     
                 H != can493ax? H= can493ax: H= asdknki4; 
             } 
+
+            $(this).html('<span class="Responder"></span>Más respuestas (∞)'); 
+
+            for(let collapse of document.querySelectorAll("#theater .RespueNtas .Responder")){ 
+                collapse.addEventListener("contextmenu", function(e){ 
+                    e.preventDefault(); 
+
+                    $(this.parentElement.parentElement).find(".comentario").remove(); 
+                                
+                    H= asdknki4; 
+
+                    $("#theater .RespueNtas").html('<span class="Responder"></span>Respuestas (∞)'); 
+                }) 
+            }; 
         } 
     }); 
 
-    for(let collapse of document.querySelectorAll("#theater .RespueNtas .Responder")){ 
-        collapse.addEventListener("contextmenu", function(e){ 
-            e.preventDefault(); 
-
-            $(this.parentElement.parentElement).find(".comentario").remove(); 
-                         
-            H= asdknki4; 
-        }) 
-    }; 
+    
 
     $(".comentario .Responder").on("click", function(){wD($(this))}); 
 
@@ -575,6 +581,12 @@ function closeModal() {
     $(".Comentario .media > div").prop('outerHTML', function(){return $(this).find("audio").prop("outerHTML")}); 
     
     $("#theater .Comentarios").find(".Respuestas .Responder").each(function(){wwd($(this)[0], true)}); 
+
+    $("#theater .RespueNtas").parent().find(".comentario").remove(); 
+
+    H= asdknki4; 
+
+    $("#theater .RespueNtas").html('<span class="Responder"></span>Respuestas (∞)'); 
 
     Antheater.find(".Comentarios").html($("#theater .Comentarios").html()); 
 
