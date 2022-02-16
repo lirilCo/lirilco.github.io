@@ -56,6 +56,15 @@ $('.username').tooltip({
             return false;
         }
         $(".knob").knob();
+        $(".chatear").click(function(){ 
+            u= $(this).parent().parent().find(".username").text(); 
+            
+            $("#chat").find("ul").find("li").each(function(){ 
+                $(this).find("p").text() === u? $(this).click(): 1; 
+            }); 
+
+            !!Antheater? closeModal(): 1; 
+        }) 
         var $id = $(ui.tooltip).attr('id');
         
         // close any lingering tooltips
@@ -260,14 +269,20 @@ $('.username').tooltip({
             <div class="description">
                 <p class="title"></p>
                 <p class="more">
-                
                 </p>
+            </div>
+            <div class="comentarios">
+                <div class="Comentarios">
+                </div>
+                <div class="newComment">
+                    <textarea rows="1"></textarea>
+                </div>
             </div>
             <div class="options button">
             <ul>
                 <li class="bookmark"></li>
                 <li class="star"></li>
-                <a><li class="read"></li></a>
+                <li class="read"></li>
             </ul></div>
             <p id="close"></p>
             </aside>

@@ -54,6 +54,15 @@ $('.comentario').tooltip({
             return false;
         }
         $(".knob").knob();
+        $(".chatear").click(function(){ 
+            u= $(this).parent().parent().find(".username").text(); 
+            
+            $("#chat").find("ul").find("li").each(function(){ 
+                $(this).find("p").text() === u? $(this).click(): 1; 
+            }); 
+
+            !!Antheater? closeModal(): 1; 
+        }) 
         var $id = $(ui.tooltip).attr('id');
         
         // close any lingering tooltips

@@ -45,7 +45,18 @@
               }
           }
       });
-      
+      $(".line").tooltip({      
+        track: true,
+        position: {
+        my: "center bottom-6",
+        at: "center top", 
+        options: {
+              content: function () {
+                  return $(this).prop('title');
+              }
+          }
+      }
+})
 $('.username').tooltip({
     items: 'a.target',
     open: function(event, ui)
@@ -55,6 +66,15 @@ $('.username').tooltip({
             return false;
         }
         $(".knob").knob();
+        $(".chatear").click(function(){ 
+            u= $(this).parent().parent().find(".username").text(); 
+            
+            $("#chat").find("ul").find("li").each(function(){ 
+                $(this).find("p").text() === u? $(this).click(): 1; 
+            }); 
+
+            !!Antheater? closeModal(): 1; 
+        }) 
         var $id = $(ui.tooltip).attr('id');
         
         // close any lingering tooltips
@@ -259,14 +279,20 @@ $('.username').tooltip({
             <div class="description">
                 <p class="title"></p>
                 <p class="more">
-                
                 </p>
+            </div>
+            <div class="comentarios">
+                <div class="Comentarios">
+                </div>
+                <div class="newComment">
+                    <textarea rows="1"></textarea>
+                </div>
             </div>
             <div class="options button">
             <ul>
                 <li class="bookmark"></li>
                 <li class="star"></li>
-                <a><li class="read"></li></a>
+                <li class="read"></li>
             </ul></div>
             <p id="close"></p>
             </aside>
@@ -276,8 +302,8 @@ $('.username').tooltip({
         <section id="content">
             <section id="cover">
                 <div title="<span style= 'color: #4f61bf'>Curso completado (Dubbing en español)</span>" class="line" style="border-bottom: 4px solid #4f61bf; top: 32%;"></div>
-                <div title="<span style= 'color: #4f61bf'>Curso completado (Sub syncing)</span>" class="line" style="border-bottom: 4px solid #79371d; top: 43%;"></div>
-                <div title="<span style= 'color: #4f61bf'>Rol asignado (Dubber)</span>" class="line" style="border-bottom: 4px solid #8c8866; top: 37.5%;"></div>
+                <div title="<span style= 'color: #79371d'>Curso completado (Sub syncing)</span>" class="line" style="border-bottom: 4px solid #79371d; top: 43%;"></div>
+                <div title="<span style= 'color: #8c8866'>Rol asignado (Dubber)</span>" class="line" style="border-bottom: 4px solid #8c8866; top: 37.5%;"></div>
                 <figure id="profilePic">
                     <img src="/resources/images/LamaMadora/sdlQg1CoQ3_tn.jpg" alt="">
                     <input class="knob button" data-width="195" data-height="195" data-fgColor="#2ecc71" data-bgColor="rgba(0,0,0,0)" data-displayInput=false data-thickness=".06" readonly value="88">
@@ -299,9 +325,9 @@ $('.username').tooltip({
                   <p class='rol'>Dubber <b style='color:#fff;'>+88</b></p>
 
                 </div>
-                <div class='insignia' style='top: 11px;' title='Curso completado (Dubbing en español)'></div>
-                <div class='insignia' style='top: 23px;'title='Curso completado (Sub syncing)'></div>
-                <div class='insignia' style='top: 17px;' title='Rol asignado (Dubber)'> </div>
+                <div class='insignia' style='top: 11px; border-bottom-color: #4f61bf; ' title='Curso completado (Dubbing en español)'></div>
+                <div class='insignia' style='top: 23px; border-bottom-color: #79371d; 'title='Curso completado (Sub syncing)'></div>
+                <div class='insignia' style='top: 17px; border-bottom-color: #8c8866; ' title='Rol asignado (Dubber)'> </div>
 
               </div>">Juan José Martínez Vidal</a><br><span title= "12 de Diciembre de 2021 a las 2:18 pm" class="time">Diciembre de 2021</span></p>
                         </div>
@@ -353,9 +379,9 @@ $('.username').tooltip({
                   <p class='rol'>Dubber <b style='color:#fff;'>+88</b></p>
 
                 </div>
-                <div class='insignia' style='top: 11px;' title='Curso completado (Dubbing en español)'></div>
-                <div class='insignia' style='top: 23px;'title='Curso completado (Sub syncing)'></div>
-                <div class='insignia' style='top: 17px;' title='Rol asignado (Dubber)'> </div>
+                <div class='insignia' style='top: 11px; border-bottom-color: #4f61bf; ' title='Curso completado (Dubbing en español)'></div>
+                <div class='insignia' style='top: 23px; border-bottom-color: #79371d; 'title='Curso completado (Sub syncing)'></div>
+                <div class='insignia' style='top: 17px; border-bottom-color: #8c8866; ' title='Rol asignado (Dubber)'> </div>
 
               </div>">Juan José Martínez Vidal</a> <br><span title= "2 de Enero de 2022 a la 1:5 am" class="time">2 de Enero a la 1:5 am</span></p>                    
                             </div>
@@ -386,9 +412,9 @@ $('.username').tooltip({
                   <p class='rol'>Dubber <b style='color:#fff;'>+88</b></p>
 
                 </div>
-                <div class='insignia' style='top: 11px;' title='Curso completado (Dubbing en español)'></div>
-                <div class='insignia' style='top: 23px;'title='Curso completado (Sub syncing)'></div>
-                <div class='insignia' style='top: 17px;' title='Rol asignado (Dubber)'> </div>
+                <div class='insignia' style='top: 11px; border-bottom-color: #4f61bf; ' title='Curso completado (Dubbing en español)'></div>
+                <div class='insignia' style='top: 23px; border-bottom-color: #79371d; 'title='Curso completado (Sub syncing)'></div>
+                <div class='insignia' style='top: 17px; border-bottom-color: #8c8866; ' title='Rol asignado (Dubber)'> </div>
 
               </div>">Juan José Martínez Vidal</a> <br><span title= "10 de Diciembre de 2021 a las 2:31 pm" class="time">Diciembre de 2021</span></p>                    
                             </div>
@@ -418,9 +444,9 @@ $('.username').tooltip({
                   <p class='rol'>Dubber <b style='color:#fff;'>+88</b></p>
 
                 </div>
-                <div class='insignia' style='top: 11px;' title='Curso completado (Dubbing en español)'></div>
-                <div class='insignia' style='top: 23px;'title='Curso completado (Sub syncing)'></div>
-                <div class='insignia' style='top: 17px;' title='Rol asignado (Dubber)'> </div>
+                <div class='insignia' style='top: 11px; border-bottom-color: #4f61bf; ' title='Curso completado (Dubbing en español)'></div>
+                <div class='insignia' style='top: 23px; border-bottom-color: #79371d; 'title='Curso completado (Sub syncing)'></div>
+                <div class='insignia' style='top: 17px; border-bottom-color: #8c8866; ' title='Rol asignado (Dubber)'> </div>
 
               </div>">Juan José Martínez Vidal</a> <br><span title= "27 de Noviembre de 2021 a las 3:28 pm" class="time">Noviembre de 2021</span></p>                    
                             </div>
@@ -462,9 +488,9 @@ $('.username').tooltip({
                   <p class='rol'>Dubber <b style='color:#fff;'>+88</b></p>
 
                 </div>
-                <div class='insignia' style='top: 11px;' title='Curso completado (Dubbing en español)'></div>
-                <div class='insignia' style='top: 23px;'title='Curso completado (Sub syncing)'></div>
-                <div class='insignia' style='top: 17px;' title='Rol asignado (Dubber)'> </div>
+                <div class='insignia' style='top: 11px; border-bottom-color: #4f61bf; ' title='Curso completado (Dubbing en español)'></div>
+                <div class='insignia' style='top: 23px; border-bottom-color: #79371d; 'title='Curso completado (Sub syncing)'></div>
+                <div class='insignia' style='top: 17px; border-bottom-color: #8c8866; ' title='Rol asignado (Dubber)'> </div>
 
               </div>">Juan José Martínez Vidal</a> <br><span title= "27 de Noviembre de 2021 a las 3:28 pm" class="time">Noviembre de 2021</span></p>                    
                             </div>
@@ -506,9 +532,9 @@ $('.username').tooltip({
                   <p class='rol'>Dubber <b style='color:#fff;'>+88</b></p>
 
                 </div>
-                <div class='insignia' style='top: 11px;' title='Curso completado (Dubbing en español)'></div>
-                <div class='insignia' style='top: 23px;'title='Curso completado (Sub syncing)'></div>
-                <div class='insignia' style='top: 17px;' title='Rol asignado (Dubber)'> </div>
+                <div class='insignia' style='top: 11px; border-bottom-color: #4f61bf; ' title='Curso completado (Dubbing en español)'></div>
+                <div class='insignia' style='top: 23px; border-bottom-color: #79371d; 'title='Curso completado (Sub syncing)'></div>
+                <div class='insignia' style='top: 17px; border-bottom-color: #8c8866; ' title='Rol asignado (Dubber)'> </div>
 
               </div>">Juan José Martínez Vidal</a> <br><span title= "27 de Noviembre de 2021 a las 3:28 pm" class="time">Noviembre de 2021</span></p>                    
                             </div>
@@ -550,9 +576,9 @@ $('.username').tooltip({
                   <p class='rol'>Dubber <b style='color:#fff;'>+88</b></p>
 
                 </div>
-                <div class='insignia' style='top: 11px;' title='Curso completado (Dubbing en español)'></div>
-                <div class='insignia' style='top: 23px;'title='Curso completado (Sub syncing)'></div>
-                <div class='insignia' style='top: 17px;' title='Rol asignado (Dubber)'> </div>
+                <div class='insignia' style='top: 11px; border-bottom-color: #4f61bf; ' title='Curso completado (Dubbing en español)'></div>
+                <div class='insignia' style='top: 23px; border-bottom-color: #79371d; 'title='Curso completado (Sub syncing)'></div>
+                <div class='insignia' style='top: 17px; border-bottom-color: #8c8866; ' title='Rol asignado (Dubber)'> </div>
 
               </div>">Juan José Martínez Vidal</a> <br><span title= "27 de Noviembre de 2021 a las 3:28 pm" class="time">Noviembre de 2021</span></p>                    
                             </div>
@@ -595,9 +621,9 @@ $('.username').tooltip({
                   <p class='rol'>Dubber <b style='color:#fff;'>+88</b></p>
 
                 </div>
-                <div class='insignia' style='top: 11px;' title='Curso completado (Dubbing en español)'></div>
-                <div class='insignia' style='top: 23px;'title='Curso completado (Sub syncing)'></div>
-                <div class='insignia' style='top: 17px;' title='Rol asignado (Dubber)'> </div>
+                <div class='insignia' style='top: 11px; border-bottom-color: #4f61bf; ' title='Curso completado (Dubbing en español)'></div>
+                <div class='insignia' style='top: 23px; border-bottom-color: #79371d; 'title='Curso completado (Sub syncing)'></div>
+                <div class='insignia' style='top: 17px; border-bottom-color: #8c8866; ' title='Rol asignado (Dubber)'> </div>
 
               </div>">Juan José Martínez Vidal</a> <br><span title= "15 de Julio de 2021 a las 8:21 pm" class="time">Julio de 2021</span></p>                    
                             </div>
@@ -631,9 +657,9 @@ $('.username').tooltip({
                   <p class='rol'>Dubber <b style='color:#fff;'>+88</b></p>
 
                 </div>
-                <div class='insignia' style='top: 11px;' title='Curso completado (Dubbing en español)'></div>
-                <div class='insignia' style='top: 23px;'title='Curso completado (Sub syncing)'></div>
-                <div class='insignia' style='top: 17px;' title='Rol asignado (Dubber)'> </div>
+                <div class='insignia' style='top: 11px; border-bottom-color: #4f61bf; ' title='Curso completado (Dubbing en español)'></div>
+                <div class='insignia' style='top: 23px; border-bottom-color: #79371d; 'title='Curso completado (Sub syncing)'></div>
+                <div class='insignia' style='top: 17px; border-bottom-color: #8c8866; ' title='Rol asignado (Dubber)'> </div>
 
               </div>">Juan José Martínez Vidal</a> <br><span title= "2 de Enero de 2022 a la 1:5 am" class="time">2 de Enero a la 1:5 am</span></p>                    
             </div>
@@ -668,9 +694,9 @@ $('.username').tooltip({
                   <p class='rol'>Dubber <b style='color:#fff;'>+88</b></p>
 
                 </div>
-                <div class='insignia' style='top: 11px;' title='Curso completado (Dubbing en español)'></div>
-                <div class='insignia' style='top: 23px;'title='Curso completado (Sub syncing)'></div>
-                <div class='insignia' style='top: 17px;' title='Rol asignado (Dubber)'> </div>
+                <div class='insignia' style='top: 11px; border-bottom-color: #4f61bf; ' title='Curso completado (Dubbing en español)'></div>
+                <div class='insignia' style='top: 23px; border-bottom-color: #79371d; 'title='Curso completado (Sub syncing)'></div>
+                <div class='insignia' style='top: 17px; border-bottom-color: #8c8866; ' title='Rol asignado (Dubber)'> </div>
 
               </div>">Juan José Martínez Vidal</a> <br><span title= "10 de Diciembre de 2021 a las 2:31 pm" class="time">Diciembre de 2021</span></p>                    
             </div>
@@ -705,9 +731,9 @@ $('.username').tooltip({
                   <p class='rol'>Dubber <b style='color:#fff;'>+88</b></p>
 
                 </div>
-                <div class='insignia' style='top: 11px;' title='Curso completado (Dubbing en español)'></div>
-                <div class='insignia' style='top: 23px;'title='Curso completado (Sub syncing)'></div>
-                <div class='insignia' style='top: 17px;' title='Rol asignado (Dubber)'> </div>
+                <div class='insignia' style='top: 11px; border-bottom-color: #4f61bf; ' title='Curso completado (Dubbing en español)'></div>
+                <div class='insignia' style='top: 23px; border-bottom-color: #79371d; 'title='Curso completado (Sub syncing)'></div>
+                <div class='insignia' style='top: 17px; border-bottom-color: #8c8866; ' title='Rol asignado (Dubber)'> </div>
 
               </div>">Juan José Martínez Vidal </a> <br><span title= "27 de Noviembre de 2021 a las 3:28 pm" class="time">Noviembre de 2021</span></p>                    
             </div>
@@ -752,9 +778,9 @@ $('.username').tooltip({
                   <p class='rol'>Dubber <b style='color:#fff;'>+88</b></p>
 
                 </div>
-                <div class='insignia' style='top: 11px;' title='Curso completado (Dubbing en español)'></div>
-                <div class='insignia' style='top: 23px;'title='Curso completado (Sub syncing)'></div>
-                <div class='insignia' style='top: 17px;' title='Rol asignado (Dubber)'> </div>
+                <div class='insignia' style='top: 11px; border-bottom-color: #4f61bf; ' title='Curso completado (Dubbing en español)'></div>
+                <div class='insignia' style='top: 23px; border-bottom-color: #79371d; 'title='Curso completado (Sub syncing)'></div>
+                <div class='insignia' style='top: 17px; border-bottom-color: #8c8866; ' title='Rol asignado (Dubber)'> </div>
 
               </div>">
 
@@ -811,9 +837,9 @@ $('.username').tooltip({
                   <p class='rol'>Dubber <b style='color:#fff;'>+88</b></p>
 
                 </div>
-                <div class='insignia' style='top: 11px;' title='Curso completado (Dubbing en español)'></div>
-                <div class='insignia' style='top: 23px;'title='Curso completado (Sub syncing)'></div>
-                <div class='insignia' style='top: 17px;' title='Rol asignado (Dubber)'> </div>
+                <div class='insignia' style='top: 11px; border-bottom-color: #4f61bf; ' title='Curso completado (Dubbing en español)'></div>
+                <div class='insignia' style='top: 23px; border-bottom-color: #79371d; 'title='Curso completado (Sub syncing)'></div>
+                <div class='insignia' style='top: 17px; border-bottom-color: #8c8866; ' title='Rol asignado (Dubber)'> </div>
 
               </div>">
 
@@ -1008,14 +1034,6 @@ $('.username').tooltip({
             $(this).css("top", "auto");
             
         });
-
-    $(".line").tooltip({      
-        track: true,
-        position: {
-        my: "center bottom-6",
-        at: "center top"
-      }
-});
 
     </script>
     <script>

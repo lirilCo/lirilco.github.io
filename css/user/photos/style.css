@@ -405,7 +405,7 @@ display: block;
   max-height: 80px;
   min-height: 28px;
   width: 100%;
-    padding: 8px 60px 0 5px;
+    padding: 8px 60px 8px 5px;
     border-radius: 0;
     color: #000;
     resize: none;
@@ -500,6 +500,9 @@ display: inline-block;
     background: #fff; 
     position:relative;
 }
+.tool .agregar{ 
+    color: #ccc; 
+} 
 .tool .datos .rol
 {
     text-align: center;

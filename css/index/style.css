@@ -630,10 +630,15 @@ content: "\e627"
 #sidebar{
     position: fixed;
     right: 0;
-    top: 46px;
+    top: 0;
     width: 205px;
     background-color: #fff;
     z-index: 1;
+    height: 100%;
+    padding-top: 46px;
+    box-sizing: border-box;
+    display: flex; 
+    flex-flow: column; 
 }
 #sidebar .slimScrollDiv{
     position: absolute;
@@ -643,7 +648,7 @@ content: "\e627"
 }
 #sidebar #container{
     position: relative;
-
+    flex-grow: 1; 
 }
 #sidebar  #container #resizeBottom{
     position: absolute;
@@ -720,7 +725,6 @@ content: "\e627"
 }
 #sidebar #search
 {
-    position: absolute;
     bottom: 0;
     font-size: 14px;
     text-align: center;
@@ -931,7 +935,7 @@ display: block;
   max-height: 80px;
   min-height: 28px;
   width: 100%;
-    padding: 8px 60px 0 5px;
+    padding: 8px 60px 8px 5px;
     border-radius: 0;
     color: #000;
     resize: none;
@@ -1010,6 +1014,9 @@ display: inline-block;
     background: #fff; 
     position:relative;
 }
+.tool .agregar{ 
+    color: #ccc; 
+} 
 .tool .datos .rol
 {
     text-align: center;

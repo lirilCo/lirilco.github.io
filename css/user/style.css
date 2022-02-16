@@ -401,6 +401,8 @@ normal #fff*/
 #biography
 {
     margin-top: 47px;
+    padding-right: 205px;
+    box-sizing: border-box;
 }
 
 #biography #content
@@ -854,10 +856,15 @@ content: "\e903"
 #sidebar{
     position: fixed;
     right: 0;
-    top: 46px;
+    top: 0;
     width: 205px;
     background-color: #fff;
     z-index: 1;
+    height: 100%;
+    padding-top: 46px;
+    box-sizing: border-box;
+    display: flex; 
+    flex-flow: column; <
 }
 #sidebar .slimScrollDiv{
     position: absolute;
@@ -867,7 +874,7 @@ content: "\e903"
 }
 #sidebar #container{
     position: relative;
-
+    flex-grow: 1; 
 }
 #sidebar  #container #resizeBottom{
     position: absolute;
@@ -939,8 +946,6 @@ content: "\e903"
 }
 #sidebar #search
 {
-    position: absolute;
-    bottom: 0;
     font-size: 14px;
     text-align: center;
     background-color: #fff;
@@ -1092,10 +1097,12 @@ display: block;
 #chats .chats .chat.open .chatBox
 {
     width: 100%;
-   height: 265px;
+    height: 265px;
     position: relative;
     display: block;
-    background-color: #ecf0f1
+    background-color: #ecf0f1;
+    display: flex;
+    flex-flow: column;
 }
 #chats .chats .chat.open .chatBox .messages 
 {
@@ -1103,7 +1110,6 @@ display: block;
     padding: 04px;
     display: inline-block;
     width: 100%;
-    position: absolute;
     bottom: 28px;
     height: 237px;
     overflow-y: auto;
@@ -1127,7 +1133,9 @@ display: block;
     white-space: normal;
     padding: 5px;
     word-wrap: break-word;
-    
+}
+#chats .chats .chat.open .chatBox .messages .sent:last-child {
+    margin-bottom: 5px;
 }
 #chats .chats .chat.open .chatBox .messages .sent i, #chats .chats .chat.open .chatBox .messages .sent u
 {
@@ -1136,7 +1144,6 @@ display: block;
 #chats .chats .chat.open .chatBox .newMessage
 {
   width: 100%;
-   position: absolute;
     bottom: 0;
     text-align: left;
     background-color: #fff;
@@ -1149,7 +1156,7 @@ display: block;
   max-height: 80px;
   min-height: 28px;
   width: 100%;
-    padding: 8px 60px 0 5px;
+    padding: 8px 60px 8px 5px;
     border-radius: 0;
     color: #000;
     resize: none;
@@ -1228,6 +1235,9 @@ display: inline-block;
     background: #fff; 
     position:relative;
 }
+.tool .agregar{ 
+    color: #ccc; 
+} 
 .tool .datos .rol
 {
     text-align: center;
