@@ -1441,3 +1441,92 @@ $(document).on('DOMMouseScroll mousewheel', '.Scrollable', function(ev) {
         return prevent();
     }
 });
+$(function($) {
+    $.widget("ui.tooltip", $.ui.tooltip, {
+        options: {
+            content: function() {
+                return $(this).prop('title');
+            }
+        }
+    });
+
+    $('.title').tooltip({
+        items: 'a.target',
+        open: function(event, ui) {
+            if (typeof(event.originalEvent) === 'undefined') {
+                return false;
+            }
+            $(".knob").knob();
+
+            ý= $(this); 
+
+            $(".chatear").click(function() {
+                u = $(this).parent().parent().find(".username").text();
+
+                $("#chat").find("ul").find("li").each(function() {
+                    $(this).find("p").text() === u ? $(this).click() : 1;
+                });
+
+                !!Antheater? (function(){closeModal(); ý.remove(); })(): 1;
+            })
+            var $id = $(ui.tooltip).attr('id');
+
+            // close any lingering tooltips
+            $('div.ui-tooltip').not('#' + $id).remove();
+
+            // ajax function to pull in data and add it to the tooltip goes here
+        },
+        close: function(event, ui) {
+            ui.tooltip.hover(function() {
+                    $(this).stop(true).fadeTo(400, 1);
+                },
+                function() {
+                    $(this).fadeOut('400', function() {
+                        $(this).remove();
+                    });
+                });
+        }
+    });
+
+    $('.username').tooltip({
+        items: 'a.target',
+        open: function(event, ui) {
+            if (typeof(event.originalEvent) === 'undefined') {
+                return false;
+            }
+            $(".knob").knob();
+
+            ý= $(this); 
+
+            $(".chatear").click(function() {
+                u = $(this).parent().parent().find(".username").text();
+
+                $("#chat").find("ul").find("li").each(function() {
+                    $(this).find("p").text() === u ? $(this).click() : 1;
+                });
+
+                !!Antheater? (function(){closeModal(); ý.remove(); })(): 1; 
+            })
+            var $id = $(ui.tooltip).attr('id');
+
+            // close any lingering tooltips
+            $('div.ui-tooltip').not('#' + $id).remove();
+
+            // ajax function to pull in data and add it to the tooltip goes here
+        },
+        close: function(event, ui) {
+            ui.tooltip.hover(function() {
+                    $(this).stop(true).fadeTo(400, 1);
+                },
+                function() {
+                    $(this).fadeOut('400', function() {
+                        $(this).remove();
+                    });
+                });
+        }
+    });
+
+    $(".knob").knob();
+
+    $(".Enlargetic").on("contextmenu", function(j){j.preventDefault(); ab= $(this).children().filter(".active"); $(this).children().not(".active").addClass("active"); ab.removeClass("active"); }); 
+});

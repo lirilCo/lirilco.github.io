@@ -37,159 +37,6 @@
  <script src="js/jquery.knob.js"></script>
     <script src="js/video.js"></script>
     <script src="/js/audio.min.js"></script>
-    <script type="text/javascript">
-  $(function () {
-      $.widget("ui.tooltip", $.ui.tooltip, {
-          options: {
-              content: function () {
-                  return $(this).prop('title');
-              }
-          }
-      });
-      
-$('.username').tooltip({
-    items: 'a.target',
-    open: function(event, ui)
-    {
-        if (typeof(event.originalEvent) === 'undefined')
-        {
-            return false;
-        }
-        $(".knob").knob();
-        $(".chatear").click(function(){ 
-            u= $(this).parent().parent().find(".username").text(); 
-            
-            $("#chat").find("ul").find("li").each(function(){ 
-                $(this).find("p").text() === u? $(this).click(): 1; 
-            }); 
-
-            !!Antheater? closeModal(): 1; 
-        }) 
-        var $id = $(ui.tooltip).attr('id');
-        
-        // close any lingering tooltips
-        $('div.ui-tooltip').not('#' + $id).remove();
-        
-        // ajax function to pull in data and add it to the tooltip goes here
-    },
-    close: function(event, ui)
-    {
-        ui.tooltip.hover(function()
-        {
-            $(this).stop(true).fadeTo(400, 1); 
-        },
-        function()
-        {
-            $(this).fadeOut('400', function()
-            {
-                $(this).remove();
-            });
-        });
-    }
-});  });
-</script>
-
-   <script>
-        $(function ($) {
-
-            $(".knob").knob({
-                change: function (value) {
-                    //console.log("change : " + value);
-                },
-                release: function (value) {
-                    //console.log(this.$.attr('value'));
-                    console.log("release : " + value);
-                },
-                cancel: function () {
-                    console.log("cancel : ", this);
-                },
-                /*format : function (value) {
-                  return value + '%';
-                  }
-                  ,*/
-                draw: function () {
-
-                    // "tron" case
-                    if (this.$.data('skin') == 'tron') {
-
-                        this.cursorExt = 0.3;
-
-                        var a = this.arc(this.cv) // Arc
-                            ,
-                            pa // Previous arc
-                            , r = 1;
-
-                        this.g.lineWidth = this.lineWidth;
-
-                        if (this.o.displayPrevious) {
-                            pa = this.arc(this.v);
-                            this.g.beginPath();
-                            this.g.strokeStyle = this.pColor;
-                            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, pa.s, pa.e, pa.d);
-                            this.g.stroke();
-                        }
-
-                        this.g.beginPath();
-                        this.g.strokeStyle = r ? this.o.fgColor : this.fgColor;
-                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, a.s, a.e, a.d);
-                        this.g.stroke();
-
-                        this.g.lineWidth = 2;
-                        this.g.beginPath();
-                        this.g.strokeStyle = this.o.fgColor;
-                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
-                        this.g.stroke();
-
-                        return false;
-                    }
-                }
-            });
-
-            // Example of infinite knob, iPod click wheel
-            var v, up = 0,
-                down = 0,
-                i = 0,
-                $idir = $("div.idir"),
-                $ival = $("div.ival"),
-                incr = function () {
-                    i++;
-                    $idir.show().html("+").fadeOut();
-                    $ival.html(i);
-                },
-                decr = function () {
-                    i--;
-                    $idir.show().html("-").fadeOut();
-                    $ival.html(i);
-                };
-            $("input.infinite").knob({
-                min: 0,
-                max: 20,
-                stopper: false,
-                change: function () {
-                    if (v > this.cv) {
-                        if (up) {
-                            decr();
-                            up = 0;
-                        } else {
-                            up = 1;
-                            down = 0;
-                        }
-                    } else {
-                        if (v < this.cv) {
-                            if (down) {
-                                incr();
-                                down = 0;
-                            } else {
-                                down = 1;
-                                up = 0;
-                            }
-                        }
-                    }
-                    v = this.cv;
-                }
-            });
-        });
-    </script>
 </head>
 
 <body>
@@ -859,7 +706,7 @@ Thanks to @fsbosphorus in Istanbul and @kolinhotel in Çanakkale for the service
         </div>
 
         </section>
-                        <section class="story repost">
+        <section class="story links repost">
             <div class="info">
                     <img src="/resources/images/MeganFox/Ad4Jy7k20F_tn.jpg" alt="">
                     <div class="repostedFrom"></div>
@@ -906,15 +753,18 @@ Thanks to @fsbosphorus in Istanbul and @kolinhotel in Çanakkale for the service
                 <a class="link" target= "_blank" href= "https://github.com/LirilCo/Lirilco.github.io"><span class="Title">ElDelprincipio</span><span class="linktype">Repositorio De Github</span></a>
             </section>
             <div class="options button">
-            <ul>
-                <li class="bookmark"></li>
-                <li class="star"></li>
-                <a href="#"><li class="read"></li></a>
-            </ul>
-        </div>
+              <ul>
+                  <li class="bookmark"></li>
+                  <li class="star"></li>
+                  <li class= "Enlargetic" href="#">
+                    <a class="read active" title=""></a>
+                    <span title="" class="Enlarge"></span>
+                  </li>
+              </ul>
+          </div>
 
         </section>
-                        <section class="story repost">
+        <section class="story links repost">
             <div class="info">
                     <img src="/resources/images/MeganFox/Ad4Jy7k20F_tn.jpg" alt="">
                     <div class="repostedFrom"></div>
@@ -963,12 +813,15 @@ Thanks to @fsbosphorus in Istanbul and @kolinhotel in Çanakkale for the service
             <ul>
                 <li class="bookmark"></li>
                 <li class="star"></li>
-                <a href="#"><li class="read"></li></a>
+                <li class= "Enlargetic" href="#">
+                  <a class="read active" title=""></a>
+                  <span title="" class="Enlarge"></span>
+                </li>
             </ul>
         </div>
 
         </section>
-                        <section class="story img">
+        <section class="story img">
             <div class="info">
                     <img src="/resources/images/MeganFox/Ad4Jy7k20F_tn.jpg" alt="">
                     <p class="username"><a class= "target" href="/MeganFox" title="         
@@ -1003,7 +856,7 @@ Thanks to @fsbosphorus in Istanbul and @kolinhotel in Çanakkale for the service
         </div>
 
         </section>
-                        <section class="story repost">
+        <section class="story links repost">
             <div class="info">
                     <img src="/resources/images/MeganFox/Ad4Jy7k20F_tn.jpg" alt="">
                     <div class="repostedFrom"></div>
@@ -1053,12 +906,15 @@ Thanks to @fsbosphorus in Istanbul and @kolinhotel in Çanakkale for the service
             <ul>
                 <li class="bookmark"></li>
                 <li class="star"></li>
-                <a href="#"><li class="read"></li></a>
+                <li class= "Enlargetic" href="#">
+                  <a class="read active" title=""></a>
+                  <span title="" class="Enlarge"></span>
+                </li>
             </ul>
         </div>
 
         </section>
-                        <section class="story repost">
+        <section class="story links repost">
             <div class="info">
                     <img src="/resources/images/MeganFox/Ad4Jy7k20F_tn.jpg" alt="">
                     <div class="repostedFrom"></div>
@@ -1108,7 +964,10 @@ Thanks to @fsbosphorus in Istanbul and @kolinhotel in Çanakkale for the service
             <ul>
                 <li class="bookmark"></li>
                 <li class="star"></li>
-                <a href="#"><li class="read"></li></a>
+                <li class= "Enlargetic" href="#">
+                  <a class="read active" title=""></a>
+                  <span title="" class="Enlarge"></span>
+                </li>
             </ul>
         </div>
 
@@ -1157,7 +1016,7 @@ Thanks to @fsbosphorus in Istanbul and @kolinhotel in Çanakkale for the service
         </div>
 
         </section>
-                        <section class="story repost">
+        <section class="story links repost">
             <div class="info">
                     <img src="/resources/images/MeganFox/Ad4Jy7k20F_tn.jpg" alt="">
                     <div class="repostedFrom"></div>
@@ -1208,7 +1067,10 @@ Thanks to @fsbosphorus in Istanbul and @kolinhotel in Çanakkale for the service
             <ul>
                 <li class="bookmark"></li>
                 <li class="star"></li>
-                <a href="#"><li class="read"></li></a>
+                <li class= "Enlargetic" href="#">
+                  <a class="read active" title=""></a>
+                  <span title="" class="Enlarge"></span>
+                </li>
             </ul>
         </div>
 

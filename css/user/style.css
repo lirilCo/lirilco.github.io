@@ -390,6 +390,36 @@ normal #fff*/
     position: absolute; 
     left: 64px; 
 }
+.story .options ul > li.Enlargetic > span.Enlarge{ 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    line-height: 0; 
+    transform: rotateY(90deg); 
+    display: block; 
+    transition: transform 187ms ease-in; 
+} 
+.story .options ul > li > span.Enlarge:after{ 
+    top: 19px; 
+} 
+.story .options ul > li.Enlargetic > span.Enlarge.active{ 
+    transition-delay: 187ms; 
+    transform: rotateY(0deg); 
+} 
+.story .options ul > li.Enlargetic > a.read.active{ 
+    transition-delay: 187ms; 
+    transform: rotateY(0deg); 
+} 
+.story .options ul > li.Enlargetic > a.read{ 
+    transform: rotateY(90deg); 
+    display: block; 
+    transition: transform 187ms ease-in; 
+    text-decoration: none; 
+} 
+.story .options ul > li{ 
+    position: relative; 
+} 
 /*.story.repost .info  .time{
     margin-left: -114px; 
 }*/ 
@@ -713,9 +743,13 @@ text-decoration: none;
 {
     bottom: 0 !important; 
 }
+section.video section.video .Enlarge {
+    top: 23px; 
+}
 section.video section.video:hover .Enlarge {
     display: block;
 }
+
 #theater .Playuse
 {
     display: none; 
@@ -813,9 +847,10 @@ content: "\e60d"
 {
 content: "\e60c"
 } 
-.options ul li.read:after
+.options ul .read:after
 {
-content: "\e627"
+content: "\e627"; 
+font-family: "icomoon";
 } 
 #theater .options ul li.read:after
 {
@@ -864,7 +899,7 @@ content: "\e903"
     padding-top: 46px;
     box-sizing: border-box;
     display: flex; 
-    flex-flow: column; <
+    flex-flow: column; 
 }
 #sidebar .slimScrollDiv{
     position: absolute;
@@ -1535,7 +1570,7 @@ display: inline-block;
 { 
     position: absolute; 
     right: 15px; 
-    top: 0; 
+    top: 0;
     font-family: "icomoon"; 
     font-size: 43px; 
     cursor: pointer; 
@@ -1547,7 +1582,6 @@ display: inline-block;
 { 
     content: "\e989";
     font-size: 26px;
-    top: 23px;
     left: 0;
     position: relative;
 } 

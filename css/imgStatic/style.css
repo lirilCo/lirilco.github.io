@@ -39,11 +39,8 @@ body
 #sidebar
 {
 	height: 100% !important; 
-	height: 100% !important;
 	padding-top: 46px;
 	box-sizing: border-box;
-	margin-top: -46px;
-	/*Básicamente Nos Tocó Crear La Antimateria Para Esa Hijueputa Chimbada*/
 }
 .nav_arrow
 {
