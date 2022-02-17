@@ -1177,7 +1177,7 @@ $(window).on("load", function () {
                 $('#target').tooltip()
 
     });
-    $(".story .Enlarge").on("click", function () {
+    $(".story .video .Enlarge").on("click", function () {
         openVideoModal($(this));
 
     });
