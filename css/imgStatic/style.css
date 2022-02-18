@@ -54,6 +54,9 @@ body
 	width: 100%; 
 	overflow-x: hidden; 
 }
+.carr .picture .pic{ 
+    width: 100%; 
+} 
 #theater img
 {
 	height: 100%; 

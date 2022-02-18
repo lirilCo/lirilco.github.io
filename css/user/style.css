@@ -390,6 +390,9 @@ normal #fff*/
     position: absolute; 
     left: 64px; 
 }
+.story .embed{
+    height: 267px; 
+}
 .story .options ul > li.Enlargetic > span.Enlarge{ 
     position: absolute; 
     top: 0; 
@@ -707,6 +710,27 @@ text-decoration: none;
     padding-right: 340px; 
     box-sizing: border-box; 
 
+} 
+#theater #picContainer > video
+{
+    display: none; 
+} 
+#theater #picContainer .embed 
+{ 
+    height: 100%; 
+    width: 100%; 
+} 
+#theater #picContainer text 
+{ 
+    padding: 0 10px; 
+} 
+#theater #picContainer .embed > iframe
+{ 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
 } 
 #theater #bigPic
 {
