@@ -15,11 +15,8 @@ function openProfilePicModal(a) {
 
     history.pushState({page: 1}, "", "/" + username + "/img/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
 
-    var user = a.find(".hidden").find(".username").html();
-    $('.theater .comments .info .username').html(user);
-
-    var time = a.find(".hidden").find(".time").html();
-    $('.theater .comments .info .time').html(time);
+    var info = a.closest('.story').find(".info").html(); 
+    $('.theater .comments .info').html(info); 
 
     var title = a.find(".hidden").find(".title").html();
     $('.theater .comments .title').html(title);
@@ -95,6 +92,8 @@ function openProfilePicModal(a) {
         } 
     }); 
 
+    tooltip(); 
+
     if($("#bigPic").width()<=$("#bigPic").height()){
         $("#bigPic").css({ "width":"100%"})
     }else{
@@ -124,11 +123,8 @@ function openFotosModal(a) {
     })
     $this = a
 
-    var user = a.closest(".foto").find(".username").html();
-    $('.theater .comments .info .username').html(user);
-
-    var time = a.closest(".foto").find(".time").html();
-    $('.theater .comments .info .time').html(time);
+    var info = a.closest('.story').find(".info").html(); 
+    $('.theater .comments .info').html(info); 
 
     var title = a.closest(".foto").find(".title").html();
     $('.theater .comments .title').html(title);
@@ -203,6 +199,8 @@ function openFotosModal(a) {
         } 
     }); 
 
+    tooltip(); 
+
     if($("#bigPic").width()<=$("#bigPic").height()){
         $("#bigPic").css({ "width":"100%"})
     }else{
@@ -261,11 +259,8 @@ function openModal(a) {
                            
     history.pushState({page: 1}, "", "/" + (a.closest('.story').is(".repost")? $(a.closest('.story').find(".target")[1])[0].href.slice($(a.closest('.story').find(".target")[1])[0].href.lastIndexOf("/") + 1): username) + "/img/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
 
-    var user = a.closest('.story').find(".username").html();
-    $('.theater .comments .info .username').html(user);
-
-    var time = a.closest('.story').find(".time").html();
-    $('.theater .comments .info .time').html(time);
+    var info = a.closest('.story').find(".info").html(); 
+    $('.theater .comments .info').html(info); 
 
     var title = a.closest('.story').find(".title").html();
     $('.theater .comments .title').html(title);
@@ -345,7 +340,7 @@ function openModal(a) {
         } 
     }); 
 
-    
+    tooltip(); 
 
     $(".comentario .Responder").on("click", function(){wD($(this))}); 
 
@@ -463,11 +458,8 @@ function openVideoModal(a){
                            
     history.pushState({page: 1}, "", "/" + username + "/vid/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
 
-    var user = a.closest('.story').find(".username").html();
-    $('.theater .comments .info .username').html(user);
-
-    var time = a.closest('.story').find(".time").html();
-    $('.theater .comments .info .time').html(time);
+    var info = a.closest('.story').find(".info").html(); 
+    $('.theater .comments .info').html(info); 
 
     var title = a.closest('.story').find(".title").html();
     $('.theater .comments .title').html(title);
@@ -526,6 +518,8 @@ function openVideoModal(a){
             }); 
         } 
     }); 
+
+    tooltip(); 
 
     $("#theater .Comentario audio").each(function(){audiojs.create($(this)[0])}); 
 
@@ -589,11 +583,8 @@ function openOtherModal(a){
 
     history.pushState({page: 1}, "", "/" + (a.closest('.story').is(".repost")? $(a.closest('.story').find(".target")[1])[0].href.slice($(a.closest('.story').find(".target")[1])[0].href.lastIndexOf("/") + 1): username) + "/pos" + a.parent().find("a.read").attr("href").slice(a.parent().find("a.read").attr("href").lastIndexOf("/"))); 
 
-    var user = a.closest('.story').find(".username").html();
-    $('.theater .comments .info .username').html(user);
-
-    var time = a.closest('.story').find(".time").html();
-    $('.theater .comments .info .time').html(time);
+    var info = a.closest('.story').find(".info").html(); 
+    $('.theater .comments .info').html(info); 
 
     var title = a.closest('.story').find(".title").html();
     $('.theater .comments .title').html(title);
@@ -661,6 +652,8 @@ function openOtherModal(a){
             }); 
         } 
     }); 
+
+    tooltip(); 
 
     $("#theater .Comentarios audio").each(function(){audiojs.create($(this)[0])}); 
 
@@ -1659,15 +1652,8 @@ $(document).on('DOMMouseScroll mousewheel', '.Scrollable', function(ev) {
         return prevent();
     }
 });
-$(function($) {
-    $.widget("ui.tooltip", $.ui.tooltip, {
-        options: {
-            content: function() {
-                return $(this).prop('title');
-            }
-        }
-    });
 
+function tooltip(){ 
     $('.title').tooltip({
         items: 'a.target',
         open: function(event, ui) {
@@ -1743,6 +1729,17 @@ $(function($) {
                 });
         }
     });
+}
+$(function($) {
+    $.widget("ui.tooltip", $.ui.tooltip, {
+        options: {
+            content: function() {
+                return $(this).prop('title');
+            }
+        }
+    });
+
+    tooltip(); 
 
     $(".knob").knob();
 

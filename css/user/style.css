@@ -723,6 +723,7 @@ text-decoration: none;
 #theater #picContainer text 
 { 
     padding: 0 10px; 
+    display: block; 
 } 
 #theater #picContainer .embed > iframe
 { 
