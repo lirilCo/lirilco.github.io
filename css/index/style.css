@@ -502,6 +502,44 @@ cursor: pointer
 {
     display: none; 
 }
+#theater #otherContainments 
+{ 
+    display: none; 
+    height: 100%; 
+    width: 100%; 
+    overflow-x: hidden; 
+    position: relative; 
+} 
+#theater #otherContainments.overflowing::before{ 
+    content: ""; 
+    width: 4px; 
+    position: absolute; 
+    right: 0; 
+    height: 17px; 
+    z-index: 222; 
+    background: white; 
+} 
+#theater #otherContainments.overflowing::after{ 
+    content: ""; 
+    width: 4px; 
+    position: absolute; 
+    right: 0; 
+    height: 17px; 
+    z-index: 222; 
+    background: white; 
+    bottom: 0; 
+} 
+#theater #otherContainments > div 
+{ 
+    height: 100%; 
+    overflow-y: auto; 
+    width: 100%; 
+    padding-right: 12px; 
+} 
+#theater #otherContainments.visible 
+{ 
+    display: block; 
+} 
 #theater #picContainer > div:nth-child(3)
 {
     width: 100% !important;

@@ -371,24 +371,32 @@ normal #fff*/
     font-size: 15px; 
     padding-left: 50px; 
 }
-.story.repost .info  p{
+.info  p.repost{
     width: auto !important;
     font-size: 15px; 
     padding-left: 114px; 
 }
-.story.repost .info img:first-child{
+#theater .info  p.repost{
+    width: auto !important;
+    font-size: 15px; 
+    padding-left: 114px; 
+}
+.info img.repost:first-child{
     height: 40px !important;
     width: 40px!important;
     cursor: pointer;
     position: absolute; 
     left: 0; 
 }
-.story.repost .info  img{
+.info  img.repost{
     height: 40px !important;
     width: 40px!important;
     cursor: pointer;
     position: absolute; 
     left: 64px; 
+}
+#theater .info  img.repost{
+    height: 40px !important;
 }
 .story .embed{
     height: 267px; 
@@ -1732,17 +1740,20 @@ display: inline-block;
 } 
 .nav_arrow .arrow{ 
     font-family: "icomoon"; 
+    height: 16px; 
+    width: 16px; 
+    background-color: white; 
+    border-radius: 50%; 
+    position: relative; 
 } 
-.nav_arrow .arrow::after {
-    background-color: white;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-}
 .nav_arrow.disabled .arrow {
     color: #ccc;
 }
-
+.nav_arrow .arrow:after{ 
+    top: -2px; 
+    position: absolute; 
+    left: 0; 
+} 
 .nav_arrow.left .arrow:after{ 
     content: "\e902"; 
 } 
@@ -1840,12 +1851,6 @@ display: inline-block;
     content: "";
     top: 58px;
     z-index: 2;
-}
-#theater .comentarios.setenta_y_cuatro::before {
-    top: 74px;
-}
-#theater .comentarios.noventaYDos::before {
-    top: 92px;
 }
 #theater .comentarios .Comentarios .comentario{ 
     position: relative; 
