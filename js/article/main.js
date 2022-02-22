@@ -1,8 +1,141 @@
 var $this 
           
-document.addEventListener("keydown", function(i){(i.keyCode == 13 && $(window.getSelection().focusNode.parentElement).is(".revelar"))? $(window.getSelection().focusNode.parentElement).click(): 1; }); 
+wD= function(thi, b){ 
+    if(typeof b == "undefined"){ 
+        if(!thi.parent().next(".newComment").find("textarea").length){ 
+            $(".newComment").not(".comentarios > .newComment").remove(); 
+                                                                         
+            thi.parent().after('<div class="newComment"><textarea rows="1"></textarea></div>'); 
+                                                                                                           
+            $(thi.parent().next(".newComment").find("textarea")).on('input', function(){ 
+                $(this).height(""); 
+                                    
+                !!$(this).val()? $(this).height($(this).prop('scrollHeight') - (parseInt($(this).css("padding-top").slice(0, -2)) + parseInt($(this).css("padding-bottom").slice(0, -2) + parseInt($(this).css("border-top").slice(0, -2)) + parseInt($(this).css("border-bottom").slice(0, -2))))): 1; 
+                            
+                C= $(this); 
+                            
+                $("#theater .Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $("#theater .Comentarios").height() - 66); 
+            }); 
+                
+            $(thi.parent().next(".newComment").find("textarea")).on('keydown', function(i){ 
+                abc= $(this); 
+
+                (!i.shiftKey && i.keyCode == 13)? (function(){!abc.parent().next().is(".respuestas")? (function(){ll= $($("textarea")[0]).parent().prev(); abc.parent()[0].outerHTML= "<div class='respuestas'><div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' +  "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>" + '"' + " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>" + abc.val().replaceAll("\n", "<br>") + "</span><span class='Responder'></span></div><span class='Respuestas'><span class='Responder'></span></span></div>"; ll.next().find(".Respuestas .Responder")[0].addEventListener("contextmenu", function(e){e.preventDefault(); wwd(this); }); ll.next().find(".comentario").on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth = elx.outerWidth( true ),circleHeight  = elx.outerHeight( true ),circleLeft    = elx.offset().left,circleTop     = elx.offset().top,circlePos     = {x     : circleLeft + circleWidth / 2,y     : circleTop + circleHeight / 2,radius: circleWidth / 2};distance    = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); $(ll.next().find(".Respuestas .Responder")).on("click", function(){wD($(this), 1)}); $(ll.next().find(".comentario .Responder")).on("click", function(){wD($(this))})})(): (function(){abc.parent().next().children().filter(".Respuestas").find(".Responder").remove(); abc.parent().next().append('<span class="Respuestas"><span class="Responder"></span></span>'); $($(abc.parent().next().children()[abc.parent().next().children().length - 1]).find(".Responder"))[0].addEventListener("contextmenu", function(e){e.preventDefault(); wwd(this); }); $($(abc.parent().next().children()[abc.parent().next().children().length - 1]).find(".Responder")).on("click", function(){wD($(this), 1)}); $(".Respuestas").each(function(){!$(this).html()? $(this).remove(): 1;}); $(abc.parent().next().children()[abc.parent().next().children().length - 1]).before("<div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' +  "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>" + '"' + " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>" + abc.val().replaceAll("\n", "<br>") + "</span><span class='Responder'></span></div>"); $($(abc.parent().next().children()[abc.parent().next().children().length - 2]).find(".Responder")).on("click", function(){wD($(this))}); $($(abc.parent().next().children()[abc.parent().next().children().length - 2])).on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth = elx.outerWidth( true ),circleHeight  = elx.outerHeight( true ),circleLeft    = elx.offset().left,circleTop     = elx.offset().top,circlePos     = {x     : circleLeft + circleWidth / 2,y     : circleTop + circleHeight / 2,radius: circleWidth / 2};distance    = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); abc.parent().remove()})()})(): 1; 
+
+                $(".knob").knob(); 
+
+                tooltipComentarios(); 
+            }); 
+
+            aa= thi; 
+                         
+            $("#theater .Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $("#theater .Comentarios").height() - 66); 
+                                                                                          
+            $($(aa).parent().next(".newComment").find("textarea")).focus(); 
+        }else{ 
+            $(".newComment").not(".comentarios > .newComment").remove(); 
+        } 
+    }else{ 
+        if(!thi.parent().next(".newComment").find("textarea").length){ 
+            $(".newComment").not(".comentarios > .newComment").remove(); 
+                                                                         
+            thi.parent().after('<div class="newComment"><textarea rows="1"></textarea></div>'); 
+                                                                                                           
+            $(thi.parent().next(".newComment").find("textarea")).on('input', function(){ 
+                $(this).height(""); 
+                                    
+                !!$(this).val()? $(this).height($(this).prop('scrollHeight') - (parseInt($(this).css("padding-top").slice(0, -2)) + parseInt($(this).css("padding-bottom").slice(0, -2) + parseInt($(this).css("border-top").slice(0, -2)) + parseInt($(this).css("border-bottom").slice(0, -2))))): 1; 
+                            
+                C= $(this); 
+                            
+                $("#theater .Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $("#theater .Comentarios").height() - 66); 
+            }); 
+                
+            $(thi.parent().next(".newComment").find("textarea")).on('keydown', function(i){ 
+                abc= $(this); 
+
+                (!i.shiftKey && i.keyCode == 13)? (function(){abc.parent().parent().children().filter(".Respuestas").find(".Responder").remove(); abc.parent().parent().append('<span class="Respuestas"><span class="Responder"></span></span>'); $(abc.parent().parent().children()[abc.parent().parent().children().length - 1]).children().filter(".Respuestas .Responder")[0].addEventListener("contextmenu", function(e){e.preventDefault(); wwd(this); }); $($(abc.parent().parent().children()[abc.parent().parent().children().length - 1]).find(".Responder")).on("click", function(){wD($(this), 1)}); $(".Respuestas").each(function(){!$(this).html()? $(this).remove(): 1;}); ll= $($("textarea")[0]).parent().prev(); abc.parent()[0].outerHTML= "<div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' +  "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>" + '"' + " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>" + abc.val().replaceAll("\n", "<br>") + "</span><span class='Responder'></span></div>"; ll.next().on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth = elx.outerWidth( true ),circleHeight  = elx.outerHeight( true ),circleLeft    = elx.offset().left,circleTop     = elx.offset().top,circlePos     = {x     : circleLeft + circleWidth / 2,y     : circleTop + circleHeight / 2,radius: circleWidth / 2};distance    = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); $(ll.next().find(".Responder")).on("click", function(){wD($(this))})})(): 1; 
+
+                $(".knob").knob(); 
+
+                tooltipComentarios(); 
+            }); 
+
+            aa= thi; 
+                         
+            $("#theater .Comentarios").scrollTop($($("textarea")[0]).parent()[0].offsetTop + $($("textarea")[0]).parent().outerHeight() - $("#theater .Comentarios").height() - 66); 
+                                                                                          
+            $($(aa).parent().next(".newComment").find("textarea")).focus(); 
+        }else{ 
+            $(".newComment").not(".comentarios > .newComment").remove(); 
+        } 
+    } 
+} 
+wd= function(Tt, l){ 
+    $(l.target).is(".Respuestas")? (function(){ 
+        ///*console.log(l.target); */ 
+
+        for(a= 1; a<= 3; a++){ 
+            $(Tt.parent().children().filter(".comentario.hidden")[0]).next().is(".respuestas.hidden")? $(Tt.parent().children().filter(".comentario.hidden")[0]).next().removeClass("hidden"): 1; 
+            $(Tt.parent().children().filter(".comentario.hidden")[0]).removeClass("hidden"); 
+        } 
+    
+        !!Tt.parent().children().filter(".comentario.hidden").length? Tt.html((!$(Tt).next().length? '<span class="Responder"></span>': '') + "Más respuestas (" + Tt.parent().children().filter(".comentario.hidden").length + ")"): !$(Tt).next().length? Tt.html('<span class="Responder"></span>'): Tt.remove(); 
+
+        !!Tt.find(".Responder").length? Tt.find(".Responder")[0].addEventListener("contextmenu", function(e){e.preventDefault(); wwd(this); }): 1; 
+        Tt.find(".Responder").on("click",function(){wD($(this), 1)}) 
+    })(): 1; 
+}
+wwd= function(t, tr){ 
+    $(".respuestas .newComment").remove(); 
+
+    $(t.parentElement.parentElement).children().each(function(){ 
+        $(this).index() != $(this).parent().children().length - 1? $(this).addClass("hidden"): 1; 
+    }); 
+        
+    typeof tr === "undefined"? $(t).closest(".respuestas").find(".Respuestas .Responder").each(function(){wwd($(this)[0], true)}): 1; 
+                                                                
+    U= $(t).parent().parent().children().filter(".Respuestas"); 
+                                                                
+    (U.length == 2)? (function(){$(U[1]).html("<span class='Responder'></span>Respuestas (" + $(U[1]).parent().children().filter(".comentario").length + ")"); $(U[1]).click(function(l){wd($(this), l)}); $($(U[1]).find(".Responder")).on("click", function(){wD($(this), 1)}); U[0].remove()})(): (function(){U.html("<span class='Responder'></span>Respuestas (" + U.parent().children().filter(".comentario").length + ")"); U.click(function(l){wd($(this), l)}); $(U.find(".Responder")).on("click", function(){wD($(this), 1)}); })(); 
+} 
+
+document.addEventListener("keydown", function(i){(i.keyCode == 13 && !!window.getSelection().focusNode && $(window.getSelection().focusNode.parentElement).is(".revelar"))? $(window.getSelection().focusNode.parentElement).click(): 1; }); 
                                    
 $(document).on("ready",function(){ 
+    $("#theater textarea").on('input', function() { 
+        $(this).height(""); 
+        !!$(this).val()? $(this).height($(this).prop('scrollHeight') - (parseInt($(this).css("padding-top").slice(0, -2)) + parseInt($(this).css("padding-bottom").slice(0, -2) + parseInt($(this).css("border-top").slice(0, -2)) + parseInt($(this).css("border-bottom").slice(0, -2))))): 1; 
+    }); 
+    $(".comentarios > .newComment").on('keydown', function(i){ 
+                abc= $("#theater .Comentarios"); 
+
+                (!i.shiftKey && i.keyCode == 13)? (function(){abc.append("<div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' +  "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>" + '"' + " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>" + $(".comentarios > .newComment textarea").val().replaceAll("\n", "<br>") + "</span><span class='Responder'></span></div>"); $(".comentarios > .newComment textarea").val(""); $($($("#theater .Comentarios").children()[$("#theater .Comentarios").children().length - 1]).find(".Responder")).on("click", function(){wD($(this))}); $("#theater .Comentarios").scrollTop($("#theater .Comentarios")[0].scrollHeight); $($($("#theater .Comentarios").children()[$("#theater .Comentarios").children().length - 1])).on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth = elx.outerWidth( true ),circleHeight  = elx.outerHeight( true ),circleLeft    = elx.offset().left,circleTop     = elx.offset().top,circlePos     = {x     : circleLeft + circleWidth / 2,y     : circleTop + circleHeight / 2,radius: circleWidth / 2};distance    = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); document.activeElement.blur(); })(): 1; 
+
+                $(".knob").knob(); 
+
+                tooltipComentarios(); 
+            }); 
+    $("#theater .read").on("click", function(){ 
+        !$("#theater .description").hasClass("closed")? $("#theater .description").addClass("closed"): $("#theater .description").removeClass("closed"); 
+        !$("#theater .comentarios").hasClass("open")? $("#theater .comentarios").addClass("open"): $("#theater .comentarios").removeClass("open"); 
+    })
+    typeof videojs != "undefined"? (function(){ 
+        $(".Playuse").click(function(i){ 
+            $(i.target).parent().find("video")[0].play(); 
+            $(i.target).addClass("playing"); 
+        }); 
+
+        videojs("Dinosaurios7").on("pause", function(i){ 
+            $(videojs(i.target.parentElement.id).L.parentElement).siblings().filter(".Playuse").removeClass("playing"); 
+        });
+        
+        videojs("Dinosaurios7").on("play", function(i){ 
+            //console.log(i)
+            $(videojs(i.target.parentElement.id).L.parentElement).siblings().filter(".Playuse").addClass("playing"); 
+        });
+    })(): 1; 
+
     $("#theater").on("click", function(i){$(i.target).is("#theater")? closeModal(): 1; }); 
 
 
@@ -123,18 +256,23 @@ $('#profileSettings').click(function(i){
     $this = a.closest('figure')
     var source = a.attr('src');
     $('.theater #bigPic').attr('src', source);
-    $(".more").text(a.closest("figure").find("figcaption")[0].innerText)
+    !!a.closest("figure").find("figcaption").length? $(".more").text(a.closest("figure").find("figcaption")[0].innerText): 1; 
 
 
     
-    var user = a.closest('figure').find(".username").html();
-    $('.theater .comments .info .username').html(user);
+    var info = a.closest('figure').find(".info").html();
+    $('.theater .comments .info').html(info);
 
     var time = a.closest('figure').find(".time").html();
     $('.theater .comments .info .time').html(time);
     
     var title = a.closest('figure').find(".title").html();
     $('.theater .comments .title').html(title);
+
+    $("#theater").find(".description").css({"padding-top": ($("#theater").find(".info").height() + 19) + "px"}); 
+
+    $("#theater").find(".comentarios").css({"padding-top": ($("#theater").find(".info").height() + 35) + "px"}); 
+
 
     if (a.closest('figure').find(".options .bookmark").hasClass("true")) {
         $('.theater .comments .options .bookmark').addClass("true");
@@ -150,6 +288,7 @@ $('#profileSettings').click(function(i){
     var pic = a.closest('figure').find(".info img").attr('src');
     $('.theater .comments .info #pic').attr('src', pic);
 
+    tooltip(); 
 
     var ref = "";
     $('.theater .comments .options ul a').attr('href', ref);
@@ -494,4 +633,131 @@ function responsive(){
                 }
      
      }
+}
+function tooltip(){ 
+    $('.title').tooltip({
+        items: 'a.target',
+        open: function(event, ui) {
+            if (typeof(event.originalEvent) === 'undefined') {
+                return false;
+            }
+            $(".knob").knob();
+
+            ý= $(this); 
+
+            $(".chatear").click(function() {
+                u = $(this).parent().parent().find(".username").text();
+
+                $("#chat").find("ul").find("li").each(function() {
+                    $(this).find("p").text() === u ? $(this).click() : 1;
+                });
+
+                !!Antheater? (function(){closeModal(); ý.remove(); })(): 1;
+            })
+            var $id = $(ui.tooltip).attr('id');
+
+            $('div.ui-tooltip').not('#' + $id).remove();
+        },
+        close: function(event, ui) {
+            ui.tooltip.hover(function() {
+                    $(this).stop(true).fadeTo(400, 1);
+                },
+                function() {
+                    $(this).fadeOut('400', function() {
+                        $(this).remove();
+                    });
+                });
+        }
+    });
+
+    $('.username').tooltip({
+        items: 'a.target',
+        open: function(event, ui) {
+            if (typeof(event.originalEvent) === 'undefined') {
+                return false;
+            }
+            $(".knob").knob();
+
+            ý= $(this); 
+
+            $(".chatear").click(function() {
+                u = $(this).parent().parent().find(".username").text();
+
+                $("#chat").find("ul").find("li").each(function() {
+                    $(this).find("p").text() === u ? $(this).click() : 1;
+                });
+
+                !!Antheater? (function(){closeModal(); ý.remove(); })(): 1; 
+            })
+            var $id = $(ui.tooltip).attr('id');
+
+            $('div.ui-tooltip').not('#' + $id).remove();
+        },
+        close: function(event, ui) {
+            ui.tooltip.hover(function() {
+                    $(this).stop(true).fadeTo(400, 1);
+                },
+                function() {
+                    $(this).fadeOut('400', function() {
+                        $(this).remove();
+                    });
+                });
+        }
+    });
+}
+$(function($) {
+    $.widget("ui.tooltip", $.ui.tooltip, {
+        options: {
+            content: function() {
+                return $(this).prop('title');
+            }
+        }
+    });
+
+    tooltip(); 
+
+    $(".knob").knob();
+
+    $(".Enlargetic").on("contextmenu", function(j){j.preventDefault(); ab= $(this).children().filter(".active"); $(this).children().not(".active").addClass("active"); ab.removeClass("active"); }); 
+});
+function tooltipComentarios(){ 
+    $('.comentario').tooltip({ 
+        items: 'img', 
+        open: function(event, ui) 
+        { 
+            if (typeof(event.originalEvent) === 'undefined') {
+                return false;
+            }
+            $(".knob").knob();
+
+            ý= $(this); 
+
+            $(".chatear").click(function() {
+                u = $(this).parent().parent().find(".username").text();
+
+                $("#chat").find("ul").find("li").each(function() {
+                    $(this).find("p").text() === u ? $(this).click() : 1;
+                });
+
+                !!Antheater? (function(){closeModal(); ý.remove(); })(): 1; 
+            })
+            var $id = $(ui.tooltip).attr('id');
+
+            $('div.ui-tooltip').not('#' + $id).remove();
+        }, 
+        close: function(event, ui) 
+        { 
+            ui.tooltip.hover(function() 
+            { 
+                $(this).stop(true).fadeTo(400, 1);  
+            }, 
+            function() 
+            { 
+                $(this).fadeOut('400', function() 
+                { 
+                    $(this).remove(); 
+                }); 
+            }); 
+        } 
+    }); 
 }

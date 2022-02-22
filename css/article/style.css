@@ -306,6 +306,86 @@ input:focus,textarea:focus {
 #example_video_1 {
     width: 100%
 }
+.video 
+{ 
+    position: relative; 
+    padding-bottom: 44px; 
+    box-sizing: border-box; 
+} 
+.Playuse 
+{ 
+    position: absolute; 
+    left: 0; 
+    top: 0; 
+    font-family: "icomoon"; 
+    font-size: 43px; 
+    cursor: pointer; 
+    display: block; 
+    z-index: 1; 
+} 
+.Playuse::after 
+{ 
+    content: "\e603"; 
+} 
+.Playuse.playing 
+{ 
+    display: none !important; 
+} 
+.Enlarge 
+{ 
+    position: absolute; 
+    right: 15px; 
+    top: 0;
+    font-family: "icomoon"; 
+    font-size: 43px; 
+    cursor: pointer; 
+    display: none; 
+    z-index: 1; 
+    line-height: 7.5px;
+} 
+.Enlarge::after 
+{ 
+    content: "\e989";
+    font-size: 26px;
+    left: 0;
+    position: relative;
+} 
+.video .Enlarge {
+    top: 23px; 
+}
+.video:hover .Enlarge {
+    display: block;
+}
+.vjs-progress-holder 
+{ 
+    position: absolute !important; 
+    z-index: 1 !important;  
+} 
+.vjs-control-bar
+{ 
+    display: block !important; 
+} 
+.vjs-poster 
+{ 
+    background-position: unset !important;  
+} 
+.vjs-volume-level 
+{ 
+    background: #2ecc71 !important; 
+} 
+.vjs-volume-bar.vjs-slider 
+{ 
+    background: #fff !important; 
+} 
+.vjs-time-divider div span, .vjs-default-skin .vjs-current-time div, .vjs-default-skin .vjs-duration div 
+{ 
+    color: #aaa; 
+    font-size: 11px; 
+} 
+#example_video_1 
+{ 
+    padding-bottom: 11px; 
+} 
 #Store {
     background-color: #ecf0f1;
     display: none;
@@ -380,14 +460,6 @@ normal #fff*/
     margin: 0 auto 4px auto;
     padding: 10px
 }
-.info{
-    width: 100%;
-    height: 40px;
-    position: relative;
-     padding: 0;
-    margin: 0;
-
-}
 .story .info
 {
     display: none;
@@ -399,14 +471,21 @@ normal #fff*/
     position: absolute;
     cursor: pointer;
 }
+.info 
+{
+    position: relative;
+    height: auto;
+    cursor: pointer;
+}
 .info  p{
-    color: #666;
-    font-size: 15px;
-    display: inline-block;
-    margin: 0 ;
-    position: absolute;
-    top: 0;
-    left: 0; 
+    margin: 0; 
+    color: #666; 
+    padding-left: 50px; 
+    position: static; 
+    font-size: 13px; 
+    display: inline-block; 
+    width: 140px; 
+    vertical-align: top; 
 }
 .story .info  .time {
    left: 45px
@@ -472,6 +551,29 @@ cursor: pointer
     width: 100%; 
     padding-right: 340px; 
     box-sizing: border-box; 
+
+} 
+#theater #picContainer > video
+{
+    display: none; 
+} 
+#theater #picContainer .embed 
+{ 
+    height: 100%; 
+    width: 100%; 
+} 
+#theater #picContainer text 
+{ 
+    padding: 0 10px; 
+    display: block; 
+} 
+#theater #picContainer .embed > iframe
+{ 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
 } 
 #theater #bigPic
 {
@@ -480,7 +582,87 @@ cursor: pointer
     object-fit: contain;
     margin: auto ;
 }
+#theater #bigPic.invisible
+{
+    display: none; 
+}
+#theater #otherContainments 
+{ 
+    display: none; 
+    height: 100%; 
+    width: 100%; 
+    overflow-x: hidden; 
+    position: relative; 
+} 
+#theater #otherContainments.overflowing::before{ 
+    content: ""; 
+    width: 4px; 
+    position: absolute; 
+    right: 0; 
+    height: 17px; 
+    z-index: 222; 
+    background: white; 
+} 
+#theater #otherContainments.overflowing::after{ 
+    content: ""; 
+    width: 4px; 
+    position: absolute; 
+    right: 0; 
+    height: 17px; 
+    z-index: 222; 
+    background: white; 
+    bottom: 0; 
+} 
+#theater #otherContainments > div 
+{ 
+    height: 100%; 
+    overflow-y: auto; 
+    width: 100%; 
+    padding-right: 12px; 
+} 
+#theater #otherContainments.visible 
+{ 
+    display: block; 
+} 
+#theater #picContainer > div:nth-child(3)
+{
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
+    margin: auto ;
+    box-sizing: border-box;
+    display: none; 
+}
+#theater #picContainer > div video
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-height: unset; 
+    height: 100%;
+    box-sizing: border-box;
+    padding-bottom: 45px;
+}
+#theater #picContainer .vjs-control-bar
+{
+    bottom: 0 !important; 
+}
+section.video section.video .Enlarge {
+    top: 23px; 
+}
+section.video section.video:hover .Enlarge {
+    display: block;
+}
 
+#theater .Playuse
+{
+    display: none; 
+}
+#theater #picContainer > div.visible, #theater .Playuse.visible
+{
+    display: block; 
+}
 #theater .info p
 {
     
@@ -505,14 +687,7 @@ padding-left: 47px;
 .options
 {
     
-    height: 60px; 
-    
-
-}
-header .options
-{
-    
-    height: 100%; 
+    height: 60px;
     
 
 }
@@ -521,6 +696,7 @@ header .options
     list-style: none;
     padding: 0;
     margin: 0;
+    line-height: 50px;
     height: 100%;
     vertical-align: middle;
     text-align: center;
@@ -544,6 +720,10 @@ left: 0;
 {
    
 font-size: 40px    
+} 
+header .options ul li
+{ 
+    vertical-align: top !important; 
 } 
 .options ul li
 {
@@ -576,9 +756,14 @@ content: "\e60d"
 {
 content: "\e60c"
 } 
-.options ul li.read:after
+.options ul .read:after
 {
-content: "\e627"
+content: "\e627"; 
+font-family: "icomoon";
+} 
+#theater .options ul li.read:after
+{
+content: "\e903"
 } 
 
 #theater .comments
@@ -611,7 +796,7 @@ content: "\e627"
 #theater .comments #close:before
 {
     content: "\e60e"
-} 
+}
   
 #article .options
 {
@@ -768,10 +953,6 @@ i, q, b, sup
 header .bookmark 
 { 
   margin: 0 14px !important; 
-} 
-h1, h2, h3, div, u, h4
-{ 
-  color: inherit; 
 } 
 .poema 
 { 
@@ -952,22 +1133,40 @@ a:hover
 { 
     text-decoration: underline; 
 } 
+.ui-tooltip, .vjs-slider 
+{ 
+    z-index: 1 !important;
+} 
+.repostedFrom {
+    position: absolute;
+    left: 44px;
+    height: 40px;
+    vertical-align: middle;
+    display: inline;
+    color: #666;
+    font-size: ;
+    top: 10px;
+}
+.repostedFrom::after {
+    font-family: "icomoon";
+    content: "\e900";
+}
 .navigation{ 
     width: 100%; 
     position: relative; 
 } 
-.photo .navigation, .photo .carr, .photo .picture{ 
-    height: 100%; 
+.foto .navigation, .foto .carr, .foto .picture{ 
+    height: 105.7px; 
 } 
-.photo .carr, .mult_img .carr{ 
+.foto .carr, .mult_img .carr{ 
     writing-mode: vertical-lr; 
     width: 100%; 
     overflow: hidden; 
 } 
-.photo .picture, .mult_img .picture{ 
+.foto .picture, .mult_img .picture{ 
     width: 100%; 
 } 
-.photo .picture .pic, .mult_img .picture .pic{ 
+.foto .picture .pic, .mult_img .picture .pic{ 
     width: 100%; 
     object-fit: contain; 
 } 
@@ -982,17 +1181,20 @@ a:hover
 } 
 .nav_arrow .arrow{ 
     font-family: "icomoon"; 
+    height: 16px; 
+    width: 16px; 
+    background-color: white; 
+    border-radius: 50%; 
+    position: relative; 
 } 
-.nav_arrow .arrow::after {
-    background-color: white;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-}
 .nav_arrow.disabled .arrow {
     color: #ccc;
 }
-
+.nav_arrow .arrow:after{ 
+    top: -2px; 
+    position: absolute; 
+    left: 0; 
+} 
 .nav_arrow.left .arrow:after{ 
     content: "\e902"; 
 } 
@@ -1037,7 +1239,163 @@ a:hover
     height: 100%;
     box-sizing: border-box;
     padding: 58px 0 87px 0;
+    width: 300px; 
+    transition: 235ms transform 235ms ease-in; 
 }
+#theater .description.closed{ 
+    transition-delay: 0s; 
+    transform: rotateY(90deg); 
+}
+#theater .comentarios{ 
+    display: flex;
+    flex-flow: column;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 74px 0 87px 0;
+    transition: transform 235ms ease-in; 
+    width: 300px; 
+    transform: rotateY(-90deg); 
+    overflow-x: hidden; 
+}
+#theater .comentarios.setenta_y_cuatro{ 
+    padding-top: 74px; 
+} 
+#theater .comentarios.noventaYDos{ 
+    padding-top: 92px; 
+} 
+#theater .comentarios.open{ 
+    transition-delay: 235ms; 
+    transform: rotateY(0deg); 
+}
+#theater .comentarios .Comentarios{
+    flex-grow: 1; 
+    /*background: blueviolet; 
+    border: 1px solid; */ 
+    overflow-x: hidden; 
+    width: 100%; 
+    padding-right: 12px; 
+}
+#theater .comentarios .Comentarios::after {
+    content: "";
+    height: 12px;
+    width: 100%;
+    display: block;
+}
+#theater .comentarios::before {
+    width: 13px;
+    height: 17px;
+    position: absolute;
+    right: 0;
+    background: white;
+    content: "";
+    top: 58px;
+    z-index: 2;
+}
+#theater .comentarios .Comentarios .comentario{ 
+    position: relative; 
+    font-size: 13px; 
+    margin-top: 12px;
+} 
+#theater .comentarios .Comentarios .comentario:first-child{ 
+    margin-top: 12px; 
+} 
+#theater .comentarios .Comentarios .Respuestas, #theater .comentarios .Comentarios .RespueNtas{ 
+    color: #323232; 
+    font-size: 12px; 
+    margin-left: 12px; 
+    cursor: pointer; 
+} 
+#theater .comentarios .Comentarios .RespueNtas span{ 
+    color: #df5455 !important; 
+} 
+#theater .comentarios .Comentarios .RespueNtas span:active{ 
+    color: #ff0707 !important; 
+} 
+#theater .comentarios .Comentarios .Responder, #theater .comentarios .Comentarios .Respxxder{ 
+    color: #323232; 
+    font-size: 12px; 
+    cursor: pointer; 
+    position: relative; 
+} 
+#theater .comentarios .Comentarios .Respxxder{ 
+    color: #df5455 !important; 
+} 
+#theater .comentarios .Comentarios .Respxxder:active{ 
+    color: #ff0707 !important; 
+} 
+#theater .comentarios .Comentarios .respuestas{ 
+    padding-left: 12px; 
+} 
+#theater .comentarios .Comentarios .respuestas:first-child{ 
+    margin-top: 12px; 
+} 
+#theater .comentarios .Comentarios .respuestas .comentario.hidden{ 
+    display: none; 
+} 
+#theater .comentarios .Comentarios .respuestas .respuestas.hidden{ 
+    display: none; 
+} 
+#theater .comentarios .Comentarios .comentario div{ 
+    position: absolute; 
+    left: 0; 
+    top: 0; 
+    cursor: pointer; 
+} 
+#theater .comentarios .Comentarios .Responder:after, #theater .comentarios .Comentarios .Respxxder:after{ 
+    content: " \e904"; 
+    font-family: "icomoon"; 
+    vertical-align: middle; 
+    cursor: pointer; 
+    display: inline-block;  
+} 
+#theater .comentarios .Comentarios .Respuestas .Responder::after, #theater .comentarios .Comentarios .RespueNtas .Responder::after {
+    left: -22px; 
+    position: absolute; 
+    top: 2px; 
+    word-break: break-word; 
+}
+#theater .comentarios .Comentarios .respuestas{ 
+    padding-left: 12px; 
+} 
+#theater .comentarios .Comentarios .comentario img{ 
+    height: 20px; 
+    border-radius: 50%; 
+    padding: 4px 4px 4px 4px; 
+    z-index: 2; 
+    position: relative; 
+    cursor: pointer; 
+} 
+#theater .comentarios .Comentarios .comentario .is{ 
+    color: black; 
+    user-select: none; 
+} 
+#theater .comentarios .Comentarios .comentario .Comentario{ 
+    color: #666;  
+    padding-left: 7px; 
+    margin-left: -7px; 
+} 
+#theater .comentarios .Comentarios .comentario .Comentario i {
+    color: inherit;
+}
+#theater .comentarios .Comentarios .comentario .Comentario .media > p{ 
+    white-space: nowrap; 
+    left: 0 !important; 
+    overflow-x: hidden; 
+    text-overflow: ellipsis; 
+    padding-left: 84px; 
+} 
+#theater .comentarios .Comentarios .comentario .Comentario .media{ 
+    position: relative !important; 
+    width: 100%; 
+} 
+#theater .comentarios .Comentarios .comentario .Comentario .media .scrubber{ 
+    top: unset !important; 
+} 
+#theater .comentarios .Comentarios .comentario .Comentario .media .play-pause{ 
+    z-index: 1; 
+} 
 /*.RIPonsive{}*/ 
 #theater .more{ 
     flex-grow: 1; 
@@ -1045,6 +1403,41 @@ a:hover
 } 
 #theater .info{ 
     z-index: 1; 
+} 
+#theater .comentarios textarea{ 
+    width: 100%; 
+    color: #000;
+    height: 100%; 
+    font-size: 13px;
+    max-height: 80px;
+    min-height: 26px;
+    border-radius: 0px; 
+    resize: none; 
+    border: 1px solid #b3b3b3; 
+    padding: 7px 60px 7px 4px; 
+    box-sizing: border-box; 
+    font-weight: 400;
+    vertical-align: middle;
+    overflow: auto;
+    line-height: 14px;
+    /*background-color: grey; */ 
+} 
+#theater .comentarios .newComment{ 
+    /*bottom: 87px; 
+    position: absolute; */ 
+    max-height: 80px; 
+    width: 100%; 
+    position: relative; 
+} 
+#theater .comentarios > .newComment::before{ 
+    width: 13px; 
+    height: 17px; 
+    position: absolute; 
+    right: 0; 
+    background: white; 
+    content: ""; 
+    top: -17px; 
+    z-index: 2; 
 } 
 .moreI{ 
     display: none; 
@@ -1077,7 +1470,7 @@ header nav ul li#right-menu #store::before {
     background-size: contain;
     background-position-x: -3px;
 }
-figure .info{ 
+#article figure .info{ 
     display: none; 
 } 
 .date{ 
@@ -1114,6 +1507,9 @@ time{
     background: #fff; 
     position:relative;
 }
+.tool .agregar{ 
+    color: #ccc; 
+} 
 .tool .datos .rol
 {
     text-align: center;
@@ -1247,21 +1643,21 @@ time{
 #profile div{ 
     display: inline-block !important; 
 } 
-figure{ 
+#article figure{ 
     position: relative; 
     margin: 0 auto 27px auto !important; 
 } 
-figure img { 
+#article figure img { 
     width: 100%; 
 } 
-figure div { 
+#article figure div { 
     position: absolute; 
     top: 0; 
-    height: calc(100% - 6px); 
+    height: 100%; 
     max-width: 100% !important; 
-    width: 23.4px; 
+    width: 6px; 
 } 
-figure div img { 
+#article figure div img { 
     object-fit: cover; 
     object-position: left; 
     height: 100%; 
