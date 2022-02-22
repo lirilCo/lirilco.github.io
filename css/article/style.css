@@ -1647,25 +1647,23 @@ time{
     position: relative; 
     margin: 0 auto 27px auto !important; 
 } 
-#article figure img { 
+#article figure img{ 
     width: 100%; 
 } 
-#article figure div { 
+#article figure div{ 
     position: absolute; 
     top: 0; 
     height: 100%; 
     max-width: 100% !important; 
     width: 6px; 
 } 
-#article figure div img { 
+#article figure div img{ 
     object-fit: cover; 
     object-position: left; 
     height: 100%; 
+	padding-bottom: 6px; 
+	box-sizing: border-box; 
+} 
+#article figure > div {
+    width: 23.4px;
 }
-.kkjxujshx { 
-    width: 48%; 
-} 
-.kkjxujshx div img { 
-    position: relative; 
-    left: 0.3px; 
-} 
