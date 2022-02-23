@@ -1,24 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
-
     <title>
-      Liril
+        Una Breve Historia De La Creación | Blogs | Luis Eduardo Gallego García | liril
     </title>
-    <link rel="shortcut icon" type="image/ico" href="/resources/icons/favicon.ico"  />
-    
+    <link rel="shortcut icon" type="image/ico" href="/resources/icons/favicon.ico" />
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300,600,700' rel='stylesheet' type='text/css'>
-      
     <link rel="stylesheet" href="/css/animate.css">
     <link rel="stylesheet" href="/css/article/style.css">
     <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href="/css/video-js.css">
     <link rel="stylesheet" href="/css/prism.css">
     <link rel="stylesheet" href="/css/jquery.mCustomScrollbar.min.css">
-
-
     <script src="/js/jquery.js"></script>
     <script src="/js/article/main.js"></script>
     <script src="/js/main.js"></script> <!-- Resource jQuery -->
@@ -27,209 +23,196 @@
     <script src="/js/index/modernizr.custom.js"></script>
     <script src="/js/jquery-ui.min.js"></script>
     <script src="/js/sticky-kit.min.js"></script>
-
-  
-
- <script src="/js/jquery.knob.js">
+    <script src="/js/jquery.knob.js">
     </script>
+    <script>
+    $(function($) {
 
-   <script>
-        $(function ($) {
+        $(".knob").knob({
+            change: function(value) {
+                //console.log("change : " + value);
+            },
+            release: function(value) {
+                //console.log(this.$.attr('value'));
+                console.log("release : " + value);
+            },
+            cancel: function() {
+                console.log("cancel : ", this);
+            },
+            /*format : function (value) {
+              return value + '%';
+              }
+              ,*/
+            draw: function() {
 
-            $(".knob").knob({
-                change: function (value) {
-                    //console.log("change : " + value);
-                },
-                release: function (value) {
-                    //console.log(this.$.attr('value'));
-                    console.log("release : " + value);
-                },
-                cancel: function () {
-                    console.log("cancel : ", this);
-                },
-                /*format : function (value) {
-                  return value + '%';
-                  }
-                  ,*/
-                draw: function () {
+                // "tron" case
+                if (this.$.data('skin') == 'tron') {
 
-                    // "tron" case
-                    if (this.$.data('skin') == 'tron') {
+                    this.cursorExt = 0.3;
 
-                        this.cursorExt = 0.3;
+                    var a = this.arc(this.cv) // Arc
+                        ,
+                        pa // Previous arc
+                        , r = 1;
 
-                        var a = this.arc(this.cv) // Arc
-                            ,
-                            pa // Previous arc
-                            , r = 1;
+                    this.g.lineWidth = this.lineWidth;
 
-                        this.g.lineWidth = this.lineWidth;
-
-                        if (this.o.displayPrevious) {
-                            pa = this.arc(this.v);
-                            this.g.beginPath();
-                            this.g.strokeStyle = this.pColor;
-                            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, pa.s, pa.e, pa.d);
-                            this.g.stroke();
-                        }
-
+                    if (this.o.displayPrevious) {
+                        pa = this.arc(this.v);
                         this.g.beginPath();
-                        this.g.strokeStyle = r ? this.o.fgColor : this.fgColor;
-                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, a.s, a.e, a.d);
+                        this.g.strokeStyle = this.pColor;
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, pa.s, pa.e, pa.d);
                         this.g.stroke();
-
-                        this.g.lineWidth = 2;
-                        this.g.beginPath();
-                        this.g.strokeStyle = this.o.fgColor;
-                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
-                        this.g.stroke();
-
-                        return false;
                     }
-                }
-            });
 
-            // Example of infinite knob, iPod click wheel
-            var v, up = 0,
-                down = 0,
-                i = 0,
-                $idir = $("div.idir"),
-                $ival = $("div.ival"),
-                incr = function () {
-                    i++;
-                    $idir.show().html("+").fadeOut();
-                    $ival.html(i);
-                },
-                decr = function () {
-                    i--;
-                    $idir.show().html("-").fadeOut();
-                    $ival.html(i);
-                };
-            $("input.infinite").knob({
-                min: 0,
-                max: 20,
-                stopper: false,
-                change: function () {
-                    if (v > this.cv) {
-                        if (up) {
-                            decr();
-                            up = 0;
-                        } else {
-                            up = 1;
-                            down = 0;
-                        }
-                    } else {
-                        if (v < this.cv) {
-                            if (down) {
-                                incr();
-                                down = 0;
-                            } else {
-                                down = 1;
-                                up = 0;
-                            }
-                        }
-                    }
-                    v = this.cv;
+                    this.g.beginPath();
+                    this.g.strokeStyle = r ? this.o.fgColor : this.fgColor;
+                    this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, a.s, a.e, a.d);
+                    this.g.stroke();
+
+                    this.g.lineWidth = 2;
+                    this.g.beginPath();
+                    this.g.strokeStyle = this.o.fgColor;
+                    this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
+                    this.g.stroke();
+
+                    return false;
                 }
-            });
+            }
         });
+
+        // Example of infinite knob, iPod click wheel
+        var v, up = 0,
+            down = 0,
+            i = 0,
+            $idir = $("div.idir"),
+            $ival = $("div.ival"),
+            incr = function() {
+                i++;
+                $idir.show().html("+").fadeOut();
+                $ival.html(i);
+            },
+            decr = function() {
+                i--;
+                $idir.show().html("-").fadeOut();
+                $ival.html(i);
+            };
+        $("input.infinite").knob({
+            min: 0,
+            max: 20,
+            stopper: false,
+            change: function() {
+                if (v > this.cv) {
+                    if (up) {
+                        decr();
+                        up = 0;
+                    } else {
+                        up = 1;
+                        down = 0;
+                    }
+                } else {
+                    if (v < this.cv) {
+                        if (down) {
+                            incr();
+                            down = 0;
+                        } else {
+                            down = 1;
+                            up = 0;
+                        }
+                    }
+                }
+                v = this.cv;
+            }
+        });
+    });
     </script>
     <script type="text/javascript">
-  $(function () {
-      $.widget("ui.tooltip", $.ui.tooltip, {
-          options: {
-              content: function () {
-                  return $(this).prop('title');
-              }
-          }
-      });
-      
-$('.username').tooltip({
-    items: 'a.target',
-    open: function(event, ui)
-    {
-        if (typeof(event.originalEvent) === 'undefined')
-        {
-            return false;
-        }
-        $(".knob").knob();
-        var $id = $(ui.tooltip).attr('id');
-        
-        // close any lingering tooltips
-        $('div.ui-tooltip').not('#' + $id).remove();
-        
-        // ajax function to pull in data and add it to the tooltip goes here
-    },
-    close: function(event, ui)
-    {
-        ui.tooltip.hover(function()
-        {
-            $(this).stop(true).fadeTo(400, 1); 
-        },
-        function()
-        {
-            $(this).fadeOut('400', function()
-            {
-                $(this).remove();
-            });
+    $(function() {
+        $.widget("ui.tooltip", $.ui.tooltip, {
+            options: {
+                content: function() {
+                    return $(this).prop('title');
+                }
+            }
         });
-    }
-});  });
-</script>
+
+        $('.username').tooltip({
+            items: 'a.target',
+            open: function(event, ui) {
+                if (typeof(event.originalEvent) === 'undefined') {
+                    return false;
+                }
+                $(".knob").knob();
+                var $id = $(ui.tooltip).attr('id');
+
+                // close any lingering tooltips
+                $('div.ui-tooltip').not('#' + $id).remove();
+
+                // ajax function to pull in data and add it to the tooltip goes here
+            },
+            close: function(event, ui) {
+                ui.tooltip.hover(function() {
+                        $(this).stop(true).fadeTo(400, 1);
+                    },
+                    function() {
+                        $(this).fadeOut('400', function() {
+                            $(this).remove();
+                        });
+                    });
+            }
+        });
+    });
+    </script>
 </head>
 
 <body>
-<div class="wrapper">
-  </div>
+    <div class="wrapper">
+    </div>
     <header>
         <nav>
             <ul>
                 <li id="index">
-                    <a href="/"><section id="index-trigger">
-                        <span class="back-arrow button">
-              </span>
-                        <span id="index-text" class="text button">
-Inicio              </span>
-                    </section></a>
-
+                    <a href="/">
+                        <section id="index-trigger">
+                            <span class="back-arrow button">
+                            </span>
+                            <span id="index-text" class="text button">
+                                Inicio </span>
+                        </section>
+                    </a>
                 </li>
-               <li id= "buscar">
-          <input class="buscar" type="text" placeholder="Busca aquí cursos, personas o cualquier cosa">
-          </li>
+                <li id="buscar">
+                    <input class="buscar" type="text" placeholder="Busca aquí cursos, personas o cualquier cosa">
+                </li>
                 <li id="Options">
-                <div class="options first button">
-                    <ul>
-                        <li class="star"></li>
-                         <li class="bookmark"></li>
-
-                    </ul>
-                </div>
+                    <div class="options first button">
+                        <ul>
+                            <li class="star"></li>
+                            <li class="bookmark"></li>
+                        </ul>
+                    </div>
                 </li>
-                
                 <li id="right-menu" class="button">
                     <section id="dots" class="button">
                         <span id="store" class="button">
-              </span>
+                        </span>
                         <span id="dots-icon" class="button">
-              </span>
+                        </span>
                         <span id="dots-text" class="button">
-                6'000.600
-              </span>
-
+                            6'000.600
+                        </span>
                     </section>
                     <section id="profileTrigger">
                     </section>
                     <div id="profile" class="button">
                         <img id="profile-pic" src="/resources/images/white.jpg" alt="Walter White">
-                        <input class="knob button" data-width="35"  data-height="35" data-fgColor="#2ecc71" data-bgColor="rgba(0,0,0,0)" data-displayInput=false data-thickness=".15" readonly value="60">
+                        <input class="knob button" data-width="35" data-height="35" data-fgColor="#2ecc71" data-bgColor="rgba(0,0,0,0)" data-displayInput=false data-thickness=".15" readonly value="60">
                     </div>
                     <span class="index-arrow button">
-              </span>
-
+                    </span>
                     <section id="profileSettings">
                     </section>
                 </li>
-
                 <li>
                 </li>
             </ul>
@@ -250,7 +233,6 @@ Inicio              </span>
     </div>
     <section id="wrapper" class="theater"></section>
     <style class="zer">
-        
     </style>
     <section id="theater" class="theater">
         <section>
@@ -258,79 +240,71 @@ Inicio              </span>
                 <img id="bigPic" alt="">
                 <div class="Playuse">
                 </div>
-                <video id="theater_video" controls class="video-js d88fer vjs-default-skin" preload="none" width="100%" height="264" data-setup='{}'  data-setup="{}">
-                   <source src="" type='video/mp4'/>
-                   <p class="vjs-no-js">
-                      Para ver este vídeo, por favor activa el Javascript y considera actualizar tu navegador a uno que
-                      <a href="http://videojs.com/html5-video-support/" target="_blank">
-                      soporte vídeo en Html5
-                      </a>
-                   </p>
+                <video id="theater_video" controls class="video-js d88fer vjs-default-skin" preload="none" width="100%" height="264" data-setup='{}' data-setup="{}">
+                    <source src="" type='video/mp4' />
+                    <p class="vjs-no-js">
+                        Para ver este vídeo, por favor activa el Javascript y considera actualizar tu navegador a uno que
+                        <a href="http://videojs.com/html5-video-support/" target="_blank">
+                            soporte vídeo en Html5
+                        </a>
+                    </p>
                 </video>
                 <div id="otherContainments">
-                  <div></div>
+                    <div></div>
                 </div>
             </section>
             <aside class="comments">
-            <div class="info">
+                <div class="info">
                     <img id="pic" alt="">
                     <p class="username"><a href="#"></a></p>
-            </div>
-            <div class="description">
-                <p class="title"></p>
-                <p class="more">
-                </p>
-            </div>
-            <div class="comentarios">
-                <div class="Comentarios">
                 </div>
-                <div class="newComment">
-                    <textarea rows="1"></textarea>
+                <div class="description">
+                    <p class="title"></p>
+                    <p class="more">
+                    </p>
                 </div>
-            </div>
-            <div class="options button">
-            <ul>
-                <li class="bookmark"></li>
-                <li class="star"></li>
-                <li class="read"></li>
-            </ul></div>
-            <p id="close"></p>
+                <div class="comentarios">
+                    <div class="Comentarios">
+                    </div>
+                    <div class="newComment">
+                        <textarea rows="1"></textarea>
+                    </div>
+                </div>
+                <div class="options button">
+                    <ul>
+                        <li class="bookmark"></li>
+                        <li class="star"></li>
+                        <li class="read"></li>
+                    </ul>
+                </div>
+                <p id="close"></p>
             </aside>
         </section>
     </section>
-    
     <section id="article">
-       <span class="date"><time datetime="2021-08-25">&nbsp25 Ago 2021</time></span>
+        <span class="date"><time datetime="2021-08-25">&nbsp25 Ago 2021</time></span>
         <aside id="title">
             Una Breve Historia De La Creación
         </aside>
-        <section class="filler"style= "height: 180px"></section>
-        
-       <aside id="text">
-        <p style= "width: 100%; text-align: center; "><b style= "font-size: 138px; color: #fe7241; width: 100%; text-align: center; ">⚠</b></p>
-              
-           <p style="font-size: 0.75em; text-align: center; ">Advertencia: peligro de crisis existencial. En caso de existencialismo, consulta autores como Arthur Schopenhauer o Jean-Paul Sartre, y lee mucho los poemas de <a target= "_blank" href= "https://tantubular.tumblr.com/" >mi blog</a>. Una crisis existencial no es para siempre y normalmente no dura mucho tiempo. Puedes aprender algo de ésta, pero recuerda, hay cosas que aprendemos para aprender a olvidar.</br></br>
-Yo soy el nieto de Dios Jesucristo; el hijo de Satanás Belcebú; y el amor de la vida de la Madre Naturaleza, La Que Hace Que Crezcan Los Árboles.</p>
-        <section class="filler"style= "border-bottom: 1px solid #eee; height: 80px"></section>
-        <section class="filler"style= "height: 80px"></section>
-
-        <p>Mi abuelo, Dios Jesucristo, decidió "salir" de un lugar en el que estaban los dioses, hacia la inexistencia. Es ridículo especular sobre de qué principio vino él, pues allí muchos dioses son principios, otros finales; mi abuelo, por ejemplo, era bondadoso.</p>
-
-        <p>&nbsp&nbsp&nbsp&nbspEn el lugar donde estaban los dioses, el "cielo" que tenían podía albergar seres de todas las clases, bondadosos, como mi abuelo, amarillo, magenta, etcétera. Al salir, Dios Jesucristo debía crear un "cielo" lo más rápidamente posible, para no asfixiarse, entonces debía tener lo más esencial, así que sólo podía albergar seres bondadosos, como él. </p>
-
-        <p>&nbsp&nbsp&nbsp&nbspLuego creó allí <i>El Espacio-tiempo</i> y<i> Los Elementos Químicos</i> y <i>La Química</i>.</p>
-
-        <p>&nbsp&nbsp&nbsp&nbspDios Jesucristo era muy bueno creando cosas robustas, como<i> El Espacio-tiempo</i> y<i> La Química</i>, pero a la hora de hacer algo con esto, no tenía la atención a los detalles necesaria para ésto principalmente porque le quedó mucho mejor de lo que esperaba. Así que decidió tener un hijo.</p>
-
-        <p>&nbsp&nbsp&nbsp&nbspLos dioses tienen hijos consigo mismos. El hijo de un dios es lo opuesto a su padre; lo opuesto es diferente a lo contrario, lo <i>contrario</i> forma algo <i>binario</i>, ambas palabras suenan parecidas, en tanto que lo <i>opuesto</i> forma un <i>espectro</i>. Es decir que cualquier descendiente de un dios va a ser de un tipo diferente a todos sus ancestros. </p>
-
-        <figure>
-            <img src="/A.K.A._Dizzy/blog/Una Breve Historia De La Creación/resources/Opuesto.svg" style= "width: 100%; padding: 13px; box-sizing: border-box; border: 1px solid #ccc">
-            <figcaption style= "text-align: right; "><i style= "color: #888; font-size: 13px; ">Los opuestos son los dos puntos que están más lejos y los dos puntos que están más cerca del origen. Cada uno tiene su reflejo, que tiene la misma magnitud pero va en dirección opuesta</i></figcaption>
-            <section class="hidden">
+        <section class="filler" style="height: 180px"></section>
+        <aside id="text">
+            <p style="width: 100%; text-align: center; "><b style="font-size: 138px; color: #fe7241; width: 100%; text-align: center; ">⚠</b></p>
+            <p style="font-size: 0.75em; text-align: center; ">Advertencia: peligro de crisis existencial. En caso de existencialismo, consulta autores como Arthur Schopenhauer o Jean-Paul Sartre, y lee mucho los poemas de <a target="_blank" href="https://tantubular.tumblr.com/">mi blog</a>. Una crisis existencial no es para siempre y normalmente no dura mucho tiempo. Puedes aprender algo de ésta, pero recuerda, hay cosas que aprendemos para aprender a olvidar.</br></br>
+                Yo soy el nieto de Dios Jesucristo; el hijo de Satanás Belcebú; y el amor de la vida de la Madre Naturaleza, La Que Hace Que Crezcan Los Árboles.</p>
+            <section class="filler" style="border-bottom: 1px solid #eee; height: 80px"></section>
+            <section class="filler" style="height: 80px"></section>
+            <p>Mi abuelo, Dios Jesucristo, decidió "salir" de un lugar en el que estaban los dioses, hacia la inexistencia. Es ridículo especular sobre de qué principio vino él, pues allí muchos dioses son principios, otros finales; mi abuelo, por ejemplo, era bondadoso.</p>
+            <p>&nbsp&nbsp&nbsp&nbspEn el lugar donde estaban los dioses, el "cielo" que tenían podía albergar seres de todas las clases, bondadosos, como mi abuelo, amarillo, magenta, etcétera. Al salir, Dios Jesucristo debía crear un "cielo" lo más rápidamente posible, para no asfixiarse, entonces debía tener lo más esencial, así que sólo podía albergar seres bondadosos, como él. </p>
+            <p>&nbsp&nbsp&nbsp&nbspLuego creó allí <i>El Espacio-tiempo</i> y<i> Los Elementos Químicos</i> y <i>La Química</i>.</p>
+            <p>&nbsp&nbsp&nbsp&nbspDios Jesucristo era muy bueno creando cosas robustas, como<i> El Espacio-tiempo</i> y<i> La Química</i>, pero a la hora de hacer algo con esto, no tenía la atención a los detalles necesaria para ésto principalmente porque le quedó mucho mejor de lo que esperaba. Así que decidió tener un hijo.</p>
+            <p>&nbsp&nbsp&nbsp&nbspLos dioses tienen hijos consigo mismos. El hijo de un dios es lo opuesto a su padre; lo opuesto es diferente a lo contrario, lo <i>contrario</i> forma algo <i>binario</i>, ambas palabras suenan parecidas, en tanto que lo <i>opuesto</i> forma un <i>espectro</i>. Es decir que cualquier descendiente de un dios va a ser de un tipo diferente a todos sus ancestros. </p>
+            <figure>
+                <img src="/A.K.A._Dizzy/blog/Una Breve Historia De La Creación/resources/Opuesto.svg" style="width: 100%; padding: 13px; box-sizing: border-box; border: 1px solid #ccc">
+                <figcaption style="text-align: right; "><i style="color: #888; font-size: 13px; ">Los opuestos son los dos puntos que están más lejos y los dos puntos que están más cerca del origen. Cada uno tiene su reflejo, que tiene la misma magnitud pero va en dirección opuesta</i></figcaption>
+                <section class="hidden">
                     <div class="info">
-                                        <img src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
-                                        <p class="username"><a class= "target" href="/A.K.A._Dizzy" title="         
+                        <img src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                        <p class="username"><a class="target" href="/A.K.A._Dizzy" title="         
                     <div class='tool'>
                         <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
                         <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
@@ -348,19 +322,18 @@ Yo soy el nieto de Dios Jesucristo; el hijo de Satanás Belcebú; y el amor de l
                         <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
                         <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
                         <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
-                    </div>">Luis Eduardo Gallego García</a><br><span title= "25 de Agosto de 2021 a las 9:71 pm" class="time">Agosto de 2021</span></p>
+                    </div>">Luis Eduardo Gallego García</a><br><span title="25 de Agosto de 2021 a las 9:71 pm" class="time">Agosto de 2021</span></p>
                     </div>
                     <p class="title"></p>
                 </section>
-        </figure>
-
-        <figure>
-            <img src="/A.K.A._Dizzy/blog/Una Breve Historia De La Creación/resources/Contrario.svg" style= "width: 100%; padding: 13px; box-sizing: border-box; border: 1px solid #ccc">
-            <figcaption style= "text-align: right; "><i style= "color: #888; font-size: 13px; ">Lo contrario de bueno es malo, lo contrario de malo es bueno, lo contrario de bueno es malo y así, eterna, sucesivamente. Por eso se dice que es algo binario</i></figcaption>
-            <section class="hidden">
+            </figure>
+            <figure>
+                <img src="/A.K.A._Dizzy/blog/Una Breve Historia De La Creación/resources/Contrario.svg" style="width: 100%; padding: 13px; box-sizing: border-box; border: 1px solid #ccc">
+                <figcaption style="text-align: right; "><i style="color: #888; font-size: 13px; ">Lo contrario de bueno es malo, lo contrario de malo es bueno, lo contrario de bueno es malo y así, eterna, sucesivamente. Por eso se dice que es algo binario</i></figcaption>
+                <section class="hidden">
                     <div class="info">
-                                        <img src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
-                                        <p class="username"><a class= "target" href="/A.K.A._Dizzy" title="         
+                        <img src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                        <p class="username"><a class="target" href="/A.K.A._Dizzy" title="         
                     <div class='tool'>
                         <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
                         <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
@@ -378,96 +351,99 @@ Yo soy el nieto de Dios Jesucristo; el hijo de Satanás Belcebú; y el amor de l
                         <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
                         <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
                         <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
-                    </div>">Luis Eduardo Gallego García</a><br><span title= "25 de Agosto de 2021 a las 9:71 pm" class="time">Agosto de 2021</span></p>
+                    </div>">Luis Eduardo Gallego García</a><br><span title="25 de Agosto de 2021 a las 9:71 pm" class="time">Agosto de 2021</span></p>
                     </div>
                     <p class="title"></p>
                 </section>
-        </figure>
-
-        <p>&nbsp&nbsp&nbsp&nbspEl hijo de Dios Jesucristo fue lo opuesto a bondadoso; malicioso.</p>
-        <p>&nbsp&nbsp&nbsp&nbspSatanás Belcebú se asfixió en<i> El Cielo</i>, porque éste fue creado para albergar seres bondadosos exclusivamente, y él era malicioso, así que creó <i>El Infierno</i> en otra dimensión; como un "cielo" para albergar seres maliciosos.</p>
-        <p>&nbsp&nbsp&nbsp&nbspLuego, Satanás Belcebú creó<i> El Amor</i>, que era otra cosa muy robusta y lo puso por doquier,  en<i> El Infierno</i> y en<i> El Cielo</i>. Sin embargo, él tampoco tenía mucha habilidad con los detalles, así que no podía crear lo que había que crear con la creación de su padre Dios Jesucristo.</p>
-        <p>&nbsp&nbsp&nbsp&nbspSatanás Belcebú tuvo entonces un hijo, el curso de la verdad y la mentira, Luis Eduardo Gallego García Echeverri Arias Ruiz Cardona; yo.</p>
-        <p>&nbsp&nbsp&nbsp&nbspYo era el curso de la verdad y la mentira, así que encontraba verdad en todo y las mentiras las veía destruibles, por lo que podía estar tranquilamente en<i> El Infierno</i> o en<i> El Cielo</i>. Y no tuve que crear mi propio "cielo" ni nada parecido.</p>
-        <p>&nbsp&nbsp&nbsp&nbspCuando yo nací, mi abuelo Dios Jesucristo me regaló<i> El Espacio-tiempo</i> y <i>La Química</i>. Yo les dije que yo sí sabía qué crear con estas cosas, pero que necesitaba ayuda de otro dios para crearlo, así que necesitaba permiso e instrucciones de mi abuelo Dios Jesucristo para ir al lugar del que él vino y volver de allí.</p>
-        <p>&nbsp&nbsp&nbsp&nbspDios Jesucristo me dio permiso e instrucciones y yo fui y volví con la Madre Naturaleza, La Que Hace Que Crezcan Los Árboles.</p>
-        <p>&nbsp&nbsp&nbsp&nbspCreé<i> La Física</i> y se la regalé a mi abuelo Dios Jesucristo. Creé <i>Los Planetas</i>, y la Madre Naturaleza, La Que Hace Que Crezcan Los Árboles les creó vegetación. Yo le regalé a ella todos los <i>Astros</i> y <i>Los Animales</i> y ella me regaló todas <i>Las Plantas</i>. Y le regalé los <i>Seres Humanos</i> a mi abuelo Dios Jesucristo.</p>
-        <h2>¿Qué implica esto?</h2>
-        <p>Yo escribí la Sagrada Biblia, así que en estos respectos podrán encontrar muchas respuestas. La Sagrada Biblia dice, por ejemplo:</p>
-        <p>&nbsp&nbsp&nbsp&nbspGénesis 1: 1: <q>En el principio creó Dios los cielos y la tierra.</q></p>
-        <p>&nbsp&nbsp&nbsp&nbspEsto describe lo que hizo mi abuelo, Dios Jesucristo, en el principio; crear<i> El Cielo</i>, el "cielo" que creó para albergar seres bondadosos, y<i> La Química</i>.</p>
-        <p>&nbsp&nbsp&nbsp&nbspEl que la Sagrada Biblia esté en lo correcto, no implica que la ciencia se equivoque; Adán, por ejemplo, fue el ADN, las características de la primera "semilla", y Eva fue la evolución, las leyes para que, de esa primera "semilla", evolucionaran todos los seres vivos que queríamos crear.</p>
-        <p>&nbsp&nbsp&nbsp&nbspYo creé <i>La Música</i> y se la regalé a mi padre Satanás Belcebú. También creé todos<i> Los Lenguajes</i>, y se los regalé a la Madre Naturaleza, La Que Hace Que Crezcan Los Árboles.</p>
-        <h2>¿A dónde vamos al morir?</h2>
-        <p>Donde está <i>El Cielo</i> está la materia. Aquí creamos los animales y las plantas, por ejemplo; o los seres humanos.</p>
-        <p>&nbsp&nbsp&nbsp&nbspEn <i>El Cielo</i>, a los seres vivos nos permea<i> la bondad</i> de<i> El Cielo</i> que creó mi abuelo Dios Jesucristo, entonces decidimos vivir todo lo que podamos vivir.</p>
-        <p>&nbsp&nbsp&nbsp&nbspCuando morimos, vamos a <i>El Infierno</i>, allí nos permea la malicia de éste, que creó mi padre Satanás Belcebú, así que decidimos ser todo lo que podamos ser.</p>
-        <p>&nbsp&nbsp&nbsp&nbspEn <i>El Infierno</i> recordamos todas las otras veces que hemos estado muertos, y todas nuestras vidas pasadas, tenemos vidas muy complejas de cientos de siglos. Allí nos preparamos para nuestra próxima vida. Allí mi padre Satanás Belcebú, a quien yo le regalé<i> La Música</i> hace todas las bandas; todas, todas. Y me las regala todas a mí, porque yo le regale<i> La Música</i>. Se llama "El Infierno" porque, si lo lees <i>por sílabas</i>, puedes discernir "Where we go at dying", y si lo lees <i>por sílabas</i> al revés, "A donde vamos al morir". Para leer por sílabas, debes separar por sílabas y leer cada sílaba como si fuera una palabra independiente; fíjate bien en la 'r' inicial en "on<i> reif</i> ni  le", que suena como "erre" y no como "ere".</p>
-        <p>&nbsp&nbsp&nbsp&nbspEn<i> El Cielo</i> decidimos vivir todo lo que podamos vivir, así que vivimos esta vida lo más posible y por completo, y por ende no recordamos nuestras muertes ni vidas pasadas.</p>
-        <h2>¿Quién es Jesús De Nazareth?</h2>
-        <p>Para explicar quien fue Jesús De Nazareth, tengo que devolverme un poco a la historia.</p>
-        <p>&nbsp&nbsp&nbsp&nbspCuando estábamos planeando cómo íbamos a crear todo, surgió un problema. Como los<i> Seres Humanos</i> no iban a recordar sus vidas pasadas, la civilización iba a avanzar de manera extremadamente lenta. Así que decidimos darles acceso a una especie de memoria colectiva, que los mismos<i> Seres Humanos</i> iban a ir construyendo con las generaciones.</p>
-        <p>&nbsp&nbsp&nbsp&nbspEsto no fue tan sencillo de crear como creíamos. Planteamos varias maneras de crear esto pero no eran óptimas.</p>
-        <p>&nbsp&nbsp&nbsp&nbspAl final, decidimos que uno de los cuatro dioses que habíamos debía tener un hijo consigo mismo para encargarlo de esta labor. Dios Jesucristo decidió que él iba a ser quien tuviera un hijo.</p>
-        <p>&nbsp&nbsp&nbsp&nbspSu hijo fue Jesús De Nazareth, mi tío. Esta memoria colectiva se llama<i> El Sagrado Corazón De Jesús</i> y mi tío Jesús De Nazareth se encarga de éste en todos los sentidos.</p>
-        <p>&nbsp&nbsp&nbsp&nbspCuando los primeros neandertales estaban desarrollando apenas las técnicas del manejo de herramientas como martillos de hueso o madera, a algún neandertal se le ocurrió pegar más fuerte con el martillo, obteniendo mejores resultados. Estos conocimientos se fueron agregando a <i>El Sagrado Corazón De Jesús</i>, y luego los neandertales que iban a martillar después, por intuición, pegaban más fuerte con el martillo.</p>
-
-       </aside>
+            </figure>
+            <p>&nbsp&nbsp&nbsp&nbspEl hijo de Dios Jesucristo fue lo opuesto a bondadoso; malicioso.</p>
+            <p>&nbsp&nbsp&nbsp&nbspSatanás Belcebú se asfixió en<i> El Cielo</i>, porque éste fue creado para albergar seres bondadosos exclusivamente, y él era malicioso, así que creó <i>El Infierno</i> en otra dimensión; como un "cielo" para albergar seres maliciosos.</p>
+            <p>&nbsp&nbsp&nbsp&nbspLuego, Satanás Belcebú creó<i> El Amor</i>, que era otra cosa muy robusta y lo puso por doquier, en<i> El Infierno</i> y en<i> El Cielo</i>. Sin embargo, él tampoco tenía mucha habilidad con los detalles, así que no podía crear lo que había que crear con la creación de su padre Dios Jesucristo.</p>
+            <p>&nbsp&nbsp&nbsp&nbspSatanás Belcebú tuvo entonces un hijo, el curso de la verdad y la mentira, Luis Eduardo Gallego García Echeverri Arias Ruiz Cardona; yo.</p>
+            <p>&nbsp&nbsp&nbsp&nbspYo era el curso de la verdad y la mentira, así que encontraba verdad en todo y las mentiras las veía destruibles, por lo que podía estar tranquilamente en<i> El Infierno</i> o en<i> El Cielo</i>. Y no tuve que crear mi propio "cielo" ni nada parecido.</p>
+            <p>&nbsp&nbsp&nbsp&nbspCuando yo nací, mi abuelo Dios Jesucristo me regaló<i> El Espacio-tiempo</i> y <i>La Química</i>. Yo les dije que yo sí sabía qué crear con estas cosas, pero que necesitaba ayuda de otro dios para crearlo, así que necesitaba permiso e instrucciones de mi abuelo Dios Jesucristo para ir al lugar del que él vino y volver de allí.</p>
+            <p>&nbsp&nbsp&nbsp&nbspDios Jesucristo me dio permiso e instrucciones y yo fui y volví con la Madre Naturaleza, La Que Hace Que Crezcan Los Árboles.</p>
+            <p>&nbsp&nbsp&nbsp&nbspCreé<i> La Física</i> y se la regalé a mi abuelo Dios Jesucristo. Creé <i>Los Planetas</i>, y la Madre Naturaleza, La Que Hace Que Crezcan Los Árboles les creó vegetación. Yo le regalé a ella todos los <i>Astros</i> y <i>Los Animales</i> y ella me regaló todas <i>Las Plantas</i>. Y le regalé los <i>Seres Humanos</i> a mi abuelo Dios Jesucristo.</p>
+            <h2>¿Qué implica esto?</h2>
+            <p>Yo escribí la Sagrada Biblia, así que en estos respectos podrán encontrar muchas respuestas. La Sagrada Biblia dice, por ejemplo:</p>
+            <p>&nbsp&nbsp&nbsp&nbspGénesis 1: 1: <q>En el principio creó Dios los cielos y la tierra.</q></p>
+            <p>&nbsp&nbsp&nbsp&nbspEsto describe lo que hizo mi abuelo, Dios Jesucristo, en el principio; crear<i> El Cielo</i>, el "cielo" que creó para albergar seres bondadosos, y<i> La Química</i>.</p>
+            <p>&nbsp&nbsp&nbsp&nbspEl que la Sagrada Biblia esté en lo correcto, no implica que la ciencia se equivoque; Adán, por ejemplo, fue el ADN, las características de la primera "semilla", y Eva fue la evolución, las leyes para que, de esa primera "semilla", evolucionaran todos los seres vivos que queríamos crear.</p>
+            <p>&nbsp&nbsp&nbsp&nbspYo creé <i>La Música</i> y se la regalé a mi padre Satanás Belcebú. También creé todos<i> Los Lenguajes</i>, y se los regalé a la Madre Naturaleza, La Que Hace Que Crezcan Los Árboles.</p>
+            <h2>¿A dónde vamos al morir?</h2>
+            <p>Donde está <i>El Cielo</i> está la materia. Aquí creamos los animales y las plantas, por ejemplo; o los seres humanos.</p>
+            <p>&nbsp&nbsp&nbsp&nbspEn <i>El Cielo</i>, a los seres vivos nos permea<i> la bondad</i> de<i> El Cielo</i> que creó mi abuelo Dios Jesucristo, entonces decidimos vivir todo lo que podamos vivir.</p>
+            <p>&nbsp&nbsp&nbsp&nbspCuando morimos, vamos a <i>El Infierno</i>, allí nos permea la malicia de éste, que creó mi padre Satanás Belcebú, así que decidimos ser todo lo que podamos ser.</p>
+            <p>&nbsp&nbsp&nbsp&nbspEn <i>El Infierno</i> recordamos todas las otras veces que hemos estado muertos, y todas nuestras vidas pasadas, tenemos vidas muy complejas de cientos de siglos. Allí nos preparamos para nuestra próxima vida. Allí mi padre Satanás Belcebú, a quien yo le regalé<i> La Música</i> hace todas las bandas; todas, todas. Y me las regala todas a mí, porque yo le regale<i> La Música</i>. Se llama "El Infierno" porque, si lo lees <i>por sílabas</i>, puedes discernir "Where we go at dying", y si lo lees <i>por sílabas</i> al revés, "A donde vamos al morir". Para leer por sílabas, debes separar por sílabas y leer cada sílaba como si fuera una palabra independiente; fíjate bien en la 'r' inicial en "on<i> reif</i> ni le", que suena como "erre" y no como "ere".</p>
+            <p>&nbsp&nbsp&nbsp&nbspEn<i> El Cielo</i> decidimos vivir todo lo que podamos vivir, así que vivimos esta vida lo más posible y por completo, y por ende no recordamos nuestras muertes ni vidas pasadas.</p>
+            <h2>¿Quién es Jesús De Nazareth?</h2>
+            <p>Para explicar quien fue Jesús De Nazareth, tengo que devolverme un poco a la historia.</p>
+            <p>&nbsp&nbsp&nbsp&nbspCuando estábamos planeando cómo íbamos a crear todo, surgió un problema. Como los<i> Seres Humanos</i> no iban a recordar sus vidas pasadas, la civilización iba a avanzar de manera extremadamente lenta. Así que decidimos darles acceso a una especie de memoria colectiva, que los mismos<i> Seres Humanos</i> iban a ir construyendo con las generaciones.</p>
+            <p>&nbsp&nbsp&nbsp&nbspEsto no fue tan sencillo de crear como creíamos. Planteamos varias maneras de crear esto pero no eran óptimas.</p>
+            <p>&nbsp&nbsp&nbsp&nbspAl final, decidimos que uno de los cuatro dioses que habíamos debía tener un hijo consigo mismo para encargarlo de esta labor. Dios Jesucristo decidió que él iba a ser quien tuviera un hijo.</p>
+            <p>&nbsp&nbsp&nbsp&nbspSu hijo fue Jesús De Nazareth, mi tío. Esta memoria colectiva se llama<i> El Sagrado Corazón De Jesús</i> y mi tío Jesús De Nazareth se encarga de éste en todos los sentidos.</p>
+            <p>&nbsp&nbsp&nbsp&nbspCuando los primeros neandertales estaban desarrollando apenas las técnicas del manejo de herramientas como martillos de hueso o madera, a algún neandertal se le ocurrió pegar más fuerte con el martillo, obteniendo mejores resultados. Estos conocimientos se fueron agregando a <i>El Sagrado Corazón De Jesús</i>, y luego los neandertales que iban a martillar después, por intuición, pegaban más fuerte con el martillo.</p>
+        </aside>
+        <div class="comentarios">
+            <div class="Comentarios">
+            </div>
+            <div class="newComment">
+                <textarea rows="1"></textarea>
+            </div>
+        </div>
     </section>
     <aside id="sidebar">
         <section class="story project">
             <div class="info">
-                    <img src="/resources/images/white.jpg" alt="">
-                    <p class="username"><a href="#">Walter White</a> </p>
-                    <p class="time">Ayer a las 3:30 pm</p>
-                    
+                <img src="/resources/images/white.jpg" alt="">
+                <p class="username"><a href="#">Walter White</a> </p>
+                <p class="time">Ayer a las 3:30 pm</p>
             </div>
             <p class="title">Elizabeth Elam</p>
             <img class="pic" src="/A.K.A._Dizzy/blog/Dinosaurios/resources/tumblr_oezvmcymMl1siavito1_500.jpg" alt="" class="big">
             <div class="options button">
-            <ul>
-                <li class="bookmark"></li>
-                <li class="star"></li>
-                <a href=""><li class="read"></li></a>
-            </ul>
-        </div>
-
+                <ul>
+                    <li class="bookmark"></li>
+                    <li class="star"></li>
+                    <a href="">
+                        <li class="read"></li>
+                    </a>
+                </ul>
+            </div>
         </section>
-        
         <section class="story news">
             <div class="info">
-                    <img src="/resources/images/white.jpg" alt="">
-                    <p class="username"><a href="#">Walter White</a></p>
-                    <p class="time">24 de Octubre a las 0:30 am</p>
+                <img src="/resources/images/white.jpg" alt="">
+                <p class="username"><a href="#">Walter White</a></p>
+                <p class="time">24 de Octubre a las 0:30 am</p>
             </div>
             <p class="title">Novedades En GitHub</p>
             <img class="pic" src="/A.K.A._Dizzy/blog/Dinosaurios/resources/25231.png" alt="" class="big">
-        <div class="options button">
-            <ul>
-                <li class="bookmark"></li>
-                <li class="star"></li>
-                <a href="article.html"><li class="read"></li></a>
-            </ul>
-        </div>
-           
+            <div class="options button">
+                <ul>
+                    <li class="bookmark"></li>
+                    <li class="star"></li>
+                    <a href="article.html">
+                        <li class="read"></li>
+                    </a>
+                </ul>
+            </div>
         </section>
         <section class="story news">
-            
             <p class="title">Nuevos conceptos de diseño por <a href="#">Walter White</a></p>
             <img class="pic" src="/resources/images/grid/2.jpg" alt="" class="big">
-        <div class="options button">
-            <ul>
-                <li class="bookmark"></li>
-                <li class="star"></li>
-                <a href=""><li class="read"></li></a>   
-             </ul>
-        </div>
-           
+            <div class="options button">
+                <ul>
+                    <li class="bookmark"></li>
+                    <li class="star"></li>
+                    <a href="">
+                        <li class="read"></li>
+                    </a>
+                </ul>
+            </div>
         </section>
-        
     </aside>
     <section id="Store" class="button">
-            
         <aside id="actualStore" class="button">
             <aside id="storeList" class="button">
                 <ul>
@@ -498,24 +474,23 @@ Yo soy el nieto de Dios Jesucristo; el hijo de Satanás Belcebú; y el amor de l
                 </ul>
             </aside>
             <aside id="storeSection">
-                
             </aside>
         </aside>
-       
     </section>
-		<script>
-    $('.code-scroll').on('scroll', function () {
+    <script>
+    $('.code-scroll').on('scroll', function() {
         $(this).siblings("pre").scrollLeft($(this).scrollLeft());
     });
-    $('.code pre').on('scroll', function () {
+    $('.code pre').on('scroll', function() {
         $(this).siblings(".code-scroll").scrollLeft($(this).scrollLeft());
-        
+
     });
 
-    $(".code-scroll").stick_in_parent({recalc_every: 1, offset_top: 44 })
-    $(document).on("ready", function(){ 
-        Prism.highlightAll(); 
+    $(".code-scroll").stick_in_parent({ recalc_every: 1, offset_top: 44 })
+    $(document).on("ready", function() {
+        Prism.highlightAll();
     })
     </script>
 </body>
+
 </html>

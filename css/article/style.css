@@ -1259,17 +1259,11 @@ a:hover
     transform: rotateY(-90deg); 
     overflow-x: hidden; 
 }
-#theater .comentarios.setenta_y_cuatro{ 
-    padding-top: 74px; 
-} 
-#theater .comentarios.noventaYDos{ 
-    padding-top: 92px; 
-} 
 #theater .comentarios.open{ 
     transition-delay: 235ms; 
     transform: rotateY(0deg); 
 }
-#theater .comentarios .Comentarios{
+.comentarios .Comentarios{
     flex-grow: 1; 
     /*background: blueviolet; 
     border: 1px solid; */ 
@@ -1277,7 +1271,7 @@ a:hover
     width: 100%; 
     padding-right: 12px; 
 }
-#theater .comentarios .Comentarios::after {
+.comentarios .Comentarios::after {
     content: "";
     height: 12px;
     width: 100%;
@@ -1293,107 +1287,107 @@ a:hover
     top: 58px;
     z-index: 2;
 }
-#theater .comentarios .Comentarios .comentario{ 
+.comentarios .Comentarios .comentario{ 
     position: relative; 
     font-size: 13px; 
     margin-top: 12px;
+    word-break: break-word; 
 } 
-#theater .comentarios .Comentarios .comentario:first-child{ 
+.comentarios .Comentarios .comentario:first-child{ 
     margin-top: 12px; 
 } 
-#theater .comentarios .Comentarios .Respuestas, #theater .comentarios .Comentarios .RespueNtas{ 
+.comentarios .Comentarios .Respuestas, .comentarios .Comentarios .RespueNtas{ 
     color: #323232; 
     font-size: 12px; 
     margin-left: 12px; 
     cursor: pointer; 
 } 
-#theater .comentarios .Comentarios .RespueNtas span{ 
+.comentarios .Comentarios .RespueNtas span{ 
     color: #df5455 !important; 
 } 
-#theater .comentarios .Comentarios .RespueNtas span:active{ 
+.comentarios .Comentarios .RespueNtas span:active{ 
     color: #ff0707 !important; 
 } 
-#theater .comentarios .Comentarios .Responder, #theater .comentarios .Comentarios .Respxxder{ 
+.comentarios .Comentarios .Responder, .comentarios .Comentarios .Respxxder{ 
     color: #323232; 
     font-size: 12px; 
     cursor: pointer; 
     position: relative; 
 } 
-#theater .comentarios .Comentarios .Respxxder{ 
+.comentarios .Comentarios .Respxxder{ 
     color: #df5455 !important; 
 } 
-#theater .comentarios .Comentarios .Respxxder:active{ 
+.comentarios .Comentarios .Respxxder:active{ 
     color: #ff0707 !important; 
 } 
-#theater .comentarios .Comentarios .respuestas{ 
+.comentarios .Comentarios .respuestas{ 
     padding-left: 12px; 
 } 
-#theater .comentarios .Comentarios .respuestas:first-child{ 
+.comentarios .Comentarios .respuestas:first-child{ 
     margin-top: 12px; 
 } 
-#theater .comentarios .Comentarios .respuestas .comentario.hidden{ 
+.comentarios .Comentarios .respuestas .comentario.hidden{ 
     display: none; 
 } 
-#theater .comentarios .Comentarios .respuestas .respuestas.hidden{ 
+.comentarios .Comentarios .respuestas .respuestas.hidden{ 
     display: none; 
 } 
-#theater .comentarios .Comentarios .comentario div{ 
+.comentarios .Comentarios .comentario div{ 
     position: absolute; 
     left: 0; 
     top: 0; 
     cursor: pointer; 
 } 
-#theater .comentarios .Comentarios .Responder:after, #theater .comentarios .Comentarios .Respxxder:after{ 
+.comentarios .Comentarios .Responder:after, .comentarios .Comentarios .Respxxder:after{ 
     content: " \e904"; 
     font-family: "icomoon"; 
     vertical-align: middle; 
     cursor: pointer; 
     display: inline-block;  
 } 
-#theater .comentarios .Comentarios .Respuestas .Responder::after, #theater .comentarios .Comentarios .RespueNtas .Responder::after {
+.comentarios .Comentarios .Respuestas .Responder::after, .comentarios .Comentarios .RespueNtas .Responder::after {
     left: -22px; 
     position: absolute; 
     top: 2px; 
     word-break: break-word; 
 }
-#theater .comentarios .Comentarios .respuestas{ 
+.comentarios .Comentarios .respuestas{ 
     padding-left: 12px; 
 } 
-#theater .comentarios .Comentarios .comentario img{ 
+.comentarios .Comentarios .comentario img{ 
     height: 20px; 
     border-radius: 50%; 
     padding: 4px 4px 4px 4px; 
-    z-index: 2; 
     position: relative; 
     cursor: pointer; 
 } 
-#theater .comentarios .Comentarios .comentario .is{ 
+.comentarios .Comentarios .comentario .is{ 
     color: black; 
     user-select: none; 
 } 
-#theater .comentarios .Comentarios .comentario .Comentario{ 
+.comentarios .Comentarios .comentario .Comentario{ 
     color: #666;  
     padding-left: 7px; 
     margin-left: -7px; 
 } 
-#theater .comentarios .Comentarios .comentario .Comentario i {
+.comentarios .Comentarios .comentario .Comentario i {
     color: inherit;
 }
-#theater .comentarios .Comentarios .comentario .Comentario .media > p{ 
+.comentarios .Comentarios .comentario .Comentario .media > p{ 
     white-space: nowrap; 
     left: 0 !important; 
     overflow-x: hidden; 
     text-overflow: ellipsis; 
     padding-left: 84px; 
 } 
-#theater .comentarios .Comentarios .comentario .Comentario .media{ 
+.comentarios .Comentarios .comentario .Comentario .media{ 
     position: relative !important; 
     width: 100%; 
 } 
-#theater .comentarios .Comentarios .comentario .Comentario .media .scrubber{ 
+.comentarios .Comentarios .comentario .Comentario .media .scrubber{ 
     top: unset !important; 
 } 
-#theater .comentarios .Comentarios .comentario .Comentario .media .play-pause{ 
+.comentarios .Comentarios .comentario .Comentario .media .play-pause{ 
     z-index: 1; 
 } 
 /*.RIPonsive{}*/ 
@@ -1404,7 +1398,7 @@ a:hover
 #theater .info{ 
     z-index: 1; 
 } 
-#theater .comentarios textarea{ 
+.comentarios textarea{ 
     width: 100%; 
     color: #000;
     height: 100%; 
@@ -1422,14 +1416,14 @@ a:hover
     line-height: 14px;
     /*background-color: grey; */ 
 } 
-#theater .comentarios .newComment{ 
+.comentarios .newComment{ 
     /*bottom: 87px; 
     position: absolute; */ 
     max-height: 80px; 
     width: 100%; 
     position: relative; 
 } 
-#theater .comentarios > .newComment::before{ 
+.comentarios > .newComment::before{ 
     width: 13px; 
     height: 17px; 
     position: absolute; 
@@ -1667,3 +1661,19 @@ time{
 #article figure > div {
     width: 23.4px;
 }
+#article .comentarios{ 
+    width: 100%; 
+    text-align: left; 
+    margin-top: 200px; 
+} 
+.ui-helper-hidden-accessible{ 
+    display: none; 
+} 
+#article .comentarios .Comentarios{ 
+    box-sizing: border-box; 
+    padding: 0 12px; 
+} 
+#article .comentarios > .newComment{ 
+    padding: 0 2px 2px 2px; 
+    box-sizing: border-box; 
+} 

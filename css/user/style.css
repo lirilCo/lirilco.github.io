@@ -1856,6 +1856,7 @@ display: inline-block;
     position: relative; 
     font-size: 13px; 
     margin-top: 12px;
+    word-break: break-word; 
 } 
 #theater .comentarios .Comentarios .comentario:first-child{ 
     margin-top: 12px; 
@@ -1934,6 +1935,7 @@ display: inline-block;
     color: #666;  
     padding-left: 7px; 
     margin-left: -7px; 
+    word-break: break-word; 
 } 
 #theater .comentarios .Comentarios .comentario .Comentario i {
     color: inherit;
