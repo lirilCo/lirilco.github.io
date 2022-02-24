@@ -15,7 +15,7 @@ function openProfilePicModal(a) {
 
     history.pushState({page: 1}, "", "/" + username + "/img/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
 
-    var info = a.closest('.story').find(".info").html(); 
+    var info = a.closest('#profilePic').find(".info").html(); 
     $('.theater .comments .info').html(info); 
 
     var title = a.find(".hidden").find(".title").html();
@@ -460,6 +460,8 @@ function openOtherModal(a){
 
     $('.theater .comments .comentarios .Comentarios .comentario').on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth = elx.outerWidth( true ),circleHeight  = elx.outerHeight( true ),circleLeft    = elx.offset().left,circleTop     = elx.offset().top,circlePos     = {x     : circleLeft + circleWidth / 2,y     : circleTop + circleHeight / 2,radius: circleWidth / 2};distance    = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); 
 
+    th.find(".revelar.activado").click(); 
+    
     var containment = a.closest('.story').find(".title").next().prop("outerHTML");
     $('.theater #otherContainments > div').html(containment);
 
@@ -530,6 +532,19 @@ function openOtherModal(a){
       
 
     responsive()
+
+    $("#theater .revelar").on("click", function(){ 
+        if($(this).text()[0] != "O"){ 
+            $(this).parent().css({"height": "auto"}); 
+            $(this)[0].tx= $(this).text(); 
+            $(this).text("Ocultar de nuevo."); 
+            $(this).addClass("activado"); 
+        }else{ 
+            $(this).parent().css({"height": "0"}); 
+            $(this).text($(this)[0].tx); 
+            $(this).removeClass("activado"); 
+        } 
+    })
 } 
 ok= true; 
 var Antheater; //Did We Literally Like Have To Create AntiMatter For The Theater..? /*Yes*/ 
@@ -705,11 +720,43 @@ $(document).on("ready",function(e){
             wwd(this); 
         })
     };
+
+    $("#theater .RespueNtas").click(function(i){ 
+        if($(i.target).is(".RespueNtas")){ 
+            for(j= 0; j <= 2; j++){ 
+                $(this).before(H); 
+
+                $(this).prev().on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth = elx.outerWidth( true ),circleHeight  = elx.outerHeight( true ),circleLeft    = elx.offset().left,circleTop     = elx.offset().top,circlePos     = {x     : circleLeft + circleWidth / 2,y     : circleTop + circleHeight / 2,radius: circleWidth / 2};distance    = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); 
+                                   
+                $(".knob").knob(); 
+                                   
+                tooltipComentarios(); 
+                    
+                H != can493ax? H= can493ax: H= asdknki4; 
+            } 
+
+            $(this).html('<span class="Responder"></span>Más respuestas (∞)'); 
+
+            for(let collapse of document.querySelectorAll("#theater .RespueNtas .Responder")){ 
+                collapse.addEventListener("contextmenu", function(e){ 
+                    e.preventDefault(); 
+
+                    $(this.parentElement.parentElement).find(".comentario").remove(); 
+                                
+                    H= asdknki4; 
+
+                    $("#theater .RespueNtas").html('<span class="Responder"></span>Respuestas (∞)'); 
+                }) 
+            }; 
+        } 
+    }); 
+
     $(".nav_arrow.left .arrow").not("#picContainer .arrow").on("click", function(){th= $(this).parent(); !th.parent().find(".carr").is(":animated")? th.parent().find(".carr").animate({scrollLeft: th.parent().find(".carr")[0].scrollLeft - th.parent().find(".carr").width()}, 400, function(){th= $(".current"); lk= th.find(".carr .pic")[Math.round(th.find(".carr")[0].scrollLeft / th.find(".carr").width())].src;th.find(".options a").attr("href", th.find(".options a").attr("href").slice(0, th.find(".options a").attr("href").lastIndexOf("/")) + lk.slice(lk.lastIndexOf("/"), lk.lastIndexOf("."))); }): 672;}); 
 
     $(".nav_arrow.right .arrow").not("#picContainer .arrow").on("click", function(){th= $(this).parent(); !th.parent().find(".carr").is(":animated")? th.parent().find(".carr").animate({scrollLeft: th.parent().find(".carr")[0].scrollLeft + th.parent().find(".carr").width()}, 400, function(){th= $(".current"); lk= th.find(".carr .pic")[Math.round(th.find(".carr")[0].scrollLeft / th.find(".carr").width())].src;th.find(".options a").attr("href", th.find(".options a").attr("href").slice(0, th.find(".options a").attr("href").lastIndexOf("/")) + lk.slice(lk.lastIndexOf("/"), lk.lastIndexOf("."))); }): 672;}); 
 
-
+    tooltipComentarios(); 
+    
     $("#search input").on("keydown keyup", function(){for(a= 0; a < $("#resizeBottom")[0].children[0].children[0].children[0].children[0].children.length; a++){ 
         $("#resizeBottom")[0].children[0].children[0].children[0].children[0].children[a].style.display= ""; 
         $("#resizeBottom")[0].children[0].children[0].children[0].children[0].children[a].innerText.toLowerCase().indexOf($("#search input")[0].value.toLowerCase()) == -1? $("#resizeBottom")[0].children[0].children[0].children[0].children[0].children[a].style.display= "none": 1; 
@@ -1422,7 +1469,13 @@ function tooltip(){
                 });
         }
     });
-
+    $(".line").tooltip({
+            track: true,
+            position: {
+                my: "center bottom-6",
+                at: "center top"
+            }
+        });
     $('.username').tooltip({
         items: 'a.target',
         open: function(event, ui) {

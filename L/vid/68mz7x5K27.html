@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="view port" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
+    <title>
+        Soy enterrador y vengo de enterrar mi corazón | Vídeos | Laura Escobar Bonnett | liril
+    </title>
+    <link rel="shortcut icon" type="image/ico" href="/resources/icons/favicon.ico" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/user/style.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/video-js.css">
+    <link rel="stylesheet" href="/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/resources/blue.monday/css/jplayer.blue.monday.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/imgStatic/style.css" />
+    <script type="text/javascript">
+        var username = "L";
+        var users_name = "Laura Escobar Bonnett";
+    </script>
+    <script src="/js/user/modernizr.custom.js"></script>
+    <script src="/js/jquery.js"></script>
+    <!--<script type="text/javascript" src= "js/jquery.circlemouse.js"></script> //Thanks to Mary Lou from Codrops, this helped me a lot!-->
+    <script src="/js/user/main.js"></script>
+    <script src="/js/jquery.dotdotdot.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/js/jquery.jplayer.min.js"></script>
+    <script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="/js/jquery.textarea_autosize.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    <script src="/js/jquery.knob.js"></script>
+    <script src="/js/video.js"></script>
+    <script src="/js/audio.min.js"></script>
+    <script src="/js/imgStatic/main.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $.widget("ui.tooltip", $.ui.tooltip, {
+                options: {
+                    content: function() {
+                        return $(this).prop('title');
+                    }
+                }
+            });
+
+            $('.username').tooltip({
+                items: 'a.target',
+                open: function(event, ui) {
+                    if (typeof(event.originalEvent) === 'undefined') {
+                        return false;
+                    }
+                    $(".knob").knob();
+                    var $id = $(ui.tooltip).attr('id');
+
+                    // close any lingering tooltips
+                    $('div.ui-tooltip').not('#' + $id).remove();
+
+                    // ajax function to pull in data and add it to the tooltip goes here
+                },
+                close: function(event, ui) {
+                    ui.tooltip.hover(function() {
+                            $(this).stop(true).fadeTo(400, 1);
+                        },
+                        function() {
+                            $(this).fadeOut('400', function() {
+                                $(this).remove();
+                            });
+                        });
+                }
+            });
+        });
+    </script>
+    <script>
+        $(function ($) {
+
+            $(".knob").knob({
+                change: function (value) {
+                    //console.log("change : " + value);
+                },
+                release: function (value) {
+                    //console.log(this.$.attr('value'));
+                    console.log("release : " + value);
+                },
+                cancel: function () {
+                    console.log("cancel : ", this);
+                },
+                /*format : function (value) {
+                  return value + '%';
+                  }
+                  ,*/
+                draw: function () {
+
+                    // "tron" case
+                    if (this.$.data('skin') == 'tron') {
+
+                        this.cursorExt= 0.3;
+
+                        var a= this.arc(this.cv) // Arc
+                            ,
+                            pa // Previous arc
+                            , r= 1;
+
+                        this.g.lineWidth= this.lineWidth;
+
+                        if (this.o.displayPrevious) {
+                            pa= this.arc(this.v);
+                            this.g.beginPath();
+                            this.g.strokeStyle= this.pColor;
+                            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, pa.s, pa.e, pa.d);
+                            this.g.stroke();
+                        }
+
+                        this.g.beginPath();
+                        this.g.strokeStyle= r ? this.o.fgColor : this.fgColor;
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, a.s, a.e, a.d);
+                        this.g.stroke();
+
+                        this.g.lineWidth= 2;
+                        this.g.beginPath();
+                        this.g.strokeStyle= this.o.fgColor;
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
+                        this.g.stroke();
+
+                        return false;
+                    }
+                }
+            });
+
+            // Example of infinite knob, iPod click wheel
+            var v, up= 0,
+                down= 0,
+                i= 0,
+                $idir= $("div.idir"),
+                $ival= $("div.ival"),
+                incr= function () {
+                    i++;
+                    $idir.show().html("+").fadeOut();
+                    $ival.html(i);
+                },
+                decr= function () {
+                    i--;
+                    $idir.show().html("-").fadeOut();
+                    $ival.html(i);
+                };
+            $("input.infinite").knob({
+                min: 0,
+                max: 20,
+                stopper: false,
+                change: function () {
+                    if (v > this.cv) {
+                        if (up) {
+                            decr();
+                            up= 0;
+                        } else {
+                            up= 1;
+                            down= 0;
+                        }
+                    } else {
+                        if (v < this.cv) {
+                            if (down) {
+                                incr();
+                                down= 0;
+                            } else {
+                                down= 1;
+                                up= 0;
+                            }
+                        }
+                    }
+                    v= this.cv;
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="wrapper">
+    </div>
+    <header>
+        <nav>
+            <ul>
+                <li id="index">
+                    <a href="/">
+                        <section id="index-trigger">
+                            <span class="back-arrow button">
+                            </span>
+                            <span id="index-text" class="text button">
+                                Inicio
+                            </span>
+                        </section>
+                    </a>
+                </li>
+                <li id="buscar">
+                    <input class="buscar" type="text" placeholder="Busca aquí cursos, personas o cualquier cosa">
+                </li>
+                <li id="right-menu" class="button">
+                    <section id="dots" class="button">
+                        <span id="store" class="button">
+                        </span>
+                        <span id="dots-icon" class="button">
+                        </span>
+                        <span id="dots-text" class="button">
+                            6'000.600
+                        </span>
+                    </section>
+                    <section id="profileTrigger">
+                    </section>
+                    <div id="profile" class="button">
+                        <img id="profile-pic" src="/resources/images/white.jpg" alt="Walter White">
+                        <input class="knob button" data-width="35" data-height="35" data-fgColor="#2ecc71" data-bgColor="rgba(0,0,0,0)" data-displayInput=false data-thickness=".15" readonly value="60">
+                    </div>
+                    <span class="index-arrow button">
+                    </span>
+                    <section id="profileSettings">
+                    </section>
+                </li>
+                <li>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <section id="wrapper" class="theater"></section>
+    <style class="zer">
+    </style>
+    <aside id="biography">
+        <section id="content">
+            <section id="theater" class="theater animated fadeIn" style="display: block;">
+                <section>
+                    <section id="picContainer">
+                        <img id="bigPic" alt="" src="">
+                        <div class="Playuse">
+                        </div>
+                        <video id="theater_video" controls autoplay="true" class="video-js d88fer vjs-default-skin" preload="none" width="100%" height="264" data-setup='{"poster":"/resources/images/L/68mz7x5K27_poster.png"}' data-setup="{}">
+                            <source src="/resources/videos/L/68mz7x5K27.mp4" type='video/mp4' />
+                            <p class="vjs-no-js">
+                                Para ver este vídeo, por favor activa el Javascript y considera actualizar tu navegador a uno que
+                                <a href="http://videojs.com/html5-video-support/" target="_blank">
+                                    soporte vídeo en Html5
+                                </a>
+                            </p>
+                        </video>
+                    </section>
+                    <aside class="comments">
+                        <div class="info">
+                            <img src="/resources/images/L/OGnpwD3jys_tn.jpg" alt="">
+                            <p class="username"><a class="target" href="/L" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/L/OGnpwD3jys_tn.jpg'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Laura Escobar Bonnett'>Laura Escobar Bonnett</p>
+                  <p class='rol'>Princesa <b style='color:#fff;'>+100</b></p>
+                </div>
+                </div>">Laura Escobar Bonnett</a><br><span title="13 de Febrero de 2022 a las 3:27 pm" class="time">13 de Febrero a las 3:27 pm</span></p>
+                        </div>
+                        <div class="description" style="padding-top: 76px;">
+                            <p class="title">Soy enterrador y vengo de enterrar mi corazón</p>
+                            <p class="more">
+                                El 27 de enero de 2022, mi más importante compañía, mi amiga más incondicional, el ser más noble… mi vida entera y más grande amor y yo, nos despedimos. Hoy me sacude este nuevo comienzo y tambalea mi propia identidad. Quizá sí intente alguna vez pegar los pelos del perro a ver si alguna vez lo vuelvo a armar… Aunque mientras tanto, deba abrir la puerta de nuestro hogar sin su presencia y el movimiento pendular de su cola en signo de agradecimiento y amor infinito.
+                                ¡En serio!, no quiero que los días pasen y se desprendan sus pelitos de mi ropa, es lo único que tengo, porque en mi memoria no confío, no quiero que los días pasen y empiece a tener flashbacks inconexos intentando recordar una imagen difuminada por mi capacidad mental de fragmentos incompletos e inconclusos cuando más quisiese retenerlo todo como una grabación en la que puedo hacer zoom y reenfocar la mirada en su mirada guía, en su rostro que decía “Todo va a estar bien”. Sus ojitos se apagaron sobre mí, pero me dijo que confiara en mi corazón, aunque hoy se encuentre en completa incertidumbre. Este salto cuántico era necesario para tomar la responsabilidad sobre mí y crear un cambio real desde adentro, tomando como base la enseñanza que me dejaste sobre el amor y lo que puede transformar al mundo. Gracias por ser la pieza más importante para que este ser encontrara su misión con todo lo que me permitiste experimentar desde la bondad. Gracias a tu vida, gracias por salvarme, gracias por darme el privilegio de estar juntas hasta el último instante de ti sobre esta superficie terrestre, gracias por elegirme y entregarme cada uno de tus días. Jamás había conocido la magnitud de una fortaleza como la tuya, porque ni aun pasando por días de dolor dejaste de ser esa perra alegre y juguetona, pero sabia y serena cuando más lo necesitábamos. Tu familia te ama con toda el alma, y yo… te guardo siempre en mí, porque eres y serás mi todo, espero verte de nuevo. Te amo por siempre, nariz.</p>
+                        </div>
+                        <div class="comentarios">
+                            <div class="Comentarios">
+                                <div class="comentario">
+                                    <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                    <img title="         
+                    <div class='tool'>
+                        <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                        <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                        <div class='datos'>
+                            <ul class='actions'>
+                            <li class='chatear' title='Chatear'>C</li>
+                            <li class='agregar' title='Agregar'>A</li>
+                            <li class='juzgar' title='Juzgar'>J</li>
+                            </ul>                  
+                            <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                            <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+                        </div>
+                        <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                        <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                        <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                        <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+                    </div>" src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                    &nbsp<a target="_blank" href="/A.K.A._Dizzy">Luis Eduardo Gallego García</a><span class="is">: </span><span class="Comentario">
+                                        <div class="media">
+                                            <audio src="/resources/Canción Sin Nombre.mp3"></audio>
+                                            <p title="Constructor And Business Partners - Perritas, Pierniabiertas - Canción Sin Nombre">Constructor And Business Partners - Perritas, Pierniabiertas - Canción Sin Nombre</p>
+                                        </div>
+                                    </span>
+                                    <span class="Responder"></span>
+                                </div>
+                                <div class="respuestas">
+                                    <div class="comentario hidden">
+                                        <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                        <img title="         
+                        <div class='tool'>
+                            <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                            <img src='/resources/images/L/OGnpwD3jys_tn.jpg'>
+                            <div class='datos'>
+                                <ul class='actions'>
+                                    <li class='chatear' title='Chatear'>C</li>
+                                    <li class='agregar' title='Agregar'>A</li>
+                                    <li class='juzgar' title='Juzgar'>J</li>
+                                </ul>                  
+                                <p class='username' title= 'Laura Escobar Bonnett'>Laura Escobar Bonnett</p>
+                                <p class='rol'>Princesa <b style='color:#fff;'>+100</b></p>
+                            </div>
+                        </div>" src="/resources/images/L/OGnpwD3jys_tn.jpg" alt="">
+                                        &nbsp<a target="_blank" href="/L">Laura Escobar Bonnett</a><span class="is">: </span><span class="Comentario">Ummm</span>
+                                        <span class="Responder"></span>
+                                    </div>
+                                    <div class="respuestas hidden">
+                                        <div class="comentario hidden">
+                                            <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                            <img title="         
+                            <div class='tool'>
+                                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                                <div class='datos'>
+                                    <ul class='actions'>
+                                    <li class='chatear' title='Chatear'>C</li>
+                                    <li class='agregar' title='Agregar'>A</li>
+                                    <li class='juzgar' title='Juzgar'>J</li>
+                                    </ul>                  
+                                    <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                                    <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+                                </div>
+                                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+                            </div>" src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                            &nbsp<a target="_blank" href="/A.K.A._Dizzy">Luis Eduardo Gallego García</a><span class="is">: </span><span class="Comentario">
+                                                Se canse en pez... ¿Lagañas?, ¿·.que... todo eso por lo que pasamos? <br><br>
+                                                &nbsp&nbsp— Me Devuelven Rápido; Yo No Tengo Tiempo Para Aprender A Hacer Otra Cosa, Pero Yo Sé Ser Perro...
+                                            </span>
+                                            <span class="Responder"></span>
+                                        </div>
+                                        <div class="respuestas hidden">
+                                            <div class="comentario hidden">
+                                                <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                                <img title="         
+                                <div class='tool'>
+                                    <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                    <img src='/resources/images/L/OGnpwD3jys_tn.jpg'>
+                                    <div class='datos'>
+                                        <ul class='actions'>
+                                            <li class='chatear' title='Chatear'>C</li>
+                                            <li class='agregar' title='Agregar'>A</li>
+                                            <li class='juzgar' title='Juzgar'>J</li>
+                                        </ul>                  
+                                        <p class='username' title= 'Laura Escobar Bonnett'>Laura Escobar Bonnett</p>
+                                        <p class='rol'>Princesa <b style='color:#fff;'>+100</b></p>
+                                    </div>
+                                </div>" src="/resources/images/L/OGnpwD3jys_tn.jpg" alt="">
+                                                &nbsp<a target="_blank" href="/L">Laura Escobar Bonnett</a><span class="is">: </span><span class="Comentario">
+                                                    ❤️
+                                                </span>
+                                                <span class="Responder"></span>
+                                            </div>
+                                            <div class="comentario hidden">
+                                                <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                                <img title="         
+                                <div class='tool'>
+                                    <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                    <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                                    <div class='datos'>
+                                        <ul class='actions'>
+                                        <li class='chatear' title='Chatear'>C</li>
+                                        <li class='agregar' title='Agregar'>A</li>
+                                        <li class='juzgar' title='Juzgar'>J</li>
+                                        </ul>                  
+                                        <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                                        <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+                                    </div>
+                                    <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                                    <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                                    <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                                    <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+                                </div>" src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                                &nbsp<a target="_blank" href="/A.K.A._Dizzy">Luis Eduardo Gallego García</a><span class="is">: </span><span class="Comentario">
+                                                    ¡Uno mordido por Lagañas 💔!
+                                                </span>
+                                                <span class="Responder"></span>
+                                            </div>
+                                            <div class="respuestas hidden">
+                                                <div class="comentario hidden">
+                                                    <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                                    <img title="         
+                                    <div class='tool'>
+                                        <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                        <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                                        <div class='datos'>
+                                            <ul class='actions'>
+                                            <li class='chatear' title='Chatear'>C</li>
+                                            <li class='agregar' title='Agregar'>A</li>
+                                            <li class='juzgar' title='Juzgar'>J</li>
+                                            </ul>                  
+                                            <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                                            <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+                                        </div>
+                                        <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                                        <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                                        <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                                        <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+                                    </div>" src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                                    &nbsp<a target="_blank" href="/A.K.A._Dizzy">Luis Eduardo Gallego García</a><span class="is">: </span><span class="Comentario">
+                                                        Leia recien nacida for scale: <img src="/resources/images/A.K.A._Dizzy/42UvHaLhEW.jpg" style="width: 105px; height: auto; border-radius: 0; ">
+                                                    </span>
+                                                    <span class="Responder"></span>
+                                                </div>
+                                                <div class="comentario hidden">
+                                                    <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                                    <img title="         
+                                    <div class='tool'>
+                                        <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                        <img src='/resources/images/L/OGnpwD3jys_tn.jpg'>
+                                        <div class='datos'>
+                                            <ul class='actions'>
+                                                <li class='chatear' title='Chatear'>C</li>
+                                                <li class='agregar' title='Agregar'>A</li>
+                                                <li class='juzgar' title='Juzgar'>J</li>
+                                            </ul>                  
+                                            <p class='username' title= 'Laura Escobar Bonnett'>Laura Escobar Bonnett</p>
+                                            <p class='rol'>Princesa <b style='color:#fff;'>+100</b></p>
+                                        </div>
+                                    </div>" src="/resources/images/L/OGnpwD3jys_tn.jpg" alt="">
+                                                    &nbsp<a target="_blank" href="/L">Laura Escobar Bonnett</a><span class="is">: </span><span class="Comentario">
+                                                        ❤️Lo Amo
+                                                    </span>
+                                                    <span class="Responder"></span>
+                                                </div>
+                                                <div class="respuestas hidden">
+                                                    <div class="comentario hidden">
+                                                        <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                                        <img title="         
+                                        <div class='tool'>
+                                            <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)'   data-displayInput=false data-thickness='.08' readonly value='100'>
+                                            <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                                            <div class='datos'>
+                                                <ul class='actions'>
+                                                <li class='chatear' title='Chatear'>C</li>
+                                                <li class='agregar' title='Agregar'>A</li>
+                                                <li class='juzgar' title='Juzgar'>J</li>
+                                                </ul>                  
+                                                <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                                                <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+                                            </div>
+                                            <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                                            <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                                            <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                                            <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;'   title='Proyecto completado (Robot De Dedicatorias)'> </div>
+                                        </div>" src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                                        &nbsp<a target="_blank" href="/A.K.A._Dizzy">Luis Eduardo Gallego García</a><span class="is">: </span><span class="Comentario">
+                                                            Yo te amo lo que te lamo, mi amor ♥
+                                                        </span>
+                                                        <span class="Responder"></span>
+                                                    </div>
+                                                    <span class="Respuestas"></span>
+                                                </div>
+                                                <span class="Respuestas"></span>
+                                            </div>
+                                            <span class="Respuestas"></span>
+                                        </div>
+                                        <span class="Respuestas"></span>
+                                    </div>
+                                    <span class="Respuestas"></span>
+                                </div>
+                            </div>
+                            <div class="newComment">
+                                <textarea rows="1"></textarea>
+                            </div>
+                        </div>
+                        <div class="options button">
+                            <ul>
+                                <li class="bookmark" title=""></li>
+                                <li class="star" title=""></li>
+                                <a>
+                                    <li class="read" title=""></li>
+                                </a>
+                            </ul>
+                        </div>
+                        <!--<p id="close"></p>
+            </aside>-->
+                </section>
+            </section>
+            <section id="main">
+                <aside id="sidebar">
+                    <div id="container">
+                        <div id="resizeTop">
+                            <div id="notifications">
+                                <ul>
+                                    <div class="info button">
+                                        <img src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                        <p class="username"><b href="#">A.K.A._Dizzy:</b> <br> 😉 Revisen Mi Perfil: <a target="_blank" href="/A.K.A._Dizzy">A.K.A._Dizzy</a></p>
+                                    </div>
+                                    <div class="info button">
+                                        <img src="/resources/images/white.jpg" alt="">
+                                        <p class="username"><b href="#">Walter White</b> Es ahora amigo de Walter White.</p>
+                                    </div>
+                                    <div class="info button">
+                                        <img src="/resources/images/white.jpg" alt="">
+                                        <p class="username"><b href="#">Walter White</b> hizo un commit a eBay.</p>
+                                    </div>
+                                    <div class="info button">
+                                        <img src="/resources/images/white.jpg" alt="">
+                                        <p class="username"><b href="#">Walter White</b> Es ahora Moderador.</p>
+                                    </div>
+                                    <div class="info button">
+                                        <img src="/resources/images/white.jpg" alt="">
+                                        <p class="username"><b href="#">Walter White</b> Es ahora amigo de Walter White.</p>
+                                    </div>
+                                    <div class="info button">
+                                        <img src="/resources/images/white.jpg" alt="">
+                                        <p class="username"><b href="#">Walter White</b> hizo un commit a eBay.</p>
+                                    </div>
+                                    <div class="info button">
+                                        <img src="/resources/images/white.jpg" alt="">
+                                        <p class="username"><b href="#">Walter White</b> Es ahora Moderador.</p>
+                                    </div>
+                                    <div class="info button">
+                                        <img src="/resources/images/white.jpg" alt="">
+                                        <p class="username"><b href="#">Walter White</b> Es ahora amigo de Walter White.</p>
+                                    </div>
+                                    <div class="info button">
+                                        <img src="/resources/images/white.jpg" alt="">
+                                        <p class="username"><b href="#">Walter White</b> hizo un commit a eBay.</p>
+                                    </div>
+                                    <div class="info button">
+                                        <img src="/resources/images/white.jpg" alt="">
+                                        <p class="username"><b href="#">Walter White</b> Es ahora Moderador.</p>
+                                    </div>
+                                    <div class="info button">
+                                        <img src="/resources/images/white.jpg" alt="">
+                                        <p class="username"><b href="#">Walter White</b> Es ahora amigo de Walter White.</p>
+                                    </div>
+                                    <div class="info button">
+                                        <img src="/resources/images/white.jpg" alt="">
+                                        <p class="username"><b href="#">Walter White</b> hizo un commit a eBay.</p>
+                                    </div>
+                                    <div class="info button">
+                                        <img src="/resources/images/white.jpg" alt="">
+                                        <p class="username"><b href="#">Walter White</b> Es ahora Moderador.</p>
+                                    </div>
+                                    <div class="info button">
+                                        <img src="/resources/images/white.jpg" alt="">
+                                        <p class="username"><b href="#">Walter White</b> Es ahora amigo de Walter White.</p>
+                                    </div>
+                                    <div class="info button">
+                                        <img src="/resources/images/white.jpg" alt="">
+                                        <p class="username"><b href="#">Walter White</b> hizo un commit a eBay.</p>
+                                    </div>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="resizeBottom">
+                            <div id="chat">
+                                <ul>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <section id="search">
+                        <i id="searchIcon"></i>
+                        <input type="text" placeholder="Buscar">
+                    </section>
+                </aside>
+                <section id="Store" class="button">
+                    <aside id="actualStore" class="button">
+                        <aside id="storeList" class="button">
+                            <ul>
+                                <a>
+                                    <li class="button">Sección</li>
+                                </a>
+                                <a>
+                                    <li class="button">Sección</li>
+                                </a>
+                                <a>
+                                    <li class="button">Sección</li>
+                                </a>
+                                <a>
+                                    <li class="button">Sección</li>
+                                </a>
+                                <a>
+                                    <li class="button">Sección</li>
+                                </a>
+                                <a>
+                                    <li class="button">Sección</li>
+                                </a>
+                                <a>
+                                    <li class="button">Sección</li>
+                                </a>
+                                <a>
+                                    <li class="button">Sección</li>
+                                </a>
+                            </ul>
+                        </aside>
+                        <aside id="storeSection">
+                        </aside>
+                    </aside>
+                </section>
+                <section id="chats">
+                    <div class="chats">
+                    </div>
+                </section>
+                <script>
+                    $("#notifications").mCustomScrollbar({theme: 
+        "minimal-dark", 
+        autoExpandScrollbar: true,
+        scrollInertia: 100,
+         mouseWheel:{ scrollAmount: 40 }
+
+    });
+      $("#chat").mCustomScrollbar({theme: 
+        "minimal-dark", 
+        autoExpandScrollbar: true,
+        scrollInertia: 100,
+            mouseWheel:{ scrollAmount: 40 }
+
+             });
+      $(".more").mCustomScrollbar({theme: 
+        "minimal-dark", 
+        autoExpandScrollbar: true,
+        scrollInertia: 100});
+    </script>
+                <script>
+                    $( "#resizeBottom" ).resizable({ handles: "n",maxHeight: ($(window).height()-$("#sidebar #search").outerHeight() - 51),minHeight: 50 }).bind("resize", function (e, ui) {
+            $(this).css("top", "auto");
+            
+        });
+
+    $(".line").tooltip({      
+        track: true,
+        position: {
+        my: "center bottom-6",
+        at: "center top"
+      }
+});
+
+    </script>
+                <style type="text/css">
+                    #theater_video {
+                        display: block !important;
+                    }
+
+                    body #theater .Playuse {
+                        display: block;
+                    }
+
+                    #bigPic {
+                        display: none !important;
+                    }
+                </style>
+                <script>
+                    $(".story .info").height($(this).find(".username").outerHeight())
+                </script>
+                <script>
+                    audiojs.events.ready(function() {
+                        var as = audiojs.createAll();
+                    });
+                </script>
+</body>
+
+</html>

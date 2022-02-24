@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>
+      Fotos | Luis Eduardo Gallego García | liril
+    </title>
+    <link rel="shortcut icon" type="image/ico" href="../resources/icons/favicon.ico"  />
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300,600,700' rel='stylesheet' type='text/css'>
+    
+     <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="../css/courses/style.css">
+    <link rel="stylesheet" href="../css/jquery-ui.min.css">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/video-js.css">
+    <link rel="stylesheet" href="../css/photos/style.css">
+    <link rel="stylesheet" href="../css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="../css/user/photos/style.css">
+
+    <script type="text/javascript">
+        var username= "A.K.A._Dizzy"; 
+        var users_name= "Luis Eduardo Gallego García"; 
+    </script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/video.js"></script>
+    <script src="../js/jquery-ui.min.js"
+    ></script>
+    <script src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="../js/user/photos/main.js"></script>
+
+    <script src="../js/courses/modernizr.custom.js"></script>
+
+ <script src="../js/jquery.knob.js">
+    </script>
+
+    <script>
+        $(function ($) {
+
+            $(".knob").knob({
+                change: function (value) {
+                    //console.log("change : " + value);
+                },
+                release: function (value) {
+                    //console.log(this.$.attr('value'));
+                    console.log("release : " + value);
+                },
+                cancel: function () {
+                    console.log("cancel : ", this);
+                },
+                /*format : function (value) {
+                  return value + '%';
+                  }
+                  ,*/
+                draw: function () {
+
+                    // "tron" case
+                    if (this.$.data('skin') == 'tron') {
+
+                        this.cursorExt = 0.3;
+
+                        var a = this.arc(this.cv) // Arc
+                            ,
+                            pa // Previous arc
+                            , r = 1;
+
+                        this.g.lineWidth = this.lineWidth;
+
+                        if (this.o.displayPrevious) {
+                            pa = this.arc(this.v);
+                            this.g.beginPath();
+                            this.g.strokeStyle = this.pColor;
+                            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, pa.s, pa.e, pa.d);
+                            this.g.stroke();
+                        }
+
+                        this.g.beginPath();
+                        this.g.strokeStyle = r ? this.o.fgColor : this.fgColor;
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, a.s, a.e, a.d);
+                        this.g.stroke();
+
+                        this.g.lineWidth = 2;
+                        this.g.beginPath();
+                        this.g.strokeStyle = this.o.fgColor;
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
+                        this.g.stroke();
+
+                        return false;
+                    }
+                }
+            });
+
+            // Example of infinite knob, iPod click wheel
+            var v, up = 0,
+                down = 0,
+                i = 0,
+                $idir = $("div.idir"),
+                $ival = $("div.ival"),
+                incr = function () {
+                    i++;
+                    $idir.show().html("+").fadeOut();
+                    $ival.html(i);
+                },
+                decr = function () {
+                    i--;
+                    $idir.show().html("-").fadeOut();
+                    $ival.html(i);
+                };
+            $("input.infinite").knob({
+                min: 0,
+                max: 20,
+                stopper: false,
+                change: function () {
+                    if (v > this.cv) {
+                        if (up) {
+                            decr();
+                            up = 0;
+                        } else {
+                            up = 1;
+                            down = 0;
+                        }
+                    } else {
+                        if (v < this.cv) {
+                            if (down) {
+                                incr();
+                                down = 0;
+                            } else {
+                                down = 1;
+                                up = 0;
+                            }
+                        }
+                    }
+                    v = this.cv;
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+      $.widget("ui.tooltip", $.ui.tooltip, {
+          options: {
+              content: function () {
+                  return $(this).prop('title');
+              }
+          }
+      });
+      
+$('.username').tooltip({
+    items: 'a.target',
+    open: function(event, ui)
+    {
+        if (typeof(event.originalEvent) === 'undefined')
+        {
+            return false;
+        }
+        $(".knob").knob();
+        var $id = $(ui.tooltip).attr('id');
+        
+        // close any lingering tooltips
+        $('div.ui-tooltip').not('#' + $id).remove();
+        
+        // ajax function to pull in data and add it to the tooltip goes here
+    },
+    close: function(event, ui)
+    {
+        ui.tooltip.hover(function()
+        {
+            $(this).stop(true).fadeTo(400, 1); 
+        },
+        function()
+        {
+            $(this).fadeOut('400', function()
+            {
+                $(this).remove();
+            });
+        });
+    }
+});  });
+    </script>
+</head>
+
+<body>
+<div class="wrapper"></div>
+    <header>
+        <nav>
+            <ul>
+                <li id="index">
+                    <a href="../index"><section id="index-trigger">
+                        <span class="back-arrow button">
+              </span>
+                        <span id="index-text" class="text button">
+                Inicio
+              </span>
+                    </section></a>
+
+                </li>
+               
+                 <li id= "buscar">
+          <input class="buscar" type="text" placeholder="Busca aquí cursos, personas o cualquier cosa">
+          </li>
+                <li id="right-menu" class="button">
+                    <section id="dots" class="button">
+                        <span id="store" class="button">
+              </span>
+                        <span id="dots-icon" class="button">
+              </span>
+                        <span id="dots-text" class="button">
+                6'000.600
+              </span>
+
+                    </section>
+                    <section id="profileTrigger">
+                    </section>
+                    <div id="profile" class="button">
+                        <img id="profile-pic" src="../resources/images/white.jpg" alt="Walter White">
+                        <input class="knob button" data-width="35" data-height="35" data-fgColor="#2ecc71" data-bgColor="rgba(0,0,0,0)" data-displayInput=false data-thickness=".15" readonly value="60">
+                    </div>
+                    <span class="index-arrow button">
+              </span>
+
+                    <section id="profileSettings">
+                    </section>
+                </li>
+
+                <li>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div id="root">
+        <div class="contnr">
+
+            <div>
+                <a href="../A.K.A._Dizzy">Luis Eduardo Gallego García</a>
+            </div>
+            <span>
+                <span >Fotos</span>
+            </span>
+
+        </div>
+    </div>
+    <section id="wrapper" class="theater">
+ 
+    </section>
+    <div class="wrapper">
+    </div>
+    <style class="zer">
+        
+    </style>
+    <section id="theater" class="theater">
+        <section>
+            <section id="picContainer">
+                <img id="bigPic" alt="">
+                <div class="Playuse">
+                </div>
+                <video id="theater_video" controls class="video-js d88fer vjs-default-skin" preload="none" width="100%" height="264" data-setup='{}'  data-setup="{}">
+                   <source src="" type='video/mp4'/>
+                   <p class="vjs-no-js">
+                      Para ver este vídeo, por favor activa el Javascript y considera actualizar tu navegador a uno que
+                      <a href="http://videojs.com/html5-video-support/" target="_blank">
+                      soporte vídeo en Html5
+                      </a>
+                   </p>
+                </video>
+                <div id="otherContainments">
+                  <div></div>
+                </div>
+            </section>
+            <aside class="comments">
+            <div class="info">
+                    <img id="pic" alt="">
+                    <p class="username"><a href="#"></a></p>
+            </div>
+            <div class="description">
+                <p class="title"></p>
+                <p class="more">
+                </p>
+            </div>
+            <div class="comentarios">
+                <div class="Comentarios">
+                </div>
+                <div class="newComment">
+                    <textarea rows="1"></textarea>
+                </div>
+            </div>
+            <div class="options button">
+            <ul>
+                <li class="bookmark"></li>
+                <li class="star"></li>
+                <li class="read"></li>
+            </ul></div>
+            <p id="close"></p>
+            </aside>
+        </section>
+    </section>
+        <div class="container"> 
+            
+            <div id="gallery">
+                <section class="photo">
+                    <img class="pic" src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="" class="big">
+                            <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                <p class="username"><a class= "target" href="A.K.A._Dizzy" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a>; en <a href="#" class= "target"  title="         
+              <div class='tool city'>
+                <figure>
+                   <img class='thumbnail' src= 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Iglesia_Nuestra_Se%C3%B1ora_de_las_Mercedes%2C_Nari%C3%B1o%2C_Antioquia..JPG/250px-Iglesia_Nuestra_Se%C3%B1ora_de_las_Mercedes%2C_Nari%C3%B1o%2C_Antioquia..JPG'></img>
+               </figure>
+         
+               <div class='introduction'>
+                   Nariño es un municipio de Colombia, localizado en la subregión Oriente del departamento de Antioquia. Limita por el norte con los municipios de Sonsón y Argelia, por el este y sur con el departamento de Caldas y por el oeste con el municipio de Sonsón. </br><a target= '_blank'style= 'font-size:0.8em; ' href= 'https://es.wikipedia.org/wiki/Nari%C3%B1o_(Antioquia)'><span style= 'color: #2ecc71; font-size: 1.5em; '>···</span> es.wikipedia.org</a>
+               </div>
+              </div>">Nariño</a> <br><span title= "13 de Enero de 2022 a las 7:57 pm" class="time">13 de Enero a las 7:57 pm</span></p>                    
+                            </div>
+                            <p class="title">You start truly appreciating life once you realize you're special, not better.</p>
+                            <section id="picture">
+                            </section>
+                            <div class="Comentarios">
+                            </div>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                </section>
+                <section class="photo mult_img">
+                           <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                <p class="username"><a class= "target" href="A.K.A._Dizzy" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a> <br><span title= "3 de Enero de 2022 a las 8:22 pm" class="time">3 de Enero a las 8:22 pm</span></p>                    
+                            </div>
+                            <p class="title"></p>
+                            <section class="navigation">
+                                <div style= "display: none; " class="nav_arrow left disabled"><div class="arrow"></div></div>
+                                <div style= "display: none; " class="nav_arrow right"><div class="arrow"></div></div>
+                                <section class= "carr">
+                                    <section class="picture">
+                                        <img class="pic" src="/resources/images/A.K.A._Dizzy/m88IB35sDo_tn.jpg" alt="" class="big">
+                                    </section>
+                                    <section class="picture">
+                                        <img class="pic" src="/resources/images/A.K.A._Dizzy/HQ90sglfFm_tn.jpg" alt="" class="big">
+                                    </section>
+                                    <section class="picture">
+                                        <img class="pic" src="/resources/images/A.K.A._Dizzy/ASk65nzCoF_tn.jpg" alt="" class="big">
+                                    </section>
+                                </section>
+                            </section>
+                            <div class="Comentarios">
+                            </div>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                    </section>
+                <section class="photo">
+                    <img class="pic" src="/resources/images/A.K.A._Dizzy/B2isKEWo92_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                <p class="username"><a class= "target" href="A.K.A._Dizzy" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a>; en <a href="#" class= "target"  title="         
+              <div class='tool city'>
+                <figure>
+                   <img class='thumbnail' src= 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Panor%C3%A1mica_de_San_Andres.JPG/1024px-Panor%C3%A1mica_de_San_Andres.JPG'></img>
+               </figure>
+         
+               <div class='introduction'>
+                   La Isla de San Andrés (conocida también como San Andrés Isla) es una isla colombiana del mar Caribe, ubicada frente a las costas de Nicaragua. Es la más grande de las islas que forman parte del Archipiélago de San Andrés, Providencia y Santa Catalina, con una extensión total de 26 km² siendo así, la isla más grande del país. <a target= '_blank'style= 'font-size:0.8em; ' href= 'https://es.wikipedia.org/wiki/Isla_de_San_Andr%C3%A9s_(Colombia)'><span style= 'color: #2ecc71; font-size: 1.5em; '>···</span> es.wikipedia.org</a>
+               </div>
+              </div>">Isla de San Andrés</a> <br><span title= "22 de Diciembre de 2021 a las 3:15 pm" class="time">Diciembre de 2021</span></p>                    
+                            </div>
+                            <p class="title">¡San Andrés!</p>
+                            <section id="picture">
+                            </section>
+                            <div class="Comentarios">
+                            </div>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                </section>
+                
+                
+                <section class="photo">
+                    <img class="pic" src="/resources/images/A.K.A._Dizzy/7rgZ9RIbw0_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                <p class="username"><a class= "target" href="A.K.A._Dizzy" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a>; en <a href="#" class= "target"  title="         
+              <div class='tool city'>
+                <figure>
+                   <img class='thumbnail' src= 'https://upload.wikimedia.org/wikipedia/commons/2/26/Atardecer-parque.jpg'></img>
+               </figure>
+         
+               <div class='introduction'>
+                   Rionegro es una pequeña ciudad en los Andes colombianos. Aquí se encuentra el aeropuerto internacional de Medellín. En la Plaza de la Libertad está la Catedral de San Nicolás, con sus cúpulas. El Museo Histórico Casa de la Convención se encuentra en un edificio en el que se sancionó una versión de la constitución colombiana en 1863. Al sudoeste, está Tutucán, que es una réplica de un pueblo típico local, con una iglesia, un molino y una granja. <a target= '_blank'style= 'font-size:0.8em; ' href= 'https://es.wikipedia.org/wiki/Rionegro_(Antioquia)'><span style= 'color: #2ecc71; font-size: 1.5em; '>···</span> es.wikipedia.org</a>
+               </div>
+              </div>">Rionegro</a> <br><span title= "7 de Abril de 2021 a las 10:40 pm" class="time">Abril de 2021</span></p>                    
+                            </div>
+                            <p class="title">Suit up!</p>
+                            <section id="picture">
+                            </section>
+                            <div class="Comentarios">
+                            </div>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                </section>
+                <section class="photo">
+                    <img class="pic" src="/resources/images/A.K.A._Dizzy/mLlJStEFC3_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                <p class="username"><a class= "target" href="A.K.A._Dizzy" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a>; en <a href="#" class= "target"  title="         
+              <div class='tool city'>
+                <figure>
+                   <img class='thumbnail' src= 'https://upload.wikimedia.org/wikipedia/commons/2/26/Atardecer-parque.jpg'></img>
+               </figure>
+         
+               <div class='introduction'>
+                   Rionegro es una pequeña ciudad en los Andes colombianos. Aquí se encuentra el aeropuerto internacional de Medellín. En la Plaza de la Libertad está la Catedral de San Nicolás, con sus cúpulas. El Museo Histórico Casa de la Convención se encuentra en un edificio en el que se sancionó una versión de la constitución colombiana en 1863. Al sudoeste, está Tutucán, que es una réplica de un pueblo típico local, con una iglesia, un molino y una granja. <a target= '_blank'style= 'font-size:0.8em; ' href= 'https://es.wikipedia.org/wiki/Rionegro_(Antioquia)'><span style= 'color: #2ecc71; font-size: 1.5em; '>···</span> es.wikipedia.org</a>
+               </div>
+              </div>">Rionegro</a> <br><span title= "18 de Febrero de 2021 a las 11:25 am" class="time">Febrero de 2021</span></p>                    
+                            </div>
+                            <p class="title"></p>
+                            <section id="picture">
+                            </section>
+                            <div class="Comentarios">
+                            </div>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                </section>
+                <section class="photo">
+                    <img class="pic" src="/resources/images/A.K.A._Dizzy/mc3JqoasTl_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                <p class="username"><a class= "target" href="A.K.A._Dizzy" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a>; en <a href="#" class= "target"  title="         
+              <div class='tool city'>
+                <figure>
+                   <img class='thumbnail' src= 'https://upload.wikimedia.org/wikipedia/commons/2/26/Atardecer-parque.jpg'></img>
+               </figure>
+         
+               <div class='introduction'>
+                   Rionegro es una pequeña ciudad en los Andes colombianos. Aquí se encuentra el aeropuerto internacional de Medellín. En la Plaza de la Libertad está la Catedral de San Nicolás, con sus cúpulas. El Museo Histórico Casa de la Convención se encuentra en un edificio en el que se sancionó una versión de la constitución colombiana en 1863. Al sudoeste, está Tutucán, que es una réplica de un pueblo típico local, con una iglesia, un molino y una granja. <a target= '_blank'style= 'font-size:0.8em; ' href= 'https://es.wikipedia.org/wiki/Rionegro_(Antioquia)'><span style= 'color: #2ecc71; font-size: 1.5em; '>···</span> es.wikipedia.org</a>
+               </div>
+              </div>">Rionegro</a> <br><span title= "10 de Febrero de 2021 a las 8:38 pm" class="time">Febrero de 2021</span></p>                    
+                            </div>
+                            <p class="title">¡Ashley I.!</p>
+                            <section id="picture">
+                            </section>
+                            <div class="Comentarios">
+                            </div>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                </section>
+                <section class="photo">
+                    <img class="pic" src="/resources/images/A.K.A._Dizzy/sHUHUUDCJN_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                <p class="username"><a class= "target" href="A.K.A._Dizzy" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a>; en <a href="#" class= "target"  title="         
+              <div class='tool city'>
+                <figure>
+                   <img class='thumbnail' src= 'https://upload.wikimedia.org/wikipedia/commons/2/26/Atardecer-parque.jpg'></img>
+               </figure>
+         
+               <div class='introduction'>
+                   Rionegro es una pequeña ciudad en los Andes colombianos. Aquí se encuentra el aeropuerto internacional de Medellín. En la Plaza de la Libertad está la Catedral de San Nicolás, con sus cúpulas. El Museo Histórico Casa de la Convención se encuentra en un edificio en el que se sancionó una versión de la constitución colombiana en 1863. Al sudoeste, está Tutucán, que es una réplica de un pueblo típico local, con una iglesia, un molino y una granja. <a target= '_blank'style= 'font-size:0.8em; ' href= 'https://es.wikipedia.org/wiki/Rionegro_(Antioquia)'><span style= 'color: #2ecc71; font-size: 1.5em; '>···</span> es.wikipedia.org</a>
+               </div>
+              </div>">Rionegro</a> <br><span title= "11 de Noviembre de 2020 a las 5:47 pm" class="time">Noviembre de 2020</span></p>                    
+                            </div>
+                            <p class="title">Mi hermana, la que emana (amor)</p>
+                            <section id="picture">
+                            </section>
+                            <div class="Comentarios">
+                            </div>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                </section>
+                <section class="photo">
+                    <img class="pic" src="/resources/images/A.K.A._Dizzy/4126164655354738473552354_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                <p class="username"><a class= "target" href="A.K.A._Dizzy" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a>; en <a href="#" class= "target"  title="         
+              <div class='tool city'>
+                <figure>
+                   <img class='thumbnail' src= 'https://upload.wikimedia.org/wikipedia/commons/2/26/Atardecer-parque.jpg'></img>
+               </figure>
+         
+               <div class='introduction'>
+                   Rionegro es una pequeña ciudad en los Andes colombianos. Aquí se encuentra el aeropuerto internacional de Medellín. En la Plaza de la Libertad está la Catedral de San Nicolás, con sus cúpulas. El Museo Histórico Casa de la Convención se encuentra en un edificio en el que se sancionó una versión de la constitución colombiana en 1863. Al sudoeste, está Tutucán, que es una réplica de un pueblo típico local, con una iglesia, un molino y una granja. <a target= '_blank'style= 'font-size:0.8em; ' href= 'https://es.wikipedia.org/wiki/Rionegro_(Antioquia)'><span style= 'color: #2ecc71; font-size: 1.5em; '>···</span> es.wikipedia.org</a>
+               </div>
+              </div>">Rionegro</a> <br><span title= "11 de Noviembre de 2020 a las 6:17 pm" class="time">Noviembre de 2020</span></p>                    
+                            </div>
+                            <p class="title">My gear-l</p>
+                            <section id="picture">
+                            </section>
+                            <div class="Comentarios">
+                            </div>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                </section>
+                <section class="photo">
+                    <img class="pic" src="/resources/images/A.K.A._Dizzy/CLakPAdCCN_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                <p class="username"><a class= "target" href="A.K.A._Dizzy" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a>; en <a href="#" class= "target"  title="         
+              <div class='tool city'>
+                <figure>
+                   <img class='thumbnail' src= 'https://upload.wikimedia.org/wikipedia/commons/2/26/Atardecer-parque.jpg'></img>
+               </figure>
+         
+               <div class='introduction'>
+                   Rionegro es una pequeña ciudad en los Andes colombianos. Aquí se encuentra el aeropuerto internacional de Medellín. En la Plaza de la Libertad está la Catedral de San Nicolás, con sus cúpulas. El Museo Histórico Casa de la Convención se encuentra en un edificio en el que se sancionó una versión de la constitución colombiana en 1863. Al sudoeste, está Tutucán, que es una réplica de un pueblo típico local, con una iglesia, un molino y una granja. <a target= '_blank'style= 'font-size:0.8em; ' href= 'https://es.wikipedia.org/wiki/Rionegro_(Antioquia)'><span style= 'color: #2ecc71; font-size: 1.5em; '>···</span> es.wikipedia.org</a>
+               </div>
+              </div>">Rionegro</a> <br><span title= "2 de Septiembre de 2020 a las 1:38 pm" class="time">Septiembre de 2020</span></p>                    
+                            </div>
+                            <p class="title">Friends! <a href= "#">#tbt</a></p>
+                            <section id="picture">
+                            </section>
+                            <div class="Comentarios">
+                            </div>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                </section>
+                <section class="photo mult_img">
+                           <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                <p class="username"><a class= "target" href="/A.K.A._Dizzy" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a><br><span title= "25 de Marzo de 2020 a las 4:5 pm" class="time">Marzo de 2020</span></p>                    
+                            </div>
+                            <p class="title">Robotnavirus - Constructor And Business Partners</p>
+                            <p class="moreI"></p>
+                            <section class="navigation">
+                                <div style= "display: none; " class="nav_arrow left disabled"><div class="arrow"></div></div>
+                                <div style= "display: none; " class="nav_arrow right"><div class="arrow"></div></div>
+                                <section class= "carr">
+                                    <section class="picture">
+                                        <img class="pic" src="/resources/images/A.K.A._Dizzy/MYW75Pro3m_tn.jpg" alt="" class="big">
+                                    </section>
+                                    <section class="picture">
+                                        <img class="pic" src="/resources/images/A.K.A._Dizzy/DjGEZFt9xo_tn.jpg" alt="" class="big">
+                                    </section>
+                                    <section class="picture">
+                                        <img class="pic" src="/resources/images/A.K.A._Dizzy/oqacnSHxiN_tn.jpg" alt="" class="big">
+                                    </section>
+                                    <section class="picture">
+                                        <img class="pic" src="/resources/images/A.K.A._Dizzy/kJDhFLvqfr_tn.jpg" alt="" class="big">
+                                    </section>
+                                    <section class="picture">
+                                        <img class="pic" src="/resources/images/A.K.A._Dizzy/omyoS1RWCu_tn.jpg" alt="" class="big">
+                                    </section>
+                                    <section class="picture">
+                                        <img class="pic" src="/resources/images/A.K.A._Dizzy/ADhYiHqGXB_tn.jpg" alt="" class="big">
+                                    </section>
+                                    <section class="picture">
+                                        <img class="pic" src="/resources/images/A.K.A._Dizzy/9ShDvbxnyZ_tn.jpg" alt="" class="big">
+                                    </section>
+                                    <section class="picture">
+                                        <img class="pic" src="/resources/images/A.K.A._Dizzy/gJzkFon1ep_tn.jpg" alt="" class="big">
+                                    </section>
+                                    <section class="picture">
+                                        <img class="pic" src="/resources/images/A.K.A._Dizzy/AueW3DjjDi_tn.jpg" alt="" class="big">
+                                    </section>
+                                </section>
+                            </section>
+                            <div class="Comentarios">
+                                <div class="comentario">
+                                    <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                    <img title="         
+                                    <div class='tool'>
+                                        <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                        <img src='/resources/images/MeganFox/Ad4Jy7k20F_tn.jpg'>
+                                        <div class='datos'>
+                                            <ul class='actions'>
+                                                <li class='chatear' title='Chatear'>C</li>
+                                                <li class='agregar' title='Agregar'>A</li>
+                                                <li class='juzgar' title='Juzgar'>J</li>
+                                            </ul>                  
+                                            <p class='username' title= 'Megan Denise Fox'>Megan Denise Fox</p>
+                                            <p class='rol'>G <b style='color:#fff;'>+100</b></p>
+                                        </div>
+                                    </div>" src="/resources/images/MeganFox/Ad4Jy7k20F_tn.jpg" alt="">
+                                    &nbsp<a target= "_blank"  href="/MeganFox" >Megan Denise Fox</a><span class="is">: </span><span class="Comentario">
+                                        Hahahahahaha 🤣🙄🙄😷
+                                    </span>
+                                    <span class="Responder"></span>
+                                </div>
+                                <div class="respuestas">
+                                    <div class="comentario hidden">
+                                        <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                        <img title="         
+                                        <div class='tool'>
+                                            <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                            <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                                            <div class='datos'>
+                                                <ul class='actions'>
+                                                <li class='chatear' title='Chatear'>C</li>
+                                                <li class='agregar' title='Agregar'>A</li>
+                                                <li class='juzgar' title='Juzgar'>J</li>
+                                                </ul>                  
+                                                <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                                                <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+                                            </div>
+                                            <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                                            <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                                            <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                                            <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+                                        </div>" src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                        &nbsp<a target= "_blank"  href="/A.K.A._Dizzy" >Luis Eduardo Gallego García</a><span class="is">: </span><span class="Comentario">
+                                            ❤️😘
+                                        </span>
+                                        <span class="Responder"></span>
+                                    </div>
+                                    <span class="Respuestas"></span>
+                                </div>
+                                <div class="comentario">
+                                    <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='94'>
+                                    <img title="         
+                                    <div class='tool'>
+                                        <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='94'>
+                                        <img src='/resources/images/AuraCardonaC/v8jX8zvIYN_tn.jpg'>
+                                        <div class='datos'>
+                                            <ul class='actions'>
+                                                <li class='chatear' title='Chatear'>C</li>
+                                                <li class='agregar' title='Agregar'>A</li>
+                                                <li class='juzgar' title='Juzgar'>J</li>
+                                            </ul>                  
+                                            <p class='username' title= 'Aura Cardona Demasiado'>Aura Cardona Demasiado</p>
+                                            <div class='Cont'><p title= 'Profe  de fitness' class='rol'>Profe  de fitness</p><b style='color:#fff;'>+94</b></div>
+                                        </div>
+                                    </div>" src="/resources/images/AuraCardonaC/v8jX8zvIYN_tn.jpg" alt="">
+                                    &nbsp<a target= "_blank"  href="/AuraCardonaC" >Aura Cardona Demasiado</a><span class="is">: </span><span class="Comentario">
+                                        🤍💙 ❤️❤️❤️❤️❤️ JAJAJAJAJAJAJAJAJAJA
+                                    </span>
+                                    <span class="Responder"></span>
+                                </div>
+                                <div class="respuestas">
+                                    <div class="comentario hidden">
+                                        <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                        <img title="         
+                                        <div class='tool'>
+                                            <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                            <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                                            <div class='datos'>
+                                                <ul class='actions'>
+                                                <li class='chatear' title='Chatear'>C</li>
+                                                <li class='agregar' title='Agregar'>A</li>
+                                                <li class='juzgar' title='Juzgar'>J</li>
+                                                </ul>                  
+                                                <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                                                <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+                                            </div>
+                                            <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                                            <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                                            <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                                            <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+                                        </div>" src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                        &nbsp<a target= "_blank"  href="/A.K.A._Dizzy" >Luis Eduardo Gallego García</a><span class="is">: </span><span class="Comentario">
+                                            ❤️😘😘😘😘😘😘😘
+                                        </span>
+                                        <span class="Responder"></span>
+                                    </div>
+                                    <div class="respuestas hidden">
+                                        <div class="comentario hidden">
+                                            <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='94'>
+                                            <img title="         
+                                            <div class='tool'>
+                                                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='94'>
+                                                <img src='/resources/images/AuraCardonaC/v8jX8zvIYN_tn.jpg'>
+                                                <div class='datos'>
+                                                    <ul class='actions'>
+                                                        <li class='chatear' title='Chatear'>C</li>
+                                                        <li class='agregar' title='Agregar'>A</li>
+                                                        <li class='juzgar' title='Juzgar'>J</li>
+                                                    </ul>                  
+                                                    <p class='username' title= 'Aura Cardona Demasiado'>Aura Cardona Demasiado</p>
+                                                    <div class='Cont'><p title= 'Profe  de fitness' class='rol'>Profe  de fitness</p><b style='color:#fff;'>+94</b></div>
+                                                </div>
+                                            </div>" src="/resources/images/AuraCardonaC/v8jX8zvIYN_tn.jpg" alt="">
+                                            &nbsp<a target= "_blank"  href="/AuraCardonaC" >Aura Cardona Demasiado</a><span class="is">: </span><span class="Comentario">
+                                                😘 ❤️❤️
+                                            </span>
+                                            <span class="Responder"></span>
+                                        </div>
+                                        <span class="Respuestas"></span>
+                                    </div>
+                                    <span class="Respuestas"></span>
+                                </div>
+                                <div class="comentario">
+                                    <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                    <img title="         
+                                    <div class='tool'>
+                                        <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                        <img src='/resources/images/L/OGnpwD3jys_tn.jpg'>
+                                        <div class='datos'>
+                                            <ul class='actions'>
+                                                <li class='chatear' title='Chatear'>C</li>
+                                                <li class='agregar' title='Agregar'>A</li>
+                                                <li class='juzgar' title='Juzgar'>J</li>
+                                            </ul>                  
+                                            <p class='username' title= 'Laura Escobar Bonnett'>Laura Escobar Bonnett</p>
+                                            <p class='rol'>Princesa <b style='color:#fff;'>+100</b></p>
+                                        </div>
+                                    </div>" src="/resources/images/L/OGnpwD3jys_tn.jpg" alt="">
+                                    &nbsp<a target= "_blank"  href="/L" >Laura Escobar Bonnett</a><span class="is">: </span><span class="Comentario">
+                                        ¡Luis! Jajajaja 🤍 ¡Te Aaaaamo!
+                                    </span>
+                                    <span class="Respxxder"></span>
+                                </div>
+                                <div class="respuestas">
+                                    <span class="RespueNtas"><span class="Responder"></span>Respuestas (∞)</span>
+                                </div>
+                                <div class="comentario">
+                                    <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='88'>
+                                    <img title="         
+                                    <div class='tool'>
+                                        <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='88'>
+                                        <img src='/resources/images/LamaMadora/sdlQg1CoQ3_tn.jpg'>
+                                        <div class='datos'>
+                                            <ul class='actions'>
+                                                <li class='chatear' title='Chatear'>C</li>
+                                                <li class='agregar' title='Agregar'>A</li>
+                                                <li class='juzgar' title='Juzgar'>J</li>
+                                            </ul>                  
+                                            <p title= 'Juan José Martínez Vidal' class='username'>Juan José Martínez Vidal</p>
+                                            <p class='rol'>Dubber <b style='color:#fff;'>+88</b></p>
+                                        </div>
+                                        <div class='insignia' style='top: 11px;' title='Curso completado (Dubbing en español)'></div>
+                                        <div class='insignia' style='top: 23px;'title='Curso completado (Sub syncing)'></div>
+                                        <div class='insignia' style='top: 17px;' title='Rol asignado (Dubber)'> </div>
+                                    </div>" src="/resources/images/LamaMadora/sdlQg1CoQ3_tn.jpg" alt="">
+                                    &nbsp<a target= "_blank"  href="/LamaMadora" >Juan José Martínez Vidal</a><span class="is">: </span><span class="Comentario">
+                                        ¡Jajajajaja! 💌
+                                    </span>
+                                    <span class="Responder"></span>
+                                </div>
+                                <div class="respuestas">
+                                    <div class="comentario hidden">
+                                        <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                        <img title="         
+                                        <div class='tool'>
+                                            <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                            <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                                            <div class='datos'>
+                                                <ul class='actions'>
+                                                <li class='chatear' title='Chatear'>C</li>
+                                                <li class='agregar' title='Agregar'>A</li>
+                                                <li class='juzgar' title='Juzgar'>J</li>
+                                                </ul>                  
+                                                <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                                                <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+                                            </div>
+                                            <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                                            <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                                            <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                                            <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+                                        </div>" src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                        &nbsp<a target= "_blank"  href="/A.K.A._Dizzy" >Luis Eduardo Gallego García</a><span class="is">: </span><span class="Comentario">
+                                            ¡LM! 😄😄😄😄😄😄😄😄😄😄😄😄😄✋
+                                        </span>
+                                        <span class="Responder"></span>
+                                    </div>
+                                    <div class="respuestas hidden">
+                                        <div class="comentario hidden">
+                                            <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='88'>
+                                            <img title="         
+                                            <div class='tool'>
+                                                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='88'>
+                                                <img src='/resources/images/LamaMadora/sdlQg1CoQ3_tn.jpg'>
+                                                <div class='datos'>
+                                                    <ul class='actions'>
+                                                        <li class='chatear' title='Chatear'>C</li>
+                                                        <li class='agregar' title='Agregar'>A</li>
+                                                        <li class='juzgar' title='Juzgar'>J</li>
+                                                    </ul>                  
+                                                    <p title= 'Juan José Martínez Vidal' class='username'>Juan José Martínez Vidal</p>
+                                                    <p class='rol'>Dubber <b style='color:#fff;'>+88</b></p>
+                                                </div>
+                                                <div class='insignia' style='top: 11px;' title='Curso completado (Dubbing en español)'></div>
+                                                <div class='insignia' style='top: 23px;'title='Curso completado (Sub syncing)'></div>
+                                                <div class='insignia' style='top: 17px;' title='Rol asignado (Dubber)'> </div>
+                                            </div>" src="/resources/images/LamaMadora/sdlQg1CoQ3_tn.jpg" alt="">
+                                            &nbsp<a target= "_blank"  href="/LamaMadora" >Juan José Martínez Vidal</a><span class="is">: </span><span class="Comentario">
+                                                🤚
+                                            </span>
+                                            <span class="Responder"></span>
+                                        </div>
+                                        <span class="Respuestas"></span>
+                                    </div>
+                                    <span class="Respuestas"></span>
+                                </div>
+                                <div class="comentario">
+                                    <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                    <img title="         
+                                    <div class='tool'>
+                                        <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                        <img src='/resources/images/G-Suschrist/Rvu7YjVcXr_tn.jpg'>
+                                        <div class='datos'>
+                                            <ul class='actions'>
+                                                <li class='chatear' title='Chatear'>C</li>
+                                                <li class='agregar' title='Agregar'>A</li>
+                                                <li class='juzgar' title='Juzgar'>J</li>
+                                            </ul>                  
+                                            <p class='username' title= 'Dios Jesucristo'>Dios Jesucristo</p>
+                                            <p class='rol'>G <b style='color:#fff;'>+100</b></p>
+                                        </div>
+                                    </div>" src="/resources/images/G-Suschrist/Rvu7YjVcXr_tn.jpg" alt="">
+                                    &nbsp<a target= "_blank"  href="/G-Suschrist" >Dios Jesucristo</a><span class="is">: </span><span class="Comentario">
+                                        Ja, ja, ja. Luisi, ja, ja, ja, ja, ja. Cuídate
+                                    </span>
+                                    <span class="Responder"></span>
+                                </div>
+                                <div class="respuestas">
+                                    <div class="comentario hidden">
+                                        <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                        <img title="         
+                                        <div class='tool'>
+                                            <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                            <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                                            <div class='datos'>
+                                                <ul class='actions'>
+                                                <li class='chatear' title='Chatear'>C</li>
+                                                <li class='agregar' title='Agregar'>A</li>
+                                                <li class='juzgar' title='Juzgar'>J</li>
+                                                </ul>                  
+                                                <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                                                <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+                                            </div>
+                                            <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                                            <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                                            <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                                            <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+                                        </div>" src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                        &nbsp<a target= "_blank"  href="/A.K.A._Dizzy" >Luis Eduardo Gallego García</a><span class="is">: </span><span class="Comentario">
+                                            😊 Gracias, abue. ¡Obvio!
+                                        </span>
+                                        <span class="Responder"></span>
+                                    </div>
+                                    <span class="Respuestas"></span>
+                                </div>
+                                <div class="comentario">
+                                    <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                    <img title="         
+                                    <div class='tool'>
+                                        <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                        <img src='/resources/images/G-Suschrist/Rvu7YjVcXr_tn.jpg'>
+                                        <div class='datos'>
+                                            <ul class='actions'>
+                                                <li class='chatear' title='Chatear'>C</li>
+                                                <li class='agregar' title='Agregar'>A</li>
+                                                <li class='juzgar' title='Juzgar'>J</li>
+                                            </ul>                  
+                                            <p class='username' title= 'Dios Jesucristo'>Dios Jesucristo</p>
+                                            <p class='rol'>G <b style='color:#fff;'>+100</b></p>
+                                        </div>
+                                    </div>" src="/resources/images/G-Suschrist/Rvu7YjVcXr_tn.jpg" alt="">
+                                    &nbsp<a target= "_blank"  href="/G-Suschrist" >Dios Jesucristo</a><span class="is">: </span><span class="Comentario">
+                                        🏃‍♂️👍👎🚶‍♂️
+                                    </span>
+                                    <span class="Responder"></span>
+                                </div>
+                            </div>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                    </section>
+                <section class="photo">
+                    <img class="pic" src="/resources/images/A.K.A._Dizzy/rmmnSm6lge_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                <p class="username"><a class= "target" href="A.K.A._Dizzy" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a>; en <a href="#" class= "target"  title="         
+              <div class='tool city'>
+                <figure>
+                   <img class='thumbnail' src= 'https://upload.wikimedia.org/wikipedia/commons/2/26/Atardecer-parque.jpg'></img>
+               </figure>
+         
+               <div class='introduction'>
+                   Rionegro es una pequeña ciudad en los Andes colombianos. Aquí se encuentra el aeropuerto internacional de Medellín. En la Plaza de la Libertad está la Catedral de San Nicolás, con sus cúpulas. El Museo Histórico Casa de la Convención se encuentra en un edificio en el que se sancionó una versión de la constitución colombiana en 1863. Al sudoeste, está Tutucán, que es una réplica de un pueblo típico local, con una iglesia, un molino y una granja. <a target= '_blank'style= 'font-size:0.8em; ' href= 'https://es.wikipedia.org/wiki/Rionegro_(Antioquia)'><span style= 'color: #2ecc71; font-size: 1.5em; '>···</span> es.wikipedia.org</a>
+               </div>
+              </div>">Rionegro</a> <br><span title= "10 de Marzo de 2020 a las 2:42 pm" class="time">Marzo de 2020</span></p>                    
+                            </div>
+                            <p class="title"></p>
+                            <section id="picture">
+                            </section>
+                            <div class="Comentarios">
+                            </div>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                </section>
+                <section class="photo mult_img">
+                           <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                <p class="username"><a class= "target" href="A.K.A._Dizzy" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a>; en <a href="#" class= "target"  title="         
+              <div class='tool city'>
+                <figure>
+                   <img class='thumbnail' src= 'https://cdn.forbes.co/2020/09/Medell%C3%ADn-foto-ProColombia-1536x1024.jpg'></img>
+               </figure>
+         
+               <div class='introduction'>
+                   Medellín es la capital de la provincia montañosa de Antioquia en Colombia. Es apodada la Ciudad de la eterna primavera por su clima templado y alberga la famosa Feria de las Flores anual. El moderno Metrocable conecta la ciudad con los barrios circundantes y tiene vistas del Valle de Aburrá que se encuentra debajo. Las esculturas de Fernando Botero decoran la Plaza Botero en el centro de la ciudad, mientras que el Museo de Antioquia exhibe más obras del artista colombiano. <a target= '_blank'style= 'font-size:0.8em; ' href= 'https://es.wikipedia.org/wiki/Medell%C3%ADn'><span style= 'color: #2ecc71; font-size: 1.5em; '>···&nbsp</span>es.wikipedia.org</a>
+               </div>
+              </div>">Medellín</a> <br><span title= "18 de Marzo de 2020 a las 7:48 pm" class="time">Marzo de 2020</span></p>                    
+                            </div>
+                            <p class="title">El dolor; es veneno, nena.</p>
+                            <section class="navigation">
+                                <div style= "display: none; " class="nav_arrow left disabled"><div class="arrow"></div></div>
+                                <div style= "display: none; " class="nav_arrow right"><div class="arrow"></div></div>
+                                <section class= "carr">
+                                    <section class="picture">
+                                        <img class="pic" src="/resources/images/A.K.A._Dizzy/Rj1MrRdB5e_tn.jpg" alt="" class="big">
+                                    </section>
+                                    <section class="picture">
+                                        <img class="pic" src="/resources/images/A.K.A._Dizzy/ev7zYwBnyC_tn.jpg" alt="" class="big">
+                                    </section>
+                                    <section class="picture">
+                                        <img class="pic" src="/resources/images/A.K.A._Dizzy/k6PIq50JdR_tn.jpg" alt="" class="big">
+                                    </section>
+                                </section>
+                            </section>
+                            <div class="Comentarios">
+                            </div>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                    </section>
+                <section class="photo mult_img">
+                           <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                <p class="username"><a class= "target" href="/A.K.A._Dizzy" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a>; en <a href="#" class= "target"  title="         
+              <div class='tool city'>
+                <figure>
+                   <img class='thumbnail' src= 'https://upload.wikimedia.org/wikipedia/commons/2/26/Atardecer-parque.jpg'></img>
+               </figure>
+         
+               <div class='introduction'>
+                   Rionegro es una pequeña ciudad en los Andes colombianos. Aquí se encuentra el aeropuerto internacional de Medellín. En la Plaza de la Libertad está la Catedral de San Nicolás, con sus cúpulas. El Museo Histórico Casa de la Convención se encuentra en un edificio en el que se sancionó una versión de la constitución colombiana en 1863. Al sudoeste, está Tutucán, que es una réplica de un pueblo típico local, con una iglesia, un molino y una granja. <a target= '_blank'style= 'font-size:0.8em; ' href= 'https://es.wikipedia.org/wiki/Rionegro_(Antioquia)'><span style= 'color: #2ecc71; font-size: 1.5em; '>···</span> es.wikipedia.org</a>
+               </div>
+              </div>">Rionegro</a> <br><span title= "29 de Agosto de 2019 a las 12:8 pm" class="time">Agosto de 2019</span></p>                    
+                            </div>
+                            <p class="title"></p>
+                            <p class="moreI"></p>
+                            <section class="navigation">
+                                <div style= "display: none; " class="nav_arrow left disabled"><div class="arrow"></div></div>
+                                <div style= "display: none; " class="nav_arrow right"><div class="arrow"></div></div>
+                                <section class= "carr">
+                                    <section class="picture">
+                                        <img class="pic" src="/resources/images/A.K.A._Dizzy/qQfvtpKBqd_tn.jpg" alt="" class="big">
+                                    </section>
+                                    <section class="picture">
+                                        <img class="pic" src="/resources/images/A.K.A._Dizzy/MffqHBvCds_tn.jpg" alt="" class="big">
+                                    </section>
+                                </section>
+                            </section>
+                            <div class="Comentarios">
+                            </div>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                    </section>
+                <section class="photo">
+                    <img class="pic" src="/resources/images/A.K.A._Dizzy/rSEXN8Ghr2_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                <p class="username"><a class= "target" href="A.K.A._Dizzy" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a>; en <a href="#" class= "target"  title="         
+              <div class='tool city'>
+                <figure>
+                   <img class='thumbnail' src= 'https://upload.wikimedia.org/wikipedia/commons/2/26/Atardecer-parque.jpg'></img>
+               </figure>
+         
+               <div class='introduction'>
+                   Rionegro es una pequeña ciudad en los Andes colombianos. Aquí se encuentra el aeropuerto internacional de Medellín. En la Plaza de la Libertad está la Catedral de San Nicolás, con sus cúpulas. El Museo Histórico Casa de la Convención se encuentra en un edificio en el que se sancionó una versión de la constitución colombiana en 1863. Al sudoeste, está Tutucán, que es una réplica de un pueblo típico local, con una iglesia, un molino y una granja. <a target= '_blank'style= 'font-size:0.8em; ' href= 'https://es.wikipedia.org/wiki/Rionegro_(Antioquia)'><span style= 'color: #2ecc71; font-size: 1.5em; '>···</span> es.wikipedia.org</a>
+               </div>
+              </div>">Rionegro</a> <br><span title= "21 de Junio de 2019 a las 1:17 am" class="time">Junio de 2019</span></p>                    
+                            </div>
+                            <p class="title">🤘</p>
+                            <section id="picture">
+                            </section>
+                            <div class="Comentarios">
+                            </div>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                </section>
+                <section class="photo">
+                    <img class="pic" src="/resources/images/A.K.A._Dizzy/PJS4VLGl9L_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                <p class="username"><a class= "target" href="A.K.A._Dizzy" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a>; en <a href="#" class= "target"  title="         
+              <div class='tool city'>
+                <figure>
+                   <img class='thumbnail' src= 'https://upload.wikimedia.org/wikipedia/commons/2/26/Atardecer-parque.jpg'></img>
+               </figure>
+         
+               <div class='introduction'>
+                   Rionegro es una pequeña ciudad en los Andes colombianos. Aquí se encuentra el aeropuerto internacional de Medellín. En la Plaza de la Libertad está la Catedral de San Nicolás, con sus cúpulas. El Museo Histórico Casa de la Convención se encuentra en un edificio en el que se sancionó una versión de la constitución colombiana en 1863. Al sudoeste, está Tutucán, que es una réplica de un pueblo típico local, con una iglesia, un molino y una granja. <a target= '_blank'style= 'font-size:0.8em; ' href= 'https://es.wikipedia.org/wiki/Rionegro_(Antioquia)'><span style= 'color: #2ecc71; font-size: 1.5em; '>···</span> es.wikipedia.org</a>
+               </div>
+              </div>">Rionegro</a> <br><span title= "11 de Abril de 2018 a las 8:3 am" class="time">Abril de 2018</span></p>                    
+                            </div>
+                            <p class="title">🤘 🤘 ✊</p>
+                            <section id="picture">
+                            </section>
+                            <div class="Comentarios">
+                            </div>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                </section>
+                <section class="photo">
+                    <img class="pic" src="/resources/images/A.K.A._Dizzy/Jc6pW2nCXi_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                <p class="username"><a class= "target" href="A.K.A._Dizzy" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a>; en <a href="#" class= "target"  title="         
+              <div class='tool city'>
+                <figure>
+                   <img class='thumbnail' src= 'https://upload.wikimedia.org/wikipedia/commons/2/26/Atardecer-parque.jpg'></img>
+               </figure>
+         
+               <div class='introduction'>
+                   Rionegro es una pequeña ciudad en los Andes colombianos. Aquí se encuentra el aeropuerto internacional de Medellín. En la Plaza de la Libertad está la Catedral de San Nicolás, con sus cúpulas. El Museo Histórico Casa de la Convención se encuentra en un edificio en el que se sancionó una versión de la constitución colombiana en 1863. Al sudoeste, está Tutucán, que es una réplica de un pueblo típico local, con una iglesia, un molino y una granja. <a target= '_blank'style= 'font-size:0.8em; ' href= 'https://es.wikipedia.org/wiki/Rionegro_(Antioquia)'><span style= 'color: #2ecc71; font-size: 1.5em; '>···</span> es.wikipedia.org</a>
+               </div>
+              </div>">Rionegro</a> <br><span title= "19 de Junio de 2016 a las 4:25 pm" class="time">Junio de 2016</span></p>                    
+                            </div>
+                            <p class="title"></p>
+                            <section id="picture">
+                            </section>
+                            <div class="Comentarios">
+                            </div>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                </section>
+                <section class="photo">
+                    <img class="pic" src="/resources/images/A.K.A._Dizzy/V4svIymNUS_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                <p class="username"><a class= "target" href="A.K.A._Dizzy" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a>; en <a href="#" class= "target"  title="         
+              <div class='tool city'>
+                <figure>
+                   <img class='thumbnail' src= 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Wiki_training_0226.jpg/1024px-Wiki_training_0226.jpg'></img>
+               </figure>
+         
+               <div class='introduction'>
+                   Los Ángeles, oficialmente Ciudad de Los Ángeles y de manera abreviada LA, es la ciudad más poblada del estado estadounidense de California y la segunda ciudad más poblada de Estados Unidos, tras Nueva York. Tiene, según el Censo de los Estados Unidos de 2020, una población de 3 979 576 habitantes, experimentando un crecimiento de un 4,9 % en 10 años. Está ubicada en el sur de California y abarca una superficie de 1215 km².  <a target= '_blank'style= 'font-size:0.8em; ' href= 'https://es.wikipedia.org/wiki/Los_%C3%81ngeles'><span style= 'color: #2ecc71; font-size: 1.5em; '>···</span> es.wikipedia.org</a>
+               </div>
+              </div>">Los Ángeles</a><br><span title= "23 de Abril de 2015 a las 2:37 am" class="time">Abril de 2015</span></p>                    
+                            </div>
+                            <p class="title">Por aquí... con Megan</p>
+                            <p class="moreI">Monocle ipsum dolor sit amet tsutaya exclusive finest, espresso joy Marylebone Winkreative premium Ginza sophisticated delightful bureaux remarkable elegant. Cosy Helsinki bespoke Gaggenau alluring eclectic boulevard, exquisite efficient joy cutting-edge sophisticated liveable ryokan. Airport international Ettinger the highest quality boulevard Toto exquisite hand-crafted Washlet handsome concierge exclusive. Intricate liveable bulletin impeccable Singapore boutique emerging bureaux. ANA boulevard Toto lovely craftsmanship premium.
+<br>
+<br>
+Craftsmanship conversation remarkable discerning soft power carefully curated. Flat white international Marylebone Ettinger impeccable boutique classic global concierge liveable pintxos Comme des Garçons the highest quality ryokan. Nordic sharp elegant Singapore vibrant Muji premium exquisite intricate Baggu. International Asia-Pacific bespoke, Baggu Muji cosy joy Winkreative liveable. Emerging concierge joy tote bag boutique K-pop, the highest quality izakaya premium Muji. Zürich delightful cosy, classic Beams Comme des Garçons Singapore. ANA Gaggenau Marylebone Boeing 787, vibrant Swiss first-class eclectic izakaya efficient Melbourne St Moritz.
+<br>
+<br>
+Scandinavian Ettinger classic premium Zürich. Hub airport iconic izakaya handsome Asia-Pacific impeccable elegant. Remarkable efficient Airbus A380 extraordinary. Craftsmanship wardrobe flat white business class, efficient Nordic delightful artisanal uniforms Shinkansen extraordinary Lufthansa. Conversation hub Singapore exclusive global bulletin Asia-Pacific. Sleepy elegant hub Shinkansen.
+<br>
+<br>
+Handsome Asia-Pacific Baggu bulletin concierge global smart, joy cosy. Concierge Lufthansa bespoke Tsutaya St Moritz flat white. Cutting-edge international punctual essential bespoke Asia-Pacific soft power hand-crafted airport tote bag Zürich sleepy smart extraordinary ryokan. Lovely espresso Marylebone international. Signature international Shinkansen delightful concierge alluring Ginza bulletin izakaya. Essential remarkable Zürich eclectic, bulletin intricate vibrant international.
+<br>
+<br>
+The best global boutique K-pop charming carefully curated. Ettinger ANA Shinkansen, Airbus A380 premium Beams first-class Washlet punctual. Boulevard Zürich concierge ANA hand-crafted emerging Lufthansa liveable charming Asia-Pacific international Porter espresso. Airbus A380 Winkreative international business class bulletin, bureaux Baggu cosy handsome signature charming tote bag.</p>
+                            <section id="picture">
+                            </section>
+                            <div class="Comentarios">
+                            </div>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                </section>
+                <section class="photo">
+                    <img class="pic" src="/resources/images/A.K.A._Dizzy/199182931781748271827182764612817_tn.jpg" alt="" class="big">
+                            <div class="info">
+                                <img src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                                <p class="username"><a class= "target" href="A.K.A._Dizzy" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p>
+                  <p class='rol'>CEO <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                <div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div>
+                <div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div>
+                <div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div>
+                <div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div>
+              </div>">Luis Eduardo Gallego García</a><br><span title= "12 de Marzo de 2016 2:56 am" class="time">Marzo de 2016</span></p>                    
+                            </div>
+                            <p class="title">Cuando estudiábamos en La Industrial.</p>
+                            <section id="picture">
+                            </section>
+                            <div class="Comentarios">
+                            </div>
+                            <div class="options button">
+                                <ul>
+                                    <li class="bookmark"></li>
+                                    <li class="star"></li>
+                                    <a href="#"><li class="read"></li></a>
+                                </ul>
+                            </div>
+                </section>
+            </div>
+    </div>
+    <aside id="sidebar">
+     <div id="container">
+        <div id="resizeTop">
+       <div id="notifications">
+        <ul>
+            <div class="info button">
+                    <img src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                    <p class="username"><b href="#">A.K.A._Dizzy:</b> <br> 😉 Revisen Mi Perfil: <a target= "_blank" href="/A.K.A._Dizzy">A.K.A._Dizzy</a></p>
+                   
+            </div>
+            <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora amigo de  Walter White.</p>
+                  
+            </div>
+            <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> hizo un commit a eBay.</p>
+            </div> 
+             <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora Moderador.</p>
+                   
+            </div>
+            <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora amigo de  Walter White.</p>
+                  
+            </div>
+            <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> hizo un commit a eBay.</p>
+            </div> 
+             <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora Moderador.</p>
+                   
+            </div>
+            <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora amigo de  Walter White.</p>
+                  
+            </div>
+            <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> hizo un commit a eBay.</p>
+            </div> 
+             <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora Moderador.</p>
+                   
+            </div>
+            <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora amigo de  Walter White.</p>
+                  
+            </div>
+            <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> hizo un commit a eBay.</p>
+            </div> 
+             <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora Moderador.</p>
+                   
+            </div>
+            <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora amigo de  Walter White.</p>
+                  
+            </div>
+            <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> hizo un commit a eBay.</p>
+            </div> 
+        </ul>
+        
+        </div>
+        </div>
+      <div id="resizeBottom">
+       <div id="chat">
+        <ul>
+        </ul>
+        
+        </div>
+        </div>
+        </div>
+        <section id="search">
+            <i id="searchIcon"></i>
+           <input type="text" placeholder="Buscar">
+        </section>
+    </aside>
+    <section id="Store" class="button">
+        <aside id="storeHeader" class="button">
+            
+        </aside>
+        <aside id="actualStore" class="button">
+            <aside id="storeList" class="button">
+                <ul>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                </ul>
+            </aside>
+            <aside id="storeSection">
+                
+            </aside>
+        </aside>
+       
+    </section>
+    <section id="chats">
+    <div class="chats">
+
+
+    </div>
+  </section>
+  <script>
+          $("#notifications").mCustomScrollbar({theme: 
+        "minimal-dark", 
+        autoExpandScrollbar: true,
+        scrollInertia: 100,
+         mouseWheel:{ scrollAmount: 40 }
+
+    });
+      $("#chat").mCustomScrollbar({theme: 
+        "minimal-dark", 
+        autoExpandScrollbar: true,
+        scrollInertia: 100,
+            mouseWheel:{ scrollAmount: 40 }
+
+             });
+    </script>
+  <script src="../js/courses/grid.js"></script>
+        <script>
+            $(function() {
+                Grid.init();
+            });
+        </script>
+    <script>
+    $( "#resizeBottom" ).resizable({
+      handles: "n",maxHeight: ($(window).height()-$("#sidebar #search").outerHeight() - 51),minHeight: 50 }
+                                  ).bind("resize", function (e, ui) {
+      $(this).css("top", "auto");
+    }
+                                        );
+    
+  </script>
+</body>
+</html>
+<!--For GitHub Pages Page To Refresh-->  

@@ -912,10 +912,12 @@ function openOtherModal(a){
     var comments = a.closest('.story').find(".Comentarios").html();
     $('.theater .comments .comentarios .Comentarios').html(comments);
 
+    th.find(".revelar.activado").click(); 
+
     var containment = a.closest('.story').find(".title").next().prop("outerHTML");
     $('.theater #otherContainments > div').html(containment);
 
-    $('.theater #otherContainments > div').find(".overflowing").parent()[0].outerHTML= $('.theater #otherContainments > div').find(".overflowing").html(); 
+    !!$('.theater #otherContainments > div').find(".overflowing").length? $('.theater #otherContainments > div').find(".overflowing").parent()[0].outerHTML= $('.theater #otherContainments > div').find(".overflowing").html(): 1; 
 
     $("#theater .media > div").each(function(){$(this)[0].outerHTML= $(this).find("audio")[0].outerHTML}); 
 
@@ -1014,6 +1016,19 @@ function openOtherModal(a){
       
 
     responsive()
+
+    $("#theater .revelar").on("click", function(){ 
+        if($(this).text()[0] != "O"){ 
+            $(this).parent().css({"height": "auto"}); 
+            $(this)[0].tx= $(this).text(); 
+            $(this).text("Ocultar de nuevo."); 
+            $(this).addClass("activado"); 
+        }else{ 
+            $(this).parent().css({"height": "0"}); 
+            $(this).text($(this)[0].tx); 
+            $(this).removeClass("activado"); 
+        } 
+    })
 } 
 function closeModal() {
     $("#theater #bigPic")[0].src= ""; 
