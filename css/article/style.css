@@ -1423,7 +1423,7 @@ a:hover
     width: 100%; 
     position: relative; 
 } 
-.comentarios > .newComment::before{ 
+#theater .comentarios > .newComment::before{ 
     width: 13px; 
     height: 17px; 
     position: absolute; 
@@ -1665,6 +1665,7 @@ time{
     width: 100%; 
     text-align: left; 
     margin-top: 200px; 
+    padding-bottom: 2px; 
 } 
 .ui-helper-hidden-accessible{ 
     display: none; 
@@ -1674,6 +1675,6 @@ time{
     padding: 0 12px; 
 } 
 #article .comentarios > .newComment{ 
-    padding: 0 2px 2px 2px; 
+    padding: 0 2px 0 2px; 
     box-sizing: border-box; 
 } 
