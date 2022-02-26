@@ -2038,3 +2038,6 @@ header nav ul li#right-menu #store::before {
 .story.video {
     width: 520px;
 }
+badguy{ 
+    display: none; 
+} 
