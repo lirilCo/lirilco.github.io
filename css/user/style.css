@@ -1818,12 +1818,6 @@ display: inline-block;
     transform: rotateY(-90deg); 
     overflow-x: hidden; 
 }
-#theater .comentarios.setenta_y_cuatro{ 
-    padding-top: 74px; 
-} 
-#theater .comentarios.noventaYDos{ 
-    padding-top: 92px; 
-} 
 #theater .comentarios.open{ 
     transition-delay: 235ms; 
     transform: rotateY(0deg); 
