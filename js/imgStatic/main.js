@@ -1,27 +1,5 @@
 closeModal= function(){1}; 
                            
-$(window).load(function(){ 
-    setTimeout(
-        function(){ 
-            ttl= $("title").text(); 
-    
-            $("title").html(" &nbsp &nbsp&nbsp&nbsp" + ttl); 
-    
-            setTimeout(function(){$("title").html("⬤&nbsp&nbsp" + ttl); }, 100); 
-    
-            setTimeout(function(){$("title").html(" &nbsp &nbsp &nbsp " + ttl); }, 400); 
-    
-            setTimeout(function(){$("title").html("⬤&nbsp&nbsp" + ttl); }, 700); 
-    
-            setTimeout(function(){$("title").html(" &nbsp &nbsp &nbsp " + ttl); }, 1100); 
-    
-            setTimeout(function(){$("title").html("⬤&nbsp&nbsp" + ttl); }, 1400); 
-
-            setTimeout(function(){$("title").html(ttl.slice(15, -5)); }, 1700); 
-        } 
-        , 593); 
-}); 
-
 document.addEventListener("keydown",function(evt){ 
     aaa= $("#theater"); 
 
