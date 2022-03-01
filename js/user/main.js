@@ -765,11 +765,11 @@ $(window).load(function(){
     
             setTimeout(function(){$("title").html("⬤&nbsp&nbsp" + ttl); }, 100); 
     
-            setTimeout(function(){$("title").html(" &nbsp &nbsp &nbsp " + ttl); }, 400); 
+            setTimeout(function(){$("title").html(" &nbsp     " + ttl); }, 400); 
     
             setTimeout(function(){$("title").html("⬤&nbsp&nbsp" + ttl); }, 700); 
     
-            setTimeout(function(){$("title").html(" &nbsp &nbsp &nbsp " + ttl); }, 1100); 
+            setTimeout(function(){$("title").html(" &nbsp     " + ttl); }, 1100); 
     
             setTimeout(function(){$("title").html("⬤&nbsp&nbsp" + ttl); }, 1400); 
 

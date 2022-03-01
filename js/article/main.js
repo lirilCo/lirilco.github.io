@@ -113,8 +113,30 @@ badGuy= function(){
 
 document.addEventListener("keydown", function(i){(i.keyCode == 13 && !!window.getSelection().focusNode && $(window.getSelection().focusNode.parentElement).is(".revelar"))? $(window.getSelection().focusNode.parentElement).click(): 1; }); 
                                    
+                                   $(window).load(function(){ 
+    setTimeout(
+        function(){ 
+            ttl= $("title").text(); 
+    
+            $("title").html(" &nbsp &nbsp&nbsp&nbsp" + ttl); 
+    
+            setTimeout(function(){$("title").html("⬤&nbsp&nbsp" + ttl); }, 100); 
+    
+            setTimeout(function(){$("title").html(" &nbsp     " + ttl); }, 400); 
+    
+            setTimeout(function(){$("title").html("⬤&nbsp&nbsp" + ttl); }, 700); 
+    
+            setTimeout(function(){$("title").html(" &nbsp     " + ttl); }, 1100); 
+    
+            setTimeout(function(){$("title").html("⬤&nbsp&nbsp" + ttl); }, 1400); 
+
+            setTimeout(function(){$("title").html(ttl); }, 1700); 
+        } 
+        , 593); 
+}); 
+
 $(document).on("ready",function(){ 
-    $('#article .comentarios .Comentarios').html(JSON.parse(localStorage.getItem(window.location.pathname)).C); 
+    !!JSON.parse(localStorage.getItem(window.location.pathname))? $('#article .comentarios .Comentarios').html(JSON.parse(localStorage.getItem(window.location.pathname)).C): 1; 
 
     $('#article .comentarios .Comentarios .comentario').on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth = elx.outerWidth( true ),circleHeight  = elx.outerHeight( true ),circleLeft    = elx.offset().left,circleTop     = elx.offset().top,circlePos     = {x     : circleLeft + circleWidth / 2,y     : circleTop + circleHeight / 2,radius: circleWidth / 2};distance    = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); 
 
