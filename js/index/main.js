@@ -696,25 +696,29 @@ $(document).on("ready", function(){
     $(document).keypress(function (e) {
     if(!$("textarea").is(":focus") && !$("input").is(":focus") && !waiting){
         //console.log(e.keyCide) 
-        if (e.keyCode == 108 || e.keyCode == 76) {
-            $(".current").find('.options .star').toggleClass("true");
-            $("#theater").find('.options .star').toggleClass("true"); 
-            badGuy(); 
-        }
-        if (e.keyCode == 98 || e.keyCode == 66) {
-            $(".current").find('.options .bookmark').toggleClass("true");
-            $("#theater").find('.options .bookmark').toggleClass("true"); 
-            badGuy(); 
-        }
-        if (e.keyCode == 102 || e.keyCode == 70) {
-            if($(".current").is(".mult_img")){
-                openModal($($(".current").find(".pic")[($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0)]))
-            }else if($(".current").is(".img")){ 
-                openModal($(".current .pic"))
-            }else if($(".current").is(".video")){ 
-                openVideoModal($(".current").find(".Enlarge"))
-            }
-        }
+        if(!$("textarea").is(":focus") && !$("input").is(":focus") && !waiting){ 
+            switch(e.keyCode){ 
+                case 108: case 76: 
+                    $(".current").find('.options .star').toggleClass("true"); 
+                    $("#theater").find('.options .star').toggleClass("true"); 
+                    badGuy(); 
+                break; 
+                case 98: case 66: 
+                    $(".current").find('.options .bookmark').toggleClass("true"); 
+                    $("#theater").find('.options .bookmark').toggleClass("true"); 
+                    badGuy(); 
+                break; 
+                case 102: case 70: 
+                    if($(".current").is(".mult_img")){ 
+                        openModal($($(".current").find(".pic")[($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0)])); 
+                    }else if($(".current").is(".img")){ 
+                        openModal($(".current .pic")); 
+                    }else if($(".current").is(".video")){ 
+                        openVideoModal($(".current").find(".Enlarge")); 
+                    }; 
+                break; 
+            } 
+        } 
         var forward;
                      
         (e.keyCode == 74 || e.keyCode == 106 || e.keyCode == 75 || e.keyCode == 107)? waiting= true: 143; 

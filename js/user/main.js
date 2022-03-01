@@ -601,45 +601,9 @@ function closeModal() {
     Antheater= false; 
 
     history.pushState({page: 1}, "", "/" + username); 
-
-    $(".story").each(function(){ 
-        cold= JSON.parse(localStorage.getItem($(this).is(".mult_img")? $(this).find(".options a").attr("href").slice(0, $(this).find(".options a").attr("href").lastIndexOf("/")) + $(this).find(".carr").find("img")[0].src.slice($(this).find(".carr").find("img")[0].src.lastIndexOf("/"), $(this).find(".carr").find("img")[0].src.lastIndexOf(".")): $(this).find(".options a").attr("href"))); 
-                           
-        var t= $(this)[0]; 
-                           
-        !!cold? (function(){ 
-            cold.B? $(t).find(".options .bookmark").addClass("true"): $(t).find(".options .bookmark").removeClass("true"); 
-            cold.S? $(t).find(".options .star").addClass("true"): $(t).find(".options .star").removeClass("true"); 
-            $(t).find(".Comentarios")[0].innerHTML= cold.C; 
-        })(): 1; 
-    }); 
-    $(".foto").each(function(){ 
-        src= $(this).is(".mult_img")? un_tn($(this).find(".carr img")[0].src): un_tn($(this).find(".pic")[0].src); 
-
-        cold= JSON.parse(localStorage.getItem("/" + username + "/img" + src.slice(src.lastIndexOf("/"), src.lastIndexOf(".")))); 
-
-        var t= $(this)[0]; 
-
-        !!cold? (function(){ 
-            cold.B? $(t).find(".options .bookmark").addClass("true"): $(t).find(".options .bookmark").removeClass("true"); 
-            cold.S? $(t).find(".options .star").addClass("true"): $(t).find(".options .star").removeClass("true"); 
-            $(t).find(".Comentarios")[0].innerHTML= cold.C; 
-        })(): 1; 
-    }); 
-    src= $("#profilePic").is(".mult_img")? un_tn($("#profilePic").find(".carr img")[0].src): un_tn($("#profilePic > img")[0].src); 
-
-    cold= JSON.parse(localStorage.getItem("/" + username + "/img" + src.slice(src.lastIndexOf("/"), src.lastIndexOf(".")))); 
-
-    var t= $("#profilePic")[0]; 
-
-    !!cold? (function(){ 
-        cold.B? $(t).find(".options .bookmark").addClass("true"): $(t).find(".options .bookmark").removeClass("true"); 
-        cold.S? $(t).find(".options .star").addClass("true"): $(t).find(".options .star").removeClass("true"); 
-        $(t).find(".Comentarios")[0].innerHTML= cold.C; 
-    })(): 1; 
 }
-function un_tn(u){ 
-    return u.slice(0, u.indexOf("_tn")) + u.slice(u.indexOf("_tn") + 3); 
+function un_tn(u, no){ 
+    return (typeof no !== "undefined" && no? u: u.slice(0, u.indexOf("_tn")) + u.slice(u.indexOf("_tn") + 3)); 
 } 
 wD= function(thi, b){ 
     if(typeof b == "undefined"){ 
@@ -751,7 +715,44 @@ bGComments= function(){
     return bG; 
 } 
 badGuy= function(){ 
-    localStorage.setItem(!!Antheater.length? Antheater.is(".foto") || Antheater.is("#profilePic")? Antheater.is(".mult_img")? un_tn(window.location.pathname.slice(0, window.location.pathname.lastIndexOf("/")) + $(Antheater).find(".carr").find("img")[0].src.slice($(Antheater).find(".carr").find("img")[0].src.lastIndexOf("/"), $(Antheater).find(".carr").find("img")[0].src.lastIndexOf("."))): window.location.pathname: Antheater.is(".mult_img")? Antheater.find(".options a").attr("href").slice(0, Antheater.find(".options a").attr("href").lastIndexOf("/")) + Antheater.find(".carr").find("img")[0].src.slice(Antheater.find(".carr").find("img")[0].src.lastIndexOf("/"), Antheater.find(".carr").find("img")[0].src.lastIndexOf(".")): Antheater.find(".options a").attr("href"): window.location.pathname, JSON.stringify({B: ($("#theater").css("display") == "block"? $("#theater .options .bookmark").hasClass("true"): $(".current .options .bookmark").hasClass("true"))? true: false, S: ($("#theater").css("display") == "block"? $("#theater .options .star").hasClass("true"): $(".current .options .star").hasClass("true"))? true: false, C: bGComments()})); 
+    localStorage.setItem(un_tn(!!Antheater.length? !!Antheater.find(".carr").length? window.location.pathname.slice(0, window.location.pathname.lastIndexOf("/")) + $(Antheater).find(".carr").find("img")[0].src.slice($(Antheater).find(".carr").find("img")[0].src.lastIndexOf("/"), $(Antheater).find(".carr").find("img")[0].src.lastIndexOf(".")): window.location.pathname: $(".current").is(".mult_img")? $(".current").find(".options a").attr("href").slice(0, $(".current").find(".options a").attr("href").lastIndexOf("/")) + $(".current").find(".carr").find("img")[0].src.slice($(".current").find(".carr").find("img")[0].src.lastIndexOf("/"), $(".current").find(".carr").find("img")[0].src.lastIndexOf(".")): $(".current").find(".options a").attr("href"), (!Antheater.length || (!!Antheater.length && ((Antheater.is(".foto") || Antheater.is("#profilePic")) && (!Antheater.is(".mult_img"))) || Antheater.is(".story")) || Antheater.is("#theater"))? true: false), JSON.stringify({B: ($("#theater").css("display") == "block"? $("#theater .options .bookmark").hasClass("true"): $(".current .options .bookmark").hasClass("true"))? true: false, S: ($("#theater").css("display") == "block"? $("#theater .options .star").hasClass("true"): $(".current .options .star").hasClass("true"))? true: false, C: bGComments()})); 
+    $(".story").each(function(){ 
+        cold= JSON.parse(localStorage.getItem($(this).is(".mult_img")? $(this).find(".options a").attr("href").slice(0, $(this).find(".options a").attr("href").lastIndexOf("/")) + $(this).find(".carr").find("img")[0].src.slice($(this).find(".carr").find("img")[0].src.lastIndexOf("/"), $(this).find(".carr").find("img")[0].src.lastIndexOf(".")): $(this).find(".options a").attr("href"))); 
+                            
+        var t= $(this)[0]; 
+                            
+        !!cold? (function(){ 
+            cold.B? $(t).find(".options .bookmark").addClass("true"): $(t).find(".options .bookmark").removeClass("true"); 
+            cold.S? $(t).find(".options .star").addClass("true"): $(t).find(".options .star").removeClass("true"); 
+            $(t).find(".Comentarios")[0].innerHTML= cold.C; 
+        })(): 1; 
+    }); 
+    $(".foto").each(function(){ 
+        src= $(this).is(".mult_img")? un_tn($(this).find(".carr img")[0].src): un_tn($(this).find(".pic")[0].src); 
+
+        cold= JSON.parse(localStorage.getItem("/" + username + "/img" + src.slice(src.lastIndexOf("/"), src.lastIndexOf(".")))); 
+
+        var t= $(this)[0]; 
+
+        !!cold? (function(){ 
+            cold.B? $(t).find(".options .bookmark").addClass("true"): $(t).find(".options .bookmark").removeClass("true"); 
+            cold.S? $(t).find(".options .star").addClass("true"): $(t).find(".options .star").removeClass("true"); 
+            $(t).find(".Comentarios")[0].innerHTML= cold.C; 
+        })(): 1; 
+    }); 
+    if($("#profilePic").length){ 
+        src= $("#profilePic").is(".mult_img")? un_tn($("#profilePic").find(".carr img")[0].src): un_tn($("#profilePic > img")[0].src); 
+
+        cold= JSON.parse(localStorage.getItem("/" + username + "/img" + src.slice(src.lastIndexOf("/"), src.lastIndexOf(".")))); 
+
+        var t= $("#profilePic")[0]; 
+
+        !!cold? (function(){ 
+            cold.B? $(t).find(".options .bookmark").addClass("true"): $(t).find(".options .bookmark").removeClass("true"); 
+            cold.S? $(t).find(".options .star").addClass("true"): $(t).find(".options .star").removeClass("true"); 
+            $(t).find(".Comentarios")[0].innerHTML= cold.C; 
+        })(): 1; 
+    } 
 } 
 document.addEventListener("keydown", function(i){(i.keyCode == 13 && !!window.getSelection().focusNode && $(window.getSelection().focusNode.parentElement).is(".revelar"))? $(window.getSelection().focusNode.parentElement).click(): 1; }); 
                                                                         
@@ -802,17 +803,19 @@ $(document).on("ready",function(e){
             $(t).find(".Comentarios")[0].innerHTML= cold.C; 
         })(): 1; 
     }); 
-    src= $("#profilePic").is(".mult_img")? un_tn($("#profilePic").find(".carr img")[0].src): un_tn($("#profilePic > img")[0].src); 
+    if($("#profilePic").length){ 
+        src= $("#profilePic").is(".mult_img")? un_tn($("#profilePic").find(".carr img")[0].src): un_tn($("#profilePic > img")[0].src); 
 
-    cold= JSON.parse(localStorage.getItem("/" + username + "/img" + src.slice(src.lastIndexOf("/"), src.lastIndexOf(".")))); 
+        cold= JSON.parse(localStorage.getItem("/" + username + "/img" + src.slice(src.lastIndexOf("/"), src.lastIndexOf(".")))); 
 
-    var t= $("#profilePic")[0]; 
+        var t= $("#profilePic")[0]; 
 
-    !!cold? (function(){ 
-        cold.B? $(t).find(".options .bookmark").addClass("true"): $(t).find(".options .bookmark").removeClass("true"); 
-        cold.S? $(t).find(".options .star").addClass("true"): $(t).find(".options .star").removeClass("true"); 
-        $(t).find(".Comentarios")[0].innerHTML= cold.C; 
-    })(): 1; 
+        !!cold? (function(){ 
+            cold.B? $(t).find(".options .bookmark").addClass("true"): $(t).find(".options .bookmark").removeClass("true"); 
+            cold.S? $(t).find(".options .star").addClass("true"): $(t).find(".options .star").removeClass("true"); 
+            $(t).find(".Comentarios")[0].innerHTML= cold.C; 
+        })(): 1; 
+    }
 
     //$(".Respuestas").text($(this).text("respuestas (" + $(this).parent().find(".comentario.hidden").length + ")")); 
                                     
@@ -1318,25 +1321,29 @@ $(document).on("ready", function(){
     })
     current= $(".story.current");
     $(document).keypress(function (e) {
-        if (e.keyCode == 108 || e.keyCode == 76) {
-            $(".current").find('.options .star').toggleClass("true");
-            $("#theater").find('.options .star').toggleClass("true"); 
-            badGuy(); 
-        }
-        if (e.keyCode == 98 || e.keyCode == 66) {
-            $(".current").find('.options .bookmark').toggleClass("true");
-            $("#theater").find('.options .bookmark').toggleClass("true"); 
-            badGuy(); 
-        }
-        if (e.keyCode == 102 || e.keyCode == 70) {
-            if($(".current").is(".mult_img")){
-                openModal($($(".current").find(".pic")[($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0)]))
-            }else if($(".current").is(".img")){ 
-                openModal($(".current .pic"))
-            }else if($(".current").is(".video")){ 
-                openVideoModal($(".current").find(".Enlarge"))
-            }
-        }
+        if(!$("textarea").is(":focus") && !$("input").is(":focus") && !waiting){ 
+            switch(e.keyCode){ 
+                case 108: case 76: 
+                    $(".current").find('.options .star').toggleClass("true"); 
+                    $("#theater").find('.options .star').toggleClass("true"); 
+                    badGuy(); 
+                break; 
+                case 98: case 66: 
+                    $(".current").find('.options .bookmark').toggleClass("true"); 
+                    $("#theater").find('.options .bookmark').toggleClass("true"); 
+                    badGuy(); 
+                break; 
+                case 102: case 70: 
+                    if($(".current").is(".mult_img")){ 
+                        openModal($($(".current").find(".pic")[($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0)])); 
+                    }else if($(".current").is(".img")){ 
+                        openModal($(".current .pic")); 
+                    }else if($(".current").is(".video")){ 
+                        openVideoModal($(".current").find(".Enlarge")); 
+                    }; 
+                break; 
+            } 
+        } 
     if(!$("textarea").is(":focus") && !$("input").is(":focus") && !waiting && $("#theater").css("display") != "block"){
         //console.log(e.keyCide) 
         var forward;

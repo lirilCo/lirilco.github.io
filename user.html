@@ -26,6 +26,7 @@
     <script src="js/jquery.textarea_autosize.js"></script>
     <script src="js/user/modernizr.custom.js"></script>
     <script src="js/jquery-ui.min.js"></script>
+    <script src="js/video.js"></script>
     <script src="js/jquery.knob.js">
     </script>
 </head>
@@ -63,7 +64,7 @@
                     <section id="profileTrigger">
                     </section>
                     <div id="profile" class="button">
-                        <img id="profile-pic" src="resources/images/white.jpg" alt="Walter White">
+                        <img id="profile-pic" src="/resources/images/white.jpg" alt="Walter White">
                         <input class="knob button" data-width="35" data-height="35" data-fgColor="#2ecc71" data-bgColor="rgba(0,0,0,0)" data-displayInput=false data-thickness=".15" readonly value="60">
                     </div>
                     <span class="index-arrow button">
@@ -130,18 +131,19 @@
                 <div title="Curso completado (javascript)" class="line" style="top: 20%;"></div>
                 <div title="Nivel avanzado (a moderador)" class="line" style="top: 60%;"></div>
                 <figure id="profilePic">
-                    <img src="resources/images/white.jpg" alt="">
+                    <img src="/resources/images/white.jpg" alt="">
                     <input class="knob button" data-width="195" data-height="195" data-fgColor="#2ecc71" data-bgColor="rgba(0,0,0,0)" data-displayInput=false data-thickness=".06" readonly value="60">
                     <figcaption>Walter White</figcaption>
                     <section class="hidden">
                         <div class="info">
-                            <img src="resources/images/white.jpg" alt="">
-                            <p class="username"><a href="user.html">Walter White</a><br><span class="time">24 de Octubre a las 0:30 am</span></p>
+                            <img src="/resources/images/white.jpg" alt="">
+                            <p class="username"><a href="/user">Walter White</a><br><span class="time">24 de Octubre a las 0:30 am</span></p>
                         </div>
                         <p class="title">Oie Zyh...</p>
                         <section id="picture">
-                            <img class="pic" src="resources/images/white.jpg" alt="" class="big">
+                            <img class="pic" src="/resources/images/white.jpg" alt="" class="big">
                         </section>
+                        <div class="Comentarios"></div>
                         <div class="options button">
                             <ul>
                                 <li class="bookmark"></li>
@@ -167,34 +169,35 @@
                 <section id="summary">
                     <aside id="sections">
                         <section id="pics">
-                            <h2 class="title"><a href="user/photos.html">Fotos</a> (64)</h2>
-                            <img src="resources/images/grid/1.jpg" alt="">
-                            <img src="resources/images/grid/2.jpg" alt="">
-                            <img src="resources/images/grid/3.jpg" alt="">
-                            <img src="resources/images/grid/2.jpg" alt="">
-                            <img src="resources/images/grid/1.jpg" alt="">
-                            <img src="resources/images/grid/3.jpg" alt="">
-                            <img src="resources/images/grid/3.jpg" alt="">
-                            <img src="resources/images/grid/2.jpg" alt="">
-                            <img src="resources/images/grid/1.jpg" alt="">
+                            <h2 class="title"><a href="/user/photos.html">Fotos</a> (64)</h2>
+                            <img src="/resources/images/grid/1.jpg" alt="">
+                            <img src="/resources/images/grid/2.jpg" alt="">
+                            <img src="/resources/images/grid/3.jpg" alt="">
+                            <img src="/resources/images/grid/2.jpg" alt="">
+                            <img src="/resources/images/grid/1.jpg" alt="">
+                            <img src="/resources/images/grid/3.jpg" alt="">
+                            <img src="/resources/images/grid/3.jpg" alt="">
+                            <img src="/resources/images/grid/2.jpg" alt="">
+                            <img src="/resources/images/grid/1.jpg" alt="">
                         </section>
                     </aside>
                     <aside id="updates">
                         <aside id="feed">
                             <section class="story current project img">
                                 <div class="info">
-                                    <img src="resources/images/white.jpg" alt="">
-                                    <p class="username"><a href="user.html">Walter White</a> hizo un commit a <a href="#">eBay</a> <br><span class="time">Ayer a las 3:30 pm</span></p>
+                                    <img src="/resources/images/white.jpg" alt="">
+                                    <p class="username"><a href="/user">Walter White</a> hizo un commit a <a href="#">eBay</a> <br><span class="time">Ayer a las 3:30 pm</span></p>
                                 </div>
                                 <p class="title">Nuevo ad</p>
                                 <section id="picture">
-                                    <img class="pic" src="resources/images/grid/1.jpg" alt="" class="big">
+                                    <img class="pic" src="/resources/images/grid/1.jpg" alt="" class="big">
                                 </section>
+                                <div class="Comentarios"></div>
                                 <div class="options button">
                                     <ul>
                                         <li class="bookmark"></li>
                                         <li class="star"></li>
-                                        <a href="#">
+                                        <a href="/user/img/1">
                                             <li class="read"></li>
                                         </a>
                                     </ul>
@@ -202,13 +205,14 @@
                             </section>
                             <section class="story news img">
                                 <div class="info">
-                                    <img src="resources/images/white.jpg" alt="">
-                                    <p class="username"><a href="user.html">Walter White</a><br><span class="time">24 de Octubre a las 0:30 am</span></p>
+                                    <img src="/resources/images/white.jpg" alt="">
+                                    <p class="username"><a href="/user">Walter White</a><br><span class="time">24 de Octubre a las 0:30 am</span></p>
                                 </div>
                                 <p class="title">Novedades en Adobe Photoshop CC</p>
                                 <section id="picture">
-                                    <img class="pic" src="resources/images/article/avatar.jpg" alt="" class="big">
+                                    <img class="pic" src="/resources/images/article/avatar.jpg" alt="" class="big">
                                 </section>
+                                <div class="Comentarios"></div>
                                 <div class="options button">
                                     <ul>
                                         <li class="bookmark"></li>
@@ -221,18 +225,19 @@
                             </section>
                             <section class="story news img">
                                 <div class="info">
-                                    <img src="resources/images/white.jpg" alt="">
-                                    <p class="username"><a href="user.html">Walter White</a><br><span class="time">24 de Octubre a las 3:40 am</span></p>
+                                    <img src="/resources/images/white.jpg" alt="">
+                                    <p class="username"><a href="/user">Walter White</a><br><span class="time">24 de Octubre a las 3:40 am</span></p>
                                 </div>
-                                <p class="title">Nuevos conceptos de diseño por <a href="user.html">Walter White</a></p>
+                                <p class="title">Nuevos conceptos de diseño por <a href="/user">Walter White</a></p>
                                 <section id="picture">
-                                    <img class="pic" src="resources/images/grid/2.jpg" alt="" class="big">
+                                    <img class="pic" src="/resources/images/grid/2.jpg" alt="" class="big">
                                 </section>
+                                <div class="Comentarios"></div>
                                 <div class="options button">
                                     <ul>
                                         <li class="bookmark"></li>
                                         <li class="star"></li>
-                                        <a href="#">
+                                        <a href="/user/img/2">
                                             <li class="read"></li>
                                         </a>
                                     </ul>
@@ -240,18 +245,19 @@
                             </section>
                             <section class="story project img">
                                 <div class="info">
-                                    <img src="resources/images/white.jpg" alt="">
-                                    <p class="username"><a href="user.html">Walter White</a> hizo un commit a <a href="#">eBay</a> <br><span class="time">Ayer a las 3:30 pm</span></p>
+                                    <img src="/resources/images/white.jpg" alt="">
+                                    <p class="username"><a href="/user">Walter White</a> hizo un commit a <a href="#">eBay</a> <br><span class="time">Ayer a las 3:30 pm</span></p>
                                 </div>
                                 <p class="title">Nuevo ad</p>
                                 <section id="picture">
-                                    <img class="pic" src="resources/images/grid/3.jpg" alt="" class="big">
+                                    <img class="pic" src="/resources/images/grid/3.jpg" alt="" class="big">
                                 </section>
+                                <div class="Comentarios"></div>
                                 <div class="options button">
                                     <ul>
                                         <li class="bookmark"></li>
                                         <li class="star"></li>
-                                        <a href="#">
+                                        <a href="/user/img/3">
                                             <li class="read"></li>
                                         </a>
                                     </ul>
@@ -259,18 +265,19 @@
                             </section>
                             <section class="story news img">
                                 <div class="info">
-                                    <img src="resources/images/white.jpg" alt="">
-                                    <p class="username"><a href="user.html">Walter White</a><br><span class="time">24 de Octubre a las 0:30 am</span></p>
+                                    <img src="/resources/images/white.jpg" alt="">
+                                    <p class="username"><a href="/user">Walter White</a><br><span class="time">24 de Octubre a las 0:30 am</span></p>
                                 </div>
                                 <p class="title">Novedades en Adobe Photoshop CC</p>
                                 <section id="picture">
-                                    <img class="pic" src="resources/images/photoshop.jpg" alt="" class="big">
+                                    <img class="pic" src="/resources/images/photoshop.jpg" alt="" class="big">
                                 </section>
+                                <div class="Comentarios"></div>
                                 <div class="options button">
                                     <ul>
                                         <li class="bookmark"></li>
                                         <li class="star"></li>
-                                        <a href="article.html">
+                                        <a href="/user/img/photoshop">
                                             <li class="read"></li>
                                         </a>
                                     </ul>
@@ -278,18 +285,19 @@
                             </section>
                             <section class="story news img">
                                 <div class="info">
-                                    <img src="resources/images/white.jpg" alt="">
-                                    <p class="username"><a href="user.html">Walter White</a><br><span class="time">24 de Octubre a las 3:40 am</span></p>
+                                    <img src="/resources/images/white.jpg" alt="">
+                                    <p class="username"><a href="/user">Walter White</a><br><span class="time">24 de Octubre a las 3:40 am</span></p>
                                 </div>
-                                <p class="title">Nuevos conceptos de diseño por <a href="user.html">Walter White</a></p>
+                                <p class="title">Nuevos conceptos de diseño por <a href="/user">Walter White</a></p>
                                 <section id="picture">
-                                    <img class="pic" src="resources/images/grid/2.jpg" alt="" class="big">
+                                    <img class="pic" src="/resources/images/grid/2.jpg" alt="" class="big">
                                 </section>
+                                <div class="Comentarios"></div>
                                 <div class="options button">
                                     <ul>
                                         <li class="bookmark"></li>
                                         <li class="star"></li>
-                                        <a href="#">
+                                        <a href="/user/img/2">
                                             <li class="read"></li>
                                         </a>
                                     </ul>
@@ -297,18 +305,19 @@
                             </section>
                             <section class="story project img">
                                 <div class="info">
-                                    <img src="resources/images/white.jpg" alt="">
-                                    <p class="username"><a href="user.html">Walter White</a> hizo un commit a <a href="#">eBay</a> <br><span class="time">Ayer a las 3:30 pm</span></p>
+                                    <img src="/resources/images/white.jpg" alt="">
+                                    <p class="username"><a href="/user">Walter White</a> hizo un commit a <a href="#">eBay</a> <br><span class="time">Ayer a las 3:30 pm</span></p>
                                 </div>
                                 <p class="title">Nuevo ad</p>
                                 <section id="picture">
-                                    <img class="pic" src="resources/images/grid/3.jpg" alt="" class="big">
+                                    <img class="pic" src="/resources/images/grid/3.jpg" alt="" class="big">
                                 </section>
+                                <div class="Comentarios"></div>
                                 <div class="options button">
                                     <ul>
                                         <li class="bookmark"></li>
                                         <li class="star"></li>
-                                        <a href="#">
+                                        <a href="/user/img/3">
                                             <li class="read"></li>
                                         </a>
                                     </ul>
@@ -316,18 +325,19 @@
                             </section>
                             <section class="story news img">
                                 <div class="info">
-                                    <img src="resources/images/white.jpg" alt="">
-                                    <p class="username"><a href="user.html">Walter White</a><br><span class="time">24 de Octubre a las 0:30 am</span></p>
+                                    <img src="/resources/images/white.jpg" alt="">
+                                    <p class="username"><a href="/user">Walter White</a><br><span class="time">24 de Octubre a las 0:30 am</span></p>
                                 </div>
                                 <p class="title">Novedades en Adobe Photoshop CC</p>
                                 <section id="picture">
-                                    <img class="pic" src="resources/images/photoshop.jpg" alt="" class="big">
+                                    <img class="pic" src="/resources/images/photoshop.jpg" alt="" class="big">
                                 </section>
+                                <div class="Comentarios"></div>
                                 <div class="options button">
                                     <ul>
                                         <li class="bookmark"></li>
                                         <li class="star"></li>
-                                        <a href="article.html">
+                                        <a href="/user/img/photoshop">
                                             <li class="read"></li>
                                         </a>
                                     </ul>
@@ -335,18 +345,19 @@
                             </section>
                             <section class="story news img">
                                 <div class="info">
-                                    <img src="resources/images/white.jpg" alt="">
-                                    <p class="username"><a href="user.html">Walter White</a><br><span class="time">24 de Octubre a las 3:40 am</span></p>
+                                    <img src="/resources/images/white.jpg" alt="">
+                                    <p class="username"><a href="/user">Walter White</a><br><span class="time">24 de Octubre a las 3:40 am</span></p>
                                 </div>
-                                <p class="title">Nuevos conceptos de diseño por <a href="user.html">Walter White</a></p>
+                                <p class="title">Nuevos conceptos de diseño por <a href="/user">Walter White</a></p>
                                 <section id="picture">
-                                    <img class="pic" src="resources/images/grid/2.jpg" alt="" class="big">
+                                    <img class="pic" src="/resources/images/grid/2.jpg" alt="" class="big">
                                 </section>
+                                <div class="Comentarios"></div>
                                 <div class="options button">
                                     <ul>
                                         <li class="bookmark"></li>
                                         <li class="star"></li>
-                                        <a href="#">
+                                        <a href="/user/img/2">
                                             <li class="read"></li>
                                         </a>
                                     </ul>
@@ -354,18 +365,19 @@
                             </section>
                             <section class="story project img">
                                 <div class="info">
-                                    <img src="resources/images/white.jpg" alt="">
-                                    <p class="username"><a href="user.html">Walter White</a> hizo un commit a <a href="#">eBay</a> <br><span class="time">Ayer a las 3:30 pm</span></p>
+                                    <img src="/resources/images/white.jpg" alt="">
+                                    <p class="username"><a href="/user">Walter White</a> hizo un commit a <a href="#">eBay</a> <br><span class="time">Ayer a las 3:30 pm</span></p>
                                 </div>
                                 <p class="title">Nuevo ad</p>
                                 <section id="picture">
-                                    <img class="pic" src="resources/images/grid/3.jpg" alt="" class="big">
+                                    <img class="pic" src="/resources/images/grid/3.jpg" alt="" class="big">
                                 </section>
+                                <div class="Comentarios"></div>
                                 <div class="options button">
                                     <ul>
                                         <li class="bookmark"></li>
                                         <li class="star"></li>
-                                        <a href="#">
+                                        <a href="/user/img/3">
                                             <li class="read"></li>
                                         </a>
                                     </ul>
@@ -373,18 +385,19 @@
                             </section>
                             <section class="story news img">
                                 <div class="info">
-                                    <img src="resources/images/white.jpg" alt="">
-                                    <p class="username"><a href="user.html">Walter White</a><br><span class="time">24 de Octubre a las 0:30 am</span></p>
+                                    <img src="/resources/images/white.jpg" alt="">
+                                    <p class="username"><a href="/user">Walter White</a><br><span class="time">24 de Octubre a las 0:30 am</span></p>
                                 </div>
                                 <p class="title">Novedades en Adobe Photoshop CC</p>
                                 <section id="picture">
-                                    <img class="pic" src="resources/images/photoshop.jpg" alt="" class="big">
+                                    <img class="pic" src="/resources/images/photoshop.jpg" alt="" class="big">
                                 </section>
+                                <div class="Comentarios"></div>
                                 <div class="options button">
                                     <ul>
                                         <li class="bookmark"></li>
                                         <li class="star"></li>
-                                        <a href="article.html">
+                                        <a href="/user/img/photoshop">
                                             <li class="read"></li>
                                         </a>
                                     </ul>
@@ -392,18 +405,19 @@
                             </section>
                             <section class="story news img">
                                 <div class="info">
-                                    <img src="resources/images/white.jpg" alt="">
-                                    <p class="username"><a href="user.html">Walter White</a><br><span class="time">24 de Octubre a las 3:40 am</span></p>
+                                    <img src="/resources/images/white.jpg" alt="">
+                                    <p class="username"><a href="/user">Walter White</a><br><span class="time">24 de Octubre a las 3:40 am</span></p>
                                 </div>
-                                <p class="title">Nuevos conceptos de diseño por <a href="user.html">Walter White</a></p>
+                                <p class="title">Nuevos conceptos de diseño por <a href="/user">Walter White</a></p>
                                 <section id="picture">
-                                    <img class="pic" src="resources/images/grid/2.jpg" alt="" class="big">
+                                    <img class="pic" src="/resources/images/grid/2.jpg" alt="" class="big">
                                 </section>
+                                <div class="Comentarios"></div>
                                 <div class="options button">
                                     <ul>
                                         <li class="bookmark"></li>
                                         <li class="star"></li>
-                                        <a href="#">
+                                        <a href="/user/img/2">
                                             <li class="read"></li>
                                         </a>
                                     </ul>
@@ -411,18 +425,19 @@
                             </section>
                             <section class="story project img">
                                 <div class="info">
-                                    <img src="resources/images/white.jpg" alt="">
-                                    <p class="username"><a href="user.html">Walter White</a> hizo un commit a <a href="#">eBay</a> <br><span class="time">Ayer a las 3:30 pm</span></p>
+                                    <img src="/resources/images/white.jpg" alt="">
+                                    <p class="username"><a href="/user">Walter White</a> hizo un commit a <a href="#">eBay</a> <br><span class="time">Ayer a las 3:30 pm</span></p>
                                 </div>
                                 <p class="title">Nuevo ad</p>
                                 <section id="picture">
-                                    <img class="pic" src="resources/images/grid/3.jpg" alt="" class="big">
+                                    <img class="pic" src="/resources/images/grid/3.jpg" alt="" class="big">
                                 </section>
+                                <div class="Comentarios"></div>
                                 <div class="options button">
                                     <ul>
                                         <li class="bookmark"></li>
                                         <li class="star"></li>
-                                        <a href="#">
+                                        <a href="/user/img/3">
                                             <li class="read"></li>
                                         </a>
                                     </ul>
@@ -430,18 +445,19 @@
                             </section>
                             <section class="story news img">
                                 <div class="info">
-                                    <img src="resources/images/white.jpg" alt="">
-                                    <p class="username"><a href="user.html">Walter White</a><br><span class="time">24 de Octubre a las 0:30 am</span></p>
+                                    <img src="/resources/images/white.jpg" alt="">
+                                    <p class="username"><a href="/user">Walter White</a><br><span class="time">24 de Octubre a las 0:30 am</span></p>
                                 </div>
                                 <p class="title">Novedades en Adobe Photoshop CC</p>
                                 <section id="picture">
-                                    <img class="pic" src="resources/images/photoshop.jpg" alt="" class="big">
+                                    <img class="pic" src="/resources/images/photoshop.jpg" alt="" class="big">
                                 </section>
+                                <div class="Comentarios"></div>
                                 <div class="options button">
                                     <ul>
                                         <li class="bookmark"></li>
                                         <li class="star"></li>
-                                        <a href="article.html">
+                                        <a href="/user/img/photoshop">
                                             <li class="read"></li>
                                         </a>
                                     </ul>
@@ -449,18 +465,19 @@
                             </section>
                             <section class="story news img">
                                 <div class="info">
-                                    <img src="resources/images/white.jpg" alt="">
-                                    <p class="username"><a href="user.html">Walter White</a><br><span class="time">24 de Octubre a las 3:40 am</span></p>
+                                    <img src="/resources/images/white.jpg" alt="">
+                                    <p class="username"><a href="/user">Walter White</a><br><span class="time">24 de Octubre a las 3:40 am</span></p>
                                 </div>
-                                <p class="title">Nuevos conceptos de diseño por <a href="user.html">Walter White</a></p>
+                                <p class="title">Nuevos conceptos de diseño por <a href="/user">Walter White</a></p>
                                 <section id="picture">
-                                    <img class="pic" src="resources/images/grid/2.jpg" alt="" class="big">
+                                    <img class="pic" src="/resources/images/grid/2.jpg" alt="" class="big">
                                 </section>
+                                <div class="Comentarios"></div>
                                 <div class="options button">
                                     <ul>
                                         <li class="bookmark"></li>
                                         <li class="star"></li>
-                                        <a href="#">
+                                        <a href="/user/img/2">
                                             <li class="read"></li>
                                         </a>
                                     </ul>
@@ -468,18 +485,19 @@
                             </section>
                             <section class="story project img">
                                 <div class="info">
-                                    <img src="resources/images/white.jpg" alt="">
-                                    <p class="username"><a href="user.html">Walter White</a> hizo un commit a <a href="#">eBay</a> <br><span class="time">Ayer a las 3:30 pm</span></p>
+                                    <img src="/resources/images/white.jpg" alt="">
+                                    <p class="username"><a href="/user">Walter White</a> hizo un commit a <a href="#">eBay</a> <br><span class="time">Ayer a las 3:30 pm</span></p>
                                 </div>
                                 <p class="title">Nuevo ad</p>
                                 <section id="picture">
-                                    <img class="pic" src="resources/images/grid/3.jpg" alt="" class="big">
+                                    <img class="pic" src="/resources/images/grid/3.jpg" alt="" class="big">
                                 </section>
+                                <div class="Comentarios"></div>
                                 <div class="options button">
                                     <ul>
                                         <li class="bookmark"></li>
                                         <li class="star"></li>
-                                        <a href="#">
+                                        <a href="/user/img/3">
                                             <li class="read"></li>
                                         </a>
                                     </ul>
@@ -487,18 +505,19 @@
                             </section>
                             <section class="story news img">
                                 <div class="info">
-                                    <img src="resources/images/white.jpg" alt="">
-                                    <p class="username"><a href="user.html">Walter White</a><br><span class="time">24 de Octubre a las 0:30 am</span></p>
+                                    <img src="/resources/images/white.jpg" alt="">
+                                    <p class="username"><a href="/user">Walter White</a><br><span class="time">24 de Octubre a las 0:30 am</span></p>
                                 </div>
                                 <p class="title">Novedades en Adobe Photoshop CC</p>
                                 <section id="picture">
-                                    <img class="pic" src="resources/images/photoshop.jpg" alt="" class="big">
+                                    <img class="pic" src="/resources/images/photoshop.jpg" alt="" class="big">
                                 </section>
+                                <div class="Comentarios"></div>
                                 <div class="options button">
                                     <ul>
                                         <li class="bookmark"></li>
                                         <li class="star"></li>
-                                        <a href="article.html">
+                                        <a href="/user/img/photoshop">
                                             <li class="read"></li>
                                         </a>
                                     </ul>
@@ -506,18 +525,19 @@
                             </section>
                             <section class="story news img">
                                 <div class="info">
-                                    <img src="resources/images/white.jpg" alt="">
-                                    <p class="username"><a href="user.html">Walter White</a><br><span class="time">24 de Octubre a las 3:40 am</span></p>
+                                    <img src="/resources/images/white.jpg" alt="">
+                                    <p class="username"><a href="/user">Walter White</a><br><span class="time">24 de Octubre a las 3:40 am</span></p>
                                 </div>
-                                <p class="title">Nuevos conceptos de diseño por <a href="user.html">Walter White</a></p>
+                                <p class="title">Nuevos conceptos de diseño por <a href="/user">Walter White</a></p>
                                 <section id="picture">
-                                    <img class="pic" src="resources/images/grid/2.jpg" alt="" class="big">
+                                    <img class="pic" src="/resources/images/grid/2.jpg" alt="" class="big">
                                 </section>
+                                <div class="Comentarios"></div>
                                 <div class="options button">
                                     <ul>
                                         <li class="bookmark"></li>
                                         <li class="star"></li>
-                                        <a href="#">
+                                        <a href="/user/img/2">
                                             <li class="read"></li>
                                         </a>
                                     </ul>
@@ -525,18 +545,19 @@
                             </section>
                             <section class="story project img">
                                 <div class="info">
-                                    <img src="resources/images/white.jpg" alt="">
-                                    <p class="username"><a href="user.html">Walter White</a> hizo un commit a <a href="#">eBay</a> <br><span class="time">Ayer a las 3:30 pm</span></p>
+                                    <img src="/resources/images/white.jpg" alt="">
+                                    <p class="username"><a href="/user">Walter White</a> hizo un commit a <a href="#">eBay</a> <br><span class="time">Ayer a las 3:30 pm</span></p>
                                 </div>
                                 <p class="title">Nuevo ad</p>
                                 <section id="picture">
-                                    <img class="pic" src="resources/images/grid/3.jpg" alt="" class="big">
+                                    <img class="pic" src="/resources/images/grid/3.jpg" alt="" class="big">
                                 </section>
+                                <div class="Comentarios"></div>
                                 <div class="options button">
                                     <ul>
                                         <li class="bookmark"></li>
                                         <li class="star"></li>
-                                        <a href="#">
+                                        <a href="/user/img/3">
                                             <li class="read"></li>
                                         </a>
                                     </ul>
@@ -544,18 +565,19 @@
                             </section>
                             <section class="story news img">
                                 <div class="info">
-                                    <img src="resources/images/white.jpg" alt="">
-                                    <p class="username"><a href="user.html">Walter White</a><br><span class="time">24 de Octubre a las 0:30 am</span></p>
+                                    <img src="/resources/images/white.jpg" alt="">
+                                    <p class="username"><a href="/user">Walter White</a><br><span class="time">24 de Octubre a las 0:30 am</span></p>
                                 </div>
                                 <p class="title">Novedades en Adobe Photoshop CC</p>
                                 <section id="picture">
-                                    <img class="pic" src="resources/images/photoshop.jpg" alt="" class="big">
+                                    <img class="pic" src="/resources/images/photoshop.jpg" alt="" class="big">
                                 </section>
+                                <div class="Comentarios"></div>
                                 <div class="options button">
                                     <ul>
                                         <li class="bookmark"></li>
                                         <li class="star"></li>
-                                        <a href="article.html">
+                                        <a href="/user/img/photoshop">
                                             <li class="read"></li>
                                         </a>
                                     </ul>
@@ -563,18 +585,19 @@
                             </section>
                             <section class="story news img">
                                 <div class="info">
-                                    <img src="resources/images/white.jpg" alt="">
-                                    <p class="username"><a href="user.html">Walter White</a><br><span class="time">24 de Octubre a las 3:40 am</span></p>
+                                    <img src="/resources/images/white.jpg" alt="">
+                                    <p class="username"><a href="/user">Walter White</a><br><span class="time">24 de Octubre a las 3:40 am</span></p>
                                 </div>
-                                <p class="title">Nuevos conceptos de diseño por <a href="user.html">Walter White</a></p>
+                                <p class="title">Nuevos conceptos de diseño por <a href="/user">Walter White</a></p>
                                 <section id="picture">
-                                    <img class="pic" src="resources/images/grid/2.jpg" alt="" class="big">
+                                    <img class="pic" src="/resources/images/grid/2.jpg" alt="" class="big">
                                 </section>
+                                <div class="Comentarios"></div>
                                 <div class="options button">
                                     <ul>
                                         <li class="bookmark"></li>
                                         <li class="star"></li>
-                                        <a href="#">
+                                        <a href="/user/img/2">
                                             <li class="read"></li>
                                         </a>
                                     </ul>
@@ -582,18 +605,19 @@
                             </section>
                             <section class="story project img">
                                 <div class="info">
-                                    <img src="resources/images/white.jpg" alt="">
-                                    <p class="username"><a href="user.html">Walter White</a> hizo un commit a <a href="#">eBay</a> <br><span class="time">Ayer a las 3:30 pm</span></p>
+                                    <img src="/resources/images/white.jpg" alt="">
+                                    <p class="username"><a href="/user">Walter White</a> hizo un commit a <a href="#">eBay</a> <br><span class="time">Ayer a las 3:30 pm</span></p>
                                 </div>
                                 <p class="title">Nuevo ad</p>
                                 <section id="picture">
-                                    <img class="pic" src="resources/images/grid/3.jpg" alt="" class="big">
+                                    <img class="pic" src="/resources/images/grid/3.jpg" alt="" class="big">
                                 </section>
+                                <div class="Comentarios"></div>
                                 <div class="options button">
                                     <ul>
                                         <li class="bookmark"></li>
                                         <li class="star"></li>
-                                        <a href="#">
+                                        <a href="/user/img/3">
                                             <li class="read"></li>
                                         </a>
                                     </ul>
@@ -601,18 +625,19 @@
                             </section>
                             <section class="story news img">
                                 <div class="info">
-                                    <img src="resources/images/white.jpg" alt="">
-                                    <p class="username"><a href="user.html">Walter White</a><br><span class="time">24 de Octubre a las 0:30 am</span></p>
+                                    <img src="/resources/images/white.jpg" alt="">
+                                    <p class="username"><a href="/user">Walter White</a><br><span class="time">24 de Octubre a las 0:30 am</span></p>
                                 </div>
                                 <p class="title">Novedades en Adobe Photoshop CC</p>
                                 <section id="picture">
-                                    <img class="pic" src="resources/images/photoshop.jpg" alt="" class="big">
+                                    <img class="pic" src="/resources/images/photoshop.jpg" alt="" class="big">
                                 </section>
+                                <div class="Comentarios"></div>
                                 <div class="options button">
                                     <ul>
                                         <li class="bookmark"></li>
                                         <li class="star"></li>
-                                        <a href="article.html">
+                                        <a href="/user/img/photoshop">
                                             <li class="read"></li>
                                         </a>
                                     </ul>
@@ -620,18 +645,19 @@
                             </section>
                             <section class="story news img">
                                 <div class="info">
-                                    <img src="resources/images/white.jpg" alt="">
-                                    <p class="username"><a href="user.html">Walter White</a><br><span class="time">24 de Octubre a las 3:40 am</span></p>
+                                    <img src="/resources/images/white.jpg" alt="">
+                                    <p class="username"><a href="/user">Walter White</a><br><span class="time">24 de Octubre a las 3:40 am</span></p>
                                 </div>
-                                <p class="title">Nuevos conceptos de diseño por <a href="user.html">Walter White</a></p>
+                                <p class="title">Nuevos conceptos de diseño por <a href="/user">Walter White</a></p>
                                 <section id="picture">
-                                    <img class="pic" src="resources/images/grid/2.jpg" alt="" class="big">
+                                    <img class="pic" src="/resources/images/grid/2.jpg" alt="" class="big">
                                 </section>
+                                <div class="Comentarios"></div>
                                 <div class="options button">
                                     <ul>
                                         <li class="bookmark"></li>
                                         <li class="star"></li>
-                                        <a href="#">
+                                        <a href="/user/img/2">
                                             <li class="read"></li>
                                         </a>
                                     </ul>
@@ -639,18 +665,19 @@
                             </section>
                             <section class="story project img">
                                 <div class="info">
-                                    <img src="resources/images/white.jpg" alt="">
-                                    <p class="username"><a href="user.html">Walter White</a> hizo un commit a <a href="#">eBay</a> <br><span class="time">Ayer a las 3:30 pm</span></p>
+                                    <img src="/resources/images/white.jpg" alt="">
+                                    <p class="username"><a href="/user">Walter White</a> hizo un commit a <a href="#">eBay</a> <br><span class="time">Ayer a las 3:30 pm</span></p>
                                 </div>
                                 <p class="title">Nuevo ad</p>
                                 <section id="picture">
-                                    <img class="pic" src="resources/images/grid/3.jpg" alt="" class="big">
+                                    <img class="pic" src="/resources/images/grid/3.jpg" alt="" class="big">
                                 </section>
+                                <div class="Comentarios"></div>
                                 <div class="options button">
                                     <ul>
                                         <li class="bookmark"></li>
                                         <li class="star"></li>
-                                        <a href="#">
+                                        <a href="/user/img/3">
                                             <li class="read"></li>
                                         </a>
                                     </ul>
@@ -658,18 +685,19 @@
                             </section>
                             <section class="story news img">
                                 <div class="info">
-                                    <img src="resources/images/white.jpg" alt="">
-                                    <p class="username"><a href="user.html">Walter White</a><br><span class="time">24 de Octubre a las 0:30 am</span></p>
+                                    <img src="/resources/images/white.jpg" alt="">
+                                    <p class="username"><a href="/user">Walter White</a><br><span class="time">24 de Octubre a las 0:30 am</span></p>
                                 </div>
                                 <p class="title">Novedades en Adobe Photoshop CC</p>
                                 <section id="picture">
-                                    <img class="pic" src="resources/images/photoshop.jpg" alt="" class="big">
+                                    <img class="pic" src="/resources/images/photoshop.jpg" alt="" class="big">
                                 </section>
+                                <div class="Comentarios"></div>
                                 <div class="options button">
                                     <ul>
                                         <li class="bookmark"></li>
                                         <li class="star"></li>
-                                        <a href="article.html">
+                                        <a href="/user/img/photoshop">
                                             <li class="read"></li>
                                         </a>
                                     </ul>
@@ -677,18 +705,19 @@
                             </section>
                             <section class="story news img">
                                 <div class="info">
-                                    <img src="resources/images/white.jpg" alt="">
-                                    <p class="username"><a href="user.html">Walter White</a><br><span class="time">24 de Octubre a las 3:40 am</span></p>
+                                    <img src="/resources/images/white.jpg" alt="">
+                                    <p class="username"><a href="/user">Walter White</a><br><span class="time">24 de Octubre a las 3:40 am</span></p>
                                 </div>
-                                <p class="title">Nuevos conceptos de diseño por <a href="user.html">Walter White</a></p>
+                                <p class="title">Nuevos conceptos de diseño por <a href="/user">Walter White</a></p>
                                 <section id="picture">
-                                    <img class="pic" src="resources/images/grid/2.jpg" alt="" class="big">
+                                    <img class="pic" src="/resources/images/grid/2.jpg" alt="" class="big">
                                 </section>
+                                <div class="Comentarios"></div>
                                 <div class="options button">
                                     <ul>
                                         <li class="bookmark"></li>
                                         <li class="star"></li>
-                                        <a href="#">
+                                        <a href="/user/img/2">
                                             <li class="read"></li>
                                         </a>
                                     </ul>
@@ -705,63 +734,63 @@
                 <div id="notifications">
                     <ul>
                         <div class="info button">
-                            <img src="resources/images/white.jpg" alt="">
+                            <img src="/resources/images/white.jpg" alt="">
                             <p class="username"><b href="#">Walter White</b> Es ahora Moderador.</p>
                         </div>
                         <div class="info button">
-                            <img src="resources/images/white.jpg" alt="">
+                            <img src="/resources/images/white.jpg" alt="">
                             <p class="username"><b href="#">Walter White</b> Es ahora amigo de Walter White.</p>
                         </div>
                         <div class="info button">
-                            <img src="resources/images/white.jpg" alt="">
+                            <img src="/resources/images/white.jpg" alt="">
                             <p class="username"><b href="#">Walter White</b> hizo un commit a eBay.</p>
                         </div>
                         <div class="info button">
-                            <img src="resources/images/white.jpg" alt="">
+                            <img src="/resources/images/white.jpg" alt="">
                             <p class="username"><b href="#">Walter White</b> Es ahora Moderador.</p>
                         </div>
                         <div class="info button">
-                            <img src="resources/images/white.jpg" alt="">
+                            <img src="/resources/images/white.jpg" alt="">
                             <p class="username"><b href="#">Walter White</b> Es ahora amigo de Walter White.</p>
                         </div>
                         <div class="info button">
-                            <img src="resources/images/white.jpg" alt="">
+                            <img src="/resources/images/white.jpg" alt="">
                             <p class="username"><b href="#">Walter White</b> hizo un commit a eBay.</p>
                         </div>
                         <div class="info button">
-                            <img src="resources/images/white.jpg" alt="">
+                            <img src="/resources/images/white.jpg" alt="">
                             <p class="username"><b href="#">Walter White</b> Es ahora Moderador.</p>
                         </div>
                         <div class="info button">
-                            <img src="resources/images/white.jpg" alt="">
+                            <img src="/resources/images/white.jpg" alt="">
                             <p class="username"><b href="#">Walter White</b> Es ahora amigo de Walter White.</p>
                         </div>
                         <div class="info button">
-                            <img src="resources/images/white.jpg" alt="">
+                            <img src="/resources/images/white.jpg" alt="">
                             <p class="username"><b href="#">Walter White</b> hizo un commit a eBay.</p>
                         </div>
                         <div class="info button">
-                            <img src="resources/images/white.jpg" alt="">
+                            <img src="/resources/images/white.jpg" alt="">
                             <p class="username"><b href="#">Walter White</b> Es ahora Moderador.</p>
                         </div>
                         <div class="info button">
-                            <img src="resources/images/white.jpg" alt="">
+                            <img src="/resources/images/white.jpg" alt="">
                             <p class="username"><b href="#">Walter White</b> Es ahora amigo de Walter White.</p>
                         </div>
                         <div class="info button">
-                            <img src="resources/images/white.jpg" alt="">
+                            <img src="/resources/images/white.jpg" alt="">
                             <p class="username"><b href="#">Walter White</b> hizo un commit a eBay.</p>
                         </div>
                         <div class="info button">
-                            <img src="resources/images/white.jpg" alt="">
+                            <img src="/resources/images/white.jpg" alt="">
                             <p class="username"><b href="#">Walter White</b> Es ahora Moderador.</p>
                         </div>
                         <div class="info button">
-                            <img src="resources/images/white.jpg" alt="">
+                            <img src="/resources/images/white.jpg" alt="">
                             <p class="username"><b href="#">Walter White</b> Es ahora amigo de Walter White.</p>
                         </div>
                         <div class="info button">
-                            <img src="resources/images/white.jpg" alt="">
+                            <img src="/resources/images/white.jpg" alt="">
                             <p class="username"><b href="#">Walter White</b> hizo un commit a eBay.</p>
                         </div>
                     </ul>
@@ -770,274 +799,274 @@
             <div id="resizeBottom">
                 <div id="chat">
                     <ul>
-                        <li class="button connected"><img src="resources/images/white.jpg" alt="">
+                        <li class="button connected"><img src="/resources/images/white.jpg" alt="">
                             <p>Andrés García</p><span></span>
                         </li>
-                        <li class="button connected"><img src="resources/images/white.jpg" alt="">
+                        <li class="button connected"><img src="/resources/images/white.jpg" alt="">
                             <p>Carlos Rodríguez</p><span></span>
                         </li>
-                        <li class="button connected"><img src="resources/images/white.jpg" alt="">
+                        <li class="button connected"><img src="/resources/images/white.jpg" alt="">
                             <p>Andrea Cifuentes</p><span></span>
                         </li>
-                        <li class="button connected"><img src="resources/images/white.jpg" alt="">
+                        <li class="button connected"><img src="/resources/images/white.jpg" alt="">
                             <p>John McGonagall</p><span></span>
                         </li>
-                        <li class="button connected"><img src="resources/images/white.jpg" alt="">
+                        <li class="button connected"><img src="/resources/images/white.jpg" alt="">
                             <p>Rodrigo Cardona</p><span></span>
                         </li>
-                        <li class="button connected"><img src="resources/images/white.jpg" alt="">
+                        <li class="button connected"><img src="/resources/images/white.jpg" alt="">
                             <p>Carlos Cifuentes</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Luis Colmenares</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Lina Gaviria</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Isabel Sánchez</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Carolina García Cardona</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Karina Echeverri</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Fernando Sánchez</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Luisa Gaviria</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Andrés Villamil</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Camilo Molina</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Santiago Jiménez</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Andrés Jiménez</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>José Serna</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Isabel Yepes</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Freddy Guarín</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Luis Colmenares</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Lina Gaviria</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Isabel Sánchez</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Carolina García Cardona</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Karina Echeverri</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Fernando Sánchez</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Luisa Gaviria</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Andrés Villamil</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Camilo Molina</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Santiago Jiménez</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Andrés Jiménez</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>José Serna</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Isabel Yepes</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Freddy Guarín</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Luis Colmenares</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Lina Gaviria</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Isabel Sánchez</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Carolina García Cardona</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Karina Echeverri</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Fernando Sánchez</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Luisa Gaviria</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Andrés Villamil</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Camilo Molina</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Santiago Jiménez</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Andrés Jiménez</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>José Serna</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Isabel Yepes</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Freddy Guarín</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Luis Colmenares</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Lina Gaviria</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Isabel Sánchez</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Carolina García Cardona</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Karina Echeverri</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Fernando Sánchez</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Luisa Gaviria</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Andrés Villamil</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Camilo Molina</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Santiago Jiménez</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Andrés Jiménez</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>José Serna</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Isabel Yepes</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Freddy Guarín</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Luis Colmenares</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Lina Gaviria</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Isabel Sánchez</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Carolina García Cardona</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Karina Echeverri</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Fernando Sánchez</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Luisa Gaviria</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Andrés Villamil</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Camilo Molina</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Santiago Jiménez</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Andrés Jiménez</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>José Serna</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Isabel Yepes</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Freddy Guarín</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Luis Colmenares</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Lina Gaviria</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Isabel Sánchez</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Carolina García Cardona</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Karina Echeverri</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Fernando Sánchez</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Luisa Gaviria</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Andrés Villamil</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Camilo Molina</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Santiago Jiménez</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Andrés Jiménez</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>José Serna</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Isabel Yepes</p><span></span>
                         </li>
-                        <li class="button offline"><img src="resources/images/white.jpg" alt="">
+                        <li class="button offline"><img src="/resources/images/white.jpg" alt="">
                             <p>Freddy Guarín</p><span></span>
                         </li>
                     </ul>
