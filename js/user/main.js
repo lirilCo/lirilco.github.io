@@ -1,4 +1,4 @@
-function openProfilePicModal(a) {
+function openProfilePicModal(a){
     Antheater= a; 
 
     $(".zer")[0].innerHTML= ".ui-tooltip{z-index: 4 !important; }; "; 
@@ -9,41 +9,41 @@ function openProfilePicModal(a) {
     $(".theater").css({
         "display": "block"
     })
-    $this = a.parent(); 
-    var source = un_tn($(a.closest("#profilePic").children()[0]).attr('src'));
+    $this= a.parent(); 
+    var source= un_tn($(a.closest("#profilePic").children()[0]).attr('src'));
     $('.theater #bigPic').attr('src', source);
 
     history.pushState({page: 1}, "", "/" + username + "/img/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
 
-    var info = a.closest('#profilePic').find(".info").html(); 
+    var info= a.closest('#profilePic').find(".info").html(); 
     $('.theater .comments .info').html(info); 
 
-    var title = a.find(".hidden").find(".title").html();
+    var title= a.find(".hidden").find(".title").html();
     $('.theater .comments .title').html(title);
-    if (a.find(".hidden").find(".options .bookmark").hasClass("true")) {
+    if (a.find(".hidden").find(".options .bookmark").hasClass("true")){
         $('.theater .comments .options .bookmark').addClass("true");
-    } else {
+    }else{
         $('.theater .comments .options .bookmark').removeClass("true");
     }
-    if (a.find(".hidden").find(".options .star").hasClass("true")) {
+    if (a.find(".hidden").find(".options .star").hasClass("true")){
         $('.theater .comments .options .star').addClass("true");
-    } else {
+    }else{
         $('.theater .comments .options .star').removeClass("true");
     }
 
     var more= !!a.find(".moreI").html()? a.find(".moreI").html(): "";
     $('.theater .comments .more').html(more);
 
-    var pic = a.find(".hidden").find(".info img").attr('src');
+    var pic= a.find(".hidden").find(".info img").attr('src');
     $('.theater .comments .info #pic').attr('src', pic);
 
-    var ref = a.find(".hidden").find(".options ul a").attr('href');
+    var ref= a.find(".hidden").find(".options ul a").attr('href');
     $('.theater .comments .options ul a').attr('href', ref);
 
-    var comments = a.find(".Comentarios").html();
+    var comments= a.find(".Comentarios").html();
     $('.theater .comments .comentarios .Comentarios').html(comments); 
 
-    $('.theater .comments .comentarios .Comentarios .comentario').on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth = elx.outerWidth( true ),circleHeight  = elx.outerHeight( true ),circleLeft    = elx.offset().left,circleTop     = elx.offset().top,circlePos     = {x     : circleLeft + circleWidth / 2,y     : circleTop + circleHeight / 2,radius: circleWidth / 2};distance    = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); 
+    $('.theater .comments .comentarios .Comentarios .comentario').on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth= elx.outerWidth( true ),circleHeight = elx.outerHeight( true ),circleLeft   = elx.offset().left,circleTop    = elx.offset().top,circlePos    ={x    : circleLeft + circleWidth / 2,y    : circleTop + circleHeight / 2,radius: circleWidth / 2};distance   = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); 
 
     $("#theater .Respuestas").html(function(){return '<span class="Responder"></span>' + "Respuestas (" + $(this).parent().children().filter(".comentario.hidden").length + ")"}); 
                                        
@@ -82,8 +82,8 @@ function openProfilePicModal(a) {
         scrollInertia: 100});
 
     responsive(); 
-} 
-function openFotosModal(a) {
+}
+function openFotosModal(a){
     Antheater= a.closest(".foto"); 
 
     $(".zer")[0].innerHTML= ".ui-tooltip{z-index: 4 !important; }; "; 
@@ -93,36 +93,36 @@ function openFotosModal(a) {
     $(".theater").css({
         "display": "block"
     })
-    $this = a
+    $this= a
 
-    var info = a.closest('.foto').find(".info").html(); 
+    var info= a.closest('.foto').find(".info").html(); 
     $('.theater .comments .info').html(info); 
 
-    var title = a.closest(".foto").find(".title").html();
+    var title= a.closest(".foto").find(".title").html();
     $('.theater .comments .title').html(title);
-    if (a.closest(".foto").find(".options .bookmark").hasClass("true")) {
+    if (a.closest(".foto").find(".options .bookmark").hasClass("true")){
         $('.theater .comments .options .bookmark').addClass("true");
-    } else {
+    }else{
         $('.theater .comments .options .bookmark').removeClass("true");
     }
-    if (a.closest(".foto").find(".options .star").hasClass("true")) {
+    if (a.closest(".foto").find(".options .star").hasClass("true")){
         $('.theater .comments .options .star').addClass("true");
-    } else {
+    }else{
         $('.theater .comments .options .star').removeClass("true");
     }
-    var pic = a.closest(".foto").find(".info img").attr('src');
+    var pic= a.closest(".foto").find(".info img").attr('src');
     $('.theater .comments .info #pic').attr('src', pic);
 
-    var ref = a.closest(".foto").find(".options ul a").attr('href');
+    var ref= a.closest(".foto").find(".options ul a").attr('href');
     $('.theater .comments .options ul a').attr('href', ref);
 
     var more= !!a.closest('.foto').find(".moreI").html()? a.closest('.foto').find(".moreI").html(): "";
     $('.theater .comments .more').html(more);
 
-    var comments = a.closest('.foto').find(".Comentarios").html();
+    var comments= a.closest('.foto').find(".Comentarios").html();
     $('.theater .comments .comentarios .Comentarios').html(comments);
 
-    $('.theater .comments .comentarios .Comentarios .comentario').on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth = elx.outerWidth( true ),circleHeight  = elx.outerHeight( true ),circleLeft    = elx.offset().left,circleTop     = elx.offset().top,circlePos     = {x     : circleLeft + circleWidth / 2,y     : circleTop + circleHeight / 2,radius: circleWidth / 2};distance    = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); 
+    $('.theater .comments .comentarios .Comentarios .comentario').on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth= elx.outerWidth( true ),circleHeight = elx.outerHeight( true ),circleLeft   = elx.offset().left,circleTop    = elx.offset().top,circlePos    ={x    : circleLeft + circleWidth / 2,y    : circleTop + circleHeight / 2,radius: circleWidth / 2};distance   = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); 
 
     $("#theater .Respuestas").html(function(){return '<span class="Responder"></span>' + "Respuestas (" + $(this).parent().children().filter(".comentario.hidden").length + ")"}); 
                                        
@@ -179,13 +179,13 @@ function openFotosModal(a) {
         $(".nav_arrow").on("click", function(i){$(i.target).is(".nav_arrow")? closeModal(): 1; }); 
         history.pushState({page: 1}, "", "/" + username + "/img/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
     }else{ 
-        var source = un_tn($(a.closest(".foto").children()[0]).attr('src')); 
+        var source= un_tn($(a.closest(".foto").children()[0]).attr('src')); 
         $('.theater #bigPic').attr('src', source); 
         history.pushState({page: 1}, "", "/" + username + "/img/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
-    } 
+    }
     responsive(); 
-} 
-function openModal(a) {
+}
+function openModal(a){
     Antheater= a.closest(".story"); 
 
     $(".zer")[0].innerHTML= ".ui-tooltip{z-index: 4 !important; }; "; 
@@ -195,27 +195,27 @@ function openModal(a) {
     $(".theater").css({
         "display": "block"
     })
-    $this = a.closest('.story')
-    var source = a.attr('src');
+    $this= a.closest('.story')
+    var source= a.attr('src');
     $('.theater #bigPic').attr('src', source);
 
     source= un_tn(source); 
                            
     history.pushState({page: 1}, "", "/" + (a.closest('.story').is(".repost")? $(a.closest('.story').find(".target")[1])[0].href.slice($(a.closest('.story').find(".target")[1])[0].href.lastIndexOf("/") + 1): username) + "/img/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
 
-    var info = a.closest('.story').find(".info").html(); 
+    var info= a.closest('.story').find(".info").html(); 
     $('.theater .comments .info').html(info); 
 
-    var title = a.closest('.story').find(".title").html();
+    var title= a.closest('.story').find(".title").html();
     $('.theater .comments .title').html(title);
 
     var more= !!a.closest('.story').find(".moreI").html()? a.closest('.story').find(".moreI").html(): "";
     $('.theater .comments .more').html(more);
 
-    var comments = a.closest('.story').find(".Comentarios").html();
+    var comments= a.closest('.story').find(".Comentarios").html();
     $('.theater .comments .comentarios .Comentarios').html(comments);
 
-    $('.theater .comments .comentarios .Comentarios .comentario').on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth = elx.outerWidth( true ),circleHeight  = elx.outerHeight( true ),circleLeft    = elx.offset().left,circleTop     = elx.offset().top,circlePos     = {x     : circleLeft + circleWidth / 2,y     : circleTop + circleHeight / 2,radius: circleWidth / 2};distance    = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); 
+    $('.theater .comments .comentarios .Comentarios .comentario').on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth= elx.outerWidth( true ),circleHeight = elx.outerHeight( true ),circleLeft   = elx.offset().left,circleTop    = elx.offset().top,circlePos    ={x    : circleLeft + circleWidth / 2,y    : circleTop + circleHeight / 2,radius: circleWidth / 2};distance   = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); 
 
     $("#theater .Respuestas").html(function(){return '<span class="Responder"></span>' + "Respuestas (" + $(this).parent().children().filter(".comentario.hidden").length + ")"}); 
                                        
@@ -233,14 +233,14 @@ function openModal(a) {
             for(j= 0; j <= 2; j++){ 
                 $(this).before(H); 
 
-                $(this).prev().on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth = elx.outerWidth( true ),circleHeight  = elx.outerHeight( true ),circleLeft    = elx.offset().left,circleTop     = elx.offset().top,circlePos     = {x     : circleLeft + circleWidth / 2,y     : circleTop + circleHeight / 2,radius: circleWidth / 2};distance    = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); 
+                $(this).prev().on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth= elx.outerWidth( true ),circleHeight = elx.outerHeight( true ),circleLeft   = elx.offset().left,circleTop    = elx.offset().top,circlePos    ={x    : circleLeft + circleWidth / 2,y    : circleTop + circleHeight / 2,radius: circleWidth / 2};distance   = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); 
                                    
                 $(".knob").knob(); 
                                    
                 tooltipComentarios(); 
                     
                 H != can493ax? H= can493ax: H= asdknki4; 
-            } 
+            }
 
             $(this).html('<span class="Responder"></span>Más respuestas (∞)'); 
 
@@ -255,7 +255,7 @@ function openModal(a) {
                     $("#theater .RespueNtas").html('<span class="Responder"></span>Respuestas (∞)'); 
                 }) 
             }; 
-        } 
+        }
     }); 
 
     tooltip(); 
@@ -268,21 +268,21 @@ function openModal(a) {
 
     tooltipComentarios(); 
 
-    if (a.closest('.story').find(".options .bookmark").hasClass("true")) {
+    if (a.closest('.story').find(".options .bookmark").hasClass("true")){
         $('.theater .comments .options .bookmark').addClass("true");
-    } else {
+    }else{
         $('.theater .comments .options .bookmark').removeClass("true");
     }
-    if (a.closest('.story').find(".options .star").hasClass("true")) {
+    if (a.closest('.story').find(".options .star").hasClass("true")){
         $('.theater .comments .options .star').addClass("true");
-    } else {
+    }else{
         $('.theater .comments .options .star').removeClass("true");
     }
 
-    var pic = a.closest('.story').find(".info img").attr('src');
+    var pic= a.closest('.story').find(".info img").attr('src');
     $('.theater .comments .info #pic').attr('src', pic);
 
-    var ref = a.closest('.story').find(".options ul a").attr('href');
+    var ref= a.closest('.story').find(".options ul a").attr('href');
     $('.theater .comments .options ul a').attr('href', ref);
 
     if($("#bigPic").width()<=$("#bigPic").height()){
@@ -324,7 +324,7 @@ function openModal(a) {
         source= un_tn($("#theater").find("#bigPic")[0].src); 
         history.pushState({page: 1}, "", "/" + $(a.closest('.story').find(".target")[1])[0].href.slice($(a.closest('.story').find(".target")[1])[0].href.lastIndexOf("/") + 1) + "/img/" + un_tn(source).slice(un_tn(source).lastIndexOf("/") + 1, -4)); 
         th= a.closest('.story'); lk= th.find(".carr .pic")[Math.round(th.find(".carr")[0].scrollLeft / th.find(".carr").width())].src;th.find(".options a").attr("href", th.find(".options a").attr("href").slice(0, th.find(".options a").attr("href").lastIndexOf("/")) + lk.slice(lk.lastIndexOf("/"), lk.lastIndexOf("."))); 
-    } 
+    }
 
 }
 function openVideoModal(a){ 
@@ -339,8 +339,8 @@ function openVideoModal(a){
     $(".theater").css({
         "display": "block"
     })
-    $this = a.closest('.story')
-    var source = a.closest('.story').find("video").attr('src');
+    $this= a.closest('.story')
+    var source= a.closest('.story').find("video").attr('src');
     $('.theater video').attr('src', source);
 
     $('.theater video').attr('autoplay', "true");
@@ -349,19 +349,19 @@ function openVideoModal(a){
                            
     history.pushState({page: 1}, "", "/" + username + "/vid/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
 
-    var info = a.closest('.story').find(".info").html(); 
+    var info= a.closest('.story').find(".info").html(); 
     $('.theater .comments .info').html(info); 
 
-    var title = a.closest('.story').find(".title").html();
+    var title= a.closest('.story').find(".title").html();
     $('.theater .comments .title').html(title);
 
     var more= !!a.closest('.story').find(".moreI").html()? a.closest('.story').find(".moreI").html(): "";
     $('.theater .comments .more').html(more);
 
-    var comments = a.closest('.story').find(".Comentarios").html();
+    var comments= a.closest('.story').find(".Comentarios").html();
     $('.theater .comments .comentarios .Comentarios').html(comments);
 
-    $('.theater .comments .comentarios .Comentarios .comentario').on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth = elx.outerWidth( true ),circleHeight  = elx.outerHeight( true ),circleLeft    = elx.offset().left,circleTop     = elx.offset().top,circlePos     = {x     : circleLeft + circleWidth / 2,y     : circleTop + circleHeight / 2,radius: circleWidth / 2};distance    = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); 
+    $('.theater .comments .comentarios .Comentarios .comentario').on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth= elx.outerWidth( true ),circleHeight = elx.outerHeight( true ),circleLeft   = elx.offset().left,circleTop    = elx.offset().top,circlePos    ={x    : circleLeft + circleWidth / 2,y    : circleTop + circleHeight / 2,radius: circleWidth / 2};distance   = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); 
 
     $("#theater .Respuestas").html(function(){return '<span class="Responder"></span>' + "Respuestas (" + $(this).parent().children().filter(".comentario.hidden").length + ")"}); 
                                        
@@ -386,14 +386,14 @@ function openVideoModal(a){
 
     $("#theater .Comentario audio").each(function(){audiojs.create($(this)[0])}); 
 
-    if (a.closest('.story').find(".options .bookmark").hasClass("true")) {
+    if (a.closest('.story').find(".options .bookmark").hasClass("true")){
         $('.theater .comments .options .bookmark').addClass("true");
-    } else {
+    }else{
         $('.theater .comments .options .bookmark').removeClass("true");
     }
-    if (a.closest('.story').find(".options .star").hasClass("true")) {
+    if (a.closest('.story').find(".options .star").hasClass("true")){
         $('.theater .comments .options .star').addClass("true");
-    } else {
+    }else{
         $('.theater .comments .options .star').removeClass("true");
     }
 
@@ -405,10 +405,10 @@ function openVideoModal(a){
 
     th.find("video")[0].pause(); 
 
-    var pic = a.closest('.story').find(".info img").attr('src');
+    var pic= a.closest('.story').find(".info img").attr('src');
     $('.theater .comments .info #pic').attr('src', pic);
 
-    var ref = a.closest('.story').find(".options ul a").attr('href');
+    var ref= a.closest('.story').find(".options ul a").attr('href');
     $('.theater .comments .options ul a').attr('href', ref);
 
     if($("#bigPic").width()<=$("#bigPic").height()){
@@ -428,7 +428,7 @@ function openVideoModal(a){
       
 
     responsive()
-} 
+}
 function openOtherModal(a){ 
     Antheater= a.closest(".story"); 
 
@@ -441,28 +441,28 @@ function openOtherModal(a){
     $(".theater").css({
         "display": "block"
     })
-    $this = a.closest('.story')
-    var source = a.closest('.story').find("video").attr('src');
+    $this= a.closest('.story')
+    var source= a.closest('.story').find("video").attr('src');
 
     history.pushState({page: 1}, "", "/" + (a.closest('.story').is(".repost")? $(a.closest('.story').find(".target")[1])[0].href.slice($(a.closest('.story').find(".target")[1])[0].href.lastIndexOf("/") + 1): username) + "/pos" + a.parent().find("a.read").attr("href").slice(a.parent().find("a.read").attr("href").lastIndexOf("/"))); 
 
-    var info = a.closest('.story').find(".info").html(); 
+    var info= a.closest('.story').find(".info").html(); 
     $('.theater .comments .info').html(info); 
 
-    var title = a.closest('.story').find(".title").html();
+    var title= a.closest('.story').find(".title").html();
     $('.theater .comments .title').html(title);
 
     var more= !!a.closest('.story').find(".moreI").html()? a.closest('.story').find(".moreI").html(): "";
     $('.theater .comments .more').html(more);
 
-    var comments = a.closest('.story').find(".Comentarios").html();
+    var comments= a.closest('.story').find(".Comentarios").html();
     $('.theater .comments .comentarios .Comentarios').html(comments);
 
-    $('.theater .comments .comentarios .Comentarios .comentario').on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth = elx.outerWidth( true ),circleHeight  = elx.outerHeight( true ),circleLeft    = elx.offset().left,circleTop     = elx.offset().top,circlePos     = {x     : circleLeft + circleWidth / 2,y     : circleTop + circleHeight / 2,radius: circleWidth / 2};distance    = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); 
+    $('.theater .comments .comentarios .Comentarios .comentario').on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth= elx.outerWidth( true ),circleHeight = elx.outerHeight( true ),circleLeft   = elx.offset().left,circleTop    = elx.offset().top,circlePos    ={x    : circleLeft + circleWidth / 2,y    : circleTop + circleHeight / 2,radius: circleWidth / 2};distance   = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); 
 
     th.find(".revelar.activado").click(); 
     
-    var containment = a.closest('.story').find(".title").next().prop("outerHTML");
+    var containment= a.closest('.story').find(".title").next().prop("outerHTML");
     $('.theater #otherContainments > div').html(containment);
 
     $("#theater .media > div").each(function(){$(this)[0].outerHTML= $(this).find("audio")[0].outerHTML}); 
@@ -494,14 +494,14 @@ function openOtherModal(a){
 
     $("#theater .Comentarios audio").each(function(){audiojs.create($(this)[0])}); 
 
-    if (a.closest('.story').find(".options .bookmark").hasClass("true")) {
+    if (a.closest('.story').find(".options .bookmark").hasClass("true")){
         $('.theater .comments .options .bookmark').addClass("true");
-    } else {
+    }else{
         $('.theater .comments .options .bookmark').removeClass("true");
     }
-    if (a.closest('.story').find(".options .star").hasClass("true")) {
+    if (a.closest('.story').find(".options .star").hasClass("true")){
         $('.theater .comments .options .star').addClass("true");
-    } else {
+    }else{
         $('.theater .comments .options .star').removeClass("true");
     }
 
@@ -509,10 +509,10 @@ function openOtherModal(a){
 
     $("#theater #otherContainments").addClass("visible")
 
-    var pic = a.closest('.story').find(".info img").attr('src');
+    var pic= a.closest('.story').find(".info img").attr('src');
     $('.theater .comments .info #pic').attr('src', pic);
 
-    var ref = a.closest('.story').find(".options ul a").attr('href');
+    var ref= a.closest('.story').find(".options ul a").attr('href');
     $('.theater .comments .options ul a').attr('href', ref);
 
     if($("#bigPic").width()<=$("#bigPic").height()){
@@ -543,15 +543,15 @@ function openOtherModal(a){
             $(this).parent().css({"height": "0"}); 
             $(this).text($(this)[0].tx); 
             $(this).removeClass("activado"); 
-        } 
+        }
     })
-} 
+}
 ok= true; 
 var Antheater= false; //Did We Literally Like Have To Create AntiMatter For The Theater..? /*Yes*/ 
 can493ax= "<div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' + "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/L/OGnpwD3jys_tn.jpg'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Laura Escobar Bonnett'>Laura Escobar Bonnett</p><p class='rol'>Princesa <b style='color:#fff;'>+100</b></p></div></div>" + '"' + " src='/resources/images/L/OGnpwD3jys_tn.jpg'>&nbsp<a target= '_blank'  href='/L' >Laura Escobar Bonnett</a><span class='is'>: </span><span class='Comentario'>¡Yo más, Luis! 💜</span><span class='Respxxder'></span></div>"; 
 asdknki4= "<div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' + "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>" + '"' + " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>Yo más, bebé</span><span class='Respxxder'></span></div>"; 
 H= asdknki4; 
-function closeModal() { 
+function closeModal(){ 
     $(".Comentario .media > div").prop('outerHTML', function(){return $(this).find("audio").prop("outerHTML")}); 
     
     $("#theater .Comentarios").find(".Respuestas .Responder").each(function(){wwd($(this)[0], true)}); 
@@ -584,14 +584,14 @@ function closeModal() {
     $(".zer")[0].innerHTML= ".ui-tooltip{z-index: 1 !important; }; "; 
     $("body")[0].style.overflow= ""; 
     responsive(); 
-    if ($('.theater .comments .options .bookmark').hasClass("true")) {
+    if ($('.theater .comments .options .bookmark').hasClass("true")){
         Antheater.find('.options .bookmark').addClass("true");
-    } else {
+    }else{
         Antheater.find('.options .bookmark').removeClass("true");
     }
-    if ($('.theater .comments .options .star').hasClass("true")) {
+    if ($('.theater .comments .options .star').hasClass("true")){
         Antheater.find('.options .star').addClass("true");
-    } else {
+    }else{
         Antheater.find('.options .star').removeClass("true");
     }
     $(".theater").css({
@@ -604,7 +604,7 @@ function closeModal() {
 }
 function un_tn(u, no){ 
     return (typeof no !== "undefined" && no? u: u.slice(0, u.indexOf("_tn")) + u.slice(u.indexOf("_tn") + 3)); 
-} 
+}
 wD= function(thi, b){ 
     if(typeof b == "undefined"){ 
         if(!thi.parent().next(".newComment").find("textarea").length){ 
@@ -625,7 +625,7 @@ wD= function(thi, b){
             $(thi.parent().next(".newComment").find("textarea")).on('keydown', function(i){ 
                 abc= $(this); 
 
-                (!i.shiftKey && i.keyCode == 13)? (function(){!abc.parent().next().is(".respuestas")? (function(){ll= $($("textarea")[0]).parent().prev(); abc.parent()[0].outerHTML= "<div class='respuestas'><div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' +  "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>" + '"' + " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>" + abc.val().replaceAll("\n", "<br>") + "</span><span class='Responder'></span></div><span class='Respuestas'><span class='Responder'></span></span></div>"; ll.next().find(".Respuestas .Responder")[0].addEventListener("contextmenu", function(e){e.preventDefault(); wwd(this); }); ll.next().find(".comentario").on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth = elx.outerWidth( true ),circleHeight  = elx.outerHeight( true ),circleLeft    = elx.offset().left,circleTop     = elx.offset().top,circlePos     = {x     : circleLeft + circleWidth / 2,y     : circleTop + circleHeight / 2,radius: circleWidth / 2};distance    = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); $(ll.next().find(".Respuestas .Responder")).on("click", function(){wD($(this), 1)}); $(ll.next().find(".comentario .Responder")).on("click", function(){wD($(this))}); badGuy(); })(): (function(){abc.parent().next().children().filter(".Respuestas").find(".Responder").remove(); abc.parent().next().append('<span class="Respuestas"><span class="Responder"></span></span>'); $($(abc.parent().next().children()[abc.parent().next().children().length - 1]).find(".Responder"))[0].addEventListener("contextmenu", function(e){e.preventDefault(); wwd(this); }); $($(abc.parent().next().children()[abc.parent().next().children().length - 1]).find(".Responder")).on("click", function(){wD($(this), 1)}); $(".Respuestas").each(function(){!$(this).html()? $(this).remove(): 1;}); $(abc.parent().next().children()[abc.parent().next().children().length - 1]).before("<div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' +  "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>" + '"' + " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>" + abc.val().replaceAll("\n", "<br>") + "</span><span class='Responder'></span></div>"); $($(abc.parent().next().children()[abc.parent().next().children().length - 2]).find(".Responder")).on("click", function(){wD($(this))}); $($(abc.parent().next().children()[abc.parent().next().children().length - 2])).on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth = elx.outerWidth( true ),circleHeight  = elx.outerHeight( true ),circleLeft    = elx.offset().left,circleTop     = elx.offset().top,circlePos     = {x     : circleLeft + circleWidth / 2,y     : circleTop + circleHeight / 2,radius: circleWidth / 2};distance    = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); abc.parent().remove()})()})(): 1; 
+                (!i.shiftKey && i.keyCode == 13)? (function(){!abc.parent().next().is(".respuestas")? (function(){ll= $($("textarea")[0]).parent().prev(); abc.parent()[0].outerHTML= "<div class='respuestas'><div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' +  "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>" + '"' + " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>" + abc.val().replaceAll("\n", "<br>") + "</span><span class='Responder'></span></div><span class='Respuestas'><span class='Responder'></span></span></div>"; ll.next().find(".Respuestas .Responder")[0].addEventListener("contextmenu", function(e){e.preventDefault(); wwd(this); }); ll.next().find(".comentario").on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth= elx.outerWidth( true ),circleHeight = elx.outerHeight( true ),circleLeft   = elx.offset().left,circleTop    = elx.offset().top,circlePos    ={x    : circleLeft + circleWidth / 2,y    : circleTop + circleHeight / 2,radius: circleWidth / 2};distance   = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); $(ll.next().find(".Respuestas .Responder")).on("click", function(){wD($(this), 1)}); $(ll.next().find(".comentario .Responder")).on("click", function(){wD($(this))}); badGuy(); })(): (function(){abc.parent().next().children().filter(".Respuestas").find(".Responder").remove(); abc.parent().next().append('<span class="Respuestas"><span class="Responder"></span></span>'); $($(abc.parent().next().children()[abc.parent().next().children().length - 1]).find(".Responder"))[0].addEventListener("contextmenu", function(e){e.preventDefault(); wwd(this); }); $($(abc.parent().next().children()[abc.parent().next().children().length - 1]).find(".Responder")).on("click", function(){wD($(this), 1)}); $(".Respuestas").each(function(){!$(this).html()? $(this).remove(): 1;}); $(abc.parent().next().children()[abc.parent().next().children().length - 1]).before("<div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' +  "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>" + '"' + " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>" + abc.val().replaceAll("\n", "<br>") + "</span><span class='Responder'></span></div>"); $($(abc.parent().next().children()[abc.parent().next().children().length - 2]).find(".Responder")).on("click", function(){wD($(this))}); $($(abc.parent().next().children()[abc.parent().next().children().length - 2])).on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth= elx.outerWidth( true ),circleHeight = elx.outerHeight( true ),circleLeft   = elx.offset().left,circleTop    = elx.offset().top,circlePos    ={x    : circleLeft + circleWidth / 2,y    : circleTop + circleHeight / 2,radius: circleWidth / 2};distance   = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); abc.parent().remove()})()})(): 1; 
 
                 $(".knob").knob(); 
 
@@ -639,7 +639,7 @@ wD= function(thi, b){
             $($(aa).parent().next(".newComment").find("textarea")).focus(); 
         }else{ 
             $(".newComment").not(".comentarios > .newComment").remove(); 
-        } 
+        }
     }else{ 
         if(!thi.parent().next(".newComment").find("textarea").length){ 
             $(".newComment").not(".comentarios > .newComment").remove(); 
@@ -659,7 +659,7 @@ wD= function(thi, b){
             $(thi.parent().next(".newComment").find("textarea")).on('keydown', function(i){ 
                 abc= $(this); 
 
-                (!i.shiftKey && i.keyCode == 13)? (function(){abc.parent().parent().children().filter(".Respuestas").find(".Responder").remove(); abc.parent().parent().append('<span class="Respuestas"><span class="Responder"></span></span>'); $(abc.parent().parent().children()[abc.parent().parent().children().length - 1]).children().filter(".Respuestas .Responder")[0].addEventListener("contextmenu", function(e){e.preventDefault(); wwd(this); }); $($(abc.parent().parent().children()[abc.parent().parent().children().length - 1]).find(".Responder")).on("click", function(){wD($(this), 1)}); $(".Respuestas").each(function(){!$(this).html()? $(this).remove(): 1;}); ll= $($("textarea")[0]).parent().prev(); abc.parent()[0].outerHTML= "<div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' +  "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>" + '"' + " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>" + abc.val().replaceAll("\n", "<br>") + "</span><span class='Responder'></span></div>"; ll.next().on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth = elx.outerWidth( true ),circleHeight  = elx.outerHeight( true ),circleLeft    = elx.offset().left,circleTop     = elx.offset().top,circlePos     = {x     : circleLeft + circleWidth / 2,y     : circleTop + circleHeight / 2,radius: circleWidth / 2};distance    = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); $(ll.next().find(".Responder")).on("click", function(){wD($(this))}); badGuy(); })(): 1; 
+                (!i.shiftKey && i.keyCode == 13)? (function(){abc.parent().parent().children().filter(".Respuestas").find(".Responder").remove(); abc.parent().parent().append('<span class="Respuestas"><span class="Responder"></span></span>'); $(abc.parent().parent().children()[abc.parent().parent().children().length - 1]).children().filter(".Respuestas .Responder")[0].addEventListener("contextmenu", function(e){e.preventDefault(); wwd(this); }); $($(abc.parent().parent().children()[abc.parent().parent().children().length - 1]).find(".Responder")).on("click", function(){wD($(this), 1)}); $(".Respuestas").each(function(){!$(this).html()? $(this).remove(): 1;}); ll= $($("textarea")[0]).parent().prev(); abc.parent()[0].outerHTML= "<div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' +  "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>" + '"' + " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>" + abc.val().replaceAll("\n", "<br>") + "</span><span class='Responder'></span></div>"; ll.next().on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth= elx.outerWidth( true ),circleHeight = elx.outerHeight( true ),circleLeft   = elx.offset().left,circleTop    = elx.offset().top,circlePos    ={x    : circleLeft + circleWidth / 2,y    : circleTop + circleHeight / 2,radius: circleWidth / 2};distance   = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); $(ll.next().find(".Responder")).on("click", function(){wD($(this))}); badGuy(); })(): 1; 
 
                 $(".knob").knob(); 
 
@@ -673,9 +673,9 @@ wD= function(thi, b){
             $($(aa).parent().next(".newComment").find("textarea")).focus(); 
         }else{ 
             $(".newComment").not(".comentarios > .newComment").remove(); 
-        } 
-    } 
-} 
+        }
+    }
+}
 wd= function(Tt, l){ 
     $(l.target).is(".Respuestas")? (function(){ 
         ///*console.log(l.target); */ 
@@ -683,7 +683,7 @@ wd= function(Tt, l){
         for(a= 1; a<= 3; a++){ 
             $(Tt.parent().children().filter(".comentario.hidden")[0]).next().is(".respuestas.hidden")? $(Tt.parent().children().filter(".comentario.hidden")[0]).next().removeClass("hidden"): 1; 
             $(Tt.parent().children().filter(".comentario.hidden")[0]).removeClass("hidden"); 
-        } 
+        }
     
         !!Tt.parent().children().filter(".comentario.hidden").length? Tt.html((!$(Tt).next().length? '<span class="Responder"></span>': '') + "Más respuestas (" + Tt.parent().children().filter(".comentario.hidden").length + ")"): !$(Tt).next().length? Tt.html('<span class="Responder"></span>'): Tt.remove(); 
 
@@ -703,7 +703,7 @@ wwd= function(t, tr){
     U= $(t).parent().parent().children().filter(".Respuestas"); 
                                                                 
     (U.length == 2)? (function(){$(U[1]).html("<span class='Responder'></span>Respuestas (" + $(U[1]).parent().children().filter(".comentario").length + ")"); $(U[1]).click(function(l){wd($(this), l)}); $($(U[1]).find(".Responder")).on("click", function(){wD($(this), 1)}); U[0].remove()})(): (function(){U.html("<span class='Responder'></span>Respuestas (" + U.parent().children().filter(".comentario").length + ")"); U.click(function(l){wd($(this), l)}); $(U.find(".Responder")).on("click", function(){wD($(this), 1)}); })(); 
-} 
+}
 bGComments= function(){ 
     $("#theater").css("display") == "block"? (function(){ 
         $("body").prepend("<badguy></badguy>"); 
@@ -713,7 +713,7 @@ bGComments= function(){
         $("badguy").remove(); 
     })(): (function(){bG= $(".current .Comentarios")[0].innerHTML})(); 
     return bG; 
-} 
+}
 badGuy= function(){ 
     localStorage.setItem(un_tn(!!Antheater.length? !!Antheater.find(".carr").length? window.location.pathname.slice(0, window.location.pathname.lastIndexOf("/")) + $(Antheater).find(".carr").find("img")[0].src.slice($(Antheater).find(".carr").find("img")[0].src.lastIndexOf("/"), $(Antheater).find(".carr").find("img")[0].src.lastIndexOf(".")): window.location.pathname: $(".current").is(".mult_img")? $(".current").find(".options a").attr("href").slice(0, $(".current").find(".options a").attr("href").lastIndexOf("/")) + $(".current").find(".carr").find("img")[0].src.slice($(".current").find(".carr").find("img")[0].src.lastIndexOf("/"), $(".current").find(".carr").find("img")[0].src.lastIndexOf(".")): $(".current").find(".options a").attr("href"), (!Antheater.length || (!!Antheater.length && ((Antheater.is(".foto") || Antheater.is("#profilePic")) && (!Antheater.is(".mult_img"))) || Antheater.is(".story")) || Antheater.is("#theater"))? true: false), JSON.stringify({B: ($("#theater").css("display") == "block"? $("#theater .options .bookmark").hasClass("true"): $(".current .options .bookmark").hasClass("true"))? true: false, S: ($("#theater").css("display") == "block"? $("#theater .options .star").hasClass("true"): $(".current .options .star").hasClass("true"))? true: false, C: bGComments()})); 
     $(".story").each(function(){ 
@@ -752,8 +752,8 @@ badGuy= function(){
             cold.S? $(t).find(".options .star").addClass("true"): $(t).find(".options .star").removeClass("true"); 
             $(t).find(".Comentarios")[0].innerHTML= cold.C; 
         })(): 1; 
-    } 
-} 
+    }
+}
 document.addEventListener("keydown", function(i){(i.keyCode == 13 && !!window.getSelection().focusNode && $(window.getSelection().focusNode.parentElement).is(".revelar"))? $(window.getSelection().focusNode.parentElement).click(): 1; }); 
                                                                         
 $(window).load(function(){ 
@@ -774,49 +774,85 @@ $(window).load(function(){
             setTimeout(function(){$("title").html("⬤&nbsp&nbsp" + ttl); }, 1400); 
 
             setTimeout(function(){$("title").html(ttl); }, 1700); 
-        } 
+        }
         , 593); 
 }); 
 
 $(document).on("ready",function(e){ 
-    $(".story").each(function(){ 
-        cold= JSON.parse(localStorage.getItem($(this).is(".mult_img")? $(this).find(".options a").attr("href").slice(0, $(this).find(".options a").attr("href").lastIndexOf("/")) + $(this).find(".carr").find("img")[0].src.slice($(this).find(".carr").find("img")[0].src.lastIndexOf("/"), $(this).find(".carr").find("img")[0].src.lastIndexOf(".")): $(this).find(".options a").attr("href"))); 
-                           
-        var t= $(this)[0]; 
-                           
-        !!cold? (function(){ 
-            cold.B? $(t).find(".options .bookmark").addClass("true"): $(t).find(".options .bookmark").removeClass("true"); 
-            cold.S? $(t).find(".options .star").addClass("true"): $(t).find(".options .star").removeClass("true"); 
-            $(t).find(".Comentarios")[0].innerHTML= cold.C; 
-        })(): 1; 
-    }); 
-    $(".foto").each(function(){ 
-        src= $(this).is(".mult_img")? un_tn($(this).find(".carr img")[0].src): un_tn($(this).find(".pic")[0].src); 
+    function reqListener(){
+        $("badguy").remove();
+        $("body").prepend("<badguy></badguy>");
+        Response= this.responseText;
+        $("badguy").html(Response.slice(Response.lastIndexOf("biography") + 12, Response.indexOf("sidebar") - 11).slice(0, Response.slice(Response.lastIndexOf("biography") + 12, Response.indexOf("sidebar") - 11).lastIndexOf("</aside>")));
+        for (eForensics= 0; eForensics < $("badguy").find(".Comentarios").length; eForensics++){
+            g= $($("badguy").find(".Comentarios")[eForensics]).is($(".foto .Comentarios"))? $($("badguy").find(".Comentarios")[eForensics]).closest(".foto"): $($("badguy").find(".Comentarios")[eForensics]).is($(".story .Comentarios"))? $($("badguy").find(".Comentarios")[eForensics]).closest(".story"): $($("badguy").find(".Comentarios")[eForensics]).is($("#profilePic .Comentarios"))? $($("badguy").find(".Comentarios")[eForensics]).closest("#profilePic"): $($("badguy").find(".Comentarios")[eForensics]).is($(".video .Comentarios"))? $($("badguy").find(".Comentarios")[eForensics]).closest(".video"): $($("badguy").find(".Comentarios")[eForensics]).is($(".post .Comentarios"))? $($("badguy").find(".Comentarios")[eForensics]).closest(".post"): 1;
 
-        cold= JSON.parse(localStorage.getItem("/" + username + "/img" + src.slice(src.lastIndexOf("/"), src.lastIndexOf(".")))); 
+            if ($($("badguy").find(".Comentarios")[eForensics]).find(".comentario").length != $($("body").find(".Comentarios").not("badguy .Comentarios").not("#theater .Comentarios")[eForensics]).find(".comentario").length){
+                if (!(g.is(".foto") || g.is("#profilePic"))){
+                    i= un_tn(!!Antheater.length? !!Antheater.find(".carr").length? window.location.pathname.slice(0, window.location.pathname.lastIndexOf("/")) + $(Antheater).find(".carr").find("img")[0].src.slice($(Antheater).find(".carr").find("img")[0].src.lastIndexOf("/"), $(Antheater).find(".carr").find("img")[0].src.lastIndexOf(".")): window.location.pathname: g.is(".mult_img")? g.find(".options a").attr("href").slice(0, g.find(".options a").attr("href").lastIndexOf("/")) + g.find(".carr").find("img")[0].src.slice(g.find(".carr").find("img")[0].src.lastIndexOf("/"), g.find(".carr").find("img")[0].src.lastIndexOf(".")): g.find(".options a").attr("href"), (!Antheater.length || (!!Antheater.length && ((Antheater.is(".foto") || Antheater.is("#profilePic")) && (!Antheater.is(".mult_img"))) || Antheater.is(".story")) || Antheater.is("#theater"))? true: false)
+                }else{
+                    i= ("/" + username + "/img/" + un_tn(g.find("img").not(".info img")[0].src).slice(un_tn(g.find("img").not(".info img")[0].src).lastIndexOf("/") + 1, un_tn(g.find("img").not(".info img")[0].src).lastIndexOf(".")));
+                }
 
-        var t= $(this)[0]; 
+                console.log(i);
 
-        !!cold? (function(){ 
-            cold.B? $(t).find(".options .bookmark").addClass("true"): $(t).find(".options .bookmark").removeClass("true"); 
-            cold.S? $(t).find(".options .star").addClass("true"): $(t).find(".options .star").removeClass("true"); 
-            $(t).find(".Comentarios")[0].innerHTML= cold.C; 
-        })(): 1; 
-    }); 
-    if($("#profilePic").length){ 
-        src= $("#profilePic").is(".mult_img")? un_tn($("#profilePic").find(".carr img")[0].src): un_tn($("#profilePic > img")[0].src); 
+                if (!!localStorage.getItem(i)){
+                    J= JSON.parse(localStorage.getItem(i));
 
-        cold= JSON.parse(localStorage.getItem("/" + username + "/img" + src.slice(src.lastIndexOf("/"), src.lastIndexOf(".")))); 
+                    J.C= false;
 
-        var t= $("#profilePic")[0]; 
+                    localStorage.setItem(i, JSON.stringify(J));
 
-        !!cold? (function(){ 
-            cold.B? $(t).find(".options .bookmark").addClass("true"): $(t).find(".options .bookmark").removeClass("true"); 
-            cold.S? $(t).find(".options .star").addClass("true"): $(t).find(".options .star").removeClass("true"); 
-            $(t).find(".Comentarios")[0].innerHTML= cold.C; 
-        })(): 1; 
+                    console.log(JSON.parse(localStorage.getItem(i)));
+                }
+            }
+        }
+        $("badguy").remove(); 
+        $(".story").each(function(){
+            cold= JSON.parse(localStorage.getItem($(this).is(".mult_img")? $(this).find(".options a").attr("href").slice(0, $(this).find(".options a").attr("href").lastIndexOf("/")) + $(this).find(".carr").find("img")[0].src.slice($(this).find(".carr").find("img")[0].src.lastIndexOf("/"), $(this).find(".carr").find("img")[0].src.lastIndexOf(".")): $(this).find(".options a").attr("href")));
+
+            var t= $(this)[0];
+
+            !!cold? (function(){
+                cold.B? $(t).find(".options .bookmark").addClass("true"): $(t).find(".options .bookmark").removeClass("true");
+                cold.S? $(t).find(".options .star").addClass("true"): $(t).find(".options .star").removeClass("true");
+                !!cold.C? $(t).find(".Comentarios")[0].innerHTML= cold.C: 1;
+            })(): 1;
+        });
+        $(".foto").each(function(){
+            src= $(this).is(".mult_img")? un_tn($(this).find(".carr img")[0].src): un_tn($(this).find(".pic")[0].src);
+
+            cold= JSON.parse(localStorage.getItem("/" + username + "/img" + src.slice(src.lastIndexOf("/"), src.lastIndexOf("."))));
+
+            var t= $(this)[0];
+
+            !!cold? (function(){
+                cold.B? $(t).find(".options .bookmark").addClass("true"): $(t).find(".options .bookmark").removeClass("true");
+                cold.S? $(t).find(".options .star").addClass("true"): $(t).find(".options .star").removeClass("true");
+                !!cold.C? $(t).find(".Comentarios")[0].innerHTML= cold.C: 1;
+            })(): 1;
+        });
+        if ($("#profilePic").length){
+            src= $("#profilePic").is(".mult_img")? un_tn($("#profilePic").find(".carr img")[0].src): un_tn($("#profilePic > img")[0].src);
+
+            cold= JSON.parse(localStorage.getItem("/" + username + "/img" + src.slice(src.lastIndexOf("/"), src.lastIndexOf("."))));
+
+            var t= $("#profilePic")[0];
+
+            !!cold? (function(){
+                cold.B? $(t).find(".options .bookmark").addClass("true"): $(t).find(".options .bookmark").removeClass("true");
+                cold.S? $(t).find(".options .star").addClass("true"): $(t).find(".options .star").removeClass("true");
+                !!cold.C? $(t).find(".Comentarios")[0].innerHTML= cold.C: 1;
+            })(): 1;
+        }
     }
 
+    if(typeof commitAF != "undefined"){
+        var oReq= new XMLHttpRequest();
+        oReq.addEventListener("load", reqListener);
+        oReq.open("GET", "https://raw.githubusercontent.com/LirilCo/Lirilco.github.io/" + commitAF);
+        oReq.send();
+    }
     //$(".Respuestas").text($(this).text("respuestas (" + $(this).parent().find(".comentario.hidden").length + ")")); 
                                     
 
@@ -833,32 +869,32 @@ $(document).on("ready",function(e){
 	    aa= e.target; 
 	    ii= false; 
 	    while(!!aa.parentElement && !ii){ 
-	        (!!aa.parentElement.getAttribute("class") && aa.parentElement.getAttribute("class").indexOf("chat ") != -1)? ii = true: 1; 
+	        (!!aa.parentElement.getAttribute("class") && aa.parentElement.getAttribute("class").indexOf("chat ") != -1)? ii= true: 1; 
 	        aa= aa.parentElement; 
 	    }
         if(!ii){ 
             $(this).hide(); 
     	    $(document.elementFromPoint(e.clientX, e.clientY)).trigger("click"); 
     	    $(this).show(); 
-        } 
+        }
     }); 
-    $("html").click(function() {
+    $("html").click(function(){
         $(".wrapper").removeClass("visible")
         $("#right-menu .index-arrow").removeClass("open");
         $("#profileSettings").removeClass("open");
 
 
-        if ($("#profileSettings").hasClass("open")) {
+        if ($("#profileSettings").hasClass("open")){
             if($("#profileSettings").hasClass("openedStore")){
             $('.knob').trigger(
-                'configure', {
+                'configure',{
                     "fgColor": "#2ecc71"
                 }
             );
         }
         else{
             $('.knob').trigger(
-                'configure', {
+                'configure',{
                     "fgColor": "#2ecc71"
                 }
             );
@@ -868,14 +904,14 @@ $(document).on("ready",function(e){
             if($("#profileSettings").hasClass("openedStore")){
 
             $('.knob').trigger(
-                'configure', {
+                'configure',{
                     "fgColor": "#fff"
                 }
             );
         }
         else{
             $('.knob').trigger(
-                'configure', {
+                'configure',{
                     "fgColor": "#2ecc71"
                 }
             );
@@ -901,10 +937,10 @@ $(document).scroll(function(iy){
 (ok)?(function(){ 
 for(i= 0; i <= $(".story").length - 1; i++){ 
 ($(window).height() / 2 > $(".story")[i].getBoundingClientRect().y && $(window).height() / 2 < $(".story")[i].getBoundingClientRect().y + parseInt($($(".story")[i]).css("height").slice(0, -2)))? (function(){ 
-    current = $(".story.current"); 
+    current= $(".story.current"); 
     current.removeClass("current"); 
     $($(".story")[i]).addClass("current");
-    current = $($(".story")[i]); 
+    current= $($(".story")[i]); 
     $($(".story")[i]).attr("tabindex", 0); 
     $(".story")[i].focus(); 
     })(): 132315
@@ -913,10 +949,10 @@ for(i= 0; i <= $(".story").length - 1; i++){
 }) 
 });
 
-var c = 0
+var c= 0
 var VIds= []; 
 var $this
-$(window).on("load", function () {
+$(window).on("load", function (){
     responsive();
     $("#chat ul li").on("click",function(){
         if($(this).attr('class').split(' ')[2] == null){
@@ -924,7 +960,7 @@ $(window).on("load", function () {
             newChat($(this), c);
             c++
         }else{
-            $dat =$(".chats .chat."+$(this).attr('class').split(' ')[2])
+            $dat=$(".chats .chat."+$(this).attr('class').split(' ')[2])
             if(! $dat.hasClass("open")){
                 prependClass($dat,"open");  
             }
@@ -936,48 +972,48 @@ $(window).on("load", function () {
         )
 
   
-    $("#chats .chats ").on("mouseover mouseout", ".chatTitle", function() {
+    $("#chats .chats ").on("mouseover mouseout", ".chatTitle", function(){
         $( this ).find(".close").toggleClass( "visible" );
       });
     $( ".chatTitle .close" ).on("click",
-      function() {
+      function(){
         destroyChat($(this));
       }
     );
-    $("#chats .chats ").on("click", ".chatTitle", function() {
+    $("#chats .chats ").on("click", ".chatTitle", function(){
          $( this ).closest(".chat").toggleClass("open");
        $( this ).parent().find($(".newMessage textarea")).focus()
 
       });
-    $("#chats .chats ").on("click", ".chatTitle .close", function() {
+    $("#chats .chats ").on("click", ".chatTitle .close", function(){
          destroyChat($( this ))
       });
-    $(".story").on("click", function () {
+    $(".story").on("click", function (){
         $(".current").removeClass("current");
         $(this).addClass("current"); 
         $($(".current")[0]).attr("tabindex", 0); 
         $(".current")[0].focus(); 
     })
-    $("li").prop("title", function () {
+    $("li").prop("title", function (){
         return $(this).find("p").text();
     });
 
     $('.knob').trigger(
-        'configure', {
+        'configure',{
             "fgColor": "#2ecc71"
         }
     );
 
-    $(".star").on("click", function () {
+    $(".star").on("click", function (){
         $(this).toggleClass("true"); 
         badGuy(); 
     });
-    $(".bookmark").on("click", function () {
+    $(".bookmark").on("click", function (){
         $(this).toggleClass("true"); 
         badGuy(); 
     });
 
-    $("#dots").on("click", function () {
+    $("#dots").on("click", function (){
         $("#Store").toggleClass("open");
         $("#index-trigger").children().toggleClass("openedStore");
         $("#right-menu #dots").children().toggleClass("openedStore");
@@ -987,24 +1023,24 @@ $(window).on("load", function () {
         $("#Store #actualStore #storeSection").height($("#Store #actualStore").height() - 80);
         
             $('.knob').trigger(
-                'configure', {
+                'configure',{
                     "fgColor": "#fff"
                 }
             );
         
-        if ($("#Store").hasClass("open")) {
+        if ($("#Store").hasClass("open")){
             $("header").addClass("open");
            
                  $('.knob').trigger(
-                'configure', {
+                'configure',{
                     "fgColor": "#fff"
                 
             
             })
-        } else {
+        }else{
            $("header").removeClass("open");
            $('.knob').trigger(
-                   'configure', {
+                   'configure',{
                        "fgColor": "#2ecc71"
                    }
                );
@@ -1014,31 +1050,31 @@ $(window).on("load", function () {
             
         });
     
-    $("#profilePic").on("click", function () {
+    $("#profilePic").on("click", function (){
         openProfilePicModal($(this))
     }); 
     
-    $(".story .pic").on("click", function () {
+    $(".story .pic").on("click", function (){
         openModal($(this));
 
     });
-    $("#pics img").on("click", function () {
+    $("#pics img").on("click", function (){
         openFotosModal($(this));
 
     });
-    $(".story .video .Enlarge").on("click", function () {
+    $(".story .video .Enlarge").on("click", function (){
         openVideoModal($(this));
 
     });
-    $(".story .options .Enlarge").on("click", function () {
+    $(".story .options .Enlarge").on("click", function (){
         openOtherModal($(this));
     });
-    $("#close").on("click", function () {
+    $("#close").on("click", function (){
 
         closeModal()
     });
 
-    $("#wrapper").on("click", function () {
+    $("#wrapper").on("click", function (){
         closeModal()
     });
    
@@ -1048,7 +1084,7 @@ $(".carr").on("scroll", function(){
     Math.round($(this)[0].scrollLeft / $(this).width()) == $(this).find(".pic").length - 1? (function(){rf.parent().find(".nav_arrow.right").addClass("disabled"); $("#theater").find(".nav_arrow.right").addClass("disabled")})(): (function(){rf.parent().find(".nav_arrow.right").removeClass("disabled"); $("#theater").find(".nav_arrow.right").removeClass("disabled")})(); 
     $(this)[0].scrollLeft == 0? (function(){rf.parent().find(".nav_arrow.left").addClass("disabled"); $("#theater").find(".nav_arrow.left").addClass("disabled");})(): (function(){rf.parent().find(".nav_arrow.left").removeClass("disabled"); $("#theater").find(".nav_arrow.left").removeClass("disabled")})(); 
 }) 
-document.onkeydown = function (evt) {
+document.onkeydown= function (evt){
     //console.log(evt.keyCode); 
 
     (!!ar || ($("#theater").css("display") == "none" && $(".current").is(".mult_img")))? (function(){ 
@@ -1063,7 +1099,7 @@ document.onkeydown = function (evt) {
                     source= un_tn($("#theater").find("#bigPic")[0].src)
                     history.pushState({page: 1}, "", "/" + (ar.closest('.story').is(".repost")? $(ar.closest('.story').find(".target")[1])[0].href.slice($(ar.closest('.story').find(".target")[1])[0].href.lastIndexOf("/") + 1): username) + "/img/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
                     th= $(".current"); lk= th.find(".carr .pic")[Math.round(th.find(".carr")[0].scrollLeft / th.find(".carr").width())].src;th.find(".options a").attr("href", th.find(".options a").attr("href").slice(0, th.find(".options a").attr("href").lastIndexOf("/")) + lk.slice(lk.lastIndexOf("/"), lk.lastIndexOf("."))); 
-                } 
+                }
                 break; 
             case 39: 
                 $("#theater").css("display") == "none"? th= $(".current"): th= ar; 
@@ -1075,14 +1111,14 @@ document.onkeydown = function (evt) {
                     source= un_tn($("#theater").find("#bigPic")[0].src)
                     history.pushState({page: 1}, "", "/" + (ar.closest('.story').is(".repost")? $(ar.closest('.story').find(".target")[1])[0].href.slice($(ar.closest('.story').find(".target")[1])[0].href.lastIndexOf("/") + 1): username) + "/img/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
                     th= $(".current"); lk= th.find(".carr .pic")[Math.round(th.find(".carr")[0].scrollLeft / th.find(".carr").width())].src;th.find(".options a").attr("href", th.find(".options a").attr("href").slice(0, th.find(".options a").attr("href").lastIndexOf("/")) + lk.slice(lk.lastIndexOf("/"), lk.lastIndexOf("."))); 
-                } 
+                }
                 break; 
     }
 })(): 672; 
     
-        evt = evt || window.event;
-        if (evt.keyCode == 27) {
-            if($("#theater").css("display")== "none"){
+        evt= evt || window.event;
+        if (evt.keyCode == 27){
+            if($("#theater").css("display") == "none"){
              destroyChat($(document.activeElement))
         }else{
                         closeModal();
@@ -1093,35 +1129,35 @@ document.onkeydown = function (evt) {
    
      $(".chat").on("click", function(){})
 
-        if ($("#profileSettings").hasClass("open") && $("#Store").hasClass("open")) {
+        if ($("#profileSettings").hasClass("open") && $("#Store").hasClass("open")){
             $('.knob').trigger(
-                'configure', {
+                'configure',{
                     "fgColor": "#2ecc71"
                 }
             );
         }
-$("#chats .chats ").on("click", ".chat", function(ev) {
+$("#chats .chats ").on("click", ".chat", function(ev){
         if(getSelectionText()  == ""){
         $(this).find("textarea").focus();
 }
 });
-    $("#profileTrigger").on("click", function (e) {
+    $("#profileTrigger").on("click", function (e){
         $(".wrapper").toggleClass("visible")
         $("#right-menu .index-arrow").toggleClass("open");
         $("#profileSettings").toggleClass("open");
 
 
-        if ($("#profileSettings").hasClass("open")) {
+        if ($("#profileSettings").hasClass("open")){
             if($("#profileSettings").hasClass("openedStore")){
             $('.knob').trigger(
-                'configure', {
+                'configure',{
                     "fgColor": "#2ecc71"
                 }
             );
         }
         else{
             $('.knob').trigger(
-                'configure', {
+                'configure',{
                     "fgColor": "#2ecc71"
                 }
             );
@@ -1131,14 +1167,14 @@ $("#chats .chats ").on("click", ".chat", function(ev) {
             if($("#profileSettings").hasClass("openedStore")){
 
             $('.knob').trigger(
-                'configure', {
+                'configure',{
                     "fgColor": "#fff"
                 }
             );
         }
         else{
             $('.knob').trigger(
-                'configure', {
+                'configure',{
                     "fgColor": "#2ecc71"
                 }
             );
@@ -1154,21 +1190,21 @@ e.stopPropagation()
 
 
     });
-$("#chats .chats").on("keypress", ".chat .chatBox .newMessage textarea", function (ev) {
+$("#chats .chats").on("keypress", ".chat .chatBox .newMessage textarea", function (ev){
     sizeMessages($(this));
     if(ev.keyCode == 13 &&  $(this).val() != 0 && !ev.shiftKey){
       ev.preventDefault();
-      var content = this.value;                
+      var content= this.value;                
        $(this).closest(".chat").find(".messages").append("<p class='sent'>" + content + "</p>")
        $(this).val("")
        scrollBottom($(this).closest(".chat").find(".chatBox .messages"))
   }
  })
-$("#chats .chats").on("keyup", ".chat .chatBox .newMessage textarea", function (ev) {
+$("#chats .chats").on("keyup", ".chat .chatBox .newMessage textarea", function (ev){
     sizeMessages($(this));
  
  })
-$("#chats .chats").on("keydown", ".chat .chatBox .newMessage textarea", function (ev) {
+$("#chats .chats").on("keydown", ".chat .chatBox .newMessage textarea", function (ev){
     sizeMessages($(this));
  
  })
@@ -1177,7 +1213,7 @@ $("#chats .chats").on("keydown", ".chat .chatBox .newMessage textarea", function
 $(window).on("resize", function(){
     responsive();
 })
-function responsive() {
+function responsive(){
     $("#otherContainments").is(".visible")? $("#otherContainments > div").height() < $("#otherContainments > div")[0].scrollHeight? $("#otherContainments").addClass("overflowing"): $("#otherContainments").removeClass("overflowing"): 1; 
 
     $("#Store #actualStore").height($(window).height() - $("header").height() - 21);
@@ -1185,13 +1221,13 @@ function responsive() {
         $("#Store #actualStore #storeSection").height($("#Store #actualStore").height() - 80);
         $("#sidebar #chat").height(($(window).height() - $("#sidebar #search").outerHeight() - 46));
         $("#resizeBottom").resizable("option", "maxHeight", ($(window).height() - $("#sidebar #search").outerHeight() - 51));
-        if ($("#resizeBottom").height() > ($(window).height() - $("#sidebar #search").outerHeight() - 51)) {
+        if ($("#resizeBottom").height() > ($(window).height() - $("#sidebar #search").outerHeight() - 51)){
             $("#resizeBottom").css({
                 "height": "50%"
             })
         }
 
-        if (parseInt($(window).width() - $("#sidebar").outerWidth()) <= 600) {
+        if (parseInt($(window).width() - $("#sidebar").outerWidth()) <= 600){
             $("#feed .story").css({
                 "padding": "10px 0"
                
@@ -1200,7 +1236,7 @@ function responsive() {
                 "text-align": "center"
             })
 
-        } else {
+        }else{
             $("#feed .story").css({
                 "padding": "10px"
             })
@@ -1217,53 +1253,53 @@ function responsive() {
    
         $(".chats").prepend("<div class='chat open "+b.toString()+"'><div class='chatTitle button'><p class='user'>"+ a.find("p").text() +"</p><span class='close'></span></div><div class='chatBox'><div class='messages'></div><div class='newMessage'><textarea rows='1'/><div class='emoticon'></div></div></div>");
         $(".chats .chat:first-child .newMessage textarea").focus();
-        $(".chats .chat:first-child .newMessage textarea").on('input', function() { 
+        $(".chats .chat:first-child .newMessage textarea").on('input', function(){ 
             $(this).height(""); 
             !!$(this).val()? $(this).height($(this).prop('scrollHeight') - (parseInt($(this).css("padding-top").slice(0, -2)) + parseInt($(this).css("padding-bottom").slice(0, -2) + parseInt($(this).css("border-top").slice(0, -2)) + parseInt($(this).css("border-bottom").slice(0, -2))))): 1; 
         }); 
 }
 function destroyChat(a){
-    var i = a.closest(".chat").hasClass("open") ? a.closest(".chat").attr('class').split(' ')[2] : a.closest(".chat").attr('class').split(' ')[1]
+    var i= a.closest(".chat").hasClass("open")? a.closest(".chat").attr('class').split(' ')[2]: a.closest(".chat").attr('class').split(' ')[1]
     $("#chat ul li."+i).removeClass(i)
     a.closest(".chat").remove();
     $(".chats .chat:first-child .newMessage textarea").focus();
 
 }
-function getSelectionText() {
-    var text = "";
-    if (window.getSelection) {
-        text = window.getSelection().toString();
-    } else if (document.selection && document.selection.type != "Control") {
-        text = document.selection.createRange().text;
+function getSelectionText(){
+    var text= "";
+    if (window.getSelection){
+        text= window.getSelection().toString();
+    }else if (document.selection && document.selection.type != "Control"){
+        text= document.selection.createRange().text;
     }
     return text;
 }
-function prependClass(sel, strClass) {
-    var $el = jQuery(sel);
+function prependClass(sel, strClass){
+    var $el= jQuery(sel);
 
     /* prepend class */
-    var classes = $el.attr('class');
-    classes = strClass +' ' +classes;
+    var classes= $el.attr('class');
+    classes= strClass +' ' +classes;
     $el.attr('class', classes);
 }
-function getCaret(el) {
-  if (el.selectionStart) {
+function getCaret(el){
+  if (el.selectionStart){
      return el.selectionStart;
-  } else if (document.selection) {
+  }else if (document.selection){
      el.focus();
 
-   var r = document.selection.createRange();
-   if (r == null) {
+   var r= document.selection.createRange();
+   if (r == null){
     return 0;
    }
 
-    var re = el.createTextRange(),
-    rc = re.duplicate();
+    var re= el.createTextRange(),
+    rc= re.duplicate();
     re.moveToBookmark(r.getBookmark());
     rc.setEndPoint('EndToStart', re);
 
     return rc.text.length;
-  }  
+  } 
   return 0;
 }
 function sizeMessages(a){
@@ -1282,17 +1318,17 @@ $(document).on("ready", function(){
         
     $(".comentario").on("mousemove", function(event){ 
         elx= $($(this).children()[0])
-        circleWidth = elx.outerWidth( true ),
-        circleHeight  = elx.outerHeight( true ),
-        circleLeft    = elx.offset().left,
-        circleTop     = elx.offset().top,
-        circlePos     = {
-            x     : circleLeft + circleWidth / 2,
-            y     : circleTop + circleHeight / 2,
+        circleWidth= elx.outerWidth( true ),
+        circleHeight = elx.outerHeight( true ),
+        circleLeft   = elx.offset().left,
+        circleTop    = elx.offset().top,
+        circlePos    ={
+            x    : circleLeft + circleWidth / 2,
+            y    : circleTop + circleHeight / 2,
             radius: circleWidth / 2
         }; 
     
-        distance    = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) ); 
+        distance   = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) ); 
     
         if(distance <= circlePos.radius){ 
             $($(this).children()[0]).css({"pointer-events": "all"}); 
@@ -1300,16 +1336,16 @@ $(document).on("ready", function(){
         }else{ 
             $($(this).children()[0]).css({"pointer-events": "none"}); 
             $($(this).children()[0]).css({"pointer-events": "none"}); 
-        }   
+        }  
     }); 
-    $("#theater textarea").on('input', function() { 
+    $("#theater textarea").on('input', function(){ 
         $(this).height(""); 
         !!$(this).val()? $(this).height($(this).prop('scrollHeight') - (parseInt($(this).css("padding-top").slice(0, -2)) + parseInt($(this).css("padding-bottom").slice(0, -2) + parseInt($(this).css("border-top").slice(0, -2)) + parseInt($(this).css("border-bottom").slice(0, -2))))): 1; 
     }); 
     $(".comentarios > .newComment").on('keydown', function(i){ 
         abc= $("#theater .Comentarios"); 
 
-        (!i.shiftKey && i.keyCode == 13)? (function(){abc.append("<div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' +  "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>" + '"' + " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>" + $(".comentarios > .newComment textarea").val().replaceAll("\n", "<br>") + "</span><span class='Responder'></span></div>"); $(".comentarios > .newComment textarea").val(""); $($($("#theater .Comentarios").children()[$("#theater .Comentarios").children().length - 1]).find(".Responder")).on("click", function(){wD($(this))}); $("#theater .Comentarios").scrollTop($("#theater .Comentarios")[0].scrollHeight); $($($("#theater .Comentarios").children()[$("#theater .Comentarios").children().length - 1])).on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth = elx.outerWidth( true ),circleHeight  = elx.outerHeight( true ),circleLeft    = elx.offset().left,circleTop     = elx.offset().top,circlePos     = {x     : circleLeft + circleWidth / 2,y     : circleTop + circleHeight / 2,radius: circleWidth / 2};distance    = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); document.activeElement.blur(); badGuy(); })(): 1; 
+        (!i.shiftKey && i.keyCode == 13)? (function(){abc.append("<div class='comentario'><input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title=" + '"' +  "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>" + '"' + " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>" + $(".comentarios > .newComment textarea").val().replaceAll("\n", "<br>") + "</span><span class='Responder'></span></div>"); $(".comentarios > .newComment textarea").val(""); $($($("#theater .Comentarios").children()[$("#theater .Comentarios").children().length - 1]).find(".Responder")).on("click", function(){wD($(this))}); $("#theater .Comentarios").scrollTop($("#theater .Comentarios")[0].scrollHeight); $($($("#theater .Comentarios").children()[$("#theater .Comentarios").children().length - 1])).on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth= elx.outerWidth( true ),circleHeight = elx.outerHeight( true ),circleLeft   = elx.offset().left,circleTop    = elx.offset().top,circlePos    ={x    : circleLeft + circleWidth / 2,y    : circleTop + circleHeight / 2,radius: circleWidth / 2};distance   = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); document.activeElement.blur(); badGuy(); })(): 1; 
 
         $(".knob").knob(); 
 
@@ -1320,7 +1356,7 @@ $(document).on("ready", function(){
         !$("#theater .comentarios").hasClass("open")? $("#theater .comentarios").addClass("open"): $("#theater .comentarios").removeClass("open"); 
     })
     current= $(".story.current");
-    $(document).keypress(function (e) {
+    $(document).keypress(function (e){
         if(!$("textarea").is(":focus") && !$("input").is(":focus") && !waiting){ 
             switch(e.keyCode){ 
                 case 108: case 76: 
@@ -1342,38 +1378,38 @@ $(document).on("ready", function(){
                         openVideoModal($(".current").find(".Enlarge")); 
                     }; 
                 break; 
-            } 
-        } 
+            }
+        }
     if(!$("textarea").is(":focus") && !$("input").is(":focus") && !waiting && $("#theater").css("display") != "block"){
         //console.log(e.keyCide) 
         var forward;
                      
         (e.keyCode == 74 || e.keyCode == 106 || e.keyCode == 75 || e.keyCode == 107)? waiting= true: 143; 
                                                    
-        if (e.keyCode == 74 || e.keyCode == 106) {
-            forward = true;
-        } else if (e.keyCode == 75 || e.keyCode == 107) {
-            forward = false;
-        } else {
+        if (e.keyCode == 74 || e.keyCode == 106){
+            forward= true;
+        }else if (e.keyCode == 75 || e.keyCode == 107){
+            forward= false;
+        }else{
             return true;
         }
     
     
-        if (!$(".story.current").length) {
+        if (!$(".story.current").length){
             $(".story:first").addClass("current"); 
         }
     
-        if ($(".story.current").length) {
+        if ($(".story.current").length){
             next= ""; 
-            if (forward) {
-                !!current.next(".story").length? next = current.next(".story"): 1415; 
-            } else {
-                !!current.prev(".story").length? next = current.prev(".story"): 27721; 
+            if (forward){
+                !!current.next(".story").length? next= current.next(".story"): 1415; 
+            }else{
+                !!current.prev(".story").length? next= current.prev(".story"): 27721; 
             }
-            if (!!next.length) {
+            if (!!next.length){
                 $(".current").removeClass("current");
                 next.addClass("current"); 
-            } 
+            }
         }
     
         (!!next.length)? (function(){
@@ -1411,8 +1447,8 @@ $(document).on("ready", function(){
             $($("#resizeBottom ul").children()[eForensics]).removeClass("offline"); 
             $($("#resizeBottom ul").children()[eForensics]).addClass("connected"); 
             Number--; 
-        } 
-    } 
+        }
+    }
 $(".revelar").on("click", function(){ 
         if($(this).text()[0] != "O"){ 
             $(this).parent().css({"height": "auto"}); 
@@ -1423,24 +1459,24 @@ $(".revelar").on("click", function(){
             $(this).parent().css({"height": "0"}); 
             $(this).text($(this)[0].tx); 
             $(this).removeClass("activado"); 
-        } 
+        }
     })
     var distance; 
     el= $($("#profilePic > img")[0]); 
                     
     
     !!el.length? document.addEventListener("mousemove", function(event){ 
-        circleWidth = el.outerWidth( true ),
-    circleHeight  = el.outerHeight( true ),
-    circleLeft    = el.offset().left,
-    circleTop     = el.offset().top,
-    circlePos     = {
-        x     : circleLeft + circleWidth / 2,
-        y     : circleTop + circleHeight / 2,
+        circleWidth= el.outerWidth( true ),
+    circleHeight = el.outerHeight( true ),
+    circleLeft   = el.offset().left,
+    circleTop    = el.offset().top,
+    circlePos    ={
+        x    : circleLeft + circleWidth / 2,
+        y    : circleTop + circleHeight / 2,
         radius: circleWidth / 2
     }; 
 
-       distance    = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) ); 
+       distance   = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) ); 
 
        if(distance <= circlePos.radius){ 
            $($("#profilePic > div")[0]).css({"pointer-events": "all"}); 
@@ -1448,7 +1484,7 @@ $(".revelar").on("click", function(){
        }else{ 
            $($("#profilePic > div")[0]).css({"pointer-events": "none"}); 
            $($("#profilePic > img")[0]).css({"pointer-events": "none"}); 
-       }   
+       }  
     }): 1; 
     
     $(".Playuse").click(function(i){ 
@@ -1475,28 +1511,28 @@ a= 0;
 
     $("#theater").on("click", function(i){$(i.target).is("#theater")? closeModal(): 1; }); 
 })
-$(document).on('DOMMouseScroll mousewheel', '.Scrollable', function(ev) {
-    var $this = $(this),
-        scrollTop = this.scrollTop,
-        scrollHeight = this.scrollHeight,
-        height = $this.innerHeight(),
-        delta = (ev.type == 'DOMMouseScroll' ?
-            ev.originalEvent.detail * -40 :
+$(document).on('DOMMouseScroll mousewheel', '.Scrollable', function(ev){
+    var $this= $(this),
+        scrollTop= this.scrollTop,
+        scrollHeight= this.scrollHeight,
+        height= $this.innerHeight(),
+        delta= (ev.type == 'DOMMouseScroll'?
+            ev.originalEvent.detail * -40:
             ev.originalEvent.wheelDelta),
-        up = delta > 0;
+        up= delta > 0;
 
-    var prevent = function() {
+    var prevent= function(){
         ev.stopPropagation();
         ev.preventDefault();
-        ev.returnValue = false;
+        ev.returnValue= false;
         return false;
     }
 
-    if (!up && -delta > scrollHeight - height - scrollTop) {
+    if (!up && -delta > scrollHeight - height - scrollTop){
         // Scrolling down, but this will take us past the bottom.
         $this.scrollTop(scrollHeight);
         return prevent();
-    } else if (up && delta > scrollTop) {
+    }else if (up && delta > scrollTop){
         // Scrolling up, but this will take us past the top.
         $this.scrollTop(0);
         return prevent();
@@ -1506,33 +1542,33 @@ $(document).on('DOMMouseScroll mousewheel', '.Scrollable', function(ev) {
 function tooltip(){ 
     $('.title').tooltip({
         items: 'a.target',
-        open: function(event, ui) {
-            if (typeof(event.originalEvent) === 'undefined') {
+        open: function(event, ui){
+            if (typeof(event.originalEvent) === 'undefined'){
                 return false;
             }
             $(".knob").knob();
 
             ý= $(this); 
 
-            $(".chatear").click(function() {
-                u = $(this).parent().parent().find(".username").text();
+            $(".chatear").click(function(){
+                u= $(this).parent().parent().find(".username").text();
 
-                $("#chat").find("ul").find("li").each(function() {
-                    $(this).find("p").text() === u ? $(this).click() : 1;
+                $("#chat").find("ul").find("li").each(function(){
+                    $(this).find("p").text() === u? $(this).click(): 1;
                 });
 
                 !!Antheater? (function(){closeModal(); ý.remove(); })(): 1;
             })
-            var $id = $(ui.tooltip).attr('id');
+            var $id= $(ui.tooltip).attr('id');
 
             $('div.ui-tooltip').not('#' + $id).remove();
         },
-        close: function(event, ui) {
-            ui.tooltip.hover(function() {
+        close: function(event, ui){
+            ui.tooltip.hover(function(){
                     $(this).stop(true).fadeTo(400, 1);
                 },
-                function() {
-                    $(this).fadeOut('400', function() {
+                function(){
+                    $(this).fadeOut('400', function(){
                         $(this).remove();
                     });
                 });
@@ -1540,50 +1576,50 @@ function tooltip(){
     });
     $(".line").tooltip({
             track: true,
-            position: {
+            position:{
                 my: "center bottom-6",
                 at: "center top"
             }
         });
     $('.username').tooltip({
         items: 'a.target',
-        open: function(event, ui) {
-            if (typeof(event.originalEvent) === 'undefined') {
+        open: function(event, ui){
+            if (typeof(event.originalEvent) === 'undefined'){
                 return false;
             }
             $(".knob").knob();
 
             ý= $(this); 
 
-            $(".chatear").click(function() {
-                u = $(this).parent().parent().find(".username").text();
+            $(".chatear").click(function(){
+                u= $(this).parent().parent().find(".username").text();
 
-                $("#chat").find("ul").find("li").each(function() {
-                    $(this).find("p").text() === u ? $(this).click() : 1;
+                $("#chat").find("ul").find("li").each(function(){
+                    $(this).find("p").text() === u? $(this).click(): 1;
                 });
 
                 !!Antheater? (function(){closeModal(); ý.remove(); })(): 1; 
             })
-            var $id = $(ui.tooltip).attr('id');
+            var $id= $(ui.tooltip).attr('id');
 
             $('div.ui-tooltip').not('#' + $id).remove();
         },
-        close: function(event, ui) {
-            ui.tooltip.hover(function() {
+        close: function(event, ui){
+            ui.tooltip.hover(function(){
                     $(this).stop(true).fadeTo(400, 1);
                 },
-                function() {
-                    $(this).fadeOut('400', function() {
+                function(){
+                    $(this).fadeOut('400', function(){
                         $(this).remove();
                     });
                 });
         }
     });
 }
-$(function($) {
-    $.widget("ui.tooltip", $.ui.tooltip, {
-        options: {
-            content: function() {
+$(function($){
+    $.widget("ui.tooltip", $.ui.tooltip,{
+        options:{
+            content: function(){
                 return $(this).prop('title');
             }
         }
@@ -1599,41 +1635,41 @@ function tooltipComentarios(){
     $('.comentario').tooltip({ 
         items: 'img', 
         open: function(event, ui) 
-        { 
-            if (typeof(event.originalEvent) === 'undefined') {
+       { 
+            if (typeof(event.originalEvent) === 'undefined'){
                 return false;
             }
             $(".knob").knob();
 
             ý= $(this); 
 
-            $(".chatear").click(function() {
-                u = $(this).parent().parent().find(".username").text();
+            $(".chatear").click(function(){
+                u= $(this).parent().parent().find(".username").text();
 
-                $("#chat").find("ul").find("li").each(function() {
-                    $(this).find("p").text() === u ? $(this).click() : 1;
+                $("#chat").find("ul").find("li").each(function(){
+                    $(this).find("p").text() === u? $(this).click(): 1;
                 });
 
                 !!Antheater? (function(){closeModal(); ý.remove(); })(): 1; 
             })
-            var $id = $(ui.tooltip).attr('id');
+            var $id= $(ui.tooltip).attr('id');
 
             $('div.ui-tooltip').not('#' + $id).remove();
         }, 
         close: function(event, ui) 
-        { 
+       { 
             ui.tooltip.hover(function() 
-            { 
+           { 
                 $(this).stop(true).fadeTo(400, 1);  
             }, 
             function() 
-            { 
+           { 
                 $(this).fadeOut('400', function() 
-                { 
+               { 
                     $(this).remove(); 
                 }); 
             }); 
-        } 
+        }
     }); 
 }
 /*10101111*/ //Guión Alto 
