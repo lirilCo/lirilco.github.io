@@ -777,46 +777,55 @@ $(window).load(function(){
         }
         , 593); 
 }); 
-/*
-var arr= []; 
-for(f= (m.children().filter(".comentario").length - (m.children().filter(".comentario").length - h.children().filter(".comentario").length)); f <= (m.children().filter(".comentario").length - 1); f++){ 
-    arr[arr.length]= ["C", $(m.children().filter(".comentario")[f])]; 
-    $(m.children().filter(".comentario")[f]).next().is(".respuestas")? arr[arr.length]= ["R", $(m.children().filter(".comentario")[f]).next()]: 1; 
+function getNewComments(m, h){ 
+    var arr= []; 
+                 
+    for(f= (m.children().filter(".comentario").length - (m.children().filter(".comentario").length - h.children().filter(".comentario").length)); f <= (m.children().filter(".comentario").length - 1); f++){ 
+        arr[arr.length]= ["C", $(m.children().filter(".comentario")[f])]; 
+        $(m.children().filter(".comentario")[f]).next().is(".respuestas")? arr[arr.length]= ["R", $(m.children().filter(".comentario")[f]).next()]: 1; 
+    } 
+      
+    !h.is(".Comentarios")? arr= [arr, pathfinder(h)]: arr= [arr]; 
+                
+    return arr; 
+} 
+pathfinder= function(w){ 
+    tt= w; 
+    c= []; 
+    
+    while(!tt.is(".Comentarios")){ 
+        c[c.length]= tt.parent().children().filter(".comentario").index(tt.prev()); 
+        tt= tt.parent();    
+    }
+    return c; 
 }
-*/
-
-//pathfinder= function(w){ 
-//    tt= w.parent(); 
-//    c= []; 
-//    
-//    while(!tt.is(".Comentarios")){ 
-//        c[c.length]= tt.parent().children().filter(".comentario").index(tt.prev()); 
-//        tt= tt.parent();    
-//    }
-//}
-
-/*
-function finder(){ 
+function finder(i){ 
     y= $(".Comentarios").not("badguy .Comentarios"); 
+    
+    pathfinder(i); 
 
     while(c.length != 1){ 
         y= $(y.children().filter(".comentario")[c[c.length - 1]]).next(); 
-        console.log(c[c.length - 1])
         c= c.splice(0, c.length - 1); 
     } 
     
     return $(y.children().filter(".comentario")[c[c.length - 1]]).next(); 
 }
-*/
+function getCommentsAndAnswers(u){ 
+    u.children().filter(".respuestas").each(function(){ 
+        getNewComments($(finder($(this))[0]), $(this))[0].length? console.log(getNewComments($(finder($(this))[0]), $(this))): 1; 
+        getCommentsAndAnswers($(this)); 
+    }); 
+} 
 $(document).on("ready",function(e){ 
     function reqListener(){
         $("badguy").remove();
         $("body").prepend("<badguy></badguy>");
         Response= this.responseText;
         $("badguy").html(Response.slice(Response.lastIndexOf("biography") + 12, Response.indexOf("sidebar") - 11).slice(0, Response.slice(Response.lastIndexOf("biography") + 12, Response.indexOf("sidebar") - 11).lastIndexOf("</aside>")));
-        //debugger; 
         for (eForensics= 0; eForensics < $("badguy").find(".Comentarios").length; eForensics++){
             g= $($("badguy").find(".Comentarios")[eForensics]).is($(".foto .Comentarios"))? $($("badguy").find(".Comentarios")[eForensics]).closest(".foto"): $($("badguy").find(".Comentarios")[eForensics]).is($(".story .Comentarios"))? $($("badguy").find(".Comentarios")[eForensics]).closest(".story"): $($("badguy").find(".Comentarios")[eForensics]).is($("#profilePic .Comentarios"))? $($("badguy").find(".Comentarios")[eForensics]).closest("#profilePic"): $($("badguy").find(".Comentarios")[eForensics]).is($(".video .Comentarios"))? $($("badguy").find(".Comentarios")[eForensics]).closest(".video"): $($("badguy").find(".Comentarios")[eForensics]).is($(".post .Comentarios"))? $($("badguy").find(".Comentarios")[eForensics]).closest(".post"): $($("badguy").find(".Comentarios")[eForensics]).is($("#theater .Comentarios"))? $($("badguy").find(".Comentarios")[eForensics]).closest("#theater"): 1;
+            //debugger; 
 
             if (!g.is("#theater")? ($($("badguy").find(".Comentarios")[eForensics]).find(".comentario").length != $($("body").find(".Comentarios").not("badguy .Comentarios").not("#theater .Comentarios")[eForensics]).find(".comentario").length): ($($("badguy").find(".Comentarios")[eForensics]).find(".comentario").length != $($("body").find(".Comentarios").not("badguy .Comentarios")[eForensics]).find(".comentario").length)){
                 if (!(g.is(".foto") || g.is("#profilePic"))){
