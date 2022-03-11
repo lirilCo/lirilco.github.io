@@ -1,6 +1,264 @@
 closeModal= function(){1}; 
 
-                           
+function getNewComments(m, h){ 
+    var arr= []; 
+                 
+    for(f= (m.children().filter(".comentario").length - (m.children().filter(".comentario").length - h.children().filter(".comentario").length)); f <= (m.children().filter(".comentario").length - 1); f++){ 
+        arr[arr.length]= ["C", $(m.children().filter(".comentario")[f])[0].outerHTML]; 
+        $(m.children().filter(".comentario")[f]).next().is(".respuestas")? arr[arr.length]= ["R", $(m.children().filter(".comentario")[f]).next()[0].outerHTML]: 1; 
+    } 
+      
+    arr= !h.is(".Comentarios")? [arr, pathfinder(h)]: [arr]; 
+                
+    return arr; 
+} 
+pathfinder= function(w){ 
+    tt= w; 
+    c= []; 
+    
+    while(!tt.is(".Comentarios")){ 
+        c[c.length]= tt.parent().children().filter(".comentario").index(tt.prev()); 
+        tt= tt.parent();    
+    }
+    return c; 
+}
+function finder(i, n){ 
+    y= n.find(".Comentarios"); 
+    
+    typeof i.is == "undefined"? (function(){c= i})(): pathfinder(i); 
+
+    while(c.length > 1){ 
+        y= $(y.children().filter(".comentario")[c[c.length - 1]]).next(); 
+        c= c.splice(0, c.length - 1); 
+    } 
+    
+    return $(y.children().filter(".comentario")[c[c.length - 1]]).next(); 
+}
+function getCommentsAndAnswers(u, l){ 
+    $(u).filter(".Comentarios").children().filter(".comentario").each(function(){ 
+        if(!$(this).next().is(".respuestas") && $(l.find(".Comentarios").children().filter(".comentario")[$(this).parent().children().filter(".comentario").index($(this))]).next().is(".respuestas")){ 
+            $(l.find(".Comentarios").children().filter(".comentario")[$(this).parent().children().filter(".comentario").index($(this))]).next().find(".Respuestas").remove(); 
+            newAnswers[newAnswers.length]= [$(this).parent().children().filter(".comentario").index($(this)), $(l.find(".Comentarios").children().filter(".comentario")[$(this).parent().children().filter(".comentario").index($(this))]).next().html()]; 
+        }; 
+    }); 
+    u.children().filter(".respuestas").each(function(){ 
+        $(this).children().filter(".comentario").each(function(){ 
+            if(!$(this).next().is(".respuestas") && $($(finder($(this).parent(), l)[0]).children().filter(".comentario")[$(this).parent().children().filter(".comentario").index($(this))]).next().is(".respuestas")){
+                $($(finder($(this).parent(), l)[0]).children().filter(".comentario")[$(this).parent().children().filter(".comentario").index($(this))]).next().find(".Respuestas").remove(); 
+                newAnswers[newAnswers.length]= [pathfinder($(this).parent()), $(this).parent().children().filter(".comentario").index($(this)), $($(finder($(this).parent(), l)[0]).children().filter(".comentario")[$(this).parent().children().filter(".comentario").index($(this))]).next().html()]; 
+            }; 
+        }); 
+        getNewComments($(finder($(this), l)[0]), $(this))[0].length? newComments[newComments.length]= getNewComments($(finder($(this), l)[0]), $(this)): 1; 
+        getCommentsAndAnswers($(this), l); 
+    }); 
+} 
+
+k200= function(f, ww1, a, u, ty){ 
+switch(ty){ 
+    case "static": 
+        a= $("#theater"); 
+    break; 
+}; 
+
+
+console.log(a)
+    aS= a; 
+    $("badguy").remove();
+    $("body").prepend("<badguy></badguy>");
+    $("badguy").html(f.target.response.slice(f.target.response.lastIndexOf("biography") + 12, f.target.response.indexOf("sidebar") - 11).slice(0, f.target.response.slice(f.target.response.lastIndexOf("biography") + 12, f.target.response.indexOf("sidebar") - 11).lastIndexOf("</aside>")));
+    newComments= []; 
+    newAnswers= []; 
+    $("badguy .Comentarios").children().filter(".comentario").each(function(){ 
+    if(!$(this).next().is(".respuestas") && $($(finder($(this).parent(), a)[0]).children().filter(".comentario")[$(this).parent().children().filter(".comentario").index($(this))]).next().is(".respuestas")){ 
+        newAnswers[newAnswers.length]= [pathfinder($(this).parent()), $(this).parent().children().filter(".comentario").index($(this))]; 
+    }; 
+}); 
+newComments[newComments.length]= getNewComments(aS.find(".Comentarios"), $("badguy .Comentarios")); 
+getCommentsAndAnswers($("badguy .Comentarios"), a);
+
+JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).B? a.find(".options .bookmark").addClass("true"): a.find(".options .bookmark").removeClass("true");
+JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).S? a.find(".options .star").addClass("true"): a.find(".options .star").removeClass("true");
+!!JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).C? (function(){a.find(".Comentarios")[0].innerHTML= JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).C})(): 1;
+for(w in newComments){ 
+    if(newComments[w].length == 1){
+        for(e in newComments[w][0]){
+            a.find(".Comentarios").append(newComments[w][0][e][1]); 
+        }
+    }else{
+        for(e in newComments[w][0]){
+            finder(newComments[w][1], a).append(newComments[w][0][e][1]); 
+        }
+    }
+} 
+for(w in newAnswers){ 
+    if(newAnswers[w].length == 2){
+        if($(a.find(".Comentarios").children().filter(".comentario")[newAnswers[w][0]]).next().is(".respuestas")){ 
+            $(a.find(".Comentarios").children().filter(".comentario")[newAnswers[w][0]]).next().find(".Respuestas").before(newAnswers[w][1]); 
+        }else{ 
+            $(a.find(".Comentarios").children().filter(".comentario")[newAnswers[w][0]]).after('<div class="respuestas">' + newAnswers[w][1] + '<span class="Respuestas"></span></div>')
+        } 
+    }else{ 
+        if($(finder(newAnswers[w][0], a).children().filter(".comentario")[newAnswers[w][1]]).next().is(".respuestas")){ 
+            $(finder(newAnswers[w][0], a).children().filter(".comentario")[newAnswers[w][1]]).next().find(".Respuestas").before(newAnswers[w][2]); 
+        }else{ 
+            $(finder(newAnswers[w][0], a).children().filter(".comentario")[newAnswers[w][1]]).after('<div class="respuestas hidden">' + newAnswers[w][2] + '<span class="Respuestas"></span></div>');
+        } 
+    } 
+} 
+console.log(u[0])
+
+localStorage.setItem(f.target.responseURL.slice(100, -5), JSON.stringify({B: JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).B, S: JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).S, C: JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).C, hash: u[0].sha}))
+$("badguy").remove();
+$('.theater .comments .comentarios .Comentarios .comentario').on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth= elx.outerWidth( true ),circleHeight = elx.outerHeight( true ),circleLeft   = elx.offset().left,circleTop    = elx.offset().top,circlePos    ={x    : circleLeft + circleWidth / 2,y    : circleTop + circleHeight / 2,radius: circleWidth / 2};distance   = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); 
+
+    $("#theater .Respuestas").html(function(){return '<span class="Responder"></span>' + "Respuestas (" + $(this).parent().children().filter(".comentario.hidden").length + ")"}); 
+                                       
+    $("#theater .Respuestas").click(function(l){wd($(this), l)}); 
+
+    for(let collapse of document.querySelectorAll("#theater .Respuestas .Responder")){ 
+        collapse.addEventListener("contextmenu", function(e){ 
+            e.preventDefault(); 
+            wwd(this); 
+        })
+    }; 
+
+    $("#theater .RespueNtas").click(function(i){ 
+        if($(i.target).is(".RespueNtas")){ 
+            for(j= 0; j <= 2; j++){ 
+                $(this).before(H); 
+
+                $(this).prev().on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth= elx.outerWidth( true ),circleHeight = elx.outerHeight( true ),circleLeft   = elx.offset().left,circleTop    = elx.offset().top,circlePos    ={x    : circleLeft + circleWidth / 2,y    : circleTop + circleHeight / 2,radius: circleWidth / 2};distance   = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); 
+                                   
+                $(".knob").knob(); 
+                                   
+                tooltipComentarios(); 
+                    
+                H != can493ax? H= can493ax: H= asdknki4; 
+            }
+
+            $(this).html('<span class="Responder"></span>Más respuestas (∞)'); 
+
+            for(let collapse of document.querySelectorAll("#theater .RespueNtas .Responder")){ 
+                collapse.addEventListener("contextmenu", function(e){ 
+                    e.preventDefault(); 
+
+                    $(this.parentElement.parentElement).find(".comentario").remove(); 
+                                
+                    H= asdknki4; 
+
+                    $("#theater .RespueNtas").html('<span class="Responder"></span>Respuestas (∞)'); 
+                }) 
+            }; 
+        }
+    }); 
+
+    tooltip(); 
+
+    $(".comentario .Responder").on("click", function(){wD($(this))}); 
+
+    $(".Respuestas .Responder").on("click", function(){wD($(this), 1)}); 
+
+    $(".knob").knob(); 
+
+    tooltipComentarios(); 
+
+    audiojs.createAll(); 
+}
+k300= function(C, p, y, ty){ 
+    if(JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))).hash != JSON.parse(C.target.response)[0].sha){
+        var oReq= new XMLHttpRequest(); 
+        oReq.addEventListener("load", function(e){k200(e, p, y, JSON.parse(C.target.response), ty)}); 
+        oReq.open("GET", "https://raw.githubusercontent.com/LirilCo/Lirilco.github.io/" + JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))).hash + C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")) + ".html"); 
+        oReq.send(); 
+    }else{
+        switch(ty){
+            case "foto": 
+                $(".foto").each(function(){ 
+                    if(("/" + username + "/img" + ($(this).is(".mult_img")? un_tn($(this).find(".carr img")[0].src): un_tn($(this).find(".pic")[0].src)).slice(($(this).is(".mult_img")? un_tn($(this).find(".carr img")[0].src): un_tn($(this).find(".pic")[0].src)).lastIndexOf("/"), ($(this).is(".mult_img")? un_tn($(this).find(".carr img")[0].src): un_tn($(this).find(".pic")[0].src)).lastIndexOf("."))) == C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf("."))){
+                        a= $(this); 
+                    }
+                })
+            break; 
+            case "story": 
+                $(".story").each(function(){ 
+                    if(($(this).is(".mult_img")? $(this).find(".options a").attr("href").slice(0, $(this).find(".options a").attr("href").lastIndexOf("/")) + $(this).find(".carr").find("img")[0].src.slice($(this).find(".carr").find("img")[0].src.lastIndexOf("/"), $(this).find(".carr").find("img")[0].src.lastIndexOf(".")): $(this).find(".options a").attr("href")) == C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf("."))){
+                        a= $(this);
+                    }
+                }); 
+            break; 
+            case "profilePic": 
+                $("#profilePic").each(function(){ 
+                    if(("/" + username + "/img" + ($("#profilePic").is(".mult_img")? un_tn($("#profilePic").find(".carr img")[0].src): un_tn($("#profilePic > img")[0].src)).slice(($("#profilePic").is(".mult_img")? un_tn($("#profilePic").find(".carr img")[0].src): un_tn($("#profilePic > img")[0].src)).lastIndexOf("/"), ($("#profilePic").is(".mult_img")? un_tn($("#profilePic").find(".carr img")[0].src): un_tn($("#profilePic > img")[0].src)).lastIndexOf(".")))
+ == C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf("."))){
+                        a= $(this);
+                    }
+                }); 
+            break; 
+            case "static": 
+                a= $("#theater"); 
+            break; 
+        }; 
+        JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))).B? a.find(".options .bookmark").addClass("true"): a.find(".options .bookmark").removeClass("true"); 
+        JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))).S? a.find(".options .star").addClass("true"): a.find(".options .star").removeClass("true"); 
+        !!JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))).C? (function(){a.find(".Comentarios")[0].innerHTML= JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))).C})(): 1; 
+
+        $('.theater .comments .comentarios .Comentarios .comentario').on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth= elx.outerWidth( true ),circleHeight = elx.outerHeight( true ),circleLeft   = elx.offset().left,circleTop    = elx.offset().top,circlePos    ={x    : circleLeft + circleWidth / 2,y    : circleTop + circleHeight / 2,radius: circleWidth / 2};distance   = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); 
+
+        $("#theater .Respuestas").html(function(){return '<span class="Responder"></span>' + "Respuestas (" + $(this).parent().children().filter(".comentario.hidden").length + ")"}); 
+                                           
+        $("#theater .Respuestas").click(function(l){wd($(this), l)}); 
+
+        for(let collapse of document.querySelectorAll("#theater .Respuestas .Responder")){ 
+            collapse.addEventListener("contextmenu", function(e){ 
+                e.preventDefault(); 
+                wwd(this); 
+            }) 
+        }; 
+
+        $("#theater .RespueNtas").click(function(i){ 
+            if($(i.target).is(".RespueNtas")){ 
+                for(j= 0; j <= 2; j++){ 
+                    $(this).before(H); 
+
+                    $(this).prev().on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth= elx.outerWidth( true ),circleHeight = elx.outerHeight( true ),circleLeft   = elx.offset().left,circleTop    = elx.offset().top,circlePos    ={x    : circleLeft + circleWidth / 2,y    : circleTop + circleHeight / 2,radius: circleWidth / 2};distance   = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); 
+                                       
+                    $(".knob").knob(); 
+                                       
+                    tooltipComentarios(); 
+                        
+                    H != can493ax? H= can493ax: H= asdknki4; 
+                } 
+
+                $(this).html('<span class="Responder"></span>Más respuestas (∞)'); 
+
+                for(let collapse of document.querySelectorAll("#theater .RespueNtas .Responder")){ 
+                    collapse.addEventListener("contextmenu", function(e){ 
+                        e.preventDefault(); 
+
+                        $(this.parentElement.parentElement).find(".comentario").remove(); 
+                                    
+                        H= asdknki4; 
+
+                        $("#theater .RespueNtas").html('<span class="Responder"></span>Respuestas (∞)'); 
+                    }) 
+                }; 
+            } 
+        }); 
+
+        tooltip(); 
+
+        $(".comentario .Responder").on("click", function(){wD($(this))}); 
+
+        $(".Respuestas .Responder").on("click", function(){wD($(this), 1)}); 
+
+        $(".knob").knob(); 
+
+        tooltipComentarios(); 
+
+        audiojs.createAll(); 
+    }
+} 
+
 document.addEventListener("keydown",function(evt){ 
     aaa= $("#theater"); 
 
@@ -27,6 +285,24 @@ document.addEventListener("keydown",function(evt){
 document.addEventListener("DOMContentLoaded", function(){
     Antheater= $("#theater"); 
     
+    $("#theater").each(function(){ 
+        if(!!$(this).find(".carr").length){
+            w1=  "/" + username + "/img" + un_tn($(this).find(".carr img")[0].src).slice(un_tn($(this).find(".carr img")[0].src).lastIndexOf("/"), un_tn($(this).find(".carr img")[0].src).lastIndexOf(".")); 
+            console.log(w1) 
+        }else{
+            w1= window.location.pathname
+        }
+        cold= JSON.parse(localStorage.getItem(w1)); 
+        t= $(this); 
+        (!!cold && (cold.hash))? (function(){ 
+            var oReq= new XMLHttpRequest(); 
+            oReq.addEventListener("load", function(e){k300(e, w1, t, "static")}); 
+            oReq.open("GET", "https://api.github.com/repos/LirilCo/lirilco.github.io/commits?path=" +  w1 + ".html"); 
+            oReq.setRequestHeader('Authorization', "token " + localStorage.getItem("token")); 
+            oReq.send(); 
+        })(): 1; 
+    }); 
+
     $(".nav_arrow.left .arrow").click(function(){ 
         (!$(aaa.find(".carr")).is(":animated") && !$(this).parent().is(".disabled"))? $(aaa.find(".carr")).animate({scrollLeft: aaa.find(".carr")[0].scrollLeft - $(aaa.find(".carr")).width()}, 400, function(){
                     a$= $(aaa.find(".carr")).find(".pic")[Math.round(aaa.find(".carr")[0].scrollLeft / $(aaa.find(".carr")).width())].src; 

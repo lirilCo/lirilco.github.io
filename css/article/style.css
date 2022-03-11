@@ -1360,6 +1360,8 @@ a:hover
     padding: 4px 4px 4px 4px; 
     position: relative; 
     cursor: pointer; 
+    object-fit: cover;
+    width: 20p;
 } 
 .comentarios .Comentarios .comentario .is{ 
     color: black; 

@@ -32,6 +32,29 @@
     width: 100%; 
     padding-right: 340px; 
     box-sizing: border-box; 
+
+} 
+#theater #picContainer > video
+{
+    display: none; 
+} 
+#theater #picContainer .embed 
+{ 
+    height: 100%; 
+    width: 100%; 
+} 
+#theater #picContainer text 
+{ 
+    padding: 0 10px; 
+    display: block; 
+} 
+#theater #picContainer .embed > iframe
+{ 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
 } 
 #theater #bigPic
 {
@@ -40,7 +63,104 @@
     object-fit: contain;
     margin: auto ;
 }
-
+#theater #bigPic.invisible
+{
+    display: none; 
+}
+#theater #otherContainments 
+{ 
+    display: none; 
+    height: 100%; 
+    width: 100%; 
+    overflow-x: hidden; 
+    position: relative; 
+} 
+#theater #otherContainments.overflowing::before{ 
+    content: ""; 
+    width: 4px; 
+    position: absolute; 
+    right: 0; 
+    height: 17px; 
+    z-index: 222; 
+    background: white; 
+} 
+#theater #otherContainments.overflowing::after{ 
+    content: ""; 
+    width: 4px; 
+    position: absolute; 
+    right: 0; 
+    height: 17px; 
+    z-index: 222; 
+    background: white; 
+    bottom: 0; 
+} 
+#theater #otherContainments > div 
+{ 
+    height: 100%; 
+    overflow-y: auto; 
+    width: 100%; 
+    padding-right: 12px; 
+} 
+#theater #otherContainments.visible 
+{ 
+    display: block; 
+} 
+#theater #picContainer > div:nth-child(3)
+{
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
+    margin: auto ;
+    box-sizing: border-box;
+    display: none; 
+}
+#theater #picContainer > div video
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-height: unset; 
+    height: 100%;
+    box-sizing: border-box;
+    padding-bottom: 45px;
+}
+#theater #picContainer .vjs-control-bar
+{
+    bottom: 0 !important; 
+}
+section.video section.video .Enlarge {
+    top: 23px; 
+}
+section.video section.video:hover .Enlarge {
+    display: block;
+}
+.vid
+{
+    display: none; 
+}
+#theater .Playuse
+{
+    display: none; 
+}
+#theater #picContainer > div.visible, #theater .Playuse.visible
+{
+    display: block; 
+}
+.d88fer .vjs-progress-holder {
+    position: absolute !important;
+    z-index: 1 !important;
+}
+.vjs-time-divider div span, .vjs-default-skin .vjs-current-time div, .vjs-default-skin .vjs-duration div {
+    color: #aaa;
+    font-size: 11px;
+}
+.vjs-volume-level {
+    background: #2ecc71 !important;
+}
+.vjs-volume-bar.vjs-slider {
+    background: #fff !important;
+}
 #theater .info p
 {
     
@@ -488,10 +608,10 @@ display: inline-block;
     color: #2ecc71; 
     font-family: "Open Sans"; 
 } 
-.photo .info, .photo .title, .photo #picture, .photo .options
-{
-    display: none; 
+.photo .info, .photo .title, .photo #picture, .photo .options, .vid .info, .vid p.title, .vid .options, .vid .bigPic, .vid video, .vid .video, .vid .Comentarios {
+    display: none;
 }
+
 .photo 
 { 
     display: inline-block; 
@@ -830,6 +950,8 @@ a:hover
     z-index: 2; 
     position: relative; 
     cursor: pointer; 
+    object-fit: cover;
+    width: 20px;
 } 
 #theater .comentarios .Comentarios .comentario .is{ 
     color: black; 
@@ -907,9 +1029,10 @@ a:hover
 .moreI{ 
     display: none; 
 } 
-.photo.mult_img{ 
+.photo.mult_img, .poster{ 
     width: 220px; 
     height: 220px; 
+    object-fit: cover; 
  } 
 .info  .time {
     color: #aaa;

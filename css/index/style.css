@@ -1597,6 +1597,8 @@ display: inline-block;
     z-index: 2; 
     position: relative; 
     cursor: pointer; 
+    object-fit: cover;
+    width: 20px;
 } 
 #theater .comentarios .Comentarios .comentario .is{ 
     color: black; 

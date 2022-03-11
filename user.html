@@ -128,13 +128,13 @@
     <aside id="biography">
         <section id="content">
             <section id="cover">
-                <div title="Proyecto Completado (eBay)" class="line" style="top: 50%;"></div>
-                <div title="Curso completado (javascript)" class="line" style="top: 20%;"></div>
-                <div title="Nivel avanzado (a moderador)" class="line" style="top: 60%;"></div>
-                <figure id="profilePic">
+                <div title="Hum " class="line" style="top: 50%;"></div>
+                <div title="Hum " class="line" style="top: 20%;"></div>
+                <div title="Hum " class="line" style="top: 60%;"></div>
+                <figure ondragstart= "return false" id="profilePic">
                     <img src="/resources/images/white.jpg" alt="">
                     <input class="knob button" data-width="195" data-height="195" data-fgColor="#2ecc71" data-bgColor="rgba(0,0,0,0)" data-displayInput=false data-thickness=".06" readonly value="60">
-                    <figcaption>Walter White</figcaption>
+                    <figcaption contenteditable= "true">Walter White</figcaption>
                     <section class="hidden">
                         <div class="info">
                             <img src="/resources/images/white.jpg" alt="">
@@ -156,7 +156,7 @@
                         </div>
                     </section>
                 </figure>
-                <p id="rol">Moderador <b>+60</b></p>
+                <p contenteditable= "true" id="rol">Moderador <b>+60</b></p>
             </section>
             <section id="options">
                 <ul>
@@ -1133,23 +1133,102 @@
 
         });
     </script>
+    <style class="cursor">
+        
+    </style>
+    <style type="text/css">
+        #biography #content #cover #profilePic > div 
+        { 
+            pointer-events: none !important; 
+        } 
+        #biography #content #cover #profilePic > img 
+        { 
+            height: 206px; 
+            width: 206px; 
+            box-sizing: border-box; 
+            object-fit: cover; 
+            cursor: copy; 
+        } 
+        #biography #content #cover #profilePic figcaption
+        {
+            bottom: 0; 
+            cursor: text; 
+        }
+    </style>
     <script>
+        openProfilePicModal= function(){1}; 
+        $(function(){
         $("#resizeBottom").resizable({ handles: "n", maxHeight: ($(window).height() - $("#sidebar #search").outerHeight() - 51), minHeight: 50 }).bind("resize", function(e, ui) {
             $(this).css("top", "auto");
 
         });
+            $("#profilePic > img").on("contextmenu", function(e){e.preventDefault(); $(this)[0].src= prompt('Pega Aquí La Url De La Foto\nQue Quieres Usar Como Foto\nDe Perfil \n\nDale Click Derecho A Una Imagen Que Veas En Internet Y Luego "Copiar Dirección De La Imagen":\n\n')})
+            var Agarrando= false; 
+            $("#profilePic > img")[0].addEventListener("mousedown", function(e){ 
+                $(".cursor").html("*{cursor: grab !important};"); 
+                setTimeout(function(){ 
+                    $(".cursor").html("*{cursor: grabbing !important};"); 
+                    Agarrando= true; 
+                }, 156); 
+            }); 
+            $("body")[0].addEventListener("mouseup", function(e){ 
+                $(".cursor").html() == "*{cursor: grabbing !important};"? $(".cursor").html("*{cursor: grab !important};"): 1; 
+                setTimeout(function(){ 
+                    $(".cursor").html(""); 
+                    Agarrando= false; 
+                }, 156); 
+            }); 
+            updateUser= function(){ 
+                Insignias= ""
+                $(".line").each(function(){ 
+                    Insignias += ('<div class="insignia" title="' + $(this).attr("title") + '" style="top: ' + (42 * parseInt($(this).css("top").slice(0, -2)) / 207) + 'px; "></div>'); 
+                }) 
+                localStorage.setItem("knob", "<input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='" + $("#rol").find("b").text().slice(1) + "'><img title="); 
 
-        $(".line").tooltip({
-            track: true,
-            position: {
-                my: "center bottom-6",
-                at: "center top"
+                localStorage.setItem("tooltip", "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='" + $("#rol").find("b").text().slice(1) + "'>" + $("#profilePic img")[0].outerHTML.replaceAll('\"', "'").replaceAll("pointer-events: none; ", "object-fit: cover; ").replaceAll("pointer-events: all; ", "object-fit: cover; ") + "<div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= '" + $("#profilePic figcaption").text() + "'>" + $("#profilePic figcaption").text() + "</p><p class='rol'>" + $("#rol").text().slice(0, - $("#rol").find("b").text().length - 1) + " <b style='color:#fff;'>" + $("#rol").find("b").text() + "</b></p></div>" + Insignias.replaceAll('\"', "'") + "</div>"); 
+
+                localStorage.setItem("user", " src='" + $($("#profilePic img")[0]).attr("src") + "' style= '" + "object-fit: cover; " + $($("#profilePic img")[0]).attr("style").replaceAll("pointer-events: none; ", "").replaceAll("pointer-events: all; ", "") + "' alt=''>&nbsp<a target= '_blank'  href='/user' >" + $("#profilePic figcaption").text() + "</a><span class='is'>: </span><span class='Comentario'>"); 
+            } 
+
+            $("#profilePic figcaption").on("input", function(){ 
+                $("title").html($(this).text() + " | liril"); 
+                updateUser(); 
+            }); 
+
+            $("#rol").on("input", function(){ 
+                parseInt($(this).find("b").text().slice(1)) > 100? (function(){$("#rol b").text("+100"); document.activeElement.blur(); })(): 1; $('.knob').val($(this).find("b").text().slice(1)).change(); 
+
+                updateUser(); 
+            }); 
+            $("#profilePic > img").on("load", function(){$("#profilePic > img")[0].style.objectPosition= ("50% 50%"); })
+            $("body")[0].addEventListener("mousemove", function(e){if(Agarrando){
+                $($("#profilePic > img")[0]).css({"objectPosition": $("#profilePic > img")[0].naturalHeight > $("#profilePic > img")[0].naturalWidth? ("0px " + -$($("#profilePic > img")[0]).css("objectPosition").slice($($("#profilePic > img")[0]).css("objectPosition").indexOf(" ") + 1, -1) / 100 * (170 / $("#profilePic img")[0].naturalWidth * $("#profilePic img")[0].naturalHeight - 170) + "px"): (-$($("#profilePic > img")[0]).css("objectPosition").slice(0, $($("#profilePic > img")[0]).css("objectPosition").indexOf(" ") - 1) / 100 * (170 / $("#profilePic > img")[0].naturalHeight * $("#profilePic > img")[0].naturalWidth - 170) + "px 0px")});
+                $("#profilePic > img")[0].style.objectPosition= $("#profilePic > img")[0].naturalHeight > $("#profilePic > img")[0].naturalWidth? ("0px " + (((parseInt($("#profilePic img").css("objectPosition").slice($("#profilePic img").css("objectPosition").lastIndexOf(" ") + 1, -2)) + e.movementY) > -(170 / $("#profilePic img")[0].naturalWidth * $("#profilePic img")[0].naturalHeight - 170)? (parseInt($("#profilePic img").css("objectPosition").slice($("#profilePic img").css("objectPosition").lastIndexOf(" ") + 1, -2)) + e.movementY): -(170 / $("#profilePic img")[0].naturalWidth * $("#profilePic img")[0].naturalHeight - 170)) < 0? ((parseInt($("#profilePic img").css("objectPosition").slice($("#profilePic img").css("objectPosition").lastIndexOf(" ") + 1, -2)) + e.movementY) > -(170 / $("#profilePic img")[0].naturalWidth * $("#profilePic img")[0].naturalHeight - 170)? (parseInt($("#profilePic img").css("objectPosition").slice($("#profilePic img").css("objectPosition").lastIndexOf(" ") + 1, -2)) + e.movementY): -(170 / $("#profilePic img")[0].naturalWidth * $("#profilePic img")[0].naturalHeight - 170)): 0) + "px"): ((((parseInt($("#profilePic img").css("objectPosition").slice(0, $("#profilePic img").css("objectPosition").lastIndexOf(" ") - 2)) + e.movementX) > -(170 / $("#profilePic > img")[0].naturalHeight * $("#profilePic > img")[0].naturalWidth - 170)? (parseInt($("#profilePic img").css("objectPosition").slice(0, $("#profilePic img").css("objectPosition").lastIndexOf(" ") - 2)) + e.movementX): -(170 / $("#profilePic > img")[0].naturalHeight * $("#profilePic > img")[0].naturalWidth - 170)) < 0? ((parseInt($("#profilePic img").css("objectPosition").slice(0, $("#profilePic img").css("objectPosition").lastIndexOf(" ") - 2)) + e.movementX) > -(170 / $("#profilePic > img")[0].naturalHeight * $("#profilePic > img")[0].naturalWidth - 170)? (parseInt($("#profilePic img").css("objectPosition").slice(0, $("#profilePic img").css("objectPosition").lastIndexOf(" ") - 2)) + e.movementX): -(170 / $("#profilePic > img")[0].naturalHeight * $("#profilePic > img")[0].naturalWidth - 170)): 0) + "px 0px"); 
+                $($("#profilePic > img")[0]).css({"objectPosition": ($("#profilePic > img")[0].naturalHeight > $("#profilePic > img")[0].naturalWidth? ("0% " + -(100 * parseInt($($("#profilePic > img")[0]).css("objectPosition").slice($($("#profilePic > img")[0]).css("objectPosition").indexOf(" ") + 1, -2)) / (170 / $("#profilePic img")[0].naturalWidth * $("#profilePic img")[0].naturalHeight - 170)) + "%"): -(100 * parseInt($($("#profilePic > img")[0]).css("objectPosition").slice(0, $($("#profilePic > img")[0]).css("objectPosition").indexOf(" ") - 2)) / (170 / $("#profilePic > img")[0].naturalHeight * $("#profilePic > img")[0].naturalWidth - 170)) + "% 0%")});
+                updateUser(); 
+            }})
+        }
+            
+        )
+        $(".story .info").height($(this).find(".username").outerHeight()); 
+        $(".line").on("mouseup", function(){
+            if(!$(".ui-draggable-dragging").length){
+                $(this).tooltip("option", "content", "<input placeholder= 'Insignia'>"); 
+                $(".ui-tooltip input").on("keydown", function(e){
+                    if(e.keyCode == 13){
+                        $('.line').filter(function(){return $(this).attr('aria-describedby')}).attr("title", $(".ui-tooltip input").val())
+                        $('.line').filter(function(){return $(this).attr('aria-describedby')}).tooltip("option", "content", $(".ui-tooltip input").val()); 
+                        updateUser(); 
+                    }
+                })
+                $(".ui-tooltip input").focus(); 
             }
-        });
+        })
+        $(".line").draggable({axis: "y", drag: function(){$(".cursor").html("*{cursor: grabbing !important};"); updateUser(); }, stop: function(){$(".cursor").html("*{cursor: grab !important};"); setTimeout(function(){$(".cursor").html(""); }, 156); }}); 
     </script>
     <script>
-        $(".story .info").height($(this).find(".username").outerHeight())
     </script>
 </body>
 
 </html>
+<!--$($("figure > div")[0]).prepend('<input type="file" style="position: absolute;width: 195px;height: 195px;top: 0;left: 0;cursor: copy;opacity: 0.1;/*! display: ; *//*! margin: -18px; */">')-->
