@@ -889,17 +889,17 @@ badGuy= function(){
 purger= {}; 
 
 purger.purge= function(a){ 
-    if(localStorage.getItem("Purged") === null || (typeof a != "undefined" && a == "bypass")){ 
-        token= !!localStorage.getItem("token")? localStorage.getItem("token"): "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"; 
+    if(localStorage.getItem("purged") === null || (typeof a != "undefined" && a == "bypass")){ 
         knob= !!localStorage.getItem("knob")? localStorage.getItem("knob"): "<input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title="; 
         tool= !!localStorage.getItem("tooltip")? localStorage.getItem("tooltip"): "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>"; 
         user= !!localStorage.getItem("user")? localStorage.getItem("user"): " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>"; 
         localStorage.clear(); 
-        localStorage.setItem("token", token); 
+        localStorage.setItem("token", "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"); 
         localStorage.setItem("knob", knob); 
         localStorage.setItem("tooltip", tool); 
         localStorage.setItem("user", user); 
-        localStorage.setItem("Purged", true); 
+        localStorage.removeItem("Purged"); 
+        localStorage.setItem("purged", true); 
         console.log("Purged!"); 
     }; 
 }; 

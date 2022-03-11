@@ -828,6 +828,8 @@ k300= function(C, p, y, ty){
     }
 } 
 $(document).on("ready", function(){ 
+    purger.purge(); 
+
     $("#theater textarea").on('input', function() { 
         $(this).height(""); 
         !!$(this).val()? $(this).height($(this).prop('scrollHeight') - (parseInt($(this).css("padding-top").slice(0, -2)) + parseInt($(this).css("padding-bottom").slice(0, -2) + parseInt($(this).css("border-top").slice(0, -2)) + parseInt($(this).css("border-bottom").slice(0, -2))))): 1; 
@@ -972,6 +974,8 @@ $(document).on("ready", function(){
 }); 
                         
 function openModal(a) {
+    Antheater= a.closest(".story"); 
+
     $(".zer")[0].innerHTML= ".ui-tooltip{z-index: 4 !important; }; "; 
     $("body")[0].style.overflow= "hidden"; 
     responsive(); 
@@ -1105,6 +1109,8 @@ function openModal(a) {
 
 }
 function openVideoModal(a){ 
+    Antheater= a.closest(".story"); 
+
     th= a.closest(".story"); 
 
     $(".zer")[0].innerHTML= ".ui-tooltip{z-index: 4 !important; }; "; 
@@ -1132,6 +1138,34 @@ function openVideoModal(a){
 
     var more= !!a.closest('.story').find(".moreI").html()? a.closest('.story').find(".moreI").html(): "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sit amet varius lectus, congue rutrum urna. Suspendisse in ultrices enim. In hac habitasse platea dictumst. Praesent aliquet, nisi nec euismod vulputate, odio velit porta erat, ut semper lacus erat ac nulla. Aenean ex libero, volutpat vel sem et, blandit dictum dui. Duis suscipit sed nisi finibus vestibulum. Quisque finibus porttitor nisl, nec consequat metus. Quisque commodo, libero nec volutpat suscipit, quam urna volutpat turpis, quis rhoncus magna dui sit amet lacus. Donec pellentesque aliquam turpis nec commodo. Aliquam lobortis facilisis auctor. Sed libero nisi, scelerisque et porttitor vel, accumsan sed lacus. Pellentesque at tortor pellentesque, vestibulum turpis at, iaculiuisque finibus porttitor nisl, nec consequat metus. Quisque commodo, libero nec volutpat suscipit, quam urna volutpat turpis, quis rhoncus magna dui sit amet lacus. Donec pellentesque aliquam turpis nec commodo. Aliquam lobortis facilisis auctor. Sed libero nisi, scelerisque et porttitor vel, accumsan sed lacus. Pellentesque at tortor pellentesque, vestibulum turpis at, iaculis nibh.";
     $('.theater .comments .more').html(more);
+
+    var comments= a.closest('.story').find(".Comentarios").html();
+    $('.theater .comments .comentarios .Comentarios').html(comments);
+
+    $('.theater .comments .comentarios .Comentarios .comentario').on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth= elx.outerWidth( true ),circleHeight = elx.outerHeight( true ),circleLeft   = elx.offset().left,circleTop    = elx.offset().top,circlePos    ={x    : circleLeft + circleWidth / 2,y    : circleTop + circleHeight / 2,radius: circleWidth / 2};distance   = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); 
+
+    $("#theater .Respuestas").html(function(){return '<span class="Responder"></span>' + "Respuestas (" + $(this).parent().children().filter(".comentario.hidden").length + ")"}); 
+                                       
+    $("#theater .Respuestas").click(function(l){wd($(this), l)}); 
+
+    for(let collapse of document.querySelectorAll("#theater .Respuestas .Responder")){ 
+        collapse.addEventListener("contextmenu", function(e){ 
+            e.preventDefault(); 
+            wwd(this); 
+        })
+    }; 
+
+    $(".comentario .Responder").on("click", function(){wD($(this))}); 
+
+    $(".Respuestas .Responder").on("click", function(){wD($(this), 1)}); 
+
+    $(".knob").knob(); 
+
+    tooltipComentarios(); 
+
+    tooltip(); 
+
+    $("#theater .Comentario audio").each(function(){audiojs.create($(this)[0])}); 
 
     if (a.closest('.story').find(".options .bookmark").hasClass("true")) {
         $('.theater .comments .options .bookmark').addClass("true");
@@ -1322,6 +1356,14 @@ function openOtherModal(a){
     })
 } 
 function closeModal() {
+    $("#theater .Comentarios").find(".Respuestas .Responder").each(function(){wwd($(this)[0], true)}); 
+
+    $("#theater .RespueNtas").parent().find(".comentario").remove(); 
+
+    $("#theater .RespueNtas").html('<span class="Responder"></span>Respuestas (∞)'); 
+
+    Antheater.find(".Comentarios").html($("#theater .Comentarios").html()); 
+
     $("#theater #bigPic")[0].src= ""; 
 
     $("#theater video")[0].src= ""; 
@@ -1338,6 +1380,8 @@ function closeModal() {
 
 
     history.pushState({page: 1}, "", "/"); 
+
+    Antheater= false; 
 
     ar= false; 
     $("#theater").find(".more")[0].outerHTML= "<p class= 'more'></p>"; 
@@ -1992,18 +2036,19 @@ badGuy= function(){
 }
 purger= {}; 
 
+
 purger.purge= function(a){ 
-    if(localStorage.getItem("Purged") === null || (typeof a != "undefined" && a == "bypass")){ 
-        token= !!localStorage.getItem("token")? localStorage.getItem("token"): "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"; 
+    if(localStorage.getItem("purged") === null || (typeof a != "undefined" && a == "bypass")){ 
         knob= !!localStorage.getItem("knob")? localStorage.getItem("knob"): "<input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title="; 
         tool= !!localStorage.getItem("tooltip")? localStorage.getItem("tooltip"): "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>"; 
         user= !!localStorage.getItem("user")? localStorage.getItem("user"): " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>"; 
         localStorage.clear(); 
-        localStorage.setItem("token", token); 
+        localStorage.setItem("token", "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"); 
         localStorage.setItem("knob", knob); 
         localStorage.setItem("tooltip", tool); 
         localStorage.setItem("user", user); 
-        localStorage.setItem("Purged", true); 
+        localStorage.removeItem("Purged"); 
+        localStorage.setItem("purged", true); 
         console.log("Purged!"); 
     }; 
 }; 

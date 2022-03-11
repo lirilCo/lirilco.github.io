@@ -1034,6 +1034,69 @@ a:hover
     height: 220px; 
     object-fit: cover; 
  } 
+ .audiojs .play::after {
+    font-family: "icomoon";
+    content: "\e603";
+    font-size: 40px;
+}
+.audiojs .loading::after {
+    font-family: "icomoon";
+    content: "\e603";
+    font-size: 40px;
+}
+.audiojs .pause::after {
+    font-family: "icomoon";
+    content: "\e602";
+    font-size: 40px;
+}
+.audiojs .scrubber { 
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+    border: none; 
+    cursor: pointer; 
+    background: #ddd; 
+}
+.audiojs .scrubber .progress, .audiojs .scrubber .loaded { 
+    height: 100%; 
+}
+.audiojs .scrubber .progress { 
+    background: #2ecc71 !important; 
+}
+.audiojs .scrubber .loaded { 
+    background: #ccc !important; 
+}
+.audiojs .time { 
+    display: none;  
+}
+.audiojs .play-pause {
+    border-right: none; 
+    margin: 25px 0 0 22px !important; 
+    padding: 0 !important; 
+    width: 40px; 
+    cursor: normal !important; 
+}
+.audiojs p { 
+    cursor: default !important; 
+}
+.media {
+    position: relative; 
+    height: 80px; 
+}
+.media > div {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    box-shadow: none;
+}
+.media > p { 
+    position: absolute;
+    right: 0;
+    font-size: 11.5px;
+    color: #666;
+    bottom: 15px;
+} 
 .info  .time {
     color: #aaa;
     font-size: 14px;
