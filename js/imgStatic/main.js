@@ -1,4 +1,5 @@
 closeModal= function(){1}; 
+var hashes= {}; 
 
 function getNewComments(m, h){ 
     var arr= []; 
@@ -281,10 +282,8 @@ document.addEventListener("keydown",function(evt){
         }
     } 
 })
-
-document.addEventListener("DOMContentLoaded", function(){
-    Antheater= $("#theater"); 
-    
+K0= function(){
+    token= this.responseText; 
     $("#theater").each(function(){ 
         if(!!$(this).find(".carr").length){
             w1=  "/" + username + "/img" + un_tn($(this).find(".carr img")[0].src).slice(un_tn($(this).find(".carr img")[0].src).lastIndexOf("/"), un_tn($(this).find(".carr img")[0].src).lastIndexOf(".")); 
@@ -298,10 +297,18 @@ document.addEventListener("DOMContentLoaded", function(){
             var oReq= new XMLHttpRequest(); 
             oReq.addEventListener("load", function(e){k300(e, w1, t, "static")}); 
             oReq.open("GET", "https://api.github.com/repos/LirilCo/lirilco.github.io/commits?path=" +  w1 + ".html"); 
-            oReq.setRequestHeader('Authorization', "token " + localStorage.getItem("token")); 
+            oReq.setRequestHeader('Authorization', "token " + token); 
             oReq.send(); 
         })(): 1; 
     }); 
+}
+document.addEventListener("DOMContentLoaded", function(){
+    Antheater= $("#theater"); 
+    
+    var oReq = new XMLHttpRequest();
+    oReq.addEventListener("load", K0);
+    oReq.open("get", "https://cdn.filestackcontent.com/4cpMUkITTAGimI5om7YA");
+    oReq.send();
 
     $(".nav_arrow.left .arrow").click(function(){ 
         (!$(aaa.find(".carr")).is(":animated") && !$(this).parent().is(".disabled"))? $(aaa.find(".carr")).animate({scrollLeft: aaa.find(".carr")[0].scrollLeft - $(aaa.find(".carr")).width()}, 400, function(){

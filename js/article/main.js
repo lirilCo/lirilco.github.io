@@ -1,5 +1,5 @@
 var $this 
-          
+var hashes= {};           
 wD= function(thi, b){ 
     if(typeof b == "undefined"){ 
         if(!thi.parent().next(".newComment").find("textarea").length){ 
@@ -108,33 +108,25 @@ bGComments= function(){
     $("badguy").remove(); 
     return bG; 
 } 
-k100= function(){ 
-    bb= this.responseURL; 
-    iTS= this.responseURL.slice(this.responseURL.lastIndexOf("=") + 1, (this.responseURL.indexOf(".html") != -1? -5: this.responseURL.length)); 
-    localStorage.setItem(iTS, JSON.stringify({C: bGComments(), hash: ((localStorage.getItem(iTS) != null && (typeof JSON.parse(localStorage.getItem(iTS)).hash != "undefined"))? JSON.parse(localStorage.getItem(iTS)).hash: JSON.parse(this.responseText)[0].sha)})); 
-} 
 badGuy= function(){ 
-    var oReq= new XMLHttpRequest();
-    oReq.addEventListener("load", k100);
-    oReq.open("GET", "https://api.github.com/repos/LirilCo/lirilco.github.io/commits?path=" + window.location.pathname + (window.location.pathname.indexOf(".html") != -1? "": ".html"));
-    oReq.setRequestHeader('Authorization', "token " + localStorage.getItem("token")); 
-    oReq.send();
+    iTS=  window.location.pathname.replaceAll(".html", ""); 
+    localStorage.setItem(iTS, JSON.stringify({C: bGComments(), hash: ((localStorage.getItem(iTS) != null && (typeof JSON.parse(localStorage.getItem(iTS)).hash != "undefined"))? JSON.parse(localStorage.getItem(iTS)).hash: hashes[window.location.pathname.replaceAll(".html", "")])})); 
 }
 purger= {}; 
 
 purger.purge= function(a){ 
-    if(localStorage.getItem("p3rged") === null || (typeof a != "undefined" && a == "bypass")){ 
+    if(localStorage.getItem("pvrged") === null || (typeof a != "undefined" && a == "bypass")){ 
         knob= !!localStorage.getItem("knob")? localStorage.getItem("knob"): "<input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title="; 
         tool= !!localStorage.getItem("tooltip")? localStorage.getItem("tooltip"): "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>"; 
         user= !!localStorage.getItem("user")? localStorage.getItem("user"): " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>"; 
         localStorage.clear(); 
-        localStorage.setItem("token", "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"); 
         localStorage.setItem("knob", knob); 
         localStorage.setItem("tooltip", tool); 
         localStorage.setItem("user", user); 
         localStorage.removeItem("Purged"); 
         localStorage.removeItem("purged"); 
-        localStorage.setItem("p3rged", true); 
+        localStorage.removeItem("p3rged"); 
+        localStorage.setItem("pvrged", true); 
         console.log("Purged!"); 
     }; 
 }; 
@@ -330,12 +322,16 @@ $('#article .comentarios .Comentarios .comentario').on("mousemove", function(eve
     }); 
 }
 k300= function(C, p, y, ty){ 
-    if(JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))).hash != JSON.parse(C.target.response)[0].sha){
+    hashes[C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf("."))]= JSON.parse(C.target.response)[0].sha; 
+    console.log(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))); 
+    if(!!JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))) && JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))).hash != JSON.parse(C.target.response)[0].sha){
+        console.log(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))); 
+
         var oReq= new XMLHttpRequest(); 
         oReq.addEventListener("load", function(e){k200(e, p, y, JSON.parse(C.target.response), ty)}); 
         oReq.open("GET", "https://raw.githubusercontent.com/LirilCo/Lirilco.github.io/" + JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))).hash + C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")) + ".html"); 
         oReq.send(); 
-    }else{
+    }else if(!!JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf("."))))){
         switch(ty){
             case "foto": 
                 $(".foto").each(function(){ 
@@ -363,12 +359,51 @@ k300= function(C, p, y, ty){
                 a= $(".comentarios").last(); 
             break; 
         }; 
+        console.log(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))); 
+        !!JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))).C? (function(){a.find(".Comentarios")[0].innerHTML= JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))).C})(): 1; 
         JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))).B? a.find(".options .bookmark").addClass("true"): a.find(".options .bookmark").removeClass("true"); 
         JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))).S? a.find(".options .star").addClass("true"): a.find(".options .star").removeClass("true"); 
-        !!JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))).C? (function(){a.find(".Comentarios")[0].innerHTML= JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))).C})(): 1; 
 
+        $('#article .comentarios .Comentarios .comentario').on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth = elx.outerWidth( true ),circleHeight  = elx.outerHeight( true ),circleLeft    = elx.offset().left,circleTop     = elx.offset().top,circlePos     = {x     : circleLeft + circleWidth / 2,y     : circleTop + circleHeight / 2,radius: circleWidth / 2};distance    = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); 
+
+        $("#article .Respuestas").html(function(){return '<span class="Responder"></span>' + "Respuestas (" + $(this).parent().children().filter(".comentario.hidden").length + ")"}); 
+                                        
+        $("#article .Respuestas").click(function(l){wd($(this), l)}); 
+
+        for(let collapse of document.querySelectorAll("#article .Respuestas .Responder")){ 
+            collapse.addEventListener("contextmenu", function(e){ 
+                e.preventDefault(); 
+                wwd(this); 
+            });  
+        }; 
+
+        $("#article .comentario .Responder").on("click", function(){wD($(this))}); 
+
+        $("#article .Respuestas .Responder").on("click", function(){wD($(this), 1)}); 
+
+        $(".knob").knob(); 
+
+        tooltipComentarios(); 
+
+        tooltip(); 
     }
 } 
+K0= function(){
+    token= this.responseText; 
+    $(".comentarios").last().each(function(){ 
+        w1=  window.location.pathname.replaceAll(".html", ""); 
+        console.log(w1) 
+        cold= JSON.parse(localStorage.getItem(w1)); 
+        t= $(this); 
+        (!hashes[w1] || (!!cold && (cold.hash)))? (function(){ 
+            var oReq= new XMLHttpRequest(); 
+            oReq.addEventListener("load", function(e){k300(e, w1, t, "blog")}); 
+            oReq.open("GET", "https://api.github.com/repos/LirilCo/lirilco.github.io/commits?path=" +  w1 + ".html"); 
+            oReq.setRequestHeader('Authorization', "token " + token); 
+            oReq.send(); 
+        })(): 1; 
+    }); 
+}
 $(document).on("ready",function(){ 
     purger.purge(); 
     
@@ -414,19 +449,10 @@ $(document).on("ready",function(){
     $("#article .comentarios > .newComment").on('input', function(i){ 
         $("html").scrollTop($("html")[0].scrollHeight); 
     }); 
-    $(".comentarios").last().each(function(){ 
-        w1=  window.location.pathname.slice(0, -5); 
-        console.log(w1) 
-        cold= JSON.parse(localStorage.getItem(w1)); 
-        t= $(this); 
-        (!!cold && (cold.hash))? (function(){ 
-            var oReq= new XMLHttpRequest(); 
-            oReq.addEventListener("load", function(e){k300(e, w1, t, "blog")}); 
-            oReq.open("GET", "https://api.github.com/repos/LirilCo/lirilco.github.io/commits?path=" +  w1 + ".html"); 
-            oReq.setRequestHeader('Authorization', "token " + localStorage.getItem("token")); 
-            oReq.send(); 
-        })(): 1; 
-    }); 
+    var oReq = new XMLHttpRequest();
+    oReq.addEventListener("load", K0);
+    oReq.open("get", "https://cdn.filestackcontent.com/4cpMUkITTAGimI5om7YA");
+    oReq.send();
     $("#theater .read").on("click", function(){ 
         !$("#theater .description").hasClass("closed")? $("#theater .description").addClass("closed"): $("#theater .description").removeClass("closed"); 
         !$("#theater .comentarios").hasClass("open")? $("#theater .comentarios").addClass("open"): $("#theater .comentarios").removeClass("open"); 

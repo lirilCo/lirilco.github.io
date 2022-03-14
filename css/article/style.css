@@ -838,15 +838,18 @@ content: "\e903"
     box-sizing: border-box;
     padding-top: 80px; 
 }
-#article #text
-{
-    width: 60%;
-    margin: 0 auto;
-    color: #7A7A7A;
-    padding: 20px;
-    font-size: 20px;
-    text-align: left;
- }  
+#article #text 
+{ 
+    width: 60%; 
+    margin: 0 auto; 
+    color: #7A7A7A; 
+    padding: 20px; 
+    font-size: 20px; 
+    text-align: left; 
+} 
+ h4, h3, h2, h1, sup, sub{ 
+    color: #7A7A7A; 
+} 
 #article>img
 {
     margin: 40px 0 0 0;
@@ -1361,7 +1364,7 @@ a:hover
     position: relative; 
     cursor: pointer; 
     object-fit: cover;
-    width: 20p;
+    width: 20px;
 } 
 .comentarios .Comentarios .comentario .is{ 
     color: black; 
