@@ -26,7 +26,7 @@ pathfinder= function(w){
 function finder(i, n){ 
     y= n.find(".Comentarios"); 
     
-    typeof i.is == "undefined"? (function(){c= i})(): pathfinder(i); 
+    typeof i.is == "undefined"? (function(){c= []; for(ie in i){c[c.length]= i[ie]}})(): pathfinder(i); 
 
     while(c.length > 1){ 
         y= $(y.children().filter(".comentario")[c[c.length - 1]]).next(); 
@@ -54,7 +54,8 @@ function getCommentsAndAnswers(u, l){
     }); 
 } 
 
-k200= function(f, ww1, a, u, ty){ 
+k200= function(f, ww1, aSa, u, ty){ 
+    console.log("Entered!")
 switch(ty){ 
     case "static": 
         a= $("#theater"); 
@@ -70,46 +71,46 @@ console.log(a)
     newComments= []; 
     newAnswers= []; 
     $("badguy .Comentarios").children().filter(".comentario").each(function(){ 
-    if(!$(this).next().is(".respuestas") && $($(finder($(this).parent(), a)[0]).children().filter(".comentario")[$(this).parent().children().filter(".comentario").index($(this))]).next().is(".respuestas")){ 
+    if(!$(this).next().is(".respuestas") && $($(finder($(this).parent(), aS)[0]).children().filter(".comentario")[$(this).parent().children().filter(".comentario").index($(this))]).next().is(".respuestas")){ 
         newAnswers[newAnswers.length]= [pathfinder($(this).parent()), $(this).parent().children().filter(".comentario").index($(this))]; 
     }; 
 }); 
 newComments[newComments.length]= getNewComments(aS.find(".Comentarios"), $("badguy .Comentarios")); 
-getCommentsAndAnswers($("badguy .Comentarios"), a);
+getCommentsAndAnswers($("badguy .Comentarios"), aS);
 
-JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).B? a.find(".options .bookmark").addClass("true"): a.find(".options .bookmark").removeClass("true");
-JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).S? a.find(".options .star").addClass("true"): a.find(".options .star").removeClass("true");
-!!JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).C? (function(){a.find(".Comentarios")[0].innerHTML= JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).C})(): 1;
+JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).B? aS.find(".options .bookmark").addClass("true"): aS.find(".options .bookmark").removeClass("true");
+JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).S? aS.find(".options .star").addClass("true"): aS.find(".options .star").removeClass("true");
+!!JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).C? (function(){aS.find(".Comentarios")[0].innerHTML= JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).C})(): 1;
+$("badguy").remove(); 
 for(w in newComments){ 
     if(newComments[w].length == 1){
         for(e in newComments[w][0]){
-            a.find(".Comentarios").append(newComments[w][0][e][1]); 
+            aS.find(".Comentarios").append(newComments[w][0][e][1]); 
         }
     }else{
         for(e in newComments[w][0]){
-            finder(newComments[w][1], a).append(newComments[w][0][e][1]); 
+            finder(newComments[w][1], aS).append(newComments[w][0][e][1]); 
         }
     }
 } 
 for(w in newAnswers){ 
     if(newAnswers[w].length == 2){
-        if($(a.find(".Comentarios").children().filter(".comentario")[newAnswers[w][0]]).next().is(".respuestas")){ 
-            $(a.find(".Comentarios").children().filter(".comentario")[newAnswers[w][0]]).next().find(".Respuestas").before(newAnswers[w][1]); 
+        if($(aS.find(".Comentarios").children().filter(".comentario")[newAnswers[w][0]]).next().is(".respuestas")){ 
+            $(aS.find(".Comentarios").children().filter(".comentario")[newAnswers[w][0]]).next().find(".Respuestas").before(newAnswers[w][1]); 
         }else{ 
-            $(a.find(".Comentarios").children().filter(".comentario")[newAnswers[w][0]]).after('<div class="respuestas">' + newAnswers[w][1] + '<span class="Respuestas"></span></div>')
+            $(aS.find(".Comentarios").children().filter(".comentario")[newAnswers[w][0]]).after('<div class="respuestas">' + newAnswers[w][1] + '<span class="Respuestas"></span></div>')
         } 
     }else{ 
-        if($(finder(newAnswers[w][0], a).children().filter(".comentario")[newAnswers[w][1]]).next().is(".respuestas")){ 
-            $(finder(newAnswers[w][0], a).children().filter(".comentario")[newAnswers[w][1]]).next().find(".Respuestas").before(newAnswers[w][2]); 
+        if($(finder(newAnswers[w][0], aS).children().filter(".comentario")[newAnswers[w][1]]).next().is(".respuestas")){ 
+            $(finder(newAnswers[w][0], aS).children().filter(".comentario")[newAnswers[w][1]]).next().find(".Respuestas").before(newAnswers[w][2]); 
         }else{ 
-            $(finder(newAnswers[w][0], a).children().filter(".comentario")[newAnswers[w][1]]).after('<div class="respuestas hidden">' + newAnswers[w][2] + '<span class="Respuestas"></span></div>');
+            $(finder(newAnswers[w][0], aS).children().filter(".comentario")[newAnswers[w][1]]).after('<div class="respuestas hidden">' + newAnswers[w][2] + '<span class="Respuestas"></span></div>');
         } 
     } 
 } 
 console.log(u[0])
 
 localStorage.setItem(f.target.responseURL.slice(100, -5), JSON.stringify({B: JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).B, S: JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).S, C: JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).C, hash: u[0].sha}))
-$("badguy").remove();
 $('.theater .comments .comentarios .Comentarios .comentario').on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth= elx.outerWidth( true ),circleHeight = elx.outerHeight( true ),circleLeft   = elx.offset().left,circleTop    = elx.offset().top,circlePos    ={x    : circleLeft + circleWidth / 2,y    : circleTop + circleHeight / 2,radius: circleWidth / 2};distance   = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); 
 
     $("#theater .Respuestas").html(function(){return '<span class="Responder"></span>' + "Respuestas (" + $(this).parent().children().filter(".comentario.hidden").length + ")"}); 
@@ -166,7 +167,8 @@ $('.theater .comments .comentarios .Comentarios .comentario').on("mousemove", fu
     audiojs.createAll(); 
 }
 k300= function(C, p, y, ty){ 
-    if(JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))).hash != JSON.parse(C.target.response)[0].sha){
+    hashes[C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf("."))]= JSON.parse(C.target.response)[0].sha; 
+    if(!!JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))) && JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))).hash == JSON.parse(C.target.response)[0].sha){
         var oReq= new XMLHttpRequest(); 
         oReq.addEventListener("load", function(e){k200(e, p, y, JSON.parse(C.target.response), ty)}); 
         oReq.open("GET", "https://raw.githubusercontent.com/LirilCo/Lirilco.github.io/" + JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))).hash + C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")) + ".html"); 
@@ -199,9 +201,9 @@ k300= function(C, p, y, ty){
                 a= $("#theater"); 
             break; 
         }; 
-        JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))).B? a.find(".options .bookmark").addClass("true"): a.find(".options .bookmark").removeClass("true"); 
-        JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))).S? a.find(".options .star").addClass("true"): a.find(".options .star").removeClass("true"); 
-        !!JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))).C? (function(){a.find(".Comentarios")[0].innerHTML= JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))).C})(): 1; 
+        JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))).B? aS.find(".options .bookmark").addClass("true"): aS.find(".options .bookmark").removeClass("true"); 
+        JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))).S? aS.find(".options .star").addClass("true"): aS.find(".options .star").removeClass("true"); 
+        !!JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))).C? (function(){aS.find(".Comentarios")[0].innerHTML= JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))).C})(): 1; 
 
         $('.theater .comments .comentarios .Comentarios .comentario').on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth= elx.outerWidth( true ),circleHeight = elx.outerHeight( true ),circleLeft   = elx.offset().left,circleTop    = elx.offset().top,circlePos    ={x    : circleLeft + circleWidth / 2,y    : circleTop + circleHeight / 2,radius: circleWidth / 2};distance   = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); 
 
@@ -263,19 +265,19 @@ k300= function(C, p, y, ty){
 document.addEventListener("keydown",function(evt){ 
     aaa= $("#theater"); 
 
-    if(!!aaa.find(".carr").length){ 
+    if(!!www.find(".carr").length){ 
 	   switch(evt.keyCode){
             case 37: 
-                !$(aaa.find(".carr")).is(":animated")? $(aaa.find(".carr")).animate({scrollLeft: aaa.find(".carr")[0].scrollLeft - $(aaa.find(".carr")).width()}, 400, function(){
-            		  a$= $(aaa.find(".carr")).find(".pic")[Math.round(aaa.find(".carr")[0].scrollLeft / $(aaa.find(".carr")).width())].src; 
-                	   a$= a$.slice(a$.lastIndexOf("/") + 1, a$.lastIndexOf("."));
+                !$(www.find(".carr")).is(":animated")? $(www.find(".carr")).animate({scrollLeft: www.find(".carr")[0].scrollLeft - $(www.find(".carr")).width()}, 400, function(){
+            		  a$= $(www.find(".carr")).find(".pic")[Math.round(www.find(".carr")[0].scrollLeft / $(www.find(".carr")).width())].src; 
+                	   a$= a$.slice(a$.lastIndexOf("/") + 1, aS$.lastIndexOf("."));
                         history.pushState({page: 1}, "", "/" + username + "/img/" + a$); 
 				  }): 672; 
                 break; 
             case 39: 
-                !$(aaa.find(".carr")).is(":animated")? $(aaa.find(".carr")).animate({scrollLeft: aaa.find(".carr")[0].scrollLeft + $(aaa.find(".carr")).width()}, 400, function(){
-            		  a$= $(aaa.find(".carr")).find(".pic")[Math.round(aaa.find(".carr")[0].scrollLeft / $(aaa.find(".carr")).width())].src; 
-                	   a$= a$.slice(a$.lastIndexOf("/") + 1, a$.lastIndexOf(".")); 
+                !$(www.find(".carr")).is(":animated")? $(www.find(".carr")).animate({scrollLeft: www.find(".carr")[0].scrollLeft + $(www.find(".carr")).width()}, 400, function(){
+            		  a$= $(www.find(".carr")).find(".pic")[Math.round(www.find(".carr")[0].scrollLeft / $(www.find(".carr")).width())].src; 
+                	   a$= a$.slice(a$.lastIndexOf("/") + 1, aS$.lastIndexOf(".")); 
                         history.pushState({page: 1}, "", "/" + username + "/img/" + a$); 
 				 }): 672; 
                 break; 
@@ -293,7 +295,7 @@ K0= function(){
         }
         cold= JSON.parse(localStorage.getItem(w1)); 
         t= $(this); 
-        (!!cold && (cold.hash))? (function(){ 
+        (!hashes[w1] || (!!cold && (cold.hash)))? (function(){ 
             var oReq= new XMLHttpRequest(); 
             oReq.addEventListener("load", function(e){k300(e, w1, t, "static")}); 
             oReq.open("GET", "https://api.github.com/repos/LirilCo/lirilco.github.io/commits?path=" +  w1 + ".html"); 
@@ -302,25 +304,30 @@ K0= function(){
         })(): 1; 
     }); 
 }
-document.addEventListener("DOMContentLoaded", function(){
-    Antheater= $("#theater"); 
-    
+$(function(){
     var oReq = new XMLHttpRequest();
     oReq.addEventListener("load", K0);
     oReq.open("get", "https://cdn.filestackcontent.com/4cpMUkITTAGimI5om7YA");
     oReq.send();
+})
+document.addEventListener("DOMContentLoaded", function(){
+    Antheater= $("#theater"); 
+    console.log($("#theater")); 
+    
+
+    aaa= $("#theater"); 
 
     $(".nav_arrow.left .arrow").click(function(){ 
-        (!$(aaa.find(".carr")).is(":animated") && !$(this).parent().is(".disabled"))? $(aaa.find(".carr")).animate({scrollLeft: aaa.find(".carr")[0].scrollLeft - $(aaa.find(".carr")).width()}, 400, function(){
-                    a$= $(aaa.find(".carr")).find(".pic")[Math.round(aaa.find(".carr")[0].scrollLeft / $(aaa.find(".carr")).width())].src; 
-                    a$= a$.slice(a$.lastIndexOf("/") + 1, a$.lastIndexOf("."));
+        (!$(www.find(".carr")).is(":animated") && !$(this).parent().is(".disabled"))? $(www.find(".carr")).animate({scrollLeft: www.find(".carr")[0].scrollLeft - $(www.find(".carr")).width()}, 400, function(){
+                    a$= $(www.find(".carr")).find(".pic")[Math.round(www.find(".carr")[0].scrollLeft / $(www.find(".carr")).width())].src; 
+                    a$= a$.slice(a$.lastIndexOf("/") + 1, aS$.lastIndexOf("."));
                     history.pushState({page: 1}, "", "/" + username + "/img/" + a$); 
                   }): 672; 
     }); 
     $(".nav_arrow.right .arrow").click(function(){ 
-        (!$(aaa.find(".carr")).is(":animated") && !$(this).parent().is(".disabled"))? $(aaa.find(".carr")).animate({scrollLeft: aaa.find(".carr")[0].scrollLeft + $(aaa.find(".carr")).width()}, 400, function(){
-                    a$= $(aaa.find(".carr")).find(".pic")[Math.round(aaa.find(".carr")[0].scrollLeft / $(aaa.find(".carr")).width())].src; 
-                    a$= a$.slice(a$.lastIndexOf("/") + 1, a$.lastIndexOf(".")); 
+        (!$(www.find(".carr")).is(":animated") && !$(this).parent().is(".disabled"))? $(www.find(".carr")).animate({scrollLeft: www.find(".carr")[0].scrollLeft + $(www.find(".carr")).width()}, 400, function(){
+                    a$= $(www.find(".carr")).find(".pic")[Math.round(www.find(".carr")[0].scrollLeft / $(www.find(".carr")).width())].src; 
+                    a$= a$.slice(a$.lastIndexOf("/") + 1, aS$.lastIndexOf(".")); 
                     history.pushState({page: 1}, "", "/" + username + "/img/" + a$); 
                  }): 672; 
     })

@@ -942,7 +942,7 @@ pathfinder= function(w){
 function finder(i, n){ 
     y= n.find(".Comentarios"); 
     
-    typeof i.is == "undefined"? (function(){c= i})(): pathfinder(i); 
+    typeof i.is == "undefined"? (function(){c= []; for(ie in i){c[c.length]= i[ie]}})(): pathfinder(i); 
 
     while(c.length > 1){ 
         y= $(y.children().filter(".comentario")[c[c.length - 1]]).next(); 
@@ -971,6 +971,7 @@ function getCommentsAndAnswers(u, l){
 } 
 
 k200= function(f, ww1, a, u, ty){ 
+    console.log("Entered!")
 switch(ty){
     case "foto": 
         $(".foto").each(function(){ 
@@ -1036,6 +1037,7 @@ getCommentsAndAnswers($("badguy .Comentarios"), a);
 JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).B? a.find(".options .bookmark").addClass("true"): a.find(".options .bookmark").removeClass("true");
 JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).S? a.find(".options .star").addClass("true"): a.find(".options .star").removeClass("true");
 !!JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).C? (function(){a.find(".Comentarios")[0].innerHTML= JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).C})(): 1;
+$("badguy").remove(); 
 for(w in newComments){ 
     if(newComments[w].length == 1){
         for(e in newComments[w][0]){
@@ -1065,7 +1067,6 @@ for(w in newAnswers){
 console.log(u[0])
 
 localStorage.setItem(f.target.responseURL.slice(100, -5), JSON.stringify({B: JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).B, S: JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).S, C: JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).C, hash: u[0].sha}))
-$("badguy").remove();
 }
 k300= function(C, p, y, ty){ 
     /*typeof JSON.parse(C.target.response)[0] == "undefined"? console.log(C): 1; */ 
@@ -1129,7 +1130,6 @@ k300= function(C, p, y, ty){
 } 
 K0= function(){
     token= this.responseText; 
-    if(window.location.pathname.indexOf("/img/") === -1 && window.location.pathname.indexOf("/vid/") === -1 && window.location.pathname.indexOf("/pos/") === -1){ 
         $(".foto").each(function(){ 
             src= $(this).is(".mult_img")? un_tn($(this).find(".carr img")[0].src): un_tn($(this).find(".pic")[0].src); 
             w1=  "/" + username + "/img" + src.slice(src.lastIndexOf("/"), src.lastIndexOf(".")); 
@@ -1192,15 +1192,16 @@ K0= function(){
             !(!!cold && (cold.hash))? $("#profilePic").on("click", function(){openProfilePicModal($(this));}): 1; 
         })(): (function(){
         })(); 
-    }; 
 }
 $(document).on("ready",function(e){ 
     purger.purge(); 
                     
-    var oReq = new XMLHttpRequest();
-    oReq.addEventListener("load", K0);
-    oReq.open("get", "https://cdn.filestackcontent.com/4cpMUkITTAGimI5om7YA");
-    oReq.send();
+    if(window.location.pathname.indexOf("/img/") === -1 && window.location.pathname.indexOf("/vid/") === -1 && window.location.pathname.indexOf("/pos/") === -1){ 
+        var oReq = new XMLHttpRequest();
+        oReq.addEventListener("load", K0);
+        oReq.open("get", "https://cdn.filestackcontent.com/4cpMUkITTAGimI5om7YA");
+        oReq.send();
+    }; 
 
 /*    function reqListener(){
         $("badguy").remove();

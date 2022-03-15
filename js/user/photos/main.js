@@ -318,7 +318,7 @@ pathfinder= function(w){
 function finder(i, n){ 
     y= n.find(".Comentarios"); 
     
-    typeof i.is == "undefined"? (function(){c= i})(): pathfinder(i); 
+    typeof i.is == "undefined"? (function(){c= []; for(ie in i){c[c.length]= i[ie]}})(): pathfinder(i); 
 
     while(c.length > 1){ 
         y= $(y.children().filter(".comentario")[c[c.length - 1]]).next(); 
@@ -388,6 +388,7 @@ getCommentsAndAnswers($("badguy .Comentarios"), a);
 JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).B? a.find(".options .bookmark").addClass("true"): a.find(".options .bookmark").removeClass("true");
 JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).S? a.find(".options .star").addClass("true"): a.find(".options .star").removeClass("true");
 !!JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).C? (function(){a.find(".Comentarios")[0].innerHTML= JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).C})(): 1;
+$("badguy").remove(); 
 for(w in newComments){ 
     if(newComments[w].length == 1){
         for(e in newComments[w][0]){
@@ -417,7 +418,6 @@ for(w in newAnswers){
 console.log(u[0])
 
 localStorage.setItem(f.target.responseURL.slice(100, -5), JSON.stringify({B: JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).B, S: JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).S, C: JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).C, hash: u[0].sha}))
-$("badguy").remove();
 }
 k300= function(C, p, y, ty){ 
     hashes[C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf("."))]= JSON.parse(C.target.response)[0].sha; 
