@@ -1336,14 +1336,37 @@
                                 <text>
                                     <p style="color: #aaa; text-align: left; "> Comenten Y Respondan Mucho Y En Todos Los Posts, Fotos, Videos Y Artículos, En Especial Los Que Ya Tienen Comentarios. Los Comentarios Oficiales Se Mezclarán Con Los Suyos.</p>
                                     <p style="color: #aaa; text-align: left; ">&nbsp&nbsp&nbsp&nbspEn <a target= "_blank" href="/user">user</a> Pueden Cambiar Sus Datos, No Tienen Que Recargar Las Páginas En Donde Están Comentando.</p>
+                                    <p style="color: #aaa; text-align: left; ">&nbsp&nbsp&nbsp&nbspDando Click Con El Botón Derecho Del Mouse Al Link A La Estática, Que Está A La Derecha Del Todo Abajo Puedes Abrir Los Posts En El Theater</p>
                                 </text>
-                                <div class="Comentarios"></div>
+                                <div class="Comentarios">
+                                    <div class="comentario">
+                                        <input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'>
+                                        <img title="         
+                                    <div class='tool'>
+                                        <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                                        <img src='/resources/images/MeganFox/Ad4Jy7k20F_tn.jpg'>
+                                        <div class='datos'>
+                                            <ul class='actions'>
+                                                <li class='chatear' title='Chatear'>C</li>
+                                                <li class='agregar' title='Agregar'>A</li>
+                                                <li class='juzgar' title='Juzgar'>J</li>
+                                            </ul>                  
+                                            <p class='username' title= 'Megan Denise Fox'>Megan Denise Fox</p>
+                                            <p class='rol'>G <b style='color:#fff;'>+100</b></p>
+                                        </div>
+                                    </div>" src="/resources/images/MeganFox/Ad4Jy7k20F_tn.jpg" alt="">
+                                        &nbsp<a target="_blank" href="/MeganFox">Megan Denise Fox</a><span class="is">: </span><span class="Comentario">
+                                            Presionando las teclas <i>Inicio + .</i>, pueden insertar Emojis en Windows
+                                        </span>
+                                        <span class="Responder"></span>
+                                    </div>
+                                </div>
                                 <div class="options button">
                                     <ul>
                                         <li class="bookmark"></li>
                                         <li class="star"></li>
                                         <li class="Enlargetic">
-                                            <a href="/A.K.A._Dizzy/pos/plQzjgY2Ag" target="_blank" class="read active" title=""></a>
+                                            <a href="/L/pos/plQzjgY2Ag" target="_blank" class="read active" title=""></a>
                                             <span title="" class="Enlarge"></span>
                                         </li>
                                     </ul>
@@ -3284,9 +3307,11 @@
         </div>
     </section>
     <script>
-        setInterval(function(){
-    ($(".title").filter(function(){return $(this).text().indexOf("We're L") != -1}).text() == "We're Live!")? $(".title").filter(function(){return $(this).text().indexOf("We're L") != -1}).text("We're Lıve!"): $(".title").filter(function(){return $(this).text().indexOf("We're L") != -1}).text("We're Live!"); 
-}, 817)
+        setInterval(function(){ 
+            $(".title").filter(function(){return $(this).text().indexOf("We're L") != -1}).each(function(){ 
+                $(this).text() == "We're Live!"? $(this).text("We're Lıve!"): $(this).text("We're Live!"); 
+            }); 
+        }, 817); 
     </script>
     <script>
         $("#notifications").mCustomScrollbar({

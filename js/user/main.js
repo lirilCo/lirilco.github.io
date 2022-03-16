@@ -533,10 +533,6 @@ function openOtherModal(a){
 
     responsive()
 
-    setInterval(function(){ 
-        ($("#theater .title").filter(function(){return $(this).text().indexOf("We're L") != -1}).text() == "We're Live!")? $("#theater .title").filter(function(){return $(this).text().indexOf("We're L") != -1}).text("We're Lıve!"): $("#theater .title").filter(function(){return $(this).text().indexOf("We're L") != -1}).text("We're Live!"); 
-    }, 817)
-
     $("#theater .revelar").on("click", function(){ 
         if($(this).text()[0] != "O"){ 
             $(this).parent().css({"height": "auto"}); 
@@ -810,15 +806,15 @@ wwd= function(t, tr){
                                                                 
     (U.length == 2)? (function(){$(U[1]).html("<span class='Responder'></span>Respuestas (" + $(U[1]).parent().children().filter(".comentario").length + ")"); $(U[1]).click(function(l){wd($(this), l)}); $($(U[1]).find(".Responder")).on("click", function(){wD($(this), 1)}); U[0].remove()})(): (function(){U.html("<span class='Responder'></span>Respuestas (" + U.parent().children().filter(".comentario").length + ")"); U.click(function(l){wd($(this), l)}); $(U.find(".Responder")).on("click", function(){wD($(this), 1)}); })(); 
 }
-bGComments= function(){ 
-    $("#theater").css("display") == "block"? (function(){ 
+bGComments= function(arg){ 
+    ($("#theater").css("display") == "block" && (typeof arg == "undefined"))? (function(){ 
         $("body").prepend("<badguy></badguy>"); 
         $("badguy").html($("#theater .Comentarios").html()); 
         $("badguy .Comentario .media > div").prop('outerHTML', function(){return $(this).find("audio").prop("outerHTML")}); 
         $("badguy").find(".Respuestas .Responder").each(function(){wwd($(this)[0], 1)}); 
         bG= $("badguy")[0].innerHTML; 
         $("badguy").remove(); 
-    })(): (function(){bG= $(".current .Comentarios")[0].innerHTML})(); 
+    })(): (function(){bG= (typeof arg == "undefined")? $(".current .Comentarios")[0].innerHTML: $(arg).find(".Comentarios")[0].innerHTML; })(); 
     return bG; 
 }
 badGuy= function(){ 
@@ -880,7 +876,7 @@ badGuy= function(){
 purger= {}; 
 
 purger.purge= function(a){ 
-    if(localStorage.getItem("Safety_purge") === null || (typeof a != "undefined" && a == "bypass")){ 
+    if(localStorage.getItem("safetyPurge") === null || (typeof a != "undefined" && a == "bypass")){ 
         knob= !!localStorage.getItem("knob")? localStorage.getItem("knob"): "<input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title="; 
         tool= !!localStorage.getItem("tooltip")? localStorage.getItem("tooltip"): "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>"; 
         user= !!localStorage.getItem("user")? localStorage.getItem("user"): " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>"; 
@@ -892,7 +888,8 @@ purger.purge= function(a){
         localStorage.removeItem("purged"); 
         localStorage.removeItem("p3rged"); 
         localStorage.removeItem("pvrged"); 
-        localStorage.setItem("Safety_purge", "Done"); 
+        localStorage.removeItem("Safety_purge"); 
+        localStorage.setItem("safetyPurge", "Done"); 
         console.log("Purged!"); 
     }; 
 }; 
@@ -1071,10 +1068,11 @@ for(w in newAnswers){
 } 
 console.log(u[0])
 
-localStorage.setItem(f.target.responseURL.slice(100, -5), JSON.stringify({B: JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).B, S: JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).S, C: JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).C, hash: u[0].sha}))
+localStorage.setItem(f.target.responseURL.slice(100, -5), JSON.stringify({B: JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).B, S: JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).S, C: bGComments(aS), hash: u[0].sha})); 
 }
 k300= function(C, p, y, ty){ 
-    /*typeof JSON.parse(C.target.response)[0] == "undefined"? console.log(C): 1; */ 
+    typeof JSON.parse(C.target.response)[0] == "undefined"? console.log(C): 1; 
+
     hashes[C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf("."))]= JSON.parse(C.target.response)[0].sha; 
     if(!!JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))) && JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))).hash != JSON.parse(C.target.response)[0].sha){
         var oReq= new XMLHttpRequest(); 
