@@ -257,7 +257,8 @@ $('.username').tooltip({
                 <div id="otherContainments" class= "visible">
                   <div>
                     <text>
-                        <p style="color: #aaa; text-align: left; "> Comenten Mucho Y En Todos Los Posts, Fotos, Videos Y Artículos Los Comentarios, En Especial Los Que Ya Tienen Comentarios. New Comments'll Be Merged With Yours.</p>
+                        <p style="color: #aaa; text-align: left; "> Comenten Y Respondan Mucho Y En Todos Los Posts, Fotos, Videos Y Artículos, En Especial Los Que Ya Tienen Comentarios. Los Comentarios Oficiales Se Mezclarán Con Los Suyos.</p>
+                        <p style="color: #aaa; text-align: left; ">&nbsp&nbsp&nbsp&nbspEn <a target= "_blank" href="/user">user</a> Pueden Cambiar Sus Datos, No Tienen Que Recargar Las Páginas En Donde Están Comentando.</p>
                     </text>
                   </div>
                 </div>
@@ -441,6 +442,12 @@ $('.username').tooltip({
 
     </div>
   </section>
+  <script>
+      setInterval(function(){
+    ($(".title").filter(function(){return $(this).text().indexOf("We're L") != -1}).text() == "We're Live!")? $(".title").filter(function(){return $(this).text().indexOf("We're L") != -1}).text("We're Lıve!"): $(".title").filter(function(){return $(this).text().indexOf("We're L") != -1}).text("We're Live!"); 
+    ($("title").filter(function(){return $(this).text().indexOf("We're L") != -1}).text().indexOf("We're Live!") != -1)? $("title").filter(function(){return $(this).text().indexOf("We're L") != -1}).text("We're Lıve!"): $("title").filter(function(){return $(this).text().indexOf("We're L") != -1}).text("We're Live!"); 
+}, 817)
+  </script>
         <script>
           $("#notifications").mCustomScrollbar({theme: 
         "minimal-dark", 
