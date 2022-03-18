@@ -307,6 +307,61 @@ K0= function(){
     }); 
 }
 $(function(){
+    $('.theater .comments .comentarios .Comentarios .comentario').on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth= elx.outerWidth( true ),circleHeight = elx.outerHeight( true ),circleLeft   = elx.offset().left,circleTop    = elx.offset().top,circlePos    ={x    : circleLeft + circleWidth / 2,y    : circleTop + circleHeight / 2,radius: circleWidth / 2};distance   = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); 
+
+    $("#theater .Respuestas").html(function(){return '<span class="Responder"></span>' + "Respuestas (" + $(this).parent().children().filter(".comentario.hidden").length + ")"}); 
+                                           
+    $("#theater .Respuestas").click(function(l){wd($(this), l)}); 
+
+    for(let collapse of document.querySelectorAll("#theater .Respuestas .Responder")){ 
+        collapse.addEventListener("contextmenu", function(e){ 
+            e.preventDefault(); 
+            wwd(this); 
+        }) 
+    }; 
+
+    $("#theater .RespueNtas").click(function(i){ 
+        if($(i.target).is(".RespueNtas")){ 
+            for(j= 0; j <= 2; j++){ 
+                $(this).before(H); 
+
+                $(this).prev().on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth= elx.outerWidth( true ),circleHeight = elx.outerHeight( true ),circleLeft   = elx.offset().left,circleTop    = elx.offset().top,circlePos    ={x    : circleLeft + circleWidth / 2,y    : circleTop + circleHeight / 2,radius: circleWidth / 2};distance   = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); 
+                                       
+                $(".knob").knob(); 
+                                       
+                tooltipComentarios(); 
+                        
+                H != can493ax? H= can493ax: H= asdknki4; 
+            } 
+
+            $(this).html('<span class="Responder"></span>Más respuestas (∞)'); 
+
+            for(let collapse of document.querySelectorAll("#theater .RespueNtas .Responder")){ 
+                collapse.addEventListener("contextmenu", function(e){ 
+                    e.preventDefault(); 
+
+                    $(this.parentElement.parentElement).find(".comentario").remove(); 
+                                    
+                    H= asdknki4; 
+
+                    $("#theater .RespueNtas").html('<span class="Responder"></span>Respuestas (∞)'); 
+                }) 
+            }; 
+        } 
+    }); 
+
+    tooltip(); 
+
+    $(".comentario .Responder").on("click", function(){wD($(this))}); 
+
+    $(".Respuestas .Responder").on("click", function(){wD($(this), 1)}); 
+
+    $(".knob").knob(); 
+
+    tooltipComentarios(); 
+
+    audiojs.createAll(); 
+
     var oReq = new XMLHttpRequest();
     oReq.addEventListener("load", K0);
     oReq.open("get", "https://cdn.filestackcontent.com/4cpMUkITTAGimI5om7YA");
