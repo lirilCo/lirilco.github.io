@@ -116,7 +116,7 @@ badGuy= function(){
 }
 purger= {}; 
 
-purger.index= 0; 
+purger.index= 1; 
 
 purger.purge= function(a){ 
     if((localStorage.getItem("safety_purge") === null || (localStorage.getItem("safety_purge") !== null && parseInt(localStorage.getItem("safety_purge")) != purger.index)) || (typeof a != "undefined" && a == "bypass")){ 

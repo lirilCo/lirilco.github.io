@@ -581,6 +581,15 @@ position: absolute;
     padding-bottom: 5px;
     
 }
+#biography #content #main #summary aside#sections section#situation .title
+{
+    color: #555; 
+}
+#biography #content #main #summary aside#sections section#situation p
+{
+    color: #666; 
+    margin-bottom: 11px; 
+}
 #biography #content #main #summary aside#sections section .title a
 {
     color: #555;
