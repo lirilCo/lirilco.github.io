@@ -19,7 +19,7 @@
     <script type="text/javascript">
         var username = "LamaMadora";
         var users_name = "Juan José Martínez Vidal";
-        var commitAF= "3b29a85b49d1a43ee428d6b9277e99b1cbe0dda7/LamaMadora.html"; 
+        /*var commitAF= "3b29a85b49d1a43ee428d6b9277e99b1cbe0dda7/LamaMadora.html"; */ 
     </script>
     <script src="js/user/modernizr.custom.js"></script>
     <script src="js/jquery.js"></script>
@@ -193,6 +193,10 @@
             <section id="main">
                 <section id="summary">
                     <aside id="sections">
+                        <section id="situation">
+                            <h2 class="title">Situación Sentimental</h2>
+                            <p>Esposa de <a title="Juan José Martínez Vidal se hizo un cambio de género y se casó con el hombre que más amó jamás, sigo mism@ antes de la cirugía de reasignación de género, se puso sus apellidos... y hasta sus nombres" class="" style="position: absolute;/*! top: 46px; */z-index: 1;user-select: none;cursor: text;" onclick="if(!$(event.target).hasClass('animate__animated')){$(event.target).toggleClass('animate__animated animate__headShake'); setTimeout(function(){$('#situation a').removeClass('animate__animated animate__headShake')}, 1000)}">&nbsp;Juan José Martínez Vidal</a></p>
+                        </section>
                         <section id="pics">
                             <h2 class="title"><a href="/LamaMadora/photos">Fotos</a> (11)</h2>
                             <section class="foto img">
@@ -879,6 +883,19 @@
         <div class="chats">
         </div>
     </section>
+    <style>
+        #biography #content #main #summary aside#sections section#situation p {
+            color: #666;
+            margin-bottom: 11px;
+            padding-right: 180px;
+        }
+        #biography #content #main #summary aside#sections section#situation p::after {
+            content: ".";
+            right: 41px;
+            position: absolute;
+            font-size: initial;
+        }
+    </style>        
     <script>
         $("#notifications").mCustomScrollbar({
             theme: "minimal-dark",

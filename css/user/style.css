@@ -8,7 +8,7 @@
     font-style: normal;
     font-weight: normal;
     src: url('/resources/fonts/icomoon.eot?4v3ev0');
-    src: url('/resources/fonts/icomoon.eot?#iefix4v3ev0') format('embedded-opentype'), url('/resources/fonts/icomoon.woff?4v3ev0') format('woff'), url('/resources/fonts/icomoon.ttf?4v3ev0') format('truetype'), url('/resources/fonts/icomoon.svg?4v3ev0#icomoon') format('svg');
+    src: url('/resources/fonts/icomoon.eot?#iefix4v3ev0') format('embedded-opentype'), url('/resources/fonts/icomoon.woff') format('woff'), url('/resources/fonts/icomoon.ttf') format('truetype'), url('/resources/fonts/icomoon.svg?4v3ev0#icomoon') format('svg');
 }
 * {
     color: #2ecc71;
@@ -586,6 +586,15 @@ position: absolute;
     color: #555; 
 }
 #biography #content #main #summary aside#sections section#situation p
+{
+    color: #666; 
+    margin-bottom: 11px; 
+}
+#biography #content #main #summary aside#sections section#ties .title
+{
+    color: #555; 
+}
+#biography #content #main #summary aside#sections section#ties p
 {
     color: #666; 
     margin-bottom: 11px; 

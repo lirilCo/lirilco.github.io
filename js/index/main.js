@@ -890,8 +890,6 @@ $(document).on("ready", function(){
 
     current= $(".story.current");
     $(document).keypress(function (e) {
-    if(!$("textarea").is(":focus") && !$("input").is(":focus") && !waiting){
-        //console.log(e.keyCide) 
         if(!$("textarea").is(":focus") && !$("input").is(":focus") && !waiting){ 
             switch(e.keyCode){ 
                 case 108: case 76: 
@@ -906,7 +904,16 @@ $(document).on("ready", function(){
                 break; 
                 case 102: case 70: 
                     if($(".current").is(".mult_img")){ 
-                        openModal($($(".current").find(".pic")[($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0)])); 
+                        openModal($($(".current").find(".pic")[Math.round($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0)])); 
+                        if(Math.round($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0) == Math.floor($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0)){
+                            $(".current .carr").stop(true, false); 
+                            $(".current .carr").animate({scrollLeft: (Math.round($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0) * $(".current").find(".carr .pic").width())}, (400 - (400 * (Math.ceil($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0) - ($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0))))); 
+                            /*$(".current .nav_arrow.left .arrow").click(); */ 
+                        }else{
+                            $(".current .carr").stop(true, false); 
+                            $(".current .carr").animate({scrollLeft: (Math.round($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0) * $(".current").find(".carr .pic").width())}, (400 * (Math.ceil($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0) - ($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0)))); 
+                            /*$(".current .nav_arrow.right .arrow").click(); */ 
+                        }
                     }else if($(".current").is(".img")){ 
                         openModal($(".current .pic")); 
                     }else if($(".current").is(".video")){ 
@@ -915,6 +922,8 @@ $(document).on("ready", function(){
                 break; 
             } 
         } 
+    if(!$("textarea").is(":focus") && !$("input").is(":focus") && !waiting  && $("#theater").css("display") != "block"){
+        //console.log(e.keyCide) 
         var forward;
                      
         (e.keyCode == 74 || e.keyCode == 106 || e.keyCode == 75 || e.keyCode == 107)? waiting= true: 143; 
