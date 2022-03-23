@@ -303,7 +303,18 @@ function openModal(a){
 
     responsive()
     if(a.closest('.story').is(".mult_img")){ 
+        if(($(a).parent().index() * $(a.closest(".story")).width()) < a.closest(".carr")[0].scrollLeft){ 
+            $(".current .carr").stop(true, false); 
+            $(".current .carr").animate({scrollLeft: ($(a).parent().index() * $(a.closest(".story")).width())}, (400 - (400 * (Math.ceil($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0) - ($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0))))); 
+            /*$(".current .nav_arrow.left .arrow").click(); */ 
+        }else{ 
+            $(".current .carr").stop(true, false); 
+            console.log((400 * (Math.ceil($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0) - ($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0))))
+            $(".current .carr").animate({scrollLeft: ($(a).parent().index() * $(a.closest(".story")).width())}, (400 * (Math.ceil($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0) - ($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0)))); 
+            /*$(".current .nav_arrow.right .arrow").click(); */ 
+        } 
         ar= a.closest('.story'); 
+
         $("#theater").append('<div class="nav_arrow left' + (a.closest('.story').find(".nav_arrow.left").is(".disabled")? ' disabled': '') + '"><div class= "arrow"></div></div><div class="nav_arrow right' + (a.closest('.story').find(".nav_arrow.right").is(".disabled")? ' disabled': '') + '"><div class= "arrow"></div></div>'); 
         $("#theater .nav_arrow.left .arrow").on("click", function(){
             !a.closest('.story').find(".carr").is(":animated")? a.closest('.story').find(".carr")[0].scrollLeft= a.closest('.story').find(".carr")[0].scrollLeft - a.closest('.story').find(".carr").width(): 672; 
@@ -1203,6 +1214,8 @@ $(document).on("ready",function(e){
     purger.purge(); 
                     
     if(window.location.pathname.indexOf("/img/") === -1 && window.location.pathname.indexOf("/vid/") === -1 && window.location.pathname.indexOf("/pos/") === -1){ 
+        $("#ties > div > div").each(function(){$(this).outerHeight() != $(this).prop("scrollHeight")? $(this).parent().addClass("overflowing"): 1}); 
+                                         
         var oReq = new XMLHttpRequest();
         oReq.addEventListener("load", K0);
         oReq.open("get", "https://cdn.filestackcontent.com/4cpMUkITTAGimI5om7YA");
@@ -1888,7 +1901,7 @@ $(document).on("ready", function(){
                     badGuy(); 
                 break; 
                 case 102: case 70: 
-                    if($(".current").is(".mult_img")){ 
+                    if($(".current").is(".mult_img") && $("#theater").css("display") != "block"){ 
                         openModal($($(".current").find(".pic")[Math.round($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0)])); 
                         if(Math.round($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0) == Math.floor($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0)){
                             $(".current .carr").stop(true, false); 
@@ -1899,8 +1912,8 @@ $(document).on("ready", function(){
                             $(".current .carr").animate({scrollLeft: (Math.round($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0) * $(".current").find(".carr .pic").width())}, (400 * (Math.ceil($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0) - ($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0)))); 
                             /*$(".current .nav_arrow.right .arrow").click(); */ 
                         }
-                    }else if($(".current").is(".img")){ 
-                        openModal($(".current .pic")); 
+                    }else if($(".current").is(".img") && $("#theater").css("display") != "block"){ 
+                        openModal($(".current .pic") && $("#theater").css("display") != "block"); 
                     }else if($(".current").is(".video")){ 
                         openVideoModal($(".current").find(".Enlarge")); 
                     }; 

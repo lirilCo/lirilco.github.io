@@ -599,6 +599,39 @@ position: absolute;
     color: #666; 
     margin-bottom: 11px; 
 }
+#biography #content #main #summary aside#sections section#ties > div 
+{ 
+    overflow-x: hidden; 
+    position: relative; 
+} 
+#biography #content #main #summary aside#sections section#ties > div.overflowing:after
+{ 
+    content: ""; 
+    width: 4px; 
+    position: absolute; 
+    right: 0; 
+    height: 17px; 
+    z-index: 222; 
+    background: white; 
+    bottom: 0; 
+} 
+#biography #content #main #summary aside#sections section#ties > div.overflowing:before
+{ 
+    content: ""; 
+    width: 4px; 
+    position: absolute; 
+    right: 0; 
+    height: 17px; 
+    z-index: 222; 
+    background: white; 
+} 
+#biography #content #main #summary aside#sections section#ties > div > div 
+{ 
+    max-height: 280px; 
+    overflow-y: auto; 
+    padding-right: 12px; 
+    width: 100%; 
+} 
 #biography #content #main #summary aside#sections section .title a
 {
     color: #555;

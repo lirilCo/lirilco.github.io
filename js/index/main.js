@@ -903,7 +903,7 @@ $(document).on("ready", function(){
                     badGuy(); 
                 break; 
                 case 102: case 70: 
-                    if($(".current").is(".mult_img")){ 
+                    if($(".current").is(".mult_img") && $("#theater").css("display") != "block"){ 
                         openModal($($(".current").find(".pic")[Math.round($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0)])); 
                         if(Math.round($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0) == Math.floor($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0)){
                             $(".current .carr").stop(true, false); 
@@ -914,9 +914,9 @@ $(document).on("ready", function(){
                             $(".current .carr").animate({scrollLeft: (Math.round($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0) * $(".current").find(".carr .pic").width())}, (400 * (Math.ceil($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0) - ($(".current").find(".carr")[0].scrollLeft != 0? $(".current").find(".carr")[0].scrollLeft / $(".current").find(".carr").width(): 0)))); 
                             /*$(".current .nav_arrow.right .arrow").click(); */ 
                         }
-                    }else if($(".current").is(".img")){ 
+                    }else if($(".current").is(".img") && $("#theater").css("display") != "block"){ 
                         openModal($(".current .pic")); 
-                    }else if($(".current").is(".video")){ 
+                    }else if($(".current").is(".video") && $("#theater").css("display") != "block"){ 
                         openVideoModal($(".current").find(".Enlarge")); 
                     }; 
                 break; 
