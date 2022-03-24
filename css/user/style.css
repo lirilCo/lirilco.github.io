@@ -611,7 +611,6 @@ position: absolute;
     position: absolute; 
     right: 0; 
     height: 17px; 
-    z-index: 222; 
     background: white; 
     bottom: 0; 
 } 
@@ -622,7 +621,6 @@ position: absolute;
     position: absolute; 
     right: 0; 
     height: 17px; 
-    z-index: 222; 
     background: white; 
 } 
 #biography #content #main #summary aside#sections section#ties > div > div 
