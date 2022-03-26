@@ -1,0 +1,1 @@
+$('#ties p').filter(function(){return $(this).find("a")[0].title != "No está en liril"})

@@ -2164,6 +2164,74 @@ function tooltip(){
                 });
         }
     });
+    $('#ties p').filter(function(){return $(this).find("a")[0].title.indexOf("tool") != -1}).tooltip({
+        items: 'a',
+        open: function(event, ui){
+            if (typeof(event.originalEvent) === 'undefined'){
+                return false;
+            }
+            $(".knob").knob();
+
+            ý= $(this); 
+
+            $(".chatear").click(function(){
+                u= $(this).parent().parent().find(".username").text();
+
+                $("#chat").find("ul").find("li").each(function(){
+                    $(this).find("p").text() === u? $(this).click(): 1;
+                });
+
+                !!Antheater? (function(){closeModal(); ý.remove(); })(): 1; 
+            })
+            var $id= $(ui.tooltip).attr('id');
+
+            $('div.ui-tooltip').not('#' + $id).remove();
+        },
+        close: function(event, ui){
+            ui.tooltip.hover(function(){
+                    $(this).stop(true).fadeTo(400, 1);
+                },
+                function(){
+                    $(this).fadeOut('400', function(){
+                        $(this).remove();
+                    });
+                });
+        }
+    });
+    $('#situation p').filter(function(){return $(this).find("a")[0].title.indexOf("tool") != -1}).tooltip({
+        items: 'a',
+        open: function(event, ui){
+            if (typeof(event.originalEvent) === 'undefined'){
+                return false;
+            }
+            $(".knob").knob();
+
+            ý= $(this); 
+
+            $(".chatear").click(function(){
+                u= $(this).parent().parent().find(".username").text();
+
+                $("#chat").find("ul").find("li").each(function(){
+                    $(this).find("p").text() === u? $(this).click(): 1;
+                });
+
+                !!Antheater? (function(){closeModal(); ý.remove(); })(): 1; 
+            })
+            var $id= $(ui.tooltip).attr('id');
+
+            $('div.ui-tooltip').not('#' + $id).remove();
+        },
+        close: function(event, ui){
+            ui.tooltip.hover(function(){
+                    $(this).stop(true).fadeTo(400, 1);
+                },
+                function(){
+                    $(this).fadeOut('400', function(){
+                        $(this).remove();
+                    });
+                });
+        }
+    });
 }
 $(function($){
     $.widget("ui.tooltip", $.ui.tooltip,{
