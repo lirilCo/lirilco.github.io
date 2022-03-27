@@ -1144,3 +1144,26 @@ header{
 body{ 
     padding-top: 46px; 
 }
+.Editado {
+    float: right;
+    color: #aaa;
+    font-size: 14px;
+}
+.Cont {
+    position: absolute; 
+    bottom: 5px; 
+    background: #2ecc71; 
+    height: 27px; 
+    width: 161px; 
+    padding: 0 5px; 
+    box-sizing: border-box; 
+    display: flex; 
+    flex-flow: row; 
+}
+.Cont .rol{
+    flex-grow: 1; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    position: unset !important; 
+}
