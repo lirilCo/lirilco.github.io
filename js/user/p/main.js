@@ -169,7 +169,7 @@ $("#files .file").click(function(i, tr){
     
     setTimeout(function(){i.target.style.top= 0; 
     }, 1); 
-    setTimeout(function(){!$("#file_expl #information_cont").hasClass("visible")? $("#file_expl #information_cont").toggleClass("visible"): 666 
+    setTimeout(function(){!$("#file_expl #information_cont").hasClass("visible")? (function(){$("#file_expl #information_cont").toggleClass("visible"); $("#file_expl #information_cont #information").html("<i>Infor</i><button class='Historia'>Historia</button>"); })(): 666 
     }, 101); 
 
     uRL= ""; 
@@ -368,7 +368,7 @@ $("#preview .file").click(function(i){
         if(aar == ""){ 
              el= document.getElementsByClassName("file_tree")[0]; 
 
-            for(Colombia in el.children){ 
+            for(Colombia= 0; Colombia <= el.children.length - 1; Colombia++){ 
                 $(el.children[Colombia]).hasClass("folder_cont")? $($(el.children[Colombia]).children()[0]).addClass("inScope"): $(el.children[Colombia]).addClass("inScope"); 
             } 
             LEB= $("#files .file_tree"); 
@@ -394,7 +394,7 @@ $("#preview .file").click(function(i){
                 el= document.getElementsByClassName("file_tree")[0]; 
                                   
                 for(Ty99 in spr){ 
-                    for(eForensics in el.children){ 
+                    for(eForensics= 0; eForensics <= el.children.length - 1; eForensics++){ 
                         if(($(el.children[eForensics]).hasClass("folder_cont")) && ((el != document.getElementsByClassName("file_tree")[0] && parseInt(eForensics) != 0) || el == document.getElementsByClassName("file_tree")[0])){ 
                             if(el.children[eForensics].children[0].textContent == spr[Ty99]){ 
                                 el= el.children[eForensics]; 
@@ -427,7 +427,7 @@ for(eForensics in sprtdUrl){
             el= document.getElementsByClassName("file_tree")[0]; 
                               
             for(Ty99 in spr){ 
-                for(eForensics in el.children){ 
+                for(eForensics= 0; eForensics <= el.children.length - 1; eForensics++){ 
                     if(($(el.children[eForensics]).hasClass("folder_cont")) && ((el != document.getElementsByClassName("file_tree")[0] && parseInt(eForensics) != 0) || el == document.getElementsByClassName("file_tree")[0])){ 
                         if(el.children[eForensics].children[0].textContent == spr[Ty99]){ 
                             el= el.children[eForensics]; 
@@ -497,7 +497,7 @@ for(let folder of document.querySelectorAll("#files .folder")) {
     })(); 
     setTimeout(function(){eleo.style.top= 0; 
     }, 1); 
-    setTimeout(function(){!$("#file_expl #information_cont").hasClass("visible")? $("#file_expl #information_cont").toggleClass("visible"): 666 
+    setTimeout(function(){!$("#file_expl #information_cont").hasClass("visible")? (function(){$("#file_expl #information_cont").toggleClass("visible"); $("#file_expl #information_cont #information").html("<i>Infor</i><button class='Historia'>Historia</button>"); })(): 666 
     }, 101); 
 
     uRL= ""; 
@@ -532,7 +532,7 @@ for(let folder of document.querySelectorAll("#files .folder")) {
         if(aar == ""){ 
              el= document.getElementsByClassName("file_tree")[0]; 
 
-            for(Colombia in el.children){ 
+            for(Colombia= 0; Colombia <= el.children.length - 1; Colombia++){ 
                 $(el.children[Colombia]).hasClass("folder_cont")? $($(el.children[Colombia]).children()[0]).addClass("inScope"): $(el.children[Colombia]).addClass("inScope"); 
             } 
             LEB= $("#preview .file_tree"); 
@@ -555,7 +555,7 @@ for(let folder of document.querySelectorAll("#files .folder")) {
                 el= document.getElementsByClassName("file_tree")[0]; 
                                   
                 for(Ty99 in spr){ 
-                    for(eForensics in el.children){ 
+                    for(eForensics= 0; eForensics <= el.children.length - 1; eForensics++){ 
                         if(($(el.children[eForensics]).hasClass("folder_cont")) && ((el != document.getElementsByClassName("file_tree")[0] && parseInt(eForensics) != 0) || el == document.getElementsByClassName("file_tree")[0])){ 
                             if(el.children[eForensics].children[0].textContent == spr[Ty99]){ 
                                 el= el.children[eForensics]; 
@@ -585,7 +585,7 @@ LEB= $("#preview .file_tree");
             el= document.getElementsByClassName("file_tree")[0]; 
                               
             for(Ty99 in spr){ 
-                for(eForensics in el.children){ 
+                for(eForensics= 0; eForensics <= el.children.length - 1; eForensics++){ 
                     if(($(el.children[eForensics]).hasClass("folder_cont")) && ((el != document.getElementsByClassName("file_tree")[0] && parseInt(eForensics) != 0) || el == document.getElementsByClassName("file_tree")[0])){ 
                         if(el.children[eForensics].children[0].textContent == spr[Ty99]){ 
                             el= el.children[eForensics]; 
@@ -684,7 +684,7 @@ $("#files .folder").click(function(i){
         if(aar == ""){ 
             $(".inScope").removeClass("inScope"); 
 
-            for(Colombia in el.children){ 
+            for(Colombia= 0; Colombia <= el.children.length - 1; Colombia++){ 
                 el.children[Colombia].getAttribute("class").indexOf("folder_cont") == -1? el.children[Colombia].classList.add("inScope"): el.children[Colombia].children[0].classList.add("inScope"); 
             } 
             $(".folder_cont .folder").css({"opacity": "0", "height": "0", "padding": "0"}); 
@@ -700,7 +700,7 @@ $("#files .folder").click(function(i){
                 el= document.getElementsByClassName("file_tree")[0]; 
                                   
                 for(Ty99 in spr){ 
-                    for(eForensics in el.children){ 
+                    for(eForensics= 0; eForensics <= el.children.length - 1; eForensics++){ 
                         if(($(el.children[eForensics]).hasClass("folder_cont")) && ((el != document.getElementsByClassName("file_tree")[0] && parseInt(eForensics) != 0) || el == document.getElementsByClassName("file_tree")[0])){ 
                             if(el.children[eForensics].children[0].textContent == spr[Ty99]){ 
                                 el= el.children[eForensics]; 
@@ -722,7 +722,7 @@ $("#files .folder").click(function(i){
             el= document.getElementsByClassName("file_tree")[0]; 
                               
             for(Ty99 in spr){ 
-                for(eForensics in el.children){ 
+                for(eForensics= 0; eForensics <= el.children.length - 1; eForensics++){ 
                     if(($(el.children[eForensics]).hasClass("folder_cont")) && ((el != document.getElementsByClassName("file_tree")[0] && parseInt(eForensics) != 0) || el == document.getElementsByClassName("file_tree")[0])){ 
                         if(el.children[eForensics].children[0].textContent == spr[Ty99]){ 
                             el= el.children[eForensics]; 
@@ -763,7 +763,7 @@ $("#preview .folder").click(function(i, triggered){
             el= document.getElementsByClassName("file_tree")[1]; 
             $("#preview .inScope").removeClass("inScope"); 
 
-            for(Colombia in el.children){ 
+            for(Colombia= 0; Colombia <= el.children.length - 1; Colombia++){ 
                 el.children[Colombia].getAttribute("class").indexOf("folder_cont") == -1? el.children[Colombia].classList.add("inScope"): el.children[Colombia].children[0].classList.add("inScope"); 
             } 
             $("#preview .folder_cont .folder").css({"opacity": "0", "height": "0"}); 
@@ -779,7 +779,7 @@ $("#preview .folder").click(function(i, triggered){
                 el= document.getElementsByClassName("file_tree")[1]; 
                                   
                 for(Ty99 in spr){ 
-                    for(eForensics in el.children){ 
+                    for(eForensics= 0; eForensics <= el.children.length - 1; eForensics++){ 
                         if(($(el.children[eForensics]).hasClass("folder_cont")) && ((el != document.getElementsByClassName("file_tree")[1] && parseInt(eForensics) != 0) || el == document.getElementsByClassName("file_tree")[1])){ 
                             if(el.children[eForensics].children[0].textContent == spr[Ty99]){ 
                                 el= el.children[eForensics]; 
@@ -801,7 +801,7 @@ $("#preview .folder").click(function(i, triggered){
             el= document.getElementsByClassName("file_tree")[1]; 
                               
             for(Ty99 in spr){ 
-                for(eForensics in el.children){ 
+                for(eForensics= 0; eForensics <= el.children.length - 1; eForensics++){ 
                     if(($(el.children[eForensics]).hasClass("folder_cont")) && ((el != document.getElementsByClassName("file_tree")[1] && parseInt(eForensics) != 0) || el == document.getElementsByClassName("file_tree")[1])){ 
                         if(el.children[eForensics].children[0].textContent == spr[Ty99]){ 
                             el= el.children[eForensics]; 
@@ -836,11 +836,10 @@ $("#preview .folder").click(function(i, triggered){
 }); 
     
 $('#root div').click( function(e){ 
-    history.pushState({page: pageI}, "", e.target.url); 
+    history.pushState({page: pageI}, "", e.target.getAttribute("url")); 
 
     pageI++;
-
-    updateRoot(separateUrl(getToBusiness(e.target.url))); 
+    updateRoot(separateUrl(getToBusiness(e.target.getAttribute("url")))); 
 }); 
     
 $("#Archivo, #Live, #Editar").click(function(){ 
@@ -1445,6 +1444,7 @@ updateRoot= function(a7){
     } 
 
     $('#root div div').click( function(e){ 
+        //debugger; 
        if(!!e.target.getAttribute("url")){ 
         $("#preview .file_tree").removeClass("visible"); 
         $(".code-filler").width(0); 
@@ -1480,7 +1480,7 @@ updateRoot= function(a7){
              el= document.getElementsByClassName("file_tree")[0]; 
             $(".inScope").removeClass("inScope"); 
 
-            for(Colombia in el.children){ 
+            for(Colombia= 0; Colombia <= el.children.length - 1; Colombia++){ 
                 $(el.children[Colombia]).hasClass("folder_cont")? $($(el.children[Colombia]).children()[0]).addClass("inScope"): $(el.children[Colombia]).addClass("inScope"); 
             } 
             $(".folder_cont .folder").css({"opacity": "0", "height": "0", "padding": "0"}); 
@@ -1496,7 +1496,7 @@ updateRoot= function(a7){
                 el= document.getElementsByClassName("file_tree")[0]; 
                                   
                 for(Ty99 in spr){ 
-                    for(eForensics in el.children){ 
+                    for(eForensics= 0; eForensics <= el.children.length - 1; eForensics++){ 
                         if(($(el.children[eForensics]).hasClass("folder_cont")) && ((el != document.getElementsByClassName("file_tree")[0] && parseInt(eForensics) != 0) || el == document.getElementsByClassName("file_tree")[0])){ 
                             if(el.children[eForensics].children[0].textContent == spr[Ty99]){ 
                                 el= el.children[eForensics]; 
@@ -1520,7 +1520,7 @@ updateRoot= function(a7){
             el= document.getElementsByClassName("file_tree")[0]; 
                               
             for(Ty99 in spr){ 
-                for(eForensics in el.children){ 
+                for(eForensics= 0; eForensics <= el.children.length - 1; eForensics++){ 
                     if(($(el.children[eForensics]).hasClass("folder_cont")) && ((el != document.getElementsByClassName("file_tree")[0] && parseInt(eForensics) != 0) || el == document.getElementsByClassName("file_tree")[0])){ 
                         if(el.children[eForensics].children[0].textContent == spr[Ty99]){ 
                             el= el.children[eForensics]; 
@@ -1536,13 +1536,13 @@ updateRoot= function(a7){
             $(".folder_cont > .folder.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
             $(".file.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
         }
-       } 
 
         $(".folder_cont > .folder.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
 
         $(".file.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
 
-       title(); 
+        title(); 
+       } 
     }); 
 
     
