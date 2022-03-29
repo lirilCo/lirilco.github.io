@@ -85,11 +85,11 @@ $("badguy").remove();
 for(w in newComments){ 
     if(newComments[w].length == 1){
         for(e in newComments[w][0]){
-            aS.find(".Comentarios").append(newComments[w][0][e][1]); 
+            aS.find(".Comentarios").children().filter(".Respuestas").before(newComments[w][0][e][1]); 
         }
     }else{
         for(e in newComments[w][0]){
-            finder(newComments[w][1], aS).append(newComments[w][0][e][1]); 
+            finder(newComments[w][1], aS).children().filter(".Respuestas").before(newComments[w][0][e][1]); 
         }
     }
 } 
