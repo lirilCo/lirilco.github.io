@@ -1,5 +1,6 @@
 var $this 
-var hashes= {};           
+var hashes= {}; 
+var nonBuilt; 
 wD= function(thi, b){ 
     if(typeof b == "undefined"){ 
         if(!thi.parent().next(".newComment").find("textarea").length){ 
@@ -219,21 +220,6 @@ switch(ty){
     case "blog": 
         a= $(".comentarios").last(); 
     break; 
-    case "story": 
-        $(".story").each(function(){ 
-            if(($(this).is(".mult_img")? $(this).find(".options a").attr("href").slice(0, $(this).find(".options a").attr("href").lastIndexOf("/")) + $(this).find(".carr").find("img")[0].src.slice($(this).find(".carr").find("img")[0].src.lastIndexOf("/"), $(this).find(".carr").find("img")[0].src.lastIndexOf(".")): $(this).find(".options a").attr("href")) != f.target.responseURL.slice(100, -5)){
-                a= $(this);
-            }
-        }); 
-    break; 
-    case "profilePic": 
-        $("#profilePic").each(function(){ 
-            if(("/" + username + "/img" + ($("#profilePic").is(".mult_img")? un_tn($("#profilePic").find(".carr img")[0].src): un_tn($("#profilePic > img")[0].src)).slice(($("#profilePic").is(".mult_img")? un_tn($("#profilePic").find(".carr img")[0].src): un_tn($("#profilePic > img")[0].src)).lastIndexOf("/"), ($("#profilePic").is(".mult_img")? un_tn($("#profilePic").find(".carr img")[0].src): un_tn($("#profilePic > img")[0].src)).lastIndexOf(".")))
- == f.target.responseURL.slice(100, -5)){
-                a= $(this);
-            }
-        }); 
-    break; 
 }; 
 
 
@@ -330,7 +316,11 @@ $('#article .comentarios .Comentarios .comentario').on("mousemove", function(eve
     }); 
 }
 k300= function(C, p, y, ty){ 
-    hashes[C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf("."))]= JSON.parse(C.target.response)[0].sha; 
+    hashes[C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf("."))]= (function(){built= true; for(eForensics in JSON.parse(C.target.response)){ 
+            if(nonBuilt.indexOf(JSON.parse(C.target.response)[eForensics].sha) != -1){ 
+                built= parseInt(eForensics) + 1; 
+            } 
+        }; return built !== true? JSON.parse(C.target.response)[built].sha: JSON.parse(C.target.response)[0].sha; })(); 
     //console.log(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))); 
     if(!!JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))) && JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))).hash != JSON.parse(C.target.response)[0].sha){
         //console.log(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))); 
@@ -341,28 +331,6 @@ k300= function(C, p, y, ty){
         oReq.send(); 
     }else if(!!JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf("."))))){
         switch(ty){
-            case "foto": 
-                $(".foto").each(function(){ 
-                    if(("/" + username + "/img" + ($(this).is(".mult_img")? un_tn($(this).find(".carr img")[0].src): un_tn($(this).find(".pic")[0].src)).slice(($(this).is(".mult_img")? un_tn($(this).find(".carr img")[0].src): un_tn($(this).find(".pic")[0].src)).lastIndexOf("/"), ($(this).is(".mult_img")? un_tn($(this).find(".carr img")[0].src): un_tn($(this).find(".pic")[0].src)).lastIndexOf("."))) == C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf("."))){
-                        a= $(this); 
-                    }
-                })
-            break; 
-            case "story": 
-                $(".story").each(function(){ 
-                    if(($(this).is(".mult_img")? $(this).find(".options a").attr("href").slice(0, $(this).find(".options a").attr("href").lastIndexOf("/")) + $(this).find(".carr").find("img")[0].src.slice($(this).find(".carr").find("img")[0].src.lastIndexOf("/"), $(this).find(".carr").find("img")[0].src.lastIndexOf(".")): $(this).find(".options a").attr("href")) == C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf("."))){
-                        a= $(this);
-                    }
-                }); 
-            break; 
-            case "profilePic": 
-                $("#profilePic").each(function(){ 
-                    if(("/" + username + "/img" + ($("#profilePic").is(".mult_img")? un_tn($("#profilePic").find(".carr img")[0].src): un_tn($("#profilePic > img")[0].src)).slice(($("#profilePic").is(".mult_img")? un_tn($("#profilePic").find(".carr img")[0].src): un_tn($("#profilePic > img")[0].src)).lastIndexOf("/"), ($("#profilePic").is(".mult_img")? un_tn($("#profilePic").find(".carr img")[0].src): un_tn($("#profilePic > img")[0].src)).lastIndexOf(".")))
- == C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf("."))){
-                        a= $(this);
-                    }
-                }); 
-            break; 
             case "blog": 
                 a= $(".comentarios").last(); 
             break; 
@@ -396,8 +364,18 @@ k300= function(C, p, y, ty){
         tooltip(); 
     }
 } 
-K0= function(){
-    token= this.responseText; 
+K100= function(builds){ 
+    nonBuilt= (function(){ 
+        non_built= []; 
+
+        for(eForensics in JSON.parse(builds.target.response)){ 
+                if(JSON.parse(builds.target.response)[eForensics].status == "built"){ 
+                    return non_built; 
+                }else{ 
+                    non_built[non_built.length]= JSON.parse(builds.target.response)[eForensics].commit; 
+                } 
+            } 
+        })(); 
     $(".comentarios").last().each(function(){ 
         w1=  window.location.pathname.replaceAll(".html", ""); 
         console.log(w1) 
@@ -411,6 +389,15 @@ K0= function(){
             oReq.send(); 
         })(): 1; 
     }); 
+} 
+K0= function(){
+    token= this.responseText; 
+
+    var oReq= new XMLHttpRequest(); 
+    oReq.addEventListener("load", function(e){K100(e)}); 
+    oReq.open("GET", "https://api.github.com/repos/LirilCo/lirilco.github.io/pages/builds"); 
+    oReq.setRequestHeader('Authorization', "token " + token); 
+    oReq.send();
 }
 $(document).on("ready",function(){ 
     purger.purge(); 

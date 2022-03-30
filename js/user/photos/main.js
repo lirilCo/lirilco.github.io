@@ -351,7 +351,7 @@ k200= function(f, ww1, a, u, ty){
 switch(ty){
     case "photo": 
         $(".photo").each(function(){ 
-            if(("/" + username + "/img" + ($(this).is(".mult_img")? un_tn($(this).find(".carr img")[0].src): un_tn($(this).find(".pic")[0].src)).slice(($(this).is(".mult_img")? un_tn($(this).find(".carr img")[0].src): un_tn($(this).find(".pic")[0].src)).lastIndexOf("/"), ($(this).is(".mult_img")? un_tn($(this).find(".carr img")[0].src): un_tn($(this).find(".pic")[0].src)).lastIndexOf("."))) != f.target.responseURL.slice(100, -5)){
+            if(("/" + username + "/img" + ($(this).is(".mult_img")? un_tn($(this).find(".carr img")[0].src): un_tn($(this).find(".pic")[0].src)).slice(($(this).is(".mult_img")? un_tn($(this).find(".carr img")[0].src): un_tn($(this).find(".pic")[0].src)).lastIndexOf("/"), ($(this).is(".mult_img")? un_tn($(this).find(".carr img")[0].src): un_tn($(this).find(".pic")[0].src)).lastIndexOf("."))) == f.target.responseURL.slice(100, -5)){
                 a= $(this); 
                 (function(){ 
                     a.find("img").on("click", function(){openModal($(this))}); 
@@ -422,7 +422,11 @@ console.log(u[0])
 localStorage.setItem(f.target.responseURL.slice(100, -5), JSON.stringify({B: JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).B, S: JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).S, C: bGComments(aS), hash: u[0].sha})); 
 }
 k300= function(C, p, y, ty){ 
-    hashes[C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf("."))]= JSON.parse(C.target.response)[0].sha; 
+    hashes[C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf("."))]= (function(){built= true; for(eForensics in JSON.parse(C.target.response)){ 
+            if(nonBuilt.indexOf(JSON.parse(C.target.response)[eForensics].sha) != -1){ 
+                built= parseInt(eForensics) + 1; 
+            } 
+        }; return built !== true? JSON.parse(C.target.response)[built].sha: JSON.parse(C.target.response)[0].sha; })(); 
     if(!!JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))) && JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))).hash != JSON.parse(C.target.response)[0].sha){
         var oReq= new XMLHttpRequest(); 
         oReq.addEventListener("load", function(e){k200(e, p, y, JSON.parse(C.target.response), ty)}); 
@@ -480,8 +484,18 @@ purger.purge= function(a){
         console.log("Purged!"); 
     }; 
 }; 
-K0= function(){
-    token= this.responseText; 
+K100= function(builds){ 
+    nonBuilt= (function(){ 
+        non_built= []; 
+
+        for(eForensics in JSON.parse(builds.target.response)){ 
+                if(JSON.parse(builds.target.response)[eForensics].status == "built"){ 
+                    return non_built; 
+                }else{ 
+                    non_built[non_built.length]= JSON.parse(builds.target.response)[eForensics].commit; 
+                } 
+            } 
+        })(); 
     $(".photo").each(function(){ 
         src= $(this).is(".mult_img")? un_tn($(this).find(".carr img")[0].src): un_tn($(this).find(".pic")[0].src); 
         w1=  "/" + username + "/img" + src.slice(src.lastIndexOf("/"), src.lastIndexOf(".")); 
@@ -513,6 +527,15 @@ K0= function(){
         })(): (function(){ 
         })(); 
     }); 
+} 
+K0= function(){
+    token= this.responseText; 
+
+    var oReq= new XMLHttpRequest(); 
+    oReq.addEventListener("load", function(e){K100(e)}); 
+    oReq.open("GET", "https://api.github.com/repos/LirilCo/lirilco.github.io/pages/builds"); 
+    oReq.setRequestHeader('Authorization', "token " + token); 
+    oReq.send();
 }
 
 $(document).on("ready",function(e){
@@ -718,6 +741,7 @@ var c = 0
 var $this
 var ar= null; 
 var hashes= {}; 
+var nonBuilt; 
 $(window).on("load", function () {
     $("#chat ul li").on("click",function(){
         if($(this).attr('class').split(' ')[2] == null){

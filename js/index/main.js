@@ -641,6 +641,7 @@ var next;
 var Antheater= false; 
 var token; 
 var hashes= {}; 
+var nonBuilt; 
 $(window).load(function(){ 
     setTimeout(
         function(){ 
@@ -717,24 +718,9 @@ function getCommentsAndAnswers(u, l){
 
 k200= function(f, ww1, a, u, ty){ 
 switch(ty){
-    case "foto": 
-        $(".foto").each(function(){ 
-            if(("/" + username + "/img" + ($(this).is(".mult_img")? un_tn($(this).find(".carr img")[0].src): un_tn($(this).find(".pic")[0].src)).slice(($(this).is(".mult_img")? un_tn($(this).find(".carr img")[0].src): un_tn($(this).find(".pic")[0].src)).lastIndexOf("/"), ($(this).is(".mult_img")? un_tn($(this).find(".carr img")[0].src): un_tn($(this).find(".pic")[0].src)).lastIndexOf("."))) != f.target.responseURL.slice(100, -5)){
-                a= $(this); 
-            }
-        })
-    break; 
     case "story": 
         $(".story").each(function(){ 
             if(($(this).is(".mult_img")? $(this).find(".options a").attr("href").slice(0, $(this).find(".options a").attr("href").lastIndexOf("/")) + $(this).find(".carr").find("img")[0].src.slice($(this).find(".carr").find("img")[0].src.lastIndexOf("/"), $(this).find(".carr").find("img")[0].src.lastIndexOf(".")): $(this).find(".options a").attr("href")) == f.target.responseURL.slice(100, -5)){
-                a= $(this);
-            }
-        }); 
-    break; 
-    case "profilePic": 
-        $("#profilePic").each(function(){ 
-            if(("/" + username + "/img" + ($("#profilePic").is(".mult_img")? un_tn($("#profilePic").find(".carr img")[0].src): un_tn($("#profilePic > img")[0].src)).slice(($("#profilePic").is(".mult_img")? un_tn($("#profilePic").find(".carr img")[0].src): un_tn($("#profilePic > img")[0].src)).lastIndexOf("/"), ($("#profilePic").is(".mult_img")? un_tn($("#profilePic").find(".carr img")[0].src): un_tn($("#profilePic > img")[0].src)).lastIndexOf(".")))
- == f.target.responseURL.slice(100, -5)){
                 a= $(this);
             }
         }); 
@@ -764,24 +750,24 @@ $("badguy").remove();
 for(w in newComments){ 
     if(newComments[w].length == 1){
         for(e in newComments[w][0]){
-            aS.find(".Comentarios").append(newComments[w][0][e][1]); 
+            aS.find(".Comentarios").children().filter(".Respuestas").before(newComments[w][0][e][1]); 
         }
     }else{
         for(e in newComments[w][0]){
-            finder(newComments[w][1], aS).append(newComments[w][0][e][1]); 
+            finder(newComments[w][1], aS).children().filter(".Respuestas").before(newComments[w][0][e][1]); 
         }
     }
 } 
 for(w in newAnswers){ 
     if(newAnswers[w].length == 2){
         if($(aS.find(".Comentarios").children().filter(".comentario")[newAnswers[w][0]]).next().is(".respuestas")){ 
-            $(aS.find(".Comentarios").children().filter(".comentario")[newAnswers[w][0]]).next().find(".Respuestas").before(newAnswers[w][1]); 
+            $(aS.find(".Comentarios").children().filter(".comentario")[newAnswers[w][0]]).next().children().filter(".Respuestas").before(newAnswers[w][1]); 
         }else{ 
             $(aS.find(".Comentarios").children().filter(".comentario")[newAnswers[w][0]]).after('<div class="respuestas">' + newAnswers[w][1] + '<span class="Respuestas"></span></div>')
         } 
     }else{ 
         if($(finder(newAnswers[w][0], aS).children().filter(".comentario")[newAnswers[w][1]]).next().is(".respuestas")){ 
-            $(finder(newAnswers[w][0], aS).children().filter(".comentario")[newAnswers[w][1]]).next().find(".Respuestas").before(newAnswers[w][2]); 
+            $(finder(newAnswers[w][0], aS).children().filter(".comentario")[newAnswers[w][1]]).next().children().filter(".Respuestas").before(newAnswers[w][2]); 
         }else{ 
             $(finder(newAnswers[w][0], aS).children().filter(".comentario")[newAnswers[w][1]]).after('<div class="respuestas hidden">' + newAnswers[w][2] + '<span class="Respuestas"></span></div>');
         } 
@@ -792,7 +778,11 @@ console.log(u[0])
 localStorage.setItem(f.target.responseURL.slice(100, -5), JSON.stringify({B: JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).B, S: JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).S, C: bGComments(aS), hash: u[0].sha})); 
 }
 k300= function(C, p, y, ty){ 
-    hashes[C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf("."))]= JSON.parse(C.target.response)[0].sha; 
+    hashes[C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf("."))]= (function(){built= true; for(eForensics in JSON.parse(C.target.response)){ 
+            if(nonBuilt.indexOf(JSON.parse(C.target.response)[eForensics].sha) != -1){ 
+                built= parseInt(eForensics) + 1; 
+            } 
+        }; return built !== true? JSON.parse(C.target.response)[built].sha: JSON.parse(C.target.response)[0].sha; })(); 
     if(!!JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))) && JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))).hash != JSON.parse(C.target.response)[0].sha){
         var oReq= new XMLHttpRequest(); 
         oReq.addEventListener("load", function(e){k200(e, p, y, JSON.parse(C.target.response), ty)}); 
@@ -800,24 +790,9 @@ k300= function(C, p, y, ty){
         oReq.send(); 
     }else if(!!JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf("."))))){
         switch(ty){
-            case "foto": 
-                $(".foto").each(function(){ 
-                    if(("/" + username + "/img" + ($(this).is(".mult_img")? un_tn($(this).find(".carr img")[0].src): un_tn($(this).find(".pic")[0].src)).slice(($(this).is(".mult_img")? un_tn($(this).find(".carr img")[0].src): un_tn($(this).find(".pic")[0].src)).lastIndexOf("/"), ($(this).is(".mult_img")? un_tn($(this).find(".carr img")[0].src): un_tn($(this).find(".pic")[0].src)).lastIndexOf("."))) == C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf("."))){
-                        a= $(this); 
-                    }
-                })
-            break; 
             case "story": 
                 $(".story").each(function(){ 
                     if(($(this).is(".mult_img")? $(this).find(".options a").attr("href").slice(0, $(this).find(".options a").attr("href").lastIndexOf("/")) + $(this).find(".carr").find("img")[0].src.slice($(this).find(".carr").find("img")[0].src.lastIndexOf("/"), $(this).find(".carr").find("img")[0].src.lastIndexOf(".")): $(this).find(".options a").attr("href")) == C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf("."))){
-                        a= $(this);
-                    }
-                }); 
-            break; 
-            case "profilePic": 
-                $("#profilePic").each(function(){ 
-                    if(("/" + username + "/img" + ($("#profilePic").is(".mult_img")? un_tn($("#profilePic").find(".carr img")[0].src): un_tn($("#profilePic > img")[0].src)).slice(($("#profilePic").is(".mult_img")? un_tn($("#profilePic").find(".carr img")[0].src): un_tn($("#profilePic > img")[0].src)).lastIndexOf("/"), ($("#profilePic").is(".mult_img")? un_tn($("#profilePic").find(".carr img")[0].src): un_tn($("#profilePic > img")[0].src)).lastIndexOf(".")))
- == C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf("."))){
                         a= $(this);
                     }
                 }); 
@@ -829,8 +804,18 @@ k300= function(C, p, y, ty){
 
     }
 } 
-K0= function(){
-    token= this.responseText; 
+K100= function(builds){ 
+    nonBuilt= (function(){ 
+        non_built= []; 
+
+        for(eForensics in JSON.parse(builds.target.response)){ 
+                if(JSON.parse(builds.target.response)[eForensics].status == "built"){ 
+                    return non_built; 
+                }else{ 
+                    non_built[non_built.length]= JSON.parse(builds.target.response)[eForensics].commit; 
+                } 
+            } 
+        })(); 
     $(".story").each(function(){ 
         w1=  $(this).is(".mult_img")? $(this).find(".options a").attr("href").slice(0, $(this).find(".options a").attr("href").lastIndexOf("/")) + $(this).find(".carr").find("img")[0].src.slice($(this).find(".carr").find("img")[0].src.lastIndexOf("/"), $(this).find(".carr").find("img")[0].src.lastIndexOf(".")): $(this).find(".options a").attr("href"); 
         cold= JSON.parse(localStorage.getItem(w1)); 
@@ -849,6 +834,15 @@ K0= function(){
         })(): (function(){ 
         })(); 
     }); 
+} 
+K0= function(){
+    token= this.responseText; 
+
+    var oReq= new XMLHttpRequest(); 
+    oReq.addEventListener("load", function(e){K100(e)}); 
+    oReq.open("GET", "https://api.github.com/repos/LirilCo/lirilco.github.io/pages/builds"); 
+    oReq.setRequestHeader('Authorization', "token " + token); 
+    oReq.send();
 }
 $(document).on("ready", function(){ 
     purger.purge(); 

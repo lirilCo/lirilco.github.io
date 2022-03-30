@@ -1,5 +1,6 @@
 closeModal= function(){1}; 
 var hashes= {}; 
+var nonBuilt; 
 
 function getNewComments(m, h){ 
     var arr= []; 
@@ -169,7 +170,11 @@ $('.theater .comments .comentarios .Comentarios .comentario').on("mousemove", fu
     localStorage.setItem(f.target.responseURL.slice(100, -5), JSON.stringify({B: JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).B, S: JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).S, C: JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).C, hash: u[0].sha})); 
 }
 k300= function(C, p, y, ty){ 
-    hashes[C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf("."))]= JSON.parse(C.target.response)[0].sha; 
+    hashes[C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf("."))]= (function(){built= true; for(eForensics in JSON.parse(C.target.response)){ 
+            if(nonBuilt.indexOf(JSON.parse(C.target.response)[eForensics].sha) != -1){ 
+                built= parseInt(eForensics) + 1; 
+            } 
+        }; return built !== true? JSON.parse(C.target.response)[built].sha: JSON.parse(C.target.response)[0].sha; })(); 
     if(!!JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))) && JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf(".")))).hash != JSON.parse(C.target.response)[0].sha){
         var oReq= new XMLHttpRequest(); 
         oReq.addEventListener("load", function(e){k200(e, p, y, JSON.parse(C.target.response), ty)}); 
@@ -177,28 +182,6 @@ k300= function(C, p, y, ty){
         oReq.send(); 
     }else if(!!JSON.parse(localStorage.getItem(C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf("."))))){
         switch(ty){
-            case "foto": 
-                $(".foto").each(function(){ 
-                    if(("/" + username + "/img" + ($(this).is(".mult_img")? un_tn($(this).find(".carr img")[0].src): un_tn($(this).find(".pic")[0].src)).slice(($(this).is(".mult_img")? un_tn($(this).find(".carr img")[0].src): un_tn($(this).find(".pic")[0].src)).lastIndexOf("/"), ($(this).is(".mult_img")? un_tn($(this).find(".carr img")[0].src): un_tn($(this).find(".pic")[0].src)).lastIndexOf("."))) == C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf("."))){
-                        a= $(this); 
-                    }
-                })
-            break; 
-            case "story": 
-                $(".story").each(function(){ 
-                    if(($(this).is(".mult_img")? $(this).find(".options a").attr("href").slice(0, $(this).find(".options a").attr("href").lastIndexOf("/")) + $(this).find(".carr").find("img")[0].src.slice($(this).find(".carr").find("img")[0].src.lastIndexOf("/"), $(this).find(".carr").find("img")[0].src.lastIndexOf(".")): $(this).find(".options a").attr("href")) == C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf("."))){
-                        a= $(this);
-                    }
-                }); 
-            break; 
-            case "profilePic": 
-                $("#profilePic").each(function(){ 
-                    if(("/" + username + "/img" + ($("#profilePic").is(".mult_img")? un_tn($("#profilePic").find(".carr img")[0].src): un_tn($("#profilePic > img")[0].src)).slice(($("#profilePic").is(".mult_img")? un_tn($("#profilePic").find(".carr img")[0].src): un_tn($("#profilePic > img")[0].src)).lastIndexOf("/"), ($("#profilePic").is(".mult_img")? un_tn($("#profilePic").find(".carr img")[0].src): un_tn($("#profilePic > img")[0].src)).lastIndexOf(".")))
- == C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf("."))){
-                        a= $(this);
-                    }
-                }); 
-            break; 
             case "static": 
                 a= $("#theater"); 
             break; 
@@ -286,8 +269,18 @@ document.addEventListener("keydown",function(evt){
         }
     } 
 })
-K0= function(){
-    token= this.responseText; 
+K100= function(builds){ 
+    nonBuilt= (function(){ 
+        non_built= []; 
+
+        for(eForensics in JSON.parse(builds.target.response)){ 
+                if(JSON.parse(builds.target.response)[eForensics].status == "built"){ 
+                    return non_built; 
+                }else{ 
+                    non_built[non_built.length]= JSON.parse(builds.target.response)[eForensics].commit; 
+                } 
+            } 
+        })(); 
     $("#theater").each(function(){ 
         if(!!$(this).find(".carr").length){
             w1=  "/" + username + "/img" + un_tn($(this).find(".carr img")[0].src).slice(un_tn($(this).find(".carr img")[0].src).lastIndexOf("/"), un_tn($(this).find(".carr img")[0].src).lastIndexOf(".")); 
@@ -305,6 +298,15 @@ K0= function(){
             oReq.send(); 
         })(): 1; 
     }); 
+} 
+K0= function(){
+    token= this.responseText; 
+
+    var oReq= new XMLHttpRequest(); 
+    oReq.addEventListener("load", function(e){K100(e)}); 
+    oReq.open("GET", "https://api.github.com/repos/LirilCo/lirilco.github.io/pages/builds"); 
+    oReq.setRequestHeader('Authorization', "token " + token); 
+    oReq.send();
 }
 $(function(){
     $('.theater .comments .comentarios .Comentarios .comentario').on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth= elx.outerWidth( true ),circleHeight = elx.outerHeight( true ),circleLeft   = elx.offset().left,circleTop    = elx.offset().top,circlePos    ={x    : circleLeft + circleWidth / 2,y    : circleTop + circleHeight / 2,radius: circleWidth / 2};distance   = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); 
