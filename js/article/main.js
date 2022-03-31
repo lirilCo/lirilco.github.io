@@ -15,7 +15,7 @@ wD= function(thi, b){
                             
                 C= $(this); 
                             
-                !!C.closest("#theater").length? C.closest(".Comentarios").scrollTop($(C.closest(".comentarios").find("textarea")[0]).parent()[0].offsetTop + $(C.closest(".comentarios").find("textarea")[0]).parent().outerHeight() - C.closest(".Comentarios").height() - 66): $("html").scrollTop($(C.closest(".comentarios").find("textarea")[0]).parent()[0].offsetTop + $(C.closest(".comentarios").find("textarea")[0]).parent().outerHeight() - $("html").height() + 112); 
+                !!C.closest("#theater").length? C.closest(".Comentarios").scrollTop($(C.closest(".comentarios").find("textarea")[0]).parent()[0].offsetTop + $(C.closest(".comentarios").find("textarea")[0]).parent().outerHeight() - C.closest(".Comentarios").height() - (66 + $("#theater .info").height() - 38)): $("html").scrollTop($(C.closest(".comentarios").find("textarea")[0]).parent()[0].offsetTop + $(C.closest(".comentarios").find("textarea")[0]).parent().outerHeight() - $("html").height() + 112); 
             }); 
                 
             $(thi.parent().next(".newComment").find("textarea")).on('keydown', function(i){ 
@@ -30,7 +30,7 @@ wD= function(thi, b){
 
             aa= thi; 
                          
-            !!thi.closest("#theater").length? thi.closest(".Comentarios").scrollTop($(thi.closest(".comentarios").find("textarea")[0]).parent()[0].offsetTop + $(thi.closest(".comentarios").find("textarea")[0]).parent().outerHeight() - thi.closest(".Comentarios").height() - 66): $("html").scrollTop($(thi.closest(".comentarios").find("textarea")[0]).parent()[0].offsetTop + $(thi.closest(".comentarios").find("textarea")[0]).parent().outerHeight() - $("html").height() + 112); 
+            !!thi.closest("#theater").length? thi.closest(".Comentarios").scrollTop($(thi.closest(".comentarios").find("textarea")[0]).parent()[0].offsetTop + $(thi.closest(".comentarios").find("textarea")[0]).parent().outerHeight() - thi.closest(".Comentarios").height() - (66 + $("#theater .info").height() - 38)): $("html").scrollTop($(thi.closest(".comentarios").find("textarea")[0]).parent()[0].offsetTop + $(thi.closest(".comentarios").find("textarea")[0]).parent().outerHeight() - $("html").height() + 112); 
                                                                                           
             $($(aa).parent().next(".newComment").find("textarea")).focus(); 
         }else{ 
@@ -49,7 +49,7 @@ wD= function(thi, b){
                             
                 C= $(this); 
                             
-                !!C.closest("#theater").length? C.closest(".comentarios").find(".Comentarios").scrollTop($(C.closest(".comentarios").find("textarea")[0]).parent()[0].offsetTop + $(C.closest(".comentarios").find("textarea")[0]).parent().outerHeight() - C.closest(".comentarios").find(".Comentarios").height() - 66): $("html").scrollTop($(C.closest(".comentarios").find("textarea")[0]).parent()[0].offsetTop + $(C.closest(".comentarios").find("textarea")[0]).parent().outerHeight() - $("html").height() + 112); 
+                !!C.closest("#theater").length? C.closest(".comentarios").find(".Comentarios").scrollTop($(C.closest(".comentarios").find("textarea")[0]).parent()[0].offsetTop + $(C.closest(".comentarios").find("textarea")[0]).parent().outerHeight() - C.closest(".comentarios").find(".Comentarios").height() - (66 + $("#theater .info").height() - 38)): $("html").scrollTop($(C.closest(".comentarios").find("textarea")[0]).parent()[0].offsetTop + $(C.closest(".comentarios").find("textarea")[0]).parent().outerHeight() - $("html").height() + 112); 
             }); 
                 
             $(thi.parent().next(".newComment").find("textarea")).on('keydown', function(i){ 
@@ -64,7 +64,7 @@ wD= function(thi, b){
 
             aa= thi; 
                          
-            !!aa.closest("#theater").length? aa.closest(".Comentarios").scrollTop($(aa.closest(".comentarios").find("textarea")[0]).parent()[0].offsetTop + $(aa.closest(".comentarios").find("textarea")[0]).parent().outerHeight() - aa.closest(".Comentarios").height() - 66): $("html").scrollTop($(aa.closest(".comentarios").find("textarea")[0]).parent()[0].offsetTop + $(aa.closest(".comentarios").find("textarea")[0]).parent().outerHeight() - $("html").height() + 112); 
+            !!aa.closest("#theater").length? aa.closest(".Comentarios").scrollTop($(aa.closest(".comentarios").find("textarea")[0]).parent()[0].offsetTop + $(aa.closest(".comentarios").find("textarea")[0]).parent().outerHeight() - aa.closest(".Comentarios").height() - (66 + $("#theater .info").height() - 38)): $("html").scrollTop($(aa.closest(".comentarios").find("textarea")[0]).parent()[0].offsetTop + $(aa.closest(".comentarios").find("textarea")[0]).parent().outerHeight() - $("html").height() + 112); 
                                                                                           
             $($(aa).parent().next(".newComment").find("textarea")).focus(); 
         }else{ 
@@ -117,7 +117,7 @@ badGuy= function(){
 }
 purger= {}; 
 
-purger.index= 2; 
+purger.index= 3; 
 
 purger.purge= function(a){ 
     if((localStorage.getItem("safety_purge") === null || (localStorage.getItem("safety_purge") !== null && parseInt(localStorage.getItem("safety_purge")) != purger.index)) || (typeof a != "undefined" && a == "bypass")){ 
@@ -304,7 +304,7 @@ $('#article .comentarios .Comentarios .comentario').on("mousemove", function(eve
 
                 t= $(this); 
 
-                (!i.shiftKey && i.keyCode == 13)? (function(){abc.append("<div class='comentario'>" + localStorage.getItem("knob") + '"' +  localStorage.getItem("tooltip") + '"' + localStorage.getItem("user") + t.find("textarea").val().replaceAll("\n", "<br>") + "</span><span class='Responder'></span></div>"); t.find("textarea").val(""); $($(abc.children()[abc.children().length - 1]).find(".Responder")).on("click", function(){wD($(this))}); abc.scrollTop(abc[0].scrollHeight); $($(abc.children()[abc.children().length - 1])).on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth = elx.outerWidth( true ),circleHeight  = elx.outerHeight( true ),circleLeft    = elx.offset().left,circleTop     = elx.offset().top,circlePos     = {x     : circleLeft + circleWidth / 2,y     : circleTop + circleHeight / 2,radius: circleWidth / 2};distance    = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); document.activeElement.blur(); $("html").scrollTop($("html")[0].scrollHeight); badGuy(); })(): 1; 
+                (!i.shiftKey && i.keyCode == 13)? (function(){abc.append("<div class='comentario'>" + localStorage.getItem("knob") + '"' +  localStorage.getItem("tooltip") + '"' + localStorage.getItem("user") + t.find("textarea").val().replaceAll("\n", "<br>") + "</span><span class='Responder'></span></div>"); t.find("textarea").val(""); $($(abc.children()[abc.children().length - 1]).find(".Responder")).on("click", function(){wD($(this))}); abc.scrollTop(abc[0].scrollHeight); $($(abc.children()[abc.children().length - 1])).on("mousemove", function(event){elx= $($(this).children()[0]); circleWidth = elx.outerWidth( true ),circleHeight  = elx.outerHeight( true ),circleLeft    = elx.offset().left,circleTop     = elx.offset().top,circlePos     = {x     : circleLeft + circleWidth / 2,y     : circleTop + circleHeight / 2,radius: circleWidth / 2};distance    = Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );if(distance <= circlePos.radius){$($(this).children()[0]).css({"pointer-events": "all"});$($(this).children()[0]).css({"pointer-events": "all"});}else{$($(this).children()[0]).css({"pointer-events": "none"});$($(this).children()[0]).css({"pointer-events": "none"});}}); document.activeElement.blur(); $("html").scrollTop($("html")[0].scrollHeight); $(".comentarios > .newComment textarea").css({"height": ""}); badGuy(); })(): 1; 
 
                 $(".knob").knob(); 
 
