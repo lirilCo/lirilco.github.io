@@ -1,6 +1,8 @@
 el= document.getElementsByClassName("file_tree")[0]; 
 var pageI= 0; 
 var editor; 
+var FileToRequest= ""; 
+var ok= true; 
 
 function openModal(a) {
     $("#theater").addClass("animated fadeIn ")
@@ -139,6 +141,7 @@ $('#profileSettings').click(function(){
    
 }); 
 $("#files .file").click(function(i, tr){ 
+    if(!ok){return}; 
     $("#preview .file_tree").removeClass("visible"); 
     $("#preview #file_preview #file")[0].innerHTML=""; 
     arr= []; 
@@ -167,9 +170,9 @@ $("#files .file").click(function(i, tr){
     $(this).css({"border-bottom": ""}); 
 
     
-    setTimeout(function(){i.target.style.top= 0; 
+    setTimeout(function(){i.target.style.top= 0; ok= false; 
     }, 1); 
-    setTimeout(function(){!$("#file_expl #information_cont").hasClass("visible")? (function(){$("#file_expl #information_cont").toggleClass("visible"); $("#file_expl #information_cont #information").html("<i>Infor</i><button class='Historia'>Historia</button>"); })(): 666 
+    setTimeout(function(){!$("#file_expl #information_cont").hasClass("visible")? (function(){$("#file_expl #information_cont").toggleClass("visible"); $("#file_expl #information_cont #information").html("<i>Infor</i><button class='Historia'>Historia</button>"); })(): 666; ok= true; 
     }, 101); 
 
     uRL= ""; 
@@ -375,7 +378,7 @@ $("#preview .file").click(function(i){
 
                                     
     for(eForensics in sprtdUrl){ 
-        for(fi in $(LEB).children()){ 
+        for(fi= 0; fi <= $(LEB).children().length - 1; fi++){ 
             if($($(LEB).children()[fi]).hasClass("folder_cont") && !$($(LEB).children()[fi]).hasClass("folder")){ 
                 $($(LEB).children()[fi]).children()[0].innerText == sprtdUrl[eForensics]? LEB= $($(LEB).children()[fi])[0]: 1; 
             }else if(/*!*/$($(LEB).children()[fi]).hasClass("file")){ 
@@ -410,7 +413,7 @@ LEB= $("#files .file_tree");
 
                                     
 for(eForensics in sprtdUrl){ 
-    for(fi in $(LEB).children()){ 
+    for(fi= 0; fi <= $(LEB).children().length - 1; fi++){ 
         if($($(LEB).children()[fi]).hasClass("folder_cont") && !$($(LEB).children()[fi]).hasClass("folder")){ 
             $($(LEB).children()[fi]).children()[0].innerText == sprtdUrl[eForensics]? LEB= $($(LEB).children()[fi])[0]: 1; 
         }else if(/*!*/$($(LEB).children()[fi]).hasClass("file")){ 
@@ -442,7 +445,7 @@ for(eForensics in sprtdUrl){
 
                                     
 for(eForensics in sprtdUrl){ 
-    for(fi in $(LEB).children()){ 
+    for(fi= 0; fi <= $(LEB).children().length - 1; fi++){ 
         if($($(LEB).children()[fi]).hasClass("folder_cont") && !$($(LEB).children()[fi]).hasClass("folder")){ 
             $($(LEB).children()[fi]).children()[0].innerText == sprtdUrl[eForensics]? LEB= $($(LEB).children()[fi])[0]: 1; 
         }else if(/*!*/$($(LEB).children()[fi]).hasClass("file")){ 
@@ -478,6 +481,8 @@ for(let folder of document.querySelectorAll("#files .folder")) {
     $(".folder_cont .folder").css({"opacity": "0", "height": "0", "padding": "0", "border-bottom": "none"}); 
     $(".file").css({"opacity": "0", "height": "0", "padding": "0", "border-bottom": "none"}); 
 
+    $(".inScope").removeClass("inScope"); 
+    $(this).addClass("inScope"); 
 
     $($(eleo).children()[0]).css({"opacity": "1"}); 
     $($(eleo).children()[0]).css({"height": "auto"}); 
@@ -495,9 +500,9 @@ for(let folder of document.querySelectorAll("#files .folder")) {
             return $(this).css('height') != '0';
         }).css({"padding": "","border-bottom": ''});
     })(); 
-    setTimeout(function(){eleo.style.top= 0; 
+    setTimeout(function(){eleo.style.top= 0; ok= false; 
     }, 1); 
-    setTimeout(function(){!$("#file_expl #information_cont").hasClass("visible")? (function(){$("#file_expl #information_cont").toggleClass("visible"); $("#file_expl #information_cont #information").html("<i>Infor</i><button class='Historia'>Historia</button>"); })(): 666 
+    setTimeout(function(){!$("#file_expl #information_cont").hasClass("visible")? (function(){$("#file_expl #information_cont").toggleClass("visible"); $("#file_expl #information_cont #information").html("<i>Infor</i><button class='Historia'>Historia</button>"); })(): 666; ok= true; 
     }, 101); 
 
     uRL= ""; 
@@ -538,7 +543,7 @@ for(let folder of document.querySelectorAll("#files .folder")) {
             LEB= $("#preview .file_tree"); 
 
     for(eForensics in sprtdUrl){ 
-        for(fi in $(LEB).children()){ 
+        for(fi= 0; fi <= $(LEB).children().length - 1; fi++){ 
             if($($(LEB).children()[fi]).hasClass("folder_cont") && !$($(LEB).children()[fi]).hasClass("folder")){ 
                 $($(LEB).children()[fi]).children()[0].innerText == sprtdUrl[eForensics]? LEB= $($(LEB).children()[fi])[0]: 1; 
             }
@@ -570,7 +575,7 @@ for(let folder of document.querySelectorAll("#files .folder")) {
 LEB= $("#preview .file_tree"); 
 
     for(eForensics in sprtdUrl){ 
-        for(fi in $(LEB).children()){ 
+        for(fi= 0; fi <= $(LEB).children().length - 1; fi++){ 
             if($($(LEB).children()[fi]).hasClass("folder_cont") && !$($(LEB).children()[fi]).hasClass("folder")){ 
                 $($(LEB).children()[fi]).children()[0].innerText == sprtdUrl[eForensics]? LEB= $($(LEB).children()[fi])[0]: 1; 
             }
@@ -599,7 +604,7 @@ LEB= $("#preview .file_tree");
             } LEB= $("#preview .file_tree"); 
 
     for(eForensics in sprtdUrl){ 
-        for(fi in $(LEB).children()){ 
+        for(fi= 0; fi <= $(LEB).children().length - 1; fi++){ 
             if($($(LEB).children()[fi]).hasClass("folder_cont") && !$($(LEB).children()[fi]).hasClass("folder")){ 
                 $($(LEB).children()[fi]).children()[0].innerText == sprtdUrl[eForensics]? LEB= $($(LEB).children()[fi])[0]: 1; 
             }
@@ -628,7 +633,7 @@ for(let folder of document.querySelectorAll("#preview .folder")) {
     
         sprtdUrl[sprtdUrl.length]= $(this).text(); 
         for(eForensics in sprtdUrl){ 
-            for(fi in $(LEB).children()){ 
+            for(fi= 0; fi <= $(LEB).children().length - 1; fi++){ 
                 if($($(LEB).children()[fi]).hasClass("folder_cont") && !$($(LEB).children()[fi]).hasClass("folder")){ 
                     $($(LEB).children()[fi]).children()[0].innerText == sprtdUrl[eForensics]? LEB= $($(LEB).children()[fi])[0]: 1; 
                 } 
@@ -642,6 +647,10 @@ for(let folder of document.querySelectorAll("#preview .folder")) {
 } 
 
 $("#files .folder").click(function(i){ 
+    if(!ok){return}; 
+    ok= false; 
+    setTimeout(function(){ok= true; 
+    }, 101); 
     $("#preview .file_tree").removeClass("visible"); 
     $("#preview #file_preview #file")[0].innerHTML=""; 
     $("#file_expl #information_cont").hasClass("visible")? $("#file_expl #information_cont").toggleClass("visible"): 666 
@@ -651,6 +660,9 @@ $("#files .folder").click(function(i){
     $(".inScope").removeClass("inScope"); 
     $(this).siblings().addClass("inScope"); 
              
+    $(".folder_cont .folder").css({"opacity": "0", "height": "0", "padding": "0", "border-bottom": "none"}); 
+    $(".file").css({"opacity": "0", "height": "0", "padding": "0", "border-bottom": "none"}); 
+
     uRL= ""; 
              
     t= $(this).parent(); 
@@ -823,7 +835,7 @@ $("#preview .folder").click(function(i, triggered){
 
         sprtdUrl[sprtdUrl.length]= $(this).text(); 
         for(eForensics in sprtdUrl){ 
-            for(fi in $(LEB).children()){ 
+            for(fi= 0; fi <= $(LEB).children().length - 1; fi++){ 
                 if($($(LEB).children()[fi]).hasClass("folder_cont") && !$($(LEB).children()[fi]).hasClass("folder")){ 
                     $($(LEB).children()[fi]).children()[0].innerText == sprtdUrl[eForensics]? LEB= $($(LEB).children()[fi])[0]: 1; 
                 } 
@@ -835,7 +847,9 @@ $("#preview .folder").click(function(i, triggered){
 
 }); 
     
-$('#root div').click( function(e){ 
+$('#root div').not("#root div:nth-child(1)").not("#root div:nth-child(2)").click( function(e){ 
+    FileToRequest= ""; 
+
     history.pushState({page: pageI}, "", e.target.getAttribute("url")); 
 
     pageI++;
@@ -843,32 +857,33 @@ $('#root div').click( function(e){
 }); 
     
 $("#Archivo, #Live, #Editar").click(function(){ 
-    $("#preview .file_tree").removeClass("visible"); 
-    $(".selected").removeClass("selected"); 
+    if($("#files .file_tree .inScope").filter(function(){return !!$(this).height()}).is(".file") && $("#information").css("visibility") == "visible"){
+        $("#preview .file_tree").removeClass("visible"); 
+        $(".selected").removeClass("selected"); 
         $(this).addClass("selected"); 
 
         localStorage.setItem("selected", $(this)[0].innerText); 
-                                            
-    FileToRequest= window.location.pathname.replaceAll("%20", " ").replaceAll("%C3%A1", "á").replaceAll("%C3%81", "Á").replaceAll("%C3%A9", "é").replaceAll("%C3%89", "É").replaceAll("%C3%AD", "í").replaceAll("%C3%8D", "Í").replaceAll("%C3%B3", "ó").replaceAll("%C3%93", "Ó").replaceAll("%C3%BA", "ú").replaceAll("%C3%9A", "Ú") 
-    slashCt= 0; 
-    strtgIx= 0; 
+                                                
+        FileToRequest= window.location.pathname.replaceAll("%20", " ").replaceAll("%C3%A1", "á").replaceAll("%C3%81", "Á").replaceAll("%C3%A9", "é").replaceAll("%C3%89", "É").replaceAll("%C3%AD", "í").replaceAll("%C3%8D", "Í").replaceAll("%C3%B3", "ó").replaceAll("%C3%93", "Ó").replaceAll("%C3%BA", "ú").replaceAll("%C3%9A", "Ú") 
+        slashCt= 0; 
+        strtgIx= 0; 
                 
-    for(eForensics in FileToRequest){ 
-        FileToRequest[eForensics] == "/"? slashCt++: 1; 
+        for(eForensics in FileToRequest){ 
+            FileToRequest[eForensics] == "/"? slashCt++: 1; 
 
-        if(slashCt < 2){ 
-            strtgIx= parseInt(eForensics); 
+            if(slashCt < 2){ 
+                strtgIx= parseInt(eForensics); 
+            } 
         } 
-    } 
       
-    FileToRequest= FileToRequest.slice(0, strtgIx + 1) + "/raw/" + FileToRequest.slice(strtgIx + 2, FileToRequest.length); 
-                                            
-    if($("#Archivo").hasClass("selected")){ 
-        $("#preview #file_preview #edit").css({"visibility": "hidden", "opacity": "0"}); 
-        $("#preview #file_preview #filePr").css({"visibility": "hidden", "opacity": "0"}); 
-        $("#preview #file_preview #file").css({"visibility": "visible", "opacity": "1"}); 
-        $("#preview #file_preview #filePr")[0].innerHTML= ""; 
-        $("#preview #file_preview #edit")[0].innerHTML= ""; 
+        FileToRequest= FileToRequest.slice(0, strtgIx + 1) + "/raw/" + FileToRequest.slice(strtgIx + 2, FileToRequest.length); 
+                                                
+        if($("#Archivo").hasClass("selected")){ 
+            $("#preview #file_preview #edit").css({"visibility": "hidden", "opacity": "0"}); 
+            $("#preview #file_preview #filePr").css({"visibility": "hidden", "opacity": "0"}); 
+            $("#preview #file_preview #file").css({"visibility": "visible", "opacity": "1"}); 
+            $("#preview #file_preview #filePr")[0].innerHTML= ""; 
+            $("#preview #file_preview #edit")[0].innerHTML= ""; 
             switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].lastIndexOf(".") + 1)){ 
                 case "png": 
                 case "jpg": 
@@ -891,82 +906,82 @@ $("#Archivo, #Live, #Editar").click(function(){
                             }
                         })
                     }
-                    
+                        
                     const mutationObserver = new MutationObserver(callback)
-                    
+                        
                     mutationObserver.observe(mainNode, { attributes: true }) 
-                    
+                        
                     function create(t) {
-                      // create an observer instance
-                      var observer = new MutationObserver(function(mutations) {
+                    // create an observer instance
+                    var observer = new MutationObserver(function(mutations) {
                         mutations.forEach(function(mutation) {
-                          var foo = t.getAttribute("data-src-status")
-                    
-                          if (foo == "loaded")
+                        var foo = t.getAttribute("data-src-status")
+                        
+                        if (foo == "loaded")
                             responsive(); 
                         });
-                      });
-                      // configuration of the observer
-                      var config = {
+                    });
+                    // configuration of the observer
+                    var config = {
                         attributes: true
-                      };
-                    
-                      // pass in the target node, as well as the observer options
-                      observer.observe(t, config);
+                    };
+                        
+                    // pass in the target node, as well as the observer options
+                    observer.observe(t, config);
                     }
-
-                                          
+                                              
                     Prism.highlightAll(); 
                     break; 
             } 
-    }else if($("#Live").hasClass("selected")){ 
-        $(".code-filler").width(0); 
-        $("#preview #file_preview #edit").css({"visibility": "hidden", "opacity": "0"}); 
-        $("#preview #file_preview #file").css({"visibility": "hidden", "opacity": "0"}); 
-        $("#preview #file_preview #filePr").css({"visibility": "visible", "opacity": "1"}); 
-        $("#preview #file_preview #file")[0].innerHTML= ""; 
-        $("#preview #file_preview #edit")[0].innerHTML= ""; 
-        $("#preview #file_preview #filePr")[0].innerHTML= "<div><iframe src='" +  FileToRequest + "'></iframe></div>"; 
-    }else{ 
-        $(".code-filler").width(0); 
+        }else if($("#Live").hasClass("selected")){ 
+            $(".code-filler").width(0); 
+            $("#preview #file_preview #edit").css({"visibility": "hidden", "opacity": "0"}); 
+            $("#preview #file_preview #file").css({"visibility": "hidden", "opacity": "0"}); 
+            $("#preview #file_preview #filePr").css({"visibility": "visible", "opacity": "1"}); 
+            $("#preview #file_preview #file")[0].innerHTML= ""; 
+            $("#preview #file_preview #edit")[0].innerHTML= ""; 
+            $("#preview #file_preview #filePr")[0].innerHTML= "<div><iframe src='" +  FileToRequest + "'></iframe></div>"; 
+        }else{ 
+            $(".code-filler").width(0); 
 
-        $("#preview #file_preview #file").css({"visibility": "hidden", "opacity": "0"}); 
-    $("#preview #file_preview #filePr").css({"visibility": "hidden", "opacity": "0"}); 
-    $("#preview #file_preview #edit").css({"visibility": "visible", "opacity": "1"}); 
-    a= ""; 
+            $("#preview #file_preview #file").css({"visibility": "hidden", "opacity": "0"}); 
+        $("#preview #file_preview #filePr").css({"visibility": "hidden", "opacity": "0"}); 
+        $("#preview #file_preview #edit").css({"visibility": "visible", "opacity": "1"}); 
+        a= ""; 
 
-    switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].lastIndexOf(".") + 1)){ 
-        case "js": case "css": case "html": 
-            function reqListener () {
-                $("#preview #file_preview #edit")[0].innerHTML= "<div id= 'editor'></div>"; 
-                ace.require("ace/ext/language_tools");
-                editor = ace.edit("editor");
-                editor.setTheme("ace/theme/monokai"); 
-                editor.setValue(this.responseText); 
-                editor.setOption("enableEmmet", true);
-                editor.setOption("enableBasicAutocompletion", true); 
-                editor.setOption("enableLiveAutocompletion", true); 
-                editor.setOption("enableSnippets", true); 
-                switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].lastIndexOf(".") + 1)){ 
-                    case "js": 
-                        var JavaScriptMode = ace.require("ace/mode/javascript").Mode; 
-                        editor.session.setMode(new JavaScriptMode()); 
-                        break; 
-                    case "css": 
-                        var JavaScriptMode = ace.require("ace/mode/css").Mode; 
-                        editor.session.setMode(new JavaScriptMode()); 
-                        break; 
-                    case "html": 
-                        var JavaScriptMode = ace.require("ace/mode/html").Mode; 
-                        editor.session.setMode(new JavaScriptMode()); 
-                        break; 
-                } 
-                
-            }
-            break; 
-        case "png": case "jpg": case "webp": 
-            $("#preview #file_preview #edit")[0].innerHTML= '<iframe src= ' + "'" + 'https://www.photopea.com/#{&quot;files&quot;:[&quot;' + window.location.origin + FileToRequest + '&quot;],&quot;environment&quot;:{&quot;vmode&quot;:1,&quot;theme&quot;:1,&quot;showtools&quot;:[23,0,1,2,5,6,7,8,9,10,14,16,18,19,20,24,27,31,34,35,36,37,38,39,40,41,47,42,43,51,52,54,55,57,56,58,59,6],&quot;menus&quot;:[[0,0,1,0,0,0,0,0,1],0,0,0,0,0,0,1]}}' + "' " + '></iframe>'
-    }
+        switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].lastIndexOf(".") + 1)){ 
+            case "js": case "css": case "html": 
+                function reqListener () {
+                    $("#preview #file_preview #edit")[0].innerHTML= "<div id= 'editor'></div>"; 
+                    ace.require("ace/ext/language_tools");
+                    editor = ace.edit("editor");
+                    editor.setTheme("ace/theme/monokai"); 
+                    editor.setValue(this.responseText); 
+                    editor.setOption("enableEmmet", true);
+                    editor.setOption("enableBasicAutocompletion", true); 
+                    editor.setOption("enableLiveAutocompletion", true); 
+                    editor.setOption("enableSnippets", true); 
+                    switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].lastIndexOf(".") + 1)){ 
+                        case "js": 
+                            var JavaScriptMode = ace.require("ace/mode/javascript").Mode; 
+                            editor.session.setMode(new JavaScriptMode()); 
+                            break; 
+                        case "css": 
+                            var JavaScriptMode = ace.require("ace/mode/css").Mode; 
+                            editor.session.setMode(new JavaScriptMode()); 
+                            break; 
+                        case "html": 
+                            var JavaScriptMode = ace.require("ace/mode/html").Mode; 
+                            editor.session.setMode(new JavaScriptMode()); 
+                            break; 
+                    } 
+                    
+                }
+                break; 
+            case "png": case "jpg": case "webp": 
+                $("#preview #file_preview #edit")[0].innerHTML= '<iframe src= ' + "'" + 'https://www.photopea.com/#{&quot;files&quot;:[&quot;' + window.location.origin + FileToRequest + '&quot;],&quot;environment&quot;:{&quot;vmode&quot;:1,&quot;theme&quot;:1,&quot;showtools&quot;:[23,0,1,2,5,6,7,8,9,10,14,16,18,19,20,24,27,31,34,35,36,37,38,39,40,41,47,42,43,51,52,54,55,57,56,58,59,6],&quot;menus&quot;:[[0,0,1,0,0,0,0,0,1],0,0,0,0,0,0,1]}}' + "' " + '></iframe>'
+                break; 
+        }
 
     
     
@@ -976,6 +991,8 @@ $("#Archivo, #Live, #Editar").click(function(){
         xxa.send(); 
 
 
+    }
+
 
 
     
@@ -983,7 +1000,7 @@ $("#Archivo, #Live, #Editar").click(function(){
 }); 
     
 $("#Raw").click(function(){ 
-    window.open(FileToRequest, '_blank').focus(); 
+    !!FileToRequest? window.open(FileToRequest, '_blank').focus(): 1; 
 }); 
 $("#Editar").click(function(){ 
     
@@ -1419,7 +1436,7 @@ separateUrl= function (r3){
 updateRoot= function(a7){ 
     $("#root")[0].children[0].innerHTML= '<div><a url="/' + username + '.html">' + users_name + '</a></div><div><a url="/' + username + '/p.html">Proyectos</a></div><span><span>' + pNa + '</span></span>'; 
     
-    (!!uRL.length && uRL.length > 0)? $("#root")[0].children[0].children[$("#root")[0].children[0].children.length - 1].outerHTML= '<div><a url=\"/' + username + '/p/' + pId + '\">' + $("#root")[0].children[0].children[$("#root")[0].children[0].children.length - 1].innerText + '</a></div>': 1; 
+    (!!getToBusiness(window.location.pathname.replaceAll("%20", " ").replaceAll("%C3%A1", "á").replaceAll("%C3%81", "Á").replaceAll("%C3%A9", "é").replaceAll("%C3%89", "É").replaceAll("%C3%AD", "í").replaceAll("%C3%8D", "Í").replaceAll("%C3%B3", "ó").replaceAll("%C3%93", "Ó").replaceAll("%C3%BA", "ú").replaceAll("%C3%9A", "Ú")).length)? $("#root")[0].children[0].children[$("#root")[0].children[0].children.length - 1].outerHTML= '<div><a url=\"/' + username + '/p/' + pId + '\">' + $("#root")[0].children[0].children[$("#root")[0].children[0].children.length - 1].innerText + '</a></div>': 1; 
 
     for(eForensics in a7){ 
         if(window.location.hash== "#infor" && parseInt(eForensics) == a7.length - 1){ 
@@ -1443,8 +1460,10 @@ updateRoot= function(a7){
         } 
     } 
 
-    $('#root div div').click( function(e){ 
+    $('#root div div').not("#root div div:nth-child(1)").not("#root div div:nth-child(2)").click( function(e){ 
         //debugger; 
+        FileToRequest= ""; 
+
        if(!!e.target.getAttribute("url")){ 
         $("#preview .file_tree").removeClass("visible"); 
         $(".code-filler").width(0); 
