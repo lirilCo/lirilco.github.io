@@ -963,17 +963,9 @@
   
             $(LEB).is(".folder_cont")? LEB= $(LEB).children()[0]: 1; 
 
-            $(LEB).trigger("click", true); 
-
             $(".inScope").removeClass("inScope"); 
-                                      
-            $(LEB).addClass("inScope"); 
-                                      
-            el= document.getElementsByClassName("file_tree")[0]; 
 
-            for(Colombia= 0; Colombia <= el.children.length - 1; Colombia++){ 
-                $(el.children[Colombia]).hasClass("folder_cont")? $($(el.children[Colombia]).children()[0]).addClass("inScope"): $(el.children[Colombia]).addClass("inScope"); 
-            } 
+            $(LEB).trigger("click", true); 
               
             localStorage.getItem("filesWidth") != null? $("#files").width(parseInt(localStorage.getItem("filesWidth")) + "px"): 1216564; 
                           
