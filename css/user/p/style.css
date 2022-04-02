@@ -429,6 +429,7 @@ body
 { 
     visibility: visible; 
     opacity: 1;
+    padding-right: 6px;
 } 
   
 #file_expl #information
@@ -436,7 +437,8 @@ body
     width: 100%; 
     height: 100%; 
     box-sizing: border-box; 
-    padding: 21px; 
+    padding-top: 26px; 
+    overflow: auto;
 } 
 #file_expl #information .Historia
 {
@@ -458,6 +460,7 @@ body
   height: 34px;
   box-sizing: content-box;
 }
+
 #file_expl #information .Historia:active
 {
   background-color: #E3E6E7;
@@ -466,6 +469,37 @@ body
   outline: none;
   box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3), inset 0 2px 1px rgba(0, 0, 0, 0.4), 0 2px #ecf0f1;
   top: 6px;
+}  
+#file_expl #information #historia li
+{
+    list-style: none;
+    width: 100%;
+    padding: 2.7px 10px;
+    border-bottom: 0.1px solid #ccc;
+    cursor: pointer;
+    color: #886555;
+    word-wrap: anywhere;
+    white-space: break-spaces;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-height: 28.4px;
+    box-sizing: border-box;
+}
+#file_expl #information #historia li:first-child
+{
+    max-height: 29.4px;
+    border-top: 0.1px solid #ccc;
+}
+#file_expl #information #historia li.selected
+{
+    background: #d2d2d2;
+    color: #8e8e8e;
+}
+#file_expl #information #historia
+{
+    padding: 0; 
+    margin: 0; 
 }  
 .file_tree li.inScope 
 { 

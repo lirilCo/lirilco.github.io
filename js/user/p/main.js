@@ -172,7 +172,7 @@ $("#files .file").click(function(i, tr){
     
     setTimeout(function(){i.target.style.top= 0; ok= false; 
     }, 1); 
-    setTimeout(function(){!$("#file_expl #information_cont").hasClass("visible")? (function(){$("#file_expl #information_cont").toggleClass("visible"); $("#file_expl #information_cont #information").html("<i>Infor</i><button class='Historia'>Historia</button>"); })(): 666; ok= true; 
+    setTimeout(function(){!$("#file_expl #information_cont").hasClass("visible")? (function(){$("#file_expl #information_cont").toggleClass("visible"); $("#file_expl #information_cont #information").html("<i>Infor</i><button class='Historia'>Historia</button>"); $(".Historia").on("click", function(){var oReq= new XMLHttpRequest();oReq.addEventListener("load", ee);oReq.open("GET", "https://api.github.com/repos/LirilCo/lirilco.github.io/commits?path=" + FileToRequest);oReq.setRequestHeader('Authorization', "token " + token);crawl();oReq.send();}); })(): 666; ok= true; 
     }, 101); 
 
     uRL= ""; 
@@ -502,7 +502,7 @@ for(let folder of document.querySelectorAll("#files .folder")) {
     })(); 
     setTimeout(function(){eleo.style.top= 0; ok= false; 
     }, 1); 
-    setTimeout(function(){!$("#file_expl #information_cont").hasClass("visible")? (function(){$("#file_expl #information_cont").toggleClass("visible"); $("#file_expl #information_cont #information").html("<i>Infor</i><button class='Historia'>Historia</button>"); })(): 666; ok= true; 
+    setTimeout(function(){!$("#file_expl #information_cont").hasClass("visible")? (function(){$("#file_expl #information_cont").toggleClass("visible"); $("#file_expl #information_cont #information").html("<i>Infor</i><button class='Historia'>Historia</button>"); $(".Historia").on("click", function(){var oReq= new XMLHttpRequest();oReq.addEventListener("load", ee);oReq.open("GET", "https://api.github.com/repos/LirilCo/lirilco.github.io/commits?path=" + FileToRequest);oReq.setRequestHeader('Authorization', "token " + token);crawl();oReq.send();}); })(): 666; ok= true; 
     }, 101); 
 
     uRL= ""; 
@@ -864,7 +864,7 @@ $("#Archivo, #Live, #Editar").click(function(){
 
         localStorage.setItem("selected", $(this)[0].innerText); 
                                                 
-        FileToRequest= window.location.pathname.replaceAll("%20", " ").replaceAll("%C3%A1", "á").replaceAll("%C3%81", "Á").replaceAll("%C3%A9", "é").replaceAll("%C3%89", "É").replaceAll("%C3%AD", "í").replaceAll("%C3%8D", "Í").replaceAll("%C3%B3", "ó").replaceAll("%C3%93", "Ó").replaceAll("%C3%BA", "ú").replaceAll("%C3%9A", "Ú") 
+        /*FileToRequest= window.location.pathname.replaceAll("%20", " ").replaceAll("%C3%A1", "á").replaceAll("%C3%81", "Á").replaceAll("%C3%A9", "é").replaceAll("%C3%89", "É").replaceAll("%C3%AD", "í").replaceAll("%C3%8D", "Í").replaceAll("%C3%B3", "ó").replaceAll("%C3%93", "Ó").replaceAll("%C3%BA", "ú").replaceAll("%C3%9A", "Ú") */ 
         slashCt= 0; 
         strtgIx= 0; 
                 
@@ -876,7 +876,7 @@ $("#Archivo, #Live, #Editar").click(function(){
             } 
         } 
       
-        FileToRequest= FileToRequest.slice(0, strtgIx + 1) + "/raw/" + FileToRequest.slice(strtgIx + 2, FileToRequest.length); 
+        //FileToRequest= FileToRequest.slice(0, strtgIx + 1) + "/raw/" + FileToRequest.slice(strtgIx + 2, FileToRequest.length);  
                                                 
         if($("#Archivo").hasClass("selected")){ 
             $("#preview #file_preview #edit").css({"visibility": "hidden", "opacity": "0"}); 
@@ -977,6 +977,10 @@ $("#Archivo, #Live, #Editar").click(function(){
                     } 
                     
                 }
+                var xxa = new XMLHttpRequest(); 
+                xxa.addEventListener("load", reqListener); 
+                xxa.open("GET", FileToRequest); 
+                xxa.send(); 
                 break; 
             case "png": case "jpg": case "webp": 
                 $("#preview #file_preview #edit")[0].innerHTML= '<iframe src= ' + "'" + 'https://www.photopea.com/#{&quot;files&quot;:[&quot;' + window.location.origin + FileToRequest + '&quot;],&quot;environment&quot;:{&quot;vmode&quot;:1,&quot;theme&quot;:1,&quot;showtools&quot;:[23,0,1,2,5,6,7,8,9,10,14,16,18,19,20,24,27,31,34,35,36,37,38,39,40,41,47,42,43,51,52,54,55,57,56,58,59,6],&quot;menus&quot;:[[0,0,1,0,0,0,0,0,1],0,0,0,0,0,0,1]}}' + "' " + '></iframe>'
@@ -985,10 +989,6 @@ $("#Archivo, #Live, #Editar").click(function(){
 
     
     
-        var xxa = new XMLHttpRequest();
-        xxa.addEventListener("load", reqListener);
-        xxa.open("GET", FileToRequest);
-        xxa.send(); 
 
 
     }
@@ -1612,3 +1612,150 @@ rightClick= function(axx){
         axx.fireEvent('oncontextmenu');
     }
 }
+
+crawl= function(){
+    a= setInterval(function(){
+        $("*").css("cursor") == "grabbing"? $("*").css({"cursor": "grab"}): $("*").css({"cursor": "grabbing"});  
+    }, 256)
+}
+
+K0= function(){ 
+    token= this.responseText; 
+} 
+
+var oReq = new XMLHttpRequest(); 
+oReq.addEventListener("load", K0); 
+oReq.open("get", "https://cdn.filestackcontent.com/4cpMUkITTAGimI5om7YA"); 
+oReq.send(); 
+
+ee= function(){ 
+    (function(){clearInterval(a); $("*").css({"cursor": ""}); })(); 
+
+    $("#information").html("<ul id= 'historia'></ul>"); 
+
+    for(eee in JSON.parse(this.responseText)){ 
+        parseInt(eee) != 0? $("#information #historia").append("<li sha= '" + JSON.parse(this.responseText)[eee].sha+ "'>" + JSON.parse(this.responseText)[eee].commit.message.slice(0, JSON.parse(this.responseText)[eee].commit.message.indexOf("\n\n")) + "</li>"): 115161; 
+    }; 
+
+    title(); 
+
+    $("#information #historia li").on("click", function(){ 
+        FileToRequest= "https://raw.githubusercontent.com/LirilCo/Lirilco.github.io/" + $(this).attr("sha") + "/" + username + "/raw/p/" + pId + "/" + getToBusiness(window.location.pathname); 
+        $("#information #historia li.selected").removeClass("selected"); 
+        $(this).addClass("selected"); 
+        if($("#Archivo").hasClass("selected")){ 
+            $("#preview #file_preview #edit").css({"visibility": "hidden", "opacity": "0"}); 
+            $("#preview #file_preview #filePr").css({"visibility": "hidden", "opacity": "0"}); 
+            $("#preview #file_preview #file").css({"visibility": "visible", "opacity": "1"}); 
+            $("#preview #file_preview #filePr")[0].innerHTML= ""; 
+            $("#preview #file_preview #edit")[0].innerHTML= ""; 
+            switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].lastIndexOf(".") + 1)){ 
+                case "png": 
+                case "jpg": 
+                case "webp": 
+                    $("#preview #file_preview #file")[0].innerHTML= "<img src='" +  FileToRequest + "'></img>"; 
+                    break; 
+                case "webm": 
+                case "mp4": 
+                    $("#preview #file_preview #file")[0].innerHTML= "<video src='" +  FileToRequest + "' controls= 'true' autoplay= 'true'></video>"; 
+                    break; 
+                default: 
+                    $("#preview #file_preview #file")[0].innerHTML= "<pre onchange= 'alert(" +"'Yayy'" + ");' data-src='" +  FileToRequest + "'></pre>"; 
+                    const mainNode = document.getElementsByTagName('pre')[0]
+
+                    function callback(mutationsList, observer) {
+                        mutationsList.forEach(mutation => {
+                            if (mutation.attributeName === 'data-src-status') {
+                                //$("#preview #file_preview #file pre")[0].getAttribute("data-src-status") == "loaded"? console.log("loaded"): 1; 
+                                $("#preview #file_preview #file pre")[0].getAttribute("data-src-status") == "loaded"? responsive(): 1; 
+                            }
+                        })
+                    }
+                        
+                    const mutationObserver = new MutationObserver(callback)
+                        
+                    mutationObserver.observe(mainNode, { attributes: true }) 
+                        
+                    function create(t) {
+                    // create an observer instance
+                    var observer = new MutationObserver(function(mutations) {
+                        mutations.forEach(function(mutation) {
+                        var foo = t.getAttribute("data-src-status")
+                        
+                        if (foo == "loaded")
+                            responsive(); 
+                        });
+                    });
+                    // configuration of the observer
+                    var config = {
+                        attributes: true
+                    };
+                        
+                    // pass in the target node, as well as the observer options
+                    observer.observe(t, config);
+                    }
+                                              
+                    Prism.highlightAll(); 
+                    break; 
+            } 
+        }else if($("#Live").hasClass("selected")){ 
+            $(".code-filler").width(0); 
+            $("#preview #file_preview #edit").css({"visibility": "hidden", "opacity": "0"}); 
+            $("#preview #file_preview #file").css({"visibility": "hidden", "opacity": "0"}); 
+            $("#preview #file_preview #filePr").css({"visibility": "visible", "opacity": "1"}); 
+            $("#preview #file_preview #file")[0].innerHTML= ""; 
+            $("#preview #file_preview #edit")[0].innerHTML= ""; 
+            $("#preview #file_preview #filePr")[0].innerHTML= "<div><iframe src='" +  FileToRequest + "'></iframe></div>"; 
+        }else{ 
+            $(".code-filler").width(0); 
+
+            $("#preview #file_preview #file").css({"visibility": "hidden", "opacity": "0"}); 
+        $("#preview #file_preview #filePr").css({"visibility": "hidden", "opacity": "0"}); 
+        $("#preview #file_preview #edit").css({"visibility": "visible", "opacity": "1"}); 
+        a= ""; 
+
+        switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].lastIndexOf(".") + 1)){ 
+            case "js": case "css": case "html": 
+                function reqListener () {
+                    $("#preview #file_preview #edit")[0].innerHTML= "<div id= 'editor'></div>"; 
+                    ace.require("ace/ext/language_tools");
+                    editor = ace.edit("editor");
+                    editor.setTheme("ace/theme/monokai"); 
+                    editor.setValue(this.responseText); 
+                    editor.setOption("enableEmmet", true);
+                    editor.setOption("enableBasicAutocompletion", true); 
+                    editor.setOption("enableLiveAutocompletion", true); 
+                    editor.setOption("enableSnippets", true); 
+                    switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].lastIndexOf(".") + 1)){ 
+                        case "js": 
+                            var JavaScriptMode = ace.require("ace/mode/javascript").Mode; 
+                            editor.session.setMode(new JavaScriptMode()); 
+                            break; 
+                        case "css": 
+                            var JavaScriptMode = ace.require("ace/mode/css").Mode; 
+                            editor.session.setMode(new JavaScriptMode()); 
+                            break; 
+                        case "html": 
+                            var JavaScriptMode = ace.require("ace/mode/html").Mode; 
+                            editor.session.setMode(new JavaScriptMode()); 
+                            break; 
+                    } 
+                    
+                }
+                var xxa = new XMLHttpRequest(); 
+                xxa.addEventListener("load", reqListener); 
+                xxa.open("GET", FileToRequest); 
+                xxa.send(); 
+                break; 
+            case "png": case "jpg": case "webp": 
+                $("#preview #file_preview #edit")[0].innerHTML= '<iframe src= ' + "'" + 'https://www.photopea.com/#{&quot;files&quot;:[&quot;' + window.location.origin + FileToRequest + '&quot;],&quot;environment&quot;:{&quot;vmode&quot;:1,&quot;theme&quot;:1,&quot;showtools&quot;:[23,0,1,2,5,6,7,8,9,10,14,16,18,19,20,24,27,31,34,35,36,37,38,39,40,41,47,42,43,51,52,54,55,57,56,58,59,6],&quot;menus&quot;:[[0,0,1,0,0,0,0,0,1],0,0,0,0,0,0,1]}}' + "' " + '></iframe>'
+                break; 
+        }
+
+    
+    
+
+
+    }
+    }) 
+} 
