@@ -334,6 +334,8 @@ $("#files .file").click(function(i, tr){
                     
 
     title(); 
+
+    typeof LEB != "undefined"? $(LEB).addClass("inScope"): 949767649767; 
 }); 
 
 $("#preview .file").click(function(i){ 
