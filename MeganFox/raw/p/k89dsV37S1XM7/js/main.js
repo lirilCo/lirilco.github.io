@@ -1,4 +1,4 @@
-map= `
+var map= `
 ______________________________________________________________________________________________________
 |                                                                                                    |
 |                                                                                                    |
@@ -7,11 +7,16 @@ ________________________________________________________________________________
 |                                                                                                    |
 |                                                                                                    |
 |                                                                                                    |
+|                                                                                                    |
+|                                                         ____           _                           |
+|                                                              ______                                |
+|                                                          _____                                     |
+|____________________________________________________________________________________________________|
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
 `; 
-
 var x= 0; 
 var y= 0; 
+var jumping= false; 
 
 $.fn.selectRange= function(start, end) {if(!end) end= start; return this.each(function() {if(this.setSelectionRange){this.focus(); this.setSelectionRange(start, end); }else if(this.createTextRange){var range= this.createTextRange(); range.collapse(true); range.moveEnd('character', end); range.moveStart('character', start); range.select(); }});}; 
 
@@ -27,19 +32,20 @@ $(function(){
 	$("#grid").on("keydown", function(i){ 
 		switch(i.keyCode){ 
 	    	case 37: 
-				x - 1 >= 0? (function(){x--; set([x, y])})(): 1; 
+				(!jumping && x - 1 >= 0)? (function(){x--; set([x, y])})(): 1; 
 				break; 
 	    	case 38: 
+	    		(!jumping && y - 1 >= 0)? (function(){jumping= true; y--; set([x, y]); setTimeout(function(){y - 1 >= 0? (function(){y--; set([x, y]); })(): 1; jumping= false; }, 271)})(): 1; 
 				break; 
 	    	case 40: 
 				break; 
 	    	case 39: 
-				x + 1 <= 100? (function(){x++; set([x, y])})(): 1; 
+				(!jumping && x + 1 <= 100)? (function(){x++; set([x, y])})(): 1; 
 				break; 
 		} 
 	}); 
 
 	setInterval(function(){ 
-		$("#grid").val()[100 * y + y + x] != "_"? (function(){y++; set([x, y])})(): 1; 
+		(!jumping && $("#grid").val()[100 * y + y + x] != "_")? (function(){y++; set([x, y])})(): 1; 
 	}, 782); 
 }); 
