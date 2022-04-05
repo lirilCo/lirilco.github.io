@@ -8,10 +8,10 @@ ________________________________________________________________________________
 |                                         __________                                                 |
 |                            ______________                                                          |
 |        _____________________                                                                       |
-|     __                         ██  █  █                 ____           _                           |
-|         __                    ██████  █                      ______                                |
-|       _                      ███████  █                  _____                                     |
-|_____________________________████████_______________________________________________________________|
+|     __                         ██  █  █                 ____           _        ██  █  █           |
+|         __                    ██████  █                      ______            █████████           |
+|       _                      ███████  █                  _____                ██████████           |
+|_____________________________████████_________________________________________██████████____________|
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
 `; 
 var x= 0; 
@@ -21,11 +21,16 @@ var max_speed= 4;
 var speed= 0; 
 var friction= 1; 
 var l_r= [false, false]; 
+var map_height= (function(){a= 0; 
+	for(e in map){ 
+		map[e] == "\n"? a++: 1; 
+	}; 
+	return a - 3; })(); 
 
 $.fn.selectRange= function(start, end) {if(!end) end= start; return this.each(function() {if(this.setSelectionRange){this.focus(); this.setSelectionRange(start, end); }else if(this.createTextRange){var range= this.createTextRange(); range.collapse(true); range.moveEnd('character', end); range.moveStart('character', start); range.select(); }});}; 
 
 set= function(z){ 
-	$("#grid").selectRange((!!z[0] || !z[0]? (100 * z[1] + z[1] + z[0]): (1 || 2 || 3))); 
+	$("#grid").selectRange((!!z[0] || !z[0]? (100 * z[1] + z[1] + z[0] - 101): (1 || 2 || 3))); 
 } 
 
 $(function(){ 
@@ -39,7 +44,7 @@ $(function(){
 				(!jumping && x - 1 >= 0)? (function(){speed - 1 >= -max_speed? speed--: 1; l_r[0]= true; })(): 1; 
 				break; 
 	    	case 38: 
-	    		(($("#grid").val()[100 * y + y + x] == "_" || $("#grid").val()[100 * (y + 1) + (y + 1) + x] == "█" || $("#grid").val()[100 * (y + 1) + (y + 1) + x - 1] == "█" || $("#grid").val()[100 * y + y + x - 1] == "_") && !jumping && y - 1 >= 0)? (function(){jumping= 1;})(): 1; 
+	    		(($("#grid").val()[100 * y + y + x - 101] == "_" || $("#grid").val()[100 * (y + 1) + (y + 1) + x - 101] == "█" || $("#grid").val()[100 * (y + 1) + (y + 1) + x - 1 - 101] == "█" || $("#grid").val()[100 * y + y + x - 1 - 101] == "_") && !jumping && y - 1 >= 0)? (function(){jumping= 1;})(): 1; 
 				break; 
 	    	case 40: 
 				break; 
@@ -76,30 +81,34 @@ $(function(){
 			speed > 0? speed -= friction: speed < 0? speed += friction: 1; 
 		} 
 
-		if(x + speed >= 100){ 
+		if(speed === 0){
+			speed= speed; 
+		}else if(x + speed >= 100){ 
 			x= 100; 
-			speed= 0; 
+			speed= null; 
 		}else if(x + speed <= 0){ 
 			x= 0; 
-			speed= 0; 
-		}else{ 
+			speed= null; 
+		}else if(speed !== 0){ 
 			if(speed > 0){
 				for(e= 0; e <= speed; e++){ 
-					$("#grid").val()[100 * y + y + x + parseInt(e)] == "█"? (function(){console.log(e); speed= parseInt(e)})(): 1; 
+					$("#grid").val()[100 * y + y + x + parseInt(e) - 101] == "█"? (function(){speed= parseInt(e)})(): 1; 
 				} 
 			}else if(speed < 0){ 
 				for(e= 0; e <= -speed; e++){ 
-					$("#grid").val()[100 * y + y + x - parseInt(e) - 1] == "█"? (function(){console.log(e); speed= -parseInt(e)})(): 1; 
+					$("#grid").val()[100 * y + y + x - parseInt(e) - 1 - 101] == "█"? (function(){speed= -parseInt(e)})(): 1; 
 				} 
 			} 
 			x += speed; 
 		}; 
            
-		(speed || x == 0 || x == 100)? set([x, y]): 1; 
+		(speed !== 0)? set([x, y]): 1; 
 
-		(!jumping && (($("#grid").val()[100 * y + y + x] != "_" && $("#grid").val()[100 * (y + 1) + (y + 1) + x] != "█" && $("#grid").val()[100 * y + y + x - 1] != "_" && $("#grid").val()[100 * (y + 1) + (y + 1) + x - 1] != "█")))? (function(){y++; set([x, y])})(): 1; 
+		speed= speed === null? 0: speed; 
 
-		if(jumping && jumping <= 2 && (y - 1 >= 0 && $("#grid").val()[100 * (y - 1) + (y - 1) + x] != "_" && $("#grid").val()[100 * (y - 1) + (y - 1) + x] != "█" && y - 1 >= 0 && $("#grid").val()[100 * (y - 1) + (y - 1) + x - 1] != "_" && $("#grid").val()[100 * (y - 1) + (y - 1) + x - 1] != "█")){
+		(!jumping && (($("#grid").val()[100 * y + y + x - 101] != "_" && $("#grid").val()[100 * (y + 1) + (y + 1) + x - 101] != "█" && $("#grid").val()[100 * y + y + x - 1 - 101] != "_" && $("#grid").val()[100 * (y + 1) + (y + 1) + x - 1 - 101] != "█")) && (map_height != y))? (function(){y++; set([x, y])})(): 1; 
+
+		if(jumping && jumping <= 2 && (y - 1 >= 0 && $("#grid").val()[100 * (y - 1) + (y - 1) + x - 101] != "_" && ($("#grid").val()[100 * (y - 1) + (y - 1) + x - 101] != "█" || $("#grid").val()[100 * y + y + x - 101] == "█") && y - 1 >= 0 && $("#grid").val()[100 * (y - 1) + (y - 1) + x - 1 - 101] != "_" && ($("#grid").val()[100 * (y - 1) + (y - 1) + x - 1 - 101] != "█" || $("#grid").val()[100 * y + y + x - 1 - 101] == "█"))){
 			(function(){y--; set([x, y]); })(); 
 			jumping++; 
 		}else{ 
