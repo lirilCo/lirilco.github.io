@@ -1,7 +1,6 @@
 function openModal(a) {
     Antheater= a.closest(".photo"); 
 
-    $(".zer")[0].innerHTML= ".ui-tooltip{z-index: 4 !important; }; "; 
     $("body")[0].style.overflow= "hidden"; 
     responsive(); 
     $("#theater").addClass("animated fadeIn ")
@@ -99,13 +98,14 @@ function openModal(a) {
         history.pushState({page: 1}, "", "/" + username + "/img/" + source.slice(source.lastIndexOf("/") + 1, -4)); 
     } 
     responsive(); 
+    $(".zer")[0].innerHTML= ".ui-tooltip{z-index: 4 !important; }; "; 
+    !!$(".XWW").length? $(".XWW")[0].innerHTML= "#theater .comentarios::before{top: " + parseInt($("#theater .comentarios").css("padding-top").slice(0, -2)) + "px !important; }; ": $("head").append("<style class='XWW'>#theater .comentarios::before{top: " + parseInt($("#theater .comentarios").css("padding-top").slice(0, -2)) + "px !important; }; </style>"); 
 }
 function openVidModal(a){ 
     Antheater= a.closest(".vid"); 
 
     th= a.closest(".vid"); 
 
-    $(".zer")[0].innerHTML= ".ui-tooltip{z-index: 4 !important; }; "; 
     $("body")[0].style.overflow= "hidden"; 
     responsive(); 
     $("#theater").addClass("animated fadeIn ")
@@ -201,6 +201,8 @@ function openVidModal(a){
       
 
     responsive()
+    $(".zer")[0].innerHTML= ".ui-tooltip{z-index: 4 !important; }; "; 
+    !!$(".XWW").length? $(".XWW")[0].innerHTML= "#theater .comentarios::before{top: " + parseInt($("#theater .comentarios").css("padding-top").slice(0, -2)) + "px !important; }; ": $("head").append("<style class='XWW'>#theater .comentarios::before{top: " + parseInt($("#theater .comentarios").css("padding-top").slice(0, -2)) + "px !important; }; </style>"); 
 }
 function closeModal() { 
     $(".Comentario .media > div").prop('outerHTML', function(){return $(this).find("audio").prop("outerHTML")}); 

@@ -135,6 +135,7 @@ $('.theater .comments .comentarios .Comentarios .comentario').on("mousemove", fu
                 $(".knob").knob(); 
                                    
                 tooltipComentarios(); 
+    !!$(".XWW").length? $(".XWW")[0].innerHTML= "#theater .comentarios::before{top: " + parseInt($("#theater .comentarios").css("padding-top").slice(0, -2)) + "px !important; }; ": $("head").append("<style class='XWW'>#theater .comentarios::before{top: " + parseInt($("#theater .comentarios").css("padding-top").slice(0, -2)) + "px !important; }; </style>"); 
                     
                 H != can493ax? H= can493ax: H= asdknki4; 
             }
@@ -164,6 +165,7 @@ $('.theater .comments .comentarios .Comentarios .comentario').on("mousemove", fu
     $(".knob").knob(); 
 
     tooltipComentarios(); 
+    !!$(".XWW").length? $(".XWW")[0].innerHTML= "#theater .comentarios::before{top: " + parseInt($("#theater .comentarios").css("padding-top").slice(0, -2)) + "px !important; }; ": $("head").append("<style class='XWW'>#theater .comentarios::before{top: " + parseInt($("#theater .comentarios").css("padding-top").slice(0, -2)) + "px !important; }; </style>"); 
 
     audiojs.createAll(); 
 
@@ -213,6 +215,7 @@ k300= function(C, p, y, ty){
                     $(".knob").knob(); 
                                        
                     tooltipComentarios(); 
+    !!$(".XWW").length? $(".XWW")[0].innerHTML= "#theater .comentarios::before{top: " + parseInt($("#theater .comentarios").css("padding-top").slice(0, -2)) + "px !important; }; ": $("head").append("<style class='XWW'>#theater .comentarios::before{top: " + parseInt($("#theater .comentarios").css("padding-top").slice(0, -2)) + "px !important; }; </style>"); 
                         
                     H != can493ax? H= can493ax: H= asdknki4; 
                 } 
@@ -242,6 +245,7 @@ k300= function(C, p, y, ty){
         $(".knob").knob(); 
 
         tooltipComentarios(); 
+    !!$(".XWW").length? $(".XWW")[0].innerHTML= "#theater .comentarios::before{top: " + parseInt($("#theater .comentarios").css("padding-top").slice(0, -2)) + "px !important; }; ": $("head").append("<style class='XWW'>#theater .comentarios::before{top: " + parseInt($("#theater .comentarios").css("padding-top").slice(0, -2)) + "px !important; }; </style>"); 
 
         audiojs.createAll(); 
     }
@@ -332,6 +336,7 @@ $(function(){
                 $(".knob").knob(); 
                                        
                 tooltipComentarios(); 
+    !!$(".XWW").length? $(".XWW")[0].innerHTML= "#theater .comentarios::before{top: " + parseInt($("#theater .comentarios").css("padding-top").slice(0, -2)) + "px !important; }; ": $("head").append("<style class='XWW'>#theater .comentarios::before{top: " + parseInt($("#theater .comentarios").css("padding-top").slice(0, -2)) + "px !important; }; </style>"); 
                         
                 H != can493ax? H= can493ax: H= asdknki4; 
             } 
@@ -361,6 +366,7 @@ $(function(){
     $(".knob").knob(); 
 
     tooltipComentarios(); 
+    !!$(".XWW").length? $(".XWW")[0].innerHTML= "#theater .comentarios::before{top: " + parseInt($("#theater .comentarios").css("padding-top").slice(0, -2)) + "px !important; }; ": $("head").append("<style class='XWW'>#theater .comentarios::before{top: " + parseInt($("#theater .comentarios").css("padding-top").slice(0, -2)) + "px !important; }; </style>"); 
 
     audiojs.createAll(); 
 

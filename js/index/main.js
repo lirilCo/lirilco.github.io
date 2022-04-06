@@ -996,7 +996,6 @@ $(document).on("ready", function(){
 function openModal(a) {
     Antheater= a.closest(".story"); 
 
-    $(".zer")[0].innerHTML= ".ui-tooltip{z-index: 4 !important; }; "; 
     $("body")[0].style.overflow= "hidden"; 
     responsive(); 
     $("#theater").addClass("animated fadeIn ")
@@ -1136,6 +1135,8 @@ function openModal(a) {
         }); 
         $(".nav_arrow").on("click", function(i){$(i.target).is(".nav_arrow")? closeModal(): 1; }); 
     }
+    $(".zer")[0].innerHTML= ".ui-tooltip{z-index: 4 !important; }; "; 
+    !!$(".XWW").length? $(".XWW")[0].innerHTML= "#theater .comentarios::before{top: " + parseInt($("#theater .comentarios").css("padding-top").slice(0, -2)) + "px !important; }; ": $("head").append("<style class='XWW'>#theater .comentarios::before{top: " + parseInt($("#theater .comentarios").css("padding-top").slice(0, -2)) + "px !important; }; </style>"); 
 
 }
 function openVideoModal(a){ 
@@ -1143,7 +1144,6 @@ function openVideoModal(a){
 
     th= a.closest(".story"); 
 
-    $(".zer")[0].innerHTML= ".ui-tooltip{z-index: 4 !important; }; "; 
     $("body")[0].style.overflow= "hidden"; 
     responsive(); 
     $("#theater").addClass("animated fadeIn ")
@@ -1237,13 +1237,14 @@ function openVideoModal(a){
       
 
     responsive()
+    $(".zer")[0].innerHTML= ".ui-tooltip{z-index: 4 !important; }; "; 
+    !!$(".XWW").length? $(".XWW")[0].innerHTML= "#theater .comentarios::before{top: " + parseInt($("#theater .comentarios").css("padding-top").slice(0, -2)) + "px !important; }; ": $("head").append("<style class='XWW'>#theater .comentarios::before{top: " + parseInt($("#theater .comentarios").css("padding-top").slice(0, -2)) + "px !important; }; </style>"); 
 } 
 function openOtherModal(a){ 
     Antheater= a.closest(".story"); 
 
     th= a.closest(".story"); 
 
-    $(".zer")[0].innerHTML= ".ui-tooltip{z-index: 4 !important; }; "; 
     $("body")[0].style.overflow= "hidden"; 
     responsive(); 
     $("#theater").addClass("animated fadeIn ")
@@ -1384,6 +1385,8 @@ function openOtherModal(a){
             $(this).removeClass("activado"); 
         } 
     })
+    $(".zer")[0].innerHTML= ".ui-tooltip{z-index: 4 !important; }; "; 
+    !!$(".XWW").length? $(".XWW")[0].innerHTML= "#theater .comentarios::before{top: " + parseInt($("#theater .comentarios").css("padding-top").slice(0, -2)) + "px !important; }; ": $("head").append("<style class='XWW'>#theater .comentarios::before{top: " + parseInt($("#theater .comentarios").css("padding-top").slice(0, -2)) + "px !important; }; </style>"); 
 } 
 function closeModal() {
     $("#theater .Comentarios").find(".Respuestas .Responder").each(function(){wwd($(this)[0], true)}); 
