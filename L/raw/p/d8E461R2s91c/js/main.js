@@ -14,6 +14,15 @@ AntiEngineerer= function(x, y){
 	return document.getElementsByTagName("div")[y].children[x]; 
 }; 
    
+function sweep(coor, s){ 
+	for(e= coor[0] - 1; e >= coor[0] - s; e--) 
+		for(a= coor[1] - s; a <= coor[1] + s; a++) 
+			typeof AntiEngineerer(e, a) != "undefined"? AntiEngineerer(e, a).checked= true: 1; 
+	for(e= coor[0] + 1; e <= coor[0] + s; e++) 
+		for(a= coor[1] - s; a <= coor[1] + s; a++) 
+			typeof AntiEngineerer(e, a) != "undefined"? AntiEngineerer(e, a).checked= true: 1; 
+} 
+  
 document.addEventListener("DOMContentLoaded", function(){ 
 	populate= function(w, h){ 
 		for(e= 1; e <= h; e++){ 
