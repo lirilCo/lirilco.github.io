@@ -217,6 +217,7 @@ $("#files .file").click(function(i, tr){
             case "png": 
             case "jpg": 
             case "webp": 
+            case "ico": 
                 $("#preview #file_preview #file")[0].innerHTML= "<img src='" +  FileToRequest + "'></img>"; 
                 break; 
             case "webm": 
@@ -890,6 +891,7 @@ $("#Archivo, #Live, #Editar").click(function(){
                 case "png": 
                 case "jpg": 
                 case "webp": 
+                case "ico":
                     $("#preview #file_preview #file")[0].innerHTML= "<img src='" +  FileToRequest + "'></img>"; 
                     break; 
                 case "webm": 
@@ -984,7 +986,7 @@ $("#Archivo, #Live, #Editar").click(function(){
                 xxa.open("GET", FileToRequest); 
                 xxa.send(); 
                 break; 
-            case "png": case "jpg": case "webp": 
+            case "png": case "jpg": case "webp": case "ico":
                 $("#preview #file_preview #edit")[0].innerHTML= '<iframe src= ' + "'" + 'https://www.photopea.com/#{&quot;files&quot;:[&quot;' + window.location.origin + FileToRequest + '&quot;],&quot;environment&quot;:{&quot;vmode&quot;:1,&quot;theme&quot;:1,&quot;showtools&quot;:[23,0,1,2,5,6,7,8,9,10,14,16,18,19,20,24,27,31,34,35,36,37,38,39,40,41,47,42,43,51,52,54,55,57,56,58,59,6],&quot;menus&quot;:[[0,0,1,0,0,0,0,0,1],0,0,0,0,0,0,1]}}' + "' " + '></iframe>'
                 break; 
         }
@@ -1655,6 +1657,7 @@ ee= function(){
                 case "png": 
                 case "jpg": 
                 case "webp": 
+                case "ico": 
                     $("#preview #file_preview #file")[0].innerHTML= "<img src='" +  FileToRequest + "'></img>"; 
                     break; 
                 case "webm": 
@@ -1749,7 +1752,7 @@ ee= function(){
                 xxa.open("GET", FileToRequest); 
                 xxa.send(); 
                 break; 
-            case "png": case "jpg": case "webp": 
+            case "png": case "jpg": case "webp": case "ico": 
                 $("#preview #file_preview #edit")[0].innerHTML= '<iframe src= ' + "'" + 'https://www.photopea.com/#{&quot;files&quot;:[&quot;' + window.location.origin + FileToRequest + '&quot;],&quot;environment&quot;:{&quot;vmode&quot;:1,&quot;theme&quot;:1,&quot;showtools&quot;:[23,0,1,2,5,6,7,8,9,10,14,16,18,19,20,24,27,31,34,35,36,37,38,39,40,41,47,42,43,51,52,54,55,57,56,58,59,6],&quot;menus&quot;:[[0,0,1,0,0,0,0,0,1],0,0,0,0,0,0,1]}}' + "' " + '></iframe>'
                 break; 
         }
