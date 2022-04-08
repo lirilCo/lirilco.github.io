@@ -11,16 +11,16 @@ var engineerer= function(b){
 }; 
    
 AntiEngineerer= function(x, y){ 
-	return ((y < document.querySelector("table tbody").children.length && x < document.querySelector("table tbody").children[0].children.length)? document.getElementsByTagName("div")[y].children[x]: "undefined"); 
+	return ((y >= 0 && x >= 0 && y < document.querySelector("table tbody").children.length && x < document.querySelector("table tbody").children[0].children.length)? document.getElementsByTagName("div")[y].children[x]: "undefined"); 
 }; 
    
 function sweep(coor, s){ 
 	for(e= coor[0]; e >= coor[0] - s; e--) 
 		for(a= coor[1] - s; a <= coor[1] + s; a++) 
-			typeof AntiEngineerer(e, a) != "undefined"? AntiEngineerer(e, a).checked= true: 1; 
+			typeof AntiEngineerer(e, a) != "undefined"? (function(){AntiEngineerer(e, a).checked= true; AntiEngineerer(e, a).mined? AntiEngineerer(e, a).setAttribute("disabled", true): 1; })(): 1; 
 	for(e= coor[0] + 1; e <= coor[0] + s; e++) 
 		for(a= coor[1] - s; a <= coor[1] + s; a++) 
-			typeof AntiEngineerer(e, a) != "undefined"? AntiEngineerer(e, a).checked= true: 1; 
+			typeof AntiEngineerer(e, a) != "undefined"? (function(){AntiEngineerer(e, a).checked= true; AntiEngineerer(e, a).mined? AntiEngineerer(e, a).setAttribute("disabled", true): 1; })(): 1; 
 }; 
   
 document.addEventListener("DOMContentLoaded", function(){ 
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 		for(a= 0; a <= document.querySelectorAll("table tbody div input").length - 1; a++){ 
     		document.querySelectorAll("table tbody div input")[a].mined= parseInt(Math.random() * 9) == 1? true: false; 
-    		document.querySelectorAll("table tbody div input")[a].addEventListener("change", function(e){console.log(["Mined: ", this.mined]); console.log([Array.prototype.indexOf.call(e.target.parentElement.children, e.target), Array.prototype.indexOf.call(e.target.parentElement.parentElement.children, e.target.parentElement)]); cosaParaengineerer= Array.prototype.indexOf.call(e.target.parentElement.parentElement.querySelectorAll("input"), e.target)}); 
+    		document.querySelectorAll("table tbody div input")[a].addEventListener("change", function(e){/*console.log(["Mined: ", this.mined]); */ sweep([Array.prototype.indexOf.call(e.target.parentElement.children, e.target), Array.prototype.indexOf.call(e.target.parentElement.parentElement.children, e.target.parentElement)], 2); cosaParaengineerer= Array.prototype.indexOf.call(e.target.parentElement.parentElement.querySelectorAll("input"), e.target)}); 
 		} 
 	}; 
        
