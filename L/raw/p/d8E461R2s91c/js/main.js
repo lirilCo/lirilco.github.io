@@ -11,7 +11,7 @@ var engineerer= function(b){
 }; 
    
 AntiEngineerer= function(x, y){ 
-	return $$("div")[y].children[x]; 
+	return document.getElementsByTagName("div")[y].children[x]; 
 }; 
    
 document.addEventListener("DOMContentLoaded", function(){ 
