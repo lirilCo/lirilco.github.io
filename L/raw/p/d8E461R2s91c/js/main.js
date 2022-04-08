@@ -8,8 +8,12 @@ var engineerer= function(b){
 	} 
       
 	return [za, d]; 
-} 
-
+}; 
+   
+AntiEngineerer= function(x, y){ 
+	return $$("div")[y].children[x]; 
+}; 
+   
 document.addEventListener("DOMContentLoaded", function(){ 
 	populate= function(w, h){ 
 		for(e= 1; e <= h; e++){ 
@@ -35,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 		for(a= 0; a <= document.querySelectorAll("table tbody div input").length - 1; a++){ 
     		document.querySelectorAll("table tbody div input")[a].mined= parseInt(Math.random() * 9) == 1? true: false; 
-    		document.querySelectorAll("table tbody div input")[a].addEventListener("change", function(){console.log(this.mined)}); 
+    		document.querySelectorAll("table tbody div input")[a].addEventListener("change", function(e){console.log(["Mined: ", this.mined]); console.log([Array.prototype.indexOf.call(e.target.parentElement.children, e.target), Array.prototype.indexOf.call(e.target.parentElement.parentElement.children, e.target.parentElement)])}); 
 		} 
 	}; 
        
