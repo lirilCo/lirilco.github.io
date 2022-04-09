@@ -31,28 +31,27 @@ function Demine(){
 function Continue(){
 	coor= coo; 
 	admited= true;
-	right? w++: y++; 
 	s= 2
+	right= (typeof u == "undefined" || u === NaN || (u == coor[0] - s && y == coor[1] + s))? true: false; 
+	right? (function(){typeof w != "undefined"? w++: (function(){w= 0; })(); })(): y++; 
 	if(!right){
-		for(u= u; ((u >= coor[0] - s) || admited); u--){
+		for(u= u; ((u >= coor[0] - s)); u--){
 			for(y= (admited? y: (coor[1] - s)); y <= coor[1] + s; y++){
 				admited= false; 
 				typeof AntiEngineerer(u, y) != "undefined"? (function(){AntiEngineerer(u, y).checked= true; AntiEngineerer(u, y).mined? (function(){AntiEngineerer(u, y).setAttribute("disabled", true); Demine(); })(): 1; })(): 1; 
 			} 
 		} 
 	}
-	right= true; 
-	for(r= ((typeof r != "undefined")? r: (coor[0] + 1)); ((r <= coor[0] + s) || admited); r++){
+	u= undefined; 
+	y= undefined; 
+	for(r= ((typeof r != "undefined")? r: (coor[0] + 1)); ((r <= coor[0] + s)); r++){
 		for(w= (admited? w: (coor[1] - s)); w <= coor[1] + s; w++){
 			admited= false; 
 			typeof AntiEngineerer(r, w) != "undefined"? (function(){AntiEngineerer(r, w).checked= true; AntiEngineerer(r, w).mined? (function(){AntiEngineerer(r, w).setAttribute("disabled", true); Demine(); })(): 1; })(): 1; 
 		}
 	}
-	r= "undefined"; 
-	u= "undefined"; 
-	y= "undefined"; 
-	w= "undefined"; 
-	right= false; 
+	r= undefined; 
+	w= undefined; 
 }; 
 
 var right= false; 
