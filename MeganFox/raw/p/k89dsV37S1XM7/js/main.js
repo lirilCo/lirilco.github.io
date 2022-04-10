@@ -27,7 +27,7 @@ ________________________________________________________________________________
 |                                                         ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░|
 |                                                         ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░|
 |                                                         ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░|
-|________________________________________________________░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░|
+|                                                        ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░|
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
 `; 
 var x= 0; 
@@ -53,7 +53,7 @@ set= function(z){
 	//console.log("Actual: " + x + "Prev: " + saved_position[0]);  
 	if(grabbed.length){
 		for(ei in grabbed){
-			$("#grid").val($("#grid").val().slice(0, 100 * y + y + grabbed[ei] - 102) + "_" + $("#grid").val().slice(100 * y + y + grabbed[ei] + 1 - 102)); 
+			$("#grid").val($("#grid").val().slice(0, 100 * saved_position[1] + saved_position[1] + grabbed[ei] - 102) + "_" + $("#grid").val().slice(100 * saved_position[1] + saved_position[1] + grabbed[ei] + 1 - 102)); 
 		}
 		grabbed= []; 
 	}
@@ -82,8 +82,25 @@ wet= function(){
     return $("#water").val()[100 * y + y + x - 101] == "░" || $("#water").val()[100 * y + y + x - 1 - 101] == "░"; 
 } 
 
+hitTest= {}; 
+
+hitTest.bottom= function(t, i, sT){
+	if($(t).val()[100 * (sT? y: y + 1) + (sT? y: y + 1) + x - 1 - 101] == i || $(t).val()[100 * (sT? y: y + 1) + (sT? y: y + 1) + x - 101] == i){
+		return true; 
+	}else{
+		return false; 
+	}
+}
+hitTest.top= function(t, i){
+	if($(t).val()[100 * (y - 1) + (y - 1) + x - 101] == i || $(t).val()[100 * (y - 1) + (y - 1) + x - 1 - 101] == i){
+		return true; 
+	}else{
+		return false; 
+	}
+}
 $(function(){ 
 	$("#grid").val(map.replaceAll("|", "").slice(104, -104)); 
+	$("#holes").val(map.replaceAll("|", "").slice(104, -104).replaceAll("_", " ").replaceAll("█", " ").replaceAll("♥", "_").replaceAll("$", "_")); 
 	$("#water").val(water_map.replaceAll("|", "").slice(104, -104)); 
 
 	$("#grid").on("input keydown keyup", function(i){i.preventDefault(); }); 
@@ -94,7 +111,7 @@ $(function(){
 				((!jumping || wet()) && x - 1 >= 0)? (function(){speed - 1 >= -max_speed? speed--: 1; l_r[0]= true; })(): 1; 
 				break; 
 	    	case 38: 
-	    		!wet()? (($("#grid").val()[100 * y + y + x - 101] == "_" || $("#grid").val()[100 * (y + 1) + (y + 1) + x - 101] == "█" || $("#grid").val()[100 * (y + 1) + (y + 1) + x - 1 - 101] == "█" || $("#grid").val()[100 * y + y + x - 1 - 101] == "_") && !jumping && y - 1 >= 0)? (function(){jumping= 2;})(): 1: (function(){swimming= 1;})(); 
+	    		!wet()? ((hitTest.bottom("#grid", "█", false) || hitTest.bottom("#grid", "_", true) || hitTest.bottom("#holes", "_", true)) && !jumping && y - 1 >= 0)? (function(){jumping= 2;})(): 1: (function(){swimming= 1;})(); 
 				break; 
 	    	case 40: 
 				break; 
@@ -161,9 +178,9 @@ $(function(){
 
 		skip - 1 >= 0? (!jumping || skip > 1)? skip--: 1: 1; 
 
-		(!skip && !jumping && !swimming && (($("#grid").val()[100 * y + y + x - 101] != "_" && $("#grid").val()[100 * (y + 1) + (y + 1) + x - 101] != "█" && $("#grid").val()[100 * y + y + x - 1 - 101] != "_" && $("#grid").val()[100 * (y + 1) + (y + 1) + x - 1 - 101] != "█")) && (map_height != y))? (function(){y++; set([x, y])})(): (!skip && swimming && (y - 1 >= 0 && $("#grid").val()[100 * (y - 1) + (y - 1) + x - 101] != "_" && ($("#grid").val()[100 * (y - 1) + (y - 1) + x - 101] != "█" || $("#grid").val()[100 * y + y + x - 101] == "█") && y - 1 >= 0 && $("#grid").val()[100 * (y - 1) + (y - 1) + x - 1 - 101] != "_" && ($("#grid").val()[100 * (y - 1) + (y - 1) + x - 1 - 101] != "█" || $("#grid").val()[100 * y + y + x - 1 - 101] == "█")))? (function(){y--; set([x, y])})(): 1; 
+		(!skip && !jumping && !swimming && (!hitTest.bottom("#grid", "_", true) && !hitTest.bottom("#grid", "█", false)) && (map_height != y))? (function(){y++; set([x, y])})(): (!skip && swimming && (y - 1 >= 0 && !hitTest.top("#grid", "_") && ($("#grid").val()[100 * (y - 1) + (y - 1) + x - 101] != "█" || $("#grid").val()[100 * y + y + x - 101] == "█") && y - 1 >= 0 && ($("#grid").val()[100 * (y - 1) + (y - 1) + x - 1 - 101] != "█" || $("#grid").val()[100 * y + y + x - 1 - 101] == "█")))? (function(){y--; set([x, y])})(): 1; 
 
-		if(jumping && jumping > 0 && (y - 1 >= 0 && $("#grid").val()[100 * (y - 1) + (y - 1) + x - 101] != "_" && ($("#grid").val()[100 * (y - 1) + (y - 1) + x - 101] != "█" || $("#grid").val()[100 * y + y + x - 101] == "█") && y - 1 >= 0 && $("#grid").val()[100 * (y - 1) + (y - 1) + x - 1 - 101] != "_" && ($("#grid").val()[100 * (y - 1) + (y - 1) + x - 1 - 101] != "█" || $("#grid").val()[100 * y + y + x - 1 - 101] == "█"))){ 
+		if(jumping && jumping > 0 && (y - 1 >= 0 && !hitTest.top("#grid", "_") && ($("#grid").val()[100 * (y - 1) + (y - 1) + x - 101] != "█" || $("#grid").val()[100 * y + y + x - 101] == "█") && y - 1 >= 0 && ($("#grid").val()[100 * (y - 1) + (y - 1) + x - 1 - 101] != "█" || $("#grid").val()[100 * y + y + x - 1 - 101] == "█"))){ 
 			(function(){y--; set([x, y]); })(); 
 			jumping--; 
 			skip= 0; 
