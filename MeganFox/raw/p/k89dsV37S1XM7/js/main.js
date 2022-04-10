@@ -11,7 +11,7 @@ ________________________________________________________________________________
 |     __                         ██  █  █         ██  █  █           ____           _                |
 |         __                    ██████  █        █████████                ______                     |
 |       _                      ███████  █       ██████████            _____                          |
-|________________$____________████████_________██████████____________________________________________|
+|_____________♥__$______♥♥♥♥♥♥████████_________██████████____________________________________________|
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
 `; 
 var water_map= `
@@ -45,15 +45,17 @@ var map_height= (function(){a= 0;
 	return a - 3; })(); 
 var skip= 0; 
 var saved_position= [x, y]; 
-var grabbed= false; 
+var grabbed= []; 
 
 $.fn.selectRange= function(start, end) {if(!end) end= start; return this.each(function() {if(this.setSelectionRange){this.focus(); this.setSelectionRange(start, end); }else if(this.createTextRange){var range= this.createTextRange(); range.collapse(true); range.moveEnd('character', end); range.moveStart('character', start); range.select(); }});}; 
 
 set= function(z){ 
 	//console.log("Actual: " + x + "Prev: " + saved_position[0]);  
-	if(grabbed){
-		$("#grid").val($("#grid").val().slice(0, 100 * y + y + grabbed - 102) + "_" + $("#grid").val().slice(100 * y + y + grabbed + 1 - 102)); 
-		grabbed= false; 
+	if(grabbed.length){
+		for(ei in grabbed){
+			$("#grid").val($("#grid").val().slice(0, 100 * y + y + grabbed[ei] - 102) + "_" + $("#grid").val().slice(100 * y + y + grabbed[ei] + 1 - 102)); 
+		}
+		grabbed= []; 
 	}
 	$("#grid").selectRange((!!z[0] || !z[0]? (100 * z[1] + z[1] + z[0] - 101): (1 || 2 || 3))); 
 	if(saved_position[0] < x){
@@ -61,7 +63,7 @@ set= function(z){
 			if($("#grid").val()[100 * y + y + l - 102] == "$" || $("#grid").val()[100 * y + y + l - 102] == "♥"){ 
 				console.log($("#grid").val()[100 * y + y + l - 102])
 				$("#grid").selectRange(100 * y + y + saved_position[0] - 101, 100 * y + y + x - 101); 
-				grabbed= l; 
+				grabbed[grabbed.length]= l; 
 			} 
 		} 
 	}else{ 
@@ -69,7 +71,7 @@ set= function(z){
 			if($("#grid").val()[100 * y + y + l - 102] == "$" || $("#grid").val()[100 * y + y + l - 102] == "♥"){ 
 				console.log($("#grid").val()[100 * y + y + l - 102])
 				$("#grid").selectRange(100 * y + y + x - 101, 100 * y + y + saved_position[0] - 101); 
-				grabbed= l; 
+				grabbed[grabbed.length]= l; 
 			} 
 		} 
 	} 
