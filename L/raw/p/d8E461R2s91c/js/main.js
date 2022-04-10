@@ -25,14 +25,19 @@ function sweep(coor, s){
 }; 
    
 function Demine(){ 
+                                                           
 	var deactivators= '<div class= "deactivators"></div>'; 
                                                            
 	document.getElementsByTagName("body")[0].insertAdjacentHTML("beforeend", deactivators); 
                                                                                             
 	deactivator= '<div><input type= "radio" style= "float: left; " name= "x"></input><div class= "deactivator"><div></div></div><input type= "radio" style= "float: right; " name= "x"></input></div>'; 
 	                       
+	answers= []; 
+
 	for(e= 0; e < 3; e++){ 
 		document.getElementsByClassName("deactivators")[0].innerHTML+= deactivator.replaceAll("x", ("x" + e)); 
+                                                             
+		answers[answers.length]= Math.random() >= 0.5? 1: 0; 
 	}; 
        
     var timeToTimeout= '<div style="vertical-align: bottom;margin-left: -200px;" class="timeToTimeout"><div class="countdown"><div style= "width: 700px; height: 1px; "></div></div></div>'; 
@@ -42,21 +47,47 @@ function Demine(){
 	for(i= 0; i <= document.querySelectorAll(".deactivators .deactivator").length - 1; i++){ 
 		document.querySelectorAll(".deactivators .deactivator")[i].scrollLeft = (document.querySelectorAll(".deactivators .deactivator")[i].scrollWidth - document.querySelectorAll(".deactivators .deactivator")[i].clientWidth) / 2; 
 	}; 
-	   
+
+	for(o= 0; o < document.querySelectorAll("input[type=radio]").length; o++){ 
+		document.querySelectorAll("input[type=radio]")[o].addEventListener("click", function(ev){ev.preventDefault()}); 
+	}; 
+       
 	for(i= 0; i <= document.querySelectorAll(".deactivators .deactivator").length - 1; i++){ 
 		document.querySelectorAll(".deactivators .deactivator")[i].addEventListener("scroll", function(e){ 
 			if(e.target.scrollLeft == e.target.scrollWidth - e.target.clientWidth){ 
 				e.target.parentElement.querySelectorAll("input")[1].checked= true; 
+				evaluate() == "right"? Continue(): 1; 
 			}else if(e.target.scrollLeft == 0){ 
 				e.target.parentElement.querySelectorAll("input")[0].checked= true; 
+				evaluate() == "right"? Continue(): 1; 
 			}; 
 		}); 
 	}; 
 
+	document.querySelector(".timeToTimeout .countdown").scrollLeft= document.querySelector(".timeToTimeout .countdown").scrollWidth - document.querySelector(".timeToTimeout .countdown").clientWidth; 
+                                                                                                                                                                                                       
+	countdown= setInterval(function(){
+		(function(){document.querySelector(".timeToTimeout .countdown").scrollLeft-= 500 / 10})(); 
+
+		document.querySelector(".timeToTimeout .countdown").scrollLeft <= (document.querySelector(".timeToTimeout .countdown").scrollWidth - document.querySelector(".timeToTimeout .countdown").clientWidth) / 4? typeof flashing == "undefined"? flash(): 1: 1; 
+
+		document.querySelector(".timeToTimeout .countdown").scrollLeft == 0? (function(){clearInterval(countdown); clearInterval(flashing); flashing= undefined; document.querySelector(".timeToTimeout .countdown").style.backgroundColor= "#fff"; })(): 1; 
+
+	}, 1000); 
+                                    
 	throw new Error("Demining..."); 
 }; 
    
-function Continue(){
+function Continue(){ 
+	!!document.getElementsByClassName("deactivators").length? document.getElementsByClassName("deactivators")[0].remove(): 1; 
+
+	!!document.getElementsByClassName("timeToTimeout").length? document.getElementsByClassName("timeToTimeout")[0].remove(): 1; 
+
+	clearInterval(countdown); 
+
+	typeof flashing != "undefined"? clearInterval(flashing): 1; 
+
+	flashing= undefined; 
 	coor= coo; 
 	admited= true;
 	s= 2
@@ -80,6 +111,26 @@ function Continue(){
 	}
 	r= undefined; 
 	w= undefined; 
+}; 
+   
+function evaluate(){ 
+	ans= []; 
+
+	for(v= 0; v < document.querySelectorAll(".deactivators .deactivator").length; v++){ 
+    	ans[v]= [document.querySelectorAll(".deactivators .deactivator")[v].parentElement.querySelectorAll("input")[0].checked, document.querySelectorAll(".deactivators .deactivator")[v].parentElement.querySelectorAll("input")[1].checked]; 
+	}; 
+
+	for(an in answers){
+  		if(!ans[an][answers[an]]){ 
+  			return "wrong"; 
+  		} 
+	}; 
+
+	return "right"; 
+}; 
+   
+flash= function(){ 
+	flashing= setInterval(function(){document.querySelector(".timeToTimeout .countdown").style.backgroundColor= document.querySelector(".timeToTimeout .countdown").style.backgroundColor != "rgb(34, 34, 34)"? "#222": "#fff"; }, 230); 
 }; 
 
 var right= false; 
