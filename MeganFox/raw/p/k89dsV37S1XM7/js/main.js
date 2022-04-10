@@ -3,15 +3,15 @@ ________________________________________________________________________________
 |                                                                                                    |
 |                                                                                                    |
 |                             ___________________________                                            |
-|     _______________________█                             __                                        |
+|     __________♥____________█                             __                                        |
 |                                                  _________                                         |
 |                                         __________                                                 |
-|                            ______________                                                          |
+|                            ____$_________                                                          |
 |        _____________________                                                                       |
 |     __                         ██  █  █         ██  █  █           ____           _                |
 |         __                    ██████  █        █████████                ______                     |
 |       _                      ███████  █       ██████████            _____                          |
-|_____________________________████████_________██████████____________________________________________|
+|________________$____________████████_________██████████____________________________________________|
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
 `; 
 var water_map= `
@@ -44,11 +44,36 @@ var map_height= (function(){a= 0;
 	}; 
 	return a - 3; })(); 
 var skip= 0; 
+var saved_position= [x, y]; 
+var grabbed= false; 
 
 $.fn.selectRange= function(start, end) {if(!end) end= start; return this.each(function() {if(this.setSelectionRange){this.focus(); this.setSelectionRange(start, end); }else if(this.createTextRange){var range= this.createTextRange(); range.collapse(true); range.moveEnd('character', end); range.moveStart('character', start); range.select(); }});}; 
 
 set= function(z){ 
+	//console.log("Actual: " + x + "Prev: " + saved_position[0]);  
+	if(grabbed){
+		$("#grid").val($("#grid").val().slice(0, 100 * y + y + grabbed - 102) + "_" + $("#grid").val().slice(100 * y + y + grabbed + 1 - 102)); 
+		grabbed= false; 
+	}
 	$("#grid").selectRange((!!z[0] || !z[0]? (100 * z[1] + z[1] + z[0] - 101): (1 || 2 || 3))); 
+	if(saved_position[0] < x){
+		for(l= saved_position[0] + 1; l <= x; l++){ 
+			if($("#grid").val()[100 * y + y + l - 102] == "$" || $("#grid").val()[100 * y + y + l - 102] == "♥"){ 
+				console.log($("#grid").val()[100 * y + y + l - 102])
+				$("#grid").selectRange(100 * y + y + saved_position[0] - 101, 100 * y + y + x - 101); 
+				grabbed= l; 
+			} 
+		} 
+	}else{ 
+		for(l= saved_position[0]; l > x; l--){ 
+			if($("#grid").val()[100 * y + y + l - 102] == "$" || $("#grid").val()[100 * y + y + l - 102] == "♥"){ 
+				console.log($("#grid").val()[100 * y + y + l - 102])
+				$("#grid").selectRange(100 * y + y + x - 101, 100 * y + y + saved_position[0] - 101); 
+				grabbed= l; 
+			} 
+		} 
+	} 
+	saved_position= [z[0], z[1]]
 } 
 
 wet= function(){ 
