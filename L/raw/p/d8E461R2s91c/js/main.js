@@ -25,6 +25,34 @@ function sweep(coor, s){
 }; 
    
 function Demine(){ 
+	var deactivators= '<div class= "deactivators"></div>'; 
+                                                           
+	document.getElementsByTagName("body")[0].insertAdjacentHTML("beforeend", deactivators); 
+                                                                                            
+	deactivator= '<div><input type= "radio" style= "float: left; " name= "x"></input><div class= "deactivator"><div></div></div><input type= "radio" style= "float: right; " name= "x"></input></div>'; 
+	                       
+	for(e= 0; e < 3; e++){ 
+		document.getElementsByClassName("deactivators")[0].innerHTML+= deactivator.replaceAll("x", ("x" + e)); 
+	}; 
+       
+    var timeToTimeout= '<div style="vertical-align: bottom;margin-left: -200px;" class="timeToTimeout"><div class="countdown"><div style= "width: 700px; height: 1px; "></div></div></div>'; 
+	                                                                                           
+	document.getElementsByTagName("body")[0].insertAdjacentHTML("beforeend", timeToTimeout); 
+                                                                                             
+	for(i= 0; i <= document.querySelectorAll(".deactivators .deactivator").length - 1; i++){ 
+		document.querySelectorAll(".deactivators .deactivator")[i].scrollLeft = (document.querySelectorAll(".deactivators .deactivator")[i].scrollWidth - document.querySelectorAll(".deactivators .deactivator")[i].clientWidth) / 2; 
+	}; 
+	   
+	for(i= 0; i <= document.querySelectorAll(".deactivators .deactivator").length - 1; i++){ 
+		document.querySelectorAll(".deactivators .deactivator")[i].addEventListener("scroll", function(e){ 
+			if(e.target.scrollLeft == e.target.scrollWidth - e.target.clientWidth){ 
+				e.target.parentElement.querySelectorAll("input")[1].checked= true; 
+			}else if(e.target.scrollLeft == 0){ 
+				e.target.parentElement.querySelectorAll("input")[0].checked= true; 
+			}; 
+		}); 
+	}; 
+
 	throw new Error("Demining..."); 
 }; 
    

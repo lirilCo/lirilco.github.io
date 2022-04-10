@@ -1,4 +1,40 @@
+table 
+{ 
+    display: inline-block; 
+} 
 table tbody div input 
 { 
     margin: 0; 
+} 
+.deactivators 
+{ 
+    width: 200px; 
+    display: inline-block; 
+    vertical-align: top; 
+} 
+.deactivators > div 
+{ 
+    display: flex; 
+    flex-flow: row; 
+    margin-bottom: 3px; 
+} 
+.deactivators > div > .deactivator
+{ 
+    overflow-x: scroll; 
+} 
+.deactivators > div > .deactivator div
+{ 
+    width: 230px; 
+	height: 1px; 
+} 
+.timeToTimeout 
+{ 
+    vertical-align: bottom; 
+	margin-left: -200px; 
+	width: 200px; 
+	display: inline-block; 
+} 
+.timeToTimeout .countdown 
+{ 
+	overflow-x: scroll; 
 } 
