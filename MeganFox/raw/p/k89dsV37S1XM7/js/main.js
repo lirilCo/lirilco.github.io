@@ -30,6 +30,22 @@ ________________________________________________________________________________
 |                                                        ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░|
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
 `; 
+var kitchen_oil_map= `
+______________________________________________________________________________________________________
+|                                                                                                    |
+|                                                                                                    |
+|                                                                                                    |
+|                                                                                                    |
+|                                                                                                    |
+|                                                                                                    |
+|                                                                                                    |
+|                                                                                                    |
+|                                                                                                    |
+|                                     ░░ ░░░░░░░░                                                    |
+|                                     ░░ ░░░░░░░                                                     |
+|                                     ░░░░░░░░░                                                      |
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+`; 
 var x= 0; 
 var y= 0; 
 var jumping= false; 
@@ -52,8 +68,10 @@ $.fn.selectRange= function(start, end) {if(!end) end= start; return this.each(fu
 set= function(z){ 
 	//console.log("Actual: " + x + "Prev: " + saved_position[0]);  
 	if(grabbed.length){
-		for(ei in grabbed){
-			$("#grid").val($("#grid").val().slice(0, 100 * saved_position[1] + saved_position[1] + grabbed[ei] - 102) + "_" + $("#grid").val().slice(100 * saved_position[1] + saved_position[1] + grabbed[ei] + 1 - 102)); 
+		for(ei in grabbed){ 
+			grabbed[ei][1] == "♥"? $("#lives b").text(function(){return parseInt($(this).text()) + 1}): 1; 
+			grabbed[ei][1] == "$"? $("#currency b").text(function(){return parseInt($(this).text()) + 1}): 1; 
+			$("#grid").val($("#grid").val().slice(0, 100 * saved_position[1] + saved_position[1] + grabbed[ei][0] - 102) + "_" + $("#grid").val().slice(100 * saved_position[1] + saved_position[1] + grabbed[ei][0] + 1 - 102)); 
 		}
 		grabbed= []; 
 	}
@@ -63,7 +81,7 @@ set= function(z){
 			if($("#grid").val()[100 * y + y + l - 102] == "$" || $("#grid").val()[100 * y + y + l - 102] == "♥"){ 
 				console.log($("#grid").val()[100 * y + y + l - 102])
 				$("#grid").selectRange(100 * y + y + saved_position[0] - 101, 100 * y + y + x - 101); 
-				grabbed[grabbed.length]= l; 
+				grabbed[grabbed.length]= [l, $("#grid").val()[100 * y + y + l - 102]]; 
 			} 
 		} 
 	}else{ 
@@ -71,7 +89,7 @@ set= function(z){
 			if($("#grid").val()[100 * y + y + l - 102] == "$" || $("#grid").val()[100 * y + y + l - 102] == "♥"){ 
 				console.log($("#grid").val()[100 * y + y + l - 102])
 				$("#grid").selectRange(100 * y + y + x - 101, 100 * y + y + saved_position[0] - 101); 
-				grabbed[grabbed.length]= l; 
+				grabbed[grabbed.length]= [l, $("#grid").val()[100 * y + y + l - 102]]; 
 			} 
 		} 
 	} 
@@ -79,7 +97,7 @@ set= function(z){
 } 
 
 wet= function(){ 
-    return $("#water").val()[100 * y + y + x - 101] == "░" || $("#water").val()[100 * y + y + x - 1 - 101] == "░"; 
+    return ($("#water").val()[100 * y + y + x - 101] == "░" || $("#water").val()[100 * y + y + x - 1 - 101] == "░")? "water_wet": ($("#kitchen_oil").val()[100 * y + y + x - 101] == "░" || $("#kitchen_oil").val()[100 * y + y + x - 1 - 101] == "░")? "kitchen_oil_wet": false; 
 } 
 
 hitTest= {}; 
@@ -102,6 +120,7 @@ $(function(){
 	$("#grid").val(map.replaceAll("|", "").slice(104, -104)); 
 	$("#holes").val(map.replaceAll("|", "").slice(104, -104).replaceAll("_", " ").replaceAll("█", " ").replaceAll("♥", "_").replaceAll("$", "_")); 
 	$("#water").val(water_map.replaceAll("|", "").slice(104, -104)); 
+	$("#kitchen_oil").val(kitchen_oil_map.replaceAll("|", "").slice(104, -104)); 
 
 	$("#grid").on("input keydown keyup", function(i){i.preventDefault(); }); 
 
@@ -189,5 +208,7 @@ $(function(){
 		} 
 
 		!wet()? (function(){swimming= 0;})(): 1; 
+
+		wet() == "kitchen_oil_wet"? $("#grid").addClass("fried"): 1; 
 	}, 31); 
 }); 

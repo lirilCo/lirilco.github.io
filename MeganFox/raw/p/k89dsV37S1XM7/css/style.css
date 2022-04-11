@@ -1,4 +1,4 @@
-#grid, #water, #holes
+#grid, #water, #holes, #kitchen_oil 
 {
 	font-family: monospace; 
 	width: 60em; 
@@ -10,7 +10,31 @@
 	padding: 2px; 
 	position: absolute; 
 }
+#grid.fried 
+{ 
+	caret-color: #c1c15e; 
+} 
 #water 
 { 
 	color: blue; 
+} 
+#kitchen_oil 
+{ 
+	color: yellow; 
+} 
+#lives 
+{ 
+	top: 7em; 
+	position: absolute; 
+	border: 1px inset #000; 
+	font-size: 20px; 
+	padding: 0 5px; 
+} 
+#currency 
+{ 
+	top: 8.5em; 
+	position: absolute; 
+	border: 1px inset #000; 
+	font-size: 20px; 
+	padding: 0 5px; 
 } 
