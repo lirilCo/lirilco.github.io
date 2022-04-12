@@ -1,0 +1,15 @@
+body{ 
+  width: 100vw; 
+  height: 100vh; 
+  margin: 0px; 
+} 
+div#Start{ 
+  width: 20px; 
+  height: 20px; 
+  position: absolute; 
+  top: calc(50% - 10px); 
+  left: 117px; 
+  background: #6d330a; 
+} 
+
+/*Hoja de estilos en cascada (cascade style sheet)*/
