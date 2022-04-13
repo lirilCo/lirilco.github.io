@@ -11,5 +11,17 @@ div#Start{
   left: 117px; 
   background: #6d330a; 
 } 
-
+body > aside{ 
+	height: 100%; 
+	width: 100%; 
+	z-index: 1; 
+	position: absolute; 
+} 
+body > aside > svg{ 
+	cursor: w-resize; 
+	height: 100%; 
+	width: 100%; 
+	box-sizing: border-box; 
+	position: absolute; 
+} 
 /*Hoja de estilos en cascada (cascade style sheet)*/
