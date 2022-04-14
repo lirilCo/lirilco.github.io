@@ -81,7 +81,12 @@ document.addEventListener("DOMContentLoaded", function(){
 	}); 
 	document.addEventListener("mousemove", function(r){
 		evet= r; 
-		if(["Not failed, completed", "Completed, failed"].indexOf(curve.failed) == -1){ 
+		if(!!window.active && ((r.clientX < 127? 127 - r.clientX: r.clientX - 127) > 40 || (r.clientY < document.querySelector("body > aside").clientHeight / 2? document.querySelector("body > aside").clientHeight / 2 - r.clientY: r.clientY - document.querySelector("body > aside").clientHeight / 2) > 40)){ 
+			document.querySelector("#fantasma_de_Start").style.border= "none"; 
+		}else{ 
+			document.querySelector("#fantasma_de_Start").style.border= "1px #33df9e dotted"; 
+		} 
+		if(typeof curve != "undefined" && ["Not failed, completed", "Completed, failed"].indexOf(curve.failed) == -1){ 
 			document.querySelector("svg path").style.stroke= "rgba(" + (parseInt(curve.project({x: r.clientX, y: r.clientY}).d)  <= 51? 255/51 * parseInt(curve.project({x: r.clientX, y: r.clientY}).d): (function(){curve.failed= true; return parseInt(curve.project({x: r.clientX, y: r.clientY}).d) / 7 == Math.floor(parseInt(curve.project({x: r.clientX, y: r.clientY}).d) / 7)? 255: 0})()? 0: 255) + ", 0, 0, 1)"; 
 		} 
 	}); 
@@ -158,5 +163,13 @@ document.addEventListener("DOMContentLoaded", function(){
 	}); 
 	window.addEventListener('blur', function (event){ 
     	rC= [false, false, false, false]; 
+    	window.active= false; 
+    	document.querySelector("body").style.overflow= "hidden"; 
+    	document.querySelector("#fantasma_de_Start").style.border= "1px #33df9e dotted"; 
+	}); 
+	window.addEventListener('focus', function (event){ 
+    	window.active= true; 
+    	document.querySelector("body").style.overflow= ""; 
+    	console.log("focus")
 	}); 
 }); 

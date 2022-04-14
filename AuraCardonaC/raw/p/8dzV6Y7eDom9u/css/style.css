@@ -11,6 +11,15 @@ div#Start{
   left: 117px; 
   background: #6d330a; 
 } 
+div#fantasma_de_Start{ 
+  width: 20px; 
+  height: 20px; 
+  position: absolute; 
+  top: calc(50% - 10px); 
+  left: 117px; 
+  background: #0000; 
+  border: 1px #33df9e dotted; 
+} 
 body > aside{ 
 	height: 100%; 
 	width: 100%; 
