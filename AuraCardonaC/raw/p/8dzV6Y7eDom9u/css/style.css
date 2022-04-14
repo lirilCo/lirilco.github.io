@@ -24,4 +24,10 @@ body > aside > svg{
 	box-sizing: border-box; 
 	position: absolute; 
 } 
+p#loaded{ 
+	position: absolute; 
+	bottom: 0; 
+	font-family: monospace; 
+	word-break: break-word; 
+} 
 /*Hoja de estilos en cascada (cascade style sheet)*/
