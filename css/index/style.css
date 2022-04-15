@@ -340,6 +340,18 @@ header.open .buscar::placeholder{
 .openedStore {
     color: #fff
 }
+.ui-tooltip {
+    background-color: #fff !important; 
+    padding: 6px 10px !important;
+    color: white !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 2px !important;
+  }
+.ui-tooltip-content {
+    color: #f1c40f !important; 
+    position: relative; 
+}
 /*sombra #ccc
 normal #fff*/
 #feed
@@ -1382,6 +1394,11 @@ display: inline-block;
   text-align: left;
   cursor: pointer;
   display: block; 
+}
+.Title {
+  /*! text-align: left; */
+  /*! float: left; */
+  color: #666;
 }
 .link:hover {
   background-color: #eee;
