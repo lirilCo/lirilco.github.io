@@ -147,6 +147,25 @@ section.video section.video:hover .Enlarge {
 {
     display: block; 
 }
+.Playuse 
+{ 
+    position: absolute; 
+    left: 0; 
+    top: 0; 
+    font-family: "icomoon"; 
+    font-size: 43px; 
+    cursor: pointer; 
+    display: block; 
+    z-index: 1; 
+} 
+.Playuse::after 
+{ 
+    content: "\e603"; 
+} 
+.Playuse.playing 
+{ 
+    display: none !important; 
+} 
 .d88fer .vjs-progress-holder {
     position: absolute !important;
     z-index: 1 !important;

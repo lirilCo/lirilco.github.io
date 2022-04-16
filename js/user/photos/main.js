@@ -635,7 +635,7 @@ $(document).on("ready",function(e){
     	    $(this).show(); 
         } 
     }); 
-    $("html").click(function() {
+    $("html").click(function(e) {
         $(".wrapper").removeClass("visible")
         $("#right-menu .index-arrow").removeClass("open");
         $("#profileSettings").removeClass("open");
@@ -678,8 +678,22 @@ $(document).on("ready",function(e){
       
     $("#theater").on("click", function(i){$(i.target).is("#theater")? closeModal(): 1; }); 
 
+    for(var e= 0; e < $("video").length; e++){
+        VIds[VIds.length]= videojs($("video")[e].id); 
 
-e.stopPropagation() 
+        videojs($("video")[e].id).on("pause", function(i){ 
+            a= i
+            let vId= VIds.length - 1
+            $(videojs(i.target.parentElement.id).L.parentElement).siblings().filter(".Playuse").removeClass("playing"); 
+        });
+        
+        videojs($("video")[e].id).on("play", function(i){ 
+            //console.log(i)
+            let vId= VIds.length - 1
+            $(videojs(i.target.parentElement.id).L.parentElement).siblings().filter(".Playuse").addClass("playing"); 
+        });
+    } 
+   //e.stopPropagation() 
 
 
 });
@@ -740,6 +754,7 @@ if(!$("textarea").is(":focus") && !$("input").is(":focus")){
     }
 });
 var c = 0
+var VIds= []; 
 var $this
 var ar= null; 
 var hashes= {}; 
