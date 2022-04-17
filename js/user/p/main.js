@@ -141,6 +141,7 @@ $('#profileSettings').click(function(){
    
 }); 
 $("#files .file").click(function(i, tr){ 
+    $("#information_cont #information li.selected").removeClass("selected"); 
     if(!ok){return}; 
     $("#preview .file_tree").removeClass("visible"); 
     $("#preview #file_preview #file")[0].innerHTML=""; 
@@ -466,6 +467,7 @@ for(eForensics in sprtdUrl){
 for(let folder of document.querySelectorAll("#files .folder")) { 
   folder.addEventListener("contextmenu", function(e){ 
     e.preventDefault(); 
+    /*$("#information_cont #information li.selected").removeClass("selected"); */ 
                         
     $("#preview .file_tree").addClass("visible"); 
 
@@ -505,7 +507,7 @@ for(let folder of document.querySelectorAll("#files .folder")) {
     })(); 
     setTimeout(function(){eleo.style.top= 0; ok= false; 
     }, 1); 
-    setTimeout(function(){!$("#file_expl #information_cont").hasClass("visible")? (function(){$("#file_expl #information_cont").toggleClass("visible"); $("#file_expl #information_cont #information").html("<i>Infor</i><button class='Historia'>Historia</button>"); $(".Historia").on("click", function(){var oReq= new XMLHttpRequest();oReq.addEventListener("load", ee);oReq.open("GET", "https://api.github.com/repos/LirilCo/lirilco.github.io/commits?path=" + FileToRequest);oReq.setRequestHeader('Authorization', "token " + token);crawl();oReq.send();}); })(): 666; ok= true; 
+    setTimeout(function(){!$("#file_expl #information_cont").hasClass("visible")? (function(){$("#file_expl #information_cont").toggleClass("visible"); $("#file_expl #information_cont #information").html("<i>Infor</i><button class='Historia'>Historia</button>"); })(): 666; ok= true; 
     }, 101); 
 
     uRL= ""; 
