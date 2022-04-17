@@ -2,9 +2,9 @@ var engineerer= function(b){
 	za= b; 
 	d= 0; 
           
-	while(za >= 9){ 
+	while(za >= (Math.sqrt(document.querySelector("tbody").querySelectorAll("input").length))){ 
     	d++; 
-    	za-= 9; 
+    	za-= (Math.sqrt(document.querySelector("tbody").querySelectorAll("input").length)); 
 	} 
       
 	return [za, d]; 
@@ -14,16 +14,23 @@ AntiEngineerer= function(x, y){
 	return ((y >= 0 && x >= 0 && y < document.querySelector("table tbody").children.length && x < document.querySelector("table tbody").children[0].children.length)? document.getElementsByTagName("div")[y].children[x]: "undefined"); 
 }; 
    
-function sweep(coor, s){ 
+function sweep(coor, xu){ 
+	s= xu; 
 	coo= coor; 
 	for(u= coor[0]; u >= coor[0] - s; u--) 
 		for(y= coor[1] - s; y <= coor[1] + s; y++) 
-			typeof AntiEngineerer(u, y) != "undefined"? (function(){AntiEngineerer(u, y).checked= true; AntiEngineerer(u, y).mined? (function(){AntiEngineerer(u, y).setAttribute("disabled", true); Demine(); })(): 1; })(): 1; 
+			(typeof AntiEngineerer(u, y) != "undefined" && !AntiEngineerer(u, y).checked)? (function(){AntiEngineerer(u, y).checked= true; AntiEngineerer(u, y).mined && !AntiEngineerer(u, y).disabled? (function(){AntiEngineerer(u, y).setAttribute("disabled", true); Demine(); })(): 1; })(): 1; 
+	u= undefined; 
+	y= undefined; 
 	for(r= coor[0] + 1; r <= coor[0] + s; r++) 
 		for(w= coor[1] - s; w <= coor[1] + s; w++) 
-			typeof AntiEngineerer(r, w) != "undefined"? (function(){AntiEngineerer(r, w).checked= true; AntiEngineerer(r, w).mined? (function(){AntiEngineerer(r, w).setAttribute("disabled", true); Demine(); })(): 1; })(): 1; 
+			(typeof AntiEngineerer(r, w) != "undefined" && !AntiEngineerer(r, w).checked)? (function(){AntiEngineerer(r, w).checked= true; AntiEngineerer(r, w).mined && !AntiEngineerer(r, w).disabled? (function(){AntiEngineerer(r, w).setAttribute("disabled", true); Demine(); })(): 1; })(): 1; 
+	r= undefined; 
+	w= undefined; 
 }; 
    
+var s; 
+
 function Demine(){ 
                                                            
 	var deactivators= '<div class= "deactivators"></div>'; 
@@ -90,14 +97,14 @@ function Continue(){
 	flashing= undefined; 
 	coor= coo; 
 	admited= true;
-	s= 2
+	//s= 2;  
 	right= (typeof u == "undefined" || u === NaN || (u == coor[0] - s && y == coor[1] + s))? true: false; 
 	right? (function(){typeof w != "undefined"? w++: (function(){w= coor[1] - s; })(); })(): y++; 
 	if(!right){
 		for(u= (y > coor[1] + s)? u - 1: u; u >= coor[0] - s; u--){
 			for(y= (admited? (y > coor[1] + s)? (coor[1] - s): y: (coor[1] - s)); y <= coor[1] + s; y++){
 				admited= false; 
-				typeof AntiEngineerer(u, y) != "undefined"? (function(){AntiEngineerer(u, y).checked= true; AntiEngineerer(u, y).mined? (function(){AntiEngineerer(u, y).setAttribute("disabled", true); Demine(); })(): 1; })(): 1; 
+				(typeof AntiEngineerer(u, y) != "undefined" && !AntiEngineerer(u, y).checked)? (function(){AntiEngineerer(u, y).checked= true; AntiEngineerer(u, y).mined && !AntiEngineerer(u, y).disabled? (function(){AntiEngineerer(u, y).setAttribute("disabled", true); Demine(); })(): 1; })(): 1; 
 			} 
 		} 
 	}
@@ -106,7 +113,7 @@ function Continue(){
 	for(r= ((typeof r != "undefined")? (w > coor[1] + s)? r + 1: r: (coor[0] + 1)); r <= coor[0] + s; r++){
 		for(w= (admited? (typeof w == "undefined" || w > coor[1] + s)? (coor[1] - s): w: (coor[1] - s)); w <= coor[1] + s; w++){
 			admited= false; 
-			typeof AntiEngineerer(r, w) != "undefined"? (function(){AntiEngineerer(r, w).checked= true; AntiEngineerer(r, w).mined? (function(){AntiEngineerer(r, w).setAttribute("disabled", true); Demine(); })(): 1; })(): 1; 
+			(typeof AntiEngineerer(r, w) != "undefined" && !AntiEngineerer(r, w).checked)? (function(){AntiEngineerer(r, w).checked= true; AntiEngineerer(r, w).mined && !AntiEngineerer(r, w).disabled? (function(){AntiEngineerer(r, w).setAttribute("disabled", true); Demine(); })(): 1; })(): 1; 
 		}
 	}
 	r= undefined; 
@@ -144,6 +151,7 @@ document.addEventListener("DOMContentLoaded", function(){
 		    } 
 		} 
 
+		w= undefined; 
 		//document.getElementsByTagName("body")[0].innerHTML= document.getElementsByTagName("body")[0].innerHTML;  
 		for(E= 0; E <= document.querySelectorAll("tr").length - 1; E++){ 
         	for(o= 0; o <= document.querySelectorAll("tr")[E].children.length - 1; o++){ 
@@ -159,7 +167,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 		for(a= 0; a <= document.querySelectorAll("table tbody div input").length - 1; a++){ 
     		document.querySelectorAll("table tbody div input")[a].mined= parseInt(Math.random() * 9) == 1? true: false; 
-    		document.querySelectorAll("table tbody div input")[a].addEventListener("change", function(e){/*console.log(["Mined: ", this.mined]); */ cosaParaengineerer= Array.prototype.indexOf.call(e.target.parentElement.parentElement.querySelectorAll("input"), e.target); sweep([Array.prototype.indexOf.call(e.target.parentElement.children, e.target), Array.prototype.indexOf.call(e.target.parentElement.parentElement.children, e.target.parentElement)], 2); }); 
+    		document.querySelectorAll("table tbody div input")[a].addEventListener("change", function(e){ if((typeof u != "undefined") || (typeof y != "undefined") || !(typeof r == "undefined") || !(typeof w == "undefined")){/*console.log((typeof u != "undefined"), (typeof y != "undefined"), !(typeof r == "undefined"), (typeof w != "undefined")); */this.checked= !this.checked; return; }; this.checked= !this.checked; /*console.log(["Mined: ", this.mined]); */ cosaParaengineerer= Array.prototype.indexOf.call(e.target.parentElement.parentElement.querySelectorAll("input"), e.target); sweep([Array.prototype.indexOf.call(e.target.parentElement.children, e.target), Array.prototype.indexOf.call(e.target.parentElement.parentElement.children, e.target.parentElement)], 2); }); 
 		} 
 	}; 
        
