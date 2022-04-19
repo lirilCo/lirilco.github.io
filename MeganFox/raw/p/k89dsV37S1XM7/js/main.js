@@ -149,6 +149,9 @@ $(function(){
 			case 54: 
 				(i.shiftKey && x < 100)? (function(){console.log("X" + x + "Y" + y); $("#water").val(replace($("#water").val(), (100 * y + y + x - 101), "░")); x++; set([x, y]); })(): 1; 
 				break; 
+			case 55: 
+				(i.shiftKey && x < 100)? (function(){console.log("X" + x + "Y" + y); $("#kitchen_oil").val(replace($("#kitchen_oil").val(), (100 * y + y + x - 101), "░")); x++; set([x, y]); })(): 1; 
+				break; 
 			case 53: 
 				(i.shiftKey && x < 100)? (function(){console.log("X" + x + "Y" + y); $("#grid").val(replace($("#grid").val(), (100 * y + y + x - 101), "█")); x++; set([x, y]); })(): 1; 
 				break; 
@@ -159,7 +162,7 @@ $(function(){
 				(i.shiftKey && x < 100)? (function(){console.log("X" + x + "Y" + y); $("#grid").val(replace($("#grid").val(), (100 * y + y + x - 101), "$")); x++; just_spawned= true; set([x, y]); })(): 1; 
 				break; 
 			case 48: 
-				(i.shiftKey && x < 100)? (function(){console.log("X" + x + "Y" + y); $("#grid").val(replace($("#grid").val(), (100 * y + y + x - 101), " ")); x++; just_spawned= true; set([x, y]); })(): 1; 
+				(i.shiftKey && x < 100)? (function(){console.log("X" + x + "Y" + y); $("#grid").val(replace($("#grid").val(), (100 * y + y + x - 101), " ")); $("#water").val(replace($("#water").val(), (100 * y + y + x - 101), " ")); $("#kitchen_oil").val(replace($("#kitchen_oil").val(), (100 * y + y + x - 101), " ")); x++; just_spawned= true; set([x, y]); })(): 1; 
 				break; 
 		} 
 	}); 
