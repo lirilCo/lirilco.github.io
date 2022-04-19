@@ -1501,6 +1501,21 @@ $(document).on("ready",function(e){
             $(this).removeClass("activado"); 
         } 
     })
+    VIds= []; 
+    for(e= 0; e < $("video").length; e++){
+        VIds[VIds.length]= videojs($("video")[e].id); 
+
+        videojs($("video")[e].id).on("pause", function(i){ 
+            a= i
+            let vId= VIds.length - 1
+            $(videojs(i.target.parentElement.id).L.parentElement).siblings().filter(".Playuse").removeClass("playing"); 
+        });
+        
+        videojs($("video")[e].id).on("play", function(i){ 
+            //console.log(i)
+            let vId= VIds.length - 1
+            $(videojs(i.target.parentElement.id).L.parentElement).siblings().filter(".Playuse").addClass("playing"); 
+        });}
     $(".Playuse").click(function(i){ 
         $(i.target).parent().find("video")[0].play(); 
         $(i.target).addClass("playing"); 
