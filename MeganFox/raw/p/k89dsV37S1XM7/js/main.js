@@ -62,6 +62,7 @@ var map_height= (function(){a= 0;
 var skip= 0; 
 var saved_position= [x, y]; 
 var grabbed= []; 
+var just_spawned= false; 
 
 $.fn.selectRange= function(start, end) {if(!end) end= start; return this.each(function() {if(this.setSelectionRange){this.focus(); this.setSelectionRange(start, end); }else if(this.createTextRange){var range= this.createTextRange(); range.collapse(true); range.moveEnd('character', end); range.moveStart('character', start); range.select(); }});}; 
 
@@ -80,16 +81,16 @@ set= function(z){
 		for(l= saved_position[0] + 1; l <= x; l++){ 
 			if($("#grid").val()[100 * y + y + l - 102] == "$" || $("#grid").val()[100 * y + y + l - 102] == "♥"){ 
 				console.log($("#grid").val()[100 * y + y + l - 102])
-				$("#grid").selectRange(100 * y + y + saved_position[0] - 101, 100 * y + y + x - 101); 
-				grabbed[grabbed.length]= [l, $("#grid").val()[100 * y + y + l - 102]]; 
+				!just_spawned? (function(){grabbed[grabbed.length]= [l, $("#grid").val()[100 * y + y + l - 102]]})(): 1; 
+				!just_spawned? $("#grid").selectRange(100 * y + y + saved_position[0] - 101, 100 * y + y + x - 101): (function(){just_spawned= false; })(); 
 			} 
 		} 
 	}else{ 
 		for(l= saved_position[0]; l > x; l--){ 
 			if($("#grid").val()[100 * y + y + l - 102] == "$" || $("#grid").val()[100 * y + y + l - 102] == "♥"){ 
 				console.log($("#grid").val()[100 * y + y + l - 102])
-				$("#grid").selectRange(100 * y + y + x - 101, 100 * y + y + saved_position[0] - 101); 
-				grabbed[grabbed.length]= [l, $("#grid").val()[100 * y + y + l - 102]]; 
+				!just_spawned? (function(){grabbed[grabbed.length]= [l, $("#grid").val()[100 * y + y + l - 102]]})(): 1; 
+				!just_spawned? $("#grid").selectRange(100 * y + y + x - 101, 100 * y + y + saved_position[0] - 101): (function(){just_spawned= false; })(); 
 			} 
 		} 
 	} 
@@ -116,6 +117,11 @@ hitTest.top= function(t, i){
 		return false; 
 	}
 }
+
+function replace(i, j, w){ 
+	return i.slice(0, j) + w + i.slice(j + 1); 
+}; 
+
 $(function(){ 
 	$("#grid").val(map.replaceAll("|", "").slice(104, -104)); 
 	$("#holes").val(map.replaceAll("|", "").slice(104, -104).replaceAll("_", " ").replaceAll("█", " ").replaceAll("♥", "_").replaceAll("$", "_")); 
@@ -136,6 +142,24 @@ $(function(){
 				break; 
 	    	case 39: 
 				((!jumping || wet()) && x + 1 <= 100)? (function(){speed + 1 <= max_speed? speed++: 1; l_r[1]= true; })(): 1; 
+				break; 
+			case 173: 
+				(i.shiftKey && x < 100)? (function(){console.log("X" + x + "Y" + y); $("#grid").val(replace($("#grid").val(), (100 * y + y + x - 101), "_")); x++; set([x, y]); })(): 1; 
+				break; 
+			case 54: 
+				(i.shiftKey && x < 100)? (function(){console.log("X" + x + "Y" + y); $("#water").val(replace($("#water").val(), (100 * y + y + x - 101), "░")); x++; set([x, y]); })(): 1; 
+				break; 
+			case 53: 
+				(i.shiftKey && x < 100)? (function(){console.log("X" + x + "Y" + y); $("#grid").val(replace($("#grid").val(), (100 * y + y + x - 101), "█")); x++; set([x, y]); })(): 1; 
+				break; 
+			case 34: 
+				(i.altKey  && x < 100)? (function(){console.log("X" + x + "Y" + y); $("#grid").val(replace($("#grid").val(), (100 * y + y + x - 101), "♥")); x++; just_spawned= true; set([x, y]); })(): 1; 
+				break; 
+			case 52: 
+				(i.shiftKey && x < 100)? (function(){console.log("X" + x + "Y" + y); $("#grid").val(replace($("#grid").val(), (100 * y + y + x - 101), "$")); x++; just_spawned= true; set([x, y]); })(): 1; 
+				break; 
+			case 48: 
+				(i.shiftKey && x < 100)? (function(){console.log("X" + x + "Y" + y); $("#grid").val(replace($("#grid").val(), (100 * y + y + x - 101), " ")); x++; just_spawned= true; set([x, y]); })(): 1; 
 				break; 
 		} 
 	}); 
