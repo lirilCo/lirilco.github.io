@@ -4,3 +4,29 @@ body
     height: 100vh; 
     width: 100vw; 
 } 
+debuggers 
+{ 
+	max-width: 100%; 
+	width: 100vw; 
+	height: 36px; 
+	bottom: 0px; 
+	background: aliceblue; 
+	position: fixed; 
+	display: inline-block; 
+} 
+debuggers > div 
+{ 
+    width: 36px; 
+    height: 100%; 
+    display: inline-block; 
+	position: relative; 
+} 
+debuggers > div > .rotate 
+{ 
+    width: 2px; 
+    height: 72%; 
+    top: 14%; 
+    left: calc(50% - 2px); 
+    background: #df4876; 
+	position: absolute; 
+} 

@@ -72,6 +72,8 @@ var derecha= 39;
 var arriba= 38; 
 var abajo= 40; 
 
+var un_grado_en_radianes= Math.PI / 180; 
+
 var speed= 0.002; 
 
 document.addEventListener("keydown", function(i){ 
@@ -85,7 +87,7 @@ document.addEventListener("keydown", function(i){
 			if(Vv11w3.rotation.y < Math.PI / 4 * 3)
 			{
 				Vv11w3.rotation.y+= 0.023; 
-				Vv11w4.rotation.y+= 0.023; 
+				Vv11w4.rotation.y+= 0.023;  
 			}
 
 			renderer.render( scene, camera ); 
@@ -98,15 +100,23 @@ document.addEventListener("keydown", function(i){
 				Vv11w3.rotation.y-= 0.023; 
 				Vv11w4.rotation.y-= 0.023; 
 			}
-			renderer.render( scene, camera ); 
 			break; 
 		case arriba: 
 			Vv11.position.y+= speed; 
-			renderer.render( scene, camera ); 
 			break; 
 		case abajo: 
 			Vv11.position.y-= speed; 
-			renderer.render( scene, camera ); 
+			break; 
+		case 16: 
+			Vv11.rotation.z-= 0.023; 
+			break; 
+		case 17: 
+			Vv11.rotation.z+= 0.023; 
 			break; 
 	}; 
+	
+	renderer.render( scene, camera ); 
+       
+	$("debuggers .wheel .rotate").css({"rotate": -(Vv11w4.rotation.y / un_grado_en_radianes - 90) + "deg"}); 
+	$("debuggers .Vv11 .rotate").css({"rotate": -(Vv11.rotation.z / un_grado_en_radianes + 180) + "deg"}); 
 }); 
