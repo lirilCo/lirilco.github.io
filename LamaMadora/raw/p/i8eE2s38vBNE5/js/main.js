@@ -76,6 +76,8 @@ var un_grado_en_radianes= Math.PI / 180;
 
 var speed= 0.002; 
 
+//var c = new THREE.Quaternion();  
+
 document.addEventListener("keydown", function(i){ 
 	//console.log(i.keyCode);  
 
@@ -94,7 +96,7 @@ document.addEventListener("keydown", function(i){
 			break; 
 		case derecha: 
 			//Vv11.position.x+= speed; 
-			console.log(Vv11w3.rotation.y); 
+			console.log(Vv11w3.rotation.y);  
 			if(Vv11w3.rotation.y > Math.PI / 4)
 			{
 				Vv11w3.rotation.y-= 0.023; 
@@ -119,4 +121,5 @@ document.addEventListener("keydown", function(i){
        
 	$("debuggers .wheel .rotate").css({"rotate": -(Vv11w4.rotation.y / un_grado_en_radianes - 90) + "deg"}); 
 	$("debuggers .Vv11 .rotate").css({"rotate": -(Vv11.rotation.z / un_grado_en_radianes + 180) + "deg"}); 
+	$("debuggers .wheelRelativoAlMundo .rotate").css({"rotate": (-(Vv11.rotation.z / un_grado_en_radianes + 180) - (Vv11w4.rotation.y / un_grado_en_radianes - 90)) + "deg"}); 
 }); 
