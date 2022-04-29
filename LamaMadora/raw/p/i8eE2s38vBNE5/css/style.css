@@ -14,12 +14,16 @@ debuggers
 	position: fixed; 
 	display: inline-block; 
 } 
-debuggers > div 
+debuggers > div
 { 
-    width: 36px; 
     height: 100%; 
     display: inline-block; 
 	position: relative; 
+	vertical-align: top; 
+} 
+debuggers > div:not(.bugger):not(.burger):not(.tan) 
+{ 
+	width: 36px; 
 } 
 debuggers > div > .rotate 
 { 
@@ -29,4 +33,17 @@ debuggers > div > .rotate
     left: calc(50% - 2px); 
     background: #df4876; 
 	position: absolute; 
+} 
+debuggers > div > span 
+{ 
+	width: 7em; 
+	height: 72%; 
+	margin-top: 14%; 
+	font-size: 16px; 
+	font-family: "consolas"; 
+	display: inline-block; 
+	height: 20px; 
+	margin: 8px 0; 
+	overflow: hidden; 
+	text-overflow: ellipsis; 
 } 

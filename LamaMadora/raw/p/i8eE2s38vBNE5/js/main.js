@@ -84,7 +84,7 @@ document.addEventListener("keydown", function(i){
 	switch(i.keyCode){ 
 		case izquierda: 
 			//Vv11.position.x-= speed; 
-			console.log(Vv11w3.rotation.y); 
+			//console.log(Vv11w3.rotation.y);  
 
 			if(Vv11w3.rotation.y < Math.PI / 4 * 3)
 			{
@@ -96,7 +96,7 @@ document.addEventListener("keydown", function(i){
 			break; 
 		case derecha: 
 			//Vv11.position.x+= speed; 
-			console.log(Vv11w3.rotation.y);  
+			//console.log(Vv11w3.rotation.y);   
 			if(Vv11w3.rotation.y > Math.PI / 4)
 			{
 				Vv11w3.rotation.y-= 0.023; 
@@ -104,10 +104,12 @@ document.addEventListener("keydown", function(i){
 			}
 			break; 
 		case arriba: 
-			Vv11.position.y+= speed; 
+			Vv11.position.y+= parseFloat($("debuggers .tan span").text()) <= 1? parseFloat($("debuggers .tan span").text()) * speed: (1 - -(1 - parseFloat($("debuggers .tan span").text()))) * speed; 
+			Vv11.position.x+= parseFloat($("debuggers .tan span").text()) <= 1? (1 - parseFloat($("debuggers .tan span").text())) * speed: -(1 - parseFloat($("debuggers .tan span").text())) * -speed;
 			break; 
 		case abajo: 
-			Vv11.position.y-= speed; 
+			Vv11.position.y-= parseFloat($("debuggers .tan span").text()) <= 1? parseFloat($("debuggers .tan span").text()) * speed: (1 - -(1 - parseFloat($("debuggers .tan span").text()))) * speed; 
+			Vv11.position.x-= parseFloat($("debuggers .tan span").text()) <= 1? (1 - parseFloat($("debuggers .tan span").text())) * speed: -(1 - parseFloat($("debuggers .tan span").text())) * -speed; 
 			break; 
 		case 16: 
 			Vv11.rotation.z-= 0.023; 
@@ -122,4 +124,15 @@ document.addEventListener("keydown", function(i){
 	$("debuggers .wheel .rotate").css({"rotate": -(Vv11w4.rotation.y / un_grado_en_radianes - 90) + "deg"}); 
 	$("debuggers .Vv11 .rotate").css({"rotate": -(Vv11.rotation.z / un_grado_en_radianes + 180) + "deg"}); 
 	$("debuggers .wheelRelativoAlMundo .rotate").css({"rotate": (-(Vv11.rotation.z / un_grado_en_radianes + 180) - (Vv11w4.rotation.y / un_grado_en_radianes - 90)) + "deg"}); 
+	$("debuggers .bugger span").text((-(Vv11.rotation.z / un_grado_en_radianes + 180) - (Vv11w4.rotation.y / un_grado_en_radianes - 90) + 90)); 
+	$("debuggers .bugger span").attr("title", (-(Vv11.rotation.z / un_grado_en_radianes + 180) - (Vv11w4.rotation.y / un_grado_en_radianes - 90) + 90)); 
+	while(parseFloat($("debuggers .bugger span").text()) < -360){ 
+		$("debuggers .bugger span").text(parseFloat($("debuggers .bugger span").text()) + 360); 
+	}; 
+	while(parseFloat($("debuggers .bugger span").text()) > 360){ 
+		$("debuggers .bugger span").text(parseFloat($("debuggers .bugger span").text()) - 360); 
+	}; 
+	$("debuggers .tan span").text(parseFloat($("debuggers .bugger span").text()) * -(0.5 / 45)); 
+	$("debuggers .tan span").attr("title", parseFloat($("debuggers .bugger span").text()) * -(0.5 / 45)); 
+	(parseFloat($("debuggers .tan span").text()) >= 2 || parseFloat($("debuggers .tan span").text()) < 0)? $("debuggers .tan span").css({"background": "#d67274"}): $("debuggers .tan span").css({"background": "#25cc54"}); 
 }); 
