@@ -64,8 +64,28 @@ const renderer = new THREE.WebGLRenderer( { antialias: true } );
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
+const v3 = new THREE.Vector3( 0, 0, 0 ); 
+
+var curve = new THREE.QuadraticBezierCurve(
+	new THREE.Vector2( Vv11w2.getWorldPosition(v3).x, Vv11w2.getWorldPosition(v3).y ),
+	new THREE.Vector2( 0.20, 0.15 ),
+	new THREE.Vector2( 0.10, 0 )
+);
+
+var points = curve.getPoints( 50 );
+var x = new THREE.BufferGeometry().setFromPoints( points );
+
+const zz = new THREE.LineBasicMaterial( { color: 0xff0000 } );
+
+// Create the final object to add to the scene
+var curveObject = new THREE.Line( x, zz );
+curveObject.name = 'qB';
+
+scene.add( curveObject ); 
+
 
 renderer.render( scene, camera ); 
+
 
 var izquierda= 37; 
 var derecha= 39; 
@@ -77,6 +97,8 @@ var un_grado_en_radianes= Math.PI / 180;
 var speed= 0.002; 
 
 //var c = new THREE.Quaternion();  
+
+const a = new THREE.Vector3( 0, 1, 0 ); 
 
 document.addEventListener("keydown", function(i){ 
 	//console.log(i.keyCode);  
@@ -135,4 +157,31 @@ document.addEventListener("keydown", function(i){
 	$("debuggers .tan span").text(parseFloat($("debuggers .bugger span").text()) * -(0.5 / 45)); 
 	$("debuggers .tan span").attr("title", parseFloat($("debuggers .bugger span").text()) * -(0.5 / 45)); 
 	(parseFloat($("debuggers .tan span").text()) >= 2 || parseFloat($("debuggers .tan span").text()) < 0)? $("debuggers .tan span").css({"background": "#d67274"}): $("debuggers .tan span").css({"background": "#25cc54"}); 
+
+	scene.remove( curveObject ); 
+
+	renderer.render( scene, camera ); 
+
+	var yProjection= parseFloat($("debuggers .tan span").text()) <= 1? parseFloat($("debuggers .tan span").text()) * 0.22: (1 - -(1 - parseFloat($("debuggers .tan span").text()))) * 0.22; 
+	var xProjection= parseFloat($("debuggers .tan span").text()) <= 1? (1 - parseFloat($("debuggers .tan span").text())) * 0.22: -(1 - parseFloat($("debuggers .tan span").text())) * -0.22; 
+
+	var curve = new THREE.QuadraticBezierCurve(
+		new THREE.Vector2( Vv11w2.getWorldPosition(v3).x, Vv11w2.getWorldPosition(v3).y ),
+		new THREE.Vector2( Vv11w4.getWorldPosition(v3).x, Vv11w4.getWorldPosition(v3).y ),
+		new THREE.Vector2((Vv11w4.getWorldPosition(v3).x + xProjection), (Vv11w4.getWorldPosition(v3).y + yProjection) )
+	);
+	
+	var points = curve.getPoints( 50 );
+	var x = new THREE.BufferGeometry().setFromPoints( points );
+	
+	const zz = new THREE.LineBasicMaterial( { color: 0xff0000 } );
+	
+	curveObject = new THREE.Line( x, zz );
+	curveObject.name = 'qB';
+
+	//console.log(curveObject);  
+	
+	scene.add( curveObject ); 
+	
+	renderer.render( scene, camera ); 
 }); 
