@@ -96,6 +96,16 @@ var un_grado_en_radianes= Math.PI / 180;
 
 var speed= 0.002; 
 
+var ángulo; 
+
+var getInCuadrant= function(ángulo){ 
+	ángulo= ángulo; 
+    while(ángulo < -360)ángulo+=360; 
+    while(ángulo > 360)ángulo-=360; 
+    if(ángulo < 0)ángulo=(360+ángulo); 
+    return ángulo; 
+} 
+
 //var c = new THREE.Quaternion();  
 
 const a = new THREE.Vector3( 0, 1, 0 ); 
@@ -142,12 +152,14 @@ document.addEventListener("keydown", function(i){
 	}; 
 	
 	renderer.render( scene, camera ); 
-       
+    
+    
+    // console.log(getInCuadrant(-Vv11w4.rotation.y / un_grado_en_radianes));  
+	$("debuggers .bugger span").text(getInCuadrant(getInCuadrant(-Vv11.rotation.z / un_grado_en_radianes + 270) + (getInCuadrant(-Vv11w4.rotation.y / un_grado_en_radianes) - 270))); 
+	$("debuggers .bugger span").attr("title", getInCuadrant(getInCuadrant(-Vv11.rotation.z / un_grado_en_radianes + 270) + (getInCuadrant(-Vv11w4.rotation.y / un_grado_en_radianes) - 270))); 
 	$("debuggers .wheel .rotate").css({"rotate": -(Vv11w4.rotation.y / un_grado_en_radianes - 90) + "deg"}); 
 	$("debuggers .Vv11 .rotate").css({"rotate": -(Vv11.rotation.z / un_grado_en_radianes + 180) + "deg"}); 
 	$("debuggers .wheelRelativoAlMundo .rotate").css({"rotate": (-(Vv11.rotation.z / un_grado_en_radianes + 180) - (Vv11w4.rotation.y / un_grado_en_radianes - 90)) + "deg"}); 
-	$("debuggers .bugger span").text((-(Vv11.rotation.z / un_grado_en_radianes + 180) - (Vv11w4.rotation.y / un_grado_en_radianes - 90) + 90)); 
-	$("debuggers .bugger span").attr("title", (-(Vv11.rotation.z / un_grado_en_radianes + 180) - (Vv11w4.rotation.y / un_grado_en_radianes - 90) + 90)); 
 	while(parseFloat($("debuggers .bugger span").text()) < -360){ 
 		$("debuggers .bugger span").text(parseFloat($("debuggers .bugger span").text()) + 360); 
 	}; 
