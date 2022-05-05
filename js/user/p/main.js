@@ -864,7 +864,7 @@ $('#root div').not("#root div:nth-child(1)").not("#root div:nth-child(2)").click
 $("#Archivo, #Live, #Editar").click(function(){ 
     if($("#files .file_tree .inScope").filter(function(){return !!$(this).height()}).is(".file") && $("#information").css("visibility") == "visible"){
         $("#preview .file_tree").removeClass("visible"); 
-        $(".selected").removeClass("selected"); 
+        $("#file_preview #options ul li.selected").removeClass("selected"); 
         $(this).addClass("selected"); 
 
         localStorage.setItem("selected", $(this)[0].innerText); 

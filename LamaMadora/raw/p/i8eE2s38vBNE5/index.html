@@ -15,8 +15,17 @@
 			}
 		}
 	</script>
+    <script type= "module" src= "./js/THREE.js"></script>
+    <script type="module">
+        import { THREE } from "./js/THREE.js"; 
+        window.THREE= THREE; 
+    </script>
+    <script type="module">
+        import { Bezier } from "./js/bezier.js"; 
+        window.Bezier= Bezier; 
+    </script>
+	<script src= "js/main.js"></script>
 
-	<script type= "module" src= "js/main.js"></script>
 	<script src= "js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
