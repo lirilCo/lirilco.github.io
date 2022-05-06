@@ -1,4 +1,5 @@
 selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
+if(typeof THREE != "undefined"){
 console.log(`
        *                     +     *                                                                      
           **       *                 *  *                                                             *   
@@ -8,8 +9,7 @@ console.log(`
      *       +                  +      *                                                                  
         renderer.render( scene, camera ); 
 `); 
-if(typeof THREE != "undefined"){
-camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.01, 10 );
+camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.001, 10 );
 camera.position.z = 0.2;
 camera.position.x = -0.01;
 camera.position.y = -0.7;
@@ -75,6 +75,7 @@ Vv11.add( Vv11w3 );
 Vv11.add( Vv11w4 );
 
 ambiance = new THREE.PointLight( 0xcddde7, 5,  2.8 ); 
+ambiance.color= { r: 0.3401, g: 0.2, b: 1 }; 
 ambiance.position.x= 0; 
 ambiance.position.y= -1; 
 ambiance.position.z= 0.3; 
@@ -94,9 +95,9 @@ document.body.appendChild( renderer.domElement );
 v3 = new THREE.Vector3( 0, 0, 0 ); 
 
 curve = new THREE.QuadraticBezierCurve(
-    new THREE.Vector3( Vv11w2.getWorldPosition(v3).x, Vv11w2.getWorldPosition(v3).y, -0.1 ),
-    new THREE.Vector3( 0.20, 0.15, -0.1 ),
-    new THREE.Vector3( 0.10, 0, -0.1 )
+    new THREE.Vector3( Vv11w2.getWorldPosition(v3).x, Vv11w2.getWorldPosition(v3).y, -1.1 ),
+    new THREE.Vector3( 0.20, 0.15, -1.1 ),
+    new THREE.Vector3( 0.10, 0, -1.1 )
 );
 
 
@@ -114,6 +115,29 @@ curveObject.name = 'qB';
 scene.add( curveObject ); 
 
 
+
+elipse = new THREE.EllipseCurve(
+    0,  0,            // ax, aY
+    0.22, 0.22,           // xRadius, yRadius
+    0,  2 * Math.PI,  // aStartAngle, aEndAngle
+    false,            // aClockwise
+    0                 // aRotation
+);
+
+pts = elipse.getPoints( 210 );
+geometry = new THREE.BufferGeometry().setFromPoints( pts );
+
+material = new THREE.LineBasicMaterial( { color: 0xff0000 } );
+
+// Create the final object to add to the scene
+elps = new THREE.Line( geometry, material ); 
+
+elps.position.z= -0.039; 
+
+scene.add( elps ); 
+
+
+
 renderer.render( scene, camera ); 
 
 
@@ -128,6 +152,8 @@ w= 87;
 s= 83; 
 q= 81; 
 e= 69; 
+
+keysDown= { a: false , d: false , w: false , s: false , q: false , e: false , izquierda: false , derecha: false , arriba: false , abajo: false }
 
 un_grado_en_radianes= Math.PI / 180; 
 
@@ -162,6 +188,70 @@ document.addEventListener("keydown", function(i){
     /*console.log(Vv11.rotation.x + " " + Vv11.rotation.y + " " + Vv11.rotation.z); */ 
     switch(i.keyCode){ 
         case a: 
+            keysDown.a= true; 
+            break; 
+        case d: 
+            keysDown.d= true; 
+            break; 
+        case w: 
+            keysDown.w= true; 
+            break; 
+        case s: 
+            keysDown.s= true; 
+            break; 
+        case q: 
+            keysDown.q= true; 
+            break; 
+        case e: 
+            keysDown.e= true; 
+            break; 
+    }; 
+    
+    renderer.render( scene, camera ); 
+    
+    // console.log(getInQuadrant(-Vv11w4.rotation.y / un_grado_en_radianes));  
+    
+
+}); 
+
+document.addEventListener("keyup", function(zZ){ 
+    switch(zZ.keyCode){ 
+        case a: 
+            keysDown.a= false; 
+            break; 
+        case d: 
+            keysDown.d= false; 
+            break; 
+        case w: 
+            keysDown.w= false; 
+            break; 
+        case s: 
+            keysDown.s= false; 
+            break; 
+        case q: 
+            keysDown.q= false; 
+            break; 
+        case e: 
+            keysDown.e= false; 
+            break; 
+    }; 
+}); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+setInterval(function(){ 
+    if(keysDown.a){
             //Vv11.position.x-= speed; 
             //console.log(Vv11w3.rotation.y);  
 
@@ -172,8 +262,8 @@ document.addEventListener("keydown", function(i){
             }
 
             renderer.render( scene, camera ); 
-            break; 
-        case d: 
+    }
+    if(keysDown.d){
             //Vv11.position.x+= speed; 
             //console.log(Vv11w3.rotation.y);   
             if(Vv11w3.rotation.y > Math.PI / 4)
@@ -181,26 +271,22 @@ document.addEventListener("keydown", function(i){
                 Vv11w3.rotation.y-= 0.023; 
                 Vv11w4.rotation.y-= 0.023; 
             }
-            break; 
-        case w: 
+    }
+    if(keysDown.w){
             Vv11.position.x+= xEYConElÁngulo(speed, parseFloat($(".bugger").text())).x; 
             Vv11.position.y+= xEYConElÁngulo(speed, parseFloat($(".bugger").text())).y; 
-            break; 
-        case s: 
+    }
+    if(keysDown.s){
             Vv11.position.y-= xEYConElÁngulo(speed, parseFloat($(".bugger").text())).y; 
             Vv11.position.x-= xEYConElÁngulo(speed, parseFloat($(".bugger").text())).x; 
-            break; 
-        case q: 
+    }
+    if(keysDown.q){
             Vv11.rotation.z-= 0.023; 
-            break; 
-        case e: 
-            Vv11.rotation.z+= 0.023; 
-            break; 
-    }; 
-    
-    renderer.render( scene, camera ); 
-    
-    // console.log(getInQuadrant(-Vv11w4.rotation.y / un_grado_en_radianes));  
+    }
+    if(keysDown.e){
+        Vv11.rotation.z+= 0.023; 
+    }
+
     $("debuggers .bugger span").text(getInQuadrant(getInQuadrant(-Vv11.rotation.z / un_grado_en_radianes + 270) + (getInQuadrant(-Vv11w4.rotation.y / un_grado_en_radianes) - 270))); 
     $("debuggers .bugger span").attr("title", getInQuadrant(getInQuadrant(-Vv11.rotation.z / un_grado_en_radianes + 270) + (getInQuadrant(-Vv11w4.rotation.y / un_grado_en_radianes) - 270))); 
     $("debuggers .wheel .rotate").css({"rotate": -(Vv11w4.rotation.y / un_grado_en_radianes - 90) + "deg"}); 
@@ -226,15 +312,15 @@ document.addEventListener("keydown", function(i){
     curve = Vv11w4.rotation.y <= Math.PI / 2? (function(){
         /*console.log(xEYConElÁngulo(0.0045, getInQuadrant(Vv11.rotation.z * (Math.PI / 180)))); */ 
         return(new THREE.QuadraticBezierCurve3(
-            new THREE.Vector3( Vv11w2.getWorldPosition(v3).x + xEYConElÁngulo(0.0045, getInQuadrant(Vv11.rotation.z * (Math.PI / 180))).x, Vv11w2.getWorldPosition(v3).y - xEYConElÁngulo(0.0045, getInQuadrant(Vv11.rotation.z * (Math.PI / 180))).y, -0.039 ),
-            new THREE.Vector3( Vv11w4.getWorldPosition(v3).x + xEYConElÁngulo(0.0045, getInQuadrant(Vv11.rotation.z * (Math.PI / 180))).x, Vv11w4.getWorldPosition(v3).y - xEYConElÁngulo(0.0045, getInQuadrant(Vv11.rotation.z * (Math.PI / 180))).y, -0.039 ),
-            new THREE.Vector3( (Vv11w4.getWorldPosition(v3).x + xEYConElÁngulo(0.0045, getInQuadrant(Vv11.rotation.z * (Math.PI / 180))).x + xEYConElÁngulo(0.22, parseFloat($(".bugger").text())).x), (Vv11w4.getWorldPosition(v3).y - xEYConElÁngulo(0.0045, getInQuadrant(Vv11.rotation.z * (Math.PI / 180))).y + xEYConElÁngulo(0.22, parseFloat($(".bugger").text())).y), -0.039 )
+            new THREE.Vector3( Vv11w2.getWorldPosition(v3).x , Vv11w2.getWorldPosition(v3).y , -0.039 ),
+            new THREE.Vector3( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y , -0.039 ),
+            new THREE.Vector3( (Vv11w4.getWorldPosition(v3).x + xEYConElÁngulo(0.22, parseFloat($(".bugger").text())).x) , (Vv11w4.getWorldPosition(v3).y + xEYConElÁngulo(0.22, parseFloat($(".bugger").text())).y), -0.039 )
         )); })(): (function(){/*console.log(Vv11w4.rotation.y)*/ 
             //console.log(xEYConElÁngulo(0.0045, getInQuadrant(Vv11.rotation.z * (Math.PI / 180))));  
             return(new THREE.QuadraticBezierCurve3(
-                new THREE.Vector3( Vv11w1.getWorldPosition(v3).x + xEYConElÁngulo(0.0045, getInQuadrant(Vv11.rotation.z * (Math.PI / 180))).x, Vv11w1.getWorldPosition(v3).y + xEYConElÁngulo(0.0045, getInQuadrant(Vv11.rotation.z * (Math.PI / 180))).y, -0.039 ),
-                new THREE.Vector3( Vv11w3.getWorldPosition(v3).x + xEYConElÁngulo(0.0045, getInQuadrant(Vv11.rotation.z * (Math.PI / 180))).x, Vv11w3.getWorldPosition(v3).y + xEYConElÁngulo(0.0045, getInQuadrant(Vv11.rotation.z * (Math.PI / 180))).y, -0.039 ),
-                new THREE.Vector3( (Vv11w3.getWorldPosition(v3).x + xEYConElÁngulo(0.0045, getInQuadrant(Vv11.rotation.z * (Math.PI / 180))).x + xEYConElÁngulo(0.22, parseFloat($(".bugger").text())).x), (Vv11w3.getWorldPosition(v3).y + xEYConElÁngulo(0.0045, getInQuadrant(Vv11.rotation.z * (Math.PI / 180))).y + xEYConElÁngulo(0.22, parseFloat($(".bugger").text())).y), -0.039 )
+                new THREE.Vector3( Vv11w1.getWorldPosition(v3).x , Vv11w1.getWorldPosition(v3).y , -0.039 ),
+                new THREE.Vector3( Vv11w3.getWorldPosition(v3).x , Vv11w3.getWorldPosition(v3).y , -0.039 ),
+                new THREE.Vector3( (Vv11w3.getWorldPosition(v3).x + xEYConElÁngulo(0.22, parseFloat($(".bugger").text())).x), (Vv11w3.getWorldPosition(v3).y + xEYConElÁngulo(0.22, parseFloat($(".bugger").text())).y), -0.039 )
             )); })(); 
     
     points = curve.getPoints( 50 );
@@ -249,8 +335,31 @@ document.addEventListener("keydown", function(i){
     
     scene.add( curveObject ); 
     
+    if(Vv11w4.rotation.y <= Math.PI / 2){
+        elps.position.x= Vv11w4.getWorldPosition(v3).x; 
+        elps.position.y= Vv11w4.getWorldPosition(v3).y; 
+    }else{
+        elps.position.x= Vv11w3.getWorldPosition(v3).x; 
+        elps.position.y= Vv11w3.getWorldPosition(v3).y; 
+    }
     renderer.render( scene, camera ); 
+}, 25); 
 
-}); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 console.log("selfDestructableSetIntervalWhichWaitsForSomething" + "     ₛₐᵢₓᵆ: " + "I Self Destructed ", selfDestructableSetIntervalWhichWaitsForSomething)
 clearInterval(selfDestructableSetIntervalWhichWaitsForSomething); }else{console.log("undefined")}}, 100); 

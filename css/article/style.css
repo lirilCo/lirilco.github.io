@@ -763,7 +763,7 @@ font-family: "icomoon";
 } 
 #theater .options ul li.read:after
 {
-content: "\e903"
+content: "\e904"
 } 
 
 #theater .comments
@@ -1152,7 +1152,7 @@ a:hover
 }
 .repostedFrom::after {
     font-family: "icomoon";
-    content: "\e900";
+    content: "\e901";
 }
 .navigation{ 
     width: 100%; 
@@ -1199,7 +1199,7 @@ a:hover
     left: 0; 
 } 
 .nav_arrow.left .arrow:after{ 
-    content: "\e902"; 
+    content: "\e903"; 
 } 
 
 .nav_arrow.left{ 
@@ -1209,7 +1209,7 @@ a:hover
     right: 0; 
 } 
 .nav_arrow.right .arrow:after{ 
-    content: "\e901"; 
+    content: "\e902"; 
 } 
 #theater .nav_arrow.left{ 
     left: 1.1%; 
@@ -1342,7 +1342,7 @@ a:hover
     cursor: pointer; 
 } 
 .comentarios .Comentarios .Responder:after, .comentarios .Comentarios .Respxxder:after{ 
-    content: " \e904"; 
+    content: " \e905"; 
     font-family: "icomoon"; 
     vertical-align: middle; 
     cursor: pointer; 
