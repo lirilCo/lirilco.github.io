@@ -619,6 +619,33 @@ section.video section.video .Enlarge {
 padding-left: 47px;
 
 }
+.info  p.repost, .info  p.fork{
+    width: auto !important;
+    font-size: 15px; 
+    padding-left: 114px; 
+}
+#theater .info  p.repost, #theater .info  p.fork{
+    width: auto !important;
+    font-size: 15px; 
+    padding-left: 114px; 
+}
+.info img.repost:first-child, .info img.fork:first-child{
+    height: 40px !important;
+    width: 40px!important;
+    cursor: pointer;
+    position: absolute; 
+    left: 0; 
+}
+.info  img.repost, .info  img.fork{
+    height: 40px !important;
+    width: 40px!important;
+    cursor: pointer;
+    position: absolute; 
+    left: 64px; 
+}
+#theater .info  img.repost, #theater .info  img.fork{
+    height: 40px !important;
+}
 #theater .title
 {
     
@@ -1382,6 +1409,24 @@ display: inline-block;
 { 
     z-index: 1 !important;
 } 
+.repostedFrom, .forkedFrom {
+    position: absolute;
+    left: 44px;
+    height: 40px;
+    vertical-align: middle;
+    display: inline;
+    color: #666;
+    font-size: ;
+    top: 10px;
+}
+.repostedFrom::after {
+    font-family: "icomoon";
+    content: "\e901";
+}
+.forkedFrom::after {
+    font-family: "icomoon";
+    content: "\e900";
+}
 .linktype {
   float: right;
 }

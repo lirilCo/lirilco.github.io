@@ -371,31 +371,31 @@ normal #fff*/
     font-size: 15px; 
     padding-left: 50px; 
 }
-.info  p.repost{
+.info  p.repost, .info  p.fork{
     width: auto !important;
     font-size: 15px; 
     padding-left: 114px; 
 }
-#theater .info  p.repost{
+#theater .info  p.repost, #theater .info  p.fork{
     width: auto !important;
     font-size: 15px; 
     padding-left: 114px; 
 }
-.info img.repost:first-child{
+.info img.repost:first-child, .info img.fork:first-child{
     height: 40px !important;
     width: 40px!important;
     cursor: pointer;
     position: absolute; 
     left: 0; 
 }
-.info  img.repost{
+.info  img.repost, .info  img.fork{
     height: 40px !important;
     width: 40px!important;
     cursor: pointer;
     position: absolute; 
     left: 64px; 
 }
-#theater .info  img.repost{
+#theater .info  img.repost, #theater .info  img.fork{
     height: 40px !important;
 }
 .story .embed{
@@ -1755,7 +1755,7 @@ display: inline-block;
 { 
     z-index: 1 !important;
 } 
-.repostedFrom {
+.repostedFrom, .forkedFrom {
     position: absolute;
     left: 44px;
     height: 40px;
@@ -1768,6 +1768,15 @@ display: inline-block;
 .repostedFrom::after {
     font-family: "icomoon";
     content: "\e901";
+}
+.forkedFrom::after {
+    font-family: "icomoon";
+    content: "\e900";
+}
+#forkedFrom a {
+    color: #2ecc71 !important;
+    text-decoration: none;
+    outline: none !important;
 }
 .navigation{ 
     width: 100%; 

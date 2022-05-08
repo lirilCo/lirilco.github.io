@@ -711,3 +711,25 @@ header nav ul li#right-menu #store::before {
     height: 100%; 
     border: none; 
 } 
+#forkedFrom
+{
+    position: fixed; 
+    background: #fff; 
+    top: 46px;
+    /*! height: 90px; */
+    color: #bbb;
+    right: 0.4em;
+}
+#forkedFrom:before {
+  content: "\e900";
+  font-family: "icomoon";
+  margin: 12px 19px;
+}
+#forkedFrom a {
+    color: #2ecc71 !important;
+    text-decoration: none;
+    outline: none !important;
+}
+#forkedFrom a:hover {
+    text-decoration: underline; 
+}
