@@ -75,7 +75,8 @@ Vv11.add( Vv11w3 );
 Vv11.add( Vv11w4 );
 
 ambiance = new THREE.PointLight( 0xcddde7, 5,  2.8 ); 
-ambiance.color= { r: 0.3401, g: 0.2, b: 1 }; 
+ambiance.color= {r: 0.87, g: 0.723, b: 0.124}; 
+ambiance.intensity= 1.58; 
 ambiance.position.x= 0; 
 ambiance.position.y= -1; 
 ambiance.position.z= 0.3; 
@@ -106,7 +107,7 @@ x = new THREE.BufferGeometry().setFromPoints( points );
 
 console.log(x); 
 
-zz = new THREE.LineBasicMaterial( { color: 0xff0000 } );
+zz = new THREE.LineBasicMaterial( { color: 0x00ff00 } );
 
 // Create the final object to add to the scene
 curveObject = new THREE.Line( x, zz );
@@ -114,6 +115,16 @@ curveObject.name = 'qB';
 
 scene.add( curveObject ); 
 
+
+bEZ= new Bezier( [ { x: curve.v0.x , y: curve.v0.y } , { x: curve.v1.x , y: curve.v1.y } , { x: curve.v2.x , y: curve.v2.y } ] ) 
+
+points = curve.getPoints( 50 );
+x = new THREE.BufferGeometry().setFromPoints( points );
+zz = new THREE.LineBasicMaterial( { color: 0xff0000 } );
+oldCurve = new THREE.Line( x, zz );
+oldCurve.name = 'oQB';
+
+scene.add( oldCurve ); 
 
 
 elipse = new THREE.EllipseCurve(
@@ -132,10 +143,28 @@ material = new THREE.LineBasicMaterial( { color: 0xff0000 } );
 // Create the final object to add to the scene
 elps = new THREE.Line( geometry, material ); 
 
-elps.position.z= -0.039; 
+elps.position.z= -0.093; 
 
 scene.add( elps ); 
 
+
+intersección = new THREE.Mesh( new THREE.BoxGeometry( 0.02, 0.02, 0.02 ), new THREE.MeshPhongMaterial({ color: 0xff6666 }) );
+
+scene.add( intersección ); 
+
+    
+closestP= {}; 
+closestP.d= 10000000000000000000000000000; 
+    
+for(eX in pts){
+    console.log(pts[eX])
+    closestP= (function(){typeof av == "undefined"? (function(){av= closestP; })(): 1; av= bEZ.project( { x: pts[eX].x + elps.position.x , y: pts[eX].y + elps.position.y } ).d < av.d? bEZ.project( { x: pts[eX].x + elps.position.x , y: pts[eX].y + elps.position.y } ): av; av.x= pts[eX].x + elps.position.x; av.y= pts[eX].y + elps.position.y; return av; })(); 
+
+}
+    
+intersección.position.x= closestP.x
+intersección.position.y= closestP.y
+intersección.position.z= -0.093
 
 
 renderer.render( scene, camera ); 
@@ -247,10 +276,21 @@ document.addEventListener("keyup", function(zZ){
 
 
 
+/*skip=  63; */ 
+
+skip= 0; 
 
 
+lentitud= 17; 
+
+lentitudMáx= 2; 
+aceleración= 1; 
 
 setInterval(function(){ 
+    if(skip > 0){
+        skip--; 
+        return; 
+    }
     if(keysDown.a){
             //Vv11.position.x-= speed; 
             //console.log(Vv11w3.rotation.y);  
@@ -275,6 +315,9 @@ setInterval(function(){
     if(keysDown.w){
             Vv11.position.x+= xEYConElÁngulo(speed, parseFloat($(".bugger").text())).x; 
             Vv11.position.y+= xEYConElÁngulo(speed, parseFloat($(".bugger").text())).y; 
+            skip= skip == 0? lentitud: skip; 
+            lentitud -= aceleración; 
+            lentitud= lentitud < 0? 0: lentitud; 
     }
     if(keysDown.s){
             Vv11.position.y-= xEYConElÁngulo(speed, parseFloat($(".bugger").text())).y; 
@@ -303,38 +346,15 @@ setInterval(function(){
     !1? $("debuggers .tan span").css({"background": "#d67274"}): $("debuggers .tan span").css({"background": "#25cc54"}); 
 
     scene.remove( curveObject ); 
+    
+    scene.remove( oldCurve ); 
+
+    scene.remove( intersección ); 
 
     renderer.render( scene, camera ); 
 
     //yProjection= parseFloat($("debuggers .tan span").text()) <= 1? parseFloat($("debuggers .tan span").text()) * 0.22: (1 - -(1 - parseFloat($("debuggers .tan span").text()))) * 0.22;  
     //xProjection= parseFloat($("debuggers .tan span").text()) <= 1? (1 - parseFloat($("debuggers .tan span").text())) * 0.22: -(1 - parseFloat($("debuggers .tan span").text())) * -0.22;  
-
-    curve = Vv11w4.rotation.y <= Math.PI / 2? (function(){
-        /*console.log(xEYConElÁngulo(0.0045, getInQuadrant(Vv11.rotation.z * (Math.PI / 180)))); */ 
-        return(new THREE.QuadraticBezierCurve3(
-            new THREE.Vector3( Vv11w2.getWorldPosition(v3).x , Vv11w2.getWorldPosition(v3).y , -0.039 ),
-            new THREE.Vector3( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y , -0.039 ),
-            new THREE.Vector3( (Vv11w4.getWorldPosition(v3).x + xEYConElÁngulo(0.22, parseFloat($(".bugger").text())).x) , (Vv11w4.getWorldPosition(v3).y + xEYConElÁngulo(0.22, parseFloat($(".bugger").text())).y), -0.039 )
-        )); })(): (function(){/*console.log(Vv11w4.rotation.y)*/ 
-            //console.log(xEYConElÁngulo(0.0045, getInQuadrant(Vv11.rotation.z * (Math.PI / 180))));  
-            return(new THREE.QuadraticBezierCurve3(
-                new THREE.Vector3( Vv11w1.getWorldPosition(v3).x , Vv11w1.getWorldPosition(v3).y , -0.039 ),
-                new THREE.Vector3( Vv11w3.getWorldPosition(v3).x , Vv11w3.getWorldPosition(v3).y , -0.039 ),
-                new THREE.Vector3( (Vv11w3.getWorldPosition(v3).x + xEYConElÁngulo(0.22, parseFloat($(".bugger").text())).x), (Vv11w3.getWorldPosition(v3).y + xEYConElÁngulo(0.22, parseFloat($(".bugger").text())).y), -0.039 )
-            )); })(); 
-    
-    points = curve.getPoints( 50 );
-    x = new THREE.BufferGeometry().setFromPoints( points );
-    
-    zz = new THREE.LineBasicMaterial( { color: 0xff0000 } );
-    
-    curveObject = new THREE.Line( x, zz );
-    curveObject.name = 'qB';
-
-    //console.log(curveObject);  
-    
-    scene.add( curveObject ); 
-    
     if(Vv11w4.rotation.y <= Math.PI / 2){
         elps.position.x= Vv11w4.getWorldPosition(v3).x; 
         elps.position.y= Vv11w4.getWorldPosition(v3).y; 
@@ -342,6 +362,64 @@ setInterval(function(){
         elps.position.x= Vv11w3.getWorldPosition(v3).x; 
         elps.position.y= Vv11w3.getWorldPosition(v3).y; 
     }
+
+
+    points = curve.getPoints( 50 );
+    x = new THREE.BufferGeometry().setFromPoints( points );
+    zz = new THREE.LineBasicMaterial( { color: 0xff0000 } );
+    oldCurve = new THREE.Line( x, zz );
+    oldCurve.name = 'oQB';
+
+    scene.add( oldCurve ); 
+
+    intersección = new THREE.Mesh( new THREE.BoxGeometry( 0.02, 0.02, 0.02 ), new THREE.MeshPhongMaterial({ color: 0xff6666 }) );
+
+    scene.add( intersección ); 
+
+    
+    closestP= {}; 
+    closestP.d= 1111111111111111111111111; 
+    
+    for(eX in pts){
+        closestP= (function(){typeof av == "undefined"? (function(){av= closestP; })(): 1; av= bEZ.project( { x: pts[eX].x + elps.position.x , y: pts[eX].y + elps.position.y } ).d < av.d? bEZ.project( { x: pts[eX].x + elps.position.x , y: pts[eX].y + elps.position.y } ): av; av.x= pts[eX].x + elps.position.x; av.y= pts[eX].y + elps.position.y; return av; })(); 
+    }
+    
+    intersección.position.x= closestP.x
+    intersección.position.y= closestP.y
+    intersección.position.z= -0.093
+
+    curve = Vv11w4.rotation.y <= Math.PI / 2? (function(){
+        /*console.log(xEYConElÁngulo(0.0045, getInQuadrant(Vv11.rotation.z * (Math.PI / 180)))); */ 
+        return(new THREE.QuadraticBezierCurve3(
+            new THREE.Vector3( Vv11w2.getWorldPosition(v3).x , Vv11w2.getWorldPosition(v3).y , -0.093 ),
+            new THREE.Vector3( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y , -0.093 ),
+            new THREE.Vector3( (Vv11w4.getWorldPosition(v3).x + xEYConElÁngulo(0.22, parseFloat($(".bugger").text())).x) , (Vv11w4.getWorldPosition(v3).y + xEYConElÁngulo(0.22, parseFloat($(".bugger").text())).y), -0.093 )
+        )); })(): (function(){/*console.log(Vv11w4.rotation.y)*/ 
+            //console.log(xEYConElÁngulo(0.0045, getInQuadrant(Vv11.rotation.z * (Math.PI / 180))));  
+            return(new THREE.QuadraticBezierCurve3(
+                new THREE.Vector3( Vv11w1.getWorldPosition(v3).x , Vv11w1.getWorldPosition(v3).y , -0.093 ),
+                new THREE.Vector3( Vv11w3.getWorldPosition(v3).x , Vv11w3.getWorldPosition(v3).y , -0.093 ),
+                new THREE.Vector3( (Vv11w3.getWorldPosition(v3).x + xEYConElÁngulo(0.22, parseFloat($(".bugger").text())).x), (Vv11w3.getWorldPosition(v3).y + xEYConElÁngulo(0.22, parseFloat($(".bugger").text())).y), -0.093 )
+            )); })(); 
+
+    
+    points = curve.getPoints( 50 );
+    x = new THREE.BufferGeometry().setFromPoints( points );
+    
+    zz = new THREE.LineBasicMaterial( { color: 0x00ff00 } );
+    
+    curveObject = new THREE.Line( x, zz );
+    curveObject.name = 'qB';
+
+    bEZ= new Bezier( [ { x: curve.v0.x , y: curve.v0.y } , { x: curve.v1.x , y: curve.v1.y } , { x: curve.v2.x , y: curve.v2.y } ] );
+
+
+
+
+    //console.log(curveObject);  
+    
+    scene.add( curveObject ); 
+    
     renderer.render( scene, camera ); 
 }, 25); 
 
