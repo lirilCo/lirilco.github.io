@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="view port" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>
+        Dios Jesucristo Forqueó minesweeper de Laura Escobar Bonnett | Posts | Dios Jesucristo | liril
+    </title>
+    <link rel="shortcut icon" type="image/ico" href="/resources/icons/favicon.ico"  />
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300,600,700' rel='stylesheet' type='text/css'>
+    
+     <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/user/style.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/video-js.css">
+   <link rel="stylesheet" href="/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/resources/blue.monday/css/jplayer.blue.monday.css" rel="stylesheet" />
+    <link rel= "stylesheet" href="/css/imgStatic/style.css"/>
+
+    <script type="text/javascript">
+        var username = "G-Suschrist";
+        var users_name = "Dios Jesucristo";
+    </script>
+    <script src="/js/user/modernizr.custom.js"></script>
+    <script src="/js/jquery.js"></script>
+    <!--<script type="text/javascript" src= "js/jquery.circlemouse.js"></script> //Thanks to Mary Lou from Codrops, this helped me a lot!-->
+    <script src="/js/user/main.js"></script>
+    <script src="/js/jquery.dotdotdot.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/js/jquery.jplayer.min.js"></script> 
+
+    <script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="/js/jquery.textarea_autosize.js"></script>
+<script src="/js/jquery-ui.min.js"></script>
+ <script src="/js/jquery.knob.js"></script>
+    <script src="/js/video.js"></script>
+    <script src="/js/audio.min.js"></script>
+    <script src= "/js/imgStatic/main.js"></script>
+    <script type="text/javascript">
+  $(function () {
+      $.widget("ui.tooltip", $.ui.tooltip, {
+          options: {
+              content: function () {
+                  return $(this).prop('title');
+              }
+          }
+      });
+      
+$('.username').tooltip({
+    items: 'a.target',
+    open: function(event, ui)
+    {
+        if (typeof(event.originalEvent) === 'undefined')
+        {
+            return false;
+        }
+        $(".knob").knob();
+        var $id = $(ui.tooltip).attr('id');
+        
+        // close any lingering tooltips
+        $('div.ui-tooltip').not('#' + $id).remove();
+        
+        // ajax function to pull in data and add it to the tooltip goes here
+    },
+    close: function(event, ui)
+    {
+        ui.tooltip.hover(function()
+        {
+            $(this).stop(true).fadeTo(400, 1); 
+        },
+        function()
+        {
+            $(this).fadeOut('400', function()
+            {
+                $(this).remove();
+            });
+        });
+    }
+});  });
+</script>
+
+   <script>
+        $(function ($) {
+
+            $(".knob").knob({
+                change: function (value) {
+                    //console.log("change : " + value);
+                },
+                release: function (value) {
+                    //console.log(this.$.attr('value'));
+                    console.log("release : " + value);
+                },
+                cancel: function () {
+                    console.log("cancel : ", this);
+                },
+                /*format : function (value) {
+                  return value + '%';
+                  }
+                  ,*/
+                draw: function () {
+
+                    // "tron" case
+                    if (this.$.data('skin') == 'tron') {
+
+                        this.cursorExt = 0.3;
+
+                        var a = this.arc(this.cv) // Arc
+                            ,
+                            pa // Previous arc
+                            , r = 1;
+
+                        this.g.lineWidth = this.lineWidth;
+
+                        if (this.o.displayPrevious) {
+                            pa = this.arc(this.v);
+                            this.g.beginPath();
+                            this.g.strokeStyle = this.pColor;
+                            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, pa.s, pa.e, pa.d);
+                            this.g.stroke();
+                        }
+
+                        this.g.beginPath();
+                        this.g.strokeStyle = r ? this.o.fgColor : this.fgColor;
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, a.s, a.e, a.d);
+                        this.g.stroke();
+
+                        this.g.lineWidth = 2;
+                        this.g.beginPath();
+                        this.g.strokeStyle = this.o.fgColor;
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
+                        this.g.stroke();
+
+                        return false;
+                    }
+                }
+            });
+
+            // Example of infinite knob, iPod click wheel
+            var v, up = 0,
+                down = 0,
+                i = 0,
+                $idir = $("div.idir"),
+                $ival = $("div.ival"),
+                incr = function () {
+                    i++;
+                    $idir.show().html("+").fadeOut();
+                    $ival.html(i);
+                },
+                decr = function () {
+                    i--;
+                    $idir.show().html("-").fadeOut();
+                    $ival.html(i);
+                };
+            $("input.infinite").knob({
+                min: 0,
+                max: 20,
+                stopper: false,
+                change: function () {
+                    if (v > this.cv) {
+                        if (up) {
+                            decr();
+                            up = 0;
+                        } else {
+                            up = 1;
+                            down = 0;
+                        }
+                    } else {
+                        if (v < this.cv) {
+                            if (down) {
+                                incr();
+                                down = 0;
+                            } else {
+                                down = 1;
+                                up = 0;
+                            }
+                        }
+                    }
+                    v = this.cv;
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+<div class="wrapper">
+  </div>
+    <header>
+        <nav>
+            <ul>
+                <li id="index">
+                    <a href="/"><section id="index-trigger">
+                        <span class="back-arrow button">
+              </span>
+                        <span id="index-text" class="text button">
+                Inicio
+              </span>
+                    </section></a>
+
+                </li>
+               
+                <li id= "buscar">
+          <input class="buscar" type="text" placeholder="Busca aquí cursos, personas o cualquier cosa">
+          </li>
+                <li id="right-menu" class="button">
+                    <section id="dots" class="button">
+                        <span id="store" class="button">
+              </span>
+                        <span id="dots-icon" class="button">
+              </span>
+                        <span id="dots-text" class="button">
+                6'000.600
+              </span>
+
+                    </section>
+                    <section id="profileTrigger">
+                    </section>
+                    <div id="profile" class="button">
+                        <img id="profile-pic" src="/resources/images/white.jpg" alt="Walter White">
+                        <input class="knob button" data-width="35" data-height="35" data-fgColor="#2ecc71" data-bgColor="rgba(0,0,0,0)" data-displayInput=false data-thickness=".15" readonly value="60">
+                    </div>
+                    <span class="index-arrow button">
+              </span>
+
+                    <section id="profileSettings">
+                    </section>
+                </li>
+
+                <li>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <section id="wrapper" class="theater"></section>
+    <style class="zer">
+        
+    </style>
+    <aside id="biography">
+        <section id="content">
+            <section id="theater" class="theater animated fadeIn" style="display: block;">
+        <section>
+            <section id="picContainer">
+                <img id="bigPic" class= "invisible" alt="" src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn.gif">
+                <div class="Playuse">
+                </div>
+                <video id="theater_video" controls class="video-js d88fer vjs-default-skin" preload="none" width="100%" height="264" data-setup='{}'  data-setup="{}">
+                   <source src="" type='video/mp4'/>
+                   <p class="vjs-no-js">
+                      Para ver este vídeo, por favor activa el Javascript y considera actualizar tu navegador a uno que
+                      <a href="http://videojs.com/html5-video-support/" target="_blank">
+                      soporte vídeo en Html5
+                      </a>
+                   </p>
+                </video>
+                <div id="otherContainments" class= "visible">
+                  <div>
+                    <section id="links">
+                        <a class="link" target="_blank" href="/G-Suschrist/p/8DtHjO30I2sd"><span class="Title">minesweeper</span><span class="linktype">Proyecto</span></a>
+                    </section>
+                  </div>
+                </div>
+            </section>
+            <aside class="comments">
+            <div class="info">
+                                    <img class="fork" src="/resources/images/G-Suschrist/Rvu7YjVcXr_tn.jpg" alt="">
+                                    <div class="forkedFrom"></div>
+                                    <img class="fork" src="/resources/images/L/OGnpwD3jys_tn.jpg" alt="">
+                                    <p class="username fork">
+                                        <a class="target" href="/G-Suschrist" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/G-Suschrist/Rvu7YjVcXr_tn.jpg'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>
+                  <p class='username' title= 'Dios Jesucristo'>Dios Jesucristo</p>
+                  <p class='rol'>G <b style='color:#fff;'>+100</b></p>
+
+                </div>
+                
+              </div>">Dios Jesucristo</a> Forkeó <a target= "_blank" href="/L/p/d8E461R2s91c">minesweeper</a> de <a class="target" href="/L" title="         
+              <div class='tool'>
+                <input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'>
+                <img src='/resources/images/L/OGnpwD3jys_tn.jpg'>
+                <div class='datos'>
+                  <ul class='actions'>
+                    <li class='chatear' title='Chatear'>C</li>
+                    <li class='agregar' title='Agregar'>A</li>
+                    <li class='juzgar' title='Juzgar'>J</li>
+                  </ul>                  
+                  <p class='username' title= 'Laura Escobar Bonnett'>Laura Escobar Bonnett</p>
+                  <p class='rol'>Princesa <b style='color:#fff;'>+100</b></p>
+                </div>
+                </div>">Laura Escobar Bonnett</a>
+                                        <br>
+                                        <span title="27 de Octubre de 2021 a las 2:81 pm" class="time">
+                                            Octubre de 2021
+                                        </span>
+                                    </p>
+                                </div>
+            <div class="description" style="padding-top: 76px;">
+                <p class="title">minesweeper</p>
+                <section class="more"></section>
+            
+            </div>
+            <div class="comentarios">
+                <div class="Comentarios">
+                </div>
+                <div class="newComment">
+                    <textarea rows="1"></textarea>
+                </div>
+            </div>
+            <div class="options button">
+            <ul>
+                <li class="bookmark" title=""></li>
+                <li class="star" title=""></li>
+                <a href="#"><li class="read" title=""></li></a>
+            </ul></div>
+            <!--<p id="close"></p>
+            </aside>-->
+        </section>
+    </section>
+            <section id="main">
+            
+            
+    <aside id="sidebar">
+     <div id="container">
+        <div id="resizeTop">
+       <div id="notifications">
+        <ul>
+            <div class="info button">
+                    <img src="/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif" alt="">
+                    <p class="username"><b href="#">A.K.A._Dizzy:</b> <br> 😉 Revisen Mi Perfil: <a target= "_blank" href="/A.K.A._Dizzy">A.K.A._Dizzy</a></p>
+                   
+            </div>
+            <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora amigo de  Walter White.</p>
+                  
+            </div>
+            <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> hizo un commit a eBay.</p>
+            </div> 
+             <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora Moderador.</p>
+                   
+            </div>
+            <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora amigo de  Walter White.</p>
+                  
+            </div>
+            <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> hizo un commit a eBay.</p>
+            </div> 
+             <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora Moderador.</p>
+                   
+            </div>
+            <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora amigo de  Walter White.</p>
+                  
+            </div>
+            <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> hizo un commit a eBay.</p>
+            </div> 
+             <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora Moderador.</p>
+                   
+            </div>
+            <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora amigo de  Walter White.</p>
+                  
+            </div>
+            <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> hizo un commit a eBay.</p>
+            </div> 
+             <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora Moderador.</p>
+                   
+            </div>
+            <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> Es ahora amigo de  Walter White.</p>
+                  
+            </div>
+            <div class="info button">
+                    <img src="/resources/images/white.jpg" alt="">
+                    <p class="username"><b href="#">Walter White</b> hizo un commit a eBay.</p>
+            </div> 
+        </ul>
+        
+        </div>
+        </div>
+      <div id="resizeBottom">
+       <div id="chat">
+        <ul>
+        </ul>
+        
+        </div>
+        </div>
+        </div>
+        <section id="search">
+            <i id="searchIcon"></i>
+           <input type="text" placeholder="Buscar">
+        </section>
+    </aside>
+    <section id="Store" class="button">
+            
+        <aside id="actualStore" class="button">
+            <aside id="storeList" class="button">
+                <ul>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                    <a>
+                        <li class="button">Sección</li>
+                    </a>
+                </ul>
+            </aside>
+            <aside id="storeSection">
+                
+            </aside>
+        </aside>
+       
+    </section>
+        
+  <section id="chats">
+    <div class="chats">
+
+
+    </div>
+  </section>
+        <script>
+          $("#notifications").mCustomScrollbar({theme: 
+        "minimal-dark", 
+        autoExpandScrollbar: true,
+        scrollInertia: 100,
+         mouseWheel:{ scrollAmount: 40 }
+
+    });
+      $("#chat").mCustomScrollbar({theme: 
+        "minimal-dark", 
+        autoExpandScrollbar: true,
+        scrollInertia: 100,
+            mouseWheel:{ scrollAmount: 40 }
+
+             });
+      $(".more").mCustomScrollbar({theme: 
+        "minimal-dark", 
+        autoExpandScrollbar: true,
+        scrollInertia: 100});
+    </script>
+    <script>
+        $( "#resizeBottom" ).resizable({ handles: "n",maxHeight: ($(window).height()-$("#sidebar #search").outerHeight() - 51),minHeight: 50 }).bind("resize", function (e, ui) {
+            $(this).css("top", "auto");
+            
+        });
+
+    $(".line").tooltip({      
+        track: true,
+        position: {
+        my: "center bottom-6",
+        at: "center top"
+      }
+});
+
+    </script>
+    <script>
+            $(".story .info").height($(this).find(".username").outerHeight())
+</script>
+<script>
+  audiojs.events.ready(function() {
+    var as = audiojs.createAll();
+  });
+</script>
+</body>
+</html>
