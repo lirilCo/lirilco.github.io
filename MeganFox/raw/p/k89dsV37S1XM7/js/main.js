@@ -73,6 +73,7 @@ set= function(z){
 			grabbed[ei][1] == "♥"? $("#lives b").text(function(){return parseInt($(this).text()) + 1}): 1; 
 			grabbed[ei][1] == "$"? $("#currency b").text(function(){return parseInt($(this).text()) + 1}): 1; 
 			$("#grid").val($("#grid").val().slice(0, 100 * saved_position[1] + saved_position[1] + grabbed[ei][0] - 102) + "_" + $("#grid").val().slice(100 * saved_position[1] + saved_position[1] + grabbed[ei][0] + 1 - 102)); 
+			$("#holes").val($("#grid").val().replaceAll("_", " ").replaceAll("█", " ").replaceAll("♥", "_").replaceAll("$", "_")); 
 		}
 		grabbed= []; 
 	}
@@ -165,6 +166,8 @@ $(function(){
 				(i.shiftKey && x < 100)? (function(){console.log("X" + x + "Y" + y); $("#grid").val(replace($("#grid").val(), (100 * y + y + x - 101), " ")); $("#water").val(replace($("#water").val(), (100 * y + y + x - 101), " ")); $("#kitchen_oil").val(replace($("#kitchen_oil").val(), (100 * y + y + x - 101), " ")); x++; just_spawned= true; set([x, y]); })(): 1; 
 				break; 
 		} 
+
+		$("#holes").val($("#grid").val().replaceAll("_", " ").replaceAll("█", " ").replaceAll("♥", "_").replaceAll("$", "_")); 
 	}); 
 
 	$(document).on("keyup", function(i){
@@ -224,7 +227,7 @@ $(function(){
 
 		skip - 1 >= 0? (!jumping || skip > 1)? skip--: 1: 1; 
 
-		(!skip && !jumping && !swimming && (!hitTest.bottom("#grid", "_", true) && !hitTest.bottom("#grid", "█", false)) && (map_height != y))? (function(){y++; set([x, y])})(): (!skip && swimming && (y - 1 >= 0 && !hitTest.top("#grid", "_") && ($("#grid").val()[100 * (y - 1) + (y - 1) + x - 101] != "█" || $("#grid").val()[100 * y + y + x - 101] == "█") && y - 1 >= 0 && ($("#grid").val()[100 * (y - 1) + (y - 1) + x - 1 - 101] != "█" || $("#grid").val()[100 * y + y + x - 1 - 101] == "█")))? (function(){y--; set([x, y])})(): 1; 
+		(!skip && !jumping && !swimming && (!hitTest.bottom("#grid", "_", true) && !hitTest.bottom("#holes", "_", true) && !hitTest.bottom("#grid", "█", false)) && (map_height != y))? (function(){y++; set([x, y])})(): (!skip && swimming && (y - 1 >= 0 && !hitTest.top("#grid", "_") && ($("#grid").val()[100 * (y - 1) + (y - 1) + x - 101] != "█" || $("#grid").val()[100 * y + y + x - 101] == "█") && y - 1 >= 0 && ($("#grid").val()[100 * (y - 1) + (y - 1) + x - 1 - 101] != "█" || $("#grid").val()[100 * y + y + x - 1 - 101] == "█")))? (function(){y--; set([x, y])})(): 1; 
 
 		if(jumping && jumping > 0 && (y - 1 >= 0 && !hitTest.top("#grid", "_") && ($("#grid").val()[100 * (y - 1) + (y - 1) + x - 101] != "█" || $("#grid").val()[100 * y + y + x - 101] == "█") && y - 1 >= 0 && ($("#grid").val()[100 * (y - 1) + (y - 1) + x - 1 - 101] != "█" || $("#grid").val()[100 * y + y + x - 1 - 101] == "█"))){ 
 			(function(){y--; set([x, y]); })(); 
