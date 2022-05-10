@@ -33,6 +33,71 @@ Vv11w2 = new THREE.ExtrudeGeometry(Vv11w, {depth: 0.009, bevelEnabled: false});
 Vv11w3 = new THREE.ExtrudeGeometry(Vv11w, {depth: 0.009, bevelEnabled: false});
 Vv11w4 = new THREE.ExtrudeGeometry(Vv11w, {depth: 0.009, bevelEnabled: false});
 
+
+head_light = new THREE.Mesh( new THREE.BoxGeometry( 0.01975, 0.005, 0.0087 ), new THREE.MeshBasicMaterial({ color: 0xffffff }) ); 
+
+head_light.position.x= -0.066; 
+head_light.position.y= 0.15; 
+head_light.position.z= -0.003; 
+
+
+Vv11.add( head_light ); 
+
+
+
+right_head_light = new THREE.Mesh( new THREE.BoxGeometry( 0.01975, 0.005, 0.0087 ), new THREE.MeshBasicMaterial({ color: 0xffffff }) ); 
+
+right_head_light.position.x= 0.066; 
+right_head_light.position.y= 0.15; 
+right_head_light.position.z= -0.003; 
+
+Vv11.add( right_head_light ); 
+
+
+const targetHL1P = new THREE.Object3D();
+const targetHL2P = new THREE.Object3D();
+
+
+head_light1 = new THREE.SpotLight( 0xcddde7, 5,  2.8 ); 
+head_light1.color= {r: 1, g: 1, b: 1}; 
+head_light1.intensity= 4.98; 
+head_light1.penumbra= 0.73;
+head_light1.power= 8;
+head_light1.position.x= -0.066; 
+head_light1.position.y= 0.15; 
+head_light1.position.z= -0.003; 
+head_light1.rotation.x= -Math.PI / 4; 
+head_light1.rotation.y= 0; 
+head_light1.rotation.z= 0; 
+head_light1.target = targetHL1P;
+head_light1.target.position.x= -0.07; 
+head_light1.target.position.y= 1.28; 
+head_light1.target.position.z= -0.003; 
+
+head_light2 = new THREE.SpotLight( 0xcddde7, 5,  2.8 ); 
+head_light2.color= {r: 1, g: 1, b: 1}; 
+head_light2.intensity= 4.98; 
+head_light2.penumbra= 0.73;
+head_light2.power= 8;
+head_light2.position.x= 0.066; 
+head_light2.position.y= 0.15; 
+head_light2.position.z= -0.003; 
+head_light2.rotation.x= -Math.PI / 4; 
+head_light2.rotation.y= 0; 
+head_light2.rotation.z= 0; 
+head_light2.target = targetHL2P;
+head_light2.target.position.x= 0.07; 
+head_light2.target.position.y= 1.28; 
+head_light2.target.position.z= -0.003; 
+
+
+Vv11.add( head_light1.target ); 
+Vv11.add( head_light1 ); 
+
+
+Vv11.add( head_light2.target ); 
+Vv11.add( head_light2 ); 
+
 // Geometry doesn't do much on its own, we need to create a Mesh from it
 Vv11w1 = new THREE.Mesh(Vv11w1, material);
 Vv11w2 = new THREE.Mesh(Vv11w2, material);
@@ -75,7 +140,7 @@ Vv11.add( Vv11w3 );
 Vv11.add( Vv11w4 );
 
 ambiance = new THREE.PointLight( 0xcddde7, 5,  2.8 ); 
-ambiance.color= {r: 0.87, g: 0.723, b: 0.124}; 
+ambiance.color= {r: 0.37, g: 1, b: 0.863}; 
 ambiance.intensity= 1.58; 
 ambiance.position.x= 0; 
 ambiance.position.y= -1; 
@@ -135,7 +200,7 @@ elipse = new THREE.EllipseCurve(
     0                 // aRotation
 );
 
-pts = elipse.getPoints( 210 );
+pts = elipse.getPoints( 263 );
 geometry = new THREE.BufferGeometry().setFromPoints( pts );
 
 material = new THREE.LineBasicMaterial( { color: 0xff0000 } );
@@ -143,28 +208,43 @@ material = new THREE.LineBasicMaterial( { color: 0xff0000 } );
 // Create the final object to add to the scene
 elps = new THREE.Line( geometry, material ); 
 
-elps.position.z= -0.093; 
+elps.position.z= (-0.033 - 0.012); 
 
 scene.add( elps ); 
 
 
-intersección = new THREE.Mesh( new THREE.BoxGeometry( 0.02, 0.02, 0.02 ), new THREE.MeshPhongMaterial({ color: 0xff6666 }) );
+intersección = new THREE.Mesh( new THREE.BoxGeometry( 0.013, 0.013, 0.013 ), new THREE.MeshPhongMaterial({ color: 0x1fa2b2 }) );
+
+Terreno = new THREE.Mesh( new THREE.BoxGeometry( 21, 21, 1 ), new THREE.MeshPhongMaterial({ color: 0xffddfd }) );
+
+Terreno.position.z= (-0.033 - 0.02 - 0.5)
 
 scene.add( intersección ); 
+scene.add( Terreno ); 
 
     
 closestP= {}; 
 closestP.d= 10000000000000000000000000000; 
     
-for(eX in pts){
-    console.log(pts[eX])
-    closestP= (function(){typeof av == "undefined"? (function(){av= closestP; })(): 1; av= bEZ.project( { x: pts[eX].x + elps.position.x , y: pts[eX].y + elps.position.y } ).d < av.d? bEZ.project( { x: pts[eX].x + elps.position.x , y: pts[eX].y + elps.position.y } ): av; av.x= pts[eX].x + elps.position.x; av.y= pts[eX].y + elps.position.y; return av; })(); 
+(function(){ad= {}; 
+ad.d= 10000; 
+for(ww in pts){ 
+    if(bEZ.project( { x: pts[ww].x + elps.position.x , y: pts[ww].y + elps.position.y } ).d < ad.d) 
+    { 
+        ad= bEZ.project( { x: pts[ww].x + elps.position.x , y: pts[ww].y + elps.position.y } ); 
+        ad.x= pts[ww].x + elps.position.x; 
+        ad.y= pts[ww].y + elps.position.y; 
+        ad.eX= parseInt(ww); 
+    } 
 
-}
+    if(parseInt( ww ) == pts.length - 1){
+        closestP= ad; 
+    }
+}})(); 
     
 intersección.position.x= closestP.x
 intersección.position.y= closestP.y
-intersección.position.z= -0.093
+intersección.position.z= (-0.033 - 0.012)
 
 
 renderer.render( scene, camera ); 
@@ -186,7 +266,7 @@ keysDown= { a: false , d: false , w: false , s: false , q: false , e: false , iz
 
 un_grado_en_radianes= Math.PI / 180; 
 
-speed= 0.011; 
+speed= 0.051; 
 
 getInQuadrant= function(ángulo){ 
     ángulo= ángulo; 
@@ -213,7 +293,7 @@ xEYConElÁngulo= function( d, á ){
 document.addEventListener("keydown", function(i){ 
     //console.log(i.keyCode);  
 
-    //Vv11.rotation.x= -Math.PI / 2; 
+    //1.position.z11.rotation.x= -Math.PI / 2; 
     /*console.log(Vv11.rotation.x + " " + Vv11.rotation.y + " " + Vv11.rotation.z); */ 
     switch(i.keyCode){ 
         case a: 
@@ -281,7 +361,7 @@ document.addEventListener("keyup", function(zZ){
 skip= 0; 
 
 
-lentitud= 17; 
+lentitud= 3; 
 
 lentitudMáx= 2; 
 aceleración= 1; 
@@ -372,7 +452,7 @@ setInterval(function(){
 
     scene.add( oldCurve ); 
 
-    intersección = new THREE.Mesh( new THREE.BoxGeometry( 0.02, 0.02, 0.02 ), new THREE.MeshPhongMaterial({ color: 0xff6666 }) );
+    intersección = new THREE.Mesh( new THREE.BoxGeometry( 0.013, 0.013, 0.013 ), new THREE.MeshPhongMaterial({ color: 0x1fa2b2 }) );
 
     scene.add( intersección ); 
 
@@ -380,26 +460,38 @@ setInterval(function(){
     closestP= {}; 
     closestP.d= 1111111111111111111111111; 
     
-    for(eX in pts){
-        closestP= (function(){typeof av == "undefined"? (function(){av= closestP; })(): 1; av= bEZ.project( { x: pts[eX].x + elps.position.x , y: pts[eX].y + elps.position.y } ).d < av.d? bEZ.project( { x: pts[eX].x + elps.position.x , y: pts[eX].y + elps.position.y } ): av; av.x= pts[eX].x + elps.position.x; av.y= pts[eX].y + elps.position.y; return av; })(); 
-    }
+    (function(){ad= {}; 
+    ad.d= 10000; 
+    for(ww in pts){ 
+        if(bEZ.project( { x: pts[ww].x + elps.position.x , y: pts[ww].y + elps.position.y } ).d < ad.d) 
+        { 
+            ad= bEZ.project( { x: pts[ww].x + elps.position.x , y: pts[ww].y + elps.position.y } ); 
+            ad.x= pts[ww].x + elps.position.x; 
+            ad.y= pts[ww].y + elps.position.y; 
+            ad.eX= parseInt(ww); 
+        } 
     
+        if(parseInt( ww ) == pts.length - 1){
+            closestP= ad; 
+        }
+    }})(); 
+        
     intersección.position.x= closestP.x
     intersección.position.y= closestP.y
-    intersección.position.z= -0.093
+    intersección.position.z= (-0.033 - 0.012)
 
     curve = Vv11w4.rotation.y <= Math.PI / 2? (function(){
         /*console.log(xEYConElÁngulo(0.0045, getInQuadrant(Vv11.rotation.z * (Math.PI / 180)))); */ 
         return(new THREE.QuadraticBezierCurve3(
-            new THREE.Vector3( Vv11w2.getWorldPosition(v3).x , Vv11w2.getWorldPosition(v3).y , -0.093 ),
-            new THREE.Vector3( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y , -0.093 ),
-            new THREE.Vector3( (Vv11w4.getWorldPosition(v3).x + xEYConElÁngulo(0.22, parseFloat($(".bugger").text())).x) , (Vv11w4.getWorldPosition(v3).y + xEYConElÁngulo(0.22, parseFloat($(".bugger").text())).y), -0.093 )
+            new THREE.Vector3( Vv11w2.getWorldPosition(v3).x , Vv11w2.getWorldPosition(v3).y , (-0.033 - 0.012) ),
+            new THREE.Vector3( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y , (-0.033 - 0.012) ),
+            new THREE.Vector3( (Vv11w4.getWorldPosition(v3).x + xEYConElÁngulo(0.22, parseFloat($(".bugger").text())).x) , (Vv11w4.getWorldPosition(v3).y + xEYConElÁngulo(0.22, parseFloat($(".bugger").text())).y), (-0.033 - 0.012) )
         )); })(): (function(){/*console.log(Vv11w4.rotation.y)*/ 
             //console.log(xEYConElÁngulo(0.0045, getInQuadrant(Vv11.rotation.z * (Math.PI / 180))));  
             return(new THREE.QuadraticBezierCurve3(
-                new THREE.Vector3( Vv11w1.getWorldPosition(v3).x , Vv11w1.getWorldPosition(v3).y , -0.093 ),
-                new THREE.Vector3( Vv11w3.getWorldPosition(v3).x , Vv11w3.getWorldPosition(v3).y , -0.093 ),
-                new THREE.Vector3( (Vv11w3.getWorldPosition(v3).x + xEYConElÁngulo(0.22, parseFloat($(".bugger").text())).x), (Vv11w3.getWorldPosition(v3).y + xEYConElÁngulo(0.22, parseFloat($(".bugger").text())).y), -0.093 )
+                new THREE.Vector3( Vv11w1.getWorldPosition(v3).x , Vv11w1.getWorldPosition(v3).y , (-0.033 - 0.012) ),
+                new THREE.Vector3( Vv11w3.getWorldPosition(v3).x , Vv11w3.getWorldPosition(v3).y , (-0.033 - 0.012) ),
+                new THREE.Vector3( (Vv11w3.getWorldPosition(v3).x + xEYConElÁngulo(0.22, parseFloat($(".bugger").text())).x), (Vv11w3.getWorldPosition(v3).y + xEYConElÁngulo(0.22, parseFloat($(".bugger").text())).y), (-0.033 - 0.012) )
             )); })(); 
 
     
