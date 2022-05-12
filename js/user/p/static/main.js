@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
     $(".inScope").removeClass("inScope"); 
 
-    $(LEB).trigger("click", true); 
+    window.location.hash == "#infor"? $(LEB).dispatchEvent(new CustomEvent('contextmenu')): $(LEB).trigger("click", true); 
 
     localStorage.getItem("filesWidth") != null? $("#files").width(parseInt(localStorage.getItem("filesWidth")) + "px"): 1216564; 
 

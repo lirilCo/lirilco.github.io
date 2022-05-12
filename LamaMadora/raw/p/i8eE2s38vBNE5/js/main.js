@@ -200,7 +200,7 @@ elipse = new THREE.EllipseCurve(
     0                 // aRotation
 );
 
-pts = elipse.getPoints( 263 );
+pts = elipse.getPoints( 360 );
 geometry = new THREE.BufferGeometry().setFromPoints( pts );
 
 material = new THREE.LineBasicMaterial( { color: 0xff0000 } );
@@ -212,6 +212,7 @@ elps.position.z= (-0.033 - 0.012);
 
 scene.add( elps ); 
 
+closestP= {}; 
 
 intersección = new THREE.Mesh( new THREE.BoxGeometry( 0.013, 0.013, 0.013 ), new THREE.MeshPhongMaterial({ color: 0x1fa2b2 }) );
 
@@ -223,13 +224,10 @@ scene.add( intersección );
 scene.add( Terreno ); 
 
     
-closestP= {}; 
-closestP.d= 10000000000000000000000000000; 
-    
 (function(){ad= {}; 
 ad.d= 10000; 
-for(ww in pts){ 
-    if(bEZ.project( { x: pts[ww].x + elps.position.x , y: pts[ww].y + elps.position.y } ).d < ad.d) 
+for( ww= 0; ww < 360; ww++ ){ 
+    if( bEZ.project( { x: pts[ww].x + elps.position.x , y: pts[ww].y + elps.position.y } ).d < ad.d ) 
     { 
         ad= bEZ.project( { x: pts[ww].x + elps.position.x , y: pts[ww].y + elps.position.y } ); 
         ad.x= pts[ww].x + elps.position.x; 
@@ -237,7 +235,7 @@ for(ww in pts){
         ad.eX= parseInt(ww); 
     } 
 
-    if(parseInt( ww ) == pts.length - 1){
+    if( parseInt( ww ) == pts.length - 2 ){
         closestP= ad; 
     }
 }})(); 
@@ -284,6 +282,20 @@ xEYConElÁngulo= function( d, á ){
     if(á <= Math.PI)return {x: parseFloat(-(d * Math.cos(Math.PI - á))), y: parseFloat(-(d * Math.sin(Math.PI - á)))}; 
     if(á <= Math.PI / 2 * 3)return {x: parseFloat(-(d * Math.sin((Math.PI / 2 * 3) - á))), y: parseFloat(d * Math.cos((Math.PI / 2 * 3) - á))}; 
     if(á <= Math.PI * 2)return {x: parseFloat(d * Math.cos((Math.PI * 2) - á)), y: parseFloat((d * Math.sin((Math.PI * 2) - á)))}; 
+} 
+
+ángDeLaPendiente= function(x1, y1, x2, y2){ 
+    c1= { x: x1, y: y1 }; 
+    c2= { x: x2, y: y2 }; 
+                      
+    if(c2.x <= c1.x){ 
+        cS= c1; 
+        c1= c2; 
+        c2= cS; 
+        return getInQuadrant(-getInQuadrant((Math.atan2(-( c2.y - c1.y ) , -( c2.x - c1.x ))*(180/Math.PI)))); 
+    }else{ 
+        return getInQuadrant(getInQuadrant((Math.atan2(-( c2.y - c1.y ) , ( c2.x - c1.x ))*(180/Math.PI)))); 
+    }; 
 } 
 
 //c = new THREE.Quaternion();  
@@ -405,6 +417,7 @@ setInterval(function(){
     }
     if(keysDown.q){
             Vv11.rotation.z-= 0.023; 
+            //console.log( closestP );  
     }
     if(keysDown.e){
         Vv11.rotation.z+= 0.023; 
@@ -448,7 +461,6 @@ setInterval(function(){
     x = new THREE.BufferGeometry().setFromPoints( points );
     zz = new THREE.LineBasicMaterial( { color: 0xff0000 } );
     oldCurve = new THREE.Line( x, zz );
-    oldCurve.name = 'oQB';
 
     scene.add( oldCurve ); 
 
@@ -457,13 +469,11 @@ setInterval(function(){
     scene.add( intersección ); 
 
     
-    closestP= {}; 
-    closestP.d= 1111111111111111111111111; 
-    
     (function(){ad= {}; 
     ad.d= 10000; 
-    for(ww in pts){ 
-        if(bEZ.project( { x: pts[ww].x + elps.position.x , y: pts[ww].y + elps.position.y } ).d < ad.d) 
+    for( ww= 0; ww < 360; ww++ ){ 
+
+        if( bEZ.project( { x: pts[ww].x + elps.position.x , y: pts[ww].y + elps.position.y } ).d < ad.d ) 
         { 
             ad= bEZ.project( { x: pts[ww].x + elps.position.x , y: pts[ww].y + elps.position.y } ); 
             ad.x= pts[ww].x + elps.position.x; 
@@ -471,7 +481,7 @@ setInterval(function(){
             ad.eX= parseInt(ww); 
         } 
     
-        if(parseInt( ww ) == pts.length - 1){
+        if( parseInt( ww ) == pts.length - 2 ){
             closestP= ad; 
         }
     }})(); 
@@ -479,6 +489,56 @@ setInterval(function(){
     intersección.position.x= closestP.x
     intersección.position.y= closestP.y
     intersección.position.z= (-0.033 - 0.012)
+
+    ángulo= 0; 
+    Vv11w4.rotation.y <= Math.PI / 2? (function(){
+        //console.log( "<190W " + ángDeLaPendiente( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y, closestP.x , closestP.y ) );  
+        if(keysDown.w){ 
+            if( ángDeLaPendiente( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y, Vv11w2.getWorldPosition(v3).x , Vv11w2.getWorldPosition(v3).y ) ){
+                if( ángDeLaPendiente( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y, closestP.x , closestP.y ) ){
+                    ángulo= ángDeLaPendiente( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y, Vv11w2.getWorldPosition(v3).x , Vv11w2.getWorldPosition(v3).y ) * -1 + ( ángDeLaPendiente( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y, closestP.x , closestP.y )); 
+                    /*console.log( "-" + ángDeLaPendiente( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y, Vv11w2.getWorldPosition(v3).x , Vv11w2.getWorldPosition(v3).y) + ", " + ( ángDeLaPendiente( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y, closestP.x , closestP.y )) + ": " + Vv11w4.getWorldPosition(v3).x + ", " + Vv11w4.getWorldPosition(v3).y + ", " + closestP.x + ", " + closestP.y ); */ 
+                    //console.log( ángulo ); 
+                }else{
+                    ángulo= ángDeLaPendiente( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y, Vv11w2.getWorldPosition(v3).x , Vv11w2.getWorldPosition(v3).y ) * -1 + ángDeLaPendiente( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y, closestP.x , closestP.y ); 
+                    //console.log( "else" + ángulo ); 
+                }
+            }
+            /*console.log(ángDeLaPendiente( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y, Vv11w2.getWorldPosition(v3).x , Vv11w2.getWorldPosition(v3).y ) + ", " + ángDeLaPendiente( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y, closestP.x , closestP.y ) + ", " + ángulo ); */ 
+            //console.log( ángulo )
+
+            viejaPosición= { x: Vv11w4.getWorldPosition(v3).x , y: Vv11w4.getWorldPosition(v3).y }
+            Vv11.rotation.z -= ángulo * un_grado_en_radianes; 
+            renderer.render( scene, camera ); 
+            Vv11.position.x += viejaPosición.x - Vv11w4.getWorldPosition(v3).x; 
+            Vv11.position.y += viejaPosición.y - Vv11w4.getWorldPosition(v3).y; 
+            renderer.render( scene, camera ); 
+        } 
+        $(".burger").attr( "title" , ángDeLaPendiente( Vv11w2.getWorldPosition(v3).x , Vv11w2.getWorldPosition(v3).y, closestP.x , closestP.y ) + ", " + ángDeLaPendiente( Vv11w2.getWorldPosition(v3).x , Vv11w2.getWorldPosition(v3).y, Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y ) ); 
+    })(): (function(){
+        //console.log( "<190W " + ángDeLaPendiente( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y, closestP.x , closestP.y ) );  
+        if(keysDown.w){ 
+            if( ángDeLaPendiente( Vv11w3.getWorldPosition(v3).x , Vv11w3.getWorldPosition(v3).y, Vv11w1.getWorldPosition(v3).x , Vv11w1.getWorldPosition(v3).y ) ){
+                if( ángDeLaPendiente( Vv11w3.getWorldPosition(v3).x , Vv11w3.getWorldPosition(v3).y, closestP.x , closestP.y ) ){
+                    ángulo= ángDeLaPendiente( Vv11w3.getWorldPosition(v3).x , Vv11w3.getWorldPosition(v3).y, Vv11w1.getWorldPosition(v3).x , Vv11w1.getWorldPosition(v3).y ) * -1 + ( ángDeLaPendiente( Vv11w3.getWorldPosition(v3).x , Vv11w3.getWorldPosition(v3).y, closestP.x , closestP.y )); 
+                    /*console.log( "-" + ángDeLaPendiente( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y, Vv11w2.getWorldPosition(v3).x , Vv11w2.getWorldPosition(v3).y) + ", " + ( ángDeLaPendiente( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y, closestP.x , closestP.y )) + ": " + Vv11w4.getWorldPosition(v3).x + ", " + Vv11w4.getWorldPosition(v3).y + ", " + closestP.x + ", " + closestP.y ); */ 
+                    //console.log( ángulo ); 
+                }else{
+                    ángulo= ángDeLaPendiente( Vv11w3.getWorldPosition(v3).x , Vv11w3.getWorldPosition(v3).y, Vv11w1.getWorldPosition(v3).x , Vv11w1.getWorldPosition(v3).y ) * -1 + ángDeLaPendiente( Vv11w3.getWorldPosition(v3).x , Vv11w3.getWorldPosition(v3).y, closestP.x , closestP.y ); 
+                    //console.log( "else" + ángulo ); 
+                }
+            }
+            /*console.log(ángDeLaPendiente( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y, Vv11w2.getWorldPosition(v3).x , Vv11w2.getWorldPosition(v3).y ) + ", " + ángDeLaPendiente( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y, closestP.x , closestP.y ) + ", " + ángulo ); */ 
+            //console.log( ángulo )
+            viejaPosición= { x: Vv11w3.getWorldPosition(v3).x , y: Vv11w3.getWorldPosition(v3).y }
+            Vv11.rotation.z -= ángulo * un_grado_en_radianes; 
+            renderer.render( scene, camera ); 
+            Vv11.position.x += viejaPosición.x - Vv11w3.getWorldPosition(v3).x; 
+            Vv11.position.y += viejaPosición.y - Vv11w3.getWorldPosition(v3).y; 
+            renderer.render( scene, camera ); 
+        } 
+        $(".burger").attr( "title" , ángDeLaPendiente( Vv11w2.getWorldPosition(v3).x , Vv11w2.getWorldPosition(v3).y, closestP.x , closestP.y ) + ", " + ángDeLaPendiente( Vv11w2.getWorldPosition(v3).x , Vv11w2.getWorldPosition(v3).y, Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y ) ); 
+    })(); 
 
     curve = Vv11w4.rotation.y <= Math.PI / 2? (function(){
         /*console.log(xEYConElÁngulo(0.0045, getInQuadrant(Vv11.rotation.z * (Math.PI / 180)))); */ 
@@ -501,7 +561,6 @@ setInterval(function(){
     zz = new THREE.LineBasicMaterial( { color: 0x00ff00 } );
     
     curveObject = new THREE.Line( x, zz );
-    curveObject.name = 'qB';
 
     bEZ= new Bezier( [ { x: curve.v0.x , y: curve.v0.y } , { x: curve.v1.x , y: curve.v1.y } , { x: curve.v2.x , y: curve.v2.y } ] );
 
@@ -513,6 +572,8 @@ setInterval(function(){
     scene.add( curveObject ); 
     
     renderer.render( scene, camera ); 
+
+    /*console.log( curveObject == oldCurve ); */ 
 }, 25); 
 
 
@@ -532,4 +593,4 @@ setInterval(function(){
 
 
 console.log("selfDestructableSetIntervalWhichWaitsForSomething" + "     ₛₐᵢₓᵆ: " + "I Self Destructed ", selfDestructableSetIntervalWhichWaitsForSomething)
-clearInterval(selfDestructableSetIntervalWhichWaitsForSomething); }else{console.log("undefined")}}, 100); 
+clearInterval(selfDestructableSetIntervalWhichWaitsForSomething); }else{console.log("../THREE is undefined")}}, 100); 
