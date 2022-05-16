@@ -9,11 +9,11 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
          *       +                  +      *                                                                  
             renderer.render( scene, camera ); 
     `); 
-    camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.001, 10 );
-    camera.position.z = 0.2;
-    camera.position.x = -0.01;
+    camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.001, 30 );
+    camera.position.z= 0.888; 
+    camera.position.x = -0.01;; 
     camera.position.y = -0.7;
-    camera.rotation.x = Math.PI / 180 * 90; 
+    camera.rotation.x= Math.PI / 180 * 90; 
     scene = new THREE.Scene();
     
     geometry = new THREE.BoxGeometry( 0.17, 0.3, 0.06 );
@@ -216,14 +216,99 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
     
     intersección = new THREE.Mesh( new THREE.BoxGeometry( 0.013, 0.013, 0.013 ), new THREE.MeshPhongMaterial({ color: 0x1fa2b2 }) );
     
-    Terreno = new THREE.Mesh( new THREE.BoxGeometry( 21, 21, 1 ), new THREE.MeshPhongMaterial({ color: 0xffddfd }) );
+    
+    Terreno = new THREE.Mesh( new THREE.BoxGeometry( 21, 21, 1 ), new THREE.MeshStandardMaterial({ color: 0xfef0fe, roughness: 1, reflectivity: 0.47 }) );
     
     Terreno.position.z= (-0.033 - 0.02 - 0.5)
     
     scene.add( intersección ); 
     scene.add( Terreno ); 
     
+    gM1 = new THREE.Mesh( new THREE.BoxGeometry( 1, 2, 0.787 ), new THREE.MeshPhongMaterial({ color: 0xfef0fe , reflectivity: 0.47 }) );
+    gM1.position.x= -2.124; 
+    gM1.position.y= 3.1; 
+    gM1.position.z= -0.033 - 0.02 - 0.5 + 0.787 / 2; 
+    
+    scene.add( gM1 ); 
+    
+    gM2 = new THREE.Mesh( new THREE.BoxGeometry( 1, 2.1, 26.22 ), new THREE.MeshPhongMaterial({ color: 0xfef0fe , reflectivity: 0.47 }) );
+    gM2.position.x=  1.5; 
+    gM2.position.y= 8.7; 
+    gM2.position.z= -0.033 - 0.02 - 0.5 + 26.22 / 2; 
+    
+    scene.add( gM2 ); 
+    
+    gM3 = new THREE.Mesh( new THREE.BoxGeometry( 1, 2.1, 2.8 ), new THREE.MeshPhongMaterial({ color: 0x010f01 , reflectivity: 0.47 }) );
+    gM3.position.x=  9.5; 
+    gM3.position.y= -0.008; 
+    gM3.position.z= -0.033 - 0.02 - 0.5 + 2.8 / 2; 
+    
+    scene.add( gM3 ); 
+    
+    gM4 = new THREE.Mesh( new THREE.BoxGeometry( 1.88889, 1.899, 1.99 ), new THREE.MeshPhongMaterial({ color: 0xfef0fe , reflectivity: 0.47 }) );
+    gM4.position.x=  9.5; 
+    gM4.position.y= -0.008; 
+    gM4.position.z= -0.033 - 0.02 - 0.5 + 1.99 / 2; 
+    
+    scene.add( gM4 ); 
+    
+    gM5 = new THREE.Mesh( new THREE.BoxGeometry( 3.12516, 0.899, 2.99 ), new THREE.MeshPhongMaterial({ color: 0xd892fe , reflectivity: 0.47 }) );
+    gM5.position.x=  9.5; 
+    gM5.position.y= -0.008; 
+    gM5.position.z= -0.033 - 0.02 - 0.5 + 2.99 / 2; 
+    
+    scene.add( gM5 ); 
+    
+    gM6 = new THREE.Mesh( new THREE.BoxGeometry( 0.12516, 1.2299, 12.99 ), new THREE.MeshPhongMaterial({ color: 0xd235ee , reflectivity: 0.47 }) );
+    gM6.position.x=  9.5; 
+    gM6.position.y= -0.008; 
+    gM6.position.z= -0.033 - 0.02 - 0.5 + 12.99 / 2; 
+    
+    scene.add( gM6 ); 
+    
+    gM7 = new THREE.Mesh( new THREE.BoxGeometry( 0.42516, 2.3299, 8.1 ), new THREE.MeshPhongMaterial({ color: 0xdd2112 , reflectivity: 0.47 }) );
+    gM7.position.x=  9.5; 
+    gM7.position.y= -0.008; 
+    gM7.position.z= -0.033 - 0.02 - 0.5 + 8.1 / 2; 
+    
+    scene.add( gM7 ); 
+    
+    gM8 = new THREE.Mesh( new THREE.BoxGeometry( 1.42516, 0.3499, 18.1 ), new THREE.MeshPhongMaterial({ color: 0xd555f2 , reflectivity: 0.47 }) );
+    gM8.position.x=  9.5; 
+    gM8.position.y= -0.008; 
+    gM8.position.z= -0.033 - 0.02 - 0.5 + 18.1 / 2; 
+    
+    scene.add( gM8 ); 
+    
+    gM9 = new THREE.Mesh( new THREE.BoxGeometry( 2.72516, 0.007499, 10.1 ), new THREE.MeshPhongMaterial({ color: 0x32342d , reflectivity: 0.47 }) );
+    gM9.position.x=  9.5; 
+    gM9.position.y= -0.008; 
+    gM9.position.z= -0.033 - 0.02 - 0.5 + 10.1 / 2; 
+    
+    scene.add( gM9 ); 
+    
+    gM10 = new THREE.Mesh( new THREE.BoxGeometry( 1.2, 1.98, 2.8 ), new THREE.MeshPhongMaterial({ color: 0x52972d , reflectivity: 0.47 }) );
+    gM10.position.x=  9.5; 
+    gM10.position.y= -0.008; 
+    gM10.position.z= -0.033 - 0.02 - 0.5 + 2.8 / 2; 
+    
+    scene.add( gM10 ); 
+    
+    
+    luz_direccional = new THREE.DirectionalLight( 0xfdfdde ); 
+    luz_direccional.intensity= 1.5; 
+    luz_direccional.castShadow= true; 
+    luz_direccional.position.set( 5, 2.04, 2.991 ); 
+    
+    scene.add( luz_direccional ); 
+    
+    dirLight = new THREE.DirectionalLight( 0xfdfdde ); 
+    dirLight.intensity= 0.5; 
+    dirLight.position.set( -5, -2.04, -2.991 ); 
+    
+    scene.add( dirLight ); 
         
+    
     (function(){ad= {}; 
     ad.d= 10000; 
     for( ww= 0; ww < 360; ww++ ){ 
@@ -265,6 +350,8 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
     un_grado_en_radianes= Math.PI / 180; 
     
     speed= 0.051; 
+    
+    dCamera= 2.36758210000191832 * 10 ** -1; 
     
     getInQuadrant= function(ángulo){ 
         ángulo= ángulo; 
@@ -515,7 +602,8 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
                                         Vv11.position.y+= recorded_position.y - Vv11w3.getWorldPosition(v3).y; })(); 
                 renderer.render( scene, camera ); 
             } 
-            $(".burger").attr( "title" , ángDeLaPendiente( Vv11w2.getWorldPosition(v3).x , Vv11w2.getWorldPosition(v3).y, closestP.x , closestP.y ) + ", " + ángDeLaPendiente( Vv11w2.getWorldPosition(v3).x , Vv11w2.getWorldPosition(v3).y, Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y ) ); 
+            $(".burger span").html( "Presiona <i>Q</i> si se atasca el volante" ); 
+            $(".burger").attr( "title" , "Presiona Q si se atasca el volante" ); 
     
     
     
@@ -542,11 +630,16 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
         //console.log(curveObject);  
         
         scene.add( curveObject ); 
+    
+        camera.position.x= Vv11.position.x + xEYConElÁngulo( ( 1.5 + dCamera ), getInQuadrant( -getInQuadrant( Vv11.rotation.z / un_grado_en_radianes + 270 ) ) ).x; 
+        camera.position.y= Vv11.position.y + xEYConElÁngulo( ( 1.5 + dCamera ), getInQuadrant( -getInQuadrant( Vv11.rotation.z / un_grado_en_radianes + 270 ) ) ).y; 
         
+        camera.rotation.y= Vv11.rotation.z; 
+    
         renderer.render( scene, camera ); 
     
         /*console.log( curveObject == oldCurve ); */ 
-    }, 25); 
+    }, 1); 
     
     
     
