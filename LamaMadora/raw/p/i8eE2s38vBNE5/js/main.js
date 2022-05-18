@@ -573,19 +573,21 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
         intersección.position.y= closestP.y
         intersección.position.z= (-0.033 - 0.012)
     
-        ángulo= 0; 
+        ángulo=  0; 
             //console.log( "<190W " + ángDeLaPendiente( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y, closestP.x , closestP.y ) );  
             if(keysDown.w){ 
-                if( ángDeLaPendiente( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y, Vv11w2.getWorldPosition(v3).x , Vv11w2.getWorldPosition(v3).y ) ){
+                //When this, which was before a condition, but then we left the value to be compared by its3lf (without <= sMt... or smt) b3cause any number by itself technically is true. /*But 0 by itself returns false. that's why it got stuck */
+
+                /*if( ángDeLaPendiente( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y, Vv11w2.getWorldPosition(v3).x , Vv11w2.getWorldPosition(v3).y ) ){
                     if( ángDeLaPendiente( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y, closestP.x , closestP.y ) ){
                         ángulo= ángDeLaPendiente( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y, Vv11w2.getWorldPosition(v3).x , Vv11w2.getWorldPosition(v3).y ) * -1 + ( ángDeLaPendiente( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y, closestP.x , closestP.y )); 
-                        /*console.log( "-" + ángDeLaPendiente( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y, Vv11w2.getWorldPosition(v3).x , Vv11w2.getWorldPosition(v3).y) + ", " + ( ángDeLaPendiente( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y, closestP.x , closestP.y )) + ": " + Vv11w4.getWorldPosition(v3).x + ", " + Vv11w4.getWorldPosition(v3).y + ", " + closestP.x + ", " + closestP.y ); */ 
+                        //console.log( "-" + ángDeLaPendiente( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y, Vv11w2.getWorldPosition(v3).x , Vv11w2.getWorldPosition(v3).y) + ", " + ( ángDeLaPendiente( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y, closestP.x , closestP.y )) + ": " + Vv11w4.getWorldPosition(v3).x + ", " + Vv11w4.getWorldPosition(v3).y + ", " + closestP.x + ", " + closestP.y ); 
                         //console.log( ángulo ); 
                     }else{
-                        ángulo= ángDeLaPendiente( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y, Vv11w2.getWorldPosition(v3).x , Vv11w2.getWorldPosition(v3).y ) * -1 + ángDeLaPendiente( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y, closestP.x , closestP.y ); 
                         //console.log( "else" + ángulo ); 
                     }
-                }
+                } */
+                ángulo= ángDeLaPendiente( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y, Vv11w2.getWorldPosition(v3).x , Vv11w2.getWorldPosition(v3).y ) * -1 + ángDeLaPendiente( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y, closestP.x , closestP.y ); 
                 /*console.log(ángDeLaPendiente( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y, Vv11w2.getWorldPosition(v3).x , Vv11w2.getWorldPosition(v3).y ) + ", " + ángDeLaPendiente( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y, closestP.x , closestP.y ) + ", " + ángulo ); */ 
                 //console.log( ángulo )
     
@@ -602,8 +604,8 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
                                         Vv11.position.y+= recorded_position.y - Vv11w3.getWorldPosition(v3).y; })(); 
                 renderer.render( scene, camera ); 
             } 
-            $(".burger span").html( "Presiona <i>Q</i> si se atasca el volante" ); 
-            $(".burger").attr( "title" , "Presiona Q si se atasca el volante" ); 
+            //$(".burger span").html("");  
+            //$(".burger").attr( "title" , "" );  
     
     
     
