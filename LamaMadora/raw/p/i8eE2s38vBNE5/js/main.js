@@ -192,12 +192,41 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
     scene.add( oldCurve ); 
     
     
+
+    curve2 = new THREE.QuadraticBezierCurve3( 
+        new THREE.Vector3( Vv11w3.getWorldPosition(v3).x + xEYConElÁngulo( 0.22, getInQuadrant( -getInQuadrant( Vv11.rotation.z / un_grado_en_radianes + 90 ) ) ).x , Vv11w3.getWorldPosition(v3).y + xEYConElÁngulo( 0.22, getInQuadrant( -getInQuadrant( Vv11.rotation.z / un_grado_en_radianes + 90 ) ) ).y , (-0.033 - 0.012) ),
+        new THREE.Vector3( Vv11w3.getWorldPosition(v3).x , Vv11w3.getWorldPosition(v3).y , (-0.033 - 0.012) ),
+        new THREE.Vector3( (Vv11w3.getWorldPosition(v3).x - xEYConElÁngulo( 0.22, parseFloat($(".bugger").text()) ).x) , (Vv11w3.getWorldPosition(v3).y - xEYConElÁngulo( 0.22, parseFloat($(".bugger").text())).y), (-0.033 - 0.012) )
+    ); 
+        
+    points2 = curve2.getPoints( 50 );
+        
+    x = new THREE.BufferGeometry().setFromPoints( points2 );
+        
+    zz = new THREE.LineBasicMaterial( { color: 0x00ff00 } );
+        
+    curveObject2 = new THREE.Line( x, zz );
+    
+    scene.add( curveObject2 ); 
+    
+
+    bEZ2= new Bezier( [ { x: curve2.v0.x , y: curve2.v0.y } , { x: curve2.v1.x , y: curve2.v1.y } , { x: curve2.v2.x , y: curve2.v2.y } ] );
+                
+
+    points2 = curve2.getPoints( 50 );
+    x = new THREE.BufferGeometry().setFromPoints( points2 );
+    zz = new THREE.LineBasicMaterial( { color: 0xff0000 } );
+    oldCurve2 = new THREE.Line( x, zz );
+    
+    scene.add( oldCurve2 ); 
+
+
     elipse = new THREE.EllipseCurve(
-        0,  0,            // ax, aY
-        0.22, 0.22,           // xRadius, yRadius
-        0,  2 * Math.PI,  // aStartAngle, aEndAngle
-        false,            // aClockwise
-        0                 // aRotation
+        0,  0,            
+        0.22, 0.22,           
+        0,  2 * Math.PI,  
+        false,            
+        0                 
     );
     
     pts = elipse.getPoints( 360 );
@@ -205,16 +234,48 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
     
     material = new THREE.LineBasicMaterial( { color: 0xff0000 } );
     
-    // Create the final object to add to the scene
+    
     elps = new THREE.Line( geometry, material ); 
     
     elps.position.z= (-0.033 - 0.012); 
     
     scene.add( elps ); 
+
+
+
+    elipse2 = new THREE.EllipseCurve(
+        0,  0,            
+        0.22, 0.22,           
+        0,  2 * Math.PI,  
+        false,            
+        0                 
+    );
+    
+    pts2 = elipse2.getPoints( 360 );
+    geometry2 = new THREE.BufferGeometry().setFromPoints( pts );
+    
+    material2 = new THREE.LineBasicMaterial( { color: 0xff0000 } );
+    
+    
+    elps2 = new THREE.Line( geometry2, material2 ); 
+    
+    elps2.position.z= (-0.033 - 0.012); 
+    
+    scene.add( elps2 ); 
+
+
+
     
     closestP= {}; 
     
+    closestP2= {}; 
+
+
+
     intersección = new THREE.Mesh( new THREE.BoxGeometry( 0.013, 0.013, 0.013 ), new THREE.MeshPhongMaterial({ color: 0x1fa2b2 }) );
+    
+    intersección2 = new THREE.Mesh( new THREE.BoxGeometry( 0.013, 0.013, 0.013 ), new THREE.MeshPhongMaterial({ color: 0x1fa2b2 }) );
+
     
     
     Terreno = new THREE.Mesh( new THREE.BoxGeometry( 21, 21, 1 ), new THREE.MeshStandardMaterial({ color: 0xfef0fe, roughness: 1, reflectivity: 0.47 }) );
@@ -222,6 +283,11 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
     Terreno.position.z= (-0.033 - 0.02 - 0.5)
     
     scene.add( intersección ); 
+
+
+    scene.add( intersección2 ); 
+
+
     scene.add( Terreno ); 
     
     gM1 = new THREE.Mesh( new THREE.BoxGeometry( 1, 2, 0.787 ), new THREE.MeshPhongMaterial({ color: 0xfef0fe , reflectivity: 0.47 }) );
@@ -328,6 +394,31 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
     intersección.position.x= closestP.x
     intersección.position.y= closestP.y
     intersección.position.z= (-0.033 - 0.012)
+
+
+
+
+    (function(){ad= {}; 
+    ad.d= 10000; 
+    for( ww= 0; ww < 360; ww++ ){ 
+        if( bEZ2.project( { x: pts2[ww].x + elps2.position.x , y: pts2[ww].y + elps2.position.y } ).d < ad.d ) 
+        { 
+            ad= bEZ2.project( { x: pts2[ww].x + elps2.position.x , y: pts2[ww].y + elps2.position.y } ); 
+            ad.x= pts2[ww].x + elps2.position.x; 
+            ad.y= pts2[ww].y + elps2.position.y; 
+            ad.eX= parseInt(ww); 
+        } 
+    
+        if( parseInt( ww ) == pts2.length - 2 ){
+            closestP2= ad; 
+        }
+    }})(); 
+        
+    intersección2.position.x= closestP2.x
+    intersección2.position.y= closestP2.y
+    intersección2.position.z= (-0.033 - 0.012)
+
+
     
     
     renderer.render( scene, camera ); 
@@ -526,10 +617,16 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
         !1? $("debuggers .tan span").css({"background": "#d67274"}): $("debuggers .tan span").css({"background": "#25cc54"}); 
     
         scene.remove( curveObject ); 
+    
+        scene.remove( curveObject2 ); 
         
         scene.remove( oldCurve ); 
+        
+        scene.remove( oldCurve2 ); 
     
         scene.remove( intersección ); 
+    
+        scene.remove( intersección2 ); 
     
         renderer.render( scene, camera ); 
     
@@ -537,6 +634,9 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
         //xProjection= parseFloat($("debuggers .tan span").text()) <= 1? (1 - parseFloat($("debuggers .tan span").text())) * 0.22: -(1 - parseFloat($("debuggers .tan span").text())) * -0.22;  
         elps.position.x= Vv11w4.getWorldPosition(v3).x; 
         elps.position.y= Vv11w4.getWorldPosition(v3).y; 
+
+        elps2.position.x= Vv11w3.getWorldPosition(v3).x; 
+        elps2.position.y= Vv11w3.getWorldPosition(v3).y; 
         
     
     
@@ -547,9 +647,24 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
     
         scene.add( oldCurve ); 
     
+
+
+        points2 = curve2.getPoints( 50 );
+        x = new THREE.BufferGeometry().setFromPoints( points2 );
+        zz = new THREE.LineBasicMaterial( { color: 0xff0000 } );
+        oldCurve2 = new THREE.Line( x, zz );
+        
+        scene.add( oldCurve2 ); 
+
+
+
         intersección = new THREE.Mesh( new THREE.BoxGeometry( 0.013, 0.013, 0.013 ), new THREE.MeshPhongMaterial({ color: 0x1fa2b2 }) );
     
+        intersección2 = new THREE.Mesh( new THREE.BoxGeometry( 0.013, 0.013, 0.013 ), new THREE.MeshPhongMaterial({ color: 0x1fa2b2 }) );
+    
         scene.add( intersección ); 
+        
+        scene.add( intersección2 ); 
     
         
         (function(){ad= {}; 
@@ -572,7 +687,33 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
         intersección.position.x= closestP.x
         intersección.position.y= closestP.y
         intersección.position.z= (-0.033 - 0.012)
+
+
+
+
+        (function(){ad= {}; 
+        ad.d= 10000; 
+        for( ww= 0; ww < 360; ww++ ){ 
+            if( bEZ2.project( { x: pts2[ww].x + elps2.position.x , y: pts2[ww].y + elps2.position.y } ).d < ad.d ) 
+            { 
+                ad= bEZ2.project( { x: pts2[ww].x + elps2.position.x , y: pts2[ww].y + elps2.position.y } ); 
+                ad.x= pts2[ww].x + elps2.position.x; 
+                ad.y= pts2[ww].y + elps2.position.y; 
+                ad.eX= parseInt(ww); 
+            } 
+        
+            if( parseInt( ww ) == pts2.length - 2 ){
+                closestP2= ad; 
+            }
+        }})(); 
+            
+        intersección2.position.x= closestP2.x
+        intersección2.position.y= closestP2.y
+        intersección2.position.z= (-0.033 - 0.012)
     
+
+
+        
         ángulo=  0; 
             //console.log( "<190W " + ángDeLaPendiente( Vv11w4.getWorldPosition(v3).x , Vv11w4.getWorldPosition(v3).y, closestP.x , closestP.y ) );  
             if(keysDown.w){ 
@@ -633,6 +774,29 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
         
         scene.add( curveObject ); 
     
+
+        curve2 = new THREE.QuadraticBezierCurve3( 
+            new THREE.Vector3( Vv11w3.getWorldPosition(v3).x + xEYConElÁngulo( 0.22, getInQuadrant( -getInQuadrant( Vv11.rotation.z / un_grado_en_radianes + 90 ) ) ).x , Vv11w3.getWorldPosition(v3).y + xEYConElÁngulo( 0.22, getInQuadrant( -getInQuadrant( Vv11.rotation.z / un_grado_en_radianes + 90 ) ) ).y , (-0.033 - 0.012) ),
+            new THREE.Vector3( Vv11w3.getWorldPosition(v3).x , Vv11w3.getWorldPosition(v3).y , (-0.033 - 0.012) ),
+            new THREE.Vector3( (Vv11w3.getWorldPosition(v3).x - xEYConElÁngulo( 0.22, parseFloat($(".bugger").text()) ).x) , (Vv11w3.getWorldPosition(v3).y - xEYConElÁngulo( 0.22, parseFloat($(".bugger").text())).y), (-0.033 - 0.012) )
+        ); 
+            
+        points2 = curve2.getPoints( 50 );
+            
+        x = new THREE.BufferGeometry().setFromPoints( points2 );
+            
+        zz = new THREE.LineBasicMaterial( { color: 0x00ff00 } );
+            
+        curveObject2 = new THREE.Line( x, zz );
+        bEZ2= new Bezier( [ { x: curve2.v0.x , y: curve2.v0.y } , { x: curve2.v1.x , y: curve2.v1.y } , { x: curve2.v2.x , y: curve2.v2.y } ] );
+        
+        scene.add( curveObject2 ); 
+        
+        
+                    
+    
+
+
         camera.position.x= Vv11.position.x + xEYConElÁngulo( ( 1.5 + dCamera ), getInQuadrant( -getInQuadrant( Vv11.rotation.z / un_grado_en_radianes + 270 ) ) ).x; 
         camera.position.y= Vv11.position.y + xEYConElÁngulo( ( 1.5 + dCamera ), getInQuadrant( -getInQuadrant( Vv11.rotation.z / un_grado_en_radianes + 270 ) ) ).y; 
         
