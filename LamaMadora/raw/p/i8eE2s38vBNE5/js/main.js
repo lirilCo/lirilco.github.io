@@ -158,6 +158,40 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
     renderer.setSize( window.innerWidth, window.innerHeight );
     document.body.appendChild( renderer.domElement );
     
+    un_grado_en_radianes= Math.PI / 180; 
+    
+    getInQuadrant= function(ángulo){ 
+        ángulo= ángulo; 
+        while(ángulo < -360)ángulo+=360; 
+        while(ángulo > 360)ángulo-=360; 
+        if(ángulo < 0)ángulo=(360+ángulo); 
+        return ángulo; 
+    } 
+      
+    xEYConElÁngulo= function( d, á ){ 
+        á= á * Math.PI / 180; //Convertir de grados a radianes 
+        
+        if(á < Math.PI / 2)return {x: d * parseFloat(Math.cos(á)), y: parseFloat(-(d * Math.sin(á)))}; 
+        if(á == Math.PI / 2)return {x: 0, y: -d}; 
+        if(á <= Math.PI)return {x: parseFloat(-(d * Math.cos(Math.PI - á))), y: parseFloat(-(d * Math.sin(Math.PI - á)))}; 
+        if(á <= Math.PI / 2 * 3)return {x: parseFloat(-(d * Math.sin((Math.PI / 2 * 3) - á))), y: parseFloat(d * Math.cos((Math.PI / 2 * 3) - á))}; 
+        if(á <= Math.PI * 2)return {x: parseFloat(d * Math.cos((Math.PI * 2) - á)), y: parseFloat((d * Math.sin((Math.PI * 2) - á)))}; 
+    } 
+    
+    ángDeLaPendiente= function(x1, y1, x2, y2){ 
+        c1= { x: x1, y: y1 }; 
+        c2= { x: x2, y: y2 }; 
+                          
+        if(c2.x <= c1.x){ 
+            cS= c1; 
+            c1= c2; 
+            c2= cS; 
+            return getInQuadrant(-getInQuadrant((Math.atan2(-( c2.y - c1.y ) , -( c2.x - c1.x ))*(180/Math.PI)))); 
+        }else{ 
+            return getInQuadrant(getInQuadrant((Math.atan2(-( c2.y - c1.y ) , ( c2.x - c1.x ))*(180/Math.PI)))); 
+        }; 
+    } 
+    
     v3 = new THREE.Vector3( 0, 0, 0 ); 
     
     curve = new THREE.QuadraticBezierCurve(
@@ -438,43 +472,12 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
     
     keysDown= { a: false , d: false , w: false , s: false , q: false , e: false , izquierda: false , derecha: false , arriba: false , abajo: false }
     
-    un_grado_en_radianes= Math.PI / 180; 
     
     speed= 0.051; 
     
     dCamera= 2.36758210000191832 * 10 ** -1; 
     
-    getInQuadrant= function(ángulo){ 
-        ángulo= ángulo; 
-        while(ángulo < -360)ángulo+=360; 
-        while(ángulo > 360)ángulo-=360; 
-        if(ángulo < 0)ángulo=(360+ángulo); 
-        return ángulo; 
-    } 
-      
-    xEYConElÁngulo= function( d, á ){ 
-        á= á * Math.PI / 180; //Convertir de grados a radianes 
-        
-        if(á < Math.PI / 2)return {x: d * parseFloat(Math.cos(á)), y: parseFloat(-(d * Math.sin(á)))}; 
-        if(á == Math.PI / 2)return {x: 0, y: -d}; 
-        if(á <= Math.PI)return {x: parseFloat(-(d * Math.cos(Math.PI - á))), y: parseFloat(-(d * Math.sin(Math.PI - á)))}; 
-        if(á <= Math.PI / 2 * 3)return {x: parseFloat(-(d * Math.sin((Math.PI / 2 * 3) - á))), y: parseFloat(d * Math.cos((Math.PI / 2 * 3) - á))}; 
-        if(á <= Math.PI * 2)return {x: parseFloat(d * Math.cos((Math.PI * 2) - á)), y: parseFloat((d * Math.sin((Math.PI * 2) - á)))}; 
-    } 
     
-    ángDeLaPendiente= function(x1, y1, x2, y2){ 
-        c1= { x: x1, y: y1 }; 
-        c2= { x: x2, y: y2 }; 
-                          
-        if(c2.x <= c1.x){ 
-            cS= c1; 
-            c1= c2; 
-            c2= cS; 
-            return getInQuadrant(-getInQuadrant((Math.atan2(-( c2.y - c1.y ) , -( c2.x - c1.x ))*(180/Math.PI)))); 
-        }else{ 
-            return getInQuadrant(getInQuadrant((Math.atan2(-( c2.y - c1.y ) , ( c2.x - c1.x ))*(180/Math.PI)))); 
-        }; 
-    } 
     
     //c = new THREE.Quaternion();  
     
