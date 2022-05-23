@@ -410,7 +410,7 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
     scene.add( dirLight ); 
         
     
-    (function(){ad= {}; 
+    ad= {}; 
     ad.d= 10000; 
     for( ww= 0; ww < 360; ww++ ){ 
         if( bEZ.project( { x: pts[ww].x + elps.position.x , y: pts[ww].y + elps.position.y } ).d < ad.d ) 
@@ -424,7 +424,7 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
         if( parseInt( ww ) == pts.length - 2 ){
             closestP= ad; 
         }
-    }})(); 
+    }
         
     intersección.position.x= closestP.x
     intersección.position.y= closestP.y
@@ -433,7 +433,7 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
 
 
 
-    (function(){ad= {}; 
+    ad= {}; 
     ad.d= 10000; 
     for( ww= 0; ww < 360; ww++ ){ 
         if( bEZ2.project( { x: pts2[ww].x + elps2.position.x , y: pts2[ww].y + elps2.position.y } ).d < ad.d ) 
@@ -447,7 +447,7 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
         if( parseInt( ww ) == pts2.length - 2 ){
             closestP2= ad; 
         }
-    }})(); 
+    }
         
     intersección2.position.x= closestP2.x
     intersección2.position.y= closestP2.y
@@ -671,7 +671,7 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
         scene.add( intersección2 ); 
     
         
-        (function(){ad= {}; 
+        ad= {}; 
         ad.d= 10000; 
         for( ww= 0; ww < 360; ww++ ){ 
     
@@ -686,7 +686,7 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
             if( parseInt( ww ) == pts.length - 2 ){
                 closestP= ad; 
             }
-        }})(); 
+        }
             
         intersección.position.x= closestP.x
         intersección.position.y= closestP.y
@@ -695,7 +695,7 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
 
 
 
-        (function(){ad= {}; 
+        ad= {}; 
         ad.d= 10000; 
         for( ww= 0; ww < 360; ww++ ){ 
             if( bEZ2.project( { x: pts2[ww].x + elps2.position.x , y: pts2[ww].y + elps2.position.y } ).d < ad.d ) 
@@ -709,7 +709,7 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
             if( parseInt( ww ) == pts2.length - 2 ){
                 closestP2= ad; 
             }
-        }})(); 
+        }
             
         intersección2.position.x= closestP2.x
         intersección2.position.y= closestP2.y
