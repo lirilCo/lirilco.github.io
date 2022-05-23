@@ -11,7 +11,7 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
     `); 
     camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.001, 30 );
     camera.position.z= 0.888; 
-    camera.position.x = -0.01;; 
+    camera.position.x = -0.01; 
     camera.position.y = -0.7;
     camera.rotation.x= Math.PI / 180 * 90; 
     scene = new THREE.Scene();
@@ -34,15 +34,6 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
     Vv11w4 = new THREE.ExtrudeGeometry(Vv11w, {depth: 0.009, bevelEnabled: false});
     
     
-    head_light = new THREE.Mesh( new THREE.BoxGeometry( 0.01975, 0.005, 0.0087 ), new THREE.MeshBasicMaterial({ color: 0xffffff }) ); 
-    
-    head_light.position.x= -0.066; 
-    head_light.position.y= 0.15; 
-    head_light.position.z= -0.003; 
-    
-    
-    Vv11.add( head_light ); 
-    
     
     
     right_head_light = new THREE.Mesh( new THREE.BoxGeometry( 0.01975, 0.005, 0.0087 ), new THREE.MeshBasicMaterial({ color: 0xffffff }) ); 
@@ -52,6 +43,16 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
     right_head_light.position.z= -0.003; 
     
     Vv11.add( right_head_light ); 
+    
+    
+    head_light = new THREE.Mesh( new THREE.BoxGeometry( 0.01975, 0.005, 0.0087 ), new THREE.MeshBasicMaterial({ color: 0xffffff }) ); 
+    
+    head_light.position.x= -0.066; 
+    head_light.position.y= 0.15; 
+    head_light.position.z= -0.003; 
+    
+    
+    Vv11.add( head_light ); 
     
     
     const targetHL1P = new THREE.Object3D();
