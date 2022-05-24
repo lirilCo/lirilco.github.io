@@ -752,6 +752,21 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
             //$(".burger span").html("");  
             //$(".burger").attr( "title" , "" );  
     
+            if(keysDown.s){ 
+                ángulo= ángDeLaPendiente( Vv11w3.getWorldPosition(v3).x , Vv11w3.getWorldPosition(v3).y, Vv11w3.getWorldPosition(v3).x + xEYConElÁngulo( 0.22, getInQuadrant( -getInQuadrant( Vv11.rotation.z / un_grado_en_radianes + 90 ) ) ).x , Vv11w3.getWorldPosition(v3).y + xEYConElÁngulo( 0.22, getInQuadrant( -getInQuadrant( Vv11.rotation.z / un_grado_en_radianes + 90 ) ) ).y ) * -1 + ángDeLaPendiente( Vv11w3.getWorldPosition(v3).x , Vv11w3.getWorldPosition(v3).y, closestP2.x , closestP2.y ); 
+    
+                recorded_position= Vv11w3.rotation.y <= Math.PI / 2? { x: Vv11w4.getWorldPosition(v3).x , y: Vv11w4.getWorldPosition(v3).y  }: { x: Vv11w3.getWorldPosition(v3).x , y: Vv11w3.getWorldPosition(v3).y  };
+    
+    
+                Vv11.rotation.z += ángulo * un_grado_en_radianes; 
+                renderer.render( scene, camera ); 
+                
+    
+                Vv11w3.rotation.y <= Math.PI / 2? (function(){Vv11.position.x-= Vv11w4.getWorldPosition(v3).x - recorded_position.x; 
+                                        Vv11.position.y+= recorded_position.y - Vv11w4.getWorldPosition(v3).y; })(): (function(){Vv11.position.x-= Vv11w3.getWorldPosition(v3).x - recorded_position.x; 
+                                        Vv11.position.y+= recorded_position.y - Vv11w3.getWorldPosition(v3).y; })(); 
+                renderer.render( scene, camera ); 
+            } 
     
     
     
