@@ -9,7 +9,74 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
          *       +                  +      *                                                                  
             renderer.render( scene, camera ); 
     `); 
-    camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.001, 30 );
+
+    const loader = new SVGLoader(); 
+
+    getSizes= function( oBjE ){ 
+        boundingBox = new THREE.Box3().setFromObject( oBjE ); 
+        return { x: boundingBox.max.x - boundingBox.min.x, y: boundingBox.max.y - boundingBox.min.y, z: boundingBox.max.z - boundingBox.min.z }; 
+    } 
+    
+    THREE.Group.prototype.translate= function( x, y, z ){ 
+        this.translateX( x ); 
+        this.translateY( y ); 
+        this.translateX( z ); 
+    } 
+
+    group = new THREE.Group(); 
+
+    loadSVG= function( svgLink, eXDepth, mAterial ){     
+        loader.load(
+            // resource URL
+            svgLink,
+            // called when the resource is loaded
+            function ( data ) {
+        
+                const paths = data.paths;
+        
+                for ( let i = 0; i < paths.length; i ++ ) {
+        
+                    path = paths[ i ];
+        
+        
+                    shapes = SVGLoader.createShapes( path );
+        
+                    for ( let j = 0; j < shapes.length; j ++ ) {
+        
+                        shape = shapes[ j ];
+                        eXtrudagetious = new THREE.ExtrudeGeometry( shape, {depth: eXDepth, bevelEnabled: false} );
+                        mesh = new THREE.Mesh( eXtrudagetious, mAterial ); 
+                        console.log( getSizes( mesh ) ); 
+                        group.add( mesh );
+        
+                    }
+        
+                }
+        
+                scene.add( group ); 
+
+                group.translate( -getSizes( group ).x / 2, getSizes( group ).y / 2, 0 ); 
+                
+                group.scale.y= -1; 
+            },
+            // called when loading is in progresses
+            function ( xhr ) {
+        
+                console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+        
+            },
+            // called when loading has errors
+            function ( error ) {
+        
+                console.log( 'An error happened' );
+        
+            }
+        );
+    }; 
+
+    loadSVG( 'resources/Calles/StreetIII.svg', 0.1294318, new THREE.MeshStandardMaterial({ color: 0xfef0fe, roughness: 1, reflectivity: 0.47 }) ); 
+    
+    camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.001, 89 );
     camera.position.z= 0.888; 
     camera.position.x = -0.01; 
     camera.position.y = -0.7;
@@ -98,7 +165,8 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
     
     Vv11.add( head_light2.target ); 
     Vv11.add( head_light2 ); 
-    
+
+
     // Geometry doesn't do much on its own, we need to create a Mesh from it
     Vv11w1 = new THREE.Mesh(Vv11w1, material);
     Vv11w2 = new THREE.Mesh(Vv11w2, material);
@@ -155,11 +223,18 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
     
     scene.add( Vv11 );
     
+
+    un_grado_en_radianes= Math.PI / 180; 
+    
+
+    Vv11.rotation.z= 218 * un_grado_en_radianes; 
+    Vv11.position.x= -15.856107644517733; 
+    Vv11.position.y= 14.452729334533183; 
+
     renderer = new THREE.WebGLRenderer( { antialias: true } );
     renderer.setSize( window.innerWidth, window.innerHeight );
     document.body.appendChild( renderer.domElement );
     
-    un_grado_en_radianes= Math.PI / 180; 
     
     getInQuadrant= function(ángulo){ 
         ángulo= ángulo; 
@@ -193,6 +268,7 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
         }; 
     } 
     
+
     v3 = new THREE.Vector3( 0, 0, 0 ); 
     
     curve = new THREE.QuadraticBezierCurve(
@@ -267,10 +343,8 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
     pts = elipse.getPoints( 360 );
     geometry = new THREE.BufferGeometry().setFromPoints( pts );
     
-    material = new THREE.LineBasicMaterial( { color: 0xff0000 } );
     
-    
-    elps = new THREE.Line( geometry, material ); 
+    elps = new THREE.Line( geometry, new THREE.LineBasicMaterial( { color: 0xff0000 } ) ); 
     
     elps.position.z= (-0.033 - 0.012); 
     
@@ -313,9 +387,9 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
 
     
     
-    Terreno = new THREE.Mesh( new THREE.BoxGeometry( 21, 21, 1 ), new THREE.MeshStandardMaterial({ color: 0xfef0fe, roughness: 1, reflectivity: 0.47 }) );
+    Terreno = new THREE.Mesh( new THREE.BoxGeometry( 72, 72, 1.89 ), new THREE.MeshStandardMaterial({ color: 0xfef0fe, roughness: 1, reflectivity: 0.47 }) );
     
-    Terreno.position.z= (-0.033 - 0.02 - 0.5)
+    Terreno.position.z= ( -0.033 - 0.02 - 0.5 - 0.445 )
     
     scene.add( intersección ); 
 
@@ -478,6 +552,11 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
     
     dCamera= 2.36758210000191832 * 10 ** -1; 
     
+
+    camera.position.x= Vv11.position.x + xEYConElÁngulo( ( 1.5 + dCamera ), getInQuadrant( -getInQuadrant( Vv11.rotation.z / un_grado_en_radianes + 270 ) ) ).x; 
+    camera.position.y= Vv11.position.y + xEYConElÁngulo( ( 1.5 + dCamera ), getInQuadrant( -getInQuadrant( Vv11.rotation.z / un_grado_en_radianes + 270 ) ) ).y; 
+        
+    camera.rotation.y= Vv11.rotation.z; 
     
     
     //c = new THREE.Quaternion();  

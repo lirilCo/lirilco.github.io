@@ -11,7 +11,8 @@
 	<script type="importmap">
 		{
 			"imports": {
-				"three": "https://unpkg.com/three/build/three.module.js"
+				"three": "https://unpkg.com/three/build/three.module.js", 
+                "SVGLoader": "https://unpkg.com/three@0.141.0/examples/jsm/loaders/SVGLoader.js"
 			}
 		}
 	</script>
@@ -19,6 +20,8 @@
     <script type="module">
         import { THREE } from "./js/THREE.js"; 
         window.THREE= THREE; 
+        import { SVGLoader } from "./js/THREE.js"; 
+        window.SVGLoader= SVGLoader; 
     </script>
     <script type="module">
         import { Bezier } from "./js/bezier.js"; 

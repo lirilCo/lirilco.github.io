@@ -1538,7 +1538,7 @@ $(document).on("ready",function(e){
         });
     }
     $("#theater").on("click", function(i){$(i.target).is("#theater")? closeModal(): 1; }); 
-    $("html").click(function() {
+    $("html").click(function( e ) {
         $(".wrapper").removeClass("visible")
         $("#right-menu .index-arrow").removeClass("open");
         $("#profileSettings").removeClass("open");
