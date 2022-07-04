@@ -63,6 +63,7 @@ var skip= 0;
 var saved_position= [x, y]; 
 var grabbed= []; 
 var just_spawned= false; 
+var direction= 1; 
 
 $.fn.selectRange= function(start, end) {if(!end) end= start; return this.each(function() {if(this.setSelectionRange){this.focus(); this.setSelectionRange(start, end); }else if(this.createTextRange){var range= this.createTextRange(); range.collapse(true); range.moveEnd('character', end); range.moveStart('character', start); range.select(); }});}; 
 
@@ -145,25 +146,25 @@ $(function(){
 				((!jumping || wet()) && x + 1 <= 100)? (function(){speed + 1 <= max_speed? speed++: 1; l_r[1]= true; })(): 1; 
 				break; 
 			case 173: 
-				(i.shiftKey && x < 100)? (function(){console.log("X" + x + "Y" + y); $("#grid").val(replace($("#grid").val(), (100 * y + y + x - 101), "_")); x++; set([x, y]); })(): 1; 
+				direction == 1? (i.shiftKey && x < 100)? (function(){console.log("X" + x + "Y" + y); $("#grid").val(replace($("#grid").val(), (100 * y + y + x - 101), "_")); x++; set([x, y]); })(): 1: (i.shiftKey && x > 0)? (function(){console.log("X" + x + "Y" + y); $("#grid").val(replace($("#grid").val(), (100 * y + y + x - 102), "_")); x--; set([x, y]); })(): 1; 
 				break; 
 			case 54: 
-				(i.shiftKey && x < 100)? (function(){console.log("X" + x + "Y" + y); $("#water").val(replace($("#water").val(), (100 * y + y + x - 101), "░")); x++; set([x, y]); })(): 1; 
+				direction == 1? (i.shiftKey && x < 100)? (function(){console.log("X" + x + "Y" + y); $("#water").val(replace($("#water").val(), (100 * y + y + x - 101), "░")); x++; set([x, y]); })(): 1: (i.shiftKey && x > 0)? (function(){console.log("X" + x + "Y" + y); $("#water").val(replace($("#water").val(), (100 * y + y + x - 102), "░")); x--; set([x, y]); })(): 1; 
 				break; 
 			case 55: 
-				(i.shiftKey && x < 100)? (function(){console.log("X" + x + "Y" + y); $("#kitchen_oil").val(replace($("#kitchen_oil").val(), (100 * y + y + x - 101), "░")); x++; set([x, y]); })(): 1; 
+				direction == 1? (i.shiftKey && x < 100)? (function(){console.log("X" + x + "Y" + y); $("#kitchen_oil").val(replace($("#kitchen_oil").val(), (100 * y + y + x - 101), "░")); x++; set([x, y]); })(): 1: (i.shiftKey && x > 0)? (function(){console.log("X" + x + "Y" + y); $("#kitchen_oil").val(replace($("#kitchen_oil").val(), (100 * y + y + x - 102), "░")); x--; set([x, y]); })(): 1; 
 				break; 
 			case 53: 
-				(i.shiftKey && x < 100)? (function(){console.log("X" + x + "Y" + y); $("#grid").val(replace($("#grid").val(), (100 * y + y + x - 101), "█")); x++; set([x, y]); })(): 1; 
+				direction == 1? (i.shiftKey && x < 100)? (function(){console.log("X" + x + "Y" + y); $("#grid").val(replace($("#grid").val(), (100 * y + y + x - 101), "█")); x++; set([x, y]); })(): 1: (i.shiftKey && x > 0)? (function(){console.log("X" + x + "Y" + y); $("#grid").val(replace($("#grid").val(), (100 * y + y + x - 102), "█")); x--; set([x, y]); })(): 1; 
 				break; 
 			case 34: 
-				(i.altKey  && x < 100)? (function(){console.log("X" + x + "Y" + y); $("#grid").val(replace($("#grid").val(), (100 * y + y + x - 101), "♥")); x++; just_spawned= true; set([x, y]); })(): 1; 
+				direction == 1? (i.altKey  && x < 100)? (function(){console.log("X" + x + "Y" + y); $("#grid").val(replace($("#grid").val(), (100 * y + y + x - 101), "♥")); x++; just_spawned= true; set([x, y]); })(): 1: (i.altKey  && x > 0)? (function(){console.log("X" + x + "Y" + y); $("#grid").val(replace($("#grid").val(), (100 * y + y + x - 102), "♥")); x--; just_spawned= true; set([x, y]); })(): 1; 
 				break; 
 			case 52: 
-				(i.shiftKey && x < 100)? (function(){console.log("X" + x + "Y" + y); $("#grid").val(replace($("#grid").val(), (100 * y + y + x - 101), "$")); x++; just_spawned= true; set([x, y]); })(): 1; 
+				direction == 1? (i.shiftKey && x < 100)? (function(){console.log("X" + x + "Y" + y); $("#grid").val(replace($("#grid").val(), (100 * y + y + x - 101), "$")); x++; just_spawned= true; set([x, y]); })(): 1: (i.shiftKey && x > 0)? (function(){console.log("X" + x + "Y" + y); $("#grid").val(replace($("#grid").val(), (100 * y + y + x - 102), "$")); x--; just_spawned= true; set([x, y]); })(): 1; 
 				break; 
 			case 48: 
-				(i.shiftKey && x < 100)? (function(){console.log("X" + x + "Y" + y); $("#grid").val(replace($("#grid").val(), (100 * y + y + x - 101), " ")); $("#water").val(replace($("#water").val(), (100 * y + y + x - 101), " ")); $("#kitchen_oil").val(replace($("#kitchen_oil").val(), (100 * y + y + x - 101), " ")); x++; just_spawned= true; set([x, y]); })(): 1; 
+				direction == 1? (i.shiftKey && x < 100)? (function(){console.log("X" + x + "Y" + y); $("#grid").val(replace($("#grid").val(), (100 * y + y + x - 101), " ")); $("#water").val(replace($("#water").val(), (100 * y + y + x - 101), " ")); $("#kitchen_oil").val(replace($("#kitchen_oil").val(), (100 * y + y + x - 101), " ")); x++; just_spawned= true; set([x, y]); })(): 1: (i.shiftKey && x > 0)? (function(){console.log("X" + x + "Y" + y); $("#grid").val(replace($("#grid").val(), (100 * y + y + x - 102), " ")); $("#water").val(replace($("#water").val(), (100 * y + y + x - 102), " ")); $("#kitchen_oil").val(replace($("#kitchen_oil").val(), (100 * y + y + x - 102), " ")); x--; just_spawned= true; set([x, y]); })(): 1; 
 				break; 
 		} 
 
@@ -198,6 +199,14 @@ $(function(){
 			speed > 0? speed -= friction: speed < 0? speed += friction: 1; 
 		} 
 
+
+
+
+        direction= speed > 0? 1: speed < 0? -1: direction; 
+                         
+                         
+        /*console.log( direction ); */ 
+        
 		if(speed === 0){
 			speed= speed; 
 		}else if(x + speed >= 100){ 
