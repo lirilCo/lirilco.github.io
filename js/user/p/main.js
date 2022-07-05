@@ -1,3 +1,31 @@
+/*
+
+
+
+
+
+//Regex To find all '* from "..."'; like:  import { THREE } from "./js/THREE.js"; 
+
+
+rg= 'from "([^"]*)"'; 
+                      
+a= editor.getValue(); 
+                    
+mT= [...a.matchAll(rg)]; 
+console.log( mT ); 
+
+
+
+
+
+
+
+
+
+
+
+*/ 
+
 el= document.getElementsByClassName("file_tree")[0]; 
 var pageI= 0; 
 var editor; 
@@ -73,6 +101,134 @@ function closeModal() {
         "display": "none"
     })
 }
+
+function tagReplacer( HtML ){ 
+    var response= []; 
+                                      
+    for( e in HtML ){ 
+        /*console.log( HtML.slice( parseInt( e ), ( parseInt( e ) + 6 ) ) ); */ 
+
+        //console.log( parseInt( e ) + 4 );  
+
+        switch( HtML.slice( parseInt( e ), ( parseInt( e ) + 6 ) ) ){ 
+            case "<scrip": case "< scri": case "<  scr": 
+                response[response.length]= [HtML.slice( parseInt( e ), parseInt( e ) + HtML.slice( parseInt( e ), HtML.length - 1 ).indexOf( "</script>" ) + "</script>".length + 1 ), [parseInt( e ), parseInt( e ) + HtML.slice( parseInt( e ), HtML.length - 1 ).indexOf( "</script>" ) + "</script>".length + 1], "sc"]; 
+                break; 
+            case "<link ": case "< link": case "<  lin": 
+                response[response.length]= [HtML.slice( parseInt( e ), parseInt( e ) + HtML.slice( parseInt( e ), HtML.length - 1 ).indexOf( ">" ) + ">".length + 1 ), [parseInt( e ), parseInt( e ) + HtML.slice( parseInt( e ), HtML.length - 1 ).indexOf( ">" ) + ">".length + 1], "st"]; 
+                break; 
+        }; 
+    }; 
+
+    return response; 
+}; 
+   
+root_url= function( url ){ 
+    switch( url[0] ){ 
+        case "/": 
+            return url; 
+            break; 
+        case ".": 
+            switch( url[1] ){ 
+                case "/": 
+                    return FileToRequest.slice( 0, FileToRequest.lastIndexOf( "/" ) ) + url.slice( 1 ); 
+                    break; 
+                case ".": 
+                    f_t_r= FileToRequest.slice( 0, FileToRequest.lastIndexOf("/") ); 
+                    uhl= url; 
+
+                    while( uhl.indexOf("../") == 0 ){ 
+                        uhl= uhl.slice( 3 ); 
+                        f_t_r= f_t_r.slice( 0, f_t_r.lastIndexOf("/") ); 
+                    } 
+                      
+                    /*console.log(  ); */ 
+
+                    return ( f_t_r + "/" + uhl ); 
+                    break; 
+            } 
+            break; 
+        default: 
+            return FileToRequest.slice( 0, FileToRequest.lastIndexOf( "/" ) + 1 ) + url; 
+            break; 
+    } 
+}; 
+   
+function get( tG, f ){ 
+    var a= f.slice( f.indexOf( tG ) + tG.length, f.length - 1 ); 
+    return (function(){return ( a.slice( a.indexOf('"') + 1 ).slice( 0, a.slice( a.indexOf( '"' ) + 1 ).indexOf( '"' ) ) )})(); 
+}; 
+   
+ 
+checkFolder= function( i ){
+    if( typeof editor.session.getFoldWidgetRange( i - 1 ).start != "undefined" && editor.session.getTextRange( {start: {row: editor.session.getFoldWidgetRange( i - 1 ).start.row - 1, column: editor.session.getFoldWidgetRange( i - 1 ).start.column}, end: {row: editor.session.getFoldWidgetRange( i - 1 ).start.row, column: editor.session.getFoldWidgetRange( i - 1 ).start.column}} ).indexOf("'scriptModificado'") != -1 ){
+        editor.session.$toggleFoldWidget( i - 1, {} ); 
+    }
+}
+
+relative_url= function( url ){ 
+    for( var a= 0; a < 5; a++ ) 
+        {url= url.slice( url.indexOf( "/" ) + 1 )}; 
+    return "/" + url; 
+} 
+  
+root_and_raw_urls_in_HTMLs= function( doc ){
+    var eq= ["= ", "=", " = ", "  =", "  = ", " =", "=  "]; 
+    
+    for( i in eq ){
+        rg= 'href' + eq[i] + '"([^"]*)"'; 
+                              
+        mT= undefined; 
+        
+        mT= [...doc.matchAll( rg )]; 
+        
+        for( u in mT ){
+            doc= ( mT[u][1].indexOf( "http" ) == -1 && mT[u][1][0] != "/" )? doc.replaceAll( mT[u][1], root_url( mT[u][1] ) ): doc;
+         }
+        
+        
+        rg= 'src' + eq[i] + '"([^"]*)"'; 
+                              
+        mT= undefined; 
+        
+        mT= [...doc.matchAll( rg )]; 
+        
+        for( u in mT ){
+            doc= ( mT[u][1].indexOf( "http" ) == -1 && mT[u][1][0] != "/" )? doc.replaceAll( mT[u][1], root_url( mT[u][1] ) ): doc;  
+        }
+    }
+
+    rg= 'from "([^"]*)"'; 
+                      
+    mT= [...doc.matchAll(rg)]; 
+
+    for( u in mT ){ 
+        doc= ( mT[u][1].indexOf( "http" ) == -1 && mT[u][1][0] != "/" )? doc.replaceAll( mT[u][1], root_url( mT[u][1] ) ): doc; 
+    } 
+    
+    return doc; 
+}
+  
+ace.EditSession.prototype.toJSON= function(){ 
+    return { 
+        annotations: this.getAnnotations(), 
+        breakpoints: this.getBreakpoints(), 
+        folds: this.getAllFolds().map(function(fold){ 
+            return fold.range; 
+        }), 
+        history: { 
+            undo: this.getUndoManager().$undoStack, 
+            redo: this.getUndoManager().$redoStack, 
+            rev: this.getUndoManager().$rev, 
+            mark: this.getUndoManager().mark 
+        }, 
+        mode: this.getMode().$id, 
+        scrollLeft: this.getScrollLeft(), 
+        scrollTop: this.getScrollTop(), 
+        selection: this.getSelection().toJSON(), 
+        value: this.getValue() 
+    }; 
+}; 
 $(document).on("ready",function(e){
     sprtdUrl= []; 
     $('.chats').click(function(e){ 
@@ -272,6 +428,33 @@ $("#files .file").click(function(i, tr){
         $("#preview #file_preview #file")[0].innerHTML= ""; 
         $("#preview #file_preview #edit")[0].innerHTML= ""; 
         $("#preview #file_preview #filePr")[0].innerHTML= "<div><iframe src='" +  FileToRequest + "'></iframe></div>"; 
+            function reqListener () {
+                respuesta= localStorage.getItem(FileToRequest) != null? JSON.parse( localStorage.getItem( FileToRequest ) ).value: this.responseText; 
+
+                //console.log( respuesta ); 
+                for( t in tagReplacer( respuesta ) ){ 
+                    if(tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )] != undefined)
+                        if( !!localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ){ 
+                            respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<script class= 'scriptModificado' id= '" + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "'>\n\n /*" + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) + "\n\n</script>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ; 
+                        } 
+                        if( !!localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] )  ) ) ){ 
+                            respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<style class= 'styleModificado' id= '" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "'>\n\n /*" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) + "\n\n</style>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ; 
+                        }; 
+                    var ifrm= document.getElementsByTagName('iframe')[0]; 
+
+                    ifrm= (ifrm.contentWindow)? ifrm.contentWindow: (ifrm.contentDocument.document)? ifrm.contentDocument.document: ifrm.contentDocument; 
+                    ifrm.document.open(); 
+                    ifrm.document.write( root_and_raw_urls_in_HTMLs( respuesta ) ); 
+                    ifrm.document.close(); 
+                    /*console.log( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + (!!localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) )? " ∘  modified": "    not modified") ); */ 
+                }; 
+
+            };
+            
+            var xxa = new XMLHttpRequest(); 
+            xxa.addEventListener("load", reqListener); 
+            xxa.open("GET", FileToRequest); 
+            xxa.send(); 
     }else{ 
         $(".code-filler").width(0); 
 
@@ -283,15 +466,46 @@ $("#files .file").click(function(i, tr){
     switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].lastIndexOf(".") + 1)){ 
         case "js": case "css": case "html": 
             function reqListener () {
+                respuestaOriginal= this.responseText; 
                 $("#preview #file_preview #edit")[0].innerHTML= "<div id= 'editor'></div>"; 
-                ace.require("ace/ext/language_tools");
-                editor = ace.edit("editor");
+                ace.require("ace/ext/language_tools"); 
+                editor = ace.edit("editor"); 
                 editor.setTheme("ace/theme/monokai"); 
-                editor.setValue(this.responseText); 
+                editor.setValue( this.responseText ); 
+                                                      
+                if( localStorage.getItem( FileToRequest ) != null ){
+                    (function(){editor.setValue( JSON.parse( localStorage.getItem( FileToRequest ) ).value ); $( "#file_expl #preview #file_preview #options ul li#Editar" ).addClass( "modified" )})(); 
+                                                                                                              
+                    session= JSON.parse( JSON.parse( localStorage.getItem(FileToRequest) ).undoManager ); 
+                                                              
+                    session.folds.forEach(function(fold){ 
+                        editor.session.addFold("...", ace.Range.fromPoints(fold.start, fold.end)); 
+                    }); 
+                    editor.session.setAnnotations(session.annotations); 
+                    editor.session.setBreakpoints(session.breakpoints); 
+                    editor.session.$undoManager.$undoStack= session.history.undo; 
+                    editor.session.$undoManager.$redoStack= session.history.redo; 
+                    editor.session.$undoManager.$rev= session.history.rev; 
+                    editor.session.$undoManager.mark= session.history.mark; 
+                    editor.session.setMode(session.mode); 
+                    editor.session.setScrollLeft(session.scrollLeft); 
+                    editor.session.setScrollTop(session.scrollTop); 
+                    editor.session.selection.fromJSON(session.selection); 
+                } 
+                  
+                editor.getSession().on('change', function(){ 
+                    localStorage.setItem( FileToRequest, JSON.stringify( {value: editor.getValue(), undoManager: JSON.stringify( editor.getSession() )} ) ); 
+                    JSON.parse( localStorage.getItem( FileToRequest ) ).value === editor.valorOriginal? $( "#file_expl #preview #file_preview #options ul li#Editar" ).removeClass( "modified" ): $( "#file_expl #preview #file_preview #options ul li#Editar" ).addClass( "modified" ); 
+                }); 
+                editor.valorOriginal= this.responseText; 
                 editor.setOption("enableEmmet", true);
                 editor.setOption("enableBasicAutocompletion", true); 
                 editor.setOption("enableLiveAutocompletion", true); 
                 editor.setOption("enableSnippets", true); 
+
+
+
+
                 switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].lastIndexOf(".") + 1)){ 
                     case "js": 
                         var JavaScriptMode = ace.require("ace/mode/javascript").Mode; 
@@ -856,6 +1070,7 @@ $("#preview .folder").click(function(i, triggered){
 $('#root div').not("#root div:nth-child(1)").not("#root div:nth-child(2)").click( function(e){ 
     FileToRequest= ""; 
 
+    $( "#file_expl #preview #file_preview #options ul li#Editar" ).removeClass( "modified" ); 
     history.pushState({page: pageI}, "", e.target.getAttribute("url")); 
 
     pageI++;
@@ -949,6 +1164,33 @@ $("#Archivo, #Live, #Editar").click(function(){
             $("#preview #file_preview #file")[0].innerHTML= ""; 
             $("#preview #file_preview #edit")[0].innerHTML= ""; 
             $("#preview #file_preview #filePr")[0].innerHTML= "<div><iframe src='" +  FileToRequest + "'></iframe></div>"; 
+            function reqListener () {
+                respuesta= localStorage.getItem(FileToRequest) != null? JSON.parse( localStorage.getItem( FileToRequest ) ).value: this.responseText; 
+
+                //console.log( respuesta ); 
+                for( t in tagReplacer( respuesta ) ){ 
+                    if(tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )] != undefined)
+                        if( !!localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ){ 
+                            respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<script class= 'scriptModificado' id= '" + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "'>\n\n /*" + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</script>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ; 
+                        } 
+                        if( !!localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] )  ) ) ){ 
+                            respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<style class= 'styleModificado' id= '" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "'>\n\n /*" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</style>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ; 
+                        }; 
+                    var ifrm= document.getElementsByTagName('iframe')[0]; 
+
+                    ifrm= (ifrm.contentWindow)? ifrm.contentWindow: (ifrm.contentDocument.document)? ifrm.contentDocument.document: ifrm.contentDocument; 
+                    ifrm.document.open(); 
+                    ifrm.document.write( root_and_raw_urls_in_HTMLs( respuesta ) ); 
+                    ifrm.document.close(); 
+                    /*console.log( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + (!!localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) )? " ∘  modified": "    not modified") ); */ 
+                }; 
+
+            };
+            
+            var xxa = new XMLHttpRequest(); 
+            xxa.addEventListener("load", reqListener); 
+            xxa.open("GET", FileToRequest); 
+            xxa.send(); 
         }else{ 
             $(".code-filler").width(0); 
 
@@ -957,18 +1199,55 @@ $("#Archivo, #Live, #Editar").click(function(){
         $("#preview #file_preview #edit").css({"visibility": "visible", "opacity": "1"}); 
         a= ""; 
 
+
+/*
+var ifrm= document.getElementsByTagName('iframe')[0]; 
+
+ifrm= (ifrm.contentWindow)? ifrm.contentWindow: (ifrm.contentDocument.document)? ifrm.contentDocument.document: ifrm.contentDocument; 
+    ifrm.document.open(); 
+    ifrm.document.write( a ); 
+    ifrm.document.close();
+*/ 
         switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].lastIndexOf(".") + 1)){ 
             case "js": case "css": case "html": 
                 function reqListener () {
+                    respuestaOriginal= this.responseText; 
                     $("#preview #file_preview #edit")[0].innerHTML= "<div id= 'editor'></div>"; 
-                    ace.require("ace/ext/language_tools");
-                    editor = ace.edit("editor");
+                    ace.require("ace/ext/language_tools"); 
+                    editor = ace.edit("editor"); 
                     editor.setTheme("ace/theme/monokai"); 
-                    editor.setValue(this.responseText); 
-                    editor.setOption("enableEmmet", true);
+                    editor.setValue( this.responseText ); 
+                    
+                    if( localStorage.getItem( FileToRequest ) != null ){
+                        (function(){editor.setValue( JSON.parse( localStorage.getItem( FileToRequest ) ).value ); $( "#file_expl #preview #file_preview #options ul li#Editar" ).addClass( "modified" )})(); 
+                                                                                                              
+                        session= JSON.parse( JSON.parse( localStorage.getItem(FileToRequest) ).undoManager ); 
+                                                              
+                        session.folds.forEach(function(fold){ 
+                            editor.session.addFold("...", ace.Range.fromPoints(fold.start, fold.end)); 
+                        }); 
+                        editor.session.setAnnotations(session.annotations); 
+                        editor.session.setBreakpoints(session.breakpoints); 
+                        editor.session.$undoManager.$undoStack= session.history.undo; 
+                        editor.session.$undoManager.$redoStack= session.history.redo; 
+                        editor.session.$undoManager.$rev= session.history.rev; 
+                        editor.session.$undoManager.mark= session.history.mark; 
+                        editor.session.setMode(session.mode); 
+                        editor.session.setScrollLeft(session.scrollLeft); 
+                        editor.session.setScrollTop(session.scrollTop); 
+                        editor.session.selection.fromJSON(session.selection); 
+                    } 
+                    
+                    editor.getSession().on('change', function(){ 
+                        localStorage.setItem( FileToRequest, JSON.stringify( {value: editor.getValue(), undoManager: JSON.stringify( editor.getSession() )} ) ); 
+                        JSON.parse( localStorage.getItem( FileToRequest ) ).value === editor.valorOriginal? $( "#file_expl #preview #file_preview #options ul li#Editar" ).removeClass( "modified" ): $( "#file_expl #preview #file_preview #options ul li#Editar" ).addClass( "modified" ); 
+                    }); 
+                    editor.valorOriginal= this.responseText; 
+                    editor.setOption("enableEmmet", true) 
                     editor.setOption("enableBasicAutocompletion", true); 
                     editor.setOption("enableLiveAutocompletion", true); 
                     editor.setOption("enableSnippets", true); 
+
                     switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].lastIndexOf(".") + 1)){ 
                         case "js": 
                             var JavaScriptMode = ace.require("ace/mode/javascript").Mode; 
@@ -1472,6 +1751,7 @@ updateRoot= function(a7){
         //debugger; 
         FileToRequest= ""; 
 
+        $( "#file_expl #preview #file_preview #options ul li#Editar" ).removeClass( "modified" ); 
        if(!!e.target.getAttribute("url")){ 
         $("#preview .file_tree").removeClass("visible"); 
         $(".code-filler").width(0); 
@@ -1716,6 +1996,33 @@ ee= function(){
             $("#preview #file_preview #file")[0].innerHTML= ""; 
             $("#preview #file_preview #edit")[0].innerHTML= ""; 
             $("#preview #file_preview #filePr")[0].innerHTML= "<div><iframe src='" +  FileToRequest + "'></iframe></div>"; 
+            function reqListener () {
+                respuesta= localStorage.getItem(FileToRequest) != null? JSON.parse( localStorage.getItem( FileToRequest ) ).value: this.responseText; 
+
+                //console.log( respuesta ); 
+                for( t in tagReplacer( respuesta ) ){ 
+                    if(tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )] != undefined)
+                        if( !!localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ){ 
+                            respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<script class= 'scriptModificado' id= '" + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "'>\n\n /*" + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) + "\n\n</script>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ; 
+                        } 
+                        if( !!localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] )  ) ) ){ 
+                            respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<style class= 'styleModificado' id= '" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "'>\n\n /*" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) + "\n\n</style>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ; 
+                        }; 
+                    var ifrm= document.getElementsByTagName('iframe')[0]; 
+
+                    ifrm= (ifrm.contentWindow)? ifrm.contentWindow: (ifrm.contentDocument.document)? ifrm.contentDocument.document: ifrm.contentDocument; 
+                    ifrm.document.open(); 
+                    ifrm.document.write( root_and_raw_urls_in_HTMLs( respuesta ) ); 
+                    ifrm.document.close(); 
+                    /*console.log( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + (!!localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) )? " ∘  modified": "    not modified") ); */ 
+                }; 
+
+            };
+            
+            var xxa = new XMLHttpRequest(); 
+            xxa.addEventListener("load", reqListener); 
+            xxa.open("GET", FileToRequest); 
+            xxa.send(); 
         }else{ 
             $(".code-filler").width(0); 
 
@@ -1727,12 +2034,39 @@ ee= function(){
         switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].lastIndexOf(".") + 1)){ 
             case "js": case "css": case "html": 
                 function reqListener () {
+                    respuestaOriginal= this.responseText; 
                     $("#preview #file_preview #edit")[0].innerHTML= "<div id= 'editor'></div>"; 
-                    ace.require("ace/ext/language_tools");
-                    editor = ace.edit("editor");
+                    ace.require("ace/ext/language_tools"); 
+                    editor = ace.edit("editor"); 
                     editor.setTheme("ace/theme/monokai"); 
-                    editor.setValue(this.responseText); 
-                    editor.setOption("enableEmmet", true);
+                    editor.setValue( this.responseText ); 
+                                                          
+                    if( localStorage.getItem( FileToRequest ) != null ){
+                        (function(){editor.setValue( JSON.parse( localStorage.getItem( FileToRequest ) ).value ); $( "#file_expl #preview #file_preview #options ul li#Editar" ).addClass( "modified" )})(); 
+                                                                                                              
+                        session= JSON.parse( JSON.parse( localStorage.getItem(FileToRequest) ).undoManager ); 
+                                                              
+                        session.folds.forEach(function(fold){ 
+                            editor.session.addFold("...", ace.Range.fromPoints(fold.start, fold.end)); 
+                        }); 
+                        editor.session.setAnnotations(session.annotations); 
+                        editor.session.setBreakpoints(session.breakpoints); 
+                        editor.session.$undoManager.$undoStack= session.history.undo; 
+                        editor.session.$undoManager.$redoStack= session.history.redo; 
+                        editor.session.$undoManager.$rev= session.history.rev; 
+                        editor.session.$undoManager.mark= session.history.mark; 
+                        editor.session.setMode(session.mode); 
+                        editor.session.setScrollLeft(session.scrollLeft); 
+                        editor.session.setScrollTop(session.scrollTop); 
+                        editor.session.selection.fromJSON(session.selection); 
+                    } 
+                      
+                    editor.getSession().on('change', function(){ 
+                        localStorage.setItem( FileToRequest, JSON.stringify( {value: editor.getValue(), undoManager: JSON.stringify( editor.getSession() )} ) ); 
+                        JSON.parse( localStorage.getItem( FileToRequest ) ).value === editor.valorOriginal? $( "#file_expl #preview #file_preview #options ul li#Editar" ).removeClass( "modified" ): $( "#file_expl #preview #file_preview #options ul li#Editar" ).addClass( "modified" ); 
+                    }); 
+                    editor.valorOriginal= this.responseText; 
+                    editor.setOption("enableEmmet", true) 
                     editor.setOption("enableBasicAutocompletion", true); 
                     editor.setOption("enableLiveAutocompletion", true); 
                     editor.setOption("enableSnippets", true); 
@@ -1769,3 +2103,28 @@ ee= function(){
     }
     }) 
 } 
+  
+purger= {}; 
+
+purger.index= 4; 
+
+purger.purge= function(a){ 
+    if((localStorage.getItem("safety_purge") === null || (localStorage.getItem("safety_purge") !== null && parseInt(localStorage.getItem("safety_purge")) != purger.index)) || (typeof a != "undefined" && a == "bypass")){ 
+        knob= !!localStorage.getItem("knob")? localStorage.getItem("knob"): "<input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title="; 
+        tool= !!localStorage.getItem("tooltip")? localStorage.getItem("tooltip"): "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>"; 
+        user= !!localStorage.getItem("user")? localStorage.getItem("user"): " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>"; 
+        localStorage.clear(); 
+        localStorage.setItem("knob", knob); 
+        localStorage.setItem("tooltip", tool); 
+        localStorage.setItem("user", user); 
+        localStorage.removeItem("Purged"); 
+        localStorage.removeItem("purged"); 
+        localStorage.removeItem("p3rged"); 
+        localStorage.removeItem("pvrged"); 
+        localStorage.removeItem("Safety_purge"); 
+        localStorage.removeItem("safetyPurge"); 
+        localStorage.setItem("safety_purge", purger.index); 
+        console.log("Purged!"); 
+    }; 
+}; 
+   

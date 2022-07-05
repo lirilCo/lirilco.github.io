@@ -161,9 +161,18 @@ document.addEventListener("DOMContentLoaded", function(){
         	} 
         } 
 
-        for(a= 0; a <= document.querySelectorAll("table tbody div")[document.querySelectorAll("table tbody div").length - 1].children.length - 1; a++){ 
-			document.querySelectorAll("table tbody div")[a].style.height= document.querySelectorAll("table tbody div input")[0].clientHeight + "px"; 
-		} 
+        var nodo_de_estilo= document.createElement( 'style' ); 
+        nodo_de_estilo.type= "text/css"; 
+                                         
+        if( !!( window.attachEvent && !window.opera ) ){ 
+            nodo_de_estilo.styleSheet.cssText= 'table tbody div{height: ' + document.querySelectorAll( "table tbody div input" )[0].clientHeight + "px" + '}'; 
+        }else{ 
+            var hoja_de_estilos= document.createTextNode('table tbody div{height: ' + document.querySelectorAll( "table tbody div input" )[0].clientHeight + "px" + '}'); 
+            nodo_de_estilo.appendChild( hoja_de_estilos ); 
+        } 
+          
+        document.getElementsByTagName('head')[0].appendChild( nodo_de_estilo ); 
+        
 
 		for(a= 0; a <= document.querySelectorAll("table tbody div input").length - 1; a++){ 
     		document.querySelectorAll("table tbody div input")[a].mined= parseInt(Math.random() * 9) == 1? true: false; 
@@ -173,3 +182,12 @@ document.addEventListener("DOMContentLoaded", function(){
        
 	populate(20, 20); 
 }); 
+
+/*Editar los archivos like it was 
+a local host. No upload but like... 
+be able to save the files 
+and try the htmls keeping in mind the 
+saved files 
+   
+   
+*/ 

@@ -575,6 +575,13 @@ body
     color: #ccc !important; 
     cursor: default; 
 } 
+#file_expl #preview #file_preview #options ul li#Editar.modified::after {
+    content: "●";
+    width: 7.88em;
+    height: 7.88em;
+    color: #d1dd7e;
+    margin-left: 5px;
+}
 #file_expl #preview #file_preview #file 
 { 
 

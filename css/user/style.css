@@ -863,10 +863,10 @@ text-decoration: none;
 {
     bottom: 0 !important; 
 }
-section.video section.video .Enlarge {
+section.video .Enlarge {
     top: 23px; 
 }
-section.video section.video:hover .Enlarge {
+section.video:hover .Enlarge {
     display: block;
 }
 
@@ -1785,15 +1785,22 @@ display: inline-block;
 .foto .navigation, .foto .carr, .foto .picture{ 
     height: 105.7px; 
 } 
-.foto .carr, .mult_img .carr{ 
+.foto .carr, .mult_img .carr, .mult_carr .carr{ 
     writing-mode: vertical-lr; 
     width: 100%; 
     overflow: hidden; 
+    position: relative; 
 } 
-.foto .picture, .mult_img .picture{ 
+.mult_carr .video{ 
+    position: absolute; 
+    writing-mode: initial !important; 
+    top: 50%; 
+    transform: translateY(-50%); 
+} 
+.foto .picture, .mult_img .picture, .mult_carr .picture, .mult_carr .video{ 
     width: 100%; 
 } 
-.foto .picture .pic, .mult_img .picture .pic{ 
+.foto .picture .pic, .mult_img .picture .pic, .mult_carr .picture .pic{ 
     width: 100%; 
     object-fit: contain; 
 } 
@@ -1805,6 +1812,7 @@ display: inline-block;
     height: 100%; 
     position: absolute; 
     text-align: center; 
+    z-index: 1; 
 } 
 .nav_arrow .arrow{ 
     font-family: "icomoon"; 

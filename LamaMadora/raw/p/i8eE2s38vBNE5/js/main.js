@@ -74,7 +74,7 @@ selfDestructableSetIntervalWhichWaitsForSomething= setInterval(function(){
         );
     }; 
 
-    loadSVG( 'resources/Calles/StreetIII.svg', 0.1294318, new THREE.MeshStandardMaterial({ color: 0xfef0fe, roughness: 1, reflectivity: 0.47 }) ); 
+    loadSVG( '/LamaMadora/raw/p/i8eE2s38vBNE5/resources/Calles/StreetIII.svg', 0.1294318, new THREE.MeshStandardMaterial({ color: 0xfef0fe, roughness: 1, reflectivity: 0.47 }) ); 
     
     camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.001, 89 );
     camera.position.z= 0.888; 
