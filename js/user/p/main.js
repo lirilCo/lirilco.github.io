@@ -230,6 +230,23 @@ ace.EditSession.prototype.toJSON= function(){
     }; 
 }; 
 $(document).on("ready",function(e){
+    switch( localStorage.getItem("selected") ){ 
+        case "Editar": 
+            $( ".selected" ).removeClass( "selected" ); 
+            $( "#options #Editar" ).addClass( "selected" ); 
+            break; 
+        case "Live": 
+            $( ".selected" ).removeClass( "selected" ); 
+            $( "#options #Live" ).addClass( "selected" ); 
+            break; 
+        case "Archivo": 
+            $( ".selected" ).removeClass( "selected" ); 
+            $( "#options #Archivo" ).addClass( "selected" ); 
+            break; 
+        case null: 
+            break; 
+    } 
+
     sprtdUrl= []; 
     $('.chats').click(function(e){ 
         aa= e.target; 
@@ -440,15 +457,15 @@ $("#files .file").click(function(i, tr){
                         if( !!localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] )  ) ) ){ 
                             respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<style class= 'styleModificado' id= '" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "'>\n\n /*" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) + "\n\n</style>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ; 
                         }; 
-                    var ifrm= document.getElementsByTagName('iframe')[0]; 
-
-                    ifrm= (ifrm.contentWindow)? ifrm.contentWindow: (ifrm.contentDocument.document)? ifrm.contentDocument.document: ifrm.contentDocument; 
-                    ifrm.document.open(); 
-                    ifrm.document.write( root_and_raw_urls_in_HTMLs( respuesta ) ); 
-                    ifrm.document.close(); 
                     /*console.log( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + (!!localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) )? " ∘  modified": "    not modified") ); */ 
                 }; 
 
+                var ifrm= document.getElementsByTagName('iframe')[0]; 
+
+                ifrm= (ifrm.contentWindow)? ifrm.contentWindow: (ifrm.contentDocument.document)? ifrm.contentDocument.document: ifrm.contentDocument; 
+                ifrm.document.open(); 
+                ifrm.document.write( root_and_raw_urls_in_HTMLs( respuesta ) ); 
+                ifrm.document.close(); 
             };
             
             var xxa = new XMLHttpRequest(); 
@@ -491,6 +508,9 @@ $("#files .file").click(function(i, tr){
                     editor.session.setScrollLeft(session.scrollLeft); 
                     editor.session.setScrollTop(session.scrollTop); 
                     editor.session.selection.fromJSON(session.selection); 
+                    setTimeout(function(){ 
+                        editor.focus(); 
+                    }, 310); 
                 } 
                   
                 editor.getSession().on('change', function(){ 
@@ -1176,14 +1196,15 @@ $("#Archivo, #Live, #Editar").click(function(){
                         if( !!localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] )  ) ) ){ 
                             respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<style class= 'styleModificado' id= '" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "'>\n\n /*" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</style>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ; 
                         }; 
-                    var ifrm= document.getElementsByTagName('iframe')[0]; 
-
-                    ifrm= (ifrm.contentWindow)? ifrm.contentWindow: (ifrm.contentDocument.document)? ifrm.contentDocument.document: ifrm.contentDocument; 
-                    ifrm.document.open(); 
-                    ifrm.document.write( root_and_raw_urls_in_HTMLs( respuesta ) ); 
-                    ifrm.document.close(); 
                     /*console.log( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + (!!localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) )? " ∘  modified": "    not modified") ); */ 
                 }; 
+
+                var ifrm= document.getElementsByTagName('iframe')[0]; 
+
+                ifrm= (ifrm.contentWindow)? ifrm.contentWindow: (ifrm.contentDocument.document)? ifrm.contentDocument.document: ifrm.contentDocument; 
+                ifrm.document.open(); 
+                ifrm.document.write( root_and_raw_urls_in_HTMLs( respuesta ) ); 
+                ifrm.document.close();
 
             };
             
@@ -1195,9 +1216,11 @@ $("#Archivo, #Live, #Editar").click(function(){
             $(".code-filler").width(0); 
 
             $("#preview #file_preview #file").css({"visibility": "hidden", "opacity": "0"}); 
-        $("#preview #file_preview #filePr").css({"visibility": "hidden", "opacity": "0"}); 
-        $("#preview #file_preview #edit").css({"visibility": "visible", "opacity": "1"}); 
-        a= ""; 
+            $("#preview #file_preview #filePr").css({"visibility": "hidden", "opacity": "0"}); 
+            $("#preview #file_preview #edit").css({"visibility": "visible", "opacity": "1"}); 
+            $("#preview #file_preview #file")[0].innerHTML= ""; 
+            $("#preview #file_preview #filePr")[0].innerHTML= ""; 
+            a= ""; 
 
 
 /*
@@ -1236,6 +1259,9 @@ ifrm= (ifrm.contentWindow)? ifrm.contentWindow: (ifrm.contentDocument.document)?
                         editor.session.setScrollLeft(session.scrollLeft); 
                         editor.session.setScrollTop(session.scrollTop); 
                         editor.session.selection.fromJSON(session.selection); 
+                        setTimeout(function(){ 
+                            editor.focus(); 
+                        }, 310); 
                     } 
                     
                     editor.getSession().on('change', function(){ 
@@ -2008,15 +2034,15 @@ ee= function(){
                         if( !!localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] )  ) ) ){ 
                             respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<style class= 'styleModificado' id= '" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "'>\n\n /*" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) + "\n\n</style>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ; 
                         }; 
-                    var ifrm= document.getElementsByTagName('iframe')[0]; 
-
-                    ifrm= (ifrm.contentWindow)? ifrm.contentWindow: (ifrm.contentDocument.document)? ifrm.contentDocument.document: ifrm.contentDocument; 
-                    ifrm.document.open(); 
-                    ifrm.document.write( root_and_raw_urls_in_HTMLs( respuesta ) ); 
-                    ifrm.document.close(); 
                     /*console.log( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + (!!localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) )? " ∘  modified": "    not modified") ); */ 
                 }; 
 
+                var ifrm= document.getElementsByTagName('iframe')[0]; 
+
+                ifrm= (ifrm.contentWindow)? ifrm.contentWindow: (ifrm.contentDocument.document)? ifrm.contentDocument.document: ifrm.contentDocument; 
+                ifrm.document.open(); 
+                ifrm.document.write( root_and_raw_urls_in_HTMLs( respuesta ) ); 
+                ifrm.document.close(); 
             };
             
             var xxa = new XMLHttpRequest(); 
@@ -2029,6 +2055,8 @@ ee= function(){
             $("#preview #file_preview #file").css({"visibility": "hidden", "opacity": "0"}); 
         $("#preview #file_preview #filePr").css({"visibility": "hidden", "opacity": "0"}); 
         $("#preview #file_preview #edit").css({"visibility": "visible", "opacity": "1"}); 
+        $("#preview #file_preview #filePr")[0].innerHTML= ""; 
+        $("#preview #file_preview #file")[0].innerHTML= ""; 
         a= ""; 
 
         switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].lastIndexOf(".") + 1)){ 
@@ -2059,6 +2087,9 @@ ee= function(){
                         editor.session.setScrollLeft(session.scrollLeft); 
                         editor.session.setScrollTop(session.scrollTop); 
                         editor.session.selection.fromJSON(session.selection); 
+                        setTimeout(function(){ 
+                            editor.focus(); 
+                        }, 310); 
                     } 
                       
                     editor.getSession().on('change', function(){ 
