@@ -525,6 +525,7 @@ $("#files .file").click(function(i, tr){
                 editor.getSession().on('change', function(){ 
                     localStorage.setItem( FileToRequest, JSON.stringify( {value: editor.getValue(), undoManager: JSON.stringify( editor.getSession() )} ) ); 
                     JSON.parse( localStorage.getItem( FileToRequest ) ).value === editor.valorOriginal? $( "#file_expl #preview #file_preview #options ul li#Editar" ).removeClass( "modified" ): $( "#file_expl #preview #file_preview #options ul li#Editar" ).addClass( "modified" ); 
+                    JSON.parse( localStorage.getItem( FileToRequest ) ).value === editor.valorOriginal? localStorage.removeItem( FileToRequest ): 1; 
                 }); 
                 editor.valorOriginal= this.responseText; 
                 editor.setOption("enableEmmet", true);
@@ -1276,6 +1277,7 @@ ifrm= (ifrm.contentWindow)? ifrm.contentWindow: (ifrm.contentDocument.document)?
                     editor.getSession().on('change', function(){ 
                         localStorage.setItem( FileToRequest, JSON.stringify( {value: editor.getValue(), undoManager: JSON.stringify( editor.getSession() )} ) ); 
                         JSON.parse( localStorage.getItem( FileToRequest ) ).value === editor.valorOriginal? $( "#file_expl #preview #file_preview #options ul li#Editar" ).removeClass( "modified" ): $( "#file_expl #preview #file_preview #options ul li#Editar" ).addClass( "modified" ); 
+                        JSON.parse( localStorage.getItem( FileToRequest ) ).value === editor.valorOriginal? localStorage.removeItem( FileToRequest ): 1; 
                     }); 
                     editor.valorOriginal= this.responseText; 
                     editor.setOption("enableEmmet", true) 
@@ -1321,6 +1323,12 @@ ifrm= (ifrm.contentWindow)? ifrm.contentWindow: (ifrm.contentDocument.document)?
     }
 }); 
     
+
+$("#Raw").on("contextmenu", function(e){ 
+    e.preventDefault(); 
+    !!FileToRequest? window.open(FileToRequest.replace( "raw/p/", "raw/#/" ), '_blank').focus(): 1; 
+}); 
+
 $("#Raw").click(function(){ 
     !!FileToRequest? window.open(FileToRequest, '_blank').focus(): 1; 
 }); 
@@ -2104,6 +2112,7 @@ ee= function(){
                     editor.getSession().on('change', function(){ 
                         localStorage.setItem( FileToRequest, JSON.stringify( {value: editor.getValue(), undoManager: JSON.stringify( editor.getSession() )} ) ); 
                         JSON.parse( localStorage.getItem( FileToRequest ) ).value === editor.valorOriginal? $( "#file_expl #preview #file_preview #options ul li#Editar" ).removeClass( "modified" ): $( "#file_expl #preview #file_preview #options ul li#Editar" ).addClass( "modified" ); 
+                        JSON.parse( localStorage.getItem( FileToRequest ) ).value === editor.valorOriginal? localStorage.removeItem( FileToRequest ): 1; 
                     }); 
                     editor.valorOriginal= this.responseText; 
                     editor.setOption("enableEmmet", true) 
@@ -2146,7 +2155,7 @@ ee= function(){
   
 purger= {}; 
 
-purger.index= 4; 
+purger.index= 5; 
 
 purger.purge= function(a){ 
     if((localStorage.getItem("safety_purge") === null || (localStorage.getItem("safety_purge") !== null && parseInt(localStorage.getItem("safety_purge")) != purger.index)) || (typeof a != "undefined" && a == "bypass")){ 

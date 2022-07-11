@@ -1,3 +1,5 @@
+//Sé MUUUUUY cuidadoso con los módulos. ¡NO los modifiques! 
+
 // math-inlining.
 const { abs, cos, sin, acos, atan2, sqrt, pow } = Math;
 

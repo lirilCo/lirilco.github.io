@@ -2079,7 +2079,7 @@ badGuy= function(){
 }
 purger= {}; 
 
-purger.index= 4; 
+purger.index= 5; 
 
 purger.purge= function(a){ 
     if((localStorage.getItem("safety_purge") === null || (localStorage.getItem("safety_purge") !== null && parseInt(localStorage.getItem("safety_purge")) != purger.index)) || (typeof a != "undefined" && a == "bypass")){ 
