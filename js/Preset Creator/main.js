@@ -19,6 +19,8 @@ select = false;
 copiedLeft = 0;
 drawing= false; 
 $(document).on("ready",function(){ 
+	purger.purge(); 
+					
 	$("#frame").on("click", function(){ 
 		$('#fantasma')[0].innerHTML= $('.widgetero')[0].innerHTML; $('#fantasma .widget .ui-resizable-handle').remove(); 
 		$('#fantasma .widget .coverDiv').remove(); 
@@ -695,3 +697,20 @@ caSe= function(){
 setInterval(function(){caSe(); }, 1); 
 */ 
 
+purger= {}; 
+            
+purger.index= 7; 
+                 
+purger.purge= function( a ){ 
+    if( ( localStorage.getItem( "safety_purge" ) === null || ( localStorage.getItem( "safety_purge" ) !== null && parseInt( localStorage.getItem( "safety_purge" ) ) != purger.index ) ) || ( typeof a != "undefined" && a == "bypass" ) ){ 
+        for( ii in localStorage ){ 
+            if( typeof localStorage[ii] != "function" && ii != "length" && ["safety_purge", "tooltip", "knob", "filesWidth", "user", "selected"].indexOf( ii ) == -1 ){ 
+                ( function( a ){ var av= a; for( var v= 1; v <= 2; v++ )av= av.slice( av.indexOf("/") + 1 ); return av } )( ii ).indexOf( "raw" ) === 0? console.log( ii ): localStorage.removeItem( ii ); 
+            } 
+        } 
+          
+        localStorage.setItem("safety_purge", purger.index); 
+                                
+        console.log("Purged!"); 
+    }; 
+}; 

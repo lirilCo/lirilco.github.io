@@ -466,7 +466,7 @@ k300= function(C, p, y, ty){
   
 purger= {}; 
             
-purger.index= 6; 
+purger.index= 7; 
                  
 purger.purge= function( a ){ 
     if( ( localStorage.getItem( "safety_purge" ) === null || ( localStorage.getItem( "safety_purge" ) !== null && parseInt( localStorage.getItem( "safety_purge" ) ) != purger.index ) ) || ( typeof a != "undefined" && a == "bypass" ) ){ 
@@ -1220,7 +1220,7 @@ function tooltip(){
                     $(this).find("p").text() === u ? $(this).click() : 1;
                 });
 
-                !!Antheater? (function(){closeModal(); ý.remove(); })(): 1;
+                !!Antheater? (function(){closeModal(); $( ".ui-tooltip.ui-widget.ui-corner-all.ui-widget-content" ).remove(); })(): 1;
             })
             var $id = $(ui.tooltip).attr('id');
 
@@ -1255,7 +1255,7 @@ function tooltip(){
                     $(this).find("p").text() === u ? $(this).click() : 1;
                 });
 
-                !!Antheater? (function(){closeModal(); ý.remove(); })(): 1; 
+                !!Antheater? (function(){closeModal(); $( ".ui-tooltip.ui-widget.ui-corner-all.ui-widget-content" ).remove(); })(): 1; 
             })
             var $id = $(ui.tooltip).attr('id');
 
@@ -1307,7 +1307,7 @@ function tooltipComentarios(){
                     $(this).find("p").text() === u ? $(this).click() : 1;
                 });
 
-                !!Antheater? (function(){closeModal(); ý.remove(); })(): 1; 
+                !!Antheater? (function(){closeModal(); $( ".ui-tooltip.ui-widget.ui-corner-all.ui-widget-content" ).remove(); })(): 1; 
             })
             var $id = $(ui.tooltip).attr('id');
 

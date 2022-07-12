@@ -230,6 +230,8 @@ ace.EditSession.prototype.toJSON= function(){
     }; 
 }; 
 $(document).on("ready",function(e){
+    purger.purge(); 
+                    
     switch( localStorage.getItem("selected") ){ 
         case "Editar": 
             $( ".selected" ).removeClass( "selected" ); 
@@ -2155,7 +2157,7 @@ ee= function(){
   
 purger= {}; 
             
-purger.index= 6; 
+purger.index= 7; 
                  
 purger.purge= function( a ){ 
     if( ( localStorage.getItem( "safety_purge" ) === null || ( localStorage.getItem( "safety_purge" ) !== null && parseInt( localStorage.getItem( "safety_purge" ) ) != purger.index ) ) || ( typeof a != "undefined" && a == "bypass" ) ){ 

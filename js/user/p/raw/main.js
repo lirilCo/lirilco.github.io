@@ -152,6 +152,8 @@ root_and_raw_urls_in_HTMLs= function( doc ){
 }
   
 $( document ).on( "ready", function(){
+    purger.purge(); 
+                    
  	function reqListener () { 
         respuesta= localStorage.getItem(FileToRequest) != null? JSON.parse( localStorage.getItem( FileToRequest ) ).value: this.responseText; 
 
@@ -180,3 +182,21 @@ $( document ).on( "ready", function(){
     xxa.open("GET", FileToRequest); 
     xxa.send(); 
 } )
+    
+purger= {}; 
+            
+purger.index= 7; 
+                 
+purger.purge= function( a ){ 
+    if( ( localStorage.getItem( "safety_purge" ) === null || ( localStorage.getItem( "safety_purge" ) !== null && parseInt( localStorage.getItem( "safety_purge" ) ) != purger.index ) ) || ( typeof a != "undefined" && a == "bypass" ) ){ 
+        for( ii in localStorage ){ 
+            if( typeof localStorage[ii] != "function" && ii != "length" && ["safety_purge", "tooltip", "knob", "filesWidth", "user", "selected"].indexOf( ii ) == -1 ){ 
+                ( function( a ){ var av= a; for( var v= 1; v <= 2; v++ )av= av.slice( av.indexOf("/") + 1 ); return av } )( ii ).indexOf( "raw" ) === 0? console.log( ii ): localStorage.removeItem( ii ); 
+            } 
+        } 
+          
+        localStorage.setItem("safety_purge", purger.index); 
+                                
+        console.log("Purged!"); 
+    }; 
+}; 

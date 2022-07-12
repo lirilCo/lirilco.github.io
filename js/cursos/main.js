@@ -697,7 +697,8 @@ function closeModal() {
     })
 }
 $(document).on("ready",function(e){
-
+    purger.purge(); 
+                    
     $("html").click(function() {
         $(".wrapper").removeClass("visible")
         $("#right-menu .index-arrow").removeClass("open");
@@ -1110,3 +1111,21 @@ function sizeMessages(a){
 function scrollBottom(d){
     d.scrollTop(d.prop("scrollHeight"));
 }
+
+purger= {}; 
+            
+purger.index= 7; 
+                 
+purger.purge= function( a ){ 
+    if( ( localStorage.getItem( "safety_purge" ) === null || ( localStorage.getItem( "safety_purge" ) !== null && parseInt( localStorage.getItem( "safety_purge" ) ) != purger.index ) ) || ( typeof a != "undefined" && a == "bypass" ) ){ 
+        for( ii in localStorage ){ 
+            if( typeof localStorage[ii] != "function" && ii != "length" && ["safety_purge", "tooltip", "knob", "filesWidth", "user", "selected"].indexOf( ii ) == -1 ){ 
+                ( function( a ){ var av= a; for( var v= 1; v <= 2; v++ )av= av.slice( av.indexOf("/") + 1 ); return av } )( ii ).indexOf( "raw" ) === 0? console.log( ii ): localStorage.removeItem( ii ); 
+            } 
+        } 
+          
+        localStorage.setItem("safety_purge", purger.index); 
+                                
+        console.log("Purged!"); 
+    }; 
+}; 
