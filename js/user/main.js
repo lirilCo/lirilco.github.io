@@ -406,7 +406,7 @@ function openModal(a){
     }else if(a.closest('.story').is(".repost")){ 
         source= un_tn($("#theater").find("#bigPic")[0].src); 
         history.pushState({page: 1}, "", "/" + $(a.closest('.story').find(".target")[1])[0].href.slice($(a.closest('.story').find(".target")[1])[0].href.lastIndexOf("/") + 1) + "/img/" + un_tn(source).slice(un_tn(source).lastIndexOf("/") + 1, -4)); 
-        lk= $( th.find(".carr > section")[Math.round(th.find(".carr")[0].scrollLeft / th.find(".carr").width())] ).is(".picture")? th.find(".carr > section")[Math.round(th.find(".carr")[0].scrollLeft / th.find(".carr").width())].querySelector( ".pic" ).src: $( th.find(".carr > section")[Math.round(th.find(".carr")[0].scrollLeft / th.find(".carr").width())] ).find( "source" ).attr( "src" ); th.find(".options a").attr("href", "/" + username + tipo( lk ) + lk.slice(lk.lastIndexOf("/") + 1, lk.lastIndexOf("."))); 
+        //lk= $( th.find(".carr > section")[Math.round(th.find(".carr")[0].scrollLeft / th.find(".carr").width())] ).is(".picture")? th.find(".carr > section")[Math.round(th.find(".carr")[0].scrollLeft / th.find(".carr").width())].querySelector( ".pic" ).src: $( th.find(".carr > section")[Math.round(th.find(".carr")[0].scrollLeft / th.find(".carr").width())] ).find( "source" ).attr( "src" ); th.find(".options a").attr("href", "/" + username + tipo( lk ) + lk.slice(lk.lastIndexOf("/") + 1, lk.lastIndexOf(".")));  
     }
 
     $(".zer")[0].innerHTML= ".ui-tooltip{z-index: 4 !important; }; "; 
@@ -800,7 +800,7 @@ asdknki4= "<div class='comentario'>" + "<input class='knob button' data-width='2
 H= asdknki4; 
 var nonBuilt; 
 function closeModal(){ 
-    th= $( th.context ).closest(".story").length? $( th.context ).closest(".story"): $( th.context ).closest(".foto").length? $( th.context ).closest(".foto"): $( th.context ).closest('#profilePic').length? $( th.context ).closest('#profilePic'): th.context; 
+    if( typeof th != "undefined" ){ th= $( th.context ).closest(".story").length? $( th.context ).closest(".story"): $( th.context ).closest(".foto").length? $( th.context ).closest(".foto"): $( th.context ).closest('#profilePic').length? $( th.context ).closest('#profilePic'): th.context }else{ th= Antheater }; 
 
     $(".Comentario .media > div").prop('outerHTML', function(){return $(this).find("audio").prop("outerHTML")}); 
     
@@ -829,6 +829,9 @@ function closeModal(){
     $("#theater #otherContainments > div").html("")
 
     ar= null; 
+
+    a= null; 
+
     $("#theater").find(".more")[0].outerHTML= "<p class= 'more'></p>"; 
     $("#theater .nav_arrow").remove(); 
     $(".zer")[0].innerHTML= ".ui-tooltip{z-index: 1 !important; }; "; 
@@ -968,7 +971,7 @@ bGComments= function(arg){
     return bG; 
 }
 badGuy= function(){ 
-    Antheater= $( th.context ).closest(".story").length? $( th.context ).closest(".story"): $( th.context ).closest(".foto").length? $( th.context ).closest(".foto"): $( th.context ).closest('#profilePic').length? $( th.context ).closest('#profilePic'): th.context; 
+    Antheater= $("#theater").css("display") != "none"? $( "#theater" ): $( th.context ).closest(".story").length? $( th.context ).closest(".story"): $( th.context ).closest(".foto").length? $( th.context ).closest(".foto"): $( th.context ).closest('#profilePic').length? $( th.context ).closest('#profilePic'): th.context; 
     iTS= un_tn(!!Antheater.length? !!Antheater.find(".carr").length? window.location.pathname.slice(0, window.location.pathname.lastIndexOf("/")) + $(Antheater).find(".carr").find("img")[0].src.slice($(Antheater).find(".carr").find("img")[0].src.lastIndexOf("/"), $(Antheater).find(".carr").find("img")[0].src.lastIndexOf(".")): window.location.pathname: $(".current").is(".mult_img")? $(".current").find(".options a").attr("href").slice(0, $(".current").find(".options a").attr("href").lastIndexOf("/")) + $(".current").find(".carr").find("img")[0].src.slice($(".current").find(".carr").find("img")[0].src.lastIndexOf("/"), $(".current").find(".carr").find("img")[0].src.lastIndexOf(".")): $(".current").find(".options a").attr("href"), (!Antheater.length || (!!Antheater.length && ((Antheater.is(".vid") || Antheater.is(".foto") || Antheater.is("#profilePic")) && (!Antheater.is(".mult_img"))) || Antheater.is(".story")) || Antheater.is("#theater"))? true: false); 
     localStorage.setItem(iTS, JSON.stringify({B: ($("#theater").css("display") == "block"? $("#theater .options .bookmark").hasClass("true"): $(".current").find(".options .bookmark").hasClass("true"))? true: false, S: ($("#theater").css("display") == "block"? $("#theater .options .star").hasClass("true"): $(".current").find(".options .star").hasClass("true"))? true: false, C: bGComments(), hash: ((localStorage.getItem(iTS) != null && (typeof JSON.parse(localStorage.getItem(iTS)).hash != "undefined"))? JSON.parse(localStorage.getItem(iTS)).hash: hashes[iTS])})); 
     $(".story").each(function(){ 
@@ -1024,30 +1027,25 @@ badGuy= function(){
         })(): 1; 
     }
 }
+
 purger= {}; 
-
-purger.index= 5; 
-
-purger.purge= function(a){ 
-    if((localStorage.getItem("safety_purge") === null || (localStorage.getItem("safety_purge") !== null && parseInt(localStorage.getItem("safety_purge")) != purger.index)) || (typeof a != "undefined" && a == "bypass")){ 
-        knob= !!localStorage.getItem("knob")? localStorage.getItem("knob"): "<input class='knob button' data-width='28' data-height='28' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.18' readonly value='100'><img title="; 
-        tool= !!localStorage.getItem("tooltip")? localStorage.getItem("tooltip"): "<div class='tool'><input class='knob button' data-width='102' data-height='102' data-fgColor='#2ecc71' data-bgColor='rgba(0,0,0,0)' data-displayInput=false data-thickness='.08' readonly value='100'><img src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif'><div class='datos'><ul class='actions'><li class='chatear' title='Chatear'>C</li><li class='agregar' title='Agregar'>A</li><li class='juzgar' title='Juzgar'>J</li></ul><p class='username' title= 'Luis Eduardo Gallego García'>Luis Eduardo Gallego García</p><p class='rol'>CEO <b style='color:#fff;'>+100</b></p></div><div class='insignia' style='top: 9px;' title='Proyecto completado (aNGEL();)'></div><div class='insignia' style='top: 22px;'title='Proyecto completado (por_siLaBas();)'></div><div class='insignia' style='top: 14px;' title='Proyecto completado (dinosaurios)'> </div><div class='insignia' style='top: 39px;' title='EP (Planifique)'> </div> <div class='insignia' style='top: 43px;' title='Proyecto completado (Robot De Dedicatorias)'> </div></div>"; 
-        user= !!localStorage.getItem("user")? localStorage.getItem("user"): " src='/resources/images/A.K.A._Dizzy/1AzV0qwVwn_tn.gif' alt=''>&nbsp<a target= '_blank'  href='/A.K.A._Dizzy' >Luis Eduardo Gallego García</a><span class='is'>: </span><span class='Comentario'>"; 
-        localStorage.clear(); 
-        localStorage.setItem("knob", knob); 
-        localStorage.setItem("tooltip", tool); 
-        localStorage.setItem("user", user); 
-        localStorage.removeItem("Purged"); 
-        localStorage.removeItem("purged"); 
-        localStorage.removeItem("p3rged"); 
-        localStorage.removeItem("pvrged"); 
-        localStorage.removeItem("Safety_purge"); 
-        localStorage.removeItem("safetyPurge"); 
+            
+purger.index= 6; 
+                 
+purger.purge= function( a ){ 
+    if( ( localStorage.getItem( "safety_purge" ) === null || ( localStorage.getItem( "safety_purge" ) !== null && parseInt( localStorage.getItem( "safety_purge" ) ) != purger.index ) ) || ( typeof a != "undefined" && a == "bypass" ) ){ 
+        for( ii in localStorage ){ 
+            if( typeof localStorage[ii] != "function" && ii != "length" && ["safety_purge", "tooltip", "knob", "filesWidth", "user", "selected"].indexOf( ii ) == -1 ){ 
+                ( function( a ){ var av= a; for( var v= 1; v <= 2; v++ )av= av.slice( av.indexOf("/") + 1 ); return av } )( ii ).indexOf( "raw" ) === 0? console.log( ii ): localStorage.removeItem( ii ); 
+            } 
+        } 
+          
         localStorage.setItem("safety_purge", purger.index); 
+                                
         console.log("Purged!"); 
     }; 
 }; 
-
+   
 var hashes= {}; 
 
 tipo= function( liurl ){ 
@@ -1161,7 +1159,7 @@ switch(ty){
                 a= $(this); 
                 (function(){ 
                     a.on( "click", function(r){ 
-                        $( r.target ).is( ".picture > .pic" )? openModal( $( r.target ) ): 1; 
+                        $( r.target ).is( ".pic" )? openModal( $( r.target ) ): 1; 
                         $( r.target ).is( ".video .Enlarge" )? openVideoModal( $( r.target ) ): 1; 
                         $( r.target ).is( ".options .Enlarge" )? openOtherModal( $( r.target ) ): 1; 
                     } ); 
@@ -1279,7 +1277,7 @@ k300= function(C, p, y, ty){
                         a= $(this); 
                         (function(){ 
                             a.on( "click", function(r){ 
-                                $( r.target ).is( ".picture > .pic" )? openModal( $( r.target ) ): 1; 
+                                $( r.target ).is( ".pic" )? openModal( $( r.target ) ): 1; 
                                 $( r.target ).is( ".video .Enlarge" )? openVideoModal( $( r.target ) ): 1; 
                                 $( r.target ).is( ".options .Enlarge" )? openOtherModal( $( r.target ) ): 1; 
                             } ); 
@@ -1361,7 +1359,7 @@ K100= function(builds){
             a= t; 
             !(!!cold && (cold.hash))? (function(){
                 a.on( "click", function(r){ 
-                    $( r.target ).is( ".picture > .pic" )? openModal( $( r.target ) ): 1; 
+                    $( r.target ).is( ".pic" )? openModal( $( r.target ) ): 1; 
                     $( r.target ).is( ".video .Enlarge" )? openVideoModal( $( r.target ) ): 1; 
                     $( r.target ).is( ".options .Enlarge" )? openOtherModal( $( r.target ) ): 1; 
                 } ); 
@@ -1756,13 +1754,13 @@ $(window).on("load", function (){
 
     $(".star").on("click", function (){ 
         $(this).toggleClass("true"); 
-        th= $( th.context ).closest(".story").length? $( th.context ).closest(".story"): $( th.context ).closest(".foto").length? $( th.context ).closest(".foto"): $( th.context ).closest('#profilePic').length? $( th.context ).closest('#profilePic'): th.context; 
 
         if(!$(this).closest("#theater").length){ 
             $(".current").removeClass("current"); 
             $(this).closest(".story").addClass("current"); 
             $($(".current")[0]).attr("tabindex", 0); 
             $(".current")[0].focus(); 
+            th= $(".current"); 
         }; 
         badGuy(); 
     }); 
@@ -1773,6 +1771,7 @@ $(window).on("load", function (){
             $(this).closest(".story").addClass("current"); 
             $($(".current")[0]).attr("tabindex", 0); 
             $(".current")[0].focus(); 
+            th= $(".current"); 
         }; 
         badGuy(); 
     }); 
@@ -1840,7 +1839,7 @@ document.onkeydown= function (evt){
     } 
 
     ((!!ar || ($("#theater").css("display") == "none" && ($(".current").is(".mult_img") || $(".current").is(".mult_carr")))))? (function(){ 
-        th= $( th.context ).closest(".story").length? $( th.context ).closest(".story"): $( th.context ).closest(".foto").length? $( th.context ).closest(".foto"): $( th.context ).closest('#profilePic').length? $( th.context ).closest('#profilePic'): th.context; 
+        //th= $( th.context ).closest(".story").length? $( th.context ).closest(".story"): $( th.context ).closest(".foto").length? $( th.context ).closest(".foto"): $( th.context ).closest('#profilePic').length? $( th.context ).closest('#profilePic'): th.context;  
         switch(evt.keyCode){
             case 37: 
                 th= $("#theater").css("display") == "none"? $(".current"): th; 

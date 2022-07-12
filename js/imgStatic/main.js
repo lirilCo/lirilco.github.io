@@ -172,6 +172,8 @@ $('.theater .comments .comentarios .Comentarios .comentario').on("mousemove", fu
     localStorage.setItem(f.target.responseURL.slice(100, -5), JSON.stringify({B: JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).B, S: JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).S, C: JSON.parse(localStorage.getItem(f.target.responseURL.slice(100, -5))).C, hash: u[0].sha})); 
 }
 k300= function(C, p, y, ty){ 
+    typeof JSON.parse(C.target.response)[0] == "undefined"? console.log(C): 1; 
+
     hashes[C.target.responseURL.slice(C.target.responseURL.lastIndexOf("=") + 1, C.target.responseURL.lastIndexOf("."))]= (function(){built= true; for(eForensics in JSON.parse(C.target.response)){ 
             if(nonBuilt.indexOf(JSON.parse(C.target.response)[eForensics].sha) != -1){ 
                 built= parseInt(eForensics) + 1; 
@@ -377,6 +379,7 @@ $(function(){
 })
 document.addEventListener("DOMContentLoaded", function(){
     Antheater= $("#theater"); 
+    th= Antheater; 
     console.log($("#theater")); 
     
 
