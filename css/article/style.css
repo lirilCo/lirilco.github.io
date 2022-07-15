@@ -892,10 +892,12 @@ content: "\e904"
 .code-scroll{
     overflow-x: scroll;
     width: 100%;
+    position: sticky;
+    top: 45px;
 }
 .code-filler
 {
-    height: 2px
+    height: 1px
 }
 .buscar
 {

@@ -21,7 +21,6 @@
     <script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="/js/index/modernizr.custom.js"></script>
     <script src="/js/jquery-ui.min.js"></script>
-    <script src="/js/sticky-kit.min.js"></script>
     <script src="/js/jquery.knob.js">
     </script>
     <script>
@@ -469,11 +468,6 @@
         $(this).siblings(".code-scroll").scrollLeft($(this).scrollLeft());
 
     });
-
-    $(".code-scroll").stick_in_parent({ recalc_every: 1, offset_top: 44 })
-    $(document).on("ready", function() {
-        Prism.highlightAll();
-    })
     </script>
 </body>
 

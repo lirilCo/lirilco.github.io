@@ -21,7 +21,6 @@
     <script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="/js/index/modernizr.custom.js"></script>
     <script src="/js/jquery-ui.min.js"></script>
-    <script src="/js/sticky-kit.min.js"></script>
     <script src="/js/jquery.knob.js">
     </script>
     <script>
@@ -263,7 +262,7 @@
             <p>Esos poemas se llaman SuaveEfectoCafetero. Yo los escribí hace algún tiempo. Tienen 77 palabras en español y 355 caracteres (letras, signos de puntuación, todo lo que no sea un espacio), y sus traducciones exactas al inglés tienen 87 palabras y 355 caracteres. Normalmente uso su rectángulo negro para parsear aNGEL(); y por_siLaBas();. Puedes <i>"pegarle mordiscos"</i>; borrar letras o palabras o escribir más.</p>
             <p>&nbsp&nbsp&nbsp&nbspDigámoslo así, está bien suave el efecto cafetero... estos poemas, por ejemplo, no son <a target="_blank" href="/A.K.A._Dizzy/blog/Algunas Propiedades De Mis Escritos"><u>infinitas</u> operaciones matemáti</a>cas hasta cada punto, no se leen hacia atrás de ninguna manera, no están en ningún nombre de todas las maneras que suelen estar en el nombre de todos en El Universo mis escritos; sólo están en mi nombre, Luis Eduardo Gallego García Echeverri Arias Ruiz Cardona, desde la primera letra de mi nombre, hacia adelante, <i>por letras, su nombre en el abecedario</i> desde la primera sílaba de éstos.</p>
             <h1 style="color: inherit; ">¿Por qué causa una crisis existencial? </h1>
-            <p>por_siLaBas();, al igual que aNGEL(); y dinosaurios(); traduce ejecutando algoritmos sobre la frase o texto a traducir y luego leyendo el resultado en tu lenguaje. aNGEL();, por ejemplo, traduce cosas escritas con muy buena ortografía en cualquier lenguaje al tuyo y tiene 55 líneas de código (Javascript). Y por_siLaBas(); traduce cosas escritas en tu lenguaje a todos los lenguajes a la vez. dinosaurios(); traduce cosas que te dicen en cualquier lenguaje al tuyo. Como esto implica intervención divina puede que te atraviese las pupilas con una minora, además es muuuuy preciso y divertido.</p>
+            <p>por_siLaBas();, al igual que aNGEL(); y dinosaurios(); traduce ejecutando algoritmos sobre la frase o texto a traducir y luego leyendo el resultado en tu lenguaje. aNGEL();, por ejemplo, traduce cosas escritas con muy buena ortografía en cualquier lenguaje al tuyo y tiene 55 líneas de código (Javascript). Y por_siLaBas(); traduce cosas escritas en tu lenguaje a todos los lenguajes a la vez. dinosaurios(); traduce cosas que te dicen en cualquier lenguaje al tuyo.</p>
             <h1 style="color: inherit; ">Veamos el código primero </h1>
             <h2 style="color: inherit; ">El Javascript: </h2>
             <section class="code">
@@ -579,11 +578,6 @@
         $(this).siblings(".code-scroll").scrollLeft($(this).scrollLeft());
 
     });
-
-    $(".code-scroll").stick_in_parent({ recalc_every: 1, offset_top: 44 })
-    $(document).on("ready", function() {
-        Prism.highlightAll();
-    })
     </script>
 </body>
 
