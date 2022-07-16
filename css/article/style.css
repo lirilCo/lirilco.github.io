@@ -1685,3 +1685,12 @@ time{
     padding: 0 2px 0 2px; 
     box-sizing: border-box; 
 } 
+.poema 
+{ 
+    position: relative; 
+} 
+.nombre 
+{ 
+    position: sticky; 
+    top: 44px; 
+} 
