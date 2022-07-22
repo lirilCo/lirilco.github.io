@@ -575,6 +575,10 @@ body
     color: #ccc !important; 
     cursor: default; 
 } 
+#file_expl #preview #file_preview #options ul li#Live.selected.modified a 
+{ 
+    color: #c7ca63 !important; 
+} 
 #file_expl #preview #file_preview #options ul li#Editar.modified::after {
     content: "●";
     width: 7.88em;
@@ -740,3 +744,22 @@ header nav ul li#right-menu #store::before {
 #forkedFrom a:hover {
     text-decoration: underline; 
 }
+div#contextmenu ul {
+  padding: 0;
+}
+div#contextmenu ul > li {
+  list-style: none;
+  width: 100%;
+  padding: 0 !important;
+  height: 21px; 
+  color: #c2009d9c; 
+}
+div#contextmenu ul > li button {
+  font-size: 11px;
+  height: 100%;
+  width: 100%;
+}
+badguy 
+{ 
+    display: none; 
+} 

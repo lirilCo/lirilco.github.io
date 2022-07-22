@@ -431,11 +431,12 @@ th {
   width: 100%; 
   padding: 20px; 
   border-bottom: solid 2px #ccc; 
-  box-sizing: border-box; 
+  box-sizing: content-box; 
   list-style-type: none; 
   margin: 0; 
   display: flex; 
   overflow-x: auto; 
+  max-height: 22px;
 } 
 #root .contnr div, #root .contnr span 
 { 

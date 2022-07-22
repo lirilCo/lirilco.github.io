@@ -170,6 +170,8 @@ $( document ).on( "ready", function(){
             /*console.log( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + (!!localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) )? " ∘  modified": "    not modified") ); */ 
         }; 
 
+        respuesta= respuesta.indexOf( "<!" ) !== 0? "<pre>" + respuesta + "</pre>": respuesta; 
+
         document.open(); 
         console.log( respuesta ); 
         document.write( root_and_raw_urls_in_HTMLs( respuesta ) ); 
