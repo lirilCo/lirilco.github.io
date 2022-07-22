@@ -1367,7 +1367,7 @@ window.addEventListener( 'blur', function(){
 $(document).on("ready",function(e){
     purger.purge(); 
 
-    if( pId === "8d299s2gvkL9" )$( "#files ul.file_tree" ).html( JSON.parse( localStorage.getItem( "file_tree" ) ) )
+    if( pId === "8d299s2gvkL9" && JSON.parse( localStorage.getItem( "file_tree" ) ) != null && localStorage.getItem( "file_tree" ) != "\"\"" )$( "#files ul.file_tree" ).html( JSON.parse( localStorage.getItem( "file_tree" ) ) )
 
 
     Live.addEventListener( "contextmenu", function( a ){
