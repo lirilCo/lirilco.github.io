@@ -34,6 +34,44 @@ contextMenu.children= function( t, k ){
     $( "div#contextmenu > ul" ).append( '<li id= "' + k + '"><button>' + t + '</button></li>' ); 
 }
  
+window.addEventListener( 'popstate', function(event) {
+if( $( "#root > div > DIV" ).last().is( $( "#root > div > DIV" )[1] ) ){
+$( "#root > div > DIV" ).last().children().filter("a").trigger( "click" )
+return
+}
+
+sprtdUrl= separateUrl(getToBusiness(window.location.pathname.replaceAll("%20", " ").replaceAll("%C3%A1", "á").replaceAll("%C3%81", "Á").replaceAll("%C3%A9", "é").replaceAll("%C3%89", "É").replaceAll("%C3%AD", "í").replaceAll("%C3%8D", "Í").replaceAll("%C3%B3", "ó").replaceAll("%C3%93", "Ó").replaceAll("%C3%BA", "ú").replaceAll("%C3%9A", "Ú"))); 
+
+LEB= $("#files .file_tree"); 
+                             
+for(eForensics in sprtdUrl){
+for(fi= 0; fi <= $(LEB).children().length - 1; fi++){
+if(($($(LEB).children()[fi]).hasClass("folder_cont") || $($(LEB).children()[fi]).hasClass("file"))){
+(!$($(LEB).children()[fi]).hasClass("file") && $($(LEB).children()[fi]).children()[0].innerText == sprtdUrl[eForensics])? LEB= $($(LEB).children()[fi])[0]: $($(LEB).children()[fi])[0].innerText == sprtdUrl[eForensics]? LEB= $($(LEB).children()[fi])[0]: 1
+}
+}
+}
+ 
+$(LEB).is(".folder_cont")? LEB= $(LEB).children()[0]: 1; 
+$(".inScope").removeClass("inScope"); 
+window.location.hash == "#infor"? $(LEB)[0].dispatchEvent(new CustomEvent('contextmenu')): $(LEB).trigger("click", true); 
+localStorage.getItem("filesWidth") != null? $("#files").width(parseInt(localStorage.getItem("filesWidth")) + "px"): 1216564; 
+responsive(); 
+localStorage.getItem("selected") != null? $("#"+ localStorage.getItem("selected")).click(): 3413221227; 
+} )
+$(".wrapper").addClass("visible")
+
+$( "div#contextmenu" ).css( { 
+    display: "block", 
+    background: 'rgba( 255, 255, 255, 155 )', 
+    position: "absolute", 
+    width: "127px", 
+    height: "211px", 
+    left: _eL.pageX + "px", 
+    top: ( _eL.pageY + 211 > $( window ).height()? _eL.pageY - 211: _eL.pageY ) + "px", 
+    zIndex: "3" 
+} )
+
 contextMenu.display= function( _eL ){
 if( pId !== "8d299s2gvkL9" )return
 
