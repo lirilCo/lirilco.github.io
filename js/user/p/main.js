@@ -1182,12 +1182,12 @@ return
       
     uRL= uRL.slice(0, uRL.length - 1); 
                                        
-    history.pushState({page: pageI}, "", "/" + username + "/p/" + pId + "/" + uRL); 
+    history.pushState({page: pageI}, "", "/" + username + "/p/" + pId + "/" + uRL + "#infor"); 
     pageI++;
 
                                                               
     (!!uRL.length && uRL.length > 0)? $("#root")[0].children[0].children[$("#root")[0].children[0].children.length - 1].outerHTML= "<div><a url= " + '"' + username + `/p/` + pId + '"' + ">" + $("#root")[0].children[0].children[$("#root")[0].children[0].children.length - 1].innerText + `</a></div>`: 1; 
-       window.location.hash= "infor"; 
+       // window.location.hash= "infor";  
                               
     updateRoot(separateUrl(uRL)); 
 
@@ -1366,7 +1366,8 @@ const pId_from_end_of_url= (function(w){return (w.p.indexOf( pId ) + 1,
 w.p.length, 
 w.p.length - (w.p.indexOf( pId ) + 1 + pId.length))})({p:_w.location.pathname})
 
-if( pId_from_end_of_url == -1 || _w.location.pathname === "/user/p/8d299s2gvkL9.html" ){
+console.log(pId_from_end_of_url)
+if( pId_from_end_of_url == -1 || _w.location.pathname === "/" + username + "/p/" + pId + ".html" ){
 $(".folder_cont .folder").css({"opacity": "0", "height": "0", "padding": "0", "border-bottom": "none"})
 $(".file").css({"opacity": "0", "height": "0", "padding": "0", "border-bottom": "none"})
 $(".inScope").removeClass("inScope")
@@ -1382,10 +1383,9 @@ $(".folder_cont").css({"top": "initial"})
 /*$( "#root > div > DIV" ).last().children().filter("a").trigger( "click" )*/
 $(".folder_cont .folder").css({"opacity": "0", "height": "0", "padding": "0", "border-bottom": "none"}); 
 $(".file").css({"opacity": "0", "height": "0", "padding": "0", "border-bottom": "none"}); 
-$(".folder_cont .folder").removeAttr( "style" )
-$(".file").removeAttr( "style" )
 $( "#files .file_tree" ).children().each( function(){$( this ).is( ".folder_cont" )? $( $( this ).find( ".folder" )[0] ).addClass( "inScope" ): $( this ).addClass( "inScope" )} )
-
+$( "#files .file_tree" ).children().removeAttr( "style" )
+$( "#files .file_tree > .folder_cont > .folder" ).removeAttr( "style" )
 $("#root")[0].children[0].innerHTML= "<div><a url= \"/" + username + "\">" + users_name + `</a></div><div><a url="/` + username + `/p">Proyectos</a></div><span><span>` + pNa + `</span></span>`
 return
 }
@@ -1430,7 +1430,7 @@ var i= {target: LEB}
 // var this= LEB
 var tr= false
 // if( $(LEB).is( ".editing" ) )return
-$T= $("#files .file_tree")[0].scrollTop
+//$T= $("#files .file_tree")[0].scrollTop 
 if( !$("#information #historia li").is( ".selected" ) && $("#file_expl #information_cont").hasClass("visible") && !!FileToRequest )return
 
 $("#information_cont #information li.selected").removeClass("selected")
@@ -1966,7 +1966,8 @@ $(".file").css({"opacity": "0", "height": "0", "padding": "0"});
 $(".folder_cont > .folder.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
 $(".file.inScope").css({"opacity": "1", "height": "auto", "padding": "", "border-bottom": ""}); 
 } 
-
+th= {isLast: (LEB === $(".inScope").parent().children()[0])}
+if( th.isLast && typeof $T !== "undefined" )( function(){console.log("entered!"); $("#files .file_tree")[0].scrollTop= $T} )()
 } ) 
 
 _w.addEventListener( 'blur', function(){
@@ -2747,12 +2748,12 @@ return
       
     uRL= uRL.slice(0, uRL.length - 1); 
                                        
-    history.pushState({page: pageI}, "", "/" + username + "/p/" + pId + "/" + uRL); 
+    history.pushState({page: pageI}, "", "/" + username + "/p/" + pId + "/" + uRL + "#infor"); 
     pageI++;
 
                                                               
     (!!uRL.length && uRL.length > 0)? $("#root")[0].children[0].children[$("#root")[0].children[0].children.length - 1].outerHTML= "<div><a url= " + '"' + username + `/p/` + pId + '"' + ">" + $("#root")[0].children[0].children[$("#root")[0].children[0].children.length - 1].innerText + `</a></div>`: 1; 
-       window.location.hash= "infor"; 
+       // window.location.hash= "infor"; 
                               
     updateRoot(separateUrl(uRL)); 
 
