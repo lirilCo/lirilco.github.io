@@ -550,7 +550,7 @@ function controls(a){
 
 purger= {}; 
             
-purger.index= 7; 
+purger.index= 8; 
                  
 purger.purge= function( a ){ 
     if( ( localStorage.getItem( "safety_purge" ) === null || ( localStorage.getItem( "safety_purge" ) !== null && parseInt( localStorage.getItem( "safety_purge" ) ) != purger.index ) ) || ( typeof a != "undefined" && a == "bypass" ) ){ 
