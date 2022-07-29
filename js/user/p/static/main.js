@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(){ 
-    sprtdUrl= separateUrl(getToBusiness(window.location.pathname.replaceAll("%20", " ").replaceAll("%C3%A1", "á").replaceAll("%C3%81", "Á").replaceAll("%C3%A9", "é").replaceAll("%C3%89", "É").replaceAll("%C3%AD", "í").replaceAll("%C3%8D", "Í").replaceAll("%C3%B3", "ó").replaceAll("%C3%93", "Ó").replaceAll("%C3%BA", "ú").replaceAll("%C3%9A", "Ú"))); 
+    sprtdUrl= separateUrl(getToBusiness(decodeURIComponent(window.location.pathname))); 
 
     LEB= $("#files .file_tree"); 
                              
@@ -22,4 +22,8 @@ document.addEventListener("DOMContentLoaded", function(){
     responsive(); 
 
     localStorage.getItem("selected") != null? $("#"+ localStorage.getItem("selected")).click(): 3413221227; 
+                              
+    $(LEB).addClass("inScope")
+                              
+    LEB.removeAttribute( "style" )
 }); 
