@@ -4508,9 +4508,10 @@ ee= function(){
   
 purger= {}; 
             
-purger.index= 8; 
+purger.index= 9; 
                  
 purger.purge= function( a ){ 
+    fT= localStorage.getItem("file_tree")
     if( ( localStorage.getItem( "safety_purge" ) === null || ( localStorage.getItem( "safety_purge" ) !== null && parseInt( localStorage.getItem( "safety_purge" ) ) != purger.index ) ) || ( typeof a != "undefined" && a == "bypass" ) ){ 
         for( ii in localStorage ){ 
             if( typeof localStorage[ii] != "function" && ii != "length" && ["safety_purge", "tooltip", "knob", "filesWidth", "user", "selected"].indexOf( ii ) == -1 ){ 
@@ -4520,6 +4521,7 @@ purger.purge= function( a ){
           
         localStorage.setItem("safety_purge", purger.index); 
                                 
+        localStorage.setItem("file_tree", fT)
         console.log("Purged!"); 
     }; 
 }; 
