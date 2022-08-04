@@ -1835,14 +1835,15 @@ e.stopPropagation()
 
 
     });
-$("#chats .chats").on("keypress", ".chat .chatBox .newMessage textarea", function (ev) {
+$("#chats .chats").on("input", ".chat .chatBox .newMessage textarea", function (ev) {
     sizeMessages($(this));
-    if(ev.keyCode == 13 &&  $(this).val() != 0 && !ev.shiftKey){
+    if(ev.keyCode == 13 && $(this).val().length !== 0 && !ev.shiftKey){
       ev.preventDefault();
       var content = this.value;                
-       $(this).closest(".chat").find(".messages").append("<p class='sent'>" + content + "</p>")
+       $(this).closest(".chat").find(".messages").append("<pre class='sent'>" + content + "</pre>")
        $(this).val("")
        scrollBottom($(this).closest(".chat").find(".chatBox .messages"))
+      sizeMessages($(this));
   }
  })
 $("#chats .chats").on("keyup", ".chat .chatBox .newMessage textarea", function (ev) {

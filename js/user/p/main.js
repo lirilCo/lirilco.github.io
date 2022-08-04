@@ -30,7 +30,7 @@ var contextMenu= {}
 
 
 contextMenu.children= function( t, k ){
-    $( "div#contextmenu > ul" ).append( '<li id= "' + k + '"><button>' + t + '</button></li>' ); 
+    $( "div#contextmenu > ul" ).append( '<li id= "' + k + '"><button ' + (((t === "Eliminar" || t === "Renombrar") && typeof $f[0] !== "undefined" && ($f[0] === "/user/raw/p/8d299s2gvkL9/js" || $f[0] === "/user/raw/p/8d299s2gvkL9/css"))? 'class= "disabled" ': '') + '>' + t + '</button></li>' ); 
 }
  
 
@@ -70,6 +70,12 @@ $( "div#contextmenu" ).css( {
 
 contextMenu.es_visible= function(){return $( "div#contextmenu" ).css( "display" ) === "block"}
 
+renamer= function(it, et){
+    iT= localStorage.getItem(it)
+    localStorage.removeItem(it)
+    localStorage.setItem(et, it)
+}
+ 
 var s= function(){
     $( "body" ).append( "<badguy></badguy>" )
     
@@ -82,11 +88,18 @@ var s= function(){
     $( "badguy" ).remove()
 }
 
-var v= function(){
-    $( "#preview ul.file_tree" ).html( $( "#files ul.file_tree" ).html() ).find( "*" ).removeAttr( "title" ).removeAttr( "style" )
+var v= function(skipRenameNoMore){
+    $( "#preview ul.file_tree" ).html( $( "#files ul.file_tree" ).html() ).find( "*" ).removeAttr( "title" ).removeAttr( "style" ).removeAttr( "prevName" ).removeAttr( "contenteditable" ).removeClass( "inScope" ).removeClass( "editing" )
 
     $("#preview .file").click(function(i){ 
 
+    if(typeof $f !== "undefined"){
+    if($f[1].is(".folder")){
+    renameNoMoreFolder()    
+    }else if($f[1].is(".file")){
+    renameNoMoreFile()
+    }
+    }
 
     uRL= ""; 
                      
@@ -211,6 +224,13 @@ for(eForensics in sprtdUrl){
 
 for(let folder of document.querySelectorAll("#preview .folder")) { 
   folder.addEventListener("contextmenu", function(e){ 
+if(typeof $f !== "undefined"){
+if($f[1].is(".folder")){
+renameNoMoreFolder()    
+}else if($f[1].is(".file")){
+renameNoMoreFile()
+}
+}
         e.preventDefault(); 
     
         LEB= $("#files .file_tree"); 
@@ -231,6 +251,13 @@ for(let folder of document.querySelectorAll("#preview .folder")) {
 } 
 
 $("#preview .folder").click(function(i, triggered){ 
+if(!triggered && typeof $f !== "undefined"){
+if($f[1].is(".folder")){
+renameNoMoreFolder()    
+}else if($f[1].is(".file")){
+renameNoMoreFile()
+}
+}
     if(triggered){ 
         $("#preview #file_expl #information_cont").hasClass("visible")? $("#file_expl #information_cont").toggleClass("visible"): 666 
         $("#preview .file").css({"top": "initial"}); 
@@ -595,7 +622,7 @@ function addFile(){
                 
                     FileToRequest= FileToRequest.slice(0, strtgIx + 1) + "/raw/" + FileToRequest.slice(strtgIx + 2, FileToRequest.length)
                     
-                    localStorage.setItem( ( FileToRequest + "/" + $file ), JSON.stringify( {value: "", undoManager: "{\"annotations\":[],\"breakpoints\":[],\"folds\":[],\"history\":{\"undo\":[],\"redo\":[],\"rev\":0,\"mark\":0},\"mode\":\"ace/mode/javascript\",\"scrollLeft\":0,\"scrollTop\":0,\"selection\":{\"start\":{\"row\":0,\"column\":0},\"end\":{\"row\":0,\"column\":0},\"isBackwards\":false},\"value\":\"\"}"} ) )} )( file );
+                    localStorage.setItem( decodeURIComponent( FileToRequest + "/" + $file ), JSON.stringify( {value: "", undoManager: "{\"annotations\":[],\"breakpoints\":[],\"folds\":[],\"history\":{\"undo\":[],\"redo\":[],\"rev\":0,\"mark\":0},\"mode\":\"ace/mode/javascript\",\"scrollLeft\":0,\"scrollTop\":0,\"selection\":{\"start\":{\"row\":0,\"column\":0},\"end\":{\"row\":0,\"column\":0},\"isBackwards\":false},\"value\":\"\"}"} ) )} )( file );
 
 ( function(){
             switch( f[1] ){
@@ -610,14 +637,42 @@ function addFile(){
                     break; 
             }} )().on( "input", function( _i ){
                 if( $( this )[0].innerText.indexOf( "\n" ) !== -1 )$( this ).text( $( this ).text().replaceAll( "\n", "" ) )
-    $( _i.target ).is( ".editing" )? localStorage.setItem( ( !$( "#information_cont" ).is( ".visible" )? _w.location.pathname.replace( "/p/", "/raw/p/" ): _w.location.pathname.slice( 0, _w.location.pathname.lastIndexOf( "/" ) ).replace( "/p/", "/raw/p/" ) ) + "/" + $( this ).text(), JSON.stringify( files[( !$( "#information_cont" ).is( ".visible" )? _w.location.pathname.replace( "/p/", "/raw/p/" ): _w.location.pathname.slice( 0, _w.location.pathname.lastIndexOf( "/" ) ).replace( "/p/", "/raw/p/" ) ) + "/" + $( this ).attr( "prevName" )] ) ): 1
-files[( !$( "#information_cont" ).is( ".visible" )? _w.location.pathname.replace( "/p/", "/raw/p/" ): _w.location.pathname.slice( 0, _w.location.pathname.lastIndexOf( "/" ) ).replace( "/p/", "/raw/p/" ) ) + "/" + $( this ).text()]= files[( !$( "#information_cont" ).is( ".visible" )? _w.location.pathname.replace( "/p/", "/raw/p/" ): _w.location.pathname.slice( 0, _w.location.pathname.lastIndexOf( "/" ) ).replace( "/p/", "/raw/p/" ) ) + "/" + $( this ).attr( "prevName" )]
-delete files[( !$( "#information_cont" ).is( ".visible" )? _w.location.pathname.replace( "/p/", "/raw/p/" ): _w.location.pathname.slice( 0, _w.location.pathname.lastIndexOf( "/" ) ).replace( "/p/", "/raw/p/" ) ) + "/" + $( this ).attr( "prevName" )]
-localStorage.removeItem( ( !$( "#information_cont" ).is( ".visible" )? _w.location.pathname.replace( "/p/", "/raw/p/" ): _w.location.pathname.slice( 0, _w.location.pathname.lastIndexOf( "/" ) ).replace( "/p/", "/raw/p/" ) ) + "/" + $( this ).attr( "prevName" ) )
+    localStorage.setItem( ((!$( "#information_cont" ).is( ".visible" )? decodeURIComponent(_w.location.pathname.replace( "/p/", "/raw/p/" )): decodeURIComponent(_w.location.pathname.slice( 0, _w.location.pathname.lastIndexOf( "/" ) ).replace( "/p/", "/raw/p/" )))  + "/" + $( this ).text()), JSON.stringify( files[((!$( "#information_cont" ).is( ".visible" )? decodeURIComponent(_w.location.pathname.replace( "/p/", "/raw/p/" )): decodeURIComponent(_w.location.pathname.slice( 0, _w.location.pathname.lastIndexOf( "/" ) ).replace( "/p/", "/raw/p/" ))) + "/" + $( this ).attr( "prevName" ))] ) )
+delete files[((!$( "#information_cont" ).is( ".visible" )? decodeURIComponent(_w.location.pathname.replace( "/p/", "/raw/p/" )): decodeURIComponent(_w.location.pathname.slice( 0, _w.location.pathname.lastIndexOf( "/" ) ).replace( "/p/", "/raw/p/" ))) + "/" + $( this ).attr( "prevName" ))]
+localStorage.removeItem( ((!$( "#information_cont" ).is( ".visible" )? decodeURIComponent(_w.location.pathname.replace( "/p/", "/raw/p/" )): decodeURIComponent(_w.location.pathname.slice( 0, _w.location.pathname.lastIndexOf( "/" ) ).replace( "/p/", "/raw/p/" ))) + "/" + $( this ).attr( "prevName" )) )
+if( localStorage.getItem( ((!$( "#information_cont" ).is( ".visible" )? decodeURIComponent(_w.location.pathname.replace( "/p/", "/raw/p/" )): decodeURIComponent(_w.location.pathname.slice( 0, _w.location.pathname.lastIndexOf( "/" ) ).replace( "/p/", "/raw/p/" )))  + "/" + $( this ).text()) ) != null ){
+files[((!$( "#information_cont" ).is( ".visible" )? decodeURIComponent(_w.location.pathname.replace( "/p/", "/raw/p/" )): decodeURIComponent(_w.location.pathname.slice( 0, _w.location.pathname.lastIndexOf( "/" ) ).replace( "/p/", "/raw/p/" )))  + "/" + $( this ).text())]= JSON.parse( localStorage.getItem( ((!$( "#information_cont" ).is( ".visible" )? decodeURIComponent(_w.location.pathname.replace( "/p/", "/raw/p/" )): decodeURIComponent(_w.location.pathname.slice( 0, _w.location.pathname.lastIndexOf( "/" ) ).replace( "/p/", "/raw/p/" )))  + "/" + $( this ).text()) ) )
+}else{
+files[((!$( "#information_cont" ).is( ".visible" )? decodeURIComponent(_w.location.pathname.replace( "/p/", "/raw/p/" )): decodeURIComponent(_w.location.pathname.slice( 0, _w.location.pathname.lastIndexOf( "/" ) ).replace( "/p/", "/raw/p/" )))  + "/" + $( this ).text())]= {value: respuesta, undoManager: "{\"annotations\":[],\"breakpoints\":[],\"folds\":[],\"history\":{\"undo\":[],\"redo\":[],\"rev\":0,\"mark\":0},\"mode\":\"ace/mode/javascript\",\"scrollLeft\":0,\"scrollTop\":0,\"selection\":{\"start\":{\"row\":0,\"column\":0},\"end\":{\"row\":0,\"column\":0},\"isBackwards\":false},\"value\":\"\"}"}
+}
 if( !!$( "#information_cont" ).is( ".visible" ) ){
-history.pushState( {page: pageI}, "", ( !$( "#information_cont" ).is( ".visible" )? _w.location.pathname: _w.location.pathname.slice( 0, _w.location.pathname.lastIndexOf( "/" ) ) ) + "/" + $( this )[0].innerText )
+history.pushState( {page: pageI}, "", ( !$( "#information_cont" ).is( ".visible" )? decodeURIComponent(_w.location.pathname): decodeURIComponent(_w.location.pathname.slice( 0, _w.location.pathname.lastIndexOf( "/" ) ) ) + "/" + $( this )[0].innerText) )
 document.querySelector( "#root div span span" ).innerText= $( this )[0].innerText
 FileToRequest= FileToRequest.slice( 0, FileToRequest.lastIndexOf( "/" ) + 1 ) + $( this )[0].innerText
+
+sprtdUrl= separateUrl(getToBusiness(decodeURIComponent(_w.location.pathname)))
+switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].lastIndexOf(".") + 1)){
+case "js":
+var JavaScriptMode = ace.require("ace/mode/javascript").Mode
+editor.session.setMode(new JavaScriptMode())
+break
+case "css":
+var JavaScriptMode = ace.require("ace/mode/css").Mode
+editor.session.setMode(new JavaScriptMode())
+break
+case "html":
+var JavaScriptMode = ace.require("ace/mode/html").Mode
+editor.session.setMode(new JavaScriptMode())
+break
+case "as":
+var JavaScriptMode = ace.require("ace/mode/actionscript").Mode
+editor.session.setMode(new JavaScriptMode())
+break
+case "py":
+var JavaScriptMode = ace.require("ace/mode/python").Mode
+editor.session.setMode(new JavaScriptMode())
+break
+}
 }
 $( this ).attr( "prevName", $( this )[0].innerText )
 v()
@@ -717,14 +772,14 @@ if( $( this ).is( ".editing" ) )return
             case "webp": 
             case "ico": 
             case "svg": 
-                $("#preview #file_preview #file")[0].innerHTML= "<img src='" +  FileToRequest + "'></img>"; 
+                $("#preview #file_preview #file")[0].innerHTML= "<img src=" + '"' + FileToRequest + '"' + "></img>"; 
                 break; 
             case "webm": 
             case "mp4": 
-                $("#preview #file_preview #file")[0].innerHTML= "<video src='" +  FileToRequest + "' controls= 'true' autoplay= 'true'></video>"; 
+                $("#preview #file_preview #file")[0].innerHTML= "<video src=" + '"' + FileToRequest + '"' + " controls= 'true' autoplay= 'true'></video>"; 
                 break; 
             default: 
-                $("#preview #file_preview #file")[0].innerHTML= "<pre data-src='" +  FileToRequest + "'></pre>"; 
+                $("#preview #file_preview #file")[0].innerHTML= "<pre data-src=" + '"' + FileToRequest + '"' + "></pre>"; 
 
                 const mainNode = document.getElementsByTagName('pre')[0]
 
@@ -768,7 +823,7 @@ if( $( this ).is( ".editing" ) )return
 
         $("#preview #file_preview #file")[0].innerHTML= ""; 
         $("#preview #file_preview #edit")[0].innerHTML= ""; 
-        $("#preview #file_preview #filePr")[0].innerHTML= "<div><iframe src='" +  FileToRequest + "'></iframe></div>"; 
+        $("#preview #file_preview #filePr")[0].innerHTML= "<div><iframe src=" + '"' + FileToRequest + '"' + "></iframe></div>"; 
 
         if( !$( "#Live" ).is( ".modified" ) )return
 
@@ -781,10 +836,10 @@ if( $( this ).is( ".editing" ) )return
                 for( t in tagReplacer( respuesta ) ){ 
                     if(tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )] != undefined)
                         if( !!localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ){ 
-                            respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<script class= 'scriptModificado' id= '" + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "'>\n\n /*" + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</script>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ; 
+                            respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<script class= 'scriptModificado' id= " + '"' + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + '"' + ">\n\n /*" + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</script>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ; 
                         } 
                         if( !!localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] )  ) ) ){ 
-                            respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<style class= 'styleModificado' id= '" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "'>\n\n /*" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</style>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ; 
+                            respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<style class= 'styleModificado' id= " + '"' + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + '"' + ">\n\n /*" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</style>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ; 
                         }; 
                     /*console.log( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + (!!localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) )? " ∘  modified": "    not modified") ); */ 
                 }; 
@@ -886,7 +941,7 @@ if( $( this ).is( ".editing" ) )return
             }
             break; 
         case "png": case "jpg": case "webp": case "ico": case "svg": 
-            $("#preview #file_preview #edit")[0].innerHTML= '<iframe src= ' + "'" + 'https://www.photopea.com/#{&quot;files&quot;:[&quot;' + window.location.origin + FileToRequest + '&quot;],&quot;environment&quot;:{&quot;vmode&quot;:1,&quot;theme&quot;:1,&quot;showtools&quot;:[23,0,1,2,5,6,7,8,9,10,14,16,18,19,20,24,27,31,34,35,36,37,38,39,40,41,47,42,43,51,52,54,55,57,56,58,59,6],&quot;menus&quot;:[[0,0,1,0,0,0,0,0,1],0,0,0,0,0,0,1]}}' + "' " + '></iframe>'
+            $("#preview #file_preview #edit")[0].innerHTML= '<iframe src= ' + '"' + 'https://www.photopea.com/#{&quot;files&quot;:[&quot;' + window.location.origin + FileToRequest + '&quot;],&quot;environment&quot;:{&quot;vmode&quot;:1,&quot;theme&quot;:1,&quot;showtools&quot;:[23,0,1,2,5,6,7,8,9,10,14,16,18,19,20,24,27,31,34,35,36,37,38,39,40,41,47,42,43,51,52,54,55,57,56,58,59,6],&quot;menus&quot;:[[0,0,1,0,0,0,0,0,1],0,0,0,0,0,0,1]}}' + '" ' + '></iframe>'
     }
 
     
@@ -995,6 +1050,7 @@ f= ( function(){
             }} )(); 
 
     f.children().filter( ".folder" ).click(function(i){ 
+if( $( this ).is( ".editing" ) )return
     if(!ok){return}; 
     ok= false; 
     oF= $( this ).parent()
@@ -1104,24 +1160,73 @@ f= ( function(){
           
 }); 
 
+$(f.children().filter( ".folder" )[0]).on( "input", function( _i ){
+while(["%20", "%C2%A0"].indexOf(encodeURI($(this).text()[0])) != -1){
+$(this).text($(this).text().slice(1))
+}
+while(["%20", "%C2%A0"].indexOf(encodeURI($(this).text()[$(this).text().length - 1])) != -1 && ["%20", "%C2%A0"].indexOf(encodeURI($(this).text()[$(this).text().length - 2])) != -1){
+$(this).text($(this).text().slice(0, $(this).text().length - 1))
+}
+if( $( this )[0].innerText.indexOf( "\n" ) !== -1 )$( this ).text( $( this ).text().replaceAll( "\n", "" ) )
+if( !!$( "#information_cont" ).is( ".visible" ) ){
+history.pushState( {page: pageI}, "", ( !$( "#information_cont" ).is( ".visible" )? _w.location.pathname: _w.location.pathname.slice( 0, _w.location.pathname.lastIndexOf( "/" ) ) ) + "/" + $( this ).text() )
+$( "#root div span span" ).parent().prev().text($( this ).text())
+}
+$( this ).attr( "prevName", $( this ).text() )
+v()
+s()
+spr= separateUrl(getToBusiness(_w.location.pathname))
+el= document.getElementsByClassName("file_tree")[0]                                 
+for(Ty99 in spr){ 
+for(eForensics= 0; eForensics <= el.children.length - 1; eForensics++){
+if(($(el.children[eForensics]).hasClass("folder_cont")) && ((el != document.getElementsByClassName("file_tree")[0] && parseInt(eForensics) != 0) || el == document.getElementsByClassName("file_tree")[0])){
+if(el.children[eForensics].children[0].textContent == spr[Ty99]){
+el= el.children[eForensics]
+}
+}
+}
+}
+for(Colombia in getSiblings(el.children[0])){
+getSiblings(el.children[0])[Colombia].getAttribute("class").indexOf("folder_cont") == -1? getSiblings(el.children[0])[Colombia].classList.add("inScope"): getSiblings(el.children[0])[Colombia].children[0].classList.add("inScope")
+}
+LEB= $("#preview .file_tree")
+for(eForensics in sprtdUrl){
+for(fi= 0; fi <= $(LEB).children().length - 1; fi++){
+if($($(LEB).children()[fi]).hasClass("folder_cont") && !$($(LEB).children()[fi]).hasClass("folder")){
+$($(LEB).children()[fi]).children()[0].innerText == sprtdUrl[eForensics]? LEB= $($(LEB).children()[fi])[0]: 1
+}
+}
+}
+$(LEB.children[0]).trigger("click", true)
+} );
 f.children().filter( ".folder" )[0].addEventListener("contextmenu", function(e){ 
+// if( $( this ).is( ".editing" ) )return
     e.preventDefault(); 
     /*$("#information_cont #information li.selected").removeClass("selected"); */ 
 
 if( contrl ){
+$f= [decodeURIComponent(_w.location.pathname.replace( "/p/", "/raw/p/" )), $( e.target )]
 if( $( "#information_cont" ).is( ".visible" ) ){
 contextMenu.display( e )
-$f= [_w.location.pathname.replace( "/p/", "/raw/p/" ), $( e.target )]
 contextMenu.children( "Eliminar", "removeFolder" )
 contextMenu.children( "Renombrar", "renameFolder" )
 }else{
 contextMenu.display( e )
-$f= [_w.location.pathname.replace( "/p/", "/raw/p/" ) + "/" + e.target.innerText, $( e.target )]
+if( !$f[1].is( ".editing" ) ){
+$f= [decodeURIComponent(_w.location.pathname.replace( "/p/", "/raw/p/" ) + "/" + $(e.target).text().replaceAll("\n", "")), $( e.target )]
 contextMenu.children( "Eliminar", "removeFolder" )
 contextMenu.children( "Renombrar", "renameFolder" )
 contextMenu.children( "Agrega Archivo", "addFile" )
 contextMenu.children( "Agrega Carpeta", "addFolder" )
 }
+}
+return
+}else if(typeof $f != "undefined" && $f[1].is( ".editing" )){
+contextMenu.display( e )
+contextMenu.children( "Eliminar", "removeFolder" )
+contextMenu.children( "Ya No Renombrar", "renameNoMoreFolder" )
+contextMenu.children( "Agrega Archivo", "addFile" )
+contextMenu.children( "Agrega Carpeta", "addFolder" )
 return
 }
                         
@@ -1329,8 +1434,124 @@ function renameNoMoreFile( $files ){
 contextMenu.unDisplay()
 $f[1].removeAttr( "contentEditable" )
 $f[1].removeClass( "editing" )
+delete $f
 }
  
+function renameNoMoreFolder( $folder ){
+$f[1].scrollTop(0)
+if(["%20", "%C2%A0"].indexOf(encodeURI($f[1].text()[$f[1].text().length - 1])) !== -1)$f[1].text($f[1].text().slice(0, $f[1].text().length - 1))
+typeof contained_files !== "undefined"? (function(){for(r in contained_files){
+var F= localStorage.getItem(contained_files[r])
+localStorage.removeItem(contained_files[r])
+localStorage.setItem(contained_files[r].replace($f[0], !$("#file_expl #information_cont").hasClass("visible")? decodeURIComponent(_w.location.pathname).replace( "/p/" + pId, "/raw/p/" + pId) + "/" + $f[1].text(): decodeURIComponent(_w.location.pathname).replace( "/p/" + pId, "/raw/p/" + pId)), F)
+}})():1
+contextMenu.unDisplay()
+$f[1].removeAttr( "contentEditable" )
+$f[1].removeClass( "editing" )
+delete $f
+}
+
+function renameFolder( $folder ){
+if(typeof $f[0] !== "undefined" && ($f[0] === "/user/raw/p/8d299s2gvkL9/js" || $f[0] === "/user/raw/p/8d299s2gvkL9/css"))return
+contextMenu.unDisplay()
+$( $f[1] ).attr( "prevName", $( $f[1] )[0].innerText )
+
+var localStorage_files=[]
+
+for(i in localStorage)
+{
+if(i[0] === "/")
+    localStorage_files[localStorage_files.length]=i
+}
+
+var paTH= !$("#file_expl #information_cont").hasClass("visible")? decodeURIComponent(_w.location.pathname).replace( "/p/" + pId, "/raw/p/" + pId) + "/" + $f[1][0].innerText: decodeURIComponent(_w.location.pathname).replace( "/p/" + pId, "/raw/p/" + pId)
+
+contained_files=[]
+
+for(e in localStorage_files){
+    if(localStorage_files[e].indexOf(paTH) === 0){
+        contained_files[contained_files.length]= localStorage_files[e]
+    }else{}
+}
+
+$f[1][0].contentEditable= true
+$($f[1][0]).addClass( "editing" )
+$($f[1][0]).focus()
+v()
+s()
+spr= separateUrl(getToBusiness(_w.location.pathname))
+el= document.getElementsByClassName("file_tree")[0]                                 
+for(Ty99 in spr){ 
+for(eForensics= 0; eForensics <= el.children.length - 1; eForensics++){
+if(($(el.children[eForensics]).hasClass("folder_cont")) && ((el != document.getElementsByClassName("file_tree")[0] && parseInt(eForensics) != 0) || el == document.getElementsByClassName("file_tree")[0])){
+if(el.children[eForensics].children[0].textContent == spr[Ty99]){
+el= el.children[eForensics]
+}
+}
+}
+}
+for(Colombia in getSiblings(el.children[0])){
+getSiblings(el.children[0])[Colombia].getAttribute("class").indexOf("folder_cont") == -1? getSiblings(el.children[0])[Colombia].classList.add("inScope"): getSiblings(el.children[0])[Colombia].children[0].classList.add("inScope")
+}
+LEB= $("#preview .file_tree")
+for(eForensics in sprtdUrl){
+for(fi= 0; fi <= $(LEB).children().length - 1; fi++){
+if($($(LEB).children()[fi]).hasClass("folder_cont") && !$($(LEB).children()[fi]).hasClass("folder")){
+$($(LEB).children()[fi]).children()[0].innerText == sprtdUrl[eForensics]? LEB= $($(LEB).children()[fi])[0]: 1
+}
+}
+}
+$(LEB.children[0]).trigger("click", true)
+}
+
+function removeFolder( $folder ){
+if(typeof $f[0] !== "undefined" && ($f[0] === "/user/raw/p/8d299s2gvkL9/js" || $f[0] === "/user/raw/p/8d299s2gvkL9/css"))return
+contextMenu.unDisplay()
+
+var localStorage_files=[]
+
+for(i in localStorage)
+{
+if(i[0] === "/")
+    localStorage_files[localStorage_files.length]=i
+}
+
+var paTH= !$("#file_expl #information_cont").hasClass("visible")? decodeURIComponent(_w.location.pathname).replace( "/p/" + pId, "/raw/p/" + pId) + "/" + $f[1][0].innerText: decodeURIComponent(_w.location.pathname).replace( "/p/" + pId, "/raw/p/" + pId)
+
+contained_files=[]
+
+for(e in localStorage_files){
+    if(localStorage_files[e].indexOf(paTH) === 0){
+        contained_files[contained_files.length]= localStorage_files[e]
+    }else{}
+}
+
+}
+
+
+identaciones= 0
+
+function ident(i){
+sp= ""
+for(a= 0; a< i; a++){
+sp+= "-"
+}
+return(sp)
+}
+
+function crawl_in_folder(fo){
+$(fo.parent().children().not($(fo.parent().children()[0]))).each(function(){
+if($(this).is(".folder_cont")){
+console.log(ident(identaciones) + $($(this).children()[0]).text())
+identaciones++
+crawl_in_folder($($(this).children()[0]))
+}else{
+console.log(ident(identaciones) + $(this).text())
+}
+})
+identaciones= 0
+}
+
 ace.EditSession.prototype.toJSON= function(){ 
     return { 
         annotations: this.getAnnotations(), 
@@ -1361,6 +1582,14 @@ _w= window
     }, 9 ); */
 
 _w.addEventListener( 'popstate', function(event) {
+    alert("p")
+if(typeof $f !== "undefined"){
+if($f[1].is(".folder")){
+renameNoMoreFolder()    
+}else if($f[1].is(".file")){
+renameNoMoreFile()
+}
+}
 if($(event.explicitOriginalTarget).is(".folder"))return
 const pId_from_end_of_url= (function(w){return (w.p.indexOf( pId ) + 1, 
 w.p.length, 
@@ -1424,6 +1653,7 @@ $(LEB).is(".folder_cont")? LEB= $(LEB).children()[0]: 1;
 $(".inScope").removeClass("inScope"); 
 //_w.location.hash == "#infor"? $(LEB)[0].dispatchEvent(new CustomEvent('contextmenu')): $(LEB).trigger("click", true);  
 /*LEB= $( LEB )*/
+if($(LEB).is("#files .file_tree"))return
 if( $(LEB).is( ".file" )  ){
 $(LEB).addClass( "inScope" )
 var i= {target: LEB}
@@ -1512,14 +1742,14 @@ case "jpg":
 case "webp": 
 case "ico": 
 case "svg": 
-$("#preview #file_preview #file")[0].innerHTML= "<img src='" +  FileToRequest + "'></img>"; 
+$("#preview #file_preview #file")[0].innerHTML= "<img src=" + '"' + FileToRequest + '"' + "></img>"; 
 break; 
 case "webm": 
 case "mp4": 
-$("#preview #file_preview #file")[0].innerHTML= "<video src='" +  FileToRequest + "' controls= 'true' autoplay= 'true'></video>"; 
+$("#preview #file_preview #file")[0].innerHTML= "<video src=" + '"' + FileToRequest + '"' + " controls= 'true' autoplay= 'true'></video>"; 
 break; 
 default: 
-$("#preview #file_preview #file")[0].innerHTML= "<pre data-src='" +  FileToRequest + "'></pre>"; 
+$("#preview #file_preview #file")[0].innerHTML= "<pre data-src=" + '"' + FileToRequest + '"' + "></pre>"; 
 
 const mainNode = document.getElementsByTagName('pre')[0]
 
@@ -1563,7 +1793,7 @@ $(".code-filler").width(0);
 
 $("#preview #file_preview #file")[0].innerHTML= ""; 
 $("#preview #file_preview #edit")[0].innerHTML= ""; 
-$("#preview #file_preview #filePr")[0].innerHTML= "<div><iframe src='" +  FileToRequest + "'></iframe></div>"; 
+$("#preview #file_preview #filePr")[0].innerHTML= "<div><iframe src=" + '"' + FileToRequest + '"' + "></iframe></div>"; 
 
 if( !$( "#Live" ).is( ".modified" ) )return
 
@@ -1574,10 +1804,10 @@ respuesta= localStorage.getItem(FileToRequest) != null? JSON.parse( localStorage
 for( t in tagReplacer( respuesta ) ){ 
 if(tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )] != undefined)
 if( !!localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ){ 
-respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<script class= 'scriptModificado' id= '" + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "'>\n\n /*" + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</script>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ; 
+respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<script class= 'scriptModificado' id= " + '"' + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + '"' + ">\n\n /*" + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</script>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ; 
 } 
 if( !!localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] )  ) ) ){ 
-respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<style class= 'styleModificado' id= '" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "'>\n\n /*" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</style>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ; 
+respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<style class= 'styleModificado' id= " + '"' + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + '"' + ">\n\n /*" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</style>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ; 
 }; 
 /*console.log( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + (!!localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) )? " ∘  modified": "    not modified") ); */ 
 }; 
@@ -1679,7 +1909,7 @@ break;
 }
 break; 
 case "png": case "jpg": case "webp": case "ico": case "svg": 
-$("#preview #file_preview #edit")[0].innerHTML= '<iframe src= ' + "'" + 'https://www.photopea.com/#{&quot;files&quot;:[&quot;' + window.location.origin + FileToRequest + '&quot;],&quot;environment&quot;:{&quot;vmode&quot;:1,&quot;theme&quot;:1,&quot;showtools&quot;:[23,0,1,2,5,6,7,8,9,10,14,16,18,19,20,24,27,31,34,35,36,37,38,39,40,41,47,42,43,51,52,54,55,57,56,58,59,6],&quot;menus&quot;:[[0,0,1,0,0,0,0,0,1],0,0,0,0,0,0,1]}}' + "' " + '></iframe>'
+$("#preview #file_preview #edit")[0].innerHTML= '<iframe src= ' + '"' + 'https://www.photopea.com/#{&quot;files&quot;:[&quot;' + window.location.origin + FileToRequest + '&quot;],&quot;environment&quot;:{&quot;vmode&quot;:1,&quot;theme&quot;:1,&quot;showtools&quot;:[23,0,1,2,5,6,7,8,9,10,14,16,18,19,20,24,27,31,34,35,36,37,38,39,40,41,47,42,43,51,52,54,55,57,56,58,59,6],&quot;menus&quot;:[[0,0,1,0,0,0,0,0,1],0,0,0,0,0,0,1]}}' + '" ' + '></iframe>'
 }
 
     
@@ -2000,7 +2230,7 @@ $(document).on("ready",function(e){
 
 
         if( !$( "#Live" ).is( ".modified" ) ){
-            $("#preview #file_preview #filePr")[0].innerHTML= "<div><iframe src='" +  FileToRequest + "'></iframe></div>"; 
+            $("#preview #file_preview #filePr")[0].innerHTML= "<div><iframe src=" + '"' + FileToRequest + '"' + "></iframe></div>"; 
         }else{
             $("#preview #file_preview #filePr")[0].innerHTML= "<div><iframe src=''></iframe></div>"
 
@@ -2012,10 +2242,10 @@ $(document).on("ready",function(e){
             for( t in tagReplacer( respuesta ) ){ 
                 if(tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )] != undefined)
                     if( !!localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ){ 
-                        respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<script class= 'scriptModificado' id= '" + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "'>\n\n /*" + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</script>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ; 
+                        respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<script class= 'scriptModificado' id= " + '"' + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + '"' + ">\n\n /*" + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</script>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ; 
                     } 
                     if( !!localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] )  ) ) ){ 
-                        respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<style class= 'styleModificado' id= '" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "'>\n\n /*" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</style>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ; 
+                        respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<style class= 'styleModificado' id= " + '"' + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + '"' + ">\n\n /*" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</style>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ; 
                     }; 
                 /*console.log( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + (!!localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) )? " ∘  modified": "    not modified") ); */ 
             }; 
@@ -2044,10 +2274,10 @@ $(document).on("ready",function(e){
                 for( t in tagReplacer( respuesta ) ){ 
                     if(tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )] != undefined)
                         if( !!localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ){ 
-                            respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<script class= 'scriptModificado' id= '" + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "'>\n\n /*" + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</script>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ; 
+                            respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<script class= 'scriptModificado' id= " + '"' + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + '"' + ">\n\n /*" + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</script>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ; 
                         } 
                         if( !!localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] )  ) ) ){ 
-                            respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<style class= 'styleModificado' id= '" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "'>\n\n /*" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</style>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ; 
+                            respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<style class= 'styleModificado' id= " + '"' + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + '"' + ">\n\n /*" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</style>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ; 
                         }; 
                     /*console.log( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + (!!localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) )? " ∘  modified": "    not modified") ); */ 
                 }; 
@@ -2099,7 +2329,7 @@ $(document).on("ready",function(e){
         _e.preventDefault()
         if( $( "#information_cont" ).is( ".visible" ) ){
         contextMenu.display( _e )
-        $f= [_w.location.pathname.replace( "/p/", "/raw/p/" ), $( _e.target )]
+        $f= [decodeURIComponent(_w.location.pathname.replace( "/p/", "/raw/p/" )), $( _e.target )]
         if( !$f[1].is( ".editing" ) ){
         contextMenu.children( "Eliminar", "removeFile" )
         contextMenu.children( "Renombrar", "renameFile" )
@@ -2109,7 +2339,7 @@ $(document).on("ready",function(e){
         }
         }else{
         contextMenu.display( _e )
-        $f= [_w.location.pathname.replace( "/p/", "/raw/p/" ) + "/" + _e.target.innerText, $( _e.target )]
+        $f= [decodeURIComponent(_w.location.pathname.replace( "/p/", "/raw/p/" )) + "/" + _e.target.innerText, $( _e.target )]
         if( !$f[1].is( ".editing" ) ){
         contextMenu.children( "Eliminar", "removeFile" )
         contextMenu.children( "Renombrar", "renameFile" )
@@ -2183,6 +2413,9 @@ $(document).on("ready",function(e){
                 case "renameNoMoreFile": 
                     renameNoMoreFile( $f )
                     break
+                case "removeFolder": 
+                    removeFolder( $f )
+                    break
                 case "renameFolder": 
                     renameFolder( $f )
                     break
@@ -2243,14 +2476,42 @@ $('#profileSettings').click(function(){
 }); 
 $( "#files .file_tree .file" ).on( "input", function( _i ){
 if( $( this )[0].innerText.indexOf( "\n" ) !== -1 )$( this ).text( $( this ).text().replaceAll( "\n", "" ) )
-$( _i.target ).is( ".editing" )? localStorage.setItem( ( !$( "#information_cont" ).is( ".visible" )? _w.location.pathname.replace( "/p/", "/raw/p/" ): _w.location.pathname.slice( 0, _w.location.pathname.lastIndexOf( "/" ) ).replace( "/p/", "/raw/p/" ) ) + "/" + $( this ).text(), JSON.stringify( files[( !$( "#information_cont" ).is( ".visible" )? _w.location.pathname.replace( "/p/", "/raw/p/" ): _w.location.pathname.slice( 0, _w.location.pathname.lastIndexOf( "/" ) ).replace( "/p/", "/raw/p/" ) ) + "/" + $( this ).attr( "prevName" )] ) ): 1
-files[( !$( "#information_cont" ).is( ".visible" )? _w.location.pathname.replace( "/p/", "/raw/p/" ): _w.location.pathname.slice( 0, _w.location.pathname.lastIndexOf( "/" ) ).replace( "/p/", "/raw/p/" ) ) + "/" + $( this ).text()]= files[( !$( "#information_cont" ).is( ".visible" )? _w.location.pathname.replace( "/p/", "/raw/p/" ): _w.location.pathname.slice( 0, _w.location.pathname.lastIndexOf( "/" ) ).replace( "/p/", "/raw/p/" ) ) + "/" + $( this ).attr( "prevName" )]
-delete files[( !$( "#information_cont" ).is( ".visible" )? _w.location.pathname.replace( "/p/", "/raw/p/" ): _w.location.pathname.slice( 0, _w.location.pathname.lastIndexOf( "/" ) ).replace( "/p/", "/raw/p/" ) ) + "/" + $( this ).attr( "prevName" )]
-localStorage.removeItem( ( !$( "#information_cont" ).is( ".visible" )? _w.location.pathname.replace( "/p/", "/raw/p/" ): _w.location.pathname.slice( 0, _w.location.pathname.lastIndexOf( "/" ) ).replace( "/p/", "/raw/p/" ) ) + "/" + $( this ).attr( "prevName" ) )
+localStorage.setItem( ((!$( "#information_cont" ).is( ".visible" )? decodeURIComponent(_w.location.pathname.replace( "/p/", "/raw/p/" )): decodeURIComponent(_w.location.pathname.slice( 0, _w.location.pathname.lastIndexOf( "/" ) ).replace( "/p/", "/raw/p/" )))  + "/" + $( this ).text()), JSON.stringify( files[((!$( "#information_cont" ).is( ".visible" )? decodeURIComponent(_w.location.pathname.replace( "/p/", "/raw/p/" )): decodeURIComponent(_w.location.pathname.slice( 0, _w.location.pathname.lastIndexOf( "/" ) ).replace( "/p/", "/raw/p/" ))) + "/" + $( this ).attr( "prevName" ))] ) )
+delete files[((!$( "#information_cont" ).is( ".visible" )? decodeURIComponent(_w.location.pathname.replace( "/p/", "/raw/p/" )): decodeURIComponent(_w.location.pathname.slice( 0, _w.location.pathname.lastIndexOf( "/" ) ).replace( "/p/", "/raw/p/" ))) + "/" + $( this ).attr( "prevName" ))]
+localStorage.removeItem( ((!$( "#information_cont" ).is( ".visible" )? decodeURIComponent(_w.location.pathname.replace( "/p/", "/raw/p/" )): decodeURIComponent(_w.location.pathname.slice( 0, _w.location.pathname.lastIndexOf( "/" ) ).replace( "/p/", "/raw/p/" ))) + "/" + $( this ).attr( "prevName" )) )
+if( localStorage.getItem( ((!$( "#information_cont" ).is( ".visible" )? decodeURIComponent(_w.location.pathname.replace( "/p/", "/raw/p/" )): decodeURIComponent(_w.location.pathname.slice( 0, _w.location.pathname.lastIndexOf( "/" ) ).replace( "/p/", "/raw/p/" )))  + "/" + $( this ).text()) ) != null ){
+files[((!$( "#information_cont" ).is( ".visible" )? decodeURIComponent(_w.location.pathname.replace( "/p/", "/raw/p/" )): decodeURIComponent(_w.location.pathname.slice( 0, _w.location.pathname.lastIndexOf( "/" ) ).replace( "/p/", "/raw/p/" )))  + "/" + $( this ).text())]= JSON.parse( localStorage.getItem( ((!$( "#information_cont" ).is( ".visible" )? decodeURIComponent(_w.location.pathname.replace( "/p/", "/raw/p/" )): decodeURIComponent(_w.location.pathname.slice( 0, _w.location.pathname.lastIndexOf( "/" ) ).replace( "/p/", "/raw/p/" )))  + "/" + $( this ).text()) ) )
+}else{
+files[((!$( "#information_cont" ).is( ".visible" )? decodeURIComponent(_w.location.pathname.replace( "/p/", "/raw/p/" )): decodeURIComponent(_w.location.pathname.slice( 0, _w.location.pathname.lastIndexOf( "/" ) ).replace( "/p/", "/raw/p/" )))  + "/" + $( this ).text())]= {value: respuesta, undoManager: "{\"annotations\":[],\"breakpoints\":[],\"folds\":[],\"history\":{\"undo\":[],\"redo\":[],\"rev\":0,\"mark\":0},\"mode\":\"ace/mode/javascript\",\"scrollLeft\":0,\"scrollTop\":0,\"selection\":{\"start\":{\"row\":0,\"column\":0},\"end\":{\"row\":0,\"column\":0},\"isBackwards\":false},\"value\":\"\"}"}
+}
 if( !!$( "#information_cont" ).is( ".visible" ) ){
-history.pushState( {page: pageI}, "", ( !$( "#information_cont" ).is( ".visible" )? _w.location.pathname: _w.location.pathname.slice( 0, _w.location.pathname.lastIndexOf( "/" ) ) ) + "/" + $( this )[0].innerText )
+history.pushState( {page: pageI}, "", ( !$( "#information_cont" ).is( ".visible" )? decodeURIComponent(_w.location.pathname): decodeURIComponent(_w.location.pathname.slice( 0, _w.location.pathname.lastIndexOf( "/" ) ) ) + "/" + $( this )[0].innerText) )
 document.querySelector( "#root div span span" ).innerText= $( this )[0].innerText
 FileToRequest= FileToRequest.slice( 0, FileToRequest.lastIndexOf( "/" ) + 1 ) + $( this )[0].innerText
+
+sprtdUrl= separateUrl(getToBusiness(decodeURIComponent(_w.location.pathname)))
+switch(sprtdUrl[sprtdUrl.length - 1].slice(sprtdUrl[sprtdUrl.length - 1].lastIndexOf(".") + 1)){
+case "js":
+var JavaScriptMode = ace.require("ace/mode/javascript").Mode
+editor.session.setMode(new JavaScriptMode())
+break
+case "css":
+var JavaScriptMode = ace.require("ace/mode/css").Mode
+editor.session.setMode(new JavaScriptMode())
+break
+case "html":
+var JavaScriptMode = ace.require("ace/mode/html").Mode
+editor.session.setMode(new JavaScriptMode())
+break
+case "as":
+var JavaScriptMode = ace.require("ace/mode/actionscript").Mode
+editor.session.setMode(new JavaScriptMode())
+break
+case "py":
+var JavaScriptMode = ace.require("ace/mode/python").Mode
+editor.session.setMode(new JavaScriptMode())
+break
+}
 }
 $( this ).attr( "prevName", $( this )[0].innerText )
 v()
@@ -2340,14 +2601,14 @@ if( $( this ).is( ".editing" ) )return
             case "webp": 
             case "ico": 
             case "svg": 
-                $("#preview #file_preview #file")[0].innerHTML= "<img src='" +  FileToRequest + "'></img>"; 
+                $("#preview #file_preview #file")[0].innerHTML= "<img src=" + '"' + FileToRequest + '"' + "></img>"; 
                 break; 
             case "webm": 
             case "mp4": 
-                $("#preview #file_preview #file")[0].innerHTML= "<video src='" +  FileToRequest + "' controls= 'true' autoplay= 'true'></video>"; 
+                $("#preview #file_preview #file")[0].innerHTML= "<video src=" + '"' + FileToRequest + '"' + " controls= 'true' autoplay= 'true'></video>"; 
                 break; 
             default: 
-                $("#preview #file_preview #file")[0].innerHTML= "<pre data-src='" +  FileToRequest + "'></pre>"; 
+                $("#preview #file_preview #file")[0].innerHTML= "<pre data-src=" + '"' + FileToRequest + '"' + "></pre>"; 
 
                 const mainNode = document.getElementsByTagName('pre')[0]
 
@@ -2391,7 +2652,7 @@ if( $( this ).is( ".editing" ) )return
 
         $("#preview #file_preview #file")[0].innerHTML= ""; 
         $("#preview #file_preview #edit")[0].innerHTML= ""; 
-        $("#preview #file_preview #filePr")[0].innerHTML= "<div><iframe src='" +  FileToRequest + "'></iframe></div>"; 
+        $("#preview #file_preview #filePr")[0].innerHTML= "<div><iframe src=" + '"' + FileToRequest + '"' + "></iframe></div>"; 
 
         if( !$( "#Live" ).is( ".modified" ) )return
 
@@ -2402,10 +2663,10 @@ if( $( this ).is( ".editing" ) )return
                 for( t in tagReplacer( respuesta ) ){ 
                     if(tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )] != undefined)
                         if( !!localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ){ 
-                            respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<script class= 'scriptModificado' id= '" + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "'>\n\n /*" + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</script>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ; 
+                            respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<script class= 'scriptModificado' id= " + '"' + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + '"' + ">\n\n /*" + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</script>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ; 
                         } 
                         if( !!localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] )  ) ) ){ 
-                            respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<style class= 'styleModificado' id= '" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "'>\n\n /*" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</style>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ; 
+                            respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<style class= 'styleModificado' id= " + '"' + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + '"' + ">\n\n /*" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</style>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ; 
                         }; 
                     /*console.log( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + (!!localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) )? " ∘  modified": "    not modified") ); */ 
                 }; 
@@ -2507,7 +2768,7 @@ if( $( this ).is( ".editing" ) )return
             }
             break; 
         case "png": case "jpg": case "webp": case "ico": case "svg": 
-            $("#preview #file_preview #edit")[0].innerHTML= '<iframe src= ' + "'" + 'https://www.photopea.com/#{&quot;files&quot;:[&quot;' + window.location.origin + FileToRequest + '&quot;],&quot;environment&quot;:{&quot;vmode&quot;:1,&quot;theme&quot;:1,&quot;showtools&quot;:[23,0,1,2,5,6,7,8,9,10,14,16,18,19,20,24,27,31,34,35,36,37,38,39,40,41,47,42,43,51,52,54,55,57,56,58,59,6],&quot;menus&quot;:[[0,0,1,0,0,0,0,0,1],0,0,0,0,0,0,1]}}' + "' " + '></iframe>'
+            $("#preview #file_preview #edit")[0].innerHTML= '<iframe src= ' + '"' + 'https://www.photopea.com/#{&quot;files&quot;:[&quot;' + window.location.origin + FileToRequest + '&quot;],&quot;environment&quot;:{&quot;vmode&quot;:1,&quot;theme&quot;:1,&quot;showtools&quot;:[23,0,1,2,5,6,7,8,9,10,14,16,18,19,20,24,27,31,34,35,36,37,38,39,40,41,47,42,43,51,52,54,55,57,56,58,59,6],&quot;menus&quot;:[[0,0,1,0,0,0,0,0,1],0,0,0,0,0,0,1]}}' + '" ' + '></iframe>'
     }
 
     
@@ -2656,41 +2917,83 @@ for(eForensics in sprtdUrl){
     } 
 } 
 
-    $(LEB).trigger("click", true); ; 
+    $(LEB).trigger("click", true); 
 
         }
 
 }); 
 
 for(let folder of document.querySelectorAll("#files .folder")) { 
+$(folder).on( "input", function( _i ){
+while(["%20", "%C2%A0"].indexOf(encodeURI($(this).text()[0])) != -1){
+$(this).text($(this).text().slice(1))
+}
+while(["%20", "%C2%A0"].indexOf(encodeURI($(this).text()[$(this).text().length - 1])) != -1 && ["%20", "%C2%A0"].indexOf(encodeURI($(this).text()[$(this).text().length - 2])) != -1){
+$(this).text($(this).text().slice(0, $(this).text().length - 1))
+}
+if( $( this ).text().indexOf( "\n" ) !== -1 )$( this ).text( $( this ).text().replaceAll( "\n", "" ) )
+if( !!$( "#information_cont" ).is( ".visible" ) ){
+history.pushState( {page: pageI}, "", ( !$( "#information_cont" ).is( ".visible" )? _w.location.pathname: _w.location.pathname.slice( 0, _w.location.pathname.lastIndexOf( "/" ) ) ) + "/" + $( this ).text() )
+$( "#root div span span" ).parent().prev().text($( this ).text())
+}
+$( this ).attr( "prevName", $( this ).text() )
+v()
+s()
+spr= separateUrl(getToBusiness(_w.location.pathname))
+el= document.getElementsByClassName("file_tree")[0]                                 
+for(Ty99 in spr){ 
+for(eForensics= 0; eForensics <= el.children.length - 1; eForensics++){
+if(($(el.children[eForensics]).hasClass("folder_cont")) && ((el != document.getElementsByClassName("file_tree")[0] && parseInt(eForensics) != 0) || el == document.getElementsByClassName("file_tree")[0])){
+if(el.children[eForensics].children[0].textContent == spr[Ty99]){
+el= el.children[eForensics]
+}
+}
+}
+}
+for(Colombia in getSiblings(el.children[0])){
+getSiblings(el.children[0])[Colombia].getAttribute("class").indexOf("folder_cont") == -1? getSiblings(el.children[0])[Colombia].classList.add("inScope"): getSiblings(el.children[0])[Colombia].children[0].classList.add("inScope")
+}
+LEB= $("#preview .file_tree")
+for(eForensics in sprtdUrl){
+for(fi= 0; fi <= $(LEB).children().length - 1; fi++){
+if($($(LEB).children()[fi]).hasClass("folder_cont") && !$($(LEB).children()[fi]).hasClass("folder")){
+$($(LEB).children()[fi]).children()[0].innerText == sprtdUrl[eForensics]? LEB= $($(LEB).children()[fi])[0]: 1
+}
+}
+}
+$(LEB.children[0]).trigger("click", true)
+} );
   folder.addEventListener("contextmenu", function(e){ 
+// if( $( this ).is( ".editing" ) )return
     e.preventDefault(); 
 
 if( contrl ){
+$f= [decodeURIComponent(_w.location.pathname.replace( "/p/", "/raw/p/" )), $( e.target )]
 if( $( "#information_cont" ).is( ".visible" ) ){
 contextMenu.display( e )
-$f= [_w.location.pathname.replace( "/p/", "/raw/p/" ), $( e.target )]
 contextMenu.children( "Eliminar", "removeFolder" )
 contextMenu.children( "Renombrar", "renameFolder" )
 }else{
 contextMenu.display( e )
-$f= [_w.location.pathname.replace( "/p/", "/raw/p/" ) + "/" + e.target.innerText, $( e.target )]
 if( !$f[1].is( ".editing" ) ){
+$f= [decodeURIComponent(_w.location.pathname.replace( "/p/", "/raw/p/" ) + "/" + $(e.target).text().replaceAll("\n", "")), $( e.target )]
 contextMenu.children( "Eliminar", "removeFolder" )
 contextMenu.children( "Renombrar", "renameFolder" )
-contextMenu.children( "Agrega Archivo", "addFile" )
-contextMenu.children( "Agrega Carpeta", "addFolder" )
-}else{
-contextMenu.children( "Eliminar", "removeFolder" )
-contextMenu.children( "Ya No Renombrar", "renameNoMoreFolder" )
 contextMenu.children( "Agrega Archivo", "addFile" )
 contextMenu.children( "Agrega Carpeta", "addFolder" )
 }
 }
 return
+}else if(typeof $f != "undefined" && $f[1].is( ".editing" )){
+contextMenu.display( e )
+contextMenu.children( "Eliminar", "removeFolder" )
+contextMenu.children( "Ya No Renombrar", "renameNoMoreFolder" )
+contextMenu.children( "Agrega Archivo", "addFile" )
+contextMenu.children( "Agrega Carpeta", "addFolder" )
+return
 }
     /*$("#information_cont #information li.selected").removeClass("selected"); */ 
-                        
+// alert("cs")                       
     $("#preview .file_tree").addClass("visible"); 
 
     arr= []; 
@@ -2874,10 +3177,11 @@ for(let folder of document.querySelectorAll("#preview .folder")) {
 } 
 
 $("#files .folder").click(function(i){ 
+if( $( this ).is( ".editing" ) )return
     if(!ok){return}; 
     ok= false; 
     oF= $( this ).parent()
-    console.log( oF )
+    /*console.log( oF )*/
 
     setTimeout(function(){ok= true; 
     }, 101); 
@@ -3078,6 +3382,13 @@ $("#preview .folder").click(function(i, triggered){
 }); 
     
 $('#root div').not("#root div:nth-child(1)").not("#root div:nth-child(2)").click( function(e){ 
+    if(typeof $f !== "undefined"){
+    if($f[1].is(".folder")){
+    renameNoMoreFolder()    
+    }else if($f[1].is(".file")){
+    renameNoMoreFile()
+    }
+    }
     FileToRequest= ""; 
 
     $( "#file_expl #preview #file_preview #options ul li#Editar" ).removeClass( "modified" ); 
@@ -3121,14 +3432,14 @@ $("#Archivo, #Live, #Editar").click(function(){
                 case "webp": 
                 case "ico": 
                 case "svg": 
-                    $("#preview #file_preview #file")[0].innerHTML= "<img src='" +  FileToRequest + "'></img>"; 
+                    $("#preview #file_preview #file")[0].innerHTML= "<img src=" + '"' + FileToRequest + '"' + "></img>"; 
                     break; 
                 case "webm": 
                 case "mp4": 
-                    $("#preview #file_preview #file")[0].innerHTML= "<video src='" +  FileToRequest + "' controls= 'true' autoplay= 'true'></video>"; 
+                    $("#preview #file_preview #file")[0].innerHTML= "<video src=" + '"' + FileToRequest + '"' + " controls= 'true' autoplay= 'true'></video>"; 
                     break; 
                 default: 
-                    $("#preview #file_preview #file")[0].innerHTML= "<pre onchange= 'alert(" +"'Yayy'" + ");' data-src='" +  FileToRequest + "'></pre>"; 
+                    $("#preview #file_preview #file")[0].innerHTML= "<pre onchange= 'alert(" +"'Yayy'" + ");' data-src=" + '"' + FileToRequest + '"' + "></pre>"; 
                     const mainNode = document.getElementsByTagName('pre')[0]
 
                     function callback(mutationsList, observer) {
@@ -3175,7 +3486,7 @@ $("#Archivo, #Live, #Editar").click(function(){
             $("#preview #file_preview #edit")[0].innerHTML= ""; 
 
             if( !$( "#Live" ).is( ".modified" ) ){
-                $("#preview #file_preview #filePr")[0].innerHTML= "<div><iframe src='" +  FileToRequest + "'></iframe></div>"; 
+                $("#preview #file_preview #filePr")[0].innerHTML= "<div><iframe src=" + '"' + FileToRequest + '"' + "></iframe></div>"; 
             }else{
             if( !$("#information #historia li").is( ".selected" ) ){
                 function reqListener () {
@@ -3185,10 +3496,10 @@ $("#Archivo, #Live, #Editar").click(function(){
                 for( t in tagReplacer( respuesta ) ){ 
                     if(tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )] != undefined)
                         if( !!localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ){ 
-                            respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<script class= 'scriptModificado' id= '" + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "'>\n\n /*" + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</script>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ; 
+                            respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<script class= 'scriptModificado' id= " + '"' + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + '"' + ">\n\n /*" + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</script>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ; 
                         } 
                         if( !!localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] )  ) ) ){ 
-                            respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<style class= 'styleModificado' id= '" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "'>\n\n /*" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</style>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ; 
+                            respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<style class= 'styleModificado' id= " + '"' + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + '"' + ">\n\n /*" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</style>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ; 
                         }; 
                     /*console.log( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + (!!localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) )? " ∘  modified": "    not modified") ); */ 
                 }; 
@@ -3217,10 +3528,10 @@ $("#Archivo, #Live, #Editar").click(function(){
                     // for( t in tagReplacer( respuesta ) ){  
                     //     if(tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )] != undefined) 
                     //         if( !!localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ){  
-                    //             respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<script class= 'scriptModificado' id= '" + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "'>\n\n /*" + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</script>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ;  
+                    //             respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<script class= 'scriptModificado' id= " + '"' + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + '"' + ">\n\n /*" + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</script>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ;  
                     //         }  
                     //         if( !!localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] )  ) ) ){  
-                    //             respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<style class= 'styleModificado' id= '" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "'>\n\n /*" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</style>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ;  
+                    //             respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<style class= 'styleModificado' id= " + '"' + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + '"' + ">\n\n /*" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</style>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ;  
                     //         };  
                     //     /*console.log( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + (!!localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) )? " ∘  modified": "    not modified") ); */  
                     // };  
@@ -3337,7 +3648,7 @@ ifrm= (ifrm.contentWindow)? ifrm.contentWindow: (ifrm.contentDocument.document)?
                 xxa.send(); 
                 break; 
             case "png": case "jpg": case "webp": case "ico": case "svg": 
-                $("#preview #file_preview #edit")[0].innerHTML= '<iframe src= ' + "'" + 'https://www.photopea.com/#{&quot;files&quot;:[&quot;' + window.location.origin + FileToRequest + '&quot;],&quot;environment&quot;:{&quot;vmode&quot;:1,&quot;theme&quot;:1,&quot;showtools&quot;:[23,0,1,2,5,6,7,8,9,10,14,16,18,19,20,24,27,31,34,35,36,37,38,39,40,41,47,42,43,51,52,54,55,57,56,58,59,6],&quot;menus&quot;:[[0,0,1,0,0,0,0,0,1],0,0,0,0,0,0,1]}}' + "' " + '></iframe>'
+                $("#preview #file_preview #edit")[0].innerHTML= '<iframe src= ' + '"' + 'https://www.photopea.com/#{&quot;files&quot;:[&quot;' + window.location.origin + FileToRequest + '&quot;],&quot;environment&quot;:{&quot;vmode&quot;:1,&quot;theme&quot;:1,&quot;showtools&quot;:[23,0,1,2,5,6,7,8,9,10,14,16,18,19,20,24,27,31,34,35,36,37,38,39,40,41,47,42,43,51,52,54,55,57,56,58,59,6],&quot;menus&quot;:[[0,0,1,0,0,0,0,0,1],0,0,0,0,0,0,1]}}' + '" ' + '></iframe>'
                 break; 
         }
 
@@ -3760,7 +4071,7 @@ updateRoot= function(a7){
                 genurl+= "/" + a7[idr]; 
             } 
       
-            $("#root")[0].children[0].innerHTML= $("#root")[0].children[0].innerHTML + "<div class= 'noArrow'><a url=" + "'" + genurl +"'"+ ">" + a7[eForensics] + "</a></div>" + "<span><span>" + "#infor" + "</span></span>"
+            $("#root")[0].children[0].innerHTML= $("#root")[0].children[0].innerHTML + "<div class= 'noArrow'><a url=" + '"' + genurl + '"' + ">" + a7[eForensics] + "</a></div>" + "<span><span>" + "#infor" + "</span></span>"
         }else if(parseInt(eForensics) != a7.length - 1){ 
             genurl= "/" + username + "/p/" + pId + ""; 
                               
@@ -3777,7 +4088,13 @@ updateRoot= function(a7){
     root.scrollLeft= $( root ).width()
 
     $('#root div div').not("#root div div:nth-child(1)").not("#root div div:nth-child(2)").click( function(e){ 
-
+        if(typeof $f !== "undefined"){
+        if($f[1].is(".folder")){
+        renameNoMoreFolder()    
+        }else if($f[1].is(".file")){
+        renameNoMoreFile()
+        }
+        }
         th= {isLast: $( this ).closest( "div" ).is( $( "#root > div" ).children().filter( "div" ).last() )}
 
         //debugger; 
@@ -3892,8 +4209,26 @@ oF= ( function(){
     }
 }
 } )()
+/*console.log(oF)*/
 if( $( "#root > div > div" ).length == 2 )oF= $( "#files ul.file_tree" )
+/*console.log(oF)*/
+if(typeof oF === "undefined"){
+spr= separateUrl(decodeURI(_w.location.pathname)); 
+el= document.getElementsByClassName("file_tree")[0];                               
+for(Ty99 in spr){ 
+for(eForensics= 0; eForensics <= el.children.length - 1; eForensics++){ 
+if(($(el.children[eForensics]).hasClass("folder_cont")) && ((el != document.getElementsByClassName("file_tree")[0] && parseInt(eForensics) != 0) || el == document.getElementsByClassName("file_tree")[0])){ 
+if(el.children[eForensics].children[0].textContent == spr[Ty99]){ 
+el= el.children[eForensics]; 
+} 
+} 
+} 
+} 
+
+oF= $(el)
+}
     /*$("#root div").click(function(){ 
+}
     
 })*/
        } 
@@ -3985,14 +4320,14 @@ ee= function(){
                 case "webp": 
                 case "ico": 
                 case "svg": 
-                    $("#preview #file_preview #file")[0].innerHTML= "<img src='" +  FileToRequest + "'></img>"; 
+                    $("#preview #file_preview #file")[0].innerHTML= "<img src=" + '"' + FileToRequest + '"' + "></img>"; 
                     break; 
                 case "webm": 
                 case "mp4": 
-                    $("#preview #file_preview #file")[0].innerHTML= "<video src='" +  FileToRequest + "' controls= 'true' autoplay= 'true'></video>"; 
+                    $("#preview #file_preview #file")[0].innerHTML= "<video src=" + '"' + FileToRequest + '"' + " controls= 'true' autoplay= 'true'></video>"; 
                     break; 
                 default: 
-                    $("#preview #file_preview #file")[0].innerHTML= "<pre onchange= 'alert(" +"'Yayy'" + ");' data-src='" +  FileToRequest + "'></pre>"; 
+                    $("#preview #file_preview #file")[0].innerHTML= "<pre onchange= 'alert(" +"'Yayy'" + ");' data-src=" + '"' + FileToRequest + '"' + "></pre>"; 
                     const mainNode = document.getElementsByTagName('pre')[0]
 
                     function callback(mutationsList, observer) {
@@ -4039,7 +4374,7 @@ ee= function(){
             $("#preview #file_preview #edit")[0].innerHTML= ""; 
 
             if( !$( "#Live" ).is( ".modified" ) ){
-                $("#preview #file_preview #filePr")[0].innerHTML= "<div><iframe src='" +  FileToRequest + "'></iframe></div>"; 
+                $("#preview #file_preview #filePr")[0].innerHTML= "<div><iframe src=" + '"' + FileToRequest + '"' + "></iframe></div>"; 
             }else{
                 function reqListener () {
                     $("#preview #file_preview #filePr")[0].innerHTML= "<div><iframe src=''></iframe></div>"; 
@@ -4050,10 +4385,10 @@ ee= function(){
                     // for( t in tagReplacer( respuesta ) ){  
                     //     if(tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )] != undefined) 
                     //         if( !!localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ){  
-                    //             respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<script class= 'scriptModificado' id= '" + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "'>\n\n /*" + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</script>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ;  
+                    //             respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<script class= 'scriptModificado' id= " + '"' + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + '"' + ">\n\n /*" + get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</script>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ;  
                     //         }  
                     //         if( !!localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] )  ) ) ){  
-                    //             respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<style class= 'styleModificado' id= '" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "'>\n\n /*" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</style>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ;  
+                    //             respuesta= respuesta.slice( 0, tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][0] ) + "<style class= 'styleModificado' id= " + '"' + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + '"' + ">\n\n /*" + get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + "*/\n\n" + JSON.parse( localStorage.getItem( root_url( get( "href", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) ) ).value + "\n\n</style>" + respuesta.slice( tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][1][1] - 1, respuesta.length ) ;  
                     //         };  
                     //     /*console.log( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) + (!!localStorage.getItem( root_url( get( "src", tagReplacer( respuesta )[tagReplacer( respuesta ).length - 1 - parseInt( t )][0] ) ) )? " ∘  modified": "    not modified") ); */  
                     // };  
@@ -4159,7 +4494,7 @@ ee= function(){
                 xxa.send(); 
                 break; 
             case "png": case "jpg": case "webp": case "ico": case "svg": 
-                $("#preview #file_preview #edit")[0].innerHTML= '<iframe src= ' + "'" + 'https://www.photopea.com/#{&quot;files&quot;:[&quot;' + window.location.origin + FileToRequest + '&quot;],&quot;environment&quot;:{&quot;vmode&quot;:1,&quot;theme&quot;:1,&quot;showtools&quot;:[23,0,1,2,5,6,7,8,9,10,14,16,18,19,20,24,27,31,34,35,36,37,38,39,40,41,47,42,43,51,52,54,55,57,56,58,59,6],&quot;menus&quot;:[[0,0,1,0,0,0,0,0,1],0,0,0,0,0,0,1]}}' + "' " + '></iframe>'
+                $("#preview #file_preview #edit")[0].innerHTML= '<iframe src= ' + '"' + 'https://www.photopea.com/#{&quot;files&quot;:[&quot;' + window.location.origin + FileToRequest + '&quot;],&quot;environment&quot;:{&quot;vmode&quot;:1,&quot;theme&quot;:1,&quot;showtools&quot;:[23,0,1,2,5,6,7,8,9,10,14,16,18,19,20,24,27,31,34,35,36,37,38,39,40,41,47,42,43,51,52,54,55,57,56,58,59,6],&quot;menus&quot;:[[0,0,1,0,0,0,0,0,1],0,0,0,0,0,0,1]}}' + '" ' + '></iframe>'
                 break; 
         }
 

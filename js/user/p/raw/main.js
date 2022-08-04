@@ -1,10 +1,10 @@
-console.log( window.location.pathname + "p" + window.location.hash.slice( 1 ) ); 
+(function(){console.log( decodeURIComponent(window.location.pathname + "p" + window.location.hash.slice( 1 ) )); })()
 
 bU= ( aU= window.location.toString().replace( window.location.origin, "" ) ).replace( "/raw/#", "/raw/p" ); 
 
 blinking_I= 0; 
 
-const FileToRequest= window.location.pathname + "p" + window.location.hash.slice( 1 ); 
+const FileToRequest= decodeURIComponent(window.location.pathname + "p" + window.location.hash.slice( 1 )); 
 
 function tagReplacer( HtML ){ 
     var response= []; 
