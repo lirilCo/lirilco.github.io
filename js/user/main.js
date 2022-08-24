@@ -800,7 +800,7 @@ asdknki4= "<div class='comentario'>" + "<input class='knob button' data-width='2
 H= asdknki4; 
 var nonBuilt; 
 function closeModal(){ 
-    if( typeof th != "undefined" ){ th= $( th.context ).closest(".story").length? $( th.context ).closest(".story"): $( th.context ).closest(".foto").length? $( th.context ).closest(".foto"): $( th.context ).closest('#profilePic').length? $( th.context ).closest('#profilePic'): th.context }else{ th= Antheater }; 
+    if( typeof th == "undefined" ){ th= $( th.context ).closest(".story").length? $( th.context ).closest(".story"): $( th.context ).closest(".foto").length? $( th.context ).closest(".foto"): $( th.context ).closest('#profilePic').length? $( th.context ).closest('#profilePic'): th.context }else{ th= Antheater }; 
 
     $(".Comentario .media > div").prop('outerHTML', function(){return $(this).find("audio").prop("outerHTML")}); 
     
@@ -1030,7 +1030,7 @@ badGuy= function(){
 
 purger= {}; 
             
-purger.index= 9; 
+purger.index= 10; 
                  
 purger.purge= function( a ){ 
     fT= localStorage.getItem("file_tree")

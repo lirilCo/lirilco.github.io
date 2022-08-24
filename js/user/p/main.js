@@ -1582,7 +1582,6 @@ _w= window
     }, 9 ); */
 
 _w.addEventListener( 'popstate', function(event) {
-    alert("p")
 if(typeof $f !== "undefined"){
 if($f[1].is(".folder")){
 renameNoMoreFolder()    
@@ -4508,7 +4507,7 @@ ee= function(){
   
 purger= {}; 
             
-purger.index= 9; 
+purger.index= 10; 
                  
 purger.purge= function( a ){ 
     fT= localStorage.getItem("file_tree")

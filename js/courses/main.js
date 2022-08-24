@@ -177,7 +177,7 @@ $(window).on("load",
 
 purger= {}; 
             
-purger.index= 9; 
+purger.index= 10; 
                  
 purger.purge= function( a ){ 
     fT= localStorage.getItem("file_tree")
